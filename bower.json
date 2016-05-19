@@ -1,0 +1,25 @@
+{
+  "name": "iuap-design",
+  "description": "UI Framework Used For Enterprise��.",
+  "main": "index.js",
+  "authors": [
+    "Yonyou FED"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "iUAP",
+    "Design",
+    "UI",
+    "Framework"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
