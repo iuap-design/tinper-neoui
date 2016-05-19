@@ -1,0 +1,28 @@
+{
+  "name": "iuap-design",
+  "version": "1.0.0",
+  "description": "UI Framework Used For Enterprise��.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YY-FED/iUAP-Design.git"
+  },
+  "keywords": [
+    "iUAP",
+    "Design",
+    "UI",
+    "Framework"
+  ],
+  "author": "Yonyou FED",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YY-FED/iUAP-Design/issues"
+  },
+  "homepage": "https://github.com/YY-FED/iUAP-Design#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
