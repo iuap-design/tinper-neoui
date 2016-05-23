@@ -10,9 +10,15 @@ import rename from 'gulp-rename';
 import minifycss from 'gulp-minify-css';
 import sourcemaps from 'gulp-sourcemaps';
 import babel from 'gulp-babel';
+import clean from 'gulp-clean';
+
+const scssSrcPath = [
+  './scss/u.scss',
+  './scss/u-extend.scss'
+]
 
 gulp.task('sass', () => {
-  return gulp.src(['./scss/u.scss', './scss/u.extend.scss'])
+  return gulp.src(scssSrcPath)
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(autoprefixer({
         browsers: ['last 2 versions'],
@@ -22,7 +28,7 @@ gulp.task('sass', () => {
 });
 
 gulp.task("es2015", function () {
-  return gulp.src("js/src/**/*.js")
+  return gulp.src("js/**/*.js")
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(concat("u.js"))
@@ -43,6 +49,12 @@ gulp.task('serve', function() {
     gulp.watch('./scss/**/*.scss', ['sass']);
     gulp.watch('./js/src/*.js', ['es2015']);
 
+});
+
+// 清空 hrcloud 目录下的资源
+gulp.task('clean',function() {
+  gulp.src('dist/*', {read: false})
+    .pipe(clean({force: true}));
 });
 
 gulp.task('default', ['sass', 'es2015', 'serve'])
