@@ -10,11 +10,12 @@ import rename from 'gulp-rename';
 import minifycss from 'gulp-minify-css';
 import sourcemaps from 'gulp-sourcemaps';
 import babel from 'gulp-babel';
+import copy from 'gulp-copy';
 import clean from 'gulp-clean';
 
 const scssSrcPath = [
-  './scss/u.scss',
-  './scss/u-extend.scss'
+  './src/ui/u.scss',
+  './src/ui-extend/u-extend.scss'
 ]
 
 gulp.task('sass', () => {
@@ -28,7 +29,7 @@ gulp.task('sass', () => {
 });
 
 gulp.task("es2015", function () {
-  return gulp.src("js/**/*.js")
+  return gulp.src("src/**/**/*.js")
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(concat("u.js"))
@@ -36,18 +37,23 @@ gulp.task("es2015", function () {
     .pipe(gulp.dest("dist/js"));
 });
 
+gulp.task('font', function(){
+  gulp.src('./font-awesome/**')
+    .pipe(copy('./dist'));
+});
+
 gulp.task('serve', function() {
     // static server
     browserSync({
-        files: ['scss/**/*.scss', 'src/**.js', 'dist', 'plugins'],
+        files: ['src/**.js', 'dist'],
         server: {
             baseDir: "./"
         }
     });
 
     // watch task
-    gulp.watch('./scss/**/*.scss', ['sass']);
-    gulp.watch('./js/src/*.js', ['es2015']);
+    gulp.watch('./src/**/*.scss', ['sass']);
+    gulp.watch('./src/**/*.js', ['es2015']);
 
 });
 
@@ -57,4 +63,4 @@ gulp.task('clean',function() {
     .pipe(clean({force: true}));
 });
 
-gulp.task('default', ['sass', 'es2015', 'serve'])
+gulp.task('default', ['sass', 'es2015', 'font', 'serve'])

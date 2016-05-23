@@ -1,11 +1,11 @@
 {
   "name": "iuap-design",
   "version": "1.0.0",
-  "description": "UI Framework Used For Enterprise��.",
+  "description": "UI Framework Used For Enterprise.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/.bin/gulp"
+    "dev": "./node_modules/.bin/gulp",
+    "clean": "./node_modules/.bin/gulp clean"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,9 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-babel": "^6.1.2",
+    "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.0",
+    "gulp-copy": "0.0.2",
     "gulp-minify-css": "^1.2.4",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.1",
