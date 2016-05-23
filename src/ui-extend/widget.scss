@@ -1,0 +1,76 @@
+// 卡片布局中的 widget区
+
+//卡片布局背景
+.u-widget-bg {
+  //background-color: #F5F5F5;
+  background-color: #eceff1;
+  padding: 15px;
+}
+
+//卡片样式
+//.u-widget{
+//  background-color: #FFF;
+//  margin: 5px;
+//  padding: 5px;
+//}
+
+.u-widget {
+  background-color: #FFF;
+  margin: 15px;
+  &:after{
+    display: table;
+    content: " ";
+    clear: both;
+  }
+}
+
+.u-widget-left {
+  margin-right: 0;
+}
+
+.u-widget-right {
+  margin-left: 0;
+}
+
+.u-widget-middle {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.u-widget-heading {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  position: relative;
+  padding: 0;
+  /*border-bottom: 1px solid transparent;*/
+  border-bottom: 1px solid #e0e0e0;
+}
+.u-widget-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  display: block;
+  padding: $widget-padding-top $widget-padding-left;
+  font-size: 16px;
+  color: #424242;
+  font-weight: 400;
+  border-left: 4px solid red;
+  .u-widget-more{
+     position:absolute;
+     right: $widget-padding-left;
+     top: 50%;
+     transform: translateY(-50%);
+  }
+}
+.u-widget-body {
+  padding: 30px 30px;
+  position: relative;
+  padding-top: 30px;
+}
+.u-widget-footer {
+  padding: 0 30px 15px;
+  padding-top: 15px;
+  background-color: transparent;
+  border-top: 1px solid #e0e0e0;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
