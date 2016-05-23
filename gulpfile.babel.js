@@ -12,11 +12,24 @@ import sourcemaps from 'gulp-sourcemaps';
 import babel from 'gulp-babel';
 import copy from 'gulp-copy';
 import clean from 'gulp-clean';
+import util from 'gulp-util';
 
 const scssSrcPath = [
   './src/ui/u.scss',
   './src/ui-extend/u-extend.scss'
 ]
+
+/**
+ * 公共错误处理函数
+ * 使用示例：
+ *  .pipe(uglify())
+    .on('error', errHandle)
+ */
+function errHandle(err) {
+  console.log(err);
+  util.log(err.fileName + '文件编译出错，出错行数为' + err.lineNumber + '，具体错误信息为：' + err.message);
+  this.end();
+}
 
 gulp.task('sass', () => {
   return gulp.src(scssSrcPath)
@@ -32,6 +45,7 @@ gulp.task("es2015", function () {
   return gulp.src("src/**/**/*.js")
     .pipe(sourcemaps.init())
     .pipe(babel())
+    .on('error', errHandle)
     .pipe(concat("u.js"))
     .pipe(sourcemaps.write("."))
     .pipe(gulp.dest("dist/js"));
@@ -63,4 +77,4 @@ gulp.task('clean',function() {
     .pipe(clean({force: true}));
 });
 
-gulp.task('default', ['sass', 'es2015', 'font', 'serve'])
+gulp.task('default', ['clean', 'sass', 'es2015', 'font', 'serve'])
