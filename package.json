@@ -4,8 +4,9 @@
   "description": "UI Framework Used For Enterprise.",
   "main": "index.js",
   "scripts": {
-    "dev": "./node_modules/.bin/gulp",
-    "clean": "./node_modules/.bin/gulp clean"
+    "clean": "./node_modules/.bin/gulp clean",
+    "dev": "./node_modules/.bin/gulp dev",
+    "prod": "./node_modules/.bin/gulp prod"
   },
   "repository": {
     "type": "git",

@@ -2,7 +2,7 @@ u.ClockPicker = u.BaseComponent.extend({
 		DEFAULTS : {
 		},
 		init:function(){
-			var self = this;			 
+			var self = this;
 			var element = this.element;
 			this.options = u.extend({}, this.DEFAULTS, this.options);
 			this.format = this.options['format'] || u.core.getMaskerMeta('time').format;
@@ -12,7 +12,7 @@ u.ClockPicker = u.BaseComponent.extend({
 				this.input.setAttribute('readonly', 'readonly')
 			}
 			u.addClass(this.element,'u-text');
-			
+
 			this.template = '<div class="u-clock-ul popover clockpicker-popover" style="padding:0px;">';
 			this.template += '<div class="popover-title"><button class="u-button u-date-clean u-clock-clean" >清空</button><span class="clockpicker-span-hours">02</span> : <span class="clockpicker-span-minutes text-primary">01</span><span class="clockpicker-span-am-pm"></span></div>';
 			this.template += '<div class="popover-content">';
@@ -72,12 +72,12 @@ u.ClockPicker = u.BaseComponent.extend({
 	        u.on(this.input, 'blur',function(e){
 	        	this.setValue(this.input.value);
 	        }.bind(this));
-			
+
 			var d = new Date();
 			this.defaultHour = d.getHours() > 9? '' + d.getHours():'0' + d.getHours();
-			this.defaultMin = d.getMinutes() > 9? '' + d.getMinutes():'0' + d.getMinutes();	
+			this.defaultMin = d.getMinutes() > 9? '' + d.getMinutes():'0' + d.getMinutes();
 			this.defaultSec = d.getSeconds() > 9? '' + d.getSeconds():'0' + d.getSeconds();
-			
+
 			this.hours = this.defaultHour;
 			this.min = this.defaultMin;
 			this.sec = this.defaultSec;
@@ -88,7 +88,7 @@ u.ClockPicker = u.BaseComponent.extend({
 		}
 	})
 
-	
+
 
 	u.ClockPicker.fn = u.ClockPicker.prototype;
 
@@ -97,9 +97,9 @@ u.ClockPicker = u.BaseComponent.extend({
  * @private
  */
 u.ClockPicker.fn._zoomIn = function(newPage){
-	
+
      u.addClass(newPage, 'zoom-in');
-    
+
     var cleanup = function() {
     	u.off(newPage,'transitionend', cleanup);
     	u.off(newPage,'webkitTransitionEnd', cleanup);
@@ -121,7 +121,7 @@ u.ClockPicker.fn._zoomIn = function(newPage){
 			return;
 		var oThis = this;
 		this.panelDiv = u.makeDOM(this.template);
-		
+
 		this.hand = this.panelDiv.querySelector('line');
 		this.bg = this.panelDiv.querySelector('.clockpicker-canvas-bg');
 		this.fg = this.panelDiv.querySelector('.clockpicker-canvas-fg');
@@ -137,7 +137,7 @@ u.ClockPicker.fn._zoomIn = function(newPage){
 			var target = e.target;
 			if(u.hasClass(target,'clockpicker-tick')){
 				this.hours = target.innerHTML;
-				this.hours = this.hours > 9 || this.hours == 00? '' + this.hours:'0' + this.hours;
+				this.hours = this.hours > 9 || this.hours == '00'? '' + this.hours:'0' + this.hours;
 				this.titleHourSpan.innerHTML = this.hours;
 				this.hourDiv.style.visibility = 'hidden';
 				// this.minDiv.style.visibility = 'visible';
@@ -146,7 +146,7 @@ u.ClockPicker.fn._zoomIn = function(newPage){
 				this.setHand();
 			}
 		}.bind(this));
-		
+
 		u.on(this.minDiv,'click',function(e){
 			var target = e.target;
 			if(u.hasClass(target,'clockpicker-tick')){
@@ -166,10 +166,10 @@ u.ClockPicker.fn._zoomIn = function(newPage){
 			this.setValue("");
 			this.hide();
 		}.bind(this));
-		
+
 		this.element.parentNode.appendChild(this.panelDiv);
 	}
-	
+
 	u.ClockPicker.fn.setHand = function(){
 		var dialRadius = 100,
 		innerRadius = 54,
@@ -184,12 +184,12 @@ u.ClockPicker.fn._zoomIn = function(newPage){
 			y = - Math.cos(radian) * radius;
 			this.setHandFun(x,y);
 	}
-	
+
 	u.ClockPicker.fn.setHandFun = function(x,y,roundBy5,dragging){
 		var dialRadius = 100,
 		innerRadius = 54,
 		outerRadius = 80;
-		
+
 		var radian = Math.atan2(x, - y),
 			isHours = this.currentView === 'hours',
 			unit = Math.PI / (isHours ? 6 : 30),
@@ -198,7 +198,7 @@ u.ClockPicker.fn._zoomIn = function(newPage){
 			inner = isHours && z < (outerRadius + innerRadius) / 2,
 			radius = inner ? innerRadius : outerRadius,
 			value;
-			
+
 			if (this.twelvehour) {
 				radius = outerRadius;
 			}
@@ -243,7 +243,7 @@ u.ClockPicker.fn._zoomIn = function(newPage){
 				}
 			}
 		}
-		
+
 		// Set clock hand and others' position
 		var w = this.panelDiv.querySelector('.clockpicker-plate').offsetWidth;
 		var u = w / 200;
@@ -259,13 +259,13 @@ u.ClockPicker.fn._zoomIn = function(newPage){
 		this.fg.setAttribute('cx', cx);
 		this.fg.setAttribute('cy', cy);
 	}
-	
+
 	u.ClockPicker.fn.setValue = function(value) {
 		value = value? value: '';
 
 		if(value == ''){
 			this.input.value =  '';
-		
+
 			this.trigger('valueChange', {value:''})
 			return;
 		}
@@ -282,7 +282,7 @@ u.ClockPicker.fn._zoomIn = function(newPage){
 			var sec = vA[2] || 0;
 			sec = sec % 60;
 			this.sec = sec > 9 ?'' + sec : '0' + sec;
-			
+
 			value = this.hours + ':' + this.min + ':' + this.sec;
 		}else{
 			this.hours = this.defaultHour;
@@ -295,10 +295,10 @@ u.ClockPicker.fn._zoomIn = function(newPage){
 		_date.setSeconds(this.sec);
 		var showValue = u.date.format(_date,this.format);
 		this.input.value =  showValue;
-		
+
 		this.trigger('valueChange', {value:value})
 	}
-	
+
 	u.ClockPicker.fn.focusEvent = function() {
 		var self = this;
 		u.on(this.element,'click', function(e) {
@@ -312,10 +312,10 @@ u.ClockPicker.fn._zoomIn = function(newPage){
 
 		});
 	}
-	
+
 	//下拉图标的点击事件
 	u.ClockPicker.fn.clickEvent = function() {
-		var self = this;		
+		var self = this;
 		var caret = this.element.nextSibling
 		u.on(caret,'click',function(e) {
 			self.show(e);
@@ -333,7 +333,7 @@ u.ClockPicker.fn._zoomIn = function(newPage){
 
 		var inputValue = this.input.value;
 		this.setValue(inputValue);
-		
+
 		var self = this;
 		this.createPanel();
 		this.minDiv.style.visibility = 'hidden';
@@ -356,12 +356,12 @@ u.ClockPicker.fn._zoomIn = function(newPage){
         }else{
 	        u.showPanelByEle(this.input,this.panelDiv);
         }
-        
+
 		this.panelDiv.style.zIndex = u.getZIndex();
         u.addClass(this.panelDiv, 'is-visible');
-        
-   
-        
+
+
+
         var callback = function (e) {
             if (e !== evt && e.target !== this.input && !self.clickPanel(e.target)) {
             	u.off(document,'click', callback);
@@ -372,7 +372,7 @@ u.ClockPicker.fn._zoomIn = function(newPage){
 
 
 	}
-	
+
 	u.ClockPicker.fn.clickPanel = function(dom){
 		while(dom){
 			if(dom == this.panelDiv){
@@ -389,16 +389,16 @@ u.ClockPicker.fn._zoomIn = function(newPage){
         this.panelDiv.style.zIndex = -1;
         if(this.overlayDiv){
         	try{
-        		document.body.removeChild(this.overlayDiv);	
+        		document.body.removeChild(this.overlayDiv);
         	}catch(e){
-        		
+
         	}
-        	
+
         }
 	}
 
 	if (u.compMgr)
-	
+
 	if(!u.isIE8){
 		u.compMgr.regComp({
 			comp: u.ClockPicker,
@@ -406,5 +406,3 @@ u.ClockPicker.fn._zoomIn = function(newPage){
 			css: 'u-clockpicker'
 		})
 	}
-	
-

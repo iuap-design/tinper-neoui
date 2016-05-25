@@ -1,4 +1,30 @@
 
+/**
+ * [extend description]
+ * @param  {[type]} {	defaults:     {		inputClass: "ac_input"    [description]
+ * @param  {[type]} resultsClass:   "ac_results"   [description]
+ * @param  {[type]} lineSeparator:  "n"            [description]
+ * @param  {[type]} cellSeparator:  "|"            [description]
+ * @param  {[type]} minChars:       1              [description]
+ * @param  {[type]} delay:          400            [description]
+ * @param  {[type]} matchCase:      0              [description]
+ * @param  {[type]} matchSubset:    1              [description]
+ * @param  {[type]} matchContains:  0              [description]
+ * @param  {[type]} cacheLength:    1              [description]
+ * @param  {[type]} mustMatch:      0              [description]
+ * @param  {[type]} extraParams:    {}             [description]
+ * @param  {[type]} loadingClass:   "ac_loading"   [description]
+ * @param  {[type]} selectFirst:    false          [description]
+ * @param  {[type]} selectOnly:     false          [description]
+ * @param  {[type]} maxItemsToShow: -1             [description]
+ * @param  {[type]} autoFill:       false          [description]
+ * @param  {[type]} width:          0              [description]
+ * @param  {[type]} source:null     [description]
+ * @param  {[type]} select:         null           [description]
+ * @param  {[type]} multiSelect:    false	}        [description]
+ * @param  {[type]} init:           function(      [description]
+ * @return {[type]}                 [description]
+ */
 u.Autocomplete = u.BaseComponent.extend({
 	defaults: {
 		inputClass: "ac_input",
@@ -203,7 +229,7 @@ u.Autocomplete = u.BaseComponent.extend({
 		this.prev = v;
 		this._results.innerHTML = '';
 		if(this.options.multiSelect) {
-			
+
             if ((this.element.value + ',').indexOf(v + ',') != -1)
                 return;
             var vs = this.element.value.split(',');
@@ -211,13 +237,13 @@ u.Autocomplete = u.BaseComponent.extend({
 
             this.element.value = (lastValue ? lastValue + ', ' : lastValue) + v + ', ';
 		} else {
-			this.element.value = v;		
+			this.element.value = v;
 		}
-		
+
 		this.hideResultsNow();
 
 		this.element.focus();
-		
+
 		if (this.options.select) setTimeout(function() {
 			self.options.select(li._item, self)
 		}, 1);
@@ -518,6 +544,3 @@ u.compMgr.regComp({
 	compAsString: 'u.Autocomplete',
 	css: 'u-autocomplete'
 });
-
-
-

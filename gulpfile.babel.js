@@ -14,12 +14,17 @@ import copy from 'gulp-copy';
 import clean from 'gulp-clean';
 import util from 'gulp-util';
 
+/**
+ * SASS 源文件索引
+ * @type {Array}
+ */
 const UISassSrcPath = [
   'src/ui/u.scss',
   'src/ui-extend/u-extend.scss'
 ]
 
 const gridSassSrcPath = 'src/ui/grid/grid.css'
+
 const treeSassSrcPath = 'src/ui/tree/tree.css'
 
 const UISrcPath = [
@@ -95,15 +100,29 @@ const gridSrcPath = [
   'src/ui/grid/SumRow.js',
   'src/ui/grid/Swap.js',
   'src/ui/grid/Tree.js',
-  // 'src/model/comp-adp/grid.js'
+  'src/ui/grid/grid-comp-adp.js'
 ]
 
 const treeSrcPath = [
   'src/ui/tree/treeComp.js',
-  // 'src/model/comp-adp/tree.js'
+  'src/ui/tree/tree-comp-adp.js'
 ]
 
-// 公共错误处理函数
+const AUTOPREFIXER_BROWSERS = [
+  'ie >= 11',
+  'edge >= 20',
+  'ff >= 44',
+  'chrome >= 48',
+  'safari >= 8',
+  'opera >= 35',
+  'ios >= 8'
+]
+
+/**
+ * 公共错误处理函数
+ * @param  {[type]} err [description]
+ * @return {[type]}     [description]
+ */
 const errHandle = function ( err ) {
   let {
     // 报错文件名
@@ -118,39 +137,145 @@ const errHandle = function ( err ) {
 
   util.log(`报错文件：${fileName}
     报错类型：${name}
-    出错代码位置：${loc.line},${loc.column}
-    报错信息：${message}`);
+    出错代码位置：${loc.line},${loc.column}`);
 
-  // this.end();
+  this.end();
 }
 
-gulp.task('sass:ui', () => {
+/**
+ * 编译 SASS 文件，并自动添加浏览器前缀
+ * @param  {[type]} 'sass-ui' [description]
+ * @param  {[type]} (         [description]
+ * @return {[type]}           [description]
+ */
+gulp.task('sass-ui', () => {
   return gulp.src( UISassSrcPath )
     .pipe(sass.sync().on('error', sass.logError))
-    .pipe(autoprefixer({
-        browsers: ['last 2 versions'],
-        cascade: false
-    }))
+    .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
     .pipe(gulp.dest('./dist/css'));
 });
 
-gulp.task("es:ui", () => {
+/**
+ * 编译并合并 UI 相关的 JS 文件
+ * 用于开发环境，并支持 ES6/7 语法，可产出map文件
+ * @param  {[type]} "es-ui" [description]
+ * @param  {[type]} (       [description]
+ * @return {[type]}         [description]
+ */
+gulp.task("es-ui", () => {
   return gulp.src( UISrcPath )
     .pipe(sourcemaps.init())
     .pipe(babel())
     .on('error', errHandle)
-    .pipe(concat("u.js"))
+    .pipe(concat("u-ui.js"))
     .pipe(sourcemaps.write("."))
     .pipe(gulp.dest("dist/js"));
 });
 
+/**
+ * 编译并合并压缩 UI 相关的 JS 文件，用于生产环境
+ * @param  {[type]} 'ui-dist' [description]
+ * @param  {[type]} function( [description]
+ * @return {[type]}           [description]
+ */
+gulp.task('ui-js-dist', function(){
+    return gulp.src( UISrcPath )
+      .pipe(babel())
+      .on('error', errHandle)
+      .pipe(concat("u-ui.min.js"))
+      .pipe(uglify())
+      .pipe(gulp.dest('dist/js'))
+});
+
+/**
+ * grid 控件
+ * @param  {[type]} 'grid'    [description]
+ * @param  {[type]} function( [description]
+ * @return {[type]}           [description]
+ */
+gulp.task('grid', () => {
+     gulp.src( gridSrcPath )
+        .pipe(sourcemaps.init())
+        .pipe(concat('u-grid.js'))
+        .pipe(sourcemaps.write("."))
+        .on('error', errHandle)
+        .pipe(gulp.dest('dist/js'));
+
+    gulp.src( gridSassSrcPath )
+        .pipe(gulp.dest('dist/css'))
+});
+
+/**
+ * grid 控件生产环境压缩
+ * @param  {[type]} 'grid:dist' [description]
+ * @param  {[type]} function(   [description]
+ * @return {[type]}             [description]
+ */
+gulp.task('grid:dist', () => {
+     gulp.src( gridSrcPath )
+        .pipe(concat('u-grid.min.js'))
+        .pipe(uglify())
+        .on('error', errHandle)
+        .pipe(gulp.dest('dist/js'));
+
+    gulp.src( gridSassSrcPath )
+        .pipe(gulp.dest('dist/css'))
+});
+
+/**
+ *tree 控件
+ * @param  {[type]} 'grid'    [description]
+ * @param  {[type]} function( [description]
+ * @return {[type]}           [description]
+ */
+gulp.task('tree', () => {
+     gulp.src( treeSrcPath )
+        .pipe(concat('u-tree.js'))
+        .pipe(gulp.dest('./dist/js'))
+        .pipe(uglify())
+        .on('error', errHandle)
+        .pipe(rename('u-tree.min.js'))
+        .pipe(gulp.dest('dist/js'));
+
+    gulp.src( treeSassSrcPath )
+        .pipe(gulp.dest('dist/css'))
+});
+
+/**
+ * tree 控件生成环境版
+ * @param  {[type]} 'tree:dist' [description]
+ * @param  {[type]} function(   [description]
+ * @return {[type]}             [description]
+ */
+gulp.task('tree:dist', () => {
+     gulp.src( treeSrcPath )
+        .pipe(concat('u-tree.js'))
+        .pipe(uglify())
+        .on('error', errHandle)
+        .pipe(gulp.dest('dist/js'));
+
+    gulp.src( treeSassSrcPath )
+        .pipe(gulp.dest('dist/css'))
+});
+
+/**
+ * 搬运图标字体，直接复制拷贝
+ * @param  {[type]} 'font' [description]
+ * @param  {[type]} (      [description]
+ * @return {[type]}        [description]
+ */
 gulp.task('font', () => {
   gulp.src('./font-awesome/**')
     .pipe(copy('./dist'));
 });
 
+/**
+ * 本地起一个静态 server ，用于调试
+ * @param  {[type]} 'serve' [description]
+ * @param  {[type]} (       [description]
+ * @return {[type]}         [description]
+ */
 gulp.task('serve', () => {
-    // static server
     browserSync({
         files: ['src/*.js', 'dist'],
         server: {
@@ -158,16 +283,22 @@ gulp.task('serve', () => {
         }
     });
 
-    // watch task
-    gulp.watch('./src/**/*.scss', ['sass']);
-    gulp.watch('./src/**/*.js', ['es2015']);
+    gulp.watch('./src/**/**/*.scss', ['sass']);
+    gulp.watch('./src/**/**/*.js', ['es-ui']);
 
 });
 
+/**
+ * 清空 dist 目录下的资源
+ * @param  {[type]} 'clean' [description]
+ * @param  {[type]} (       [description]
+ * @return {[type]}         [description]
+ */
 gulp.task('clean', () => {
   gulp.src('dist/*', { read: false })
-    .pipe(clean({ force: true }));
+    .pipe(clean({ force: true }))
+    .on('error', errHandle);
 });
 
-gulp.task('before', ['clean', 'font', 'sass:ui', 'es:ui'])
-gulp.task('default', ['before', 'serve'])
+gulp.task('dev', ['font', 'sass-ui', 'es-ui', 'grid', 'tree', 'serve'])
+gulp.task('prod', ['font', 'ui-js-dist', 'sass-ui', 'grid:dist', 'tree:dist'])
