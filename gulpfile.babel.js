@@ -88,6 +88,7 @@ const UISrcPath = [
 
 const gridSrcPath = [
   'src/ui/grid/gridComp.js',
+
   'src/ui/grid/ColumnMenu.js',
   'src/ui/grid/Drag.js',
   'src/ui/grid/Edit.js',
@@ -106,6 +107,39 @@ const gridSrcPath = [
 const treeSrcPath = [
   'src/ui/tree/treeComp.js',
   'src/ui/tree/tree-comp-adp.js'
+]
+
+const modelSrcPath = [
+  'src/model/core/core.js',
+  'src/model/core/app.js',
+  'src/model/dataTable/dataTable.js',
+  'src/model/comp-adp/baseAdapter.js',
+  'src/model/comp-adp/mixins/enableMixin.js',
+  'src/model/comp-adp/mixins/requiredMixin.js',
+  'src/model/comp-adp/mixins/validateMixin.js',
+  'src/model/comp-adp/mixins/valueMixin.js',
+  'src/model/comp-adp/integer.js',
+  'src/model/comp-adp/float.js',
+  'src/model/comp-adp/currency.js',
+  'src/model/comp-adp/percent.js',
+  'src/model/comp-adp/string.js',
+  'src/model/comp-adp/textarea.js',
+  'src/model/comp-adp/textfield.js',
+  'src/model/comp-adp/checkbox.js',
+  'src/model/comp-adp/switch.js',
+  'src/model/comp-adp/combobox.js',
+  'src/model/comp-adp/radio.js',
+  'src/model/comp-adp/native-radio.js',
+  'src/model/comp-adp/native-checkbox.js',
+  'src/model/comp-adp/pagination.js',
+  'src/model/comp-adp/datetime.js',
+  'src/model/comp-adp/time.js',
+  'src/model/comp-adp/yearmonth.js',
+  'src/model/comp-adp/year.js',
+  'src/model/comp-adp/month.js',
+  'src/model/comp-adp/progress.js',
+  'src/model/comp-adp/url.js',
+  'src/model/comp-adp/password.js',
 ]
 
 const AUTOPREFIXER_BROWSERS = [
@@ -152,7 +186,7 @@ gulp.task('sass-ui', () => {
   return gulp.src( UISassSrcPath )
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
-    .pipe(gulp.dest('./dist/css'));
+    .pipe(gulp.dest('dist/css'));
 });
 
 /**
@@ -164,11 +198,9 @@ gulp.task('sass-ui', () => {
  */
 gulp.task("es-ui", () => {
   return gulp.src( UISrcPath )
-    .pipe(sourcemaps.init())
     .pipe(babel())
     .on('error', errHandle)
     .pipe(concat("u-ui.js"))
-    .pipe(sourcemaps.write("."))
     .pipe(gulp.dest("dist/js"));
 });
 
@@ -181,7 +213,6 @@ gulp.task("es-ui", () => {
 gulp.task('ui-js-dist', function(){
     return gulp.src( UISrcPath )
       .pipe(babel())
-      .on('error', errHandle)
       .pipe(concat("u-ui.min.js"))
       .pipe(uglify())
       .pipe(gulp.dest('dist/js'))
@@ -195,9 +226,7 @@ gulp.task('ui-js-dist', function(){
  */
 gulp.task('grid', () => {
      gulp.src( gridSrcPath )
-        .pipe(sourcemaps.init())
         .pipe(concat('u-grid.js'))
-        .pipe(sourcemaps.write("."))
         .on('error', errHandle)
         .pipe(gulp.dest('dist/js'));
 
@@ -215,7 +244,6 @@ gulp.task('grid:dist', () => {
      gulp.src( gridSrcPath )
         .pipe(concat('u-grid.min.js'))
         .pipe(uglify())
-        .on('error', errHandle)
         .pipe(gulp.dest('dist/js'));
 
     gulp.src( gridSassSrcPath )
@@ -231,10 +259,7 @@ gulp.task('grid:dist', () => {
 gulp.task('tree', () => {
      gulp.src( treeSrcPath )
         .pipe(concat('u-tree.js'))
-        .pipe(gulp.dest('./dist/js'))
-        .pipe(uglify())
         .on('error', errHandle)
-        .pipe(rename('u-tree.min.js'))
         .pipe(gulp.dest('dist/js'));
 
     gulp.src( treeSassSrcPath )
@@ -248,14 +273,48 @@ gulp.task('tree', () => {
  * @return {[type]}             [description]
  */
 gulp.task('tree:dist', () => {
-     gulp.src( treeSrcPath )
-        .pipe(concat('u-tree.js'))
-        .pipe(uglify())
-        .on('error', errHandle)
-        .pipe(gulp.dest('dist/js'));
+   gulp.src( treeSrcPath )
+      .pipe(concat('u-tree.min.js'))
+      .pipe(uglify())
+      .pipe(gulp.dest('dist/js'));
 
-    gulp.src( treeSassSrcPath )
-        .pipe(gulp.dest('dist/css'))
+  gulp.src( treeSassSrcPath )
+      .pipe(gulp.dest('dist/css'))
+});
+
+/**
+ * datatable 逻辑合并
+ * @param  {[type]} 'datatable' [description]
+ * @param  {[type]} (           [description]
+ * @return {[type]}             [description]
+ */
+gulp.task('model', () => {
+   return gulp.src( modelSrcPath )
+    .pipe(concat('u-model.js'))
+    .on('error', errHandle)
+    .pipe(gulp.dest('dist/js'));
+});
+
+/**
+ * 压缩版 datatable
+ * @param  {[type]} 'datatable:dist' [description]
+ * @param  {[type]} (                [description]
+ * @return {[type]}                  [description]
+ */
+gulp.task('model:dist', () => {
+   return gulp.src( modelSrcPath )
+    .pipe(concat('u-model.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('aio', ['clean', 'es-ui', 'grid', 'tree', 'model'], () => {
+   return gulp.src('dist/js/*.js')
+    .pipe(concat('u.js'))
+    .pipe(gulp.dest('dist/js'))
+    .pipe(uglify())
+    .pipe(rename('u.min.js'))
+    .pipe(gulp.dest('dist/js'));
 });
 
 /**
@@ -265,7 +324,10 @@ gulp.task('tree:dist', () => {
  * @return {[type]}        [description]
  */
 gulp.task('font', () => {
-  gulp.src('./font-awesome/**')
+  gulp.src('./vendor/font-awesome/**')
+    .pipe(rename(function(path){
+      path.dirname += '';
+    }))
     .pipe(copy('./dist'));
 });
 
@@ -284,7 +346,8 @@ gulp.task('serve', () => {
     });
 
     gulp.watch('./src/**/**/*.scss', ['sass']);
-    gulp.watch('./src/**/**/*.js', ['es-ui']);
+    gulp.watch(['./src/core/**/*.js', './src/ui/**/*.js'], ['es-ui']);
+    gulp.watch('./src/model/**/*.js', ['model']);
 
 });
 
@@ -300,5 +363,16 @@ gulp.task('clean', () => {
     .on('error', errHandle);
 });
 
-gulp.task('dev', ['font', 'sass-ui', 'es-ui', 'grid', 'tree', 'serve'])
-gulp.task('prod', ['font', 'ui-js-dist', 'sass-ui', 'grid:dist', 'tree:dist'])
+gulp.task('dev', [
+  'font', 'sass-ui', 'es-ui', 'grid', 'tree',
+  'model', 'serve',
+])
+
+gulp.task('prod', [
+  'font', 'ui-js-dist', 'sass-ui', 'grid:dist', 'tree:dist',
+  'model:dist', 'aio'
+])
+
+gulp.task('prod:ui', [
+  'font', 'ui-js-dist', 'sass-ui', 'grid:dist', 'tree:dist'
+])

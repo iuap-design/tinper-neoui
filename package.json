@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "./node_modules/.bin/gulp clean",
     "dev": "./node_modules/.bin/gulp dev",
-    "prod": "./node_modules/.bin/gulp prod"
+    "prod": "./node_modules/.bin/gulp prod",
+    "prod:ui": "./node_modules/.bin/gulp prod:ui"
   },
   "repository": {
     "type": "git",
