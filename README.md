@@ -1,4 +1,4 @@
-# iUAP-Design  
+# iUAP-Design   
 
 [iUAP-Design](https://github.com/YY-FED/iUAP-Design) 是面向互联网企业的 `UI` 设计语言，具有开放自由、易学易用、美观大气等特点，并且提供从产品界面设计到前端开发的完整开发生态，可以大大提升设计和开发的效率。
 
