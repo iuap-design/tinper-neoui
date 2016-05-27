@@ -62,7 +62,7 @@ const UISrcPath = [
   'src/ui/combobox/combobox.js',
   'src/ui/multilang/multilang.js',
   'src/ui/autocomplete/autocomplete.js',
-  'src/ui/datetimepicker/datetimepicker.js',
+  // 'src/ui/datetimepicker/datetimepicker.js',
   'src/ui/time/time.js',
   'src/ui/yearmonth/yearmonth.js',
   'src/ui/year/year.js',
@@ -78,8 +78,8 @@ const UISrcPath = [
   'src/ui/end.js',
 
   // polyfill
-  'src/vendor/polyfill/core.js',
-  'src/vendor/polyfill/JsExtensions.js'
+  // 'src/vendor/polyfill/core.js',
+  // 'src/vendor/polyfill/JsExtensions.js'
 ]
 
 const AUTOPREFIXER_BROWSERS = [
