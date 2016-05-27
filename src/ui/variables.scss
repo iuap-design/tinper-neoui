@@ -1,0 +1,547 @@
+
+$preferred_font: 'Microsoft YaHei', 'Helvetica', 'Arial', sans-serif !default;
+// $performance_font: 'Helvetica', 'Arial', sans-serif !default;
+
+@import "colors";
+
+
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+$unit: 1rem !default;
+/*  IMAGES  */
+$image_path: '/images' !default;
+
+
+
+/* 默认颜色 */
+$trim-color-classes: false !default;
+
+@import "themeColors";
+
+/* 主题颜色放入 themeColors.scss
+$color-primary: $palette-indigo-500 !default;
+$color-primary-dark: $palette-indigo-700 !default;
+$color-accent: $palette-pink-A200 !default;
+*/
+$color-primary-contrast: $color-dark-contrast !default;
+$color-accent-contrast: $color-dark-contrast !default;
+$color-text: $palette-grey-900 !default;
+
+// cyan主题
+//$color-primary: $palette-cyan-500 !default;
+//$color-primary-dark: $palette-cyan-700 !default;
+//$color-accent: $palette-light-blue-500 !default;
+
+// orange主题
+//$color-primary: $palette-orange-500 !default;
+//$color-primary-dark: $palette-orange-700 !default;
+//$color-accent: $palette-deep-orange-500 !default;
+
+// -- Fonts
+$preferred-font: "Roboto", "Helvetica", "Arial", sans-serif !default;
+$font-size: 1.6 * $unit !default;
+$font-size-tiny: 1.2 * $unit !default;
+$font-size-small: 1.4 * $unit !default;
+$font-size-normal: $font-size !default;
+$font-size-big: 1.8 * $unit !default;
+$font-weight-thin: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-semi-bold: 500 !default;
+$font-weight-bold: 700 !default;
+$font-color:unquote("rgb(#{$palette-u-gray-A100})") !default;
+/* 客户化 */
+@if $styleguide-generate-template == true {
+  $color-primary: '$color-primary';
+  $color-primary-dark: '$color-primary-dark';
+  $color-accent: '$color-accent';
+  $color-primary-contrast: '$color-primary-contrast';
+  $color-accent-contrast: '$color-accent-contrast';
+}
+
+
+/* 波纹效果 */
+$ripple-bg-color: unquote("rgb(#{$color-light-contrast})") !default;
+
+/* 动画 */
+$animation-curve-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$animation-curve-linear-out-slow-in: cubic-bezier(0, 0, 0.2, 1) !default;
+$animation-curve-fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1) !default;
+$animation-curve-default: $animation-curve-fast-out-slow-in !default;
+$animation-duration: .35s;
+$animation-delay: $animation-duration / 5;
+
+
+
+/* 阴影 */
+
+$shadow-key-umbra-opacity: 0.2 !default;
+$shadow-key-penumbra-opacity: 0.14 !default;
+$shadow-ambient-shadow-opacity: 0.12 !default;
+
+
+$primary-color: unquote("rgba(#{$palette-grey-500}, 0.20)") !default;
+//-- Indexes
+$z-index-highest: 300;
+$z-index-higher: 200;
+$z-index-high: 100;
+$z-index-normal: 1;
+$z-index-low: -100;
+$z-index-lower: -200;
+
+/* ==========  字体  ========== */
+
+$text-color-primary: unquote("rgba(#{$color-black}, 0.87)") !default;
+$text-link-color: unquote("rgb(#{$color-accent})") !default;
+
+$target-elements-directly: true !default;
+
+
+/* 控件 */
+
+/* UButton */
+
+// Default button colors.
+$button-primary-color: unquote("rgb(#{$color-white})") !default;
+$button-primary-color-IE8: unquote("rgb(#{$color-white})") !default;
+$button-secondary-color: unquote("rgb(#{$palette-u-gray-A100})") !default;
+$button-hover-color: #F7F7F7 !default;
+$button-active-color: unquote("rgba(#{$palette-grey-500}, 0.40)") !default;
+$button-focus-color: unquote("rgba(#{$color-black}, 0.12)") !default;
+
+// Colored button colors.
+$button-primary-color-alt: unquote("rgb(#{$color-primary})") !default;
+$button-secondary-color-alt: unquote("rgb(#{$color-primary-contrast})") !default;
+$button-hover-color-alt: unquote("rgb(#{$color-primary})") !default;
+$button-active-color-alt: unquote("rgb(#{$color-primary})") !default;
+$button-focus-color-alt: $button-focus-color !default;
+
+// Ripple color for colored raised buttons.
+$button-ripple-color-alt: unquote("rgb(#{$color-primary-contrast})") !default;
+
+// Disabled button colors.
+$button-primary-color-disabled: unquote("rgba(#{$color-black}, 0.12)") !default;
+$button-secondary-color-disabled: unquote("rgba(#{$color-black}, 0.26)") !default;
+
+// FAB colors and sizes.
+$button-fab-color-alt: unquote("rgb(#{$color-accent})") !default;
+$button-fab-hover-color-alt: unquote("rgb(#{$color-accent})") !default;
+$button-fab-active-color-alt: unquote("rgb(#{$color-accent})") !default;
+$button-fab-text-color-alt: unquote("rgb(#{$color-accent-contrast})") !default;
+$button-fab-ripple-color-alt: unquote("rgb(#{$color-accent-contrast})") !default;
+
+// Icon button colors and sizes.
+$button-icon-color: unquote("rgb(#{$palette-grey-700})") !default;
+$button-icon-focus-color: $button-focus-color !default;
+
+//Dimensions
+
+$button-min-width: 64/16 * $unit !default;
+$button-height: 36/16 * $unit !default;
+$button-padding: 6/16* $unit  13/16 * $unit !default;
+$button-top-padding: 13/16 * $unit !default;
+$button-left-padding: 6/16* $unit !default;
+$button-line-height:1.57142857;
+$button-margin: 4/16 * $unit !default;
+$button-border-radius: 2/16 * $unit !default;
+
+$button-fab-size: 38/16 * $unit !default;
+$button-fab-size-mini: 30/16 * $unit !default;
+$button-fab-font-size: 13/16 * $unit !default;
+
+$button-icon-size: 32/16 * $unit !default;
+$button-icon-size-mini: 13/16 * $unit !default;
+
+$button-raised-font-size: 13/16 * $unit !default;
+
+$button-border-color:unquote("rgb(#{$palette-grey-300})") !default;
+/* UText */
+$input-text-background-color: transparent !default;
+$input-text-label-color: unquote("rgba(#{$color-black}, 0.26)") !default;
+$input-text-bottom-border-color: unquote("rgba(#{$color-black}, 0.12)") !default;
+$input-text-bottom-border-color-IE8: unquote("rgb(#{$color-black})") !default;
+$input-text-highlight-color: unquote("rgb(#{$color-primary})") !default;
+$input-text-disabled-color: $input-text-bottom-border-color !default;
+$input-text-disabled-text-color: $input-text-label-color !default;
+$input-text-error-color: unquote("rgb(222, 50, 38)") !default;
+$input-text-must-color:unquote("rgb(#{$palette-red-A700})") !default;
+
+
+$input-text-font-size: 14px !default;
+$input-text-width: 100% !default;
+$input-text-padding: 4px !default;
+$input-text-vertical-spacing: 20px !default;
+
+$input-text-button-size: 32px !default;
+$input-text-floating-label-fontsize: 12px !default;
+$input-text-expandable-icon-top: 16px !default;
+$input-text-height:36px !default;
+$input-text-normal-width:360px !default;
+$input-text-short-width:180px !default;
+$input-text-normal-border-color:unquote("rgb(#{$palette-u-gray-400})") !default;
+$input-text-color:unquote("rgb(#{$palette-u-gray-A200})") !default
+$input-text-focus-border-color:unquote("rgb(#{$palette-u-blue-400})") !default;
+$input-lable-color:unquote("rgb(#{$palette-u-gray-900})") !default
+
+/*  Navlayout  */
+
+$layout-nav-color: unquote("rgb(#{$palette-grey-300})") !default;
+
+// Drawer
+$layout-drawer-bg-color: unquote("rgb(#{$palette-grey-50})") !default;
+$layout-drawer-border-color: unquote("rgb(#{$palette-grey-300})") !default;
+$layout-text-color: unquote("rgb(#{$palette-grey-800})") !default;
+$layout-drawer-navigation-color: #757575 !default;
+$layout-drawer-navigation-link-active-background: unquote("rgb(#{$palette-grey-300})") !default;
+$layout-drawer-navigation-link-active-color: $layout-text-color !default;
+
+// Header
+$layout-header-bg-color: unquote("rgb(#{$color-primary})") !default;
+$layout-header-text-color: unquote("rgb(#{$color-primary-contrast})") !default;
+$layout-header-nav-hover-color: unquote("rgba(#{$palette-grey-700}, 0.6)") !default;
+$layout-header-tab-text-color: unquote("rgba(#{$color-primary-contrast}, 0.6)") !default;
+
+// Tabs
+$layout-header-tab-highlight: unquote("rgb(#{$color-accent})") !default;
+
+$layout-nav-link-font-size: 13px !default;
+
+$layout-drawer-narrow: 240px !default;
+$layout-drawer-wide: 456px !default;
+$layout-drawer-width: $layout-drawer-narrow !default;
+
+$layout-header-icon-size: 32px !default;
+$layout-screen-size-threshold: 1024px !default;
+$layout-header-icon-margin: 24px !default;
+$layout-drawer-button-mobile-size: 32px !default;
+$layout-drawer-button-desktop-size: 48px !default;
+
+$layout-header-mobile-row-height: 56px !default;
+$layout-mobile-header-height: $layout-header-mobile-row-height;
+$layout-header-desktop-row-height: 64px !default;
+$layout-desktop-header-height: $layout-header-desktop-row-height;
+
+$layout-header-desktop-baseline: 80px !default;
+$layout-header-mobile-baseline: 72px !default;
+$layout-header-mobile-indent: 16px !default;
+$layout-header-desktop-indent: 40px !default;
+
+$layout-tab-font-size: 14px !default;
+$layout-tab-bar-height: 48px !default;
+$layout-tab-mobile-padding: 12px !default;
+$layout-tab-desktop-padding: 24px !default;
+$layout-tab-highlight-thickness: 2px !default;
+
+/* gridlayout */
+
+// Extra small screen / phone
+//$screen-xs:                  480px;
+
+$screen-xs-min:              480px;
+//** Deprecated `@screen-phone` as of v3.0.1
+//@screen-phone:               @screen-xs-min;
+
+// Small screen / tablet
+//** Deprecated `@screen-sm` as of v3.0.1
+//@screen-sm:                  768px;
+$screen-sm-min:              768px;
+//** Deprecated `@screen-tablet` as of v3.0.1
+//@screen-tablet:              @screen-sm-min;
+
+// Medium screen / desktop
+//** Deprecated `@screen-md` as of v3.0.1
+//@screen-md:                  992px;
+$screen-md-min:              992px;
+//** Deprecated `@screen-desktop` as of v3.0.1
+//@screen-desktop:             @screen-md-min;
+
+// Large screen / wide desktop
+//** Deprecated `@screen-lg` as of v3.0.1
+//@screen-lg:                  1200px;
+$screen-lg-min:              1200px;
+//** Deprecated `@screen-lg-desktop` as of v3.0.1
+//@screen-lg-desktop:          @screen-lg-min;
+
+//** Number of columns in the grid.
+$grid-columns:              12;
+//** Padding between columns. Gets divided in half for the left and right.
+$grid-gutter-width:         30px;
+// Navbar collapse
+//** Point at which the navbar becomes uncollapsed.
+$grid-float-breakpoint:     768px;
+//** Point at which the navbar begins collapsing.
+$grid-float-breakpoint-max: ($grid-float-breakpoint - 1);
+
+
+// Small screen / tablet
+$container-tablet:             (720px + $grid-gutter-width);
+//** For `@screen-sm-min` and up.
+$container-sm:                 $container-tablet;
+
+// Medium screen / desktop
+$container-desktop:            (940px + $grid-gutter-width);
+//** For `@screen-md-min` and up.
+$container-md:                 $container-desktop;
+
+// Large screen / wide desktop
+$container-large-desktop:      (1140px + $grid-gutter-width);
+//** For `@screen-lg-min` and up.
+$container-lg:                 $container-large-desktop;
+
+
+//$grid-desktop-columns: 12 !default;
+//$grid-desktop-gutter: 16px !default;
+//$grid-desktop-margin: 16px !default;
+//
+//$grid-desktop-breakpoint: 840px !default;
+//
+//$grid-large-desktop-breakpoint: 1200px !default;
+//
+//$grid-large-desktop-columns: $grid-desktop-columns !default;
+//$grid-large-desktop-gutter: $grid-desktop-gutter !default;
+//$grid-large-desktop-margin: $grid-desktop-margin !default;
+//
+//$grid-tablet-columns: 8 !default;
+//$grid-tablet-gutter: $grid-desktop-gutter !default;
+//$grid-tablet-margin: $grid-desktop-margin !default;
+//
+//$grid-tablet-breakpoint: 480px !default;
+//
+//$grid-phone-columns: 4 !default;
+//$grid-phone-gutter: $grid-desktop-gutter !default;
+//$grid-phone-margin: $grid-desktop-margin !default;
+//
+//$grid-cell-default-columns: $grid-phone-columns !default;
+//$grid-max-columns: $grid-desktop-columns !default;
+
+/* menu */
+
+$default-dropdown-bg-color: unquote("rgb(#{$color-white})") !default;
+$menu-expand-duration: 0.3s !default;
+$menu-fade-duration: 0.2s !default;
+
+// Default Item Colors
+$default-item-text-color: unquote("rgba(#{$color-black}, 0.87)") !default;
+$default-item-text-color-IE8: unquote("rgb(#{$color-black})") !default;
+$default-item-outline-color: unquote("rgb(#{$palette-u-blue-400})") !default;
+$default-item-hover-bg-color: unquote("rgb(#{$palette-u-blue-100})") !default;
+$default-item-focus-bg-color: unquote("rgb(#{$palette-u-blue-200})") !default;
+$default-item-active-bg-color: unquote("rgb(#{$palette-u-blue-200})") !default;
+$default-item-divider-color: unquote("rgba(#{$color-black}, 0.12)") !default;
+
+// Disabled Button Colors
+$disabled-item-text-color: unquote("rgb(#{$palette-grey-400})") !default;
+
+
+/* CHECKBOX */
+
+$checkbox-color: unquote("rgb(#{$palette-u-blue-500})") !default;
+$checkbox-off-color: unquote("rgb(#{$palette-u-gray-600})") !default;
+$checkbox-off-color-IE8: unquote("rgb(#{$palette-u-gray-600})") !default;
+$checkbox-disabled-color: unquote("rgb(#{$palette-u-gray-600})") !default;
+$checkbox-focus-color: unquote("rgba(#{$palette-u-blue-500}, 0.26)") !default;
+$checkbox-image-path: $image_path;
+
+$checkbox-label-font-size: 13px !default;
+$checkbox-label-height: 24px !default;
+$checkbox-button-size: 16px !default;
+$checkbox-inner-margin: 2px !default;
+$checkbox-padding: 8px !default;
+$checkbox-top-offset:
+        ($checkbox-label-height - $checkbox-button-size - $checkbox-inner-margin) / 2;
+$checkbox-ripple-size: $checkbox-label-height * 1.5;
+
+/*  Radio  */
+
+$radio-color: unquote("rgb(#{$palette-u-blue-500})") !default;
+$radio-off-color: unquote("rgb(#{$palette-u-gray-600})") !default;
+$radio-off-color-IE8: unquote("rgb(#{$palette-u-gray-600})") !default;
+$radio-disabled-color: unquote("rgb(#{$palette-u-gray-600})") !default;
+
+$radio-label-font-size: 13px !default;
+$radio-label-height: 24px !default;
+$radio-button-size: 16px !default;
+$radio-inner-margin: $radio-button-size / 4;
+$radio-padding: 8px !default;
+$radio-top-offset: ($radio-label-height - $radio-button-size) / 2;
+$radio-ripple-size: 42px !default;
+
+/* Switch  */
+
+$switch-color: unquote("rgb(#{$color-primary})") !default;
+$switch-faded-color: unquote("rgba(#{$color-primary}, 0.26)") !default;
+$switch-thumb-color: $switch-color !default;
+$switch-track-color: unquote("rgba(#{$color-primary}, 0.5)") !default;
+
+$switch-off-thumb-color: unquote("rgb(#{$palette-grey-50})") !default;
+$switch-off-track-color: unquote("rgba(#{$color-black}, 0.26)") !default;
+$switch-off-track-color-IE8: unquote("rgb(#{$color-black})") !default;
+$switch-disabled-thumb-color: unquote("rgb(#{$palette-grey-400})") !default;
+$switch-disabled-track-color: unquote("rgba(#{$color-black}, 0.12)") !default;
+
+$switch-label-font-size: 13px !default;
+$switch-label-height: 24px !default;
+$switch-track-height: 14px !default;
+$switch-track-length: 36px !default;
+$switch-thumb-size: 20px !default;
+$switch-track-top: ($switch-label-height - $switch-track-height) / 2 !default;
+$switch-thumb-top: ($switch-label-height - $switch-thumb-size) / 2 !default;
+$switch-ripple-size: $switch-label-height * 2 !default;
+$switch-helper-size: 8px !default;
+
+/* loading */
+
+$loading-color-1: unquote("rgb(#{$palette-blue-400})") !default;
+$loading-color-2: unquote("rgb(#{$palette-red-500})") !default;
+$loading-color-3: unquote("rgb(#{$palette-yellow-600})") !default;
+$loading-color-4: unquote("rgb(#{$palette-green-500})") !default;
+
+$loading-single-color: unquote("rgb(#{$color-primary})") !default;
+
+$loading-size: 28px !default;
+$loading-stroke-width: 3px !default;
+
+// Amount of circle the arc takes up.
+$loading-arc-size: 270deg !default;
+// Time it takes to expand and contract arc.
+$loading-arc-time: 1333ms !default;
+// How much the start location of the arc should rotate each time.
+$loading-arc-start-rot: 216deg !default;
+
+$loading-duration: 360 * $loading-arc-time / (
+    strip-units($loading-arc-start-rot + (360deg - $loading-arc-size)));
+
+/* datetimepicker */
+
+$date-bg-color: unquote("rgb(#{$color-primary})") !default;
+
+/* message */
+$snackbar-color: unquote("rgb(#{$color-white})") !default;
+$snackbar-background-color: unquote("rgb(#{$color-text})") !default;
+$snackbar-color-cancel: unquote("rgb(#{$palette-red-500})") !default;
+$snackbar-color-accept: unquote("rgb(#{$palette-green-500})") !default;
+$snackbar-color-warning: unquote("rgb(#{$palette-lime-200})") !default;
+
+/* DATA TABLE */
+
+$data-table-font-size: 13px !default;
+$data-table-header-font-size: 12px !default;
+$data-table-header-sort-icon-size: 16px !default;
+
+$data-table-header-color: rgba(#000, 0.54) !default;
+$data-table-header-sorted-color: rgba(#000, 0.87) !default;
+$data-table-divider-color: rgba(#000, 0.12) !default;
+$data-table-divider-color-IE8: rgb(0,0,0) !default;
+
+//$data-table-hover-color: #eeeeee !default;
+$data-table-hover-color: #edf8ff !default;
+$data-table-selection-color: #edf8ff !default;
+
+$data-table-dividers: 1px solid $data-table-divider-color !default;
+$data-table-dividers-IE8: 1px solid $data-table-divider-color-IE8 !default;
+
+$data-table-row-height: 48px !default;
+$data-table-last-row-height: 56px !default;
+$data-table-header-height: 56px !default;
+
+$data-table-column-spacing: 36px !default;
+$data-table-column-padding: $data-table-column-spacing / 2;
+
+$data-table-card-header-height: 64px !default;
+$data-table-card-title-top: 20px !default;
+$data-table-card-padding: 24px !default;
+$data-table-button-padding-right: 16px !default;
+$data-table-cell-top: $data-table-card-padding / 2;
+/* tooltip*/
+$tooltip-background: rgba(97,97,97,.9) !default;
+$tooltip-margin: 0.5 * $unit !default;
+$tooltip-border-radius: .2 * $unit !default;
+$tooltip-color: #fff !default;
+$tooltip-font-size: $unit !default;
+$tooltip-max-width: 17 * $unit !default;
+$tooltip-padding: .8 * $unit !default;
+$tooltip-animation-duration: 200ms !default;
+
+/* 进度条 */
+$bar-height: 4px !default;
+$progress-main-color: unquote("rgb(#{$color-primary})") !default;
+$progress-secondary-color: unquote("rgba(#{$color-primary-contrast}, 0.7)") !default;
+$progress-fallback-buffer-color: unquote("rgba(#{$color-primary-contrast}, 0.9)") !default;
+$progress-image-path: $image_path;
+$progress-buffer-bar-border:unquote("rgb(#{$palette-u-gray-600})") !default;
+
+// Tabs
+$layout-header-tab-highlight: unquote("rgb(#{$color-accent})") !default;
+
+/* ==========  Content Tabs  ========== */
+
+$tab-highlight-color: unquote("rgb(#{$color-primary})") !default;
+$tab-text-color: unquote("rgba(#{$color-black}, 0.54)") !default;
+$tab-active-text-color: unquote("rgba(#{$color-black}, 0.87)") !default;
+$tab-border-color: unquote("rgb(#{$palette-grey-300})") !default;
+
+
+/* CARD */
+
+/* Card dimensions */
+$card-width: 330px !default;
+$card-height: 200px !default;
+$card-font-size: 13px !default;
+$card-title-font-size: 24px !default;
+$card-subtitle-font-size: 10px !default;
+$card-horizontal-padding: 16px !default;
+$card-vertical-padding: 16px !default;
+
+$card-title-perspective-origin-x: 165px !default;
+$card-title-perspective-origin-y: 56px !default;
+
+$card-title-transform-origin-x: 165px !default;
+$card-title-transform-origin-y: 56px !default;
+
+$card-title-text-transform-origin-x: 149px !default;
+$card-title-text-transform-origin-y: 48px !default;
+
+$card-supporting-text-font-size: 1rem !default;
+$card-supporting-text-line-height: 18px !default;
+
+$card-actions-font-size: 13px !default;
+
+$card-title-text-font-weight: 300 !default;
+$card-z-index: 1 !default;
+
+/* Cover image */
+$card-cover-image-height: 186px !default;
+$card-background-image-url: '' !default;
+
+/* ==========  Card  ========== */
+
+$card-background-color: unquote("rgb(#{$color-white})") !default;
+$card-text-color: unquote("rgb(#{$color-black})") !default;
+$card-image-placeholder-color: unquote("rgb(#{$color-accent})") !default;
+$card-supporting-text-text-color: unquote("rgba(#{$color-black}, 0.54)") !default;
+$card-border-color: rgba(0,0,0,0.1) !default;
+$card-subtitle-color: unquote("rgba(#{$color-black}, 0.54)") !default;
+
+/* ============ Forms ============*/
+$input-border:unquote("rgb(#{$palette-u-gray-400})");
+$input-border-focus:unquote("rgb(#{$palette-u-blue-400})");
+$input-border-disabled:unquote("rgb(#{$palette-u-gray-100})");
+$input-bg-disabled:unquote("rgb(#{$palette-u-gray-100})");
+$input-color:unquote("rgb(#{$palette-u-gray-A200})");
+$form-input-height:32px;
+$form-input-height-sm:28px;
+$form-input-padding-left:12px;
+$form-label-color:unquote("rgb(#{$palette-u-gray-900})");
+
+$form-validate-error-color:unquote("rgb(#{$palette-u-red-600})");
+
+
+/* BADGE */
+$badge-font-size: 12px !default;
+$badge-color: unquote("rgb(#{$color-accent-contrast})") !default;
+$badge-color-inverse: unquote("rgb(#{$color-accent})") !default;
+$badge-background: unquote("rgb(#{$color-accent})") !default;
+$badge-background-inverse: unquote("rgba(#{$color-accent-contrast},0.2)") !default;
+$badge-size : 22px !default;
+$badge-padding: 2px !default;
+$badge-overlap: 12px !default;
