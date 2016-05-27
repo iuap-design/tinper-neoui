@@ -8,7 +8,6 @@ pids
 *.pid
 *.seed
 
-dist
 .sass-cache/
 _site/
 
