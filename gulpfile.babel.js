@@ -78,8 +78,8 @@ const UISrcPath = [
   'src/ui/end.js',
 
   // polyfill
-  'src/polyfill/core.js',
-  'src/polyfill/JsExtensions.js'
+  'src/vendor/polyfill/core.js',
+  'src/vendor/polyfill/JsExtensions.js'
 ]
 
 const AUTOPREFIXER_BROWSERS = [
@@ -165,7 +165,7 @@ gulp.task('ui-js-dist', function(){
  * @return {[type]}        [description]
  */
 gulp.task('font', () => {
-  gulp.src('./vendor/font-awesome/**')
+  gulp.src('./vendor/**')
     .pipe(rename(function(path){
       path.dirname += '';
     }))
