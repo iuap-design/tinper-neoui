@@ -19,8 +19,8 @@ import util from 'gulp-util';
  * @type {Array}
  */
 const UISassSrcPath = [
-  'src/ui/u.scss',
-  'src/ui-extend/u-extend.scss'
+  'scss/u.scss',
+  'scss/u-extend.scss'
 ]
 
 const UISrcPath = [
@@ -76,10 +76,6 @@ const UISrcPath = [
   'src/ui/refer/refer.js',
   'src/ui/slidePanel/slidePanel.js',
   'src/ui/end.js',
-
-  // polyfill
-  // 'src/vendor/polyfill/core.js',
-  // 'src/vendor/polyfill/JsExtensions.js'
 ]
 
 const AUTOPREFIXER_BROWSERS = [
@@ -180,14 +176,14 @@ gulp.task('font', () => {
  */
 gulp.task('serve', () => {
     browserSync({
-        files: ['src/*.js', 'dist'],
+        files: ['js/**/*.js', 'dist'],
         server: {
             baseDir: "./"
         }
     });
 
-    gulp.watch('./src/**/**/*.scss', ['sass']);
-    gulp.watch(['./src/core/**/*.js', './src/ui/**/*.js'], ['es-ui']);
+    gulp.watch('./scss/**/*.scss', ['sass']);
+    gulp.watch(['./js/**/*.js'], ['es-ui']);
 
 });
 
