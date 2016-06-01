@@ -532,7 +532,7 @@ $form-input-height:32px;
 $form-input-height-sm:28px;
 $form-input-padding-left:12px;
 $form-label-color:unquote("rgb(#{$palette-u-gray-900})");
-
+$form-control-feedback-color:unquote("rgb(#{$palette-u-gray-700})");
 $form-validate-error-color:unquote("rgb(#{$palette-u-red-600})");
 
 
@@ -545,3 +545,10 @@ $badge-background-inverse: unquote("rgba(#{$color-accent-contrast},0.2)") !defau
 $badge-size : 22px !default;
 $badge-padding: 2px !default;
 $badge-overlap: 12px !default;
+
+
+
+// widget
+
+$widget-padding-left:30px;
+$widget-padding-top:10px;

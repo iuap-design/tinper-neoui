@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .u-overlay {
   position: fixed;
   z-index: 999;
@@ -113,6 +114,40 @@
   background-color: Highlight;
   color: HighlightText; }
 
+/*  IMAGES  */
+/* 默认颜色 */
+/* 主题颜色放入 themeColors.scss
+$color-primary: $palette-indigo-500 !default;
+$color-primary-dark: $palette-indigo-700 !default;
+$color-accent: $palette-pink-A200 !default;
+*/
+/* 客户化 */
+/* 波纹效果 */
+/* 动画 */
+/* 阴影 */
+/* ==========  字体  ========== */
+/* 控件 */
+/* UButton */
+/* UText */
+/*  Navlayout  */
+/* gridlayout */
+/* menu */
+/* CHECKBOX */
+/*  Radio  */
+/* Switch  */
+/* loading */
+/* datetimepicker */
+/* message */
+/* DATA TABLE */
+/* tooltip*/
+/* 进度条 */
+/* ==========  Content Tabs  ========== */
+/* CARD */
+/* Card dimensions */
+/* Cover image */
+/* ==========  Card  ========== */
+/* ============ Forms ============*/
+/* BADGE */
 .u-widget-bg {
   background-color: #eceff1;
   padding: 15px; }
@@ -147,12 +182,14 @@
   margin-top: 0;
   margin-bottom: 0;
   display: block;
+  padding: 10px 30px;
   font-size: 16px;
   color: #424242;
   font-weight: 400;
   border-left: 4px solid red; }
   .u-widget-title .u-widget-more {
     position: absolute;
+    right: 30px;
     top: 50%;
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%); }

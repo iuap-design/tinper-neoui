@@ -5024,7 +5024,8 @@ $color-accent: $palette-pink-A200 !default;
   height: 32px;
   line-height: 32px;
   text-align: center;
-  cursor: pointer; }
+  cursor: pointer;
+  color: rgb(180,180,180); }
   .u-form-control-feedback.sm {
     height: 28px;
     line-height: 28px;
