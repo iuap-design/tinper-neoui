@@ -24,58 +24,18 @@ const UISassSrcPath = [
 ]
 
 const UISrcPath = [
-  // core
-  'src/core/core/core.js',
-  'src/core/core/event.js',
-  'src/core/core/jsExtensions.js',
-  'src/core/ajax/ajax.js',
-  'src/core/base/base.js',
-  'src/core/base/compMgr.js',
-  'src/core/utils/i18n.js',
-  'src/core/utils/rsautils.js',
-  'src/core/utils/masker.js',
-  'src/core/utils/formater.js',
-  'src/core/utils/dateUtils.js',
-  'src/core/utils/dataRender.js',
-  'src/core/utils/hotKeys.js',
-
-  // ui & Component
-  'src/ui/base/BaseComponent.js',
-  'src/ui/ripple/ripple.js',
-  'src/ui/button/button.js',
-  'src/ui/navlayout/navlayout.js',
-  'src/ui/navmenu/navmenu.js',
-  'src/ui/textfield/textfield.js',
-  'src/ui/menu/menu.js',
-  'src/ui/mdlayout/mdlayout.js',
-  'src/ui/tabs/tabs.js',
-  'src/ui/checkbox/checkbox.js',
-  'src/ui/radio/radio.js',
-  'src/ui/switch/switch.js',
-  'src/ui/loading/loading.js',
-  'src/ui/progress/progress.js',
-  'src/ui/message/message.js',
-  'src/ui/dialog/messageDialog.js',
-  'src/ui/dialog/confirmDialog.js',
-  'src/ui/dialog/threeBtnDialog.js',
-  'src/ui/dialog/dialog.js',
-  'src/ui/combobox/combobox.js',
-  'src/ui/multilang/multilang.js',
-  'src/ui/autocomplete/autocomplete.js',
-  // 'src/ui/datetimepicker/datetimepicker.js',
-  'src/ui/time/time.js',
-  'src/ui/yearmonth/yearmonth.js',
-  'src/ui/year/year.js',
-  'src/ui/month/month.js',
-  'src/ui/clockpicker/clockpicker.js',
-  'src/ui/combobox/combo.js',
-  'src/ui/datatable/data-table.js',
-  'src/ui/pagination/pagination.js',
-  'src/ui/tooltip/tooltip.js',
-  'src/ui/validate/validate.js',
-  'src/ui/refer/refer.js',
-  'src/ui/slidePanel/slidePanel.js',
-  'src/ui/end.js',
+  // 基础依赖
+  'js/core/core.js',
+  'js/core/base.js',
+  'js/core/baseComponent.js',
+  'js/core/ajax/ajax.js',
+  'js/core/compMgr.js',
+  // 工具方法
+  'js/utilities/*.js',
+  // ui 和 layout
+  'js/*.js',
+  // 加载控件
+  'js/core/end.js'
 ]
 
 const AUTOPREFIXER_BROWSERS = [
