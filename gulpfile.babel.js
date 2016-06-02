@@ -20,7 +20,8 @@ import util from 'gulp-util';
  */
 const UISassSrcPath = [
   'scss/u.scss',
-  'scss/u-extend.scss'
+  'scss/u-extend.scss',
+  'vendor/font-awesome/css/font-awesome.css'
 ]
 
 const UISrcPath = [
@@ -135,13 +136,11 @@ gulp.task("polyfill-dist", () => {
  * @return {[type]}        [description]
  */
 gulp.task('font', () => {
-  gulp.src('./vendor/font-awesome/**')
+  return gulp.src('./vendor/font-awesome/fonts/*')
     .pipe(rename(function(path){
-
       path.dirname += '';
-      console.log(path)
     }))
-    .pipe(copy('./dist'));
+    .pipe(gulp.dest('./dist/fonts'));
 });
 
 /**
