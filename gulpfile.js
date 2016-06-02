@@ -1,30 +1,30 @@
 'use strict';
 
-import gulp from 'gulp';
-import sass from 'gulp-sass';
-import autoprefixer from 'gulp-autoprefixer';
-import browserSync from 'browser-sync';
-import concat from 'gulp-concat';
-import uglify from 'gulp-uglify';
-import rename from 'gulp-rename';
-import minifycss from 'gulp-minify-css';
-import sourcemaps from 'gulp-sourcemaps';
-import babel from 'gulp-babel';
-import copy from 'gulp-copy';
-import clean from 'gulp-clean';
-import util from 'gulp-util';
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
+var browserSync = require('browser-sync');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
+var minifycss = require('gulp-minify-css');
+var sourcemaps = require('gulp-sourcemaps');
+var babel = require('gulp-babel');
+var copy = require('gulp-copy');
+var clean = require('gulp-clean');
+var util = require('gulp-util');
 
 /**
  * SASS 源文件索引
  * @type {Array}
  */
-const UISassSrcPath = [
+var UISassSrcPath = [
   'scss/u.scss',
   'scss/u-extend.scss',
   'vendor/font-awesome/css/font-awesome.css'
 ]
 
-const UISrcPath = [
+var UISrcPath = [
   // 基础依赖
   'js/core/core.js',
   'js/core/base.js',
@@ -39,7 +39,7 @@ const UISrcPath = [
   'js/core/end.js'
 ]
 
-const AUTOPREFIXER_BROWSERS = [
+var AUTOPREFIXER_BROWSERS = [
   'ie >= 11',
   'edge >= 20',
   'ff >= 44',
@@ -54,21 +54,19 @@ const AUTOPREFIXER_BROWSERS = [
  * @param  {[type]} err [description]
  * @return {[type]}     [description]
  */
-const errHandle = function ( err ) {
-  let {
-    // 报错文件名
-    fileName,
-    // 报错类型
-    name,
-    // 报错信息
-    message,
-    // 出错代码位置
-    loc
-  } = err;
+var errHandle = function ( err ) {
+  // 报错文件名
+  var fileName = err.fileName;
+  // 报错类型
+  var name = err.name;
+  // 报错信息
+  var message = err.message;
+  // 出错代码位置
+  var loc = err.loc;
 
-  util.log(`报错文件：${fileName}
-    报错类型：${name}
-    出错代码位置：${loc.line},${loc.column}`);
+  var logInfo = '报错文件：' + fileName + '报错类型：' + name + '出错代码位置：' + loc.line + ',' + loc.column;
+
+  util.log( logInfo );
 
   this.end();
 }
@@ -79,7 +77,7 @@ const errHandle = function ( err ) {
  * @param  {[type]} (         [description]
  * @return {[type]}           [description]
  */
-gulp.task('sass-ui', () => {
+gulp.task('sass-ui', function () {
   return gulp.src( UISassSrcPath )
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
@@ -93,7 +91,7 @@ gulp.task('sass-ui', () => {
  * @param  {[type]} (       [description]
  * @return {[type]}         [description]
  */
-gulp.task("es-ui", () => {
+gulp.task("es-ui", function () {
   return gulp.src( UISrcPath )
     .pipe(babel())
     .on('error', errHandle)
@@ -115,14 +113,14 @@ gulp.task('ui-js-dist', function(){
       .pipe(gulp.dest('dist/js'))
 });
 
-gulp.task("polyfill", () => {
+gulp.task("polyfill", function () {
   return gulp.src('vendor/polyfill/*.js')
     .pipe(concat("u-polyfill.js"))
     .on('error', errHandle)
     .pipe(gulp.dest("dist/js"));
 });
 
-gulp.task("polyfill-dist", () => {
+gulp.task("polyfill-dist", function () {
   return gulp.src('vendor/polyfill/*.js')
     .pipe(concat("u-polyfill.min.js"))
     .pipe(uglify())
@@ -135,7 +133,7 @@ gulp.task("polyfill-dist", () => {
  * @param  {[type]} (      [description]
  * @return {[type]}        [description]
  */
-gulp.task('font', () => {
+gulp.task('font', function () {
   return gulp.src('./vendor/font-awesome/fonts/*')
     .pipe(rename(function(path){
       path.dirname += '';
@@ -149,7 +147,7 @@ gulp.task('font', () => {
  * @param  {[type]} (       [description]
  * @return {[type]}         [description]
  */
-gulp.task('serve', () => {
+gulp.task('serve', function () {
     browserSync({
         files: ['js/**/*.js', 'dist'],
         server: {
@@ -168,11 +166,11 @@ gulp.task('serve', () => {
  * @param  {[type]} (       [description]
  * @return {[type]}         [description]
  */
-gulp.task('clean', () => {
+gulp.task('clean', function () {
   gulp.src('dist/*', { read: false })
     .pipe(clean({ force: true }))
     .on('error', errHandle);
 });
 
 gulp.task('dev', ['font', 'sass-ui', 'es-ui', 'polyfill', 'serve'])
-gulp.task('prod', ['font', 'ui-js-dist', 'sass-ui', 'polyfill-dist'])
+gulp.task('prod', ['font', 'sass-ui', 'es-ui', 'polyfill', 'ui-js-dist', 'sass-ui', 'polyfill-dist'])
