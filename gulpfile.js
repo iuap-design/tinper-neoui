@@ -84,6 +84,24 @@ gulp.task('sass-ui', function () {
     .pipe(gulp.dest('dist/css'));
 });
 
+gulp.task('sass-ui-dist', function () {
+
+  gulp.src('scss/u.scss')
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe(minifycss())
+    .pipe(rename('u.min.css'))
+    .pipe(gulp.dest('dist/css'));
+
+  gulp.src('scss/u-extend.scss')
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe(minifycss())
+    .pipe(rename('u-extend.min.css'))
+    .pipe(gulp.dest('dist/css'));
+
+});
+
 /**
  * 编译并合并 UI 相关的 JS 文件
  * 用于开发环境，并支持 ES6/7 语法，可产出map文件
@@ -173,4 +191,4 @@ gulp.task('clean', function () {
 });
 
 gulp.task('dev', ['font', 'sass-ui', 'es-ui', 'polyfill', 'serve'])
-gulp.task('prod', ['font', 'sass-ui', 'es-ui', 'polyfill', 'ui-js-dist', 'sass-ui', 'polyfill-dist'])
+gulp.task('prod', ['font', 'sass-ui', 'sass-ui-dist', 'es-ui', 'polyfill', 'ui-js-dist', 'sass-ui', 'polyfill-dist'])
