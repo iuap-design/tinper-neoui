@@ -29,7 +29,7 @@ var UISrcPath = [
   'js/core/core.js',
   'js/core/base.js',
   'js/core/baseComponent.js',
-  'js/core/ajax/ajax.js',
+  'js/core/ajax.js',
   'js/core/compMgr.js',
   // 工具方法
   'js/utilities/*.js',
@@ -191,4 +191,4 @@ gulp.task('clean', function () {
 });
 
 gulp.task('dev', ['font', 'sass-ui', 'es-ui', 'polyfill', 'serve'])
-gulp.task('prod', ['font', 'sass-ui', 'sass-ui-dist', 'es-ui', 'polyfill', 'ui-js-dist', 'sass-ui', 'polyfill-dist'])
+gulp.task('default', ['font', 'sass-ui', 'sass-ui-dist', 'es-ui', 'polyfill', 'ui-js-dist', 'sass-ui', 'polyfill-dist'])
