@@ -9,7 +9,7 @@ radio
 # 示例
 
 <div class="example-head">基础radio</div>
-<p>可用未选radio</p>
+<div class="example-content"><p>可用未选radio</p>
 <label class="u-radio" for="option-1">
     <input type="radio" id="option-1" class="u-radio-button" name="options" value="1">
     <span class="u-radio-label">First</span>
@@ -30,7 +30,7 @@ radio
     <span class="u-radio-label">Second</span>
 </label>
 
-<pre><code>&lt;p>可用未选radio&lt;/p>
+</div><pre><code>&lt;p>可用未选radio&lt;/p>
 &lt;label class="u-radio" for="option-1">
     &lt;input type="radio" id="option-1" class="u-radio-button" name="options" value="1">
     &lt;span class="u-radio-label">First&lt;/span>
@@ -52,7 +52,7 @@ radio
 &lt;/label>
 </code></pre>
 <div class="example-head">不同色彩radio</div>
-<label class="u-radio u-radio-success" >
+<div class="example-content"><label class="u-radio u-radio-success" >
     <input type="radio" class="u-radio-button"  checked>
     <span class="u-radio-label">green</span>
 </label>
@@ -72,7 +72,7 @@ radio
     <input type="radio" class="u-radio-button"  checked>
     <span class="u-radio-label">grey</span>
 </label>
-<pre><code>&lt;label class="u-radio u-radio-success" >
+</div><pre><code>&lt;label class="u-radio u-radio-success" >
     &lt;input type="radio" class="u-radio-button"  checked>
     &lt;span class="u-radio-label">green&lt;/span>
 &lt;/label>

@@ -233,7 +233,7 @@ function replaceMdFun(filePath,itemName){
 								if(cssIndex > -1){
 									showStr += '<style>' + data.toString() + '\r\n' + '</style>';
 								}else if(htmlIndex > -1){
-									showStr += data.toString() + '\r\n';
+									showStr += '<div class="example-content">' + data.toString() + '\r\n</div>';
 								}else if(jsIndex > -1){
 									showStr += '<script>' + data.toString() + '\r\n' + '</script>';
 								}

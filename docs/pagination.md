@@ -9,10 +9,10 @@
 # 示例
 
 <div class="example-head">基础分页</div>
-<div id='pagination' class='u-pagination'>
+<div class="example-content"><div id='pagination' class='u-pagination'>
 </div>
 
-<script>  var element = document.getElementById('pagination');
+</div><script>  var element = document.getElementById('pagination');
   var comp = new u.pagination({ el: element, jumppage: true });
   comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
 
@@ -40,10 +40,10 @@
   });
 </code></pre>
 <div class="example-head">有间距的分页</div>
-<div id='paginationGap' class='u-pagination pagination-gap'>
+<div class="example-content"><div id='paginationGap' class='u-pagination pagination-gap'>
 </div>
 
-<script> //有间距的分页
+</div><script> //有间距的分页
  var paginationGap = document.getElementById('paginationGap');
  var comp = new u.pagination({ el: paginationGap, jumppage: true });
  comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
@@ -57,10 +57,10 @@
  comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
 </code></pre>
 <div class="example-head">无边框的分页</div>
-<div id='paginationNoBorder' class='u-pagination u-pagination-no-border'>
+<div class="example-content"><div id='paginationNoBorder' class='u-pagination u-pagination-no-border'>
 </div>
 
-<script> //无边框分页
+</div><script> //无边框分页
  var paginationNoBorder = document.getElementById('paginationNoBorder');
  var comp = new u.pagination({ el: paginationNoBorder, jumppage: true });
  comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
@@ -74,7 +74,7 @@
  comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
 </code></pre>
 <div class="example-head">不同尺寸的按钮</div>
-<p>大尺寸</p>
+<div class="example-content"><p>大尺寸</p>
 <div id='paginationLg' class='u-pagination pagination-lg'>
 </div>
 <p>默认尺寸</p>
@@ -84,7 +84,7 @@
 <div id='paginationSm' class='u-pagination pagination-sm'>
 </div>
 
-<script>
+</div><script>
 //大尺寸分页
 var paginationLg = document.getElementById('paginationLg');
 var comp = new u.pagination({el:paginationLg,jumppage:true});

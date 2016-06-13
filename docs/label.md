@@ -8,8 +8,25 @@
 
 # 示例
 
+<div class="example-head">描边按钮</div>
+<div class="example-content"><span class="u-tag u-tag-default u-tag-round">Default</span>
+<span class="u-tag u-tag-primary u-tag-round">Primary</span>
+<span class="u-tag u-tag-success u-tag-round">Success</span>
+<span class="u-tag u-tag-info u-tag-round">Info</span>
+<span class="u-tag u-tag-warning u-tag-round">Warning</span>
+<span class="u-tag u-tag-danger u-tag-round">Danger</span>
+<span class="u-tag u-tag-dark u-tag-round">Dark</span>
+
+</div><pre><code>&lt;span class="u-tag u-tag-default u-tag-round">Default&lt;/span>
+&lt;span class="u-tag u-tag-primary u-tag-round">Primary&lt;/span>
+&lt;span class="u-tag u-tag-success u-tag-round">Success&lt;/span>
+&lt;span class="u-tag u-tag-info u-tag-round">Info&lt;/span>
+&lt;span class="u-tag u-tag-warning u-tag-round">Warning&lt;/span>
+&lt;span class="u-tag u-tag-danger u-tag-round">Danger&lt;/span>
+&lt;span class="u-tag u-tag-dark u-tag-round">Dark&lt;/span>
+</code></pre>
 <div class="example-head">可以通过添加其它类，来修改基础标签的样式</div>
-<span class="u-tag u-tag-default">Default</span>
+<div class="example-content"><span class="u-tag u-tag-default">Default</span>
 <span class="u-tag u-tag-primary">Primary</span>
 <span class="u-tag u-tag-success">Success</span>
 <span class="u-tag u-tag-info">Info</span>
@@ -17,7 +34,7 @@
 <span class="u-tag u-tag-danger">Danger</span>
 <span class="u-tag u-tag-dark">Dark</span>
 
-<pre><code>&lt;span class="u-tag u-tag-default">Default&lt;/span>
+</div><pre><code>&lt;span class="u-tag u-tag-default">Default&lt;/span>
 &lt;span class="u-tag u-tag-primary">Primary&lt;/span>
 &lt;span class="u-tag u-tag-success">Success&lt;/span>
 &lt;span class="u-tag u-tag-info">Info&lt;/span>
@@ -26,7 +43,7 @@
 &lt;span class="u-tag u-tag-dark">Dark&lt;/span>
 </code></pre>
 <div class="example-head">圆形label</div>
-<span class="u-tag u-tag-default u-tag-round">Default</span>
+<div class="example-content"><span class="u-tag u-tag-default u-tag-round">Default</span>
 <span class="u-tag u-tag-primary u-tag-round">Primary</span>
 <span class="u-tag u-tag-success u-tag-round">Success</span>
 <span class="u-tag u-tag-info u-tag-round">Info</span>
@@ -34,24 +51,7 @@
 <span class="u-tag u-tag-danger u-tag-round">Danger</span>
 <span class="u-tag u-tag-dark u-tag-round">Dark</span>
 
-<pre><code>&lt;span class="u-tag u-tag-default u-tag-round">Default&lt;/span>
-&lt;span class="u-tag u-tag-primary u-tag-round">Primary&lt;/span>
-&lt;span class="u-tag u-tag-success u-tag-round">Success&lt;/span>
-&lt;span class="u-tag u-tag-info u-tag-round">Info&lt;/span>
-&lt;span class="u-tag u-tag-warning u-tag-round">Warning&lt;/span>
-&lt;span class="u-tag u-tag-danger u-tag-round">Danger&lt;/span>
-&lt;span class="u-tag u-tag-dark u-tag-round">Dark&lt;/span>
-</code></pre>
-<div class="example-head">描边按钮</div>
-<span class="u-tag u-tag-default u-tag-round">Default</span>
-<span class="u-tag u-tag-primary u-tag-round">Primary</span>
-<span class="u-tag u-tag-success u-tag-round">Success</span>
-<span class="u-tag u-tag-info u-tag-round">Info</span>
-<span class="u-tag u-tag-warning u-tag-round">Warning</span>
-<span class="u-tag u-tag-danger u-tag-round">Danger</span>
-<span class="u-tag u-tag-dark u-tag-round">Dark</span>
-
-<pre><code>&lt;span class="u-tag u-tag-default u-tag-round">Default&lt;/span>
+</div><pre><code>&lt;span class="u-tag u-tag-default u-tag-round">Default&lt;/span>
 &lt;span class="u-tag u-tag-primary u-tag-round">Primary&lt;/span>
 &lt;span class="u-tag u-tag-success u-tag-round">Success&lt;/span>
 &lt;span class="u-tag u-tag-info u-tag-round">Info&lt;/span>
@@ -61,11 +61,11 @@
 </code></pre>
 <div class="example-head">不同尺寸的label。
 添加 .u-tag-lg 或 .u-tag-sm类，来改变标签大小.</div>
-<span class="u-tag u-tag-lg u-tag-primary">大标签</span>
+<div class="example-content"><span class="u-tag u-tag-lg u-tag-primary">大标签</span>
 <span class="u-tag u-tag-primary">默认大小</span>
 <span class="u-tag u-tag-sm u-tag-primary">小标签</span>
 
-<pre><code>&lt;span class="u-tag u-tag-lg u-tag-primary">大标签&lt;/span>
+</div><pre><code>&lt;span class="u-tag u-tag-lg u-tag-primary">大标签&lt;/span>
 &lt;span class="u-tag u-tag-primary">默认大小&lt;/span>
 &lt;span class="u-tag u-tag-sm u-tag-primary">小标签&lt;/span>
 </code></pre>
