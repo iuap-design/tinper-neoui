@@ -9,7 +9,10 @@
 # 示例
 
 <div class="example-head">不同颜色的badge 使用7个基础类。例如.badge-success或 .badge，配色情感含义与之前颜色样式版中的涵义相同。</div>
-<div class="example-content"><label class="u-badge u-badge-primary" data-badge="1">
+<style>.demo .u-badge{
+    display: inline-block;
+}
+</style><div class="example-content"><label class="u-badge u-badge-primary" data-badge="1">
 </label>
 <label class="u-badge u-badge-success" data-badge="1">
 </label>
@@ -22,10 +25,10 @@
 <label class="u-badge u-badge-dark" data-badge="1">
 </label>
 
-</div><style>.demo .u-badge{
+</div><pre><code>.demo .u-badge{
     display: inline-block;
-}
-</style><pre><code>&lt;label class="u-badge u-badge-primary" data-badge="1">
+}</code></pre>
+<pre><code>&lt;label class="u-badge u-badge-primary" data-badge="1">
 &lt;/label>
 &lt;label class="u-badge u-badge-success" data-badge="1">
 &lt;/label>
@@ -38,9 +41,6 @@
 &lt;label class="u-badge u-badge-dark" data-badge="1">
 &lt;/label>
 </code></pre>
-<pre><code>.demo .u-badge{
-    display: inline-block;
-}</code></pre>
 <div class="example-head">含有icon的badge</div>
 <style>.demo .u-badge{
     display: inline-block;
