@@ -1,14 +1,14 @@
 
 ## 开始使用
 
-### 获取iuap-design
+### 1.获取iuap-design
 
-1. 直接从github获取我们的源码
+- 直接从github获取我们的源码
 ```
 git clone git@github.com:iuap-design/iuap-design.git
 ```
 
-2. 使用CDN
+- 使用CDN
 ```
 http://design.yyuap.com/static/iuap-design/3.0.1/js/u-ui.js
 http://design.yyuap.com/static/iuap-design/3.0.1/js/u-polyfill.js
@@ -16,21 +16,21 @@ http://design.yyuap.com/static/iuap-design/3.0.1/js/u-polyfill.js
 http://design.yyuap.com/static/iuap-design/3.0.1/css/u.css
 http://design.yyuap.com/static/iuap-design/3.0.1/css/u-extend.css
 ```
-3. 使用npm安装
+- 使用npm安装
 
 暂未发布，敬请期待...
 
-4. 使用bower下载
+- 使用bower下载
 
 暂未发布，敬请期待...
 
 
-### 文件及版本说明
+### 2.版本说明
 
 当前iuap-design框架的版本为3.0.1。
 
 
-### 目录说明
+### 3.目录及文件说明
 
 提供的资源目录结构
 ```
@@ -60,7 +60,7 @@ dist
 
 ```
 
-### 快速创建一个页面
+### 4.快速创建一个页面
 
 ```
 <!DOCTYPE html>
@@ -98,13 +98,13 @@ dist
 </body>
 </html>
 ```
-### 开发文档
+### 5.开发文档
 
 开发文档详见[这里](https://github.com/iuap-design/iuap-design/tree/master/docs)。
 
 更多内容请移步我们的[官网](http://design.yyuap.com/)
 
-### 参与讨论和开发
+### 6.参与讨论和开发
 
 如在使用过程中遇到任何问题，可以在[这里](https://github.com/iuap-design/iuap-design/issues)提交issue反馈；
 
