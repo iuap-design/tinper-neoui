@@ -1,0 +1,12 @@
+{
+	"title":"",
+	"description":"",
+	"language":"zh",
+	"plugins":[
+		"iuap-desigin",
+		"anchor-navigation"
+	],
+	"pluginsConfig": {
+        "expandable-chapters":{}
+    }
+}
