@@ -8,27 +8,6 @@ checkbox
 
 # 示例
 
-<div class="example-head">图片checkbox</div>
-<div class="example-content"><label  class="u-checkbox w-64">
-    <input type="checkbox" class="u-checkbox-input" checked>
-    <span class="u-checkbox-label"><img src="../static/checkbox-1.png" height="30" width="30"></span>
-</label>
-
-
-<label  class="u-checkbox w-64">
-    <input type="checkbox" class="u-checkbox-input" >
-    <span class="u-checkbox-label"><img src="../static/checkbox-2.png" height="30" width="30"></span>
-</label>
-</div><pre><code>&lt;label  class="u-checkbox w-64">
-    &lt;input type="checkbox" class="u-checkbox-input" checked>
-    &lt;span class="u-checkbox-label">&lt;img src="../static/checkbox-1.png" height="30" width="30">&lt;/span>
-&lt;/label>
-
-
-&lt;label  class="u-checkbox w-64">
-    &lt;input type="checkbox" class="u-checkbox-input" >
-    &lt;span class="u-checkbox-label">&lt;img src="../static/checkbox-2.png" height="30" width="30">&lt;/span>
-&lt;/label></code></pre>
 <div class="example-head">基础checkbox</div>
 <div class="example-content"><p>已选checkbox</p>
 <label  class="u-checkbox w-64">
@@ -71,6 +50,70 @@ checkbox
 &lt;label  class="u-checkbox w-64">
     &lt;input type="checkbox" class="u-checkbox-input" disabled checked>
     &lt;span class="u-checkbox-label">Checkbox&lt;/span>
+&lt;/label></code></pre>
+<div class="example-head">图片checkbox</div>
+<div class="example-content"><label  class="u-checkbox w-64">
+    <input type="checkbox" class="u-checkbox-input" checked>
+    <span class="u-checkbox-label"><img src="../static/checkbox-1.png" height="30" width="30"></span>
+</label>
+
+
+<label  class="u-checkbox w-64">
+    <input type="checkbox" class="u-checkbox-input" >
+    <span class="u-checkbox-label"><img src="../static/checkbox-2.png" height="30" width="30"></span>
+</label>
+</div><pre><code>&lt;label  class="u-checkbox w-64">
+    &lt;input type="checkbox" class="u-checkbox-input" checked>
+    &lt;span class="u-checkbox-label">&lt;img src="../static/checkbox-1.png" height="30" width="30">&lt;/span>
+&lt;/label>
+
+
+&lt;label  class="u-checkbox w-64">
+    &lt;input type="checkbox" class="u-checkbox-input" >
+    &lt;span class="u-checkbox-label">&lt;img src="../static/checkbox-2.png" height="30" width="30">&lt;/span>
+&lt;/label></code></pre>
+<div class="example-head">不同颜色的checkbox</div>
+<div class="example-content"><label  class="u-checkbox u-checkbox-success w-64">
+    <input type="checkbox" class="u-checkbox-input"  checked>
+    <span class="u-checkbox-label">green</span>
+</label>
+
+<label  class="u-checkbox u-checkbox-info w-64">
+    <input type="checkbox" class="u-checkbox-input"  checked>
+    <span class="u-checkbox-label">blue</span>
+</label>
+<label  class="u-checkbox u-checkbox-warning w-64">
+    <input type="checkbox" class="u-checkbox-input"  checked>
+    <span class="u-checkbox-label">yellow</span>
+</label>
+<label  class="u-checkbox u-checkbox-danger w-64">
+    <input type="checkbox" class="u-checkbox-input"  checked>
+    <span class="u-checkbox-label">red</span>
+</label>
+<label  class="u-checkbox u-checkbox-dark w-64">
+    <input type="checkbox" class="u-checkbox-input"  checked>
+    <span class="u-checkbox-label">grey</span>
+</label>
+</div><pre><code>&lt;label  class="u-checkbox u-checkbox-success w-64">
+    &lt;input type="checkbox" class="u-checkbox-input"  checked>
+    &lt;span class="u-checkbox-label">green&lt;/span>
+&lt;/label>
+
+&lt;label  class="u-checkbox u-checkbox-info w-64">
+    &lt;input type="checkbox" class="u-checkbox-input"  checked>
+    &lt;span class="u-checkbox-label">blue&lt;/span>
+&lt;/label>
+&lt;label  class="u-checkbox u-checkbox-warning w-64">
+    &lt;input type="checkbox" class="u-checkbox-input"  checked>
+    &lt;span class="u-checkbox-label">yellow&lt;/span>
+&lt;/label>
+&lt;label  class="u-checkbox u-checkbox-danger w-64">
+    &lt;input type="checkbox" class="u-checkbox-input"  checked>
+    &lt;span class="u-checkbox-label">red&lt;/span>
+&lt;/label>
+&lt;label  class="u-checkbox u-checkbox-dark w-64">
+    &lt;input type="checkbox" class="u-checkbox-input"  checked>
+    &lt;span class="u-checkbox-label">grey&lt;/span>
 &lt;/label></code></pre>
 <div class="example-head">个性的checkbox</div>
 <style>.u-checkbox-labelauty {
@@ -204,49 +247,6 @@ checkbox
 <pre><code>&lt;label  class="u-checkbox u-checkbox-labelauty">
     &lt;input type="checkbox" class="u-checkbox-input" checked>
     &lt;span class="u-checkbox-label">30天免息&lt;/span>
-&lt;/label></code></pre>
-<div class="example-head">不同颜色的checkbox</div>
-<div class="example-content"><label  class="u-checkbox u-checkbox-success w-64">
-    <input type="checkbox" class="u-checkbox-input"  checked>
-    <span class="u-checkbox-label">green</span>
-</label>
-
-<label  class="u-checkbox u-checkbox-info w-64">
-    <input type="checkbox" class="u-checkbox-input"  checked>
-    <span class="u-checkbox-label">blue</span>
-</label>
-<label  class="u-checkbox u-checkbox-warning w-64">
-    <input type="checkbox" class="u-checkbox-input"  checked>
-    <span class="u-checkbox-label">yellow</span>
-</label>
-<label  class="u-checkbox u-checkbox-danger w-64">
-    <input type="checkbox" class="u-checkbox-input"  checked>
-    <span class="u-checkbox-label">red</span>
-</label>
-<label  class="u-checkbox u-checkbox-dark w-64">
-    <input type="checkbox" class="u-checkbox-input"  checked>
-    <span class="u-checkbox-label">grey</span>
-</label>
-</div><pre><code>&lt;label  class="u-checkbox u-checkbox-success w-64">
-    &lt;input type="checkbox" class="u-checkbox-input"  checked>
-    &lt;span class="u-checkbox-label">green&lt;/span>
-&lt;/label>
-
-&lt;label  class="u-checkbox u-checkbox-info w-64">
-    &lt;input type="checkbox" class="u-checkbox-input"  checked>
-    &lt;span class="u-checkbox-label">blue&lt;/span>
-&lt;/label>
-&lt;label  class="u-checkbox u-checkbox-warning w-64">
-    &lt;input type="checkbox" class="u-checkbox-input"  checked>
-    &lt;span class="u-checkbox-label">yellow&lt;/span>
-&lt;/label>
-&lt;label  class="u-checkbox u-checkbox-danger w-64">
-    &lt;input type="checkbox" class="u-checkbox-input"  checked>
-    &lt;span class="u-checkbox-label">red&lt;/span>
-&lt;/label>
-&lt;label  class="u-checkbox u-checkbox-dark w-64">
-    &lt;input type="checkbox" class="u-checkbox-input"  checked>
-    &lt;span class="u-checkbox-label">grey&lt;/span>
 &lt;/label></code></pre>
 
 

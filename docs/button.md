@@ -24,6 +24,20 @@
 </div><pre><code>&lt;button class="u-button">BUTTON&lt;/button>
 &lt;button class="u-button accent">BUTTON&lt;/button>
 &lt;button class="u-button primary">BUTTON&lt;/button></code></pre>
+<div class="example-head">多尺寸响应 
+使用尺寸请添加类.btn-xg, .btn-lg,.btn-sm</div>
+<div class="example-content"><button class="u-button raised primary u-button-xg">特大尺寸</button>
+
+<button class="u-button raised primary u-button-lg">大尺寸</button>
+<button class="u-button raised primary">默认尺寸
+</button>
+<button class="u-button raised primary u-button-sm">小尺寸</button>
+</div><pre><code>&lt;button class="u-button raised primary u-button-xg">特大尺寸&lt;/button>
+
+&lt;button class="u-button raised primary u-button-lg">大尺寸&lt;/button>
+&lt;button class="u-button raised primary">默认尺寸
+&lt;/button>
+&lt;button class="u-button raised primary u-button-sm">小尺寸&lt;/button></code></pre>
 <div class="example-head">圆形按钮</div>
 <div class="example-content"><button class="u-button floating">
     <i class="fa fa-plus"></i>
@@ -54,20 +68,6 @@
 &lt;button class="u-button   u-button-info">info&lt;/button>
 &lt;button class="u-button   u-button-danger">danger&lt;/button>
 &lt;button class="u-button  u-button-warning">warning&lt;/button></code></pre>
-<div class="example-head">多尺寸响应 
-使用尺寸请添加类.btn-xg, .btn-lg,.btn-sm</div>
-<div class="example-content"><button class="u-button raised primary u-button-xg">特大尺寸</button>
-
-<button class="u-button raised primary u-button-lg">大尺寸</button>
-<button class="u-button raised primary">默认尺寸
-</button>
-<button class="u-button raised primary u-button-sm">小尺寸</button>
-</div><pre><code>&lt;button class="u-button raised primary u-button-xg">特大尺寸&lt;/button>
-
-&lt;button class="u-button raised primary u-button-lg">大尺寸&lt;/button>
-&lt;button class="u-button raised primary">默认尺寸
-&lt;/button>
-&lt;button class="u-button raised primary u-button-sm">小尺寸&lt;/button></code></pre>
 <div class="example-head">宽按钮：如果想按钮充满，添加类 .u-button-block </div>
 <div class="example-content"><div style="width:600px">
     <button class="u-button raised primary u-button-block">宽按钮
@@ -85,6 +85,19 @@
 </div><pre><code>&lt;button class="u-button raised primary u-button-round">圆形按钮
 &lt;/button>
 &lt;button class="u-button raised primary u-button-squared">圆形按钮
+&lt;/button></code></pre>
+<div class="example-head">
+ 左半圆样式：.u-button-pill-left和 .u-button-round一起使用
+
+ 右半圆样式： .u-button-pill-right 和 .u-button-round一起使用
+</div>
+<div class="example-content"><button class="u-button raised primary u-button-pill-left u-button-round">左半圆按钮
+</button>
+<button class="u-button raised primary u-button-pill-right u-button-squared">右半圆按钮
+</button>
+</div><pre><code>&lt;button class="u-button raised primary u-button-pill-left u-button-round">左半圆按钮
+&lt;/button>
+&lt;button class="u-button raised primary u-button-pill-right u-button-squared">右半圆按钮
 &lt;/button></code></pre>
 <div class="example-head">不同颜色的下拉按钮</div>
 <div class="example-content"><div class="u-row">
@@ -189,19 +202,25 @@
     &lt;/div>
 &lt;/div>
 </code></pre>
-<div class="example-head">
- 左半圆样式：.u-button-pill-left和 .u-button-round一起使用
+<div class="example-head">基本菜单按钮</div>
+<div class="example-content"><button class="u-button  raised u-menu-button" id="demo-menu-lower-right1">
+    联查
+    <span class="u-right-icon fa fa-angle-down"></span>
+</button>
+<ul class="u-menu u-menu-bottom-right" for="demo-menu-lower-right1">
+    <li class="u-menu-item "><a>报价单</a></li>
+    <li class="u-menu-item"><a>到货单</a></li>
+</ul>
 
- 右半圆样式： .u-button-pill-right 和 .u-button-round一起使用
-</div>
-<div class="example-content"><button class="u-button raised primary u-button-pill-left u-button-round">左半圆按钮
-</button>
-<button class="u-button raised primary u-button-pill-right u-button-squared">右半圆按钮
-</button>
-</div><pre><code>&lt;button class="u-button raised primary u-button-pill-left u-button-round">左半圆按钮
+</div><pre><code>&lt;button class="u-button  raised u-menu-button" id="demo-menu-lower-right1">
+    联查
+    &lt;span class="u-right-icon fa fa-angle-down">&lt;/span>
 &lt;/button>
-&lt;button class="u-button raised primary u-button-pill-right u-button-squared">右半圆按钮
-&lt;/button></code></pre>
+&lt;ul class="u-menu u-menu-bottom-right" for="demo-menu-lower-right1">
+    &lt;li class="u-menu-item ">&lt;a>报价单&lt;/a>&lt;/li>
+    &lt;li class="u-menu-item">&lt;a>到货单&lt;/a>&lt;/li>
+&lt;/ul>
+</code></pre>
 <div class="example-head">分割按钮</div>
 <div class="example-content"><div class="u-button-group u-split">
     <button class="u-button u-split-pre">
@@ -232,25 +251,6 @@
         &lt;/ul>
     &lt;/div>
 &lt;/div>
-</code></pre>
-<div class="example-head">基本菜单按钮</div>
-<div class="example-content"><button class="u-button  raised u-menu-button" id="demo-menu-lower-right1">
-    联查
-    <span class="u-right-icon fa fa-angle-down"></span>
-</button>
-<ul class="u-menu u-menu-bottom-right" for="demo-menu-lower-right1">
-    <li class="u-menu-item "><a>报价单</a></li>
-    <li class="u-menu-item"><a>到货单</a></li>
-</ul>
-
-</div><pre><code>&lt;button class="u-button  raised u-menu-button" id="demo-menu-lower-right1">
-    联查
-    &lt;span class="u-right-icon fa fa-angle-down">&lt;/span>
-&lt;/button>
-&lt;ul class="u-menu u-menu-bottom-right" for="demo-menu-lower-right1">
-    &lt;li class="u-menu-item ">&lt;a>报价单&lt;/a>&lt;/li>
-    &lt;li class="u-menu-item">&lt;a>到货单&lt;/a>&lt;/li>
-&lt;/ul>
 </code></pre>
 
 

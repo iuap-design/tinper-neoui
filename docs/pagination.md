@@ -8,6 +8,23 @@
 
 # 示例
 
+<div class="example-head">无边框的分页</div>
+<div class="example-content"><div id='paginationNoBorder' class='u-pagination u-pagination-no-border'>
+</div>
+
+</div><script> //无边框分页
+ var paginationNoBorder = document.getElementById('paginationNoBorder');
+ var comp = new u.pagination({ el: paginationNoBorder, jumppage: true });
+ comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
+
+</script><pre><code>&lt;div id='paginationNoBorder' class='u-pagination u-pagination-no-border'>
+&lt;/div>
+</code></pre>
+<pre><code> //无边框分页
+ var paginationNoBorder = document.getElementById('paginationNoBorder');
+ var comp = new u.pagination({ el: paginationNoBorder, jumppage: true });
+ comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
+</code></pre>
 <div class="example-head">基础分页</div>
 <div class="example-content"><div id='pagination' class='u-pagination'>
 </div>
@@ -54,23 +71,6 @@
 <pre><code> //有间距的分页
  var paginationGap = document.getElementById('paginationGap');
  var comp = new u.pagination({ el: paginationGap, jumppage: true });
- comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
-</code></pre>
-<div class="example-head">无边框的分页</div>
-<div class="example-content"><div id='paginationNoBorder' class='u-pagination u-pagination-no-border'>
-</div>
-
-</div><script> //无边框分页
- var paginationNoBorder = document.getElementById('paginationNoBorder');
- var comp = new u.pagination({ el: paginationNoBorder, jumppage: true });
- comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
-
-</script><pre><code>&lt;div id='paginationNoBorder' class='u-pagination u-pagination-no-border'>
-&lt;/div>
-</code></pre>
-<pre><code> //无边框分页
- var paginationNoBorder = document.getElementById('paginationNoBorder');
- var comp = new u.pagination({ el: paginationNoBorder, jumppage: true });
  comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
 </code></pre>
 <div class="example-head">不同尺寸的按钮</div>
