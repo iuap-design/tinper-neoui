@@ -5,7 +5,7 @@
   "authors": [
     "guoyongfeng"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "keywords": [
     "iUAP",
     "Design",
@@ -13,8 +13,7 @@
     "Framework"
   ],
   "moduleType": [],
-  "homepage": "",
-  "private": true,
+  "homepage": "http://design.yyuap.com",
   "ignore": [
     "**/.*",
     "node_modules",
