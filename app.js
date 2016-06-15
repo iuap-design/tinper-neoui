@@ -244,7 +244,7 @@ function replaceMdFun(filePath,itemName){
 					}
 					if(mdIndex > -1){
 						fs.readFile(tmpPath,function(err,data){
-							headStr += '<div class="example-head">' + data.toString() + '</div>\r\n';
+							headStr +=  data.toString() + '\r\n';
 							now++;
 				        })
 					}
