@@ -8,7 +8,7 @@ radio
 
 # 示例
 
-<div class="example-head">基础radio</div>
+基础radio
 <div class="example-content"><p>可用未选radio</p>
 <label class="u-radio" for="option-1">
     <input type="radio" id="option-1" class="u-radio-button" name="options" value="1">
@@ -29,8 +29,7 @@ radio
     <input type="radio" disabled checked id="option-3" class="u-radio-button" name="options1" value="3">
     <span class="u-radio-label">Second</span>
 </label>
-
-</div><pre><code>&lt;p>可用未选radio&lt;/p>
+</div><div class="examples-code"><pre><code>&lt;p>可用未选radio&lt;/p>
 &lt;label class="u-radio" for="option-1">
     &lt;input type="radio" id="option-1" class="u-radio-button" name="options" value="1">
     &lt;span class="u-radio-label">First&lt;/span>
@@ -49,9 +48,8 @@ radio
 &lt;label class="u-radio" for="option-3">
     &lt;input type="radio" disabled checked id="option-3" class="u-radio-button" name="options1" value="3">
     &lt;span class="u-radio-label">Second&lt;/span>
-&lt;/label>
-</code></pre>
-<div class="example-head">不同色彩radio</div>
+&lt;/label></code></pre>
+</div>不同色彩radio
 <div class="example-content"><label class="u-radio u-radio-success" >
     <input type="radio" class="u-radio-button"  checked>
     <span class="u-radio-label">green</span>
@@ -72,7 +70,7 @@ radio
     <input type="radio" class="u-radio-button"  checked>
     <span class="u-radio-label">grey</span>
 </label>
-</div><pre><code>&lt;label class="u-radio u-radio-success" >
+</div><div class="examples-code"><pre><code>&lt;label class="u-radio u-radio-success" >
     &lt;input type="radio" class="u-radio-button"  checked>
     &lt;span class="u-radio-label">green&lt;/span>
 &lt;/label>
@@ -92,7 +90,7 @@ radio
     &lt;input type="radio" class="u-radio-button"  checked>
     &lt;span class="u-radio-label">grey&lt;/span>
 &lt;/label></code></pre>
-
+</div>
 
 <!--### 示例1
 
