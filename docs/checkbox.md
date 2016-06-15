@@ -1,14 +1,78 @@
 # checkbox控件
 
-checkbox
+checkbox提供了基础复选框、不同色彩复选框、图片复选框、个性复选框
 
 # 如何使用
+1、创建含有“u-checkbox”样式的label元素，并添加for属性，for的属性值用于标记唯一的checkbox。
 
-暂无
+	<label class="u-checkbox" for="checkbox-1"></label>
+
+2、在label标签中创建type为checkbox的输入框，并且输入框的样式为“u-checkbox-input”，添加id属性，属性值
+要与lable中的for属性值一致。
+
+	<label class="u-checkbox" for="checkbox-1">
+		<input type="checkbox" id="checkbox-1" class="u-checkbox-input">
+	</label>
+
+3、在label标签中继续添加含有“u-checkbox-label”样式的span元素用于描述checkbox的内容。
+
+	<label class="u-checkbox" for="checkbox-1">
+		<input type="checkbox" id="checkbox-1" class="u-checkbox-input">
+		<span class="u-checkbox-label">我是描述</span>
+	</label>
 
 # 示例
 
-图片checkbox
+
+##基础checkbox
+在复选框中input元素添加“checked”、“disabled”来实现选中和不可用效果
+<div class="example-content"><p>已选checkbox</p>
+<label  class="u-checkbox w-64">
+    <input type="checkbox" class="u-checkbox-input" checked>
+    <span class="u-checkbox-label">Checkbox</span>
+</label>
+<p>未选checkbox</p>
+
+<label  class="u-checkbox w-64">
+    <input type="checkbox" class="u-checkbox-input" >
+    <span class="u-checkbox-label">Checkbox</span>
+</label>
+<p>不可用未选checkbox</p>
+<label  class="u-checkbox w-64"  >
+    <input type="checkbox" class="u-checkbox-input" disabled>
+    <span class="u-checkbox-label">Checkbox</span>
+</label>
+<p>不可用已选checkbox</p>
+<label  class="u-checkbox w-64">
+    <input type="checkbox" class="u-checkbox-input" disabled checked>
+    <span class="u-checkbox-label">Checkbox</span>
+</label>
+</div>
+<div class="examples-code"><pre><code>&lt;p>已选checkbox&lt;/p>
+&lt;label  class="u-checkbox w-64">
+    &lt;input type="checkbox" class="u-checkbox-input" checked>
+    &lt;span class="u-checkbox-label">Checkbox&lt;/span>
+&lt;/label>
+&lt;p>未选checkbox&lt;/p>
+
+&lt;label  class="u-checkbox w-64">
+    &lt;input type="checkbox" class="u-checkbox-input" >
+    &lt;span class="u-checkbox-label">Checkbox&lt;/span>
+&lt;/label>
+&lt;p>不可用未选checkbox&lt;/p>
+&lt;label  class="u-checkbox w-64"  >
+    &lt;input type="checkbox" class="u-checkbox-input" disabled>
+    &lt;span class="u-checkbox-label">Checkbox&lt;/span>
+&lt;/label>
+&lt;p>不可用已选checkbox&lt;/p>
+&lt;label  class="u-checkbox w-64">
+    &lt;input type="checkbox" class="u-checkbox-input" disabled checked>
+    &lt;span class="u-checkbox-label">Checkbox&lt;/span>
+&lt;/label></code></pre>
+</div>
+
+##图片checkbox
+在“u-checkbox-label”的span中添加图片说明即可。
 <div class="example-content"><label  class="u-checkbox w-64">
     <input type="checkbox" class="u-checkbox-input" checked>
     <span class="u-checkbox-label"><img src="../static/checkbox-1.png" height="30" width="30"></span>
@@ -19,7 +83,8 @@ checkbox
     <input type="checkbox" class="u-checkbox-input" >
     <span class="u-checkbox-label"><img src="../static/checkbox-2.png" height="30" width="30"></span>
 </label>
-</div><div class="examples-code"><pre><code>&lt;label  class="u-checkbox w-64">
+</div>
+<div class="examples-code"><pre><code>&lt;label  class="u-checkbox w-64">
     &lt;input type="checkbox" class="u-checkbox-input" checked>
     &lt;span class="u-checkbox-label">&lt;img src="../static/checkbox-1.png" height="30" width="30">&lt;/span>
 &lt;/label>
@@ -29,12 +94,11 @@ checkbox
     &lt;input type="checkbox" class="u-checkbox-input" >
     &lt;span class="u-checkbox-label">&lt;img src="../static/checkbox-2.png" height="30" width="30">&lt;/span>
 &lt;/label></code></pre>
-</div>个性的checkbox
-<div class="example-content"><label  class="u-checkbox u-checkbox-labelauty">
-    <input type="checkbox" class="u-checkbox-input" checked>
-    <span class="u-checkbox-label">30天免息</span>
-</label>
-</div><style>.u-checkbox-labelauty {
+</div>
+
+##个性的checkbox
+此复选框经常在电商平台中使用。只需在lable标签中添加“u-checkbox-labelauty”样式
+<style>.u-checkbox-labelauty {
     width: auto;
     height: 32px;
     padding: 2px 8px;
@@ -96,11 +160,13 @@ checkbox
     -webkit-transition: all .2s cubic-bezier(.12,.4,.29,1.46) .1s;
     transition: all .2s cubic-bezier(.12,.4,.29,1.46) .1s;
 }
-</style><div class="examples-code"><pre><code>&lt;label  class="u-checkbox u-checkbox-labelauty">
-    &lt;input type="checkbox" class="u-checkbox-input" checked>
-    &lt;span class="u-checkbox-label">30天免息&lt;/span>
-&lt;/label></code></pre>
-</div><div class="examples-code"><pre><code>.u-checkbox-labelauty {
+</style>
+<div class="example-content"><label  class="u-checkbox u-checkbox-labelauty">
+    <input type="checkbox" class="u-checkbox-input" checked>
+    <span class="u-checkbox-label">30天免息</span>
+</label>
+</div>
+<div class="examples-code"><pre><code>.u-checkbox-labelauty {
     width: auto;
     height: 32px;
     padding: 2px 8px;
@@ -162,50 +228,15 @@ checkbox
     -webkit-transition: all .2s cubic-bezier(.12,.4,.29,1.46) .1s;
     transition: all .2s cubic-bezier(.12,.4,.29,1.46) .1s;
 }</code></pre>
-</div>基础checkbox
-<div class="example-content"><p>已选checkbox</p>
-<label  class="u-checkbox w-64">
-    <input type="checkbox" class="u-checkbox-input" checked>
-    <span class="u-checkbox-label">Checkbox</span>
-</label>
-<p>未选checkbox</p>
-
-<label  class="u-checkbox w-64">
-    <input type="checkbox" class="u-checkbox-input" >
-    <span class="u-checkbox-label">Checkbox</span>
-</label>
-<p>不可用未选checkbox</p>
-<label  class="u-checkbox w-64"  >
-    <input type="checkbox" class="u-checkbox-input" disabled>
-    <span class="u-checkbox-label">Checkbox</span>
-</label>
-<p>不可用已选checkbox</p>
-<label  class="u-checkbox w-64">
-    <input type="checkbox" class="u-checkbox-input" disabled checked>
-    <span class="u-checkbox-label">Checkbox</span>
-</label>
-</div><div class="examples-code"><pre><code>&lt;p>已选checkbox&lt;/p>
-&lt;label  class="u-checkbox w-64">
+</div>
+<div class="examples-code"><pre><code>&lt;label  class="u-checkbox u-checkbox-labelauty">
     &lt;input type="checkbox" class="u-checkbox-input" checked>
-    &lt;span class="u-checkbox-label">Checkbox&lt;/span>
-&lt;/label>
-&lt;p>未选checkbox&lt;/p>
-
-&lt;label  class="u-checkbox w-64">
-    &lt;input type="checkbox" class="u-checkbox-input" >
-    &lt;span class="u-checkbox-label">Checkbox&lt;/span>
-&lt;/label>
-&lt;p>不可用未选checkbox&lt;/p>
-&lt;label  class="u-checkbox w-64"  >
-    &lt;input type="checkbox" class="u-checkbox-input" disabled>
-    &lt;span class="u-checkbox-label">Checkbox&lt;/span>
-&lt;/label>
-&lt;p>不可用已选checkbox&lt;/p>
-&lt;label  class="u-checkbox w-64">
-    &lt;input type="checkbox" class="u-checkbox-input" disabled checked>
-    &lt;span class="u-checkbox-label">Checkbox&lt;/span>
+    &lt;span class="u-checkbox-label">30天免息&lt;/span>
 &lt;/label></code></pre>
-</div>不同颜色的checkbox
+</div>
+
+##不同颜色的checkbox
+在复选框中label里面添加“ u-checkbox-success”、“u-checkbox-info”、“u-checkbox-warning”、“u-checkbox-danger”、“u-checkbox-dark”样式来实现不同色彩的复选框
 <div class="example-content"><label  class="u-checkbox u-checkbox-success w-64">
     <input type="checkbox" class="u-checkbox-input"  checked>
     <span class="u-checkbox-label">green</span>
@@ -227,7 +258,8 @@ checkbox
     <input type="checkbox" class="u-checkbox-input"  checked>
     <span class="u-checkbox-label">grey</span>
 </label>
-</div><div class="examples-code"><pre><code>&lt;label  class="u-checkbox u-checkbox-success w-64">
+</div>
+<div class="examples-code"><pre><code>&lt;label  class="u-checkbox u-checkbox-success w-64">
     &lt;input type="checkbox" class="u-checkbox-input"  checked>
     &lt;span class="u-checkbox-label">green&lt;/span>
 &lt;/label>
@@ -250,34 +282,4 @@ checkbox
 &lt;/label></code></pre>
 </div>
 
-<!--### 示例1
 
-示例1说明
-
-### 示例2
-
-示例2说-->
-
-# API
-
-## 属性
-
-暂无
-<!--### 属性1
-
-属性1说明
-
-### 属性2
-
-属性2说明-->
-
-## 方法
-
-暂无
-<!--### 方法1
-
-方法1说明
-
-### 方法2
-
-方法2说明-->

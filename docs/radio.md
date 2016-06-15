@@ -1,14 +1,31 @@
 # radio控件
 
-radio
+radio提供了基本的单选框和不同色彩的单选框
 
 # 如何使用
 
-暂无
+1、创建含有“u-radio”样式的label元素，并添加id属性，for的属性值用于标记唯一的radio。
+
+	<label  class="u-radio" for="option-1">
+	</label>
+2、在第一步中label元素内创建type为radio的输入框，并且输入框的样式为“u-radio-button”，添加for属性，属性值
+要与lable中的for属性值一致。
+	
+	 <label  class="u-radio" for="option-1">
+    	<input type="radio" id="option-1" class="u-radio-button" name="options" value="1" checked>
+	</label>
+3、在第一步中label元素内创建含有“u-radio-label”样式的span元素用于描述radio的内容
+
+	<label  class="u-radio" for="option-1">
+    	<input type="radio" id="option-1" class="u-radio-button" name="options" value="1" checked>
+    	<span class="u-radio-label">First</span>
+	</label>
 
 # 示例
 
-基础radio
+
+##基础radio
+在单选框中input元素添加“checked”、“disabled”来实现选中和不可用效果
 <div class="example-content"><p>可用未选radio</p>
 <label class="u-radio" for="option-1">
     <input type="radio" id="option-1" class="u-radio-button" name="options" value="1">
@@ -29,7 +46,8 @@ radio
     <input type="radio" disabled checked id="option-3" class="u-radio-button" name="options1" value="3">
     <span class="u-radio-label">Second</span>
 </label>
-</div><div class="examples-code"><pre><code>&lt;p>可用未选radio&lt;/p>
+</div>
+<div class="examples-code"><pre><code>&lt;p>可用未选radio&lt;/p>
 &lt;label class="u-radio" for="option-1">
     &lt;input type="radio" id="option-1" class="u-radio-button" name="options" value="1">
     &lt;span class="u-radio-label">First&lt;/span>
@@ -49,7 +67,10 @@ radio
     &lt;input type="radio" disabled checked id="option-3" class="u-radio-button" name="options1" value="3">
     &lt;span class="u-radio-label">Second&lt;/span>
 &lt;/label></code></pre>
-</div>不同色彩radio
+</div>
+
+##不同色彩radio
+在单选框中label里面添加“ u-radio-success”、“u-radio-info”、“u-radio-warning”、“u-radio-danger”、“u-radio-dark”样式来实现不同色彩的单选框
 <div class="example-content"><label class="u-radio u-radio-success" >
     <input type="radio" class="u-radio-button"  checked>
     <span class="u-radio-label">green</span>
@@ -70,7 +91,8 @@ radio
     <input type="radio" class="u-radio-button"  checked>
     <span class="u-radio-label">grey</span>
 </label>
-</div><div class="examples-code"><pre><code>&lt;label class="u-radio u-radio-success" >
+</div>
+<div class="examples-code"><pre><code>&lt;label class="u-radio u-radio-success" >
     &lt;input type="radio" class="u-radio-button"  checked>
     &lt;span class="u-radio-label">green&lt;/span>
 &lt;/label>
@@ -92,34 +114,6 @@ radio
 &lt;/label></code></pre>
 </div>
 
-<!--### 示例1
 
-示例1说明
 
-### 示例2
 
-示例2说-->
-
-# API
-
-## 属性
-
-暂无
-<!--### 属性1
-
-属性1说明
-
-### 属性2
-
-属性2说明-->
-
-## 方法
-
-暂无
-<!--### 方法1
-
-方法1说明
-
-### 方法2
-
-方法2说明-->

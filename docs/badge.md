@@ -8,14 +8,39 @@
 
 # 示例
 
+
+﻿##绝对定位标记
+
+
+用于推送消息或提醒时，在标签dom元素中添加添加具体的图标即可。
+<style>.demo .u-badge{
+    display: inline-block;
+}
+</style>
+<div class="example-content"><div class="u-badge w-20 m" data-badge="1">
+    <i class="fa fa-bell"></i>
+</div>
+<div class="u-badge u-badge-no-background w-20 m" data-badge="1">
+    <i class="fa fa-bell"></i>
+</div>
+</div>
+<div class="examples-code"><pre><code>.demo .u-badge{
+    display: inline-block;
+}</code></pre>
+</div>
+<div class="examples-code"><pre><code>&lt;div class="u-badge w-20 m" data-badge="1">
+    &lt;i class="fa fa-bell">&lt;/i>
+&lt;/div>
+&lt;div class="u-badge u-badge-no-background w-20 m" data-badge="1">
+    &lt;i class="fa fa-bell">&lt;/i>
+&lt;/div></code></pre>
+</div>
+
 ﻿##不同颜色的badge
 
 
 使用“u-badge-primary”、“u-badge-success”、“u-badge-info”、“u-badge-warning”、“u-badge-danger”、“u-badge-dark”这七个个基础类，来显示不同的颜色。
-<style>.demo .u-badge{
-    display: inline-block;
-}
-</style><div class="example-content"><label class="u-badge u-badge-primary" data-badge="1">
+<div class="example-content"><label class="u-badge u-badge-primary" data-badge="1">
 </label>
 <label class="u-badge u-badge-success" data-badge="1">
 </label>
@@ -27,10 +52,12 @@
 </label>
 <label class="u-badge u-badge-dark" data-badge="1">
 </label>
-</div><div class="examples-code"><pre><code>.demo .u-badge{
+</div>
+<style>.demo .u-badge{
     display: inline-block;
-}</code></pre>
-</div><div class="examples-code"><pre><code>&lt;label class="u-badge u-badge-primary" data-badge="1">
+}
+</style>
+<div class="examples-code"><pre><code>&lt;label class="u-badge u-badge-primary" data-badge="1">
 &lt;/label>
 &lt;label class="u-badge u-badge-success" data-badge="1">
 &lt;/label>
@@ -42,26 +69,9 @@
 &lt;/label>
 &lt;label class="u-badge u-badge-dark" data-badge="1">
 &lt;/label></code></pre>
-</div>﻿##绝对定位标记
-
-
-用于推送消息或提醒时，在标签dom元素中添加添加具体的图标即可。
-<style>.demo .u-badge{
-    display: inline-block;
-}
-</style><div class="example-content"><div class="u-badge w-20 m" data-badge="1">
-    <i class="fa fa-bell"></i>
 </div>
-<div class="u-badge u-badge-no-background w-20 m" data-badge="1">
-    <i class="fa fa-bell"></i>
-</div>
-</div><div class="examples-code"><pre><code>.demo .u-badge{
+<div class="examples-code"><pre><code>.demo .u-badge{
     display: inline-block;
 }</code></pre>
-</div><div class="examples-code"><pre><code>&lt;div class="u-badge w-20 m" data-badge="1">
-    &lt;i class="fa fa-bell">&lt;/i>
-&lt;/div>
-&lt;div class="u-badge u-badge-no-background w-20 m" data-badge="1">
-    &lt;i class="fa fa-bell">&lt;/i>
-&lt;/div></code></pre>
 </div>
+
