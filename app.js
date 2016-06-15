@@ -225,11 +225,11 @@ function replaceMdFun(filePath,itemName){
 					var cssIndex = item.indexOf('.css');
 					var htmlIndex = item.indexOf('.html');
 					var jsIndex = item.indexOf('.js');
-					var txtIndex = item.indexOf('.txt');
+					var mdIndex = item.indexOf('.md');
 					if(cssIndex > -1 || htmlIndex > -1 ||jsIndex > -1){
 						fs.readFile(tmpPath,function(err,data){
 							if(data.toString().length > 0){
-								codeStr += '<pre><code>' + data.toString().replace(/\</g,'&lt;') + '</code></pre>\r\n';
+								codeStr += '<div class="examples-code"><pre><code>' + data.toString().replace(/\</g,'&lt;') + '</code></pre>\r\n</div>';
 								if(cssIndex > -1){
 									showStr += '<style>' + data.toString() + '\r\n' + '</style>';
 								}else if(htmlIndex > -1){
@@ -242,7 +242,7 @@ function replaceMdFun(filePath,itemName){
 								
 				        })
 					}
-					if(txtIndex > -1){
+					if(mdIndex > -1){
 						fs.readFile(tmpPath,function(err,data){
 							headStr += '<div class="example-head">' + data.toString() + '</div>\r\n';
 							now++;
