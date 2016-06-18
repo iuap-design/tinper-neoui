@@ -244,7 +244,7 @@ function replaceMdFun(filePath,itemName){
 					}
 					if(mdIndex > -1){
 						fs.readFile(tmpPath,function(err,data){
-							headStr += '\r\n' + data.toString() + '\r\n';
+							headStr += '\r\n' + data.toString().replace(/&#65279;/g,'') + '\r\n';
 							now++;
 				        })
 					}
