@@ -14,7 +14,17 @@ tooltip控件
 
 当前选中状态 li 添加 active class
 不可用状态   li 添加 disable 属性 
+<div class="example-content"><div id='example'>
+	<label id="top" class="ws">上提示</label>
+	<label id="down" class="ws">下提示</label>
+	<label id="left" class="ws">左提示</label>
+	<label id="right" class="ws">右提示</label>
+</div>
 
+
+
+
+</div>
 <style>.ws{
 	width: 60px;
 	display: inline-block;
@@ -33,17 +43,6 @@ tooltip控件
 }
  
 </style>
-<div class="example-content"><div id='example'>
-	<label id="top" class="ws">上提示</label>
-	<label id="down" class="ws">下提示</label>
-	<label id="left" class="ws">左提示</label>
-	<label id="right" class="ws">右提示</label>
-</div>
-
-
-
-
-</div>
 <script>var toptoolEle=document.getElementById('top');
 var bottomtoolEle=document.getElementById('down');
 var lefttoolEle=document.getElementById('left');
@@ -103,6 +102,17 @@ colorLevel:'tooltip-danger'
 });
 
 </script>
+<div class="examples-code"><pre><code>&lt;div id='example'>
+	&lt;label id="top" class="ws">上提示&lt;/label>
+	&lt;label id="down" class="ws">下提示&lt;/label>
+	&lt;label id="left" class="ws">左提示&lt;/label>
+	&lt;label id="right" class="ws">右提示&lt;/label>
+&lt;/div>
+
+
+
+</code></pre>
+</div>
 <div class="examples-code"><pre><code>.ws{
 	width: 60px;
 	display: inline-block;
@@ -120,17 +130,6 @@ colorLevel:'tooltip-danger'
 	margin-left: 0px;
 }
  </code></pre>
-</div>
-<div class="examples-code"><pre><code>&lt;div id='example'>
-	&lt;label id="top" class="ws">上提示&lt;/label>
-	&lt;label id="down" class="ws">下提示&lt;/label>
-	&lt;label id="left" class="ws">左提示&lt;/label>
-	&lt;label id="right" class="ws">右提示&lt;/label>
-&lt;/div>
-
-
-
-</code></pre>
 </div>
 <div class="examples-code"><pre><code>var toptoolEle=document.getElementById('top');
 var bottomtoolEle=document.getElementById('down');
@@ -198,6 +197,16 @@ colorLevel:'tooltip-danger'
 当前选中状态 li 添加 active class
 不可用状态   li 添加 disable 属性 
 
+<div class="example-content">
+<div id='example1'>
+	<p>各种颜色tooltips</p>
+	<label id="primary" class="ws">primary</label>
+	<label id="info" class="ws">info</label>
+	<label id="warning" class="ws">warning</label>
+	<label id="success" class="ws">success</label>
+	<label id="danger" class="ws">danger</label>
+</div>
+</div>
 <style>.ws{
 	width: 60px;
 	display: inline-block;
@@ -275,15 +284,15 @@ colorLevel:'tooltip-danger'
 });
 
 </script>
-<div class="example-content">
-<div id='example1'>
-	<p>各种颜色tooltips</p>
-	<label id="primary" class="ws">primary</label>
-	<label id="info" class="ws">info</label>
-	<label id="warning" class="ws">warning</label>
-	<label id="success" class="ws">success</label>
-	<label id="danger" class="ws">danger</label>
-</div>
+<div class="examples-code"><pre><code>
+&lt;div id='example1'>
+	&lt;p>各种颜色tooltips&lt;/p>
+	&lt;label id="primary" class="ws">primary&lt;/label>
+	&lt;label id="info" class="ws">info&lt;/label>
+	&lt;label id="warning" class="ws">warning&lt;/label>
+	&lt;label id="success" class="ws">success&lt;/label>
+	&lt;label id="danger" class="ws">danger&lt;/label>
+&lt;/div></code></pre>
 </div>
 <div class="examples-code"><pre><code>.ws{
 	width: 60px;
@@ -361,16 +370,6 @@ title:'danger tooltip',
 colorLevel:'tooltip-danger'
 });
 </code></pre>
-</div>
-<div class="examples-code"><pre><code>
-&lt;div id='example1'>
-	&lt;p>各种颜色tooltips&lt;/p>
-	&lt;label id="primary" class="ws">primary&lt;/label>
-	&lt;label id="info" class="ws">info&lt;/label>
-	&lt;label id="warning" class="ws">warning&lt;/label>
-	&lt;label id="success" class="ws">success&lt;/label>
-	&lt;label id="danger" class="ws">danger&lt;/label>
-&lt;/div></code></pre>
 </div>
 
 
