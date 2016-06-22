@@ -51,6 +51,116 @@
 &lt;/div></code></pre>
 </div>
 
+##垂直对齐
+添加如下样式即可实现垂直居中、垂直向下。
+
+* `.vertical-align`:添加这个样式到父元素上，该父元素需要指定高度
+* `.vertical-align-middle`:添加这个样式到到子元素上，实现垂直居中
+* `.vertical-align-bottom`:添加这个样式到子元素上，实现垂直向下
+<div class="example-content"><div class="example example-box u-container-fluid">
+	<div class="u-row">
+
+		<div class="u-col-6">
+			<div class="vertical-align h" >
+      		    <button type="button" class="vertical-align-middle u-button  u-button-success ">垂直居中</button>
+	        </div>
+		</div>
+		<div class="u-col-6">
+			<div class="vertical-align h" >
+	 			<button type="button" class="vertical-align-bottom u-button  u-button-success ">垂直向下</button>
+	 		</div>
+		</div>
+	</div>
+</div>
+</div>
+<style>.example-box {
+    position: relative;
+    padding: 45px 15px 15px;
+    margin-right: 0;
+    margin-left: 0;
+    border: 1px solid #e0e0e0;
+}
+
+.example {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.vertical-align-bottom.u-button{
+	vertical-align: bottom;
+}
+</style>
+<div class="examples-code"><pre><code>&lt;div class="example example-box u-container-fluid">
+	&lt;div class="u-row">
+
+		&lt;div class="u-col-6">
+			&lt;div class="vertical-align h" >
+      		    &lt;button type="button" class="vertical-align-middle u-button  u-button-success ">垂直居中&lt;/button>
+	        &lt;/div>
+		&lt;/div>
+		&lt;div class="u-col-6">
+			&lt;div class="vertical-align h" >
+	 			&lt;button type="button" class="vertical-align-bottom u-button  u-button-success ">垂直向下&lt;/button>
+	 		&lt;/div>
+		&lt;/div>
+	&lt;/div>
+&lt;/div></code></pre>
+</div>
+<div class="examples-code"><pre><code>.example-box {
+    position: relative;
+    padding: 45px 15px 15px;
+    margin-right: 0;
+    margin-left: 0;
+    border: 1px solid #e0e0e0;
+}
+
+.example {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.vertical-align-bottom.u-button{
+	vertical-align: bottom;
+}</code></pre>
+</div>
+
+##字体大小
+字体尺寸提供了如下大小的字体：0，10，12，14，16，18，20，24，26，30，40，50，60，70，80。
+
+添加如下样式即可实现对应的效果。
+
+* `.font-size-0`: 字体号为0px
+* `.font-size-10`: 字体号为10px
+* `.font-size-12`: 字体号为12px
+* `.font-size-14`: 字体号为14px
+* `.font-size-16`: 字体号为16px
+* `.font-size-18`: 字体号为18px
+* `.font-size-20`: 字体号为20px
+* `.font-size-24`: 字体号为24px
+* `.font-size-26`: 字体号为26px
+* `.font-size-30`: 字体号为30px
+* `.font-size-40`: 字体号为40px
+* `.font-size-50`: 字体号为50px
+* `.font-size-60`: 字体号为60px
+* `.font-size-70`: 字体号为70px
+* `.font-size-80`: 字体号为80px
+
+##字体粗细
+字体粗细提供了如下粗细数值：unset、100、200、300、400、500、600、700、800、900。
+
+添加如下样式即可实现对应的效果。
+
+* `.font-weight-unset`: font-weight值为unset
+* `.font-weight-100`: font-weight值为100
+* `.font-weight-200`: font-weight值为200
+* `.font-weight-300`: font-weight值为300
+* `.font-weight-400`: font-weight值为400
+* `.font-weight-500`: font-weight值为500
+* `.font-weight-600`: font-weight值为600
+* `.font-weight-700`: font-weight值为700
+* `.font-weight-800`: font-weight值为800
+* `.font-weight-900`: font-weight值为900
+
 ##浮动
 浮动是创建各种布局的基础。但是浮动需要被清理。下面的类将帮助你设置基本的布局
 
@@ -94,128 +204,12 @@
 &lt;/div></code></pre>
 </div>
 
-##字体大小
-字体尺寸提供了如下大小的字体：0，10，12，14，16，18，20，24，26，30，40，50，60，70，80。
-
-添加如下样式即可实现对应的效果。
-
-* `.font-size-0`: 字体号为0px
-* `.font-size-10`: 字体号为10px
-* `.font-size-12`: 字体号为12px
-* `.font-size-14`: 字体号为14px
-* `.font-size-16`: 字体号为16px
-* `.font-size-18`: 字体号为18px
-* `.font-size-20`: 字体号为20px
-* `.font-size-24`: 字体号为24px
-* `.font-size-26`: 字体号为26px
-* `.font-size-30`: 字体号为30px
-* `.font-size-40`: 字体号为40px
-* `.font-size-50`: 字体号为50px
-* `.font-size-60`: 字体号为60px
-* `.font-size-70`: 字体号为70px
-* `.font-size-80`: 字体号为80px
-
-##垂直对齐
-添加如下样式即可实现垂直居中、垂直向下。
-
-* `.vertical-align`:添加这个样式到父元素上，该父元素需要指定高度
-* `.vertical-align-middle`:添加这个样式到到子元素上，实现垂直居中
-* `.vertical-align-bottom`:添加这个样式到子元素上，实现垂直向下
-<style>.example-box {
-    position: relative;
-    padding: 45px 15px 15px;
-    margin-right: 0;
-    margin-left: 0;
-    border: 1px solid #e0e0e0;
-}
-
-.example {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.vertical-align-bottom.u-button{
-	vertical-align: bottom;
-}
-</style>
-<div class="example-content"><div class="example example-box u-container-fluid">
-	<div class="u-row">
-
-		<div class="u-col-6">
-			<div class="vertical-align h" >
-      		    <button type="button" class="vertical-align-middle u-button  u-button-success ">垂直居中</button>
-	        </div>
-		</div>
-		<div class="u-col-6">
-			<div class="vertical-align h" >
-	 			<button type="button" class="vertical-align-bottom u-button  u-button-success ">垂直向下</button>
-	 		</div>
-		</div>
-	</div>
-</div>
-</div>
-<div class="examples-code"><pre><code>.example-box {
-    position: relative;
-    padding: 45px 15px 15px;
-    margin-right: 0;
-    margin-left: 0;
-    border: 1px solid #e0e0e0;
-}
-
-.example {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.vertical-align-bottom.u-button{
-	vertical-align: bottom;
-}</code></pre>
-</div>
-<div class="examples-code"><pre><code>&lt;div class="example example-box u-container-fluid">
-	&lt;div class="u-row">
-
-		&lt;div class="u-col-6">
-			&lt;div class="vertical-align h" >
-      		    &lt;button type="button" class="vertical-align-middle u-button  u-button-success ">垂直居中&lt;/button>
-	        &lt;/div>
-		&lt;/div>
-		&lt;div class="u-col-6">
-			&lt;div class="vertical-align h" >
-	 			&lt;button type="button" class="vertical-align-bottom u-button  u-button-success ">垂直向下&lt;/button>
-	 		&lt;/div>
-		&lt;/div>
-	&lt;/div>
-&lt;/div></code></pre>
-</div>
-
-##字体粗细
-字体粗细提供了如下粗细数值：unset、100、200、300、400、500、600、700、800、900。
-
-添加如下样式即可实现对应的效果。
-
-* `.font-weight-unset`: font-weight值为unset
-* `.font-weight-100`: font-weight值为100
-* `.font-weight-200`: font-weight值为200
-* `.font-weight-300`: font-weight值为300
-* `.font-weight-400`: font-weight值为400
-* `.font-weight-500`: font-weight值为500
-* `.font-weight-600`: font-weight值为600
-* `.font-weight-700`: font-weight值为700
-* `.font-weight-800`: font-weight值为800
-* `.font-weight-900`: font-weight值为900
-
 ##字体大小写转换
 添加如下样式即可实现文字大小写转换
 
 * `text-lowercase`: 将字母全部变成小写
 * `text-uppercase`: 将字母全部变成大写
 * `text-capitalize`: 将单词首字母大写
-<div class="example-content"><div class="example example-box">
-	<p class="text-lowercase">Lowercased text.</p>
-	<p class="text-uppercase">Uppercased text.</p>
-	<p class="text-capitalize">Capitalized text.</p>
-</div>
-</div>
 <style>.example-box {
     position: relative;
     padding: 45px 15px 15px;
@@ -229,11 +223,11 @@
     margin-bottom: 20px;
 }
 </style>
-<div class="examples-code"><pre><code>&lt;div class="example example-box">
-	&lt;p class="text-lowercase">Lowercased text.&lt;/p>
-	&lt;p class="text-uppercase">Uppercased text.&lt;/p>
-	&lt;p class="text-capitalize">Capitalized text.&lt;/p>
-&lt;/div></code></pre>
+<div class="example-content"><div class="example example-box">
+	<p class="text-lowercase">Lowercased text.</p>
+	<p class="text-uppercase">Uppercased text.</p>
+	<p class="text-capitalize">Capitalized text.</p>
+</div>
 </div>
 <div class="examples-code"><pre><code>.example-box {
     position: relative;
@@ -247,6 +241,12 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }</code></pre>
+</div>
+<div class="examples-code"><pre><code>&lt;div class="example example-box">
+	&lt;p class="text-lowercase">Lowercased text.&lt;/p>
+	&lt;p class="text-uppercase">Uppercased text.&lt;/p>
+	&lt;p class="text-capitalize">Capitalized text.&lt;/p>
+&lt;/div></code></pre>
 </div>
 
 ##文字包裹
@@ -444,22 +444,6 @@
 * `.height-auto`: height高度为auto
 * `.height-full`: height高度为100%
 
-##外间距
-margin提供了如下数值：0，3，5，10, 15, 20, 25, 30, 35, 40, 45, 50.
-
-以外边距5为例说明具体margin的使用方式
-
-
-| 样式名        | 描述           |
-| ------------- |:-------------:|
-| .margin-5   | margin:为5px |
-| .margin-vertical-5    | margin-top和margin-bottom均为 5px   |
-| .margin-horizontal-5 | margin-left和margin-right均为 5px    | 
-| .margin-top-5    | margin-top为 5px   |
-| .margin-right-5 | margin-right为 5px    | 
-| .margin-bottom-5   | margin-bottom为 5px   |
-| .margin-left-5 | margin-left为 5px    | 
-
 ##内间距
 padding提供了如下数值：0，3，5，10, 15, 20, 25, 30, 35, 40, 45, 50.
 
@@ -500,6 +484,22 @@ padding提供了如下数值：0，3，5，10, 15, 20, 25, 30, 35, 40, 45, 50.
 * `.inline`: 是元素变成内联元素，元素前后没有换行符
 * `.inline-block`: 行内块元素
 * `.block`: 块级元素，此元素前后会带有换行符
+
+##外间距
+margin提供了如下数值：0，3，5，10, 15, 20, 25, 30, 35, 40, 45, 50.
+
+以外边距5为例说明具体margin的使用方式
+
+
+| 样式名        | 描述           |
+| ------------- |:-------------:|
+| .margin-5   | margin:为5px |
+| .margin-vertical-5    | margin-top和margin-bottom均为 5px   |
+| .margin-horizontal-5 | margin-left和margin-right均为 5px    | 
+| .margin-top-5    | margin-top为 5px   |
+| .margin-right-5 | margin-right为 5px    | 
+| .margin-bottom-5   | margin-bottom为 5px   |
+| .margin-left-5 | margin-left为 5px    | 
 
 ##响应式显示
 通过单独或联合使用以下列出的类，可以针对不同屏幕尺寸隐藏或显示页面内容

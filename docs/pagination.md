@@ -37,6 +37,23 @@
   });</code></pre>
 </div>
 
+##有间距的分页
+添加样式`pagination-gap`可以增加页码之间的间距
+<div class="example-content"><div id='paginationGap' class='u-pagination pagination-gap'>
+</div>
+</div>
+<script> var paginationGap = document.getElementById('paginationGap');
+ var comp = new u.pagination({ el: paginationGap, jumppage: true });
+ comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
+</script>
+<div class="examples-code"><pre><code>&lt;div id='paginationGap' class='u-pagination pagination-gap'>
+&lt;/div></code></pre>
+</div>
+<div class="examples-code"><pre><code> var paginationGap = document.getElementById('paginationGap');
+ var comp = new u.pagination({ el: paginationGap, jumppage: true });
+ comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });</code></pre>
+</div>
+
 ##无边框的分页
 在含有`u-pagination`的div元素中添加`u-pagination-no-border`样式即可
 <div class="example-content"><div id='paginationNoBorder' class='u-pagination u-pagination-no-border'>
@@ -56,16 +73,6 @@
 
 ##不同尺寸的按钮
 添加`pagination-lg`、`pagination-sm`样式可以使分页变大、变小
-<div class="example-content"><p>大尺寸</p>
-<div id='paginationLg' class='u-pagination pagination-lg'>
-</div>
-<p>默认尺寸</p>
-<div id='paginationDefault' class='u-pagination'>
-</div>
-<p>小尺寸</p>
-<div id='paginationSm' class='u-pagination pagination-sm'>
-</div>
-</div>
 <script>var paginationLg = document.getElementById("paginationLg");
 var comp = new u.pagination({el:paginationLg,jumppage:true});
 comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200,showState:false});
@@ -76,15 +83,15 @@ var paginationSm = document.getElementById("paginationSm");
 var comp = new u.pagination({el:paginationSm,jumppage:true});
 comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200,showState:false});
 </script>
-<div class="examples-code"><pre><code>&lt;p>大尺寸&lt;/p>
-&lt;div id='paginationLg' class='u-pagination pagination-lg'>
-&lt;/div>
-&lt;p>默认尺寸&lt;/p>
-&lt;div id='paginationDefault' class='u-pagination'>
-&lt;/div>
-&lt;p>小尺寸&lt;/p>
-&lt;div id='paginationSm' class='u-pagination pagination-sm'>
-&lt;/div></code></pre>
+<div class="example-content"><p>大尺寸</p>
+<div id='paginationLg' class='u-pagination pagination-lg'>
+</div>
+<p>默认尺寸</p>
+<div id='paginationDefault' class='u-pagination'>
+</div>
+<p>小尺寸</p>
+<div id='paginationSm' class='u-pagination pagination-sm'>
+</div>
 </div>
 <div class="examples-code"><pre><code>var paginationLg = document.getElementById("paginationLg");
 var comp = new u.pagination({el:paginationLg,jumppage:true});
@@ -96,22 +103,15 @@ var paginationSm = document.getElementById("paginationSm");
 var comp = new u.pagination({el:paginationSm,jumppage:true});
 comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200,showState:false});</code></pre>
 </div>
-
-##有间距的分页
-添加样式`pagination-gap`可以增加页码之间的间距
-<div class="example-content"><div id='paginationGap' class='u-pagination pagination-gap'>
-</div>
-</div>
-<script> var paginationGap = document.getElementById('paginationGap');
- var comp = new u.pagination({ el: paginationGap, jumppage: true });
- comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
-</script>
-<div class="examples-code"><pre><code>&lt;div id='paginationGap' class='u-pagination pagination-gap'>
+<div class="examples-code"><pre><code>&lt;p>大尺寸&lt;/p>
+&lt;div id='paginationLg' class='u-pagination pagination-lg'>
+&lt;/div>
+&lt;p>默认尺寸&lt;/p>
+&lt;div id='paginationDefault' class='u-pagination'>
+&lt;/div>
+&lt;p>小尺寸&lt;/p>
+&lt;div id='paginationSm' class='u-pagination pagination-sm'>
 &lt;/div></code></pre>
-</div>
-<div class="examples-code"><pre><code> var paginationGap = document.getElementById('paginationGap');
- var comp = new u.pagination({ el: paginationGap, jumppage: true });
- comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });</code></pre>
 </div>
 
 
