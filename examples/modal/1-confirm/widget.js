@@ -1,11 +1,8 @@
-  u.compMgr.apply({
+u.compMgr.apply({
         el:'body'
-    })
-
- 
-    var msgBtn2 = document.body.querySelector("#msgDialogBtn2");
-    u.on(msgBtn2,'click', function(){
-//            u.showMessage("HELLO!!!");
+})
+var msgBtn2 = document.body.querySelector("#msgDialogBtn2");
+u.on(msgBtn2,'click', function(){
         u.confirmDialog({
             msg: "是否保存单据？",
             title: "测试确认",
@@ -16,5 +13,4 @@
                 alert('cancel')
             }
         });
-    })
-	
+})
