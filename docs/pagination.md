@@ -13,7 +13,7 @@
 <div class="example-content"><div id='pagination' class='u-pagination'>
 </div>
 </div>
-<script>  var element = document.getElementById("pagination");
+<div class="jstag" style="display:none">  var element = document.getElementById("pagination");
   var comp = new u.pagination({ el: element, jumppage: true });
   comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
   this.comp.on('pageChange', function(pageIndex) {
@@ -22,7 +22,7 @@
   this.comp.on('sizeChange', function(arg) {
       console.log('每页显示条数为' + arg[0]);
   });
-</script>
+</div>
 <div class="examples-code"><pre><code>&lt;div id='pagination' class='u-pagination'>
 &lt;/div></code></pre>
 </div>
@@ -42,10 +42,10 @@
 <div class="example-content"><div id='paginationGap' class='u-pagination pagination-gap'>
 </div>
 </div>
-<script> var paginationGap = document.getElementById('paginationGap');
+<div class="jstag" style="display:none"> var paginationGap = document.getElementById('paginationGap');
  var comp = new u.pagination({ el: paginationGap, jumppage: true });
  comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
-</script>
+</div>
 <div class="examples-code"><pre><code>&lt;div id='paginationGap' class='u-pagination pagination-gap'>
 &lt;/div></code></pre>
 </div>
@@ -59,10 +59,10 @@
 <div class="example-content"><div id='paginationNoBorder' class='u-pagination u-pagination-no-border'>
 </div>
 </div>
-<script> var paginationNoBorder = document.getElementById("paginationNoBorder");
+<div class="jstag" style="display:none"> var paginationNoBorder = document.getElementById("paginationNoBorder");
  var comp = new u.pagination({ el: paginationNoBorder, jumppage: true });
  comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
-</script>
+</div>
 <div class="examples-code"><pre><code>&lt;div id='paginationNoBorder' class='u-pagination u-pagination-no-border'>
 &lt;/div></code></pre>
 </div>
@@ -73,7 +73,7 @@
 
 ##不同尺寸的按钮
 添加`pagination-lg`、`pagination-sm`样式可以使分页变大、变小
-<script>var paginationLg = document.getElementById("paginationLg");
+<div class="jstag" style="display:none">var paginationLg = document.getElementById("paginationLg");
 var comp = new u.pagination({el:paginationLg,jumppage:true});
 comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200,showState:false});
 var paginationDefault = document.getElementById("paginationDefault");
@@ -82,7 +82,7 @@ comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200,showState:
 var paginationSm = document.getElementById("paginationSm");
 var comp = new u.pagination({el:paginationSm,jumppage:true});
 comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200,showState:false});
-</script>
+</div>
 <div class="example-content"><p>大尺寸</p>
 <div id='paginationLg' class='u-pagination pagination-lg'>
 </div>

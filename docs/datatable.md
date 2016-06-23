@@ -14,10 +14,10 @@ datatable控件
 复原色`<div>`添加`.table-responsive`
 
 
-<style>.u-table-base{
+<div class="csstag" style="display:none">.u-table-base{
     width: 600px;
 }
-</style>
+</div>
 <div class="example-content"><table class="u-table">
     <thead>
         <tr>
@@ -83,10 +83,10 @@ datatable控件
 父元素`<div>`上添加`.table-responsive`
 `<talbe>`上`.u-table-bordered`
 
-<style>.u-table-base{
+<div class="csstag" style="display:none">.u-table-base{
     width: 600px;
 }
-</style>
+</div>
 <div class="example-content"><div class="example table-responsive">
     <table class="u-table-base u-table-bordered">
         <thead>
@@ -238,6 +238,12 @@ datatable控件
 父元素`<div>`上添加`.table-responsive`
 `<talbe>`上添加`.u-table-hover`后鼠标经过表行 具有背景色
 
+<div class="csstag" style="display:none">/*#demoLeft{
+	width:40%;
+	border: 1px solid #EEEEEE;
+	min-height: 200px;
+}*/
+</div>
 <div class="example-content"><div class="example table-responsive">
     <table class="u-table-base u-table-hover">
         <thead>
@@ -308,12 +314,12 @@ datatable控件
     </table>
 </div>
 </div>
-<style>/*#demoLeft{
+<div class="examples-code"><pre><code>/*#demoLeft{
 	width:40%;
 	border: 1px solid #EEEEEE;
 	min-height: 200px;
-}*/
-</style>
+}*/</code></pre>
+</div>
 <div class="examples-code"><pre><code>&lt;div class="example table-responsive">
     &lt;table class="u-table-base u-table-hover">
         &lt;thead>
@@ -384,12 +390,6 @@ datatable控件
     &lt;/table>
 &lt;/div></code></pre>
 </div>
-<div class="examples-code"><pre><code>/*#demoLeft{
-	width:40%;
-	border: 1px solid #EEEEEE;
-	min-height: 200px;
-}*/</code></pre>
-</div>
 
 ##常用datatable
 
@@ -399,10 +399,10 @@ datatable控件
 
 
 
-<style>.u-table-base{
+<div class="csstag" style="display:none">.u-table-base{
     width: 600px;
 }
-</style>
+</div>
 <div class="example-content"><div class="example table-responsive">
     <table class="u-table-base">
         <thead>
@@ -554,10 +554,10 @@ datatable控件
 表体斑马背景区分两行
 `<table>`上添`.u-table-striped`
 
-<style>.u-table-base{
+<div class="csstag" style="display:none">.u-table-base{
     width: 600px;
 }
-</style>
+</div>
 <div class="example-content"><div class="example table-responsive">
     <table class="u-table-base u-table-striped">
         <thead>

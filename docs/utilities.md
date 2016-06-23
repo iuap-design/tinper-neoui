@@ -12,7 +12,7 @@
  
 #水平居中
 添加`.center-block`实现水平居中
-<style>.example-box {
+<div class="csstag" style="display:none">.example-box {
     position: relative;
     padding: 45px 15px 15px;
     margin-right: 0;
@@ -24,7 +24,7 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
-</style>
+</div>
 <div class="example-content"> <div class="example example-box">
 	<div class="h-64 w-64 bg-blue center-block ">
 		我是内容
@@ -51,29 +51,56 @@
 &lt;/div></code></pre>
 </div>
 
+##浮动
+浮动是创建各种布局的基础。但是浮动需要被清理。下面的类将帮助你设置基本的布局
+
+* `.pull-left`: 向左浮动
+* `.pull-right`: 向右浮动
+* `.clearfix`: 清除浮动 
+<div class="csstag" style="display:none">.example-box {
+    position: relative;
+    padding: 45px 15px 15px;
+    margin-right: 0;
+    margin-left: 0;
+    border: 1px solid #e0e0e0;
+}
+
+.example {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+</div>
+<div class="example-content"><div class="example example-box">
+  <button type="button" class="u-button  u-button-success ">Left</button>
+  <button type="button" class="u-button  u-button-success  pull-right" >Pull right</button>
+</div>
+</div>
+<div class="examples-code"><pre><code>.example-box {
+    position: relative;
+    padding: 45px 15px 15px;
+    margin-right: 0;
+    margin-left: 0;
+    border: 1px solid #e0e0e0;
+}
+
+.example {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}</code></pre>
+</div>
+<div class="examples-code"><pre><code>&lt;div class="example example-box">
+  &lt;button type="button" class="u-button  u-button-success ">Left&lt;/button>
+  &lt;button type="button" class="u-button  u-button-success  pull-right" >Pull right&lt;/button>
+&lt;/div></code></pre>
+</div>
+
 ##垂直对齐
 添加如下样式即可实现垂直居中、垂直向下。
 
 * `.vertical-align`:添加这个样式到父元素上，该父元素需要指定高度
 * `.vertical-align-middle`:添加这个样式到到子元素上，实现垂直居中
 * `.vertical-align-bottom`:添加这个样式到子元素上，实现垂直向下
-<div class="example-content"><div class="example example-box u-container-fluid">
-	<div class="u-row">
-
-		<div class="u-col-6">
-			<div class="vertical-align h" >
-      		    <button type="button" class="vertical-align-middle u-button  u-button-success ">垂直居中</button>
-	        </div>
-		</div>
-		<div class="u-col-6">
-			<div class="vertical-align h" >
-	 			<button type="button" class="vertical-align-bottom u-button  u-button-success ">垂直向下</button>
-	 		</div>
-		</div>
-	</div>
-</div>
-</div>
-<style>.example-box {
+<div class="csstag" style="display:none">.example-box {
     position: relative;
     padding: 45px 15px 15px;
     margin-right: 0;
@@ -89,22 +116,22 @@
 .vertical-align-bottom.u-button{
 	vertical-align: bottom;
 }
-</style>
-<div class="examples-code"><pre><code>&lt;div class="example example-box u-container-fluid">
-	&lt;div class="u-row">
+</div>
+<div class="example-content"><div class="example example-box u-container-fluid">
+	<div class="u-row">
 
-		&lt;div class="u-col-6">
-			&lt;div class="vertical-align h" >
-      		    &lt;button type="button" class="vertical-align-middle u-button  u-button-success ">垂直居中&lt;/button>
-	        &lt;/div>
-		&lt;/div>
-		&lt;div class="u-col-6">
-			&lt;div class="vertical-align h" >
-	 			&lt;button type="button" class="vertical-align-bottom u-button  u-button-success ">垂直向下&lt;/button>
-	 		&lt;/div>
-		&lt;/div>
-	&lt;/div>
-&lt;/div></code></pre>
+		<div class="u-col-6">
+			<div class="vertical-align h" >
+      		    <button type="button" class="vertical-align-middle u-button  u-button-success ">垂直居中</button>
+	        </div>
+		</div>
+		<div class="u-col-6">
+			<div class="vertical-align h" >
+	 			<button type="button" class="vertical-align-bottom u-button  u-button-success ">垂直向下</button>
+	 		</div>
+		</div>
+	</div>
+</div>
 </div>
 <div class="examples-code"><pre><code>.example-box {
     position: relative;
@@ -122,6 +149,22 @@
 .vertical-align-bottom.u-button{
 	vertical-align: bottom;
 }</code></pre>
+</div>
+<div class="examples-code"><pre><code>&lt;div class="example example-box u-container-fluid">
+	&lt;div class="u-row">
+
+		&lt;div class="u-col-6">
+			&lt;div class="vertical-align h" >
+      		    &lt;button type="button" class="vertical-align-middle u-button  u-button-success ">垂直居中&lt;/button>
+	        &lt;/div>
+		&lt;/div>
+		&lt;div class="u-col-6">
+			&lt;div class="vertical-align h" >
+	 			&lt;button type="button" class="vertical-align-bottom u-button  u-button-success ">垂直向下&lt;/button>
+	 		&lt;/div>
+		&lt;/div>
+	&lt;/div>
+&lt;/div></code></pre>
 </div>
 
 ##字体大小
@@ -161,56 +204,19 @@
 * `.font-weight-800`: font-weight值为800
 * `.font-weight-900`: font-weight值为900
 
-##浮动
-浮动是创建各种布局的基础。但是浮动需要被清理。下面的类将帮助你设置基本的布局
-
-* `.pull-left`: 向左浮动
-* `.pull-right`: 向右浮动
-* `.clearfix`: 清除浮动 
-<style>.example-box {
-    position: relative;
-    padding: 45px 15px 15px;
-    margin-right: 0;
-    margin-left: 0;
-    border: 1px solid #e0e0e0;
-}
-
-.example {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-</style>
-<div class="example-content"><div class="example example-box">
-  <button type="button" class="u-button  u-button-success ">Left</button>
-  <button type="button" class="u-button  u-button-success  pull-right" >Pull right</button>
-</div>
-</div>
-<div class="examples-code"><pre><code>.example-box {
-    position: relative;
-    padding: 45px 15px 15px;
-    margin-right: 0;
-    margin-left: 0;
-    border: 1px solid #e0e0e0;
-}
-
-.example {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}</code></pre>
-</div>
-<div class="examples-code"><pre><code>&lt;div class="example example-box">
-  &lt;button type="button" class="u-button  u-button-success ">Left&lt;/button>
-  &lt;button type="button" class="u-button  u-button-success  pull-right" >Pull right&lt;/button>
-&lt;/div></code></pre>
-</div>
-
 ##字体大小写转换
 添加如下样式即可实现文字大小写转换
 
 * `text-lowercase`: 将字母全部变成小写
 * `text-uppercase`: 将字母全部变成大写
 * `text-capitalize`: 将单词首字母大写
-<style>.example-box {
+<div class="example-content"><div class="example example-box">
+	<p class="text-lowercase">Lowercased text.</p>
+	<p class="text-uppercase">Uppercased text.</p>
+	<p class="text-capitalize">Capitalized text.</p>
+</div>
+</div>
+<div class="csstag" style="display:none">.example-box {
     position: relative;
     padding: 45px 15px 15px;
     margin-right: 0;
@@ -222,12 +228,12 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
-</style>
-<div class="example-content"><div class="example example-box">
-	<p class="text-lowercase">Lowercased text.</p>
-	<p class="text-uppercase">Uppercased text.</p>
-	<p class="text-capitalize">Capitalized text.</p>
 </div>
+<div class="examples-code"><pre><code>&lt;div class="example example-box">
+	&lt;p class="text-lowercase">Lowercased text.&lt;/p>
+	&lt;p class="text-uppercase">Uppercased text.&lt;/p>
+	&lt;p class="text-capitalize">Capitalized text.&lt;/p>
+&lt;/div></code></pre>
 </div>
 <div class="examples-code"><pre><code>.example-box {
     position: relative;
@@ -241,12 +247,6 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }</code></pre>
-</div>
-<div class="examples-code"><pre><code>&lt;div class="example example-box">
-	&lt;p class="text-lowercase">Lowercased text.&lt;/p>
-	&lt;p class="text-uppercase">Uppercased text.&lt;/p>
-	&lt;p class="text-capitalize">Capitalized text.&lt;/p>
-&lt;/div></code></pre>
 </div>
 
 ##文字包裹
@@ -256,7 +256,7 @@
 * `text-truncate`: 内容显示到一行，多余的内容用`...`代替
 * `text-break`: 当内容超出容器宽度时，将自动折行
 * `text-nowrap`: 当内容超出容器宽度时，在一行显示，不折行。
-<style>.example-box {
+<div class="csstag" style="display:none">.example-box {
     position: relative;
     padding: 45px 15px 15px;
     margin-right: 0;
@@ -272,7 +272,7 @@
 .vertical-align-bottom.u-button {
     vertical-align: bottom;
 }
-</style>
+</div>
 <div class="example-content"><p>文字是否包裹换行</p>
 <div class="example example-box u-container-fluid " style="width:500px">
     <div class="u-row">
@@ -353,7 +353,7 @@
 * `text-center`: 文字水平居中对齐
 * `text-right`: 文字水平向右对齐
 * `text-justify`: 文字两端对齐
-<style> .example-box {
+<div class="csstag" style="display:none"> .example-box {
     position: relative;
     padding: 45px 15px 15px;
     margin-right: 0;
@@ -365,7 +365,7 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
-</style>
+</div>
 <div class="example-content"><div class="example example-box u-container-fluid">
     <div class="row">
         <div class="col-md-4 m-b-sm bg-grey h-64">
@@ -444,6 +444,22 @@
 * `.height-auto`: height高度为auto
 * `.height-full`: height高度为100%
 
+##外间距
+margin提供了如下数值：0，3，5，10, 15, 20, 25, 30, 35, 40, 45, 50.
+
+以外边距5为例说明具体margin的使用方式
+
+
+| 样式名        | 描述           |
+| ------------- |:-------------:|
+| .margin-5   | margin:为5px |
+| .margin-vertical-5    | margin-top和margin-bottom均为 5px   |
+| .margin-horizontal-5 | margin-left和margin-right均为 5px    | 
+| .margin-top-5    | margin-top为 5px   |
+| .margin-right-5 | margin-right为 5px    | 
+| .margin-bottom-5   | margin-bottom为 5px   |
+| .margin-left-5 | margin-left为 5px    | 
+
 ##内间距
 padding提供了如下数值：0，3，5，10, 15, 20, 25, 30, 35, 40, 45, 50.
 
@@ -484,22 +500,6 @@ padding提供了如下数值：0，3，5，10, 15, 20, 25, 30, 35, 40, 45, 50.
 * `.inline`: 是元素变成内联元素，元素前后没有换行符
 * `.inline-block`: 行内块元素
 * `.block`: 块级元素，此元素前后会带有换行符
-
-##外间距
-margin提供了如下数值：0，3，5，10, 15, 20, 25, 30, 35, 40, 45, 50.
-
-以外边距5为例说明具体margin的使用方式
-
-
-| 样式名        | 描述           |
-| ------------- |:-------------:|
-| .margin-5   | margin:为5px |
-| .margin-vertical-5    | margin-top和margin-bottom均为 5px   |
-| .margin-horizontal-5 | margin-left和margin-right均为 5px    | 
-| .margin-top-5    | margin-top为 5px   |
-| .margin-right-5 | margin-right为 5px    | 
-| .margin-bottom-5   | margin-bottom为 5px   |
-| .margin-left-5 | margin-left为 5px    | 
 
 ##响应式显示
 通过单独或联合使用以下列出的类，可以针对不同屏幕尺寸隐藏或显示页面内容

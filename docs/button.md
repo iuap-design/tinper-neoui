@@ -20,6 +20,29 @@
 &lt;button class="u-button raised primary">BUTTON&lt;/button></code></pre>
 </div>
 
+##圆形按钮
+在含有`u-button`样式的button上添加`floating`样式，即可实现圆形按钮。
+<div class="example-content"><button class="u-button floating">
+    <i class="fa fa-plus"></i>
+</button>
+<button class="u-button floating accent">
+    <i class="fa fa-plus"></i>
+</button>
+<button class="u-button floating primary">
+    <i class="fa fa-plus"></i>
+</button>
+</div>
+<div class="examples-code"><pre><code>&lt;button class="u-button floating">
+    &lt;i class="fa fa-plus">&lt;/i>
+&lt;/button>
+&lt;button class="u-button floating accent">
+    &lt;i class="fa fa-plus">&lt;/i>
+&lt;/button>
+&lt;button class="u-button floating primary">
+    &lt;i class="fa fa-plus">&lt;/i>
+&lt;/button></code></pre>
+</div>
+
 ﻿##文字按钮
 <div class="example-content"><button class="u-button">BUTTON</button>
 <button class="u-button accent">BUTTON</button>
@@ -86,29 +109,6 @@
 &lt;/button></code></pre>
 </div>
 
-##圆形按钮
-在含有`u-button`样式的button上添加`floating`样式，即可实现圆形按钮。
-<div class="example-content"><button class="u-button floating">
-    <i class="fa fa-plus"></i>
-</button>
-<button class="u-button floating accent">
-    <i class="fa fa-plus"></i>
-</button>
-<button class="u-button floating primary">
-    <i class="fa fa-plus"></i>
-</button>
-</div>
-<div class="examples-code"><pre><code>&lt;button class="u-button floating">
-    &lt;i class="fa fa-plus">&lt;/i>
-&lt;/button>
-&lt;button class="u-button floating accent">
-    &lt;i class="fa fa-plus">&lt;/i>
-&lt;/button>
-&lt;button class="u-button floating primary">
-    &lt;i class="fa fa-plus">&lt;/i>
-&lt;/button></code></pre>
-</div>
-
 ##左半圆按钮、右半圆按钮
 左半圆按钮的样式：`.u-button-pill-left`和 `.u-button-round`一起使用
 
@@ -123,38 +123,6 @@
 &lt;/button>
 &lt;button class="u-button raised primary u-button-pill-right u-button-squared">右半圆按钮
 &lt;/button></code></pre>
-</div>
-
-##基本菜单按钮
-菜单按钮包括一个普通的button按钮和一个下拉内容ul元素。显示效果有4种，
-分别为：显示在按钮下方，左对齐、显示在按钮下方，右对齐、显示在按钮上方，左对齐、显示在按钮上方，右对齐。
-
-具体使用
-
-* 创建button元素，添加id属性，属性值可以自己定义 点击它时，菜单会进行隐藏或者显示。
-
-* 创建样式为“u-menu”的ul下拉列表，用于包括菜单内容。ul上定义for属性，属性值与第一步创建button中的id对应。菜单的样式还可以选择`u-menu-bottom-left`、`u-menu-bottom-right`、`u-menu-top-left`、`u-menu-top-right`中的一个来表示菜单相对于按钮的显示位置。
-
-* 在ul标签内，使用样式为`u-menu-item`的li标签定义菜单的具体内容，当li标签不可用时，可以添加`disabled`属性。
-
-
-<div class="example-content"><button class="u-button  raised u-menu-button" id="demo-menu-lower-right1">
-    联查
-    <span class="u-right-icon fa fa-angle-down"></span>
-</button>
-<ul class="u-menu u-menu-bottom-right" for="demo-menu-lower-right1">
-    <li class="u-menu-item "><a>报价单</a></li>
-    <li class="u-menu-item"><a>到货单</a></li>
-</ul>
-</div>
-<div class="examples-code"><pre><code>&lt;button class="u-button  raised u-menu-button" id="demo-menu-lower-right1">
-    联查
-    &lt;span class="u-right-icon fa fa-angle-down">&lt;/span>
-&lt;/button>
-&lt;ul class="u-menu u-menu-bottom-right" for="demo-menu-lower-right1">
-    &lt;li class="u-menu-item ">&lt;a>报价单&lt;/a>&lt;/li>
-    &lt;li class="u-menu-item">&lt;a>到货单&lt;/a>&lt;/li>
-&lt;/ul></code></pre>
 </div>
 
 ##不同颜色的下拉按钮
@@ -260,6 +228,38 @@
         &lt;/ul>
     &lt;/div>
 &lt;/div></code></pre>
+</div>
+
+##基本菜单按钮
+菜单按钮包括一个普通的button按钮和一个下拉内容ul元素。显示效果有4种，
+分别为：显示在按钮下方，左对齐、显示在按钮下方，右对齐、显示在按钮上方，左对齐、显示在按钮上方，右对齐。
+
+具体使用
+
+* 创建button元素，添加id属性，属性值可以自己定义 点击它时，菜单会进行隐藏或者显示。
+
+* 创建样式为“u-menu”的ul下拉列表，用于包括菜单内容。ul上定义for属性，属性值与第一步创建button中的id对应。菜单的样式还可以选择`u-menu-bottom-left`、`u-menu-bottom-right`、`u-menu-top-left`、`u-menu-top-right`中的一个来表示菜单相对于按钮的显示位置。
+
+* 在ul标签内，使用样式为`u-menu-item`的li标签定义菜单的具体内容，当li标签不可用时，可以添加`disabled`属性。
+
+
+<div class="example-content"><button class="u-button  raised u-menu-button" id="demo-menu-lower-right1">
+    联查
+    <span class="u-right-icon fa fa-angle-down"></span>
+</button>
+<ul class="u-menu u-menu-bottom-right" for="demo-menu-lower-right1">
+    <li class="u-menu-item "><a>报价单</a></li>
+    <li class="u-menu-item"><a>到货单</a></li>
+</ul>
+</div>
+<div class="examples-code"><pre><code>&lt;button class="u-button  raised u-menu-button" id="demo-menu-lower-right1">
+    联查
+    &lt;span class="u-right-icon fa fa-angle-down">&lt;/span>
+&lt;/button>
+&lt;ul class="u-menu u-menu-bottom-right" for="demo-menu-lower-right1">
+    &lt;li class="u-menu-item ">&lt;a>报价单&lt;/a>&lt;/li>
+    &lt;li class="u-menu-item">&lt;a>到货单&lt;/a>&lt;/li>
+&lt;/ul></code></pre>
 </div>
 
 ##分割按钮

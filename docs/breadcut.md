@@ -42,11 +42,11 @@
 
 "/"为分隔符,并添加Home icon
 
-<style>.md-home:before {
+<div class="csstag" style="display:none">.md-home:before {
     content: "\f015";
     font-family: 'FontAwesome';
 }
-</style>
+</div>
 <div class="example-content">
 <ol class="u-breadcrumb">
     <li><a class="icon md-home u-link" href="javascript:void(0)">Home</a></li>
@@ -80,11 +80,11 @@
 
 ">>"为分隔符
 
-<style>.md-home:before {
+<div class="csstag" style="display:none">.md-home:before {
     content: "\f015";
     font-family: 'FontAwesome';
 }
-</style>
+</div>
 <div class="example-content">
 <ol class="u-breadcrumb u-breadcrumb-arrow">
     <li><a class="u-link" href="javascript:void(0)">Home</a></li>
