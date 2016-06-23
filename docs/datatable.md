@@ -236,161 +236,6 @@ datatable控件
 &lt;/div></code></pre>
 </div>
 
-##斑马datatable
-
-
-表体斑马背景区分两行
-`<table>`上添`.u-table-striped`
-
-<div class="example-content"><div class="example table-responsive">
-    <table class="u-table-base u-table-striped">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>名</th>
-                <th>姓氏</th>
-                <th>用户名</th>
-                <th>角色</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Teagan</td>
-                <td>Prohaska</td>
-                <td>@Elijah</td>
-                <td>
-                    admin
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Andy</td>
-                <td>Gaylord</td>
-                <td>@Ramiro</td>
-                <td>
-                    member
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Veronica</td>
-                <td>Gusikowski</td>
-                <td>@Maxime</td>
-                <td>
-                    developer
-                </td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Bruce</td>
-                <td>Rogahn</td>
-                <td>@Maggio</td>
-                <td>
-                   supporter
-                </td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Carolina</td>
-                <td>Hickle</td>
-                <td>@Hammes</td>
-                <td>
-                    member
-                </td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Madaline</td>
-                <td>Eichmann</td>
-                <td>@Amaya</td>
-                <td>
-                    supporter
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-</div>
-<style>.u-table-base{
-    width: 600px;
-}
-</style>
-<div class="examples-code"><pre><code>&lt;div class="example table-responsive">
-    &lt;table class="u-table-base u-table-striped">
-        &lt;thead>
-            &lt;tr>
-                &lt;th>#&lt;/th>
-                &lt;th>名&lt;/th>
-                &lt;th>姓氏&lt;/th>
-                &lt;th>用户名&lt;/th>
-                &lt;th>角色&lt;/th>
-            &lt;/tr>
-        &lt;/thead>
-        &lt;tbody>
-            &lt;tr>
-                &lt;td>1&lt;/td>
-                &lt;td>Teagan&lt;/td>
-                &lt;td>Prohaska&lt;/td>
-                &lt;td>@Elijah&lt;/td>
-                &lt;td>
-                    admin
-                &lt;/td>
-            &lt;/tr>
-            &lt;tr>
-                &lt;td>2&lt;/td>
-                &lt;td>Andy&lt;/td>
-                &lt;td>Gaylord&lt;/td>
-                &lt;td>@Ramiro&lt;/td>
-                &lt;td>
-                    member
-                &lt;/td>
-            &lt;/tr>
-            &lt;tr>
-                &lt;td>3&lt;/td>
-                &lt;td>Veronica&lt;/td>
-                &lt;td>Gusikowski&lt;/td>
-                &lt;td>@Maxime&lt;/td>
-                &lt;td>
-                    developer
-                &lt;/td>
-            &lt;/tr>
-            &lt;tr>
-                &lt;td>4&lt;/td>
-                &lt;td>Bruce&lt;/td>
-                &lt;td>Rogahn&lt;/td>
-                &lt;td>@Maggio&lt;/td>
-                &lt;td>
-                   supporter
-                &lt;/td>
-            &lt;/tr>
-            &lt;tr>
-                &lt;td>5&lt;/td>
-                &lt;td>Carolina&lt;/td>
-                &lt;td>Hickle&lt;/td>
-                &lt;td>@Hammes&lt;/td>
-                &lt;td>
-                    member
-                &lt;/td>
-            &lt;/tr>
-            &lt;tr>
-                &lt;td>6&lt;/td>
-                &lt;td>Madaline&lt;/td>
-                &lt;td>Eichmann&lt;/td>
-                &lt;td>@Amaya&lt;/td>
-                &lt;td>
-                    supporter
-                &lt;/td>
-            &lt;/tr>
-        &lt;/tbody>
-    &lt;/table>
-&lt;/div></code></pre>
-</div>
-<div class="examples-code"><pre><code>.u-table-base{
-    width: 600px;
-}</code></pre>
-</div>
-
 ##基础datatable
 
 
@@ -634,6 +479,161 @@ datatable控件
 </div>
 <div class="examples-code"><pre><code>&lt;div class="example table-responsive">
     &lt;table class="u-table-base">
+        &lt;thead>
+            &lt;tr>
+                &lt;th>#&lt;/th>
+                &lt;th>名&lt;/th>
+                &lt;th>姓氏&lt;/th>
+                &lt;th>用户名&lt;/th>
+                &lt;th>角色&lt;/th>
+            &lt;/tr>
+        &lt;/thead>
+        &lt;tbody>
+            &lt;tr>
+                &lt;td>1&lt;/td>
+                &lt;td>Teagan&lt;/td>
+                &lt;td>Prohaska&lt;/td>
+                &lt;td>@Elijah&lt;/td>
+                &lt;td>
+                    admin
+                &lt;/td>
+            &lt;/tr>
+            &lt;tr>
+                &lt;td>2&lt;/td>
+                &lt;td>Andy&lt;/td>
+                &lt;td>Gaylord&lt;/td>
+                &lt;td>@Ramiro&lt;/td>
+                &lt;td>
+                    member
+                &lt;/td>
+            &lt;/tr>
+            &lt;tr>
+                &lt;td>3&lt;/td>
+                &lt;td>Veronica&lt;/td>
+                &lt;td>Gusikowski&lt;/td>
+                &lt;td>@Maxime&lt;/td>
+                &lt;td>
+                    developer
+                &lt;/td>
+            &lt;/tr>
+            &lt;tr>
+                &lt;td>4&lt;/td>
+                &lt;td>Bruce&lt;/td>
+                &lt;td>Rogahn&lt;/td>
+                &lt;td>@Maggio&lt;/td>
+                &lt;td>
+                   supporter
+                &lt;/td>
+            &lt;/tr>
+            &lt;tr>
+                &lt;td>5&lt;/td>
+                &lt;td>Carolina&lt;/td>
+                &lt;td>Hickle&lt;/td>
+                &lt;td>@Hammes&lt;/td>
+                &lt;td>
+                    member
+                &lt;/td>
+            &lt;/tr>
+            &lt;tr>
+                &lt;td>6&lt;/td>
+                &lt;td>Madaline&lt;/td>
+                &lt;td>Eichmann&lt;/td>
+                &lt;td>@Amaya&lt;/td>
+                &lt;td>
+                    supporter
+                &lt;/td>
+            &lt;/tr>
+        &lt;/tbody>
+    &lt;/table>
+&lt;/div></code></pre>
+</div>
+
+##斑马datatable
+
+
+表体斑马背景区分两行
+`<table>`上添`.u-table-striped`
+
+<style>.u-table-base{
+    width: 600px;
+}
+</style>
+<div class="example-content"><div class="example table-responsive">
+    <table class="u-table-base u-table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>名</th>
+                <th>姓氏</th>
+                <th>用户名</th>
+                <th>角色</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Teagan</td>
+                <td>Prohaska</td>
+                <td>@Elijah</td>
+                <td>
+                    admin
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Andy</td>
+                <td>Gaylord</td>
+                <td>@Ramiro</td>
+                <td>
+                    member
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Veronica</td>
+                <td>Gusikowski</td>
+                <td>@Maxime</td>
+                <td>
+                    developer
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Bruce</td>
+                <td>Rogahn</td>
+                <td>@Maggio</td>
+                <td>
+                   supporter
+                </td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Carolina</td>
+                <td>Hickle</td>
+                <td>@Hammes</td>
+                <td>
+                    member
+                </td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Madaline</td>
+                <td>Eichmann</td>
+                <td>@Amaya</td>
+                <td>
+                    supporter
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+<div class="examples-code"><pre><code>.u-table-base{
+    width: 600px;
+}</code></pre>
+</div>
+<div class="examples-code"><pre><code>&lt;div class="example table-responsive">
+    &lt;table class="u-table-base u-table-striped">
         &lt;thead>
             &lt;tr>
                 &lt;th>#&lt;/th>

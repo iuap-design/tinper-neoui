@@ -52,6 +52,10 @@
 
 
 用于推送消息或提醒时，在标签dom元素中添加添加具体的图标即可。
+<style>.demo .u-badge{
+    display: inline-block;
+}
+</style>
 <div class="example-content"><div class="u-badge w-20 m" data-badge="1">
     <i class="fa fa-bell"></i>
 </div>
@@ -59,19 +63,15 @@
     <i class="fa fa-bell"></i>
 </div>
 </div>
-<style>.demo .u-badge{
+<div class="examples-code"><pre><code>.demo .u-badge{
     display: inline-block;
-}
-</style>
+}</code></pre>
+</div>
 <div class="examples-code"><pre><code>&lt;div class="u-badge w-20 m" data-badge="1">
     &lt;i class="fa fa-bell">&lt;/i>
 &lt;/div>
 &lt;div class="u-badge u-badge-no-background w-20 m" data-badge="1">
     &lt;i class="fa fa-bell">&lt;/i>
 &lt;/div></code></pre>
-</div>
-<div class="examples-code"><pre><code>.demo .u-badge{
-    display: inline-block;
-}</code></pre>
 </div>
 

@@ -14,17 +14,6 @@ tooltip控件
 
 当前选中状态 li 添加 active class
 不可用状态   li 添加 disable 属性 
-<div class="example-content"><div id='example'>
-	<label id="top" class="ws">上提示</label>
-	<label id="down" class="ws">下提示</label>
-	<label id="left" class="ws">左提示</label>
-	<label id="right" class="ws">右提示</label>
-</div>
-
-
-
-
-</div>
 <style>.ws{
 	width: 60px;
 	display: inline-block;
@@ -102,16 +91,16 @@ colorLevel:'tooltip-danger'
 });
 
 </script>
-<div class="examples-code"><pre><code>&lt;div id='example'>
-	&lt;label id="top" class="ws">上提示&lt;/label>
-	&lt;label id="down" class="ws">下提示&lt;/label>
-	&lt;label id="left" class="ws">左提示&lt;/label>
-	&lt;label id="right" class="ws">右提示&lt;/label>
-&lt;/div>
+<div class="example-content"><div id='example'>
+	<label id="top" class="ws">上提示</label>
+	<label id="down" class="ws">下提示</label>
+	<label id="left" class="ws">左提示</label>
+	<label id="right" class="ws">右提示</label>
+</div>
 
 
 
-</code></pre>
+
 </div>
 <div class="examples-code"><pre><code>.ws{
 	width: 60px;
@@ -190,6 +179,88 @@ colorLevel:'tooltip-danger'
 });
 </code></pre>
 </div>
+<div class="examples-code"><pre><code>&lt;div id='example'>
+	&lt;label id="top" class="ws">上提示&lt;/label>
+	&lt;label id="down" class="ws">下提示&lt;/label>
+	&lt;label id="left" class="ws">左提示&lt;/label>
+	&lt;label id="right" class="ws">右提示&lt;/label>
+&lt;/div>
+
+
+
+</code></pre>
+</div>
+
+##静态四个方向tooltip
+<style> #example3,#example2{
+    margin: 10px;
+    float: left;
+    margin-left: 115px;
+}
+</style>
+<div class="example-content"><div id='example3'>
+    <div class="tooltip tooltip-primary top active" role="tooltip">
+        <div class="tooltip-arrow"></div>
+        <div class="tooltip-inner">primary tooltip</div>
+    </div>
+</div>
+<div id='example3'>
+    <div class="tooltip tooltip-info top active" role="tooltip">
+        <div class="tooltip-arrow"></div>
+        <div class="tooltip-inner">info tooltip</div>
+    </div>
+</div>
+<div id='example3'>
+    <div class="tooltip tooltip-warning top active" role="tooltip">
+        <div class="tooltip-arrow"></div>
+        <div class="tooltip-inner">warning tooltip</div>
+    </div>
+</div>
+<div id='example3'>
+    <div class="tooltip tooltip-success top active" role="tooltip">
+        <div class="tooltip-arrow"></div>
+        <div class="tooltip-inner">success tooltip</div>
+    </div>
+</div>
+<div id='example3'>
+    <div class="tooltip tooltip-danger top active" role="tooltip" >
+        <div class="tooltip-arrow"></div>
+        <div class="tooltip-inner">danger tooltip</div>
+    </div>
+</div>
+</div>
+
+<div class="examples-code"><pre><code>&lt;div id='example3'>
+    &lt;div class="tooltip tooltip-primary top active" role="tooltip">
+        &lt;div class="tooltip-arrow">&lt;/div>
+        &lt;div class="tooltip-inner">primary tooltip&lt;/div>
+    &lt;/div>
+&lt;/div>
+&lt;div id='example3'>
+    &lt;div class="tooltip tooltip-info top active" role="tooltip">
+        &lt;div class="tooltip-arrow">&lt;/div>
+        &lt;div class="tooltip-inner">info tooltip&lt;/div>
+    &lt;/div>
+&lt;/div>
+&lt;div id='example3'>
+    &lt;div class="tooltip tooltip-warning top active" role="tooltip">
+        &lt;div class="tooltip-arrow">&lt;/div>
+        &lt;div class="tooltip-inner">warning tooltip&lt;/div>
+    &lt;/div>
+&lt;/div>
+&lt;div id='example3'>
+    &lt;div class="tooltip tooltip-success top active" role="tooltip">
+        &lt;div class="tooltip-arrow">&lt;/div>
+        &lt;div class="tooltip-inner">success tooltip&lt;/div>
+    &lt;/div>
+&lt;/div>
+&lt;div id='example3'>
+    &lt;div class="tooltip tooltip-danger top active" role="tooltip" >
+        &lt;div class="tooltip-arrow">&lt;/div>
+        &lt;div class="tooltip-inner">danger tooltip&lt;/div>
+    &lt;/div>
+&lt;/div></code></pre>
+</div>
 
 ##基础tooltip
 
@@ -199,7 +270,6 @@ colorLevel:'tooltip-danger'
 
 <div class="example-content">
 <div id='example1'>
-	<p>各种颜色tooltips</p>
 	<label id="primary" class="ws">primary</label>
 	<label id="info" class="ws">info</label>
 	<label id="warning" class="ws">warning</label>
@@ -370,6 +440,71 @@ title:'danger tooltip',
 colorLevel:'tooltip-danger'
 });
 </code></pre>
+</div>
+
+##静态多颜色tooltip 
+
+<style> #example3,#example2{
+    margin: 10px;
+    float: left;
+    margin-left: 115px;
+}
+</style>
+<div class="example-content"><div id='example2'>
+    <div class="tooltip top active" role="tooltip" >
+      <div class="tooltip-arrow"></div>
+      <div class="tooltip-inner">默认向上显示</div>
+  </div>
+</div>
+<div id='example2'>
+  <div class="tooltip bottom active" role="tooltip">
+      <div class="tooltip-arrow"></div>
+      <div class="tooltip-inner">向下显示</div>
+  </div>
+</div>
+<div id='example2'>
+  <div class="tooltip left active" role="tooltip">
+      <div class="tooltip-arrow"></div>
+      <div class="tooltip-inner">向左显示</div>
+  </div>
+</div>
+<div id='example2'>
+  <div class="tooltip right active" role="tooltip">
+      <div class="tooltip-arrow"></div>
+      <div class="tooltip-inner">向右显示</div>
+  </div>
+</div>
+</div>
+<div class="examples-code"><pre><code> #example3,#example2{
+    margin: 10px;
+    float: left;
+    margin-left: 115px;
+}</code></pre>
+</div>
+<div class="examples-code"><pre><code>&lt;div id='example2'>
+    &lt;div class="tooltip top active" role="tooltip" >
+      &lt;div class="tooltip-arrow">&lt;/div>
+      &lt;div class="tooltip-inner">默认向上显示&lt;/div>
+  &lt;/div>
+&lt;/div>
+&lt;div id='example2'>
+  &lt;div class="tooltip bottom active" role="tooltip">
+      &lt;div class="tooltip-arrow">&lt;/div>
+      &lt;div class="tooltip-inner">向下显示&lt;/div>
+  &lt;/div>
+&lt;/div>
+&lt;div id='example2'>
+  &lt;div class="tooltip left active" role="tooltip">
+      &lt;div class="tooltip-arrow">&lt;/div>
+      &lt;div class="tooltip-inner">向左显示&lt;/div>
+  &lt;/div>
+&lt;/div>
+&lt;div id='example2'>
+  &lt;div class="tooltip right active" role="tooltip">
+      &lt;div class="tooltip-arrow">&lt;/div>
+      &lt;div class="tooltip-inner">向右显示&lt;/div>
+  &lt;/div>
+&lt;/div></code></pre>
 </div>
 
 
