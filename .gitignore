@@ -4,6 +4,8 @@ logs
 npm-debug.log*
 
 docs/
+examples/
+snippets/temp/
 
 # Runtime data
 pids
