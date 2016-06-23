@@ -4,10 +4,11 @@
 
 # 如何使用
 
-分页通过添加“u-pagination”的样式来实现基本的分页效果
+分页通过添加`u-pagination`的样式来实现基本的分页效果
 
 # 示例
 
+<<<<<<< HEAD
 
 ##不同尺寸的按钮
 
@@ -68,15 +69,22 @@ comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200,showState:
 ##基础分页
 
 <script>  var element = document.getElementById('pagination');
+=======
+
+##基础分页
+<div class="example-content"><div id='pagination' class='u-pagination'>
+</div>
+</div>
+<div class="jstag" style="display:none">  var element = document.getElementById("pagination");
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
   var comp = new u.pagination({ el: element, jumppage: true });
   comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
-
   this.comp.on('pageChange', function(pageIndex) {
       console.log('新的页号为' + pageIndex);
   });
-
   this.comp.on('sizeChange', function(arg) {
       console.log('每页显示条数为' + arg[0]);
+<<<<<<< HEAD
   });
 
 </script>
@@ -84,15 +92,22 @@ comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200,showState:
 </div>
 </div>
 <div class="examples-code"><pre><code>  var element = document.getElementById('pagination');
+=======
+  });
+</div>
+<div class="examples-code"><pre><code>&lt;div id='pagination' class='u-pagination'>
+&lt;/div></code></pre>
+</div>
+<div class="examples-code"><pre><code>  var element = document.getElementById("pagination");
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
   var comp = new u.pagination({ el: element, jumppage: true });
   comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
-
   this.comp.on('pageChange', function(pageIndex) {
       console.log('新的页号为' + pageIndex);
   });
-
   this.comp.on('sizeChange', function(arg) {
       console.log('每页显示条数为' + arg[0]);
+<<<<<<< HEAD
   });
 </code></pre>
 </div>
@@ -100,24 +115,26 @@ comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200,showState:
 &lt;/div></code></pre>
 </div>
 
-##有间距的分页
+=======
+  });</code></pre>
+</div>
 
-添加样式“pagination-gap”可以增加页码之间的间距
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
+##有间距的分页
+添加样式`pagination-gap`可以增加页码之间的间距
 <div class="example-content"><div id='paginationGap' class='u-pagination pagination-gap'>
 </div>
 </div>
-<script> //有间距的分页
- var paginationGap = document.getElementById('paginationGap');
+<div class="jstag" style="display:none"> var paginationGap = document.getElementById('paginationGap');
  var comp = new u.pagination({ el: paginationGap, jumppage: true });
  comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
-
-</script>
+</div>
 <div class="examples-code"><pre><code>&lt;div id='paginationGap' class='u-pagination pagination-gap'>
 &lt;/div></code></pre>
 </div>
-<div class="examples-code"><pre><code> //有间距的分页
- var paginationGap = document.getElementById('paginationGap');
+<div class="examples-code"><pre><code> var paginationGap = document.getElementById('paginationGap');
  var comp = new u.pagination({ el: paginationGap, jumppage: true });
+<<<<<<< HEAD
  comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
 </code></pre>
 </div>
@@ -143,6 +160,70 @@ comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200,showState:
  comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
 </code></pre>
 </div>
+=======
+ comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });</code></pre>
+</div>
+
+##无边框的分页
+在含有`u-pagination`的div元素中添加`u-pagination-no-border`样式即可
+<div class="example-content"><div id='paginationNoBorder' class='u-pagination u-pagination-no-border'>
+</div>
+</div>
+<div class="jstag" style="display:none"> var paginationNoBorder = document.getElementById("paginationNoBorder");
+ var comp = new u.pagination({ el: paginationNoBorder, jumppage: true });
+ comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
+</div>
+<div class="examples-code"><pre><code>&lt;div id='paginationNoBorder' class='u-pagination u-pagination-no-border'>
+&lt;/div></code></pre>
+</div>
+<div class="examples-code"><pre><code> var paginationNoBorder = document.getElementById("paginationNoBorder");
+ var comp = new u.pagination({ el: paginationNoBorder, jumppage: true });
+ comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });</code></pre>
+</div>
+
+##不同尺寸的按钮
+添加`pagination-lg`、`pagination-sm`样式可以使分页变大、变小
+<div class="jstag" style="display:none">var paginationLg = document.getElementById("paginationLg");
+var comp = new u.pagination({el:paginationLg,jumppage:true});
+comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200,showState:false});
+var paginationDefault = document.getElementById("paginationDefault");
+var comp = new u.pagination({el:paginationDefault,jumppage:true});
+comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200,showState:false});
+var paginationSm = document.getElementById("paginationSm");
+var comp = new u.pagination({el:paginationSm,jumppage:true});
+comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200,showState:false});
+</div>
+<div class="example-content"><p>大尺寸</p>
+<div id='paginationLg' class='u-pagination pagination-lg'>
+</div>
+<p>默认尺寸</p>
+<div id='paginationDefault' class='u-pagination'>
+</div>
+<p>小尺寸</p>
+<div id='paginationSm' class='u-pagination pagination-sm'>
+</div>
+</div>
+<div class="examples-code"><pre><code>var paginationLg = document.getElementById("paginationLg");
+var comp = new u.pagination({el:paginationLg,jumppage:true});
+comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200,showState:false});
+var paginationDefault = document.getElementById("paginationDefault");
+var comp = new u.pagination({el:paginationDefault,jumppage:true});
+comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200,showState:false});
+var paginationSm = document.getElementById("paginationSm");
+var comp = new u.pagination({el:paginationSm,jumppage:true});
+comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200,showState:false});</code></pre>
+</div>
+<div class="examples-code"><pre><code>&lt;p>大尺寸&lt;/p>
+&lt;div id='paginationLg' class='u-pagination pagination-lg'>
+&lt;/div>
+&lt;p>默认尺寸&lt;/p>
+&lt;div id='paginationDefault' class='u-pagination'>
+&lt;/div>
+&lt;p>小尺寸&lt;/p>
+&lt;div id='paginationSm' class='u-pagination pagination-sm'>
+&lt;/div></code></pre>
+</div>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 
 
 # API
@@ -183,7 +264,8 @@ comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200,showState:
 	totalCount:总条数
 ###例子
 
-	 comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200});
+	comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200});
+
 上例修改了comp分页的总页码为100，每页显示20个，当前页是1，总条数是200
 	
 

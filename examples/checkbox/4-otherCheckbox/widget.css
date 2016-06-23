@@ -4,34 +4,27 @@
     padding: 2px 8px;
     border: solid 1px #ccc;
 }
-
 .u-checkbox-labelauty:hover {
     border: solid 2px #e4393c;
     padding: 1px 7px;
     color: #e4393c;
 }
-
 .u-checkbox-labelauty.u-checkbox.is-upgraded {
     padding-left: 8px;
 }
-
 .u-checkbox-labelauty:hover.u-checkbox.is-upgraded, .u-checkbox-labelauty.is-upgraded.is-checked {
     padding-left: 7px;
 }
-
 .u-checkbox-labelauty.is-checked {
     border: solid 2px #e4393c;
     padding: 1px 7px;
 }
-
 .u-checkbox-labelauty .u-checkbox-label {
     display: inline-block;
 }
-
 .u-checkbox-labelauty .u-checkbox-outline {
     display: none;
 }
-
 .u-checkbox-labelauty.is-checked:before {
     position: absolute;
     right: 0;
@@ -42,7 +35,6 @@
     border-left: 12px solid transparent;
     border-bottom: 12px solid #e4393c;
 }
-
 .u-checkbox-labelauty.is-checked:after {
     -webkit-transform: rotate(45deg) scale(.8);
     transform: rotate(45deg) scale(.8);

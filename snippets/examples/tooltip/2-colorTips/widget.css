@@ -8,10 +8,6 @@
 	margin-left: 60px;
 	margin-top: 10px;
 }
-#example,#example1{
+#example1{
 	margin-left: 60px;
 }
-#example label:first-child,#example1 label:first-child{
-	margin-left: 0px;
-}
- 

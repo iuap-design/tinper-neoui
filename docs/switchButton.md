@@ -8,6 +8,7 @@
 
 # 示例
 
+<<<<<<< HEAD
 
 ##基础switch
 
@@ -100,6 +101,14 @@ h3{
 </div>
 </div>
 <div class="examples-code"><pre><code>
+=======
+
+##不同颜色的switch
+
+在 `<label>` 添加样式属性
+目前支持六种 `.u-switch-primary` `.u-switch-success` `.u-switch-info` `.u-switch-warning` `.u-switch-danger` `.u-switch-dark`
+<div class="csstag" style="display:none">
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 .example{
     padding: 0 10px 20px;
     float: left;
@@ -113,6 +122,7 @@ h3{
     float: left;
     width: 104px;
 }
+<<<<<<< HEAD
 </code></pre>
 </div>
 <div class="examples-code"><pre><code>&lt;div class="example">
@@ -133,6 +143,10 @@ h3{
 
 在 `<label>` 添加样式属性
 目前支持六种 `.u-switch-primary` `.u-switch-success` `.u-switch-info` `.u-switch-warning` `.u-switch-danger` `.u-switch-dark`
+=======
+
+</div>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 <div class="example-content"><div class="example">
     <label class="u-switch u-switch-primary" for="switch-primary">
         <input type="checkbox" id="switch-primary" class="u-switch-input" checked="true">
@@ -175,9 +189,15 @@ h3{
     </label>
 </div>
 
+<<<<<<< HEAD
 </div>
 </div>
 <style>
+=======
+</div>
+</div>
+<div class="examples-code"><pre><code>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 .example{
     padding: 0 10px 20px;
     float: left;
@@ -191,8 +211,13 @@ h3{
     float: left;
     width: 104px;
 }
+<<<<<<< HEAD
 
 </style>
+=======
+</code></pre>
+</div>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 <div class="examples-code"><pre><code>&lt;div class="example">
     &lt;label class="u-switch u-switch-primary" for="switch-primary">
         &lt;input type="checkbox" id="switch-primary" class="u-switch-input" checked="true">
@@ -235,7 +260,111 @@ h3{
     &lt;/label>
 &lt;/div>
 
+<<<<<<< HEAD
 &lt;/div></code></pre>
+</div>
+=======
+&lt;/div></code></pre>
+</div>
+
+##基础switch
+
+`<input>` 的`id`与`<label>`的`for`属性值保持一致
+<div class="csstag" style="display:none">
+.example{
+    padding: 0 10px 20px;
+    float: left;
+}
+h3{
+    clear: both;
+    padding-top: 10px;
+}
+.switch-example{    
+    height: 57px;
+    float: left;
+    width: 104px;
+}
+
+</div>
+<div class="example-content">
+<label class="u-switch u-switch-info" for="switch-info-unchecked">
+    <input type="checkbox" id="switch-info-unchecked" class="u-switch-input">
+    <span class="u-switch-label"></span>
+</label>
+
+<label class="u-switch u-switch-info" for="switch-info-checked">
+    <input type="checkbox" id="switch-info-checked" class="u-switch-input" checked>
+    <span class="u-switch-label"></span>
+</label>
+</div>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
+<div class="examples-code"><pre><code>
+.example{
+    padding: 0 10px 20px;
+    float: left;
+}
+h3{
+    clear: both;
+    padding-top: 10px;
+}
+.switch-example{    
+    height: 57px;
+    float: left;
+    width: 104px;
+}
+<<<<<<< HEAD
+</code></pre>
+</div>
+
+##不同尺寸的switch
+
+`.u-switch-lg` `.u-switch-default` `.u-switch-sm`提供了额外可供选择的尺寸
+=======
+</code></pre>
+</div>
+<div class="examples-code"><pre><code>
+&lt;label class="u-switch u-switch-info" for="switch-info-unchecked">
+    &lt;input type="checkbox" id="switch-info-unchecked" class="u-switch-input">
+    &lt;span class="u-switch-label">&lt;/span>
+&lt;/label>
+
+&lt;label class="u-switch u-switch-info" for="switch-info-checked">
+    &lt;input type="checkbox" id="switch-info-checked" class="u-switch-input" checked>
+    &lt;span class="u-switch-label">&lt;/span>
+&lt;/label></code></pre>
+</div>
+
+##不可以用的switch
+
+在 `<input>` 添加`disabled`属性
+<div class="csstag" style="display:none">
+.example{
+    padding: 0 10px 20px;
+    float: left;
+}
+h3{
+    clear: both;
+    padding-top: 10px;
+}
+.switch-example{    
+    height: 57px;
+    float: left;
+    width: 104px;
+}
+
+</div>
+<div class="example-content"><div class="example">
+    <label class="u-switch u-switch-info" for="switch-info-disable">
+        <input type="checkbox" id="switch-info-disable" class="u-switch-input" disabled>
+        <span class="u-switch-label"></span>
+    </label>
+</div>
+<div class="example">
+    <label class="u-switch u-switch-info" for="switch-info-checkdisalbed">
+        <input type="checkbox" id="switch-info-checkdisalbed" class="u-switch-input" checked disabled>
+        <span class="u-switch-label"></span>
+    </label>
+</div>
 </div>
 <div class="examples-code"><pre><code>
 .example{
@@ -253,10 +382,40 @@ h3{
 }
 </code></pre>
 </div>
+<div class="examples-code"><pre><code>&lt;div class="example">
+    &lt;label class="u-switch u-switch-info" for="switch-info-disable">
+        &lt;input type="checkbox" id="switch-info-disable" class="u-switch-input" disabled>
+        &lt;span class="u-switch-label">&lt;/span>
+    &lt;/label>
+&lt;/div>
+&lt;div class="example">
+    &lt;label class="u-switch u-switch-info" for="switch-info-checkdisalbed">
+        &lt;input type="checkbox" id="switch-info-checkdisalbed" class="u-switch-input" checked disabled>
+        &lt;span class="u-switch-label">&lt;/span>
+    &lt;/label>
+&lt;/div></code></pre>
+</div>
 
 ##不同尺寸的switch
 
 `.u-switch-lg` `.u-switch-default` `.u-switch-sm`提供了额外可供选择的尺寸
+<div class="csstag" style="display:none">
+.example{
+    padding: 0 10px 20px;
+    float: left;
+}
+h3{
+    clear: both;
+    padding-top: 10px;
+}
+.switch-example{    
+    height: 57px;
+    float: left;
+    width: 104px;
+}
+
+</div>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 <div class="example-content"><div class="switch-example">
     <label class="u-switch u-switch-primary u-switch-lg" for="switch-primary-lg">
         <input type="checkbox" id="switch-primary-lg" class="u-switch-input" checked="true">
@@ -274,9 +433,15 @@ h3{
         <input type="checkbox" id="switch-primary-sm" class="u-switch-input" checked="true">
         <span class="u-switch-label"></span>
     </label>
+<<<<<<< HEAD
 </div>
 </div>
 <style>
+=======
+</div>
+</div>
+<div class="examples-code"><pre><code>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 .example{
     padding: 0 10px 20px;
     float: left;
@@ -290,8 +455,13 @@ h3{
     float: left;
     width: 104px;
 }
+<<<<<<< HEAD
 
 </style>
+=======
+</code></pre>
+</div>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 <div class="examples-code"><pre><code>&lt;div class="switch-example">
     &lt;label class="u-switch u-switch-primary u-switch-lg" for="switch-primary-lg">
         &lt;input type="checkbox" id="switch-primary-lg" class="u-switch-input" checked="true">
@@ -309,6 +479,7 @@ h3{
         &lt;input type="checkbox" id="switch-primary-sm" class="u-switch-input" checked="true">
         &lt;span class="u-switch-label">&lt;/span>
     &lt;/label>
+<<<<<<< HEAD
 &lt;/div></code></pre>
 </div>
 <div class="examples-code"><pre><code>
@@ -327,6 +498,10 @@ h3{
 }
 </code></pre>
 </div>
+=======
+&lt;/div></code></pre>
+</div>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 
 
 <!--### 示例1

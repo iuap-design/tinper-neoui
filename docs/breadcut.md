@@ -11,13 +11,45 @@
 
 ##面包屑
 
+<<<<<<< HEAD
+=======
+"/"为分隔符
+
+<div class="example-content">
+<ol class="u-breadcrumb">
+    <li><a class="u-link" href="javascript:void(0)">Home</a></li>
+    <li class="active">Library</li>
+</ol>
+<ol class="u-breadcrumb">
+    <li><a class="u-link" href="javascript:void(0)">Home</a></li>
+    <li><a class="u-link" href="javascript:void(0)">Library</a></li>
+    <li class="active">Data</li>
+</ol>
+
+</div>
+<div class="examples-code"><pre><code>
+&lt;ol class="u-breadcrumb">
+    &lt;li>&lt;a class="u-link" href="javascript:void(0)">Home&lt;/a>&lt;/li>
+    &lt;li class="active">Library&lt;/li>
+&lt;/ol>
+&lt;ol class="u-breadcrumb">
+    &lt;li>&lt;a class="u-link" href="javascript:void(0)">Home&lt;/a>&lt;/li>
+    &lt;li>&lt;a class="u-link" href="javascript:void(0)">Library&lt;/a>&lt;/li>
+    &lt;li class="active">Data&lt;/li>
+&lt;/ol>
+</code></pre>
+</div>
+
+##面包屑
+
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 "/"为分隔符,并添加Home icon
 
-<style>.md-home:before {
+<div class="csstag" style="display:none">.md-home:before {
     content: "\f015";
     font-family: 'FontAwesome';
 }
-</style>
+</div>
 <div class="example-content">
 <ol class="u-breadcrumb">
     <li><a class="icon md-home u-link" href="javascript:void(0)">Home</a></li>
@@ -43,6 +75,7 @@
     &lt;li>&lt;a class="icon md-home u-link" href="javascript:void(0)">Home&lt;/a>&lt;/li>
     &lt;li>&lt;a class="u-link" href="javascript:void(0)">Library&lt;/a>&lt;/li>
     &lt;li class="active">Data&lt;/li>
+<<<<<<< HEAD
 &lt;/ol></code></pre>
 </div>
 
@@ -75,16 +108,21 @@
 </code></pre>
 </div>
 
+=======
+&lt;/ol></code></pre>
+</div>
+
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 ##基础Tree
 ##面包屑
 
 ">>"为分隔符
 
-<style>.md-home:before {
+<div class="csstag" style="display:none">.md-home:before {
     content: "\f015";
     font-family: 'FontAwesome';
 }
-</style>
+</div>
 <div class="example-content">
 <ol class="u-breadcrumb u-breadcrumb-arrow">
     <li><a class="u-link" href="javascript:void(0)">Home</a></li>

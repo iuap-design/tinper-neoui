@@ -9,7 +9,11 @@
 
 # 示例
 
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 ##基础Message
 
 消息类型对应不同class属性则显示不同的背景色
@@ -18,8 +22,13 @@
 `success -- u-messuccess`
 `danger -- u-mesdanger`
 `warning -- u-meswarning`
+<<<<<<< HEAD
 
 <style>.margin-r-10{
+=======
+
+<div class="csstag" style="display:none">.margin-r-10{
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
     margin-right: 10px; 
 }
 .example .u-message{
@@ -27,8 +36,13 @@
 }
 .example{
 	width: 300px;
+<<<<<<< HEAD
 }
 </style>
+=======
+}
+</div>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 <div class="example-content"><div class="example">
     <div class="u-message u-mesnews active" >    
         <span class="u-msg-close fa fa-close"></span>
@@ -50,8 +64,13 @@
         <span class="u-msg-close fa fa-close"></span>
         Warning!
     </div>
+<<<<<<< HEAD
 </div>
 </div>
+=======
+</div>
+</div>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 <div class="examples-code"><pre><code>.margin-r-10{
     margin-right: 10px; 
 }
@@ -60,8 +79,13 @@
 }
 .example{
 	width: 300px;
+<<<<<<< HEAD
 }</code></pre>
 </div>
+=======
+}</code></pre>
+</div>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 <div class="examples-code"><pre><code>&lt;div class="example">
     &lt;div class="u-message u-mesnews active" >    
         &lt;span class="u-msg-close fa fa-close">&lt;/span>
@@ -83,9 +107,15 @@
         &lt;span class="u-msg-close fa fa-close">&lt;/span>
         Warning!
     &lt;/div>
+<<<<<<< HEAD
 &lt;/div></code></pre>
 </div>
 
+=======
+&lt;/div></code></pre>
+</div>
+
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 ##带`icon`的加深颜色版Message
 
 背景色加深 `.dark`类提供了选择
@@ -96,6 +126,7 @@
 `success -- fa fa-check-circle`
 `danger -- fa fa-times-circle`
 `warning -- fa fa-warning`
+<<<<<<< HEAD
 
 <style>.margin-r-10{
     margin-right: 10px; 
@@ -107,6 +138,9 @@
 	width: 300px;
 }
 </style>
+=======
+
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 <div class="example-content"><div class="example">
     <div class="u-message dark u-mesnews active" >    
         <span class="u-msg-close fa fa-close"></span>
@@ -128,9 +162,15 @@
         <span class="u-msg-close fa fa-close"></span>
         <i class="fa fa-warning margin-r-10"></i>Warning!
     </div>
+<<<<<<< HEAD
 </div>
 </div>
 <div class="examples-code"><pre><code>.margin-r-10{
+=======
+</div>
+</div>
+<div class="csstag" style="display:none">.margin-r-10{
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
     margin-right: 10px; 
 }
 .example .u-message{
@@ -138,8 +178,13 @@
 }
 .example{
 	width: 300px;
+<<<<<<< HEAD
 }</code></pre>
 </div>
+=======
+}
+</div>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 <div class="examples-code"><pre><code>&lt;div class="example">
     &lt;div class="u-message dark u-mesnews active" >    
         &lt;span class="u-msg-close fa fa-close">&lt;/span>
@@ -161,11 +206,37 @@
         &lt;span class="u-msg-close fa fa-close">&lt;/span>
         &lt;i class="fa fa-warning margin-r-10">&lt;/i>Warning!
     &lt;/div>
+<<<<<<< HEAD
 &lt;/div></code></pre>
 </div>
 
 ##点击触发Message
 <style>.margin-r-10{
+=======
+&lt;/div></code></pre>
+</div>
+<div class="examples-code"><pre><code>.margin-r-10{
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
+    margin-right: 10px; 
+}
+.example .u-message{
+    position: inherit;
+}
+.example{
+	width: 300px;
+<<<<<<< HEAD
+}
+</style>
+<div class="example-content"><button id="msgBtn" class="u-button" >Success</button>
+<button id="errorBtn" class="u-button" >Error</button>
+<button id="warnBtn" class="u-button" >Warning</button>
+</div>
+=======
+}</code></pre>
+</div>
+
+##点击触发Message
+<div class="csstag" style="display:none">.margin-r-10{
     margin-right: 10px; 
 }
 .example .u-message{
@@ -174,11 +245,12 @@
 .example{
 	width: 300px;
 }
-</style>
+</div>
 <div class="example-content"><button id="msgBtn" class="u-button" >Success</button>
 <button id="errorBtn" class="u-button" >Error</button>
 <button id="warnBtn" class="u-button" >Warning</button>
 </div>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 <div class="examples-code"><pre><code>.margin-r-10{
     margin-right: 10px; 
 }
@@ -187,12 +259,21 @@
 }
 .example{
 	width: 300px;
+<<<<<<< HEAD
 }</code></pre>
 </div>
 <div class="examples-code"><pre><code>&lt;button id="msgBtn" class="u-button" >Success&lt;/button>
 &lt;button id="errorBtn" class="u-button" >Error&lt;/button>
 &lt;button id="warnBtn" class="u-button" >Warning&lt;/button></code></pre>
 </div>
+=======
+}</code></pre>
+</div>
+<div class="examples-code"><pre><code>&lt;button id="msgBtn" class="u-button" >Success&lt;/button>
+&lt;button id="errorBtn" class="u-button" >Error&lt;/button>
+&lt;button id="warnBtn" class="u-button" >Warning&lt;/button></code></pre>
+</div>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 
 
 <!--### 示例1

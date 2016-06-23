@@ -8,6 +8,7 @@ tree控件
 
 # 示例
 
+<<<<<<< HEAD
 
 ##基础Tree
 
@@ -24,6 +25,19 @@ tree控件
 }*/
 </style>
 <script>$(document).ready(function () {
+=======
+
+##基础Tree
+
+用于多层目录的嵌套结构的数据。
+<div class="csstag" style="display:none">/*#demoLeft{
+	width:40%;
+	border: 1px solid #EEEEEE;
+	min-height: 200px;
+}*/
+</div>
+<div class="jstag" style="display:none">$(document).ready(function () {
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
     var viewModel = {
     	treeSetting:{
     		view:{
@@ -81,6 +95,7 @@ var app = u.createApp();
     $("#deleteAllRows").on("click",function(){
     	viewModel.dataTable.removeAllRows();
     })
+<<<<<<< HEAD
 });
 </script>
 <div class="examples-code"><pre><code>&lt;!-- &lt;div id="demoLeft"> -->
@@ -88,12 +103,26 @@ var app = u.createApp();
 &lt;!-- &lt;/div> -->
        </code></pre>
 </div>
+=======
+});
+</div>
+<div class="example-content"><!-- <div id="demoLeft"> -->
+	<div id="treeTest" class="ztree" u-meta='{"multiSelect":"true","id":"tree2","data":"dataTable","type":"tree","idField":"id","pidField":"pid","nameField":"title","setting":"treeSetting"}'></div>
+<!-- </div> -->
+       
+</div>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 <div class="examples-code"><pre><code>/*#demoLeft{
 	width:40%;
 	border: 1px solid #EEEEEE;
 	min-height: 200px;
+<<<<<<< HEAD
 }*/</code></pre>
 </div>
+=======
+}*/</code></pre>
+</div>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 <div class="examples-code"><pre><code>$(document).ready(function () {
     var viewModel = {
     	treeSetting:{
@@ -152,8 +181,18 @@ var app = u.createApp();
     $("#deleteAllRows").on("click",function(){
     	viewModel.dataTable.removeAllRows();
     })
+<<<<<<< HEAD
 });</code></pre>
 </div>
+=======
+});</code></pre>
+</div>
+<div class="examples-code"><pre><code>&lt;!-- &lt;div id="demoLeft"> -->
+	&lt;div id="treeTest" class="ztree" u-meta='{"multiSelect":"true","id":"tree2","data":"dataTable","type":"tree","idField":"id","pidField":"pid","nameField":"title","setting":"treeSetting"}'>&lt;/div>
+&lt;!-- &lt;/div> -->
+       </code></pre>
+</div>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 
 
 <!--### 示例1

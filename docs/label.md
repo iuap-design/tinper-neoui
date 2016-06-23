@@ -48,6 +48,7 @@ span 标签上添加class u-tag-round
 &lt;span class="u-tag u-tag-info u-tag-round">Info&lt;/span>
 &lt;span class="u-tag u-tag-warning u-tag-round">Warning&lt;/span>
 &lt;span class="u-tag u-tag-danger u-tag-round">Danger&lt;/span>
+<<<<<<< HEAD
 &lt;span class="u-tag u-tag-dark u-tag-round">Dark&lt;/span></code></pre>
 </div>
 
@@ -63,6 +64,11 @@ span标签 添加 .u-tag-lg 或 .u-tag-sm类，来改变标签大小.
 &lt;span class="u-tag u-tag-sm u-tag-primary">小标签&lt;/span></code></pre>
 </div>
 
+=======
+&lt;span class="u-tag u-tag-dark u-tag-round">Dark&lt;/span></code></pre>
+</div>
+
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 ##描边按钮
 
 span 标签上添加class u-tag-outline
@@ -80,8 +86,25 @@ span 标签上添加class u-tag-outline
 &lt;span class="u-tag u-tag-info u-tag-outline">Info&lt;/span>
 &lt;span class="u-tag u-tag-warning u-tag-outline">Warning&lt;/span>
 &lt;span class="u-tag u-tag-danger u-tag-outline">Danger&lt;/span>
+<<<<<<< HEAD
 &lt;span class="u-tag u-tag-dark u-tag-outline">Dark&lt;/span></code></pre>
 </div>
+=======
+&lt;span class="u-tag u-tag-dark u-tag-outline">Dark&lt;/span></code></pre>
+</div>
+
+##不同尺寸的label
+
+span标签 添加 .u-tag-lg 或 .u-tag-sm类，来改变标签大小.
+<div class="example-content"><span class="u-tag u-tag-lg u-tag-primary">大标签</span>
+<span class="u-tag u-tag-primary">默认大小</span>
+<span class="u-tag u-tag-sm u-tag-primary">小标签</span>
+</div>
+<div class="examples-code"><pre><code>&lt;span class="u-tag u-tag-lg u-tag-primary">大标签&lt;/span>
+&lt;span class="u-tag u-tag-primary">默认大小&lt;/span>
+&lt;span class="u-tag u-tag-sm u-tag-primary">小标签&lt;/span></code></pre>
+</div>
+>>>>>>> eb19c08bbbc1281f37d827e3eefc1803a1b61497
 
 
 <!--### 示例1
