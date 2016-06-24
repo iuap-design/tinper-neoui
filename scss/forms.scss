@@ -87,6 +87,7 @@
     font-family: 'Microsoft YaHei';
     font-size: 14px;
     color: $input-color;
+    list-style:none;
 }
 
 .u-form-inline {
@@ -160,6 +161,15 @@
     }
     & .u-form-control {
         width: 100%;
+    }
+    & .u-checkbox {
+        height:36px;
+        & .u-checkbox-focus-helper{
+            top: 3px;
+        }
+        & .u-checkbox-outline{
+            top: 3px;
+        }
     }
 }
 

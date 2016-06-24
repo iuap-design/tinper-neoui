@@ -1,4 +1,3 @@
-
 @import "./mixins/variables";
 @import "./mixins/mixins";
 
@@ -63,10 +62,10 @@ input.u-button[type="submit"] {
 }
 
 // Raised buttons
-.u-button.raised{
+.u-button.waves-effect{
 
   border:1px $button-border-color solid;
-  font-size: 14px;
+  font-size: 13px;
   background: $button-primary-color;
   background: $button-primary-color-IE8 \9;
   // @include shadow-2dp();
@@ -99,6 +98,18 @@ input.u-button[type="submit"] {
 
     background: $button-ripple-color-alt;
   }
+
+  &.u-button-xg{
+    font-size : $font-size-xg;
+  }
+
+  &.u-button-lg{
+    font-size : $font-size-lg;
+  }
+
+  &.u-button-sm{
+    font-size : $font-size-sm;
+  }
 }
 
 //Floating bottons
@@ -106,9 +117,11 @@ input.u-button[type="submit"] {
   border-radius: 50%;
   font-size: $button-fab-font-size;
   height: $button-fab-size;
+  height: 38px \9;
   margin: auto;
   min-width: $button-fab-size;
   width: $button-fab-size;
+  width: 38px \9;
   padding: 0;
   overflow: hidden;
   background: $button-primary-color;
@@ -126,7 +139,7 @@ input.u-button[type="submit"] {
     line-height: $button-fab-font-size;
     width: $button-fab-font-size;
     width: auto \9;
-    position:releative \9;
+    position:relative \9;
     top:0px \9;
     left:0px \9;
     padding: 0px;
@@ -276,4 +289,124 @@ input.u-button[type="submit"] {
     // Fixes clipping bug in Safari.
     -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
   }
+}
+
+
+// 扩展样式
+
+//success按钮
+.u-button-success {
+    color: #fff;
+    background-color: #4caf50;
+    border-color: #4caf50;
+}
+
+.u-button-success.focus, .u-button-success:focus, .u-button-success:hover {
+    background-color: #66bb6a;
+    border-color: #66bb6a;
+}
+
+.u-button-success.active, .u-button-success:active, .open>.dropdown-toggle.u-button-success {
+    background-color: #43a047;
+    border-color: #43a047;
+}
+
+.u-button.active, .u-button:active {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+
+.u-button.active:focus, .u-button:active:focus, .u-button:focus {
+    outline: 0;
+}
+//info按钮
+.u-button-info {
+    color: #fff;
+    background-color: #00bcd4;
+    border-color: #00bcd4;
+}
+
+.u-button-info.focus, .u-button-info:focus, .u-button-info:hover {
+    background-color: #26c6da;
+    border-color: #26c6da;
+}
+
+.u-button-info.active, .u-button-info:active, .open>.dropdown-toggle.u-button-info {
+    background-color: #00acc1;
+    border-color: #00acc1;
+}
+
+.u-button-warning {
+    color: #fff;
+    background-color: #ff9800;
+    border-color: #ff9800;
+}
+
+.u-button-warning.focus, .u-button-warning:focus, .u-button-warning:hover {
+    background-color: #ffa726;
+    border-color: #ffa726;
+}
+
+.u-button-warning.active, .u-button-warning:active, .open>.dropdown-toggle.u-button-warning {
+    background-color: #fb8c00;
+    border-color: #fb8c00;
+}
+
+
+.u-button-danger {
+    color: #fff;
+    background-color: #f44336;
+    border-color: #f44336;
+}
+
+.u-button-danger.focus, .u-button-danger:focus, .u-button-danger:hover {
+    background-color: #ef5350;
+    border-color: #ef5350;
+}
+
+.u-button-danger.active, .u-button-danger:active, .open>.dropdown-toggle.u-button-danger {
+    background-color: #e53935;
+    border-color: #e53935;
+}
+
+//大型
+.u-button-lg {
+    @include button-size($button-padding-y-lg, $button-padding-x-lg, $font-size-lg, $button-border-radius-lg);
+}
+//特大型
+.u-button-xg {
+ 
+  @include button-size($button-padding-y-xg, $button-padding-x-xg, $font-size-xg, $button-border-radius-xg);
+}
+
+//小型
+.u-button-sm {
+   @include button-size($button-padding-y-sm, $button-padding-x-sm, $font-size-sm, $button-border-radius-sm);
+}
+//方形按钮
+.u-button-squared {
+  border-radius: 0;
+}
+
+// 圆形按钮
+
+.u-button-round {
+  border-radius: 1000px;
+}
+
+//按钮充满整行
+.u-button-block{
+  white-space: normal;
+  display: block;
+  width: 100%;
+}
+
+//与.u-button-round连用创建左半圆
+.u-button-pill-left {
+  border-radius: 500px 0 0 500px;
+}
+//与.u-button-round连用创建右半圆
+.u-button-pill-right {
+  border-radius: 0 500px 500px 0;
 }

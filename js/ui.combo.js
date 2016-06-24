@@ -17,7 +17,7 @@ u.Combo = u.BaseComponent.extend({
         var i, option, datas = [], self = this;
         //u.addClass(this.element, 'u-text')
         new u.Text(this.element);
-        var options = this.element.getElementsByTagName('option');
+        var options = this.element.getElementsByTagName('option'); 
         for (i = 0; i < options.length; i++) {
             option = options[i];
             datas.push({value: option.value, name: option.text});
@@ -25,7 +25,7 @@ u.Combo = u.BaseComponent.extend({
 
         this.setComboData(datas);
         this._input = this.element.querySelector("input");
-        if(this.onlySelect){
+        if(this.onlySelect || u.isMobile){
             setTimeout(function(){
                 self._input.setAttribute('readonly','readonly');
             },1000);
@@ -69,7 +69,14 @@ u.Combo = u.BaseComponent.extend({
             panel:this._ul,
             position:"bottomLeft"
         });
-	this._ul.style.width = width + 'px';
+        document.body.onscroll = function(){
+            u.showPanelByEle({
+                ele:self._input,
+                panel:self._ul,
+                position:"bottomLeft"
+            });
+        }  
+	    this._ul.style.width = width + 'px';
         u.addClass(this._ul, 'is-animating');
         this._ul.style.zIndex = u.getZIndex();
         u.addClass(this._ul, 'is-visible');
@@ -82,6 +89,7 @@ u.Combo = u.BaseComponent.extend({
             this.hide();
         }.bind(this);
         u.on(document,'click',callback);
+        u.on(document.body,'touchend',callback)
         // document.addEventListener('click', callback);
 
     },
@@ -166,7 +174,7 @@ u.Combo = u.BaseComponent.extend({
                 if(this._combo_name_par){
                     var comboDiv = this._combo_name_par.querySelector('[key="'+val+'"]');
                     if(comboDiv)
-                        comboDiv.remove();
+                        this._combo_name_par.removeChild(comboDiv);
                 }
             }
             
@@ -245,6 +253,7 @@ u.Combo = u.BaseComponent.extend({
         }.bind(this));
         if(!this.onlySelect){
             this.value = value;
+            this._input.value = value;
             this.trigger('select', {value: this.value, name: this._input.value});
         }
     },

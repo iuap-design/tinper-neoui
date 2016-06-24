@@ -1,6 +1,5 @@
 @import "./mixins/variables";
 @import "./mixins/mixins";
-
 .u-combo{
   position: relative;
   option{
@@ -13,7 +12,7 @@
 
 .u-combo-ul{
   background-color: #fff;
-  position: absolute;
+  position: fixed;
   list-style: none;
   height: auto;
   width: auto;
@@ -28,7 +27,8 @@
   display: block;
   border: none;
   border-radius: 2px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   transform: scale(0);
   transform-origin: 0 0;
   border:1px solid \9;
@@ -60,15 +60,19 @@
   padding: 0 16px;
   outline-color: rgb(189,189,189);
   position: relative;
-  overflow: hidden;
+  
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 0;
   text-decoration: none;
   cursor: pointer;
-  height: 28px;
+  /*height: 28px;
+  overflow: hidden;
+  white-space: nowrap;*/
   line-height: 28px;
-  white-space: nowrap;
+  word-wrap: break-word;
+  break-word: break-all;
+  
   //opacity: 0;
   transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;

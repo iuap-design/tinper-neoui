@@ -1,4 +1,5 @@
 @import "./mixins/variables";
+
 .u-pagination {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -24,12 +25,13 @@
   border-left: 1px solid #d7d7d7;
   color: #000000;
   background-color: white;
-  height: 32px;
-  line-height: 32px;
-  width: 34px;
+  // height: 32px;
+  // line-height: 32px;
+  // width: 34px;
   text-align: center;
   color:#666666;
-
+  padding: 7px 13px;
+  line-height: 1.57142857;
 }
 
 .u-pagination > li:first-child > a,
@@ -134,9 +136,11 @@
   background-color: transparent;
   border-bottom: 0px solid #d7d7d7;
   border-top: 0px solid #d7d7d7;
-  width: 22px;
-  height: 34px;
-  line-height: 32px;
+  // width: 22px;
+  // height: 34px;
+  // line-height: 32px;
+  padding: 8px 13px;
+  line-height: 1.57142857;
 }
 
 .u-pagination > li[role="gap"]> a:hover,
@@ -160,4 +164,52 @@
 
 .u-pagination li,.u-pagination a{
   box-sizing:content-box;
+}
+
+
+
+//无边框
+.u-pagination-no-border>li>a,
+.u-pagination-no-border> li[role="next"] > a {
+    border: none;
+}
+// 有间距的分页
+.pagination-gap>li:first-child>a,
+.pagination-gap>li:last-child>a {
+    border-radius: 5px;
+}
+
+.pagination-gap {
+    > li {
+        > a {
+            margin: 0 5px;
+            border-radius: 5px;
+            border: 1px solid #d7d7d7;
+            &:hover {
+                background-color: transparent;
+                border-color: $pagination-gap-hover-border;
+            }
+        }
+        &:first-child,
+        &:last-child {
+            > a {
+                border-radius: 5px;
+            }
+        }
+    }
+    >li[role="gap"]{
+      > a {
+        border : 0px solid #d7d7d7;
+      }
+    }
+}
+
+
+// Size Modifier
+.pagination-lg {
+    @include pagination-size($pagination-lg-padding-vertical, $pagination-lg-padding-horizontal, $pagination-lg-font-size, $line-height-large, $border-radius-large);
+}
+
+.pagination-sm {
+    @include pagination-size($pagination-small-padding-vertical, $pagination-small-padding-horizontal, $pagination-small-font-size, $line-height-small, $border-radius-small);
 }

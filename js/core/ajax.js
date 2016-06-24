@@ -5,10 +5,17 @@ var XmlHttp = {
   reqCount : 4,
   createXhr : function() {
     var xmlhttp = null;
-    if (window.XMLHttpRequest) {
+    /*if (window.XMLHttpRequest) {
       xmlhttp = new XMLHttpRequest();
     } else {
       xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }*/
+    if(u.isIE8){
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");//IE低版本创建XMLHTTP  
+    }else if(u.isIE){
+      xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");//IE高版本创建XMLHTTP
+    }else if(window.XMLHttpRequest){
+      xmlhttp = new XMLHttpRequest();
     }
     return xmlhttp;
   },
@@ -19,15 +26,16 @@ var XmlHttp = {
     var error = _json["error"];
     var params = _json["data"] || {};
     var method = (_json["type"] == undefined ? XmlHttp.post : _json["type"]).toLowerCase();
-		var gzipFlag = params.compressType;
+    var gzipFlag = params.compressType;
     url = XmlHttp.serializeUrl(url);
     params = XmlHttp.serializeParams(params);
     if (method == XmlHttp.get && params != null) {
       url += ("&" + params);
-      params = null;	//如果是get请求,保证最终会执行send(null)
+      params = null;  //如果是get请求,保证最终会执行send(null)
     }
 
     var xmlhttp = XmlHttp.createXhr();
+    //xmlhttp.open(method, url+ escape(new Date()), async);
     xmlhttp.open(method, url, async);
 
     if (method == XmlHttp.post) {
@@ -43,22 +51,22 @@ var XmlHttp = {
         execount++;
         // 等待readyState状态不再变化之后,再执行回调函数
         //if (execount == XmlHttp.reqCount) {// 火狐下存在问题，修改判断方式
-		if(this.readyState == XmlHttp.reqCount){
+        if(xmlhttp.readyState == XmlHttp.reqCount){
           XmlHttp.execBack(xmlhttp, callback, error);
         }
       };
       // send方法要在在回调函数之后执行
-	      	xmlhttp.send(params);
+      xmlhttp.send(params);
     } else {
       // 同步 readyState 直接变为 4
       // 并且 send 方法要在回调函数之前执行
-	    xmlhttp.send(params);
+      xmlhttp.send(params);
       XmlHttp.execBack(xmlhttp, callback, error);
     }
   },
   execBack : function(xmlhttp, callback, error) {
     //if (xmlhttp.readyState == 4
-     if (xmlhttp.status == 200 || xmlhttp.status == 304) {
+     if (xmlhttp.status == 200 || xmlhttp.status == 304 || xmlhttp.readyState == 4) {
       callback(xmlhttp.responseText,xmlhttp.status, xmlhttp);
     } else {
       if (error) {

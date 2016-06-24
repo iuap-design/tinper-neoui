@@ -412,8 +412,16 @@
   opacity: 0.25;
 }
 
-.text-right {
-	text-align: right;
+.u-text-left, .text-left{
+ text-align: left !important;
+}
+
+.u-text-center, text-center{
+  text-align: center !important;
+}
+
+.u-text-right, text-right{
+  text-align: right !important;
 }
 
 
@@ -435,8 +443,7 @@
 // 超链接按钮
 .u-link{
   cursor: pointer;
-  font-size: 12px;
-  color:unquote("rgb(#{$palette-u-blue-700})");
+  color:unquote("rgb(#{$palette-indigo-500})");
   background-color: transparent;
   text-decoration: none;
 

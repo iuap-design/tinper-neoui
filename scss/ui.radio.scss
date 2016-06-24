@@ -1,7 +1,5 @@
-
 @import "./mixins/variables";
 @import "./mixins/mixins";
-
 .u-radio {
   position: relative;
 
@@ -13,6 +11,9 @@
   box-sizing: border-box;
   margin: 0;
   padding-left: 0;
+  word-wrap: break-word;
+  word-break: break-all;
+  text-align: left;
 
   &.is-upgraded {
     padding-left: $radio-button-size + $radio-padding;
@@ -143,4 +144,45 @@
   fieldset[disabled] .u-radio{
     background: transparent;
   }
+}
+
+
+
+.u-radio-primary {
+  @include radio-styles-variant($radio-primary-bg);
+}
+
+// Modifier: `radio-success`
+// -------------------------
+
+.u-radio-success {
+  @include radio-styles-variant($radio-success-bg);
+}
+
+// Modifier: `radio-info`
+// -------------------------
+
+.u-radio-info {
+  @include radio-styles-variant($radio-info-bg);
+}
+
+// Modifier: `radio-warning`
+// -------------------------
+
+.u-radio-warning {
+  @include radio-styles-variant($radio-warning-bg);
+}
+
+// Modifier: `radio-danger`
+// -------------------------
+
+.u-radio-danger {
+  @include radio-styles-variant($radio-danger-bg);
+}
+
+// Modifier: `radio-dark`
+// -------------------------
+
+.u-radio-dark {
+  @include radio-styles-variant($radio-dark-bg);
 }

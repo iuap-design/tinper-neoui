@@ -9,7 +9,7 @@ u.Tooltip.prototype = {
         animation: true,
         placement: 'top',
         //selector: false,
-        template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow" style="left: 50%;"></div><div class="tooltip-inner"></div></div>',
+        template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow" ></div><div class="tooltip-inner"></div></div>',
         trigger: 'hover focus',
         title: '',
         delay: 0,
@@ -48,7 +48,12 @@ u.Tooltip.prototype = {
         };
         //tip模板对应的dom
         this.tipDom = u.makeDOM(this.options.template);
+        u.addClass(this.tipDom,this.options.placement);
+        if(this.options.colorLevel){
+             u.addClass(this.tipDom,this.options.colorLevel);
+         }
         this.arrrow = this.tipDom.querySelector('.tooltip-arrow');
+
         // tip容器,默认为当前元素的parent
         this.container = this.options.container ? document.querySelector(this.options.container) : this.element.parentNode;
     },
@@ -72,6 +77,7 @@ u.Tooltip.prototype = {
         }, self.options.delay.hide)
     },
     show: function(){
+        var self = this;
         this.tipDom.querySelector('.tooltip-inner').innerHTML = this.options.title;
         this.tipDom.style.zIndex = u.getZIndex();
         this.container.appendChild(this.tipDom);
@@ -86,8 +92,15 @@ u.Tooltip.prototype = {
         u.showPanelByEle({
             ele:this.element,
             panel:this.tipDom,
-            position:'topCenter'
+            position:this.options.placement
         });
+        document.body.onscroll = function(){
+            u.showPanelByEle({
+                ele:self.element,
+                panel:self.tipDom,
+                position:self.options.placement
+            });
+        }
     },
     hide: function(){
 		if (this.container.contains(this.tipDom)){

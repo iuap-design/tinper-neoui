@@ -1,7 +1,5 @@
-
 @import "./mixins/variables";
 @import "./mixins/mixins";
-
 .u-switch {
   position: relative;
 
@@ -55,10 +53,11 @@
   background: $switch-off-track-color-IE8 \9;
   position: absolute;
   left: 0;
-  top: $switch-track-top;
+  top: 3px;
   height: $switch-track-height;
   width: $switch-track-length;
   border-radius: $switch-track-height;
+  border: 1px solid #e0e0e0;
 
   cursor: pointer;
 
@@ -79,7 +78,7 @@
   background: rgb(88,88,88) \9;
   position: absolute;
   left: 0;
-  top: $switch-thumb-top;
+  top: 4px;
   height: $switch-thumb-size;
   width: $switch-thumb-size;
   border-radius: 50%;
@@ -93,7 +92,7 @@
 
   .u-switch.is-checked & {
     background: $switch-thumb-color;
-    left: $switch-track-length - $switch-thumb-size;
+    left: 21px;
 
     @include shadow-3dp();
   }
@@ -148,7 +147,33 @@
     cursor: auto;
   }
 }
-
+.u-switch-primary {
+  @include switch-styles-variant($switch-primary-bg);
+}
+.u-switch-success {
+  @include switch-styles-variant($switch-success-bg);
+}
+.u-switch-info {
+  @include switch-styles-variant($switch-info-bg);
+}
+.u-switch-danger {
+  @include switch-styles-variant($switch-danger-bg);
+}
+.u-switch-warning {
+  @include switch-styles-variant($switch-warning-bg);
+}
+.u-switch-dark {
+  @include switch-styles-variant($switch-dark-bg);
+}
+.u-switch-lg {
+    @include switch-size($switch-width-lg, $switch-height-lg, $switch-border-radius-lg, $switch-border-left-lg);
+}
+.u-switch-default {
+    @include switch-size($switch-width-default, $switch-height-default, $switch-border-radius-default, $switch-border-left-default);
+}
+.u-switch-sm {
+    @include switch-size($switch-width-sm, $switch-height-sm, $switch-border-radius-sm, $switch-border-left-sm);
+}
 //.u-switch-ripple-container {
 //  position: absolute;
 //  z-index: 2;

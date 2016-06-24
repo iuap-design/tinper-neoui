@@ -10,7 +10,11 @@ u.NavMenu = u.BaseComponent.extend({
     },
     init: function(){
 
-        u.on(this.element,'click', this._navlinkClickHander.bind(this));
+       if(u.hasClass(this.element, 'u-navmenu-horizontal')) {
+            u.on(this.element,'click', this._horNavlinkClickHander.bind(this));
+        } else {
+            u.on(this.element,'click', this._navlinkClickHander.bind(this));
+        }
 
         var items = this.element.querySelectorAll('.' + this._CssClasses.NAV_LINK);
         for(var i=0;i<items.length;i++) {
@@ -18,8 +22,15 @@ u.NavMenu = u.BaseComponent.extend({
         }
 
     },
+    _horNavlinkClickHander: function (e) {
+        var item = u.closest(e.target, this._CssClasses.NAV_LINK);
 
-   
+        if(item){
+            var curlink = this.element.querySelector('.'+this._CssClasses.NAV_LINK_CURRENT);
+            curlink && u.removeClass(curlink, this._CssClasses.NAV_LINK_CURRENT);
+            u.addClass(item, this._CssClasses.NAV_LINK_CURRENT);
+        }
+    },
     _navlinkClickHander: function (e) {
         //var _target = e.currentTarget || e.target || e.srcElement;
         var curlink = this.element.querySelector('.'+this._CssClasses.NAV_LINK_CURRENT);

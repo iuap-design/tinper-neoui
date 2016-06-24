@@ -1,7 +1,5 @@
-
 @import "./mixins/variables";
 @import "./mixins/mixins";
-
 .u-table {
   position: relative;
   border: $data-table-dividers;
@@ -116,3 +114,128 @@
 //.u-table-cell-non-numeric {
 //  text-align: left;
 //}
+
+
+// table {
+//   background-color: $table-bg;
+// }
+// caption {
+//   padding-top: $table-cell-padding;
+//   padding-bottom: $table-cell-padding;
+//   color: $text-muted;
+//   text-align: left;
+// }
+// th {
+//   text-align: left;
+// }
+
+//global
+// 22/14
+
+//variables
+
+
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+
+
+// BaseTable
+
+.u-table-base {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: $line-height-computed;
+  background-color: $table-bg;
+  color: $gray-dark;
+  border-spacing: 0;
+  border-collapse: collapse;
+  font-size:14px;
+  font-family:$preferred_font;
+  // Cells
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        text-align: left;
+        padding: $table-cell-padding;
+        line-height: $line-height-base;
+        vertical-align: top;
+        border-top: 1px solid $table-border-color;
+      }
+    }
+  }
+
+  > thead > tr > th, > tfoot > tr > th {
+    font-weight: $font-weight-normal;
+    color: $gray-darker;
+  }
+  // Bottom align for column headings
+  > thead > tr > th {
+    text-align: left;
+    vertical-align: bottom;
+    border-bottom: 1px solid $table-border-color;
+  }
+  // Remove top border from thead by default
+  > caption + thead,
+  > colgroup + thead,
+  > thead:first-child {
+    > tr:first-child {
+      > th,
+      > td {
+        border-top: 0;
+      }
+    }
+  }
+  // Account for multiple tbody instances
+  > tbody + tbody {
+    border-top: 1px solid $table-border-color;
+  }
+
+  
+}
+
+
+
+.u-table-bordered {
+  border: 1px solid $table-border-color;
+  
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        border: 1px solid $table-border-color;
+      }
+    }
+  }
+  > thead > tr {
+    > th,
+    > td {
+      border-bottom-width: 1px;
+    }
+  }
+  > thead:first-child {
+    > tr:first-child {
+      > th {
+        border: 1px solid $table-border-color;
+      }
+    }
+  }
+}
+
+.u-table-hover {
+  > tbody > tr:hover {
+    background-color: $table-bg-hover;
+  }
+}
+
+
+// Zebra-striping
+
+.u-table-striped {
+  > tbody > tr:nth-of-type(odd) {
+    background-color: $table-bg-accent;
+  }
+}

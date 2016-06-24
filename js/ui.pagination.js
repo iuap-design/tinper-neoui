@@ -105,6 +105,7 @@
 		//totalText: '合计:',
 		totalText: '共',
 		truncate: false,
+		showState: true,
 		page: function(page) {
 			return true;
 		}
@@ -236,27 +237,29 @@
 		if (options.totalCount === undefined || options.totalCount <= 0) {
 			options.totalCount = 0;
 		}
+		if(options.showState){
+			var htmlStr = '<div class="pagination-state">' + options.totalText + '&nbsp;' + options.totalCount + '&nbsp;条</div>';
+			htmlArr.push(htmlStr);
 
-		var htmlStr = '<div class="pagination-state">' + options.totalText + '&nbsp;' + options.totalCount + '&nbsp;条</div>';
-		htmlArr.push(htmlStr);
+			if (options.jumppage || options.pageSize) {
 
-		if (options.jumppage || options.pageSize) {
-
-			var pageOption = '';
-			options.pageList.forEach(function (item) {
-				if (options.pageSize - 0 == item) {
-					pageOption += '<option selected>' + item + '</option>'
-				} else {
-					pageOption += '<option>' + item + '</option>'
-				}
-			});
-			var jumppagehtml = '到<input class="page_j" value=' + options.currentPage + '>页<input class="pagination-jump" type="button" value="确定"/>';
-			var sizehtml = '显示<select  class="page_z">'+ pageOption + '</select>条&nbsp;&nbsp;'
-			var tmpjump = "<div class='pagination-state'>" + (options.pageSize ? sizehtml : "") + (options.jumppage ? jumppagehtml : "") + "</div>";
-			htmlArr.push(tmpjump)
-			//<i class='jump_page fa fa-arrow-circle-right' style='margin-left: 8px; cursor: pointer;'></i>
+				var pageOption = '';
+				options.pageList.forEach(function (item) {
+					if (options.pageSize - 0 == item) {
+						pageOption += '<option selected>' + item + '</option>'
+					} else {
+						pageOption += '<option>' + item + '</option>'
+					}
+				});
+				var jumppagehtml = '到<input class="page_j" value=' + options.currentPage + '>页<input class="pagination-jump" type="button" value="确定"/>';
+				var sizehtml = '显示<select  class="page_z">'+ pageOption + '</select>条&nbsp;&nbsp;'
+				var tmpjump = "<div class='pagination-state'>" + (options.pageSize ? sizehtml : "") + (options.jumppage ? jumppagehtml : "") + "</div>";
+				htmlArr.push(tmpjump)
+				//<i class='jump_page fa fa-arrow-circle-right' style='margin-left: 8px; cursor: pointer;'></i>
+			}
 		}
-
+		
+		this.$ul.innerHTML="";
 		this.$ul.insertAdjacentHTML('beforeEnd', htmlArr.join(''))
 
 		var me = this;
@@ -302,7 +305,7 @@
 		})
 		u.each(this.$ul.querySelectorAll('[role="page"] a'),function(i,node){
 			u.on(node,'click', function() {
-				var pz = me.$element.querySelector(".page_z").value || options.pageSize;
+				var pz = (me.$element.querySelector(".page_z")&&me.$element.querySelector(".page_z").value) || options.pageSize;
 				me.page(parseInt(this.innerHTML), options.totalPages, pz);
 				//me.$element.trigger('pageChange', parseInt($(this).html()) - 1)
 
@@ -310,7 +313,7 @@
 			})
 		})
 		u.on(this.$ul.querySelector('.page_z'), 'change', function() {
-			var pz = me.$element.querySelector(".page_z").value || options.pageSize;
+			var pz = (me.$element.querySelector(".page_z")&&me.$element.querySelector(".page_z").value)  || options.pageSize;
 			me.trigger('sizeChange', pz)
 		})
 

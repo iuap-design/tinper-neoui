@@ -14,7 +14,7 @@ u.showMessage = function(options) {
     msg = options['msg'] || "";
     position = options['position'] || "bottom-right";  //center. top-left, top-center, top-right, bottom-left, bottom-center, bottom-right,
     //TODO 后面改规则：没设宽高时，自适应
-    width = options['width'] || "300px";
+    width = options['width'] || "";
     // height = options['height'] || "100px";
      msgType = options['msgType'] || 'info';
     //默认为当用户输入的时间，当用户输入的时间为false并且msgType=='info'时，默认显示时间为2s

@@ -1,7 +1,5 @@
-
 @import "./mixins/variables";
 @import "./mixins/mixins";
-
 .u-navmenu {
   display: flex;
   display: block \9;
@@ -75,6 +73,31 @@
   }
 }
 
+.u-navmenu-horizontal {
+  & li:hover .u-navmenu-sub {
+     max-height: 999px;
+  }
 
+  & > ul > li{
+    display: inline-block;
+    position: relative;
+  }
 
-  
+  & .u-navmenu-sub {
+    position: absolute;
+    top: 54px;
+    left: 0;
+    background-color: #fff;
+    z-index: 2;
+    box-shadow: 0 1px 6px hsla(0,0%,39%,.2);
+  }
+
+  & .u-navmenu-sub .u-navmenu-link {
+    padding-left: 40px; 
+  }
+
+  &.u-navmenu-horizontal .u-navmenu-link-open + .u-navmenu-sub{
+    max-height: 0;
+  }
+
+} 
