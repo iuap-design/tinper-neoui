@@ -1,17 +1,6 @@
 
-@import "../ui/variables";
+@import "extend/dialog";
 
-@import "variables";
+@import "extend/autocomplete";
 
-@import "global";
-
-@import "resets/resets";
-
-@import "forms.scss";
-@import "nav.scss";
-
-@import "avatar.scss";
-
-@import "widget.scss";
-
-@import "tool";
+@import "extend/widget";
