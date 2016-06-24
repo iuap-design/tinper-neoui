@@ -32,3 +32,7 @@
 * slidePanel.js
 * end.js
 * mobiscroll.2.13.2.js
+
+20156-06-24 v3.0.4
+
+- 配置gulp,生成u-core.js

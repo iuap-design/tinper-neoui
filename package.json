@@ -1,6 +1,6 @@
 {
   "name": "iuap-design",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "UI Framework Used For Enterprise.",
   "main": "index.js",
   "scripts": {
