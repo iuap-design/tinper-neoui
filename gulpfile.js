@@ -26,17 +26,55 @@ var UISassSrcPath = [
 
 var UISrcPath = [
   // 基础依赖
-  'js/core/core.js',
-  'js/core/base.js',
-  'js/core/baseComponent.js',
-  'js/core/ajax.js',
-  'js/core/compMgr.js',
+  // 'js/core/core.js',
+  'js/core/BaseComponent.js',
+  'js/ripple.js',
+  'js/ui.button.js',
+  'js/layout.nav.js',
+  'js/ui.navmenu.js',
+  'js/ui.textfield.js',
+  'js/ui.menu.js',
+  'js/layout.md.js',
+  'js/ui.tabs.js',
+  'js/ui.checkbox.js',
+  'js/ui.radio.js',
+  'js/ui.switch.js',
+  'js/ui.loading.js',
+  'js/ui.loader.js',
+  'js/ui.progress.js',
+  'js/ui.message.js',
+  'js/messageDialog.js',
+  'js/confirmDialog.js',
+  'js/threeBtnDialog.js',
+  'js/dialog.js',
+  'js/combobox.js',
+  'js/ui.multilang.js',
+  'js/autocomplete.js',
+  'js/datetimepicker.js',
+  'js/time.js',
+  'js/yearmonth.js',
+  'js/year.js',
+  'js/month.js',
+  'js/clockpicker.js',
+  'js/ui.combo.js',
+  'js/data-table.js',
+  'js/ui.pagination.js',
+  'js/tooltip.js',
+  'js/rating.js',
+  'js/validate.js',
+  'js/ui.refer.js',
+  'js/slidePanel.js',
+  'js/core/end.js',
+  'js/mobiscroll.2.13.2.js'
+  // 'js/core/base.js',
+  // 'js/core/ajax.js',
+  // 'js/core/compMgr.js',
   // 工具方法
-  'js/utilities/*.js',
+  // 'js/utilities/*.js',
   // ui 和 layout
-  'js/*.js',
+  // 'js/*.js',
   // 加载控件
-  'js/core/end.js'
+  
 ]
 
 var AUTOPREFIXER_BROWSERS = [
