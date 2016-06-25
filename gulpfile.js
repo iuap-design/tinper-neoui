@@ -212,6 +212,20 @@ gulp.task('font', function () {
 });
 
 /**
+ * 搬运图片，直接复制拷贝
+ * @param  {[type]} 'font' [description]
+ * @param  {[type]} (      [description]
+ * @return {[type]}        [description]
+ */
+gulp.task('image', function () {
+  return gulp.src('./vendor/images/**')
+    .pipe(rename(function(path){
+      path.dirname += '';
+    }))
+    .pipe(gulp.dest('./dist/images/'));
+});
+
+/**
  * 本地起一个静态 server ，用于调试
  * @param  {[type]} 'serve' [description]
  * @param  {[type]} (       [description]
@@ -242,5 +256,5 @@ gulp.task('clean', function () {
     .on('error', errHandle);
 });
 
-gulp.task('dev', ['font', 'sass-ui', 'es-ui', 'polyfill', 'serve'])
-gulp.task('default', ['font', 'sass-ui', 'sass-ui-dist', 'es-ui', 'polyfill', 'ui-js-dist', 'sass-ui', 'polyfill-dist'])
+gulp.task('dev', ['font', 'image', 'sass-ui', 'es-ui', 'polyfill', 'serve'])
+gulp.task('default', ['font', 'image', 'sass-ui', 'sass-ui-dist', 'es-ui', 'polyfill', 'ui-js-dist', 'sass-ui', 'polyfill-dist'])
