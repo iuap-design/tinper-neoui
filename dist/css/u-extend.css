@@ -912,3 +912,26 @@ $color-accent: $palette-pink-A200 !default;
   border-top: 1px solid #e0e0e0;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px; }
+
+/* 设置滚动条的高度宽度 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px; }
+
+/* 滚动条滑轨 */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(130, 130, 130, 0.3);
+  border-radius: 10px; }
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #EEE;
+  -webkit-box-shadow: inset 0 0 6px rgba(130, 130, 130, 0.5); }
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #E0E0E0; }
+
+/* 横向滚动条和纵向滚动条相交处尖角的颜色 */
+::-webkit-scrollbar-corner {
+  background-color: black; }

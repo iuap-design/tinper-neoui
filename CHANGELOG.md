@@ -33,11 +33,13 @@
 * end.js
 * mobiscroll.2.13.2.js
 
-2016-06-24 v3.0.4
+2016-06-25 v3.0.4
 
 本次具体调整，参见[v3.0.4更新具体内容](https://github.com/iuap-design/iuap-design/issues/9)
 - 完成scss目录更新
 - 更改gulp配置，u-core.js并入u-ui.js
 
+2016-06-25 v3.0.5
 
+- 调整font输出路径，与原版本一致
 

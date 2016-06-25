@@ -21,8 +21,8 @@ var util = require('gulp-util');
 var UISassSrcPath = [
   'scss/u.scss',
   'scss/u-extend.scss',
-  'vendor/font-awesome/css/font-awesome.css',
-  'vendor/font-awesome/css/font-awesome.min.css'
+  // 'vendor/font-awesome/css/font-awesome.css',
+  // 'vendor/font-awesome/css/font-awesome.min.css'
 ]
 
 var UISrcPath = [
@@ -153,6 +153,7 @@ gulp.task('sass-ui-dist', function () {
 
 });
 
+
 /**
  * 编译并合并 UI 相关的 JS 文件
  * 用于开发环境，并支持 ES6/7 语法，可产出map文件
@@ -203,11 +204,11 @@ gulp.task("polyfill-dist", function () {
  * @return {[type]}        [description]
  */
 gulp.task('font', function () {
-  return gulp.src('./vendor/font-awesome/fonts/*')
+  return gulp.src('./vendor/font-awesome/*/*')
     .pipe(rename(function(path){
       path.dirname += '';
     }))
-    .pipe(gulp.dest('./dist/fonts'));
+    .pipe(gulp.dest('./dist/fonts/font-awesome'));
 });
 
 /**
