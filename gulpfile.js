@@ -66,7 +66,7 @@ var UISrcPath = [
   'js/ui.refer.js',
   'js/slidePanel.js',
   'js/core/end.js',
-  'js/mobiscroll.2.13.2.js'
+  'js/mobiscroll.2.13.2.js',
   // 'js/core/base.js',
   // 'js/core/ajax.js',
   // 'js/core/compMgr.js',
@@ -75,10 +75,6 @@ var UISrcPath = [
   // ui 和 layout
   // 'js/*.js',
   // 加载控件
-  
-]
-
-var CorePath = [
   'js/core/core.js',
   'js/core/event.js',
   'js/utilities/jsExtensions.js',
@@ -91,7 +87,7 @@ var CorePath = [
   'js/utilities/formater.js',
   'js/utilities/dateUtils.js',
   'js/utilities/dataRender.js',
-  'js/utilities/hotKeys.js',
+  'js/utilities/hotKeys.js'  
 ]
 
 var AUTOPREFIXER_BROWSERS = [
@@ -201,35 +197,6 @@ gulp.task("polyfill-dist", function () {
 });
 
 /**
- * 编译并合并 Core 相关的 JS 文件
- * 用于开发环境，并支持 ES6/7 语法，可产出map文件
- * @param  {[type]} "core-ui" [description]
- * @param  {[type]} (       [description]
- * @return {[type]}         [description]
- */
-gulp.task("core-ui", function () {
-  return gulp.src( CorePath )
-    .pipe(babel())
-    .on('error', errHandle)
-    .pipe(concat("u-core.js"))
-    .pipe(gulp.dest("dist/js"));
-});
-
-/**
- * 编译并合并压缩 Core 相关的 JS 文件，用于生产环境
- * @param  {[type]} 'core-dist' [description]
- * @param  {[type]} function( [description]
- * @return {[type]}           [description]
- */
-gulp.task('core-js-dist', function(){
-    return gulp.src( CorePath )
-      .pipe(babel())
-      .pipe(concat("u-core.min.js"))
-      .pipe(uglify())
-      .pipe(gulp.dest('dist/js'))
-});
-
-/**
  * 搬运图标字体，直接复制拷贝
  * @param  {[type]} 'font' [description]
  * @param  {[type]} (      [description]
@@ -274,5 +241,5 @@ gulp.task('clean', function () {
     .on('error', errHandle);
 });
 
-gulp.task('dev', ['font', 'sass-ui', 'es-ui', 'polyfill', 'core-ui', 'serve'])
-gulp.task('default', ['font', 'sass-ui', 'sass-ui-dist', 'es-ui', 'core-ui', 'polyfill', 'ui-js-dist', 'core-js-dist', 'sass-ui', 'polyfill-dist'])
+gulp.task('dev', ['font', 'sass-ui', 'es-ui', 'polyfill', 'serve'])
+gulp.task('default', ['font', 'sass-ui', 'sass-ui-dist', 'es-ui', 'polyfill', 'ui-js-dist', 'sass-ui', 'polyfill-dist'])
