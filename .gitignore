@@ -6,6 +6,8 @@ npm-debug.log*
 .DS_Store
 
 docs/
+examples/
+snippets/temp/
 
 # Runtime data
 pids
