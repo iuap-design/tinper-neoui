@@ -21,7 +21,8 @@ var util = require('gulp-util');
 var UISassSrcPath = [
   'scss/u.scss',
   'scss/u-extend.scss',
-  'vendor/font-awesome/css/font-awesome.css'
+  'vendor/font-awesome/css/font-awesome.css',
+  'vendor/font-awesome/css/font-awesome.min.css'
 ]
 
 var UISrcPath = [
