@@ -67,14 +67,7 @@ var UISrcPath = [
   'js/slidePanel.js',
   'js/core/end.js',
   'js/mobiscroll.2.13.2.js',
-  // 'js/core/base.js',
-  // 'js/core/ajax.js',
-  // 'js/core/compMgr.js',
-  // 工具方法
-  // 'js/utilities/*.js',
-  // ui 和 layout
-  // 'js/*.js',
-  // 加载控件
+  // core
   'js/core/core.js',
   'js/core/event.js',
   'js/utilities/jsExtensions.js',
