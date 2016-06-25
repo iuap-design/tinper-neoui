@@ -21,7 +21,8 @@ u.Autocomplete = u.BaseComponent.extend({
 		width: 0,
 		source:null,
 		select: null,
-		multiSelect: false
+		multiSelect: false,
+		//moreClick:function(){},
 	},
 	init: function(){
 		var self = this;
@@ -54,11 +55,11 @@ u.Autocomplete = u.BaseComponent.extend({
 			self.lastKeyPressCode = e.keyCode;
 			switch (e.keyCode) {
 				case 38: // up
-					e.preventDefault();
+					u.stopEvent(e);
 					self.moveSelect(-1);
 					break;
 				case 40: // down
-					e.preventDefault();
+					u.stopEvent(e);
 					self.moveSelect(1);
 					break;
 				case 9: // tab
@@ -66,7 +67,7 @@ u.Autocomplete = u.BaseComponent.extend({
 					if (self.selectCurrent()) {
 						// make sure to blur off the current field
 						// self.element.blur();
-						e.preventDefault();
+						u.stopEvent(e);
 					}
 					break;
 				default:
@@ -331,9 +332,15 @@ u.Autocomplete = u.BaseComponent.extend({
 		var ul = document.createElement("ul");
 		var num = items.length;
 		var me = this;
+		var showMoreMenu = false;
 
 		// limited results to a max number
-		if ((this.options.maxItemsToShow > 0) && (this.options.maxItemsToShow < num)) num = this.options.maxItemsToShow;
+		if ((this.options.maxItemsToShow > 0) && (this.options.maxItemsToShow < num)){
+			num = this.options.maxItemsToShow;
+			if(this.options.moreMenuClick){
+				showMoreMenu = true;
+			}	
+		} 
 
 		for (var i = 0; i < num; i++) {
 			var item = items[i];
@@ -357,9 +364,26 @@ u.Autocomplete = u.BaseComponent.extend({
 				u.removeClass(this, "ac_over");
 			});
 			u.on(li, 'mousedown', function(e){
-				e.preventDefault();
-				e.stopPropagation();
+				u.stopEvent(e);
 				me.selectItem(this);
+			});
+		}
+		if(showMoreMenu){
+			var li = document.createElement("li");
+			li.innerHTML = '更多';
+			ul.appendChild(li);
+			u.on(li, 'mouseenter', function(){
+				var _li = ul.querySelector('li.ac_over');
+				if (_li)
+					u.removeClass(_li, 'ac_over');;
+				u.addClass(this,"ac_over");
+			});
+			u.on(li,'mouseleave', function(){
+				u.removeClass(this, "ac_over");
+			});
+			u.on(li, 'mousedown', function(e){
+				u.stopEvent(e);
+				me.options.moreMenuClick.call(me);
 			});
 		}
 		return ul;
@@ -380,9 +404,15 @@ u.Autocomplete = u.BaseComponent.extend({
 		var ul = document.createElement("ul");
 		var num = data.length;
 		var self = this;
+		var showMoreMenu = false;
 
 		// limited results to a max number
-		if ((this.options.maxItemsToShow > 0) && (this.options.maxItemsToShow < num)) num = this.options.maxItemsToShow;
+		if ((this.options.maxItemsToShow > 0) && (this.options.maxItemsToShow < num)){
+			num = this.options.maxItemsToShow;
+			if(this.options.moreMenuClick){
+				showMoreMenu = true;
+			}	
+		} 
 
 		for (var i = 0; i < num; i++) {
 			var row = data[i];
@@ -415,9 +445,26 @@ u.Autocomplete = u.BaseComponent.extend({
 				u.removeClass(this, "ac_over");
 			});
 			u.on(li, 'mousedown', function(){
-				e.preventDefault();
-				e.stopPropagation();
+				u.stopEvent(e);
 				self.selectItem(this);
+			});
+		}
+		if(showMoreMenu){
+			var li = document.createElement("li");
+			li.innerHTML = '更多';
+			ul.appendChild(li);
+			u.on(li, 'mouseenter', function(){
+				var _li = ul.querySelector('li.ac_over');
+				if (_li)
+					u.removeClass(_li, 'ac_over');;
+				u.addClass(this,"ac_over");
+			});
+			u.on(li,'mouseleave', function(){
+				u.removeClass(this, "ac_over");
+			});
+			u.on(li, 'mousedown', function(e){
+				u.stopEvent(e);
+				self.options.moreMenuClick.call(self);
 			});
 		}
 		return ul;

@@ -21,7 +21,7 @@ u.showLoader=function(options){
 	templateDom=u.makeDOM(template);
 	parEle=options["parEle"]||document.body;
 	if(hasback){
-		var overlayDiv = u.makeModal(templateDom);
+		var overlayDiv = u.makeModal(templateDom,parEle);
 	}
 	if(parEle==document.body){
 		templateDom.style.position='fixed';

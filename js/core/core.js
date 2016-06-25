@@ -123,7 +123,10 @@ u.extend(u, {
 												if(!e)
 													e = typeof event != 'undefined' && event?event:window.event;
 												element["uEvent"][eventName].forEach(function(fn){
-													e.target = e.target || e.srcElement;//兼容IE8
+													try{
+														e.target = e.target || e.srcElement;//兼容IE8
+													}catch(e){
+													}
 													if(fn)
 														fn.call(element,e)
 												})
@@ -190,7 +193,8 @@ u.extend(u, {
 	 */
 	addClass: function (element, value) {
 		if (typeof element.classList === 'undefined') {
-			u._addClass(element, value);
+			if(u._addClass)
+				u._addClass(element, value);
 		} else {
 			element.classList.add(value);
 		}
@@ -198,7 +202,8 @@ u.extend(u, {
 	},
 	removeClass: function (element, value) {
 		if (typeof element.classList === 'undefined') {
-			u._removeClass(element, value);
+			if(u._removeClass)
+				u._removeClass(element, value);
 		} else {
 			element.classList.remove(value);
 		}
@@ -243,7 +248,7 @@ u.extend(u, {
 			if(arguments.length > 2){
 				element.style[csstext] = val
 			}else{
-				u.getStyle(element,csstext)
+				return u.getStyle(element,csstext)
 			}
 		}
 
@@ -282,11 +287,21 @@ u.extend(u, {
 		var _dom = tempDiv.children[0];
 		return _dom;
 	},
-	makeModal : function(element){
+	/**
+	 * element
+	 */
+	makeModal : function(element,parEle){
 	    var overlayDiv = document.createElement('div');
 	    u.addClass(overlayDiv, 'u-overlay');
 	    overlayDiv.style.zIndex = u.getZIndex();
-	    document.body.appendChild(overlayDiv)
+	    // 如果有父元素则插入到父元素上，没有则添加到body上
+	    if(parEle&&parEle!=document.body){
+	    	u.addClass(overlayDiv, 'hasPar');
+	    	parEle.appendChild(overlayDiv);
+	    }else{
+	    	document.body.appendChild(overlayDiv)
+	    }
+	    
 	    element.style.zIndex = u.getZIndex();
 	    u.on(overlayDiv, 'click', function(e){
 	        u.stopEvent(e);
@@ -316,8 +331,8 @@ u.extend(u, {
 	        offset.left = 0;
 	    }
 	    if (Node == document.body) {
-	    	offset.top += Node.scrollTop;
-	    	offset.left += Node.scrollLeft;
+	    	offset.top += Node.scrollTop || document.documentElement.scrollTop;
+	    	offset.left += Node.scrollLeft || document.documentElement.scrollLeft;
 	        return offset;
 	    }
 	    offset.top += Node.scrollTop;
@@ -340,26 +355,31 @@ u.extend(u, {
 			// 基准点为Ele的左上角
 			// 后续根据需要完善
 		if(position == 'left'){
-			
+			left=left-panelWidth;
+			top=top+(eleHeight - panelHeight)/2;
 		}else if(position == 'right'){
-
-		}else if(position == 'topCenter'){
+			left=left+eleWidth;
+			top=top+(eleHeight - panelHeight)/2;
+		}else if(position == 'top'||position == 'topCenter'){
 			left = left + (eleWidth - panelWidth)/2;
 			top = top - panelHeight;
+		}else if(position == 'bottom'||position == 'bottomCenter'){
+			left = left+ (eleWidth - panelWidth)/2;
+			top = top + eleHeight;
 		}else if(position == 'bottomLeft'){
 			left = left;
 			top = top + eleHeight;
 		}
         
-        if((left + panelWidth) > bodyWidth)
-            left = bodyWidth - panelWidth;
-        if(left < 0)
-            left = 0;
+        // if((left + panelWidth) > bodyWidth)
+        //     left = bodyWidth - panelWidth;
+        // if(left < 0)
+        //     left = 0;
 
-        if((top + panelHeight) > bodyHeight)
-            top = bodyHeight - panelHeight;
-        if(top < 0)
-            top = 0;
+        // if((top + panelHeight) > bodyHeight)
+        //     top = bodyHeight - panelHeight;
+        // if(top < 0)
+        //     top = 0;
         panel.style.left = left + 'px';
         panel.style.top = top + 'px';
 	},

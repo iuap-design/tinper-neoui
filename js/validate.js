@@ -208,7 +208,7 @@
 			this.showMsgFlag = options.showMsg;
 		}
 		this.needClean = false
-		if (this.element && this.element.getAttribute("readonly")) return true
+		if (this.element && this.element.getAttribute("readonly")) return {passed:true}
 		var value = null
 		if (typeof pValue != 'undefined')
 			value = pValue

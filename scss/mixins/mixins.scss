@@ -264,3 +264,285 @@
   transition-duration: $duration;
   transition-timing-function: $animation-curve-default;
 }
+
+
+
+@mixin border-top-radius($radius) {
+  border-top-right-radius: $radius;
+   border-top-left-radius: $radius;
+}
+@mixin border-right-radius($radius) {
+  border-bottom-right-radius: $radius;
+     border-top-right-radius: $radius;
+}
+@mixin border-bottom-radius($radius) {
+  border-bottom-right-radius: $radius;
+   border-bottom-left-radius: $radius;
+}
+@mixin border-left-radius($radius) {
+  border-bottom-left-radius: $radius;
+     border-top-left-radius: $radius;
+}
+
+
+//按钮尺寸
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+   border-radius: $border-radius;
+}
+
+//badge
+@mixin badge-variant($color, $bg) {
+  color: $color;
+  background-color: $bg;
+  
+  &[href] {
+    &:hover,
+    &:focus {
+      color: $color;
+      // background-color: darken($bg, 10%);
+    }
+  }
+}
+
+
+//labels
+
+@mixin tag-styles-variant($color, $hover-color) {
+  background-color: $color;
+
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: $hover-color;
+    }
+  }
+
+  &.u-tag-outline {
+    color: $color;
+    background-color: transparent;
+    border-color: $color;
+  }
+}
+
+
+// Pagination
+
+@mixin pagination-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
+  > li {
+    > a {
+      padding: $padding-vertical $padding-horizontal;
+      font-size: $font-size;
+      line-height: $line-height;
+    }
+    &:first-child {
+      > a{
+        @include border-left-radius($border-radius);
+      }
+    }
+    &:last-child {
+      > a{
+        @include border-right-radius($border-radius);
+      }
+    }
+  }
+  >li[role="gap"]{
+      > a {
+        padding: $padding-vertical+1px $padding-horizontal;
+        font-size: $font-size;
+        line-height: $line-height;
+      }
+    }
+}
+
+//radio
+
+@mixin radio-styles-variant($color) {
+  &.is-checked{
+    .u-radio-outer-circle{
+        border: 1px solid $color;
+    }
+    .u-radio-inner-circle{
+        background: $color;
+    }
+  }
+
+}
+//progress
+
+@mixin progress-styles-variant($color,$color-opacity) {
+   .auxbar{
+        background:none;
+        background-color: $color-opacity;
+    }
+    .bufferbar{
+        background:none;        
+        background-color: $color-opacity;
+    }
+    .progressbar{
+        background-color: $color;
+    }
+    
+
+}
+
+//checkbox
+
+@mixin checkbox-styles-variant($color) {
+  &.is-checked{
+    .u-checkbox-outline{
+        border: 1px solid $color;
+    }
+    .u-checkbox-tick-outline{
+        background: $color;
+    }
+  }
+
+}
+//switch colors
+@mixin switch-styles-variant($color){
+  &.is-checked{
+    .u-switch-track{
+        background: $color;
+        border: 1px solid $color;
+    }
+  }
+}
+//switch size
+@mixin switch-size($width, $height, $border-radius, $border-left) {
+  .u-switch-track{
+      width:$width;
+      height:$height;
+      border-radius:$border-radius;
+  }
+  .u-switch-thumb{
+      width:$height;
+      height:$height;
+  }
+   &.is-checked{
+      .u-switch-thumb{
+          left:$border-left;
+      }
+   }
+}
+
+//tooltips
+
+@mixin tooltip-styles-variant($color) {
+   .tooltip-inner{
+    background-color:$color;
+   }
+   &.bottom .tooltip-arrow{
+    border-bottom-color:$color;
+   }
+   &.top .tooltip-arrow{
+    border-top-color:$color;
+   }
+    &.left .tooltip-arrow{
+    border-left-color:$color;
+   }
+    &.right .tooltip-arrow{
+    border-right-color:$color;
+   }
+}
+
+@mixin menu-styles-variant($color,$color-hover) {
+  .u-menu-item:hover{
+    background-color:$color-hover;
+    a{
+      color: #FFFFFF;
+    }
+  }
+  .u-menu-item:focus {
+    outline: none;
+    background-color: $color;
+     a{
+      color: #FFFFFF;
+    }
+  }
+}
+
+
+// utilities
+// font-weight
+@mixin font-weight-light(){ 
+  font-weight: $font-weight-light;
+}
+@mixin font-weight-normal(){ 
+  font-weight: $font-weight-normal; 
+}
+@mixin font-weight-medium(){ 
+  font-weight: $font-weight-medium; 
+}
+@mixin font-weight-bold(){ 
+  font-weight: $font-weight-bold; 
+}
+
+// text
+@mixin text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: normal; /* for IE */
+  white-space: nowrap;
+}
+
+@mixin text-break() {
+  -webkit-hyphens: auto;
+     -moz-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+@mixin text-nowrap() {
+  white-space: nowrap;
+}
+
+
+// visibility
+
+@mixin responsive-visibility() {
+  display: block !important;
+  table&  { display: table !important; }
+  tr&     { display: table-row !important; }
+  th&,
+  td&     { display: table-cell !important; }
+}
+
+@mixin responsive-invisibility() {
+  display: none !important;
+}
+
+
+
+@mixin center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
+@mixin hide-text() {
+  font: "0/0" a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+@mixin text-hide() {
+  @include hide-text();
+}

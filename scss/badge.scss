@@ -33,7 +33,7 @@
     font-size: $badge-font-size;
     min-width: ($badge-size/2);
     padding: 0 6px;
-    height: $badge-size;
+    height: 18px;
     border-radius : ($badge-size/2);
 
     background: $badge-background;
@@ -55,3 +55,31 @@
     }
   }
 }
+
+
+
+.u-badge-primary.u-badge[data-badge]:after {
+  @include badge-variant($badge-primary-color, $badge-primary-bg);
+}
+
+ .u-badge-success.u-badge[data-badge]:after {
+   @include badge-variant($badge-success-color, $badge-success-bg);
+}
+
+
+.u-badge-info.u-badge[data-badge]:after{
+  @include badge-variant($badge-info-color, $badge-info-bg);
+}
+
+.u-badge-warning.u-badge[data-badge]:after {
+ @include badge-variant($badge-warning-color, $badge-warning-bg);
+}
+
+.u-badge-danger.u-badge[data-badge]:after {
+ @include badge-variant($badge-danger-color, $badge-danger-bg);
+}
+
+.u-badge-dark.u-badge[data-badge]:after {
+  @include  badge-variant($badge-dark-color, $badge-dark-bg);
+}
+

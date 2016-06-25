@@ -1,5 +1,3 @@
-
-
 @import "./mixins/variables";
 @import "./mixins/mixins";
 
@@ -10,9 +8,12 @@
   display: inline-block;
   box-sizing: border-box;
   width: 100%;
-  height: $checkbox-label-height;
+  //height: $checkbox-label-height;
   margin: 0;
   padding: 0;
+  word-wrap: break-word;
+  word-break: break-all;
+  text-align: left;
 
   &.is-upgraded {
     padding-left: $checkbox-button-size + $checkbox-padding;
@@ -113,8 +114,18 @@
 
   fieldset[disabled] .u-checkbox.is-checked &,
   .u-checkbox.is-checked.is-disabled & {
-    background: $checkbox-disabled-color url("#{$checkbox-image-path}/tick.svg?embed");
+    background: $checkbox-disabled-color;
+    // mask: url("#{$checkbox-image-path}/tick-mask.svg?embed");
   }
+
+  // fieldset[disabled] .u-checkbox &,
+  // .u-checkbox.is-disabled & {
+  //   background: $checkbox-disabled-color;
+  //   mask:none;
+  //   -webkit-mask:none;
+  // }
+
+
 }
 
 .u-checkbox-label {
@@ -161,3 +172,43 @@
 //    background: transparent;
 //  }
 //}
+
+
+.u-checkbox-primary {
+  @include checkbox-styles-variant($checkbox-primary-bg);
+}
+
+// Modifier: `checkbox-success`
+// -------------------------
+
+.u-checkbox-success {
+  @include checkbox-styles-variant($checkbox-success-bg);
+}
+
+// Modifier: `checkbox-info`
+// -------------------------
+
+.u-checkbox-info {
+  @include checkbox-styles-variant($checkbox-info-bg);
+}
+
+// Modifier: `checkbox-warning`
+// -------------------------
+
+.u-checkbox-warning {
+  @include checkbox-styles-variant($checkbox-warning-bg);
+}
+
+// Modifier: `checkbox-danger`
+// -------------------------
+
+.u-checkbox-danger {
+  @include checkbox-styles-variant($checkbox-danger-bg);
+}
+
+// Modifier: `checkbox-dark`
+// -------------------------
+
+.u-checkbox-dark {
+  @include checkbox-styles-variant($checkbox-dark-bg);
+}

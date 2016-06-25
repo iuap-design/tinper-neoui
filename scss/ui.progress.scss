@@ -1,4 +1,3 @@
-
 @import "./mixins/variables";
 
 .u-progress {
@@ -22,6 +21,7 @@
   background-color: $progress-main-color;
   z-index: 1;
   left: 0;
+  border-radius: 3px;
 }
 
 .u-progress > .bufferbar {
@@ -32,6 +32,7 @@
   filter:alpha(opacity=50) \9; 
   z-index: 0;
   left: 0;
+  border-radius: 3px;
 }
 
 .u-progress > .auxbar {
@@ -73,6 +74,33 @@
   animation-timing-function: linear;
 }
 
+.u-progress-primary {
+  @include progress-styles-variant($progress-primary-bg,$color-primary-opacity);
+}
+.u-progress-success {
+  @include progress-styles-variant($progress-success-bg,$color-success-opacity);
+}
+.u-progress-info {
+  @include progress-styles-variant($progress-info-bg,$color-info-opacity);
+}
+.u-progress-danger {
+  @include progress-styles-variant($progress-danger-bg,$color-danger-opacity);
+}
+.u-progress-warning {
+  @include progress-styles-variant($progress-warning-bg,$color-warning-opacity);
+}
+.u-progress-dark {
+  @include progress-styles-variant($progress-dark-bg,$color-dark-opacity);
+}
+.u-progress-sm {
+   height:10px;
+}
+.u-progress-md {
+   height:15px;
+}
+.u-progress-lg {
+   height:22px;
+}
 @keyframes indeterminate1 {
   0% {
     left: 0%;

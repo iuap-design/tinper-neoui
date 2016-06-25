@@ -40,6 +40,10 @@ u.slidePanel = function (options) {
         });
         slideDom.style.transform = 'translate3d(100%,0,0)';
         overlayDiv.style.opacity = 0;
+        if(u.isIE8){
+            document.body.removeChild(slideDom);
+            document.body.removeChild(overlayDiv);
+        }
     })
 
     return {

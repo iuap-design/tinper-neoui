@@ -22,7 +22,7 @@
   position: fixed;
   left: 0;
   right: 0;
-  background-color: #fafafa;
+  background-color: #FFFFFF;
   padding: 0;
   max-height: 70%;
   width: 55%;
@@ -41,29 +41,38 @@
     width:80%;
   }
   .u-msg-title{
-    padding-left: 24px;
+    padding-left: 20px;
     padding-top: 24px;
   }
   h4{
-    margin:0px;
+    text-shadow: rgba(0,0,0,.15) 0 0 1px;
+    margin: 0;
+    line-height: 1.57142857;
+    font-weight: 400;
+    color: #424242;
+    font-size:18px;
   }
   .u-msg-content{
-    padding: 24px;
+    padding: 20px;
     overflow: auto;
     width: 100%;
     box-sizing:border-box;
      -moz-box-sizing: border-box;
      -webkit-box-sizing: border-box;
+    font-size: 14px;
+    line-height: 1.57142857;
+    color: #757575;
+    font-weight:300;
 
   }
   
   .u-msg-content h4{
-      margin-top: 0px;
+   margin: 0;
   }
   .u-msg-footer{
     border-radius: 0 0 2px 2px;
-    background-color: #fafafa;
-    padding: 4px 6px;
+    // background-color: #fafafa;
+    padding: 4px 20px;
     height: 56px;
     width: 100%;
     box-sizing:border-box;
@@ -75,16 +84,28 @@
     float: right;
   }
   
+  .u-msg-cancel{
+    margin-right:10px;
+  }
+  .u-msg-ok{
+    margin-right:15px;
+  }
   .u-msg-close{
       cursor: pointer;
     font-size: 21px;
-    padding: 24px;
+    padding:15px 20px;
     padding-bottom:0px;
-    color:#333;
-      filter:alpha(opacity=50); 
-     -moz-opacity:0.5;
-     -khtml-opacity:0.5; 
-     opacity: .5;
+    
+      filter:alpha(opacity=20); 
+     -moz-opacity:0.2;
+     -khtml-opacity:0.2; 
+     opacity: .2;
+     color: #000;
+      
 
+  }
+
+  .u-msg-close:hover{
+    opacity: .5;
   }
 }

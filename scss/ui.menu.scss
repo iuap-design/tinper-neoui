@@ -1,4 +1,3 @@
-
 @import "./mixins/variables";
 @import "./mixins/mixins";
 
@@ -195,7 +194,7 @@
 }
 
 .u-menu-button{
-  width:87px;
+  // width:87px;
 }
 //分割按钮
 .u-right-icon {
@@ -243,4 +242,46 @@
 
 .u-menu-wrap{
   position: relative;
+}
+
+
+// 不同色彩的下拉按钮
+
+.u-menu-primary {
+  @include menu-styles-variant($menu-primary-bg,$menu-primary-bg-hover);
+}
+
+// Modifier: `menu-success`
+// -------------------------
+
+.u-menu-success {
+  @include menu-styles-variant($menu-success-bg,$menu-success-bg-hover);
+}
+
+// Modifier: `menu-info`
+// -------------------------
+
+.u-menu-info {
+  @include menu-styles-variant($menu-info-bg,$menu-info-bg-hover);
+}
+
+// Modifier: `menu-warning`
+// -------------------------
+
+.u-menu-warning {
+  @include menu-styles-variant($menu-warning-bg,$menu-warning-bg-hover);
+}
+
+// Modifier: `menu-danger`
+// -------------------------
+
+.u-menu-danger {
+  @include menu-styles-variant($menu-danger-bg,$menu-danger-bg-hover);
+}
+
+// Modifier: `menu-dark`
+// -------------------------
+
+.u-menu-dark {
+  @include menu-styles-variant($menu-dark-bg,$menu-dark-bg-hover);
 }

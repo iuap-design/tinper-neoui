@@ -12,7 +12,7 @@ u.confirmDialogTemplate = '<div class="u-msg-dialog">'+
     '<div class="u-msg-content">'+
     '<p>{msg}</p>'+
     '</div>'+
-    '<div class="u-msg-footer"><button class="u-msg-ok u-button">{okText}</button><button class="u-msg-cancel u-button">{cancelText}</button></div>'+
+    '<div class="u-msg-footer"><button class="u-msg-ok u-button primary raised">{okText}</button><button class="u-msg-cancel u-button">{cancelText}</button></div>'+
     '</div>';
 
 u.confirmDialog = function(options){
