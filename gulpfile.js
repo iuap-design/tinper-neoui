@@ -196,13 +196,30 @@ gulp.task("polyfill-dist", function () {
  * @param  {[type]} (      [description]
  * @return {[type]}        [description]
  */
+// gulp.task('font', function () {
+//   return gulp.src('./vendor/font-awesome/*/*')
+//     .pipe(rename(function(path){
+//       path.dirname += '';
+//     }))
+//     .pipe(gulp.dest('./dist/fonts/font-awesome'));
+// });
+
 gulp.task('font', function () {
-  return gulp.src('./vendor/font-awesome/*/*')
+  return gulp.src('./vendor/font-awesome/fonts/*')
     .pipe(rename(function(path){
       path.dirname += '';
     }))
-    .pipe(gulp.dest('./dist/fonts/font-awesome'));
+    .pipe(gulp.dest('./dist/fonts/'));
 });
+
+gulp.task('fontcss', function() {
+  return gulp.src('./vendor/font-awesome/css/*')
+    .pipe(rename(function(path){
+      path.dirname += '';
+    }))
+    .pipe(gulp.dest('./dist/css/'));  
+})
+
 
 /**
  * 搬运图片，直接复制拷贝
@@ -249,5 +266,5 @@ gulp.task('clean', function () {
     .on('error', errHandle);
 });
 
-gulp.task('dev', ['font', 'image', 'sass-ui', 'es-ui', 'polyfill', 'serve'])
-gulp.task('default', ['font', 'image', 'sass-ui', 'sass-ui-dist', 'es-ui', 'polyfill', 'ui-js-dist', 'sass-ui', 'polyfill-dist'])
+gulp.task('dev', ['font', 'fontcss', 'image', 'sass-ui', 'es-ui', 'polyfill', 'serve'])
+gulp.task('default', ['font', 'fontcss', 'image', 'sass-ui', 'sass-ui-dist', 'es-ui', 'polyfill', 'ui-js-dist', 'sass-ui', 'polyfill-dist'])
