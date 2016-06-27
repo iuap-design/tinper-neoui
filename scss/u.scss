@@ -1,3 +1,5 @@
+
+
 // Variables and mixins
 @import "./mixins/variables";
 @import "./mixins/mixins";
@@ -7,6 +9,8 @@
 
 @import "ripple";
 @import "utilities/utilities";
+
+
 
 // Components
 @import "ui.button";
@@ -29,26 +33,32 @@
 @import "pearls";
 @import "extend/dialog";
 @import "ui.combo";
-@import "datetimepicker";
+/* 移至datetimepicker @import "datetimepicker"; */
 @import "mobiscroll.2.13.2";
 @import "ui.pagination";
 @import "autocomplete";
 @import "data-table";
 @import "ui.tooltip";
-@import "time";
-@import "clockpicker";
+/* 移至datetimepicker @import "time"; */
+/* 移至datetimepicker @import "clockpicker"; */
 @import "utilities/shadow";
 @import "card";
 @import "forms";
+
+
 @import "badge";
 @import "tags";
+
 @import "ui.navmenu";
+
 @import "layout.slidePanel";
+
 @import "breadcrumbs";
+
 @import "list-group";
 
-@import "ui.table";
-// 布局
-// utilities
-@import "utilities/tool";
+/* 库迁移，暂注释
+ @import "ui.table";
+ @import "utilities/tool";
+*/
 
