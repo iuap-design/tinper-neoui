@@ -51,12 +51,12 @@ var UISrcPath = [
   'js/combobox.js',
   'js/ui.multilang.js',
   'js/autocomplete.js',
-  'js/datetimepicker.js',
-  'js/time.js',
-  'js/yearmonth.js',
-  'js/year.js',
-  'js/month.js',
-  'js/clockpicker.js',
+  // 'js/datetimepicker.js', 移至datatimepicker
+  // 'js/time.js', 移至datatimepicker
+  // 'js/yearmonth.js', 移至datatimepicker
+  // 'js/year.js', 移至datatimepicker
+  // 'js/month.js', 移至datatimepicker
+  // 'js/clockpicker.js', 移至datatimepicker
   'js/ui.combo.js',
   'js/data-table.js',
   'js/ui.pagination.js',
