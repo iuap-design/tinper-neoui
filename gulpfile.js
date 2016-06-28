@@ -27,6 +27,20 @@ var UISassSrcPath = [
 
 var UISrcPath = [
   // 基础依赖
+  // core
+  'js/core/core.js',
+  'js/core/event.js',
+  'js/utilities/jsExtensions.js',
+  'js/core/ajax.js',
+  'js/core/base.js',
+  'js/core/compMgr.js',
+  'js/utilities/i18n.js',
+  'js/utilities/rsautils.js',
+  'js/utilities/masker.js',
+  'js/utilities/formater.js',
+  'js/utilities/dateUtils.js',
+  'js/utilities/dataRender.js',
+  'js/utilities/hotKeys.js',
   // 'js/core/core.js',
   'js/core/BaseComponent.js',
   'js/ripple.js',
@@ -66,21 +80,7 @@ var UISrcPath = [
   'js/ui.refer.js',
   'js/slidePanel.js',
   'js/core/end.js',
-  'js/mobiscroll.2.13.2.js',
-  // core
-  'js/core/core.js',
-  'js/core/event.js',
-  'js/utilities/jsExtensions.js',
-  'js/core/ajax.js',
-  'js/core/base.js',
-  'js/core/compMgr.js',
-  'js/utilities/i18n.js',
-  'js/utilities/rsautils.js',
-  'js/utilities/masker.js',
-  'js/utilities/formater.js',
-  'js/utilities/dateUtils.js',
-  'js/utilities/dataRender.js',
-  'js/utilities/hotKeys.js'  
+  'js/mobiscroll.2.13.2.js'
 ]
 
 var polyPath = [
