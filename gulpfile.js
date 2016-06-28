@@ -83,6 +83,12 @@ var UISrcPath = [
   'js/utilities/hotKeys.js'  
 ]
 
+var polyPath = [
+  'vendor/polyfill/core.js',
+  'vendor/polyfill/JsExtensions.js',
+  'vendor/polyfill/respond.js'
+]
+
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 11',
   'edge >= 20',
@@ -177,14 +183,14 @@ gulp.task('ui-js-dist', function(){
 });
 
 gulp.task("polyfill", function () {
-  return gulp.src('vendor/polyfill/*.js')
+  return gulp.src(polyPath)
     .pipe(concat("u-polyfill.js"))
     .on('error', errHandle)
     .pipe(gulp.dest("dist/js"));
 });
 
 gulp.task("polyfill-dist", function () {
-  return gulp.src('vendor/polyfill/*.js')
+  return gulp.src(polyPath)
     .pipe(concat("u-polyfill.min.js"))
     .pipe(uglify())
     .pipe(gulp.dest("dist/js"));
