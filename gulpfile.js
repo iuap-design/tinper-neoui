@@ -185,7 +185,7 @@ gulp.task('fontchar', function () {
     .pipe(rename(function(path){
         path.dirname += '';
     }))
-    .pipe(gulp.dest('./dist/font'));
+    .pipe(gulp.dest('./dist/fonts'));
 });
 
 /**
