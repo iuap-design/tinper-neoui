@@ -4972,14 +4972,18 @@ u.MDLayout = u.BaseComponent.extend({
 
 		//this.$master.css('float','left').css('height','100%')
 		//this.$detail.css('height','100%').css('overflow','hidden').css('position','relative');
-
-		this.masterWidth = this._master.offsetWidth;
+		if(this.master)
+			this.masterWidth = this._master.offsetWidth;
+		else
+			this.masterWidth = 0;
 		this.detailWidth = this._detail.offsetWidth;
-		this.mPages = this._master.querySelectorAll('.' + this._CssClasses.PAGE);
+		if(this._master)
+			this.mPages = this._master.querySelectorAll('.' + this._CssClasses.PAGE);
 		this.dPages = this._detail.querySelectorAll('.' + this._CssClasses.PAGE);
 		this.mPageMap = {};
 		this.dPageMap = {};
-		this.initPages(this.mPages, 'master');
+		if(this._master)
+			this.initPages(this.mPages, 'master');
 		this.initPages(this.dPages, 'detail');
 
 		this.mHistory = [];
@@ -5055,7 +5059,10 @@ response: function() {
 calcWidth: function(){
 	if (!(u.isIE8 || u.isIE9)){
 		this.detailWidth = this._detail.offsetWidth;
-		this.masterWidth = this._master.offsetWidth;
+		if(this._master)
+			this.masterWidth = this._master.offsetWidth;
+		else
+			this.masterWidth = 0;
 		//TODO this.mHistory中的panel应该置为-值
 		for (var i = 0; i<this.dPages.length; i++){
 			var pid = this.dPages[i].getAttribute('id');
@@ -5100,26 +5107,30 @@ dBack: function() {
 },
 
 showMaster: function() {
-	if (u.isIE8 || u.isIE9)
-		this._master.style.display = 'block';
-	else{
-		this._master.style.transform = 'translate3d(0,0,0)';
+	if(this._master){
+		if (u.isIE8 || u.isIE9)
+			this._master.style.display = 'block';
+		else{
+			this._master.style.transform = 'translate3d(0,0,0)';
+		}
+		if (!this.isNarrow)
+			this._master.style.position = 'relative';
 	}
-	if (!this.isNarrow)
-		this._master.style.position = 'relative';
 },
 
 hideMaster: function() {
-	if (this._master.offsetLeft < 0 || this._master.style.display == 'none')
-		return;
-	if (u.isIE8 || u.isIE9)
-		this._master.style.display = 'none';
-	else{
-		this._master.style.transform = 'translate3d(-'+ this.masterWidth +'px,0,0)';
+	if(this._master){
+		if (this._master.offsetLeft < 0 || this._master.style.display == 'none')
+			return;
+		if (u.isIE8 || u.isIE9)
+			this._master.style.display = 'none';
+		else{
+			this._master.style.transform = 'translate3d(-'+ this.masterWidth +'px,0,0)';
+		}
+		this._master.style.position = 'absolute';
+		this._master.style.zIndex = 5;
+		this.calcWidth()
 	}
-	this._master.style.position = 'absolute';
-	this._master.style.zIndex = 5;
-	this.calcWidth()
 }
 });
 
