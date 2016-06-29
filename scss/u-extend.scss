@@ -12,15 +12,18 @@
 
 @import "avatar.scss";
 
+@import "extend/widget";
+
+@import "tool";
 
 // 项目新增
+
+/* 代码迁移，暂注释
 
 @import "extend/dialog";
 
 @import "extend/autocomplete";
 
-@import "extend/widget";
-
-@import "tool";
-
 @import "extend/iscroll-improve";
+
+ */
