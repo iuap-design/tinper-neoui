@@ -7718,7 +7718,7 @@ u.Combo = u.BaseComponent.extend({
         this.iconBtn = this.element.querySelector("[data-role='combo-button']");
         if (this.iconBtn){
             u.on(this.iconBtn, 'click', function(e){
-                self.show(e);
+                self._input.focus();
                 u.stopEvent(e);
             })
         }
@@ -7901,6 +7901,7 @@ u.Combo = u.BaseComponent.extend({
             this._input.value = '';
             this.value = '';
         }
+        var matched = false;
         this.comboDatas.forEach(function(item, index){
             if (this.mutilSelect === true){
                 if (values.indexOf(item.value) != -1){
@@ -7909,11 +7910,12 @@ u.Combo = u.BaseComponent.extend({
             }else {
                 if (item.value === value) {
                     this.selectItem(index);
+                    matched = true;
                     return;
                 }
             }
         }.bind(this));
-        if(!this.onlySelect){
+        if(!this.onlySelect && !matched){
             this.value = value;
             this._input.value = value;
             this.trigger('select', {value: this.value, name: this._input.value});

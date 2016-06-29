@@ -172,12 +172,20 @@ gulp.task("polyfill", function () {
  * @param  {[type]} (      [description]
  * @return {[type]}        [description]
  */
-gulp.task('font', function () {
-  return gulp.src('./vendor/font-awesome/*/*')
+gulp.task('fontcss', function () {
+  return gulp.src('./vendor/font-awesome/css/*')
     .pipe(rename(function(path){
         path.dirname += '';
     }))
-    .pipe(gulp.dest('./dist/fonts/font-awesome'));
+    .pipe(gulp.dest('./dist/css'));
+});
+
+gulp.task('fontchar', function () {
+  return gulp.src('./vendor/font-awesome/fonts/*')
+    .pipe(rename(function(path){
+        path.dirname += '';
+    }))
+    .pipe(gulp.dest('./dist/fonts'));
 });
 
 /**
@@ -189,7 +197,7 @@ gulp.task('font', function () {
 gulp.task('image', function () {
   return gulp.src('./vendor/images/**')
     .pipe(rename(function(path){
-        path.dirname += '';
+      path.dirname += '';
     }))
     .pipe(gulp.dest('./dist/images/'));
 });
@@ -225,5 +233,5 @@ gulp.task('clean', function () {
     .on('error', errHandle);
 });
 
-gulp.task('dev', ['font', 'image', 'sass-ui', 'es-ui', 'polyfill', 'serve'])
-gulp.task('dist', ['font', 'image',  'sass-ui', 'es-ui', 'polyfill'])
+gulp.task('dev', ['fontcss', 'fontchar', 'image','sass-ui', 'es-ui', 'polyfill', 'serve'])
+gulp.task('dist', ['fontcss', 'fontchar', 'image', 'sass-ui', 'es-ui', 'polyfill'])
