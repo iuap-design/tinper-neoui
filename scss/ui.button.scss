@@ -1,5 +1,6 @@
-@import "./mixins/variables";
-@import "./mixins/mixins";
+
+@import "../variables";
+@import "../mixins";
 
 //默认 flat 样式.
 .u-button {
@@ -11,6 +12,7 @@
   // height: $button-height;
   min-width: $button-min-width;
   padding: $button-padding;
+  padding: $button-padding-IE8 \9;
   display: inline-block;
   @include typo-button();
   overflow: hidden;
