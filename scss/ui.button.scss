@@ -1,6 +1,6 @@
 
-@import "../variables";
-@import "../mixins";
+@import "./mixins/variables";
+@import "./mixins/mixins";
 
 //默认 flat 样式.
 .u-button {
