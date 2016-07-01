@@ -122,13 +122,14 @@ u.extend(u, {
 												//火狐下有问题修改判断
 												if(!e)
 													e = typeof event != 'undefined' && event?event:window.event;
+												var eObj = e;
 												element["uEvent"][eventName].forEach(function(fn){
 													try{
-														e.target = e.target || e.srcElement;//兼容IE8
+														eObj.target = eObj.target || eObj.srcElement;//兼容IE8
 													}catch(e){
 													}
 													if(fn)
-														fn.call(element,e)
+														fn.call(element,eObj)
 												})
 											}
 			if (element.addEventListener) {  // 用于支持DOM的浏览器
@@ -3974,8 +3975,11 @@ u.NavLayout = u.BaseComponent.extend({
             u.on(obfuscator,'click', this._drawerToggleHandler.bind(this));
             this._obfuscator = obfuscator;
 
-            var leftnav = this.element.querySelector('.' + this._CssClasses.NAV);
-            u.on(leftnav,'click', this._navlinkClickHander.bind(this));
+            var leftnavs = this.element.querySelectorAll('.' + this._CssClasses.NAV);
+            for(var i = 0; i < leftnavs.length; i++){
+                u.on(leftnavs[i],'click', this._navlinkClickHander.bind(this));
+            }   
+            
 
             var items = leftnav.querySelectorAll('.' + this._CssClasses.NAV_LINK);
             for(var i=0;i<items.length;i++) {

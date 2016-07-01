@@ -3807,6 +3807,7 @@ $color-accent: $palette-pink-A200 !default;
   position: relative;
   min-width: 4.5rem;
   padding: 0.3125rem 0.8125rem;
+  padding: 5px 13px \9;
   display: inline-block;
   font-family: "Microsoft YaHei", "Helvetica", "Arial", sans-serif;
   font-size: 0.8125rem;
