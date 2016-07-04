@@ -12,6 +12,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var base64 = require('gulp-base64');
 var util = require('gulp-util');
 
+var makeumd = require('./makeumd.js');
 /**
  * SASS 源文件索引
  * @type {Array}
@@ -115,9 +116,9 @@ var errHandle = function ( err ) {
  * @return {[type]}           [description]
  */
 
-gulp.task('sass-ui', function () {
+gulp.task('sass-ui-u-init', function () {
 
-    gulp.src('scss/u.scss')
+    return gulp.src('scss/u.scss')
         .pipe(sass().on('error', errHandle))
         .pipe(base64().on('error',errHandle))
         .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
@@ -125,8 +126,10 @@ gulp.task('sass-ui', function () {
         .pipe(minifycss())
         .pipe(rename('u.min.css'))
         .pipe(gulp.dest('dist/css'));
+});
 
-    gulp.src('scss/u-extend.scss')
+gulp.task('sass-ui-u-extend-init', function(){
+    return gulp.src('scss/u-extend.scss')
         .pipe(sass().on('error',errHandle))
         .pipe(base64().on('error',errHandle))
         .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
@@ -134,8 +137,16 @@ gulp.task('sass-ui', function () {
         .pipe(minifycss())
         .pipe(rename('u-extend.min.css'))
         .pipe(gulp.dest('dist/css'));
+})
 
-});
+gulp.task('sass-ui', ['sass-ui-u-init', 'sass-ui-u-extend-init'], function(){
+    makeumd.init([
+            'dist/css/u.css',
+            'dist/css/u.min.css',
+            'dist/css/u-extend.css',
+            'dist/css/u-extend.min.css'
+        ]);
+})
 
 
 /**
@@ -145,7 +156,7 @@ gulp.task('sass-ui', function () {
  * @param  {[type]} (       [description]
  * @return {[type]}         [description]
  */
-gulp.task("es-ui", function () {
+gulp.task("es-ui-init", function () {
     return gulp.src( UISrcPath )
             .pipe(concat('u-ui.js'))
             .pipe(gulp.dest('./dist/js'))
@@ -154,8 +165,15 @@ gulp.task("es-ui", function () {
             .pipe(gulp.dest('./dist/js'));
 });
 
+gulp.task('es-ui', ['es-ui-init'], function(){
+     makeumd.init([
+            'dist/js/u-ui.js',
+            'dist/js/u-ui.min.js',
+        ]);
+})
 
-gulp.task("polyfill", function () {
+
+gulp.task("polyfill-init", function () {
     return gulp.src(polyPath)
             .pipe(concat("u-polyfill.js"))
             .pipe(gulp.dest("./dist/js"))
@@ -164,6 +182,14 @@ gulp.task("polyfill", function () {
             .pipe(concat("u-polyfill.min.js"))
             .pipe(gulp.dest("./dist/js"));
 });
+
+
+gulp.task('polyfill', ['polyfill-init'], function(){
+     makeumd.init([
+            'dist/js/u-polyfill.js',
+            'dist/js/u-polyfill.min.js',
+        ]);
+})
 
 
 /**

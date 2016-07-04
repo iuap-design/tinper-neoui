@@ -8,12 +8,7 @@ module.exports = {
 	 * @return {[type]} [description]
 	 */
 
-	
-	all_files : [
-		'./dist/js/u.js'
-	],
-
-	init: function() {
+	init: function(filesArr) {
 		// 读取package.json，将里面内容生成头信息
 		var data = fs.readFileSync('./package.json', 'utf8');
 		var packageObj = JSON.parse( data );
@@ -25,8 +20,10 @@ module.exports = {
 			headerStr += ' * homepage : ' + packageObj.homepage + '\r\n';
 			headerStr += ' * bugs : ' + packageObj.bugs.url + '\r\n';
 			headerStr += ' **/ \r\n';
-		for (var i = 0; i< this.all_files.length; i++){
-			var filePath = this.all_files[i]
+
+
+		for (var i = 0; i < filesArr.length; i++){
+			var filePath = filesArr[i]
 			var data = fs.readFileSync(filePath, 'utf8');
 			data = headerStr  + data;
 			fs.writeFileSync(filePath, data);
