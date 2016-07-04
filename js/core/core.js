@@ -122,13 +122,14 @@ u.extend(u, {
 												//火狐下有问题修改判断
 												if(!e)
 													e = typeof event != 'undefined' && event?event:window.event;
+												var eObj = e;
 												element["uEvent"][eventName].forEach(function(fn){
 													try{
-														e.target = e.target || e.srcElement;//兼容IE8
+														eObj.target = eObj.target || eObj.srcElement;//兼容IE8
 													}catch(e){
 													}
 													if(fn)
-														fn.call(element,e)
+														fn.call(element,eObj)
 												})
 											}
 			if (element.addEventListener) {  // 用于支持DOM的浏览器

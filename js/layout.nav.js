@@ -191,8 +191,11 @@ u.NavLayout = u.BaseComponent.extend({
             u.on(obfuscator,'click', this._drawerToggleHandler.bind(this));
             this._obfuscator = obfuscator;
 
-            var leftnav = this.element.querySelector('.' + this._CssClasses.NAV);
-            u.on(leftnav,'click', this._navlinkClickHander.bind(this));
+            var leftnavs = this.element.querySelectorAll('.' + this._CssClasses.NAV);
+            for(var i = 0; i < leftnavs.length; i++){
+                u.on(leftnavs[i],'click', this._navlinkClickHander.bind(this));
+            }   
+            
 
             var items = leftnav.querySelectorAll('.' + this._CssClasses.NAV_LINK);
             for(var i=0;i<items.length;i++) {
