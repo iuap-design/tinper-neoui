@@ -1,7 +1,7 @@
 /** 
  * iuap-design v3.0.6
  * UI Framework Used For Enterprise.
- * author : guoyongfeng
+ * author : yonyou FED
  * homepage : https://github.com/iuap-design/iuap-design#readme
  * bugs : https://github.com/iuap-design/iuap-design/issues
  **/ 
