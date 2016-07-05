@@ -231,11 +231,11 @@ function replaceMdFun(filePath,itemName){
 							if(data.toString().length > 0){
 								codeStr += '<div class="examples-code"><pre><code>' + data.toString().replace(/\</g,'&lt;') + '</code></pre>\r\n</div>\r\n';
 								if(cssIndex > -1){
-									showStr += '<div class="csstag" style="display:none">' + data.toString() + '\r\n' + '</div>\r\n';
+									showStr += '<div class="example-content"><style>' + data.toString() + '\r\n' + '</style></div>\r\n';
 								}else if(htmlIndex > -1){
 									showStr += '<div class="example-content">' + data.toString() + '\r\n</div>\r\n';
 								}else if(jsIndex > -1){
-									showStr += '<div class="jstag" style="display:none">' + data.toString() + '\r\n' + '</div>\r\n';
+									showStr += '<div class="example-content"><script>' + data.toString() + '\r\n' + '</script></div>\r\n';
 								}
 								
 							}

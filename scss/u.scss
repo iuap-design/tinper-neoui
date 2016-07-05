@@ -14,48 +14,48 @@
 
 // Components
 @import "ui.button";
-@import "ui.textfield";
+@import "extend/ui.textfield";
 @import "layout.nav";
 @import "layout.grid";
-@import "ui.menu";
+@import "extend/ui.menu";
 @import "layout.md";
-@import "ui.tabs";
+@import "extend/ui.tabs";
 @import "ui.checkbox";
 @import "img";
-@import "rating";
-@import "panel";
+@import "../vendor/css/rating";
+@import "extend/panel";
 @import "ui.radio";
-@import "ui.switch";
-@import "ui.loading";
-@import "ui.loader";
-@import "ui.progress";
-@import "ui.message";
-@import "pearls";
+@import "extend/ui.switch";
+@import "extend/ui.loading";
+@import "extend/ui.loader";
+@import "extend/ui.progress";
+@import "extend/ui.message";
+@import "extend/pearls";
 @import "extend/dialog";
-@import "ui.combo";
+@import "extend/ui.combo";
 /* 移至datetimepicker @import "datetimepicker"; */
-@import "mobiscroll.2.13.2";
-@import "ui.pagination";
-@import "autocomplete";
+@import "../vendor/css/mobiscroll.2.13.2";
+@import "extend/ui.pagination";
+@import "extend/autocomplete";
 @import "data-table";
-@import "ui.tooltip";
+@import "extend/ui.tooltip";
 /* 移至datetimepicker @import "time"; */
 /* 移至datetimepicker @import "clockpicker"; */
 @import "utilities/shadow";
-@import "card";
-@import "forms";
+@import "extend/card";
+@import "extend/forms";
 
 
 @import "badge";
-@import "tags";
+@import "extend/tags";
 
-@import "ui.navmenu";
+@import "extend/ui.navmenu";
 
 @import "layout.slidePanel";
 
-@import "breadcrumbs";
+@import "extend/breadcrumbs";
 
-@import "list-group";
+@import "extend/list-group";
 
 /* 库迁移，暂注释
  @import "ui.table";

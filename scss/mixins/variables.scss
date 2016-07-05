@@ -214,6 +214,7 @@ $button-icon-focus-color: $button-focus-color !default;
 $button-min-width: 72/16 * $unit !default;
 $button-height: 36/16 * $unit !default;
 $button-padding: 5/16* $unit  13/16 * $unit !default;
+$button-padding-IE8: 5px 13px !default;
 $button-top-padding: 13/16 * $unit !default;
 $button-left-padding: 6/16* $unit !default;
 $button-line-height:1.57142857;
@@ -926,9 +927,8 @@ $step-xs-icon-font-size: 22px;
 $step-xs-number-font-size: 20px;
 $step-xs-number-size: 24px;
 
-//blog nav
+// blog nav
 $blognav-active-color:unquote("rgb(#{$color-primary})");
-
 // widget
 $widget-padding-left:30px;
 $widget-padding-top:10px;

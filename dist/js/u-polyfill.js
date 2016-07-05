@@ -1,3 +1,10 @@
+/** 
+ * iuap-design v3.0.6
+ * UI Framework Used For Enterprise.
+ * author : yonyou FED
+ * homepage : https://github.com/iuap-design/iuap-design#readme
+ * bugs : https://github.com/iuap-design/iuap-design/issues
+ **/ 
 /**
  * Created by dingrf on 2015-11-18.
  */

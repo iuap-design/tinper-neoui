@@ -1,3 +1,10 @@
+/** 
+ * iuap-design v3.0.6
+ * UI Framework Used For Enterprise.
+ * author : yonyou FED
+ * homepage : https://github.com/iuap-design/iuap-design#readme
+ * bugs : https://github.com/iuap-design/iuap-design/issues
+ **/ 
 
 var U_LANGUAGES = "i_languages";
 var U_THEME = "u_theme";
@@ -122,13 +129,14 @@ u.extend(u, {
 												//火狐下有问题修改判断
 												if(!e)
 													e = typeof event != 'undefined' && event?event:window.event;
+												var eObj = e;
 												element["uEvent"][eventName].forEach(function(fn){
 													try{
-														e.target = e.target || e.srcElement;//兼容IE8
+														eObj.target = eObj.target || eObj.srcElement;//兼容IE8
 													}catch(e){
 													}
 													if(fn)
-														fn.call(element,e)
+														fn.call(element,eObj)
 												})
 											}
 			if (element.addEventListener) {  // 用于支持DOM的浏览器
@@ -3974,8 +3982,11 @@ u.NavLayout = u.BaseComponent.extend({
             u.on(obfuscator,'click', this._drawerToggleHandler.bind(this));
             this._obfuscator = obfuscator;
 
-            var leftnav = this.element.querySelector('.' + this._CssClasses.NAV);
-            u.on(leftnav,'click', this._navlinkClickHander.bind(this));
+            var leftnavs = this.element.querySelectorAll('.' + this._CssClasses.NAV);
+            for(var i = 0; i < leftnavs.length; i++){
+                u.on(leftnavs[i],'click', this._navlinkClickHander.bind(this));
+            }   
+            
 
             var items = leftnav.querySelectorAll('.' + this._CssClasses.NAV_LINK);
             for(var i=0;i<items.length;i++) {
@@ -4972,14 +4983,18 @@ u.MDLayout = u.BaseComponent.extend({
 
 		//this.$master.css('float','left').css('height','100%')
 		//this.$detail.css('height','100%').css('overflow','hidden').css('position','relative');
-
-		this.masterWidth = this._master.offsetWidth;
+		if(this.master)
+			this.masterWidth = this._master.offsetWidth;
+		else
+			this.masterWidth = 0;
 		this.detailWidth = this._detail.offsetWidth;
-		this.mPages = this._master.querySelectorAll('.' + this._CssClasses.PAGE);
+		if(this._master)
+			this.mPages = this._master.querySelectorAll('.' + this._CssClasses.PAGE);
 		this.dPages = this._detail.querySelectorAll('.' + this._CssClasses.PAGE);
 		this.mPageMap = {};
 		this.dPageMap = {};
-		this.initPages(this.mPages, 'master');
+		if(this._master)
+			this.initPages(this.mPages, 'master');
 		this.initPages(this.dPages, 'detail');
 
 		this.mHistory = [];
@@ -5055,7 +5070,10 @@ response: function() {
 calcWidth: function(){
 	if (!(u.isIE8 || u.isIE9)){
 		this.detailWidth = this._detail.offsetWidth;
-		this.masterWidth = this._master.offsetWidth;
+		if(this._master)
+			this.masterWidth = this._master.offsetWidth;
+		else
+			this.masterWidth = 0;
 		//TODO this.mHistory中的panel应该置为-值
 		for (var i = 0; i<this.dPages.length; i++){
 			var pid = this.dPages[i].getAttribute('id');
@@ -5100,26 +5118,30 @@ dBack: function() {
 },
 
 showMaster: function() {
-	if (u.isIE8 || u.isIE9)
-		this._master.style.display = 'block';
-	else{
-		this._master.style.transform = 'translate3d(0,0,0)';
+	if(this._master){
+		if (u.isIE8 || u.isIE9)
+			this._master.style.display = 'block';
+		else{
+			this._master.style.transform = 'translate3d(0,0,0)';
+		}
+		if (!this.isNarrow)
+			this._master.style.position = 'relative';
 	}
-	if (!this.isNarrow)
-		this._master.style.position = 'relative';
 },
 
 hideMaster: function() {
-	if (this._master.offsetLeft < 0 || this._master.style.display == 'none')
-		return;
-	if (u.isIE8 || u.isIE9)
-		this._master.style.display = 'none';
-	else{
-		this._master.style.transform = 'translate3d(-'+ this.masterWidth +'px,0,0)';
+	if(this._master){
+		if (this._master.offsetLeft < 0 || this._master.style.display == 'none')
+			return;
+		if (u.isIE8 || u.isIE9)
+			this._master.style.display = 'none';
+		else{
+			this._master.style.transform = 'translate3d(-'+ this.masterWidth +'px,0,0)';
+		}
+		this._master.style.position = 'absolute';
+		this._master.style.zIndex = 5;
+		this.calcWidth()
 	}
-	this._master.style.position = 'absolute';
-	this._master.style.zIndex = 5;
-	this.calcWidth()
 }
 });
 
