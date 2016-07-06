@@ -142,7 +142,7 @@ function copyExamp(path,pathLength){
 		}
 	})
 }
-copyExamp(basePath + '',17);
+copyExamp(basePath + '',basePath.length);
 /* 处理examples文件夹 end*/
 
 
