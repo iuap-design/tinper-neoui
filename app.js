@@ -1,7 +1,7 @@
 var fs = require('fs');
 var file = require('file')
-var basePath = 'snippets/examplesOrigin'; 
-var docPath = 'snippets/docsOrigin';
+var basePath = 'snippets/examples'; 
+var docPath = 'snippets/docs';
 /* 初始化处理 begin */
 function deleteFolderRecursive(path) {
     var files = [];
