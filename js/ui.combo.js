@@ -53,6 +53,13 @@ u.Combo = u.BaseComponent.extend({
         u.on(this._input, 'blur', function(e){
             self._inputFocus = false;
         })
+
+        u.on(this.input, 'keydown',function(e){
+            var keyCode = e.keyCode;
+            if( e.keyCode == 13){// 回车
+                this.blur();
+            }
+        });
         this.iconBtn = this.element.querySelector("[data-role='combo-button']");
         if (this.iconBtn){
             u.on(this.iconBtn, 'click', function(e){
@@ -128,10 +135,11 @@ u.Combo = u.BaseComponent.extend({
             u.on(li, 'click', function () {
                 self.selectItem(this._index);
             })
-            var rippleContainer = document.createElement('span');
-            u.addClass(rippleContainer, 'u-ripple');
-            li.appendChild(rippleContainer);
-            new URipple(li)
+            // 不再提供点击特效
+            // var rippleContainer = document.createElement('span');
+            // u.addClass(rippleContainer, 'u-ripple');
+            // li.appendChild(rippleContainer);
+            // new URipple(li)
             this._ul.appendChild(li);
         }
     },

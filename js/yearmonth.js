@@ -17,6 +17,13 @@ u.YearMonth = u.BaseComponent.extend({
 			u.on(this.input, 'blur',function(e){
 	        	this.setValue(this.input.value);
 	        }.bind(this));
+
+            u.on(this.input, 'keydown',function(e){
+                var keyCode = e.keyCode;
+                if( e.keyCode == 13){// 回车
+                    this.blur();
+                }
+            });
 	        
 			// 添加focus事件
 			this.focusEvent();

@@ -194,13 +194,15 @@ u.NavLayout = u.BaseComponent.extend({
             var leftnavs = this.element.querySelectorAll('.' + this._CssClasses.NAV);
             for(var i = 0; i < leftnavs.length; i++){
                 u.on(leftnavs[i],'click', this._navlinkClickHander.bind(this));
+                
+                var items = leftnavs[i].querySelectorAll('.' + this._CssClasses.NAV_LINK);
+                for(var i=0;i<items.length;i++) {
+                    new u.Ripple(items[i])
+                }
             }   
             
 
-            var items = leftnav.querySelectorAll('.' + this._CssClasses.NAV_LINK);
-            for(var i=0;i<items.length;i++) {
-                new u.Ripple(items[i])
-            }
+            
             
         }
 

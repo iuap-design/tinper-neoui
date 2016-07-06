@@ -72,7 +72,14 @@ u.ClockPicker = u.BaseComponent.extend({
 	        u.on(this.input, 'blur',function(e){
 	        	this.setValue(this.input.value);
 	        }.bind(this));
-			
+
+	        u.on(this.input, 'keydown',function(e){
+	        	var keyCode = e.keyCode;
+				if( e.keyCode == 13){// 回车
+					this.blur();
+				}
+	        });
+
 			var d = new Date();
 			this.defaultHour = d.getHours() > 9? '' + d.getHours():'0' + d.getHours();
 			this.defaultMin = d.getMinutes() > 9? '' + d.getMinutes():'0' + d.getMinutes();	

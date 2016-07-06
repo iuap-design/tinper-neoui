@@ -38,7 +38,16 @@ u.DateTimePicker.fn.init = function(){
     });
     u.on(this._input, 'blur', function(e){
         self._inputFocus = false;
-    })
+    });
+
+    u.on(this.input, 'keydown',function(e){
+        var keyCode = e.keyCode;
+        if( e.keyCode == 13){// 回车
+            this.blur();
+        }
+    });
+
+
     this._span = this._element.querySelector("span");
     if (this._span){
         u.on(this._span, 'click', function(e){
