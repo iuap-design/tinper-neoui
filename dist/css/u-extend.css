@@ -769,8 +769,7 @@ $color-accent: $palette-pink-A200 !default;
   padding: 10px 30px;
   font-size: 16px;
   color: #424242;
-  font-weight: 400;
-  border-left: 4px solid red; }
+  font-weight: 400; }
   .u-widget-title .u-widget-more {
     position: absolute;
     right: 30px;
