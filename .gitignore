@@ -5,8 +5,8 @@ npm-debug.log*
 
 .DS_Store
 
-./docs/
-./examples/
+docs/
+examples/
 
 snippets/temp/
 
