@@ -4092,6 +4092,67 @@ input.u-button[type="submit"] {
 .u-button-pill-right {
   border-radius: 0 500px 500px 0; }
 
+/*按钮组*/
+.u-btn-group {
+  margin-right: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: inline-block;
+  vertical-align: middle; }
+  .u-btn-group > .u-button {
+    box-shadow: none;
+    position: relative;
+    float: left;
+    padding: 6px 15px;
+    font-size: 14px;
+    line-height: 1.57142857;
+    border-radius: 0; }
+    .u-btn-group > .u-button:first-child {
+      margin-left: 0; }
+      .u-btn-group > .u-button:first-child:not(:last-child):not(.dropdown-toggle) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0; }
+
+.u-btn-group-vertical {
+  margin-right: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box; }
+  .u-btn-group-vertical > .u-button {
+    box-shadow: none;
+    display: block;
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    position: relative; }
+    .u-btn-group-vertical > .u-button:first-child:not(:last-child) {
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0; }
+
+.u-btn-group-lg > .u-button {
+  padding: 10px 18px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 4px; }
+
+.u-btn-group-sm > .u-button {
+  padding: 6px 13px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 2px; }
+
+.u-btn-group-xs > .u-button {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 2px; }
+
 /*  IMAGES  */
 /* 默认颜色 */
 /* 主题颜色放入 themeColors.scss
