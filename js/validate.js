@@ -6,7 +6,8 @@
 			this.$form = this.form
 			this.options = u.extend({}, this.DEFAULTS, this.options);
 			this.required = false
-			this.timeout = null
+			this.timeout = null;
+			this.tipAliveTime = this.options['tipAliveTime'] === undefined ?  3000 : this.options['tipAliveTime'];
 			//所有属性优先级 ：  options参数  > attr属性  > 默认值
 			this.required = this.options['required']  ? this.options['required']  : false
 			this.validType = this.options['validType'] ? this.options['validType'] : null
@@ -374,14 +375,15 @@
 		if (this.tipId) {
 			this.$element.style.borderColor='rgb(241,90,74)';
 			var tipdiv=this.tipId;
-			var left=this.$element.offsetLeft;
-			var top=this.$element.offsetTop+this.$element.offsetHeight+4;
+			// 算位置不是一个好办法，样式方面的还是要通过样式控制
+			//var left=this.$element.offsetLeft;
+			//var top=this.$element.offsetTop+this.$element.offsetHeight+4;
 			if(typeof tipdiv==='string'){
 				tipdiv = document.getElementById(tipdiv);
 			}
 			tipdiv.innerHTML = msg;
-			tipdiv.style.left=left+'px';
-			tipdiv.style.top=top+'px';
+			//tipdiv.style.left=left+'px';
+			//tipdiv.style.top=top+'px';
 			tipdiv.style.display = 'block';
 			// u.addClass(tipdiv.parentNode,'u-has-error');
 			// $('#' + this.tipId).html(msg).show()
@@ -401,11 +403,14 @@
 			this.tooltip.show();
 			
 		}
-		clearTimeout(this.timeout)
-		this.timeout = setTimeout(function(){
-			// self.tooltip.hide();
-			self.hideMsg();
-		},3000)
+		if(this.tipAliveTime !== -1) {
+			clearTimeout(this.timeout)
+			this.timeout = setTimeout(function(){
+				// self.tooltip.hide();
+				self.hideMsg();
+			},this.tipAliveTime)
+
+		}
 	}
 	u.Validate.fn.hideMsg = function() {
 		//隐藏成功信息
