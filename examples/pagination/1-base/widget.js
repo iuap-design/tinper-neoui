@@ -1,5 +1,5 @@
   var element = document.getElementById("pagination");
-  var comp = new u.pagination({ el: element, jumppage: true });
+  var comp = new u.pagination({ el: element,showState:false });
   comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
   this.comp.on('pageChange', function(pageIndex) {
       console.log('新的页号为' + pageIndex);
