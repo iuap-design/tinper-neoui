@@ -6760,12 +6760,12 @@ $color-accent: $palette-pink-A200 !default;
 @media (max-width: 767px) {
   .visible-xs {
     display: block !important; }
-    table .visible-xs {
+    .visible-xs table {
       display: table !important; }
-    tr .visible-xs {
+    .visible-xs tr {
       display: table-row !important; }
-    th .visible-xs,
-    td .visible-xs {
+    .visible-xs th,
+    .visible-xs td {
       display: table-cell !important; } }
 
 @media (max-width: 767px) {
@@ -6783,12 +6783,12 @@ $color-accent: $palette-pink-A200 !default;
 @media (min-width: 768px) and (max-width: 767px) {
   .visible-sm {
     display: block !important; }
-    table .visible-sm {
+    .visible-sm table {
       display: table !important; }
-    tr .visible-sm {
+    .visible-sm tr {
       display: table-row !important; }
-    th .visible-sm,
-    td .visible-sm {
+    .visible-sm th,
+    .visible-sm td {
       display: table-cell !important; } }
 
 @media (min-width: 768px) and (max-width: 767px) {
@@ -6806,12 +6806,12 @@ $color-accent: $palette-pink-A200 !default;
 @media (min-width: 992px) and (max-width: 1199px) {
   .visible-md {
     display: block !important; }
-    table .visible-md {
+    .visible-md table {
       display: table !important; }
-    tr .visible-md {
+    .visible-md tr {
       display: table-row !important; }
-    th .visible-md,
-    td .visible-md {
+    .visible-md th,
+    .visible-md td {
       display: table-cell !important; } }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -6829,12 +6829,12 @@ $color-accent: $palette-pink-A200 !default;
 @media (min-width: 1200px) {
   .visible-lg {
     display: block !important; }
-    table .visible-lg {
+    .visible-lg table {
       display: table !important; }
-    tr .visible-lg {
+    .visible-lg tr {
       display: table-row !important; }
-    th .visible-lg,
-    td .visible-lg {
+    .visible-lg th,
+    .visible-lg td {
       display: table-cell !important; } }
 
 @media (min-width: 1200px) {
