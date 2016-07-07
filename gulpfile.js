@@ -114,7 +114,8 @@ var errHandle = function ( err ) {
 
 gulp.task('sass-ui-u-init', function () {
 
-    return gulp.src('scss/u.scss')
+    return gulp.src(['scss/u.scss', 'scss/u-extend.scss'])
+        .pipe(concat('u.scss'))
         .pipe(sass().on('error', errHandle))
         .pipe(base64().on('error',errHandle))
         .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
