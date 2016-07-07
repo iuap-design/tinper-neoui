@@ -1,5 +1,7 @@
  #example3,#example2{
     margin: 10px;
     float: left;
-    margin-left: 115px;
+}
+#example2 .tooltip,#example3 .tooltip{
+	position: relative;
 }
