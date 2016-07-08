@@ -231,11 +231,11 @@ function replaceMdFun(filePath,itemName){
 							if(data.toString().length > 0){
 								codeStr += '<div class="examples-code"><pre><code>' + data.toString().replace(/\</g,'&lt;') + '</code></pre>\r\n</div>\r\n';
 								if(cssIndex > -1){
-									showStr += '<style>' + data.toString() + '\r\n' + '</style>\r\n';
+									showStr += '<div class="example-content"><style>' + data.toString() + '\r\n' + '</style></div>\r\n';
 								}else if(htmlIndex > -1){
-									showStr += '' + data.toString() + '\r\n';
+									showStr += '<div class="example-content">' + data.toString() + '\r\n</div>\r\n';
 								}else if(jsIndex > -1){
-									showStr += '<script>' + data.toString() + '\r\n' + '</script>\r\n';
+									showStr += '<div class="example-content"><script>' + data.toString() + '\r\n' + '</script></div>\r\n';
 								}
 								
 							}
@@ -261,7 +261,7 @@ function replaceMdFun(filePath,itemName){
 							}
 						}
 						nowFilePath = nowFilePath + '/' + dir + '.txt';//snippets/temp/datatable/grid/base.txt
-						fs.writeFile(nowFilePath,headStr + '<div class="example-content">' + showStr + '</div>\r\n' + codeStr,function(err){
+						fs.writeFile(nowFilePath,headStr + showStr + codeStr,function(err){
 				        	if(err){
 				        		console.log('write err:' + nowFilePath);
 				        	}

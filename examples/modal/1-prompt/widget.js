@@ -1,7 +1,6 @@
 u.compMgr.apply({
     el:'body'
 })
-
 var msgBtn = document.body.querySelector("#msgDialogBtn");
 u.on(msgBtn, 'click', function() {
     //            u.showMessage("HELLO!!!");

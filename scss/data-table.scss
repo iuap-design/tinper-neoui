@@ -241,3 +241,48 @@
     background-color: $table-bg-accent;
   }
 }
+
+.u-table-hover tbody tr:hover {
+  background-color: #E9F7FC;
+}
+
+.u-table-section.active tr {
+  background-color: #eee;
+}
+
+.u-table-responsive {
+  min-height: .01%;
+  overflow-x: auto;
+}
+
+.u-table-base {
+  .danger, .info, .success, .warning {
+    color: #fff;
+  }
+}
+
+.u-table {
+  .danger, .info, .success, .warning {
+    color: #fff;
+  }
+}
+
+.u-table-base .danger, .u-table .danger {
+  background-color: #f44336;
+}
+
+.u-table-base .info, .u-table .info {
+  background-color: #00bcd4;
+}
+
+.u-table-base .success, .u-table .success {
+  background-color: #4caf50;
+}
+
+.u-table-base .warning, .u-table .warning {
+  background-color: #ff9800;
+}
+
+.u-table-base .dark, .u-table .dark {
+  background-color: #616161;
+}
