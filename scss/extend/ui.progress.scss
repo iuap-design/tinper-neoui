@@ -134,3 +134,189 @@
     width: 0%;
   }
 }
+.u-progress-success .progressbar {
+  background-color: rgb(76, 175, 80);
+}
+
+.u-progress-striped .progressbar {
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  -webkit-background-size: 40px 40px;
+  background-size: 40px 40px;
+}
+
+.u-progress-square {
+  .progressbar, .bufferbar {
+    border-radius: 0;
+  }
+}
+
+.u-progress-circle {
+  .progressbar, .bufferbar {
+    border-radius: 1000px;
+  }
+}
+
+.u-progress-vertical {
+  position: relative;
+  display: inline-block;
+  width: 4px;
+  height: 250px;
+  min-height: 250px;
+  margin-right: 30px;
+  margin-bottom: 0;
+}
+
+.u-progress-lg.u-progress-vertical {
+  width: 20px;
+}
+
+.u-progress-md.u-progress-vertical {
+  width: 15px;
+}
+
+.u-progress-sm.u-progress-vertical {
+  width: 10px;
+}
+
+.u-progress-symbol .progressbar {
+  text-align: center;
+  color: #fff;
+}
+
+.u-progress-vertical {
+  &.u-progress__indeterminate > {
+    .bar1 {
+      background-color: rgb(63, 81, 181);
+      -webkit-animation-name: indeterminate-vertical1;
+      animation-name: indeterminate-vertical1;
+      -webkit-animation-duration: 2s;
+      animation-duration: 2s;
+      -webkit-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
+      animation-timing-function: linear;
+    }
+    .bar3 {
+      background-image: none;
+      background-color: rgb(63, 81, 181);
+      -webkit-animation-name: indeterminate-vertical2;
+      animation-name: indeterminate-vertical2;
+      -webkit-animation-duration: 2s;
+      animation-duration: 2s;
+      -webkit-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
+      animation-timing-function: linear;
+    }
+  }
+  > {
+    .progressbar {
+      background-color: rgb(63, 81, 181);
+      z-index: 1;
+      top: 0;
+      border-radius: 3px;
+    }
+    .bar {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100% !important;
+      transition: height 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+  &:not(.u-progress--indeterminate):not(.u-progress--indeterminate) > .auxbar, &:not(.u-progress__indeterminate):not(.u-progress__indeterminate) > .auxbar, &:not(.u-progress--indeterminate):not(.u-progress--indeterminate) > .auxbar, &:not(.u-progress__indeterminate):not(.u-progress__indeterminate) > .auxbar {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), linear-gradient(to right, rgb(63, 81, 181), rgb(63, 81, 181));
+    -webkit-mask: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8c3ZnIHdpZHRoPSIxM…ZzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgLz4NCiAgPC9lbGxpcHNlPg0KPC9zdmc+DQo=);
+    mask: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8c3ZnIHdpZHRoPSIxM…ZzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgLz4NCiAgPC9lbGxpcHNlPg0KPC9zdmc+DQo=);
+  }
+  &:not(.u-progress--indeterminate) > .auxbar, &:not(.u-progress__indeterminate) > .auxbar, &:not(.u-progress--indeterminate) > .auxbar, &:not(.u-progress__indeterminate) > .auxbar {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), linear-gradient(to right, rgb(63, 81, 181), rgb(63, 81, 181));
+  }
+  > .auxbar {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes indeterminate-vertical1 {
+  0% {
+    top: 0%;
+    height: 0%;
+  }
+
+  50% {
+    top: 25%;
+    height: 75%;
+  }
+
+  75% {
+    top: 100%;
+    height: 0%;
+  }
+}
+
+
+@keyframes indeterminate-vertical1 {
+  0% {
+    top: 0%;
+    height: 0%;
+  }
+
+  50% {
+    top: 25%;
+    height: 75%;
+  }
+
+  75% {
+    top: 100%;
+    height: 0%;
+  }
+}
+
+
+@-webkit-keyframes indeterminate-vertical2 {
+  0% {
+    top: 0%;
+    height: 0%;
+  }
+
+  50% {
+    top: 0%;
+    height: 0%;
+  }
+
+  75% {
+    top: 0%;
+    height: 25%;
+  }
+
+  100% {
+    top: 100%;
+    height: 0%;
+  }
+}
+
+
+@keyframes indeterminate-vertical2 {
+  0% {
+    top: 0%;
+    height: 0%;
+  }
+
+  50% {
+    top: 0%;
+    height: 0%;
+  }
+
+  75% {
+    top: 0%;
+    height: 25%;
+  }
+
+  100% {
+    top: 100%;
+    height: 0%;
+  }
+}
