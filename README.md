@@ -1,17 +1,17 @@
-# iuap-design
+# neoui
 
-![Bower version](https://img.shields.io/bower/v/iuap-design.svg)
+![Bower version](https://img.shields.io/bower/v/neoui.svg)
 [![npm version](https://img.shields.io/npm/v/iuap-design.svg)](https://www.npmjs.com/package/iuap-design)
-[![Build Status](https://img.shields.io/travis/iuap-design/iuap-design/master.svg)](https://travis-ci.org/iuap-design/iuap-design)
-[![devDependency Status](https://img.shields.io/david/dev/iuap-design/iuap-design.svg)](https://david-dm.org/iuap-design/iuap-design#info=devDependencies)
+[![Build Status](https://img.shields.io/travis/iuap-design/neoui/master.svg)](https://travis-ci.org/iuap-design/neoui)
+[![devDependency Status](https://img.shields.io/david/dev/iuap-design/neoui.svg)](https://david-dm.org/iuap-design/neoui#info=devDependencies)
 
-[iuap-design](http://iuap-design.github.io/) 是基于 `UI` 设计语言 `iUAP Design` 实现的前端框架，开放自由、易学易用、美观大气，为开发者提供从产品界面设计到前端开发的完整生态。
+[neoui](http://design.yyuap.com/) 是基于 `UI` 设计语言 `iUAP Design` 实现的前端框架，开放自由、易学易用、美观大气，为开发者提供从产品界面设计到前端开发的完整生态。
 
 ## 核心能力
 
 ### 丰富的组件
 
-iuap-design 包含丰富的 CSS 组件、JS 插件
+neoui 包含丰富的 CSS 组件、JS 插件
 
 ### 可扩展主题
 
@@ -19,16 +19,16 @@ iuap-design 包含丰富的 CSS 组件、JS 插件
 
 ### 完整生态
 
-基于 iuap-design 扩展的各种功能插件，丰富的主题，易用的快速开发脚手架以及基于框架扩展的datatable等技术元素，为开发者提供一站式解决方案。
+基于 neoui 扩展的各种功能插件，丰富的主题，易用的快速开发脚手架以及基于框架扩展的datatable等技术元素，为开发者提供一站式解决方案。
 
 
 ## 开始使用
 
-### 获取iuap-design
+### 获取neoui
 
 - 直接从github获取我们的源码
 ```
-git clone git@github.com:iuap-design/iuap-design.git
+git clone git@github.com:iuap-design/neoui.git
 ```
 
 - 使用CDN
@@ -42,7 +42,7 @@ http://design.yyuap.com/static/iuap-design/3.0.1/css/u-extend.css
 - 使用npm安装
 
 ```
-npm install iuap-design
+npm install neoui
 ```
 
 - 使用bower下载
@@ -52,7 +52,7 @@ npm install iuap-design
 
 ### 版本说明
 
-当前iuap-design框架的版本为3.0.1。
+当前neoui框架的版本为3.0.1。
 
 
 ### 目录及文件说明
@@ -125,13 +125,13 @@ dist
 ```
 ### 开发文档
 
-开发文档详见[这里](https://github.com/iuap-design/iuap-design/tree/master/docs)。
+开发文档详见[这里](https://github.com/iuap-design/neoui/tree/master/docs)。
 
 更多内容请移步我们的[官网](http://design.yyuap.com/)
 
 ### 6.参与讨论和开发
 
-如在使用过程中遇到任何问题，可以在[这里](https://github.com/iuap-design/iuap-design/issues)提交issue反馈；
+如在使用过程中遇到任何问题，可以在[这里](https://github.com/iuap-design/neoui/issues)提交issue反馈；
 
 或者直接fork代码到你的github仓库，提交pull request给我们。
 
@@ -140,7 +140,7 @@ dist
 
 ## 开发及构建
 
-开发者可以一起参与为 iuap-design 贡献代码，同时也可以基于 iuap-design 进行二次开发或封装插件。
+开发者可以一起参与为 neoui 贡献代码，同时也可以基于 neoui 进行二次开发或封装插件。
 
 ### 目录结构
 
@@ -161,12 +161,12 @@ widget/
 
 ### 构建工具
 
-iuap-design 使用 [gulp.js](http://gulpjs.com/) 构建项目。
+neoui 使用 [gulp.js](http://gulpjs.com/) 构建项目。
 
 克隆项目文件:
 
 ```
-$ git clone git@github.com:iuap-design/iuap-design.git
+$ git clone git@github.com:iuap-design/neoui.git
 ```
 
 然后进入目录安装依赖：
