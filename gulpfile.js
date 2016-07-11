@@ -200,6 +200,7 @@ gulp.task('font', function () {
       .pipe(gulp.dest('./dist/fonts/font-awesome'));
   return gulp.src('./fonts/**')
          .pipe(gulp.dest('./dist/fonts'));
+
 });
 
 

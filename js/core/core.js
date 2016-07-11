@@ -201,6 +201,11 @@ u.extend(u, {
 		}
 		return u;
 	},
+	_addClass: function(element, className) {
+		if(u._hasClass(element, className)) return u;
+		element.className = (element.className || "") + " " + className;
+		return u;
+	},
 	removeClass: function (element, value) {
 		if (typeof element.classList === 'undefined') {
 			if(u._removeClass)
@@ -208,6 +213,15 @@ u.extend(u, {
 		} else {
 			element.classList.remove(value);
 		}
+		return u;
+	},
+	_removeClass: function(element, className) {
+		var names = (element.className || "").split(/\s+/);
+		var resultArray = [];
+		for(var i = 0, len = names.length;i < len;i++) {
+			if(names[i] !== className) resultArray.push(names[i]);
+		}
+		element.className = resultArray.join(' ');
 		return u;
 	},
 	hasClass: function(element, value){
@@ -220,6 +234,23 @@ u.extend(u, {
 		}else{
 			return element.classList.contains(value);
 		}
+	},
+	_hasClass: function(element, className) {
+		var currentClassNames = (element.className || "").split(/\s+/);
+		return u.arrayIndexOf(currentClassNames, className) >= 0 ? true : false;
+		
+	},
+	arrayIndexOf: function(array, item) {
+		if(typeof array.indexOf === 'function') {
+			return array.indexOf(item);
+		} else {
+			for(var i = 0, len = array.length;i < len;i++) {
+				if(array[i] === item) {
+					return i;
+				}
+			}
+		}
+		return -1;
 	},
 	toggleClass: function(element,value){
 		if (typeof element.classList === 'undefined') {
