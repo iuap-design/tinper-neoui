@@ -53,7 +53,7 @@ var UISrcPath = [
     'js/ui.progress.js',
     'js/ui.message.js',
     'js/messageDialog.js',
-    'js/confirmDialog.js',
+    'js/extend/confirmDialog.js',
     'js/extend/threeBtnDialog.js',
     'js/dialog.js',
     'js/extend/combobox.js',
@@ -196,8 +196,10 @@ gulp.task('polyfill', ['polyfill-init'], function(){
  * @return {[type]}        [description]
  */
 gulp.task('font', function () {
-  return gulp.src('./vendor/font-awesome/**')
+  gulp.src('./vendor/font-awesome/**')
     .pipe(gulp.dest('./dist/fonts/font-awesome'));
+  gulp.src('./fonts/**')
+    .pipe(gulp.dest('./dist/fonts'));
 });
 
 
