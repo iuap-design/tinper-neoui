@@ -53,7 +53,7 @@ var UISrcPath = [
     'js/ui.progress.js',
     'js/ui.message.js',
     'js/messageDialog.js',
-    'js/confirmDialog.js',
+    'js/extend/confirmDialog.js',
     'js/extend/threeBtnDialog.js',
     'js/dialog.js',
     'js/extend/combobox.js',
