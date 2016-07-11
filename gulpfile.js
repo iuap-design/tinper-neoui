@@ -196,10 +196,10 @@ gulp.task('polyfill', ['polyfill-init'], function(){
  * @return {[type]}        [description]
  */
 gulp.task('font', function () {
-  // return gulp.src('./vendor/font-awesome/**')
-  //   .pipe(gulp.dest('./dist/fonts/font-awesome'));
-  return gulp.src('./fonts/**')
-         .pipe(gulp.dest('./dist/fonts'));
+  gulp.src('./vendor/font-awesome/**')
+    .pipe(gulp.dest('./dist/fonts/font-awesome'));
+  gulp.src('./fonts/**')
+    .pipe(gulp.dest('./dist/fonts'));
 });
 
 
