@@ -10,7 +10,9 @@
   white-space: nowrap;
   font-size: $data-table-font-size;
   background-color: unquote("rgb(#{$color-white})");
-
+    .u-checkbox-outline{
+        top: -11px;
+    }
   thead {
     padding-bottom: 3px;
 
