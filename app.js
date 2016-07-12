@@ -238,7 +238,7 @@ function replaceMdFun(filePath,itemName){
 									if(cssIndex > -1){
 										styleStr += '<div class="example-content ex-hide"><style>' + data.toString() + '\r\n' + '</style></div>\r\n';
 									}else if(htmlIndex > -1){
-										showStr += '<div class="example-content">' + data.toString() + '\r\n</div>\r\n';
+										showStr += '<div class="example-content">' + data.toString() + '</div>\r\n';
 									}else if(jsIndex > -1){
 										jsStr += '<div class="example-content ex-hide"><script>' + data.toString() + '\r\n' + '</script></div>\r\n';
 									}
