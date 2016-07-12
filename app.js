@@ -205,109 +205,121 @@ function replaceMdFun(filePath,itemName){
 	var exampPathArr  = exampPath.split('/');			
 	var mdName = exampPathArr[exampPathArr.length - 1]; //获取md文件的名称
 	var replaceStr = '';
-	// 遍历所有的文件夹，每个文件夹生成一个文件，然后最后将文件拼到md文件中，已经测试多目录的话是按目录结构生成的
-	file.walkSync(exampPath,function(bPath,d,files,r){
-		// 每个子目录都会执行此function
-		var path = bPath.replace(/\\/g,'/'); //snippets/examples/badge
-		var pathArr = path.split('/');
-		var dir = pathArr[pathArr.length - 1];
-		// var Str = '### ' + dir + '\r\n';
-		var codeStr = '';
-		var showStr = '';
-		var headStr = '';
-		var l = files.length,now = 0;
+	var existPath = fs.existsSync(exampPath);
 
-		if(files && l > 0){
-			files.forEach(function(item){
-				var tmpPath = bPath + '\\' + item; 
-				tmpPath = tmpPath.replace(/\\/g,'/'); //snippets/examples/badge/widget.css
-				fs.stat(tmpPath,function(err, stat){
-					var cssIndex = item.indexOf('.css');
-					var htmlIndex = item.indexOf('.html');
-					var jsIndex = item.indexOf('.js');
-					var mdIndex = item.indexOf('.md');
-					if(cssIndex > -1 || htmlIndex > -1 ||jsIndex > -1){
-						fs.readFile(tmpPath,function(err,data){
-							if(data.toString().length > 0){
-								codeStr += '<div class="examples-code"><pre><code>' + data.toString().replace(/\</g,'&lt;') + '</code></pre>\r\n</div>\r\n';
-								if(cssIndex > -1){
-									showStr += '<div class="example-content"><style>' + data.toString() + '\r\n' + '</style></div>\r\n';
-								}else if(htmlIndex > -1){
-									showStr += '<div class="example-content">' + data.toString() + '\r\n</div>\r\n';
-								}else if(jsIndex > -1){
-									showStr += '<div class="example-content"><script>' + data.toString() + '\r\n' + '</script></div>\r\n';
-								}
-								
-							}
-								
-				        })
-					}
-					if(mdIndex > -1){
-						fs.readFile(tmpPath,function(err,data){
-							headStr += '\r\n' + data.toString().replace(/&#65279;/g,'') + '\r\n';
-							now++;
-				        })
-					}
-				})
-			})
-			var ii = setInterval(function(){
-				if(1 == now){
-					var nowFilePath = filePath.replace('docs','temp').replace('.md','');//snippets/temp/datatable/grid
-					fs.exists(nowFilePath, function(exist) {
-						if(!exist){
-							try{
-								fs.mkdirSync(nowFilePath);
-							}catch(e){
-							}
-						}
-						nowFilePath = nowFilePath + '/' + dir + '.txt';//snippets/temp/datatable/grid/base.txt
-						fs.writeFile(nowFilePath,headStr + showStr + codeStr,function(err){
-				        	if(err){
-				        		console.log('write err:' + nowFilePath);
-				        	}
-				        })
-					});
-			        clearInterval(ii);
-				}
-			})
-		}
-	})
-	// 延迟执行保证testa目录下的文件已经生成
-	setTimeout(function(){
-		var tempPath = filePath.replace('docs','temp').replace('.md','');
-		fs.exists(tempPath, function(exist) {
-			if(!exist){
-				fs.mkdirSync(tempPath);
-			}
-		});
-		fs.readdir(tempPath,function(err,files){
-			if(err){ //没有子目录会进入此分支
-				// console.log('setTimeout err' + tempPath);
-				var l = now = 1;
-			}else{
-				var l = files.length,now = 0 ;
+	if(existPath) {
+		// 遍历所有的文件夹，每个文件夹生成一个文件，然后最后将文件拼到md文件中，已经测试多目录的话是按目录结构生成的
+		file.walkSync(exampPath,function(bPath,d,files,r){
+			// 每个子目录都会执行此function
+			var path = bPath.replace(/\\/g,'/'); //snippets/examples/badge
+			var pathArr = path.split('/');
+			var dir = pathArr[pathArr.length - 1];
+			// var Str = '### ' + dir + '\r\n';
+			var codeStr = '';
+			var styleStr = '';
+			var showStr = '';
+			var jsStr = '';
+			var headStr = '';
+			var l = files.length,now = 0;
+
+			if(files && l > 0){
 				files.forEach(function(item){
-					var p = tempPath + '/' + item;
-					fs.readFile(p,function(err,data){
-						replaceStr += data.toString();
-						now++;
+					var tmpPath = bPath + '\\' + item; 
+					tmpPath = tmpPath.replace(/\\/g,'/'); //snippets/examples/badge/widget.css
+					fs.stat(tmpPath,function(err, stat){
+						var cssIndex = item.indexOf('.css');
+						var htmlIndex = item.indexOf('.html');
+						var jsIndex = item.indexOf('.js');
+						var mdIndex = item.indexOf('.md');
+						if(cssIndex > -1 || htmlIndex > -1 ||jsIndex > -1){
+							fs.readFile(tmpPath,function(err,data){
+								if(data.toString().length > 0){
+									codeStr += '<div class="examples-code"><pre><code>' + data.toString().replace(/\</g,'&lt;') + '</code></pre>\r\n</div>\r\n';
+									if(cssIndex > -1){
+										styleStr += '<div class="example-content ex-hide"><style>' + data.toString() + '\r\n' + '</style></div>\r\n';
+									}else if(htmlIndex > -1){
+										showStr += '<div class="example-content">' + data.toString() + '\r\n</div>\r\n';
+									}else if(jsIndex > -1){
+										jsStr += '<div class="example-content ex-hide"><script>' + data.toString() + '\r\n' + '</script></div>\r\n';
+									}
+									
+								}
+									
+					        })
+						}
+						if(mdIndex > -1){
+							fs.readFile(tmpPath,function(err,data){
+								headStr += '\r\n' + data.toString().replace(/&#65279;/g,'') + '\r\n';
+								now++;
+					        })
+						}
 					})
 				})
-				
+				var ii = setInterval(function(){
+					if(1 == now){
+						var nowFilePath = filePath.replace('docs','temp').replace('.md','');//snippets/temp/datatable/grid
+						fs.exists(nowFilePath, function(exist) {
+							if(!exist){
+								try{
+									fs.mkdirSync(nowFilePath);
+								}catch(e){
+								}
+							}
+							nowFilePath = nowFilePath + '/' + dir + '.txt';//snippets/temp/datatable/grid/base.txt
+							fs.writeFile(nowFilePath,headStr + styleStr + showStr + jsStr + codeStr,function(err){
+					        	if(err){
+					        		console.log('write err:' + nowFilePath);
+					        	}
+					        })
+						});
+				        clearInterval(ii);
+					}
+				})
 			}
-			var iii = setInterval(function(){
-				if(l == now){
-					eval(itemName + '=' + itemName +'.replace("replaceExamp",replaceStr)');
-					// item = item.replace('replace' + type,replaceStr);
-					fs.writeFile(filePath.replace('snippets/',''),eval(itemName),function(err){
-			        	if(err){
-			        		console.log('write err:' + filePath.replace('snippets/',''));
-			        	}
-			        })
-					clearInterval(iii);
+		});	
+		
+		// 延迟执行保证testa目录下的文件已经生成
+		setTimeout(function(){
+			var tempPath = filePath.replace('docs','temp').replace('.md','');
+			fs.exists(tempPath, function(exist) {
+				if(!exist){
+					fs.mkdirSync(tempPath);
 				}
-			},100);
-		})
-	},5000);
+			});
+			fs.readdir(tempPath,function(err,files){
+				if(err){ //没有子目录会进入此分支
+					// console.log('setTimeout err' + tempPath);
+					var l = now = 1;
+				}else{
+					var l = files.length,now = 0 ;
+					files.forEach(function(item){
+						var p = tempPath + '/' + item;
+						fs.readFile(p,function(err,data){
+							replaceStr += data.toString();
+							now++;
+						})
+					})
+					
+				}
+				var iii = setInterval(function(){
+					if(l == now){
+						eval(itemName + '=' + itemName +'.replace("replaceExamp",replaceStr)');
+						// item = item.replace('replace' + type,replaceStr);
+						fs.writeFile(filePath.replace('snippets/',''),eval(itemName),function(err){
+				        	if(err){
+				        		console.log('write err:' + filePath.replace('snippets/',''));
+				        	}
+				        })
+						clearInterval(iii);
+					}
+				},100);
+			})
+		},5000);	
+	}
+
+
+
 }
 /* 处理docs文件夹 end*/
+
+
