@@ -34,7 +34,7 @@ u.Multilang = u.BaseComponent.extend({
 			}
 			if (u.isArray(sort)) {											
 						
-				u.wrap(target,"<div class='multilang_body'><input class='lang_value' contenteditable='true'><span class='fa fa-sort-desc lang_icon'><span class='m_icon'></span></span>")
+				u.wrap(target,"<div class='multilang_body'><input class='lang_value' contenteditable='true'><span class='uf uf-caretdown lang_icon'><span class='m_icon'></span></span>")
 				u.css(target,"display","none")
 
 				u.each(sort, function(i, node) {
@@ -90,7 +90,7 @@ u.Multilang = u.BaseComponent.extend({
 					tmpvaluebox.value = tmptext
 					tmpvaluebox.focus();
 					var tmpicom = target_div.querySelector(".lang_icon"),oldicon = target_div.querySelector(".m_icon")
-					u.removeClass(tmpicom,"fa-sort-desc")
+					u.removeClass(tmpicom,"uf-caretdown")
 					tmpicom.replaceChild(tmpicon,oldicon)
 				})
 				

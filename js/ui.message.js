@@ -3,7 +3,7 @@
  */
 'use strict';
 // u.messageTemplate ='<div class="u-message"><button type="button" class="u-msg-close u-button floating  mini"><span class="">X</span></button>{msg}</div>';
-u.messageTemplate ='<div class="u-message"><span class="u-msg-close fa fa-close"></span>{msg}</div>';
+u.messageTemplate ='<div class="u-message"><span class="u-msg-close uf uf-removesymbol"></span>{msg}</div>';
 // u.nocloseTemplate ='<div class="u-message">{msg}</div>';
 
 u.showMessage = function(options) {

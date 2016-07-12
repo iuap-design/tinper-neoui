@@ -39,7 +39,7 @@
 			
 			// 要求显示成功提示，并没有成功提示dom的id时，则创建成功提示dom
 			if(this.hasSuccess&&!this.successId){
-				this.successId=u.makeDOM('<span class="u-form-control-success fa fa-check-circle" ></span>');
+				this.successId=u.makeDOM('<span class="u-form-control-success uf uf-checkedsymbol" ></span>');
 				
 				if(this.$element.nextSibling){
 					this.$element.parentNode.insertBefore(this.successId,this.$element.nextSibling);
@@ -50,7 +50,7 @@
 			}
 			//不是默认的tip提示方式并且tipId没有定义时创建默认tipid	
 			if(this.notipFlag&&!this.tipId){
-				this.tipId=u.makeDOM('<span class="u-form-control-info fa fa-exclamation-circle "></span>');
+				this.tipId=u.makeDOM('<span class="u-form-control-info uf uf-exclamationsign "></span>');
 				this.$element.parentNode.appendChild(this.tipId);
 
 				if(this.$element.nextSibling){

@@ -72,14 +72,14 @@ u.Combobox = u.BaseComponent.extend({
 									var activeSelect = document.createElement("Div")
 									activeSelect.className = "mutil-select-div"
 									var selectName = "<i class='itemName'>" + items[i].name + "</i>"																	
-									var imageFont = "<i class='fa fa-close'></i>"
+									var imageFont = "<i class='uf uf-removesymbol'></i>"
 									activeSelect.insertAdjacentHTML("beforeEnd",imageFont+selectName); 
 									this.appendChild(activeSelect);
 									    
 									//activeSelect.append(imageFont);
 								//	activeSelect.append(selectName);
 								
-									u.on(activeSelect.querySelector(".fa-close"),'mousedown', function() {
+									u.on(activeSelect.querySelector(".uf-removesymbol"),'mousedown', function() {
 
 										//var $this = $(this);
 										//var lis = self.oLis;
