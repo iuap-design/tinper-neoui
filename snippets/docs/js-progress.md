@@ -16,7 +16,8 @@ replaceExamp
 
 # API
 
-##JS 方法参数
+## JS 方法参数
+
 <table>
   <tbody>
   	  <tr>
@@ -39,7 +40,9 @@ replaceExamp
 	  </tr>
 	</tbody>
 </table>
+
 ## css 参数
+
 <table>
   <tbody>
   	  <tr>

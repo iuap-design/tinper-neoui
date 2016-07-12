@@ -431,19 +431,19 @@
 
 @mixin tooltip-styles-variant($color) {
    .tooltip-inner{
-    background-color:$color;
+    background-color:$color !important;
    }
    &.bottom .tooltip-arrow{
-    border-bottom-color:$color;
+    border-bottom-color:$color !important;
    }
    &.top .tooltip-arrow{
-    border-top-color:$color;
+    border-top-color:$color !important;
    }
     &.left .tooltip-arrow{
-    border-left-color:$color;
+    border-left-color:$color !important;
    }
     &.right .tooltip-arrow{
-    border-right-color:$color;
+    border-right-color:$color !important;
    }
 }
 

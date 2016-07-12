@@ -68,15 +68,17 @@ var app = u.createApp();
         }
       ]
     }
-    // $.ajax({
-    //     type: 'GET',
-    //     url: 'treeJson.json',
-    //     dataType: 'JSON',
-    //     async: true,
-    //     success: function (data) {
+    // ajax 获取数据源
+    /* $.ajax({
+         type: 'GET',
+         url: 'treeJson.json',
+         dataType: 'JSON',
+         async: true,
+         success: function (data) {
             
-    //     }
-    // });
+          }
+       }); 
+    */
     viewModel.dataTable.setData(data);
     window.app=app;
     $("#addOneRow1").on("click",function(){
