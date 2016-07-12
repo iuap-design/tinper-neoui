@@ -133,7 +133,7 @@ input.u-button[type="submit"] {
   position: relative;
   line-height: normal;
   border: 1px solid $button-border-color;
-  & .fa {
+  & .fa, & .uf {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -247,7 +247,7 @@ input.u-button[type="submit"] {
 
 
 // Align icons inside buttons with text
-.u-button .fa {
+.u-button .uf,.u-button .fa {
   vertical-align: middle;
 }
 
@@ -266,7 +266,7 @@ input.u-button[type="submit"] {
   color: inherit;
   line-height: normal;
 
-  & .fa {
+  & .uf {
     //position: absolute;
     //top: 50%;
     //left: 50%;

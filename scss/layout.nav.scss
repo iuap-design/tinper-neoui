@@ -18,7 +18,7 @@
   margin: 0;
 
   // Align icons inside link with text
-  & .fa {
+  & .uf, & .fa {
     vertical-align: middle;
   }
 }
@@ -176,13 +176,13 @@
             font-weight: bold;  
         }
 
-        & .fa-caret-down {
+        & .uf-caretdown,& .fa-caret-down{
           webkit-transition: transform .3s ease-in-out;
           transition: transform .3s ease-in-out;
         }
 
         &-open {
-          & .fa-caret-down {
+          & .uf-caretdown ,& .fa-caret-down{
             transform: rotate(180deg);
           }
           & + .u-nav-sub {
@@ -580,7 +580,7 @@
     .u-navlayout-no-drawer-button & {
       width: $layout-header-desktop-indent - $layout-tab-desktop-padding;
 
-      & .fa {
+      & .uf,& .fa {
         position: relative;
         left: ($layout-header-desktop-indent - $layout-tab-desktop-padding - 24px) / 2;
       }
@@ -595,7 +595,7 @@
       display: none;
     }
 
-    & .fa {
+    & .uf ,& .fa {
       line-height: $layout-tab-bar-height;
     }
 

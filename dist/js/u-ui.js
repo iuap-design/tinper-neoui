@@ -1,9 +1,9 @@
 /** 
- * iuap-design v3.0.6
+ * neoui v3.0.6
  * UI Framework Used For Enterprise.
  * author : yonyou FED
- * homepage : https://github.com/iuap-design/iuap-design#readme
- * bugs : https://github.com/iuap-design/iuap-design/issues
+ * homepage : https://github.com/iuap-design/neoui#readme
+ * bugs : https://github.com/iuap-design/neoui/issues
  **/ 
 
 var U_LANGUAGES = "i_languages";
@@ -208,6 +208,11 @@ u.extend(u, {
 		}
 		return u;
 	},
+	_addClass: function(element, className) {
+		if(u._hasClass(element, className)) return u;
+		element.className = (element.className || "") + " " + className;
+		return u;
+	},
 	removeClass: function (element, value) {
 		if (typeof element.classList === 'undefined') {
 			if(u._removeClass)
@@ -215,6 +220,15 @@ u.extend(u, {
 		} else {
 			element.classList.remove(value);
 		}
+		return u;
+	},
+	_removeClass: function(element, className) {
+		var names = (element.className || "").split(/\s+/);
+		var resultArray = [];
+		for(var i = 0, len = names.length;i < len;i++) {
+			if(names[i] !== className) resultArray.push(names[i]);
+		}
+		element.className = resultArray.join(' ');
 		return u;
 	},
 	hasClass: function(element, value){
@@ -227,6 +241,23 @@ u.extend(u, {
 		}else{
 			return element.classList.contains(value);
 		}
+	},
+	_hasClass: function(element, className) {
+		var currentClassNames = (element.className || "").split(/\s+/);
+		return u.arrayIndexOf(currentClassNames, className) >= 0 ? true : false;
+		
+	},
+	arrayIndexOf: function(array, item) {
+		if(typeof array.indexOf === 'function') {
+			return array.indexOf(item);
+		} else {
+			for(var i = 0, len = array.length;i < len;i++) {
+				if(array[i] === item) {
+					return i;
+				}
+			}
+		}
+		return -1;
 	},
 	toggleClass: function(element,value){
 		if (typeof element.classList === 'undefined') {
@@ -379,15 +410,15 @@ u.extend(u, {
 			top = top + eleHeight;
 		}
         
-        // if((left + panelWidth) > bodyWidth)
-        //     left = bodyWidth - panelWidth;
-        // if(left < 0)
-        //     left = 0;
+        if((left + panelWidth) > bodyWidth)
+            left = bodyWidth - panelWidth;
+        if(left < 0)
+            left = 0;
 
-        // if((top + panelHeight) > bodyHeight)
-        //     top = bodyHeight - panelHeight;
-        // if(top < 0)
-        //     top = 0;
+        if((top + panelHeight) > bodyHeight)
+            top = bodyHeight - panelHeight;
+        if(top < 0)
+            top = 0;
         panel.style.left = left + 'px';
         panel.style.top = top + 'px';
 	},
@@ -880,6 +911,7 @@ u.isDomElement = function(obj) {
         return obj && obj.tagName && obj.nodeType === 1;
     }
 }
+
 u.event = {};
 
 var	touchStartEvent = u.hasTouch ? "touchstart" : "mousedown",
@@ -3948,7 +3980,7 @@ u.NavLayout = u.BaseComponent.extend({
                 u.addClass(drawerButton, this._CssClasses.DRAWER_BTN);
 
                 var drawerButtonIcon = document.createElement('i');
-                drawerButtonIcon.className = 'fa fa-bars';
+                drawerButtonIcon.className = 'uf uf-reorderoption';
                 //drawerButtonIcon.textContent = this._Constant.MENU_ICON;
                 drawerButton.appendChild(drawerButtonIcon);
             }
@@ -5968,7 +6000,7 @@ u.compMgr.regComp({
 
 
 u.showLoading = function(op) {
-	var htmlStr = '<div class="alert alert-waiting"><i class="fa fa-spinner fa-spin"></i></div>';
+	var htmlStr = '<div class="alert alert-waiting"><i class="uf uf-spinnerofdots"></i></div>';
 	document.body.appendChild(u.makeDOM(htmlStr));
 	htmlStr = '<div class="alert-backdrop" role="waiting-backdrop"></div>';
 	document.body.appendChild(u.makeDOM(htmlStr));
@@ -6119,7 +6151,7 @@ u.compMgr.regComp({
  */
 'use strict';
 // u.messageTemplate ='<div class="u-message"><button type="button" class="u-msg-close u-button floating  mini"><span class="">X</span></button>{msg}</div>';
-u.messageTemplate ='<div class="u-message"><span class="u-msg-close fa fa-close"></span>{msg}</div>';
+u.messageTemplate ='<div class="u-message"><span class="u-msg-close uf uf-removesymbol"></span>{msg}</div>';
 // u.nocloseTemplate ='<div class="u-message">{msg}</div>';
 
 u.showMessage = function(options) {
@@ -6548,14 +6580,14 @@ u.Combobox = u.BaseComponent.extend({
 									var activeSelect = document.createElement("Div")
 									activeSelect.className = "mutil-select-div"
 									var selectName = "<i class='itemName'>" + items[i].name + "</i>"																	
-									var imageFont = "<i class='fa fa-close'></i>"
+									var imageFont = "<i class='uf uf-removesymbol'></i>"
 									activeSelect.insertAdjacentHTML("beforeEnd",imageFont+selectName); 
 									this.appendChild(activeSelect);
 									    
 									//activeSelect.append(imageFont);
 								//	activeSelect.append(selectName);
 								
-									u.on(activeSelect.querySelector(".fa-close"),'mousedown', function() {
+									u.on(activeSelect.querySelector(".uf-removesymbol"),'mousedown', function() {
 
 										//var $this = $(this);
 										//var lis = self.oLis;
@@ -7052,7 +7084,7 @@ u.Multilang = u.BaseComponent.extend({
 			}
 			if (u.isArray(sort)) {											
 						
-				u.wrap(target,"<div class='multilang_body'><input class='lang_value' contenteditable='true'><span class='fa fa-sort-desc lang_icon'><span class='m_icon'></span></span>")
+				u.wrap(target,"<div class='multilang_body'><input class='lang_value' contenteditable='true'><span class='uf uf-caretdown lang_icon'><span class='m_icon'></span></span>")
 				u.css(target,"display","none")
 
 				u.each(sort, function(i, node) {
@@ -7108,7 +7140,7 @@ u.Multilang = u.BaseComponent.extend({
 					tmpvaluebox.value = tmptext
 					tmpvaluebox.focus();
 					var tmpicom = target_div.querySelector(".lang_icon"),oldicon = target_div.querySelector(".m_icon")
-					u.removeClass(tmpicom,"fa-sort-desc")
+					u.removeClass(tmpicom,"uf-caretdown")
 					tmpicom.replaceChild(tmpicon,oldicon)
 				})
 				
@@ -8207,8 +8239,8 @@ if (u.compMgr)
 		innerWindow: 2,
 		outerWindow: 0,
 		first: '&laquo;',
-		prev: '<i class="fa fa-chevron-left"></i>',
-		next: '<i class="fa fa-chevron-right"></i>',
+		prev: '<i class="uf uf-anglepointingtoleft"></i>',
+		next: '<i class="uf uf-anglearrowpointingtoright"></i>',
 		last: '&raquo;',
 		gap: '···',
 		//totalText: '合计:',
@@ -8795,7 +8827,7 @@ u.Tooltip.prototype = {
 			
 			// 要求显示成功提示，并没有成功提示dom的id时，则创建成功提示dom
 			if(this.hasSuccess&&!this.successId){
-				this.successId=u.makeDOM('<span class="u-form-control-success fa fa-check-circle" ></span>');
+				this.successId=u.makeDOM('<span class="u-form-control-success uf uf-checkedsymbol" ></span>');
 				
 				if(this.$element.nextSibling){
 					this.$element.parentNode.insertBefore(this.successId,this.$element.nextSibling);
@@ -8806,7 +8838,7 @@ u.Tooltip.prototype = {
 			}
 			//不是默认的tip提示方式并且tipId没有定义时创建默认tipid	
 			if(this.notipFlag&&!this.tipId){
-				this.tipId=u.makeDOM('<span class="u-form-control-info fa fa-exclamation-circle "></span>');
+				this.tipId=u.makeDOM('<span class="u-form-control-info uf uf-exclamationsign "></span>');
 				this.$element.parentNode.appendChild(this.tipId);
 
 				if(this.$element.nextSibling){

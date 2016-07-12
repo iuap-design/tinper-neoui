@@ -156,7 +156,7 @@ $snackbar-vertical-offset: 0.5 * $unit !default;
     }
   }
 
-  & i.fa{
+  & i.fa , & i.uf{
     padding-left:0px;
   }
 }

@@ -28,7 +28,7 @@
     &:focus {
         border-color: $input-border-focus;
         outline: none;
-        &~.fa-search {
+        &~.fa-search,&~.uf-magnifyingglass {
             color: $input-border-focus;
         }
     }
@@ -247,7 +247,7 @@
 
 .u-form-control-info:before {
     margin-right: 5px;
-    font-family: FontAwesome;
+    font-family: uf;
 }
 
 

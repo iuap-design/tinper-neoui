@@ -157,7 +157,7 @@ u.NavLayout = u.BaseComponent.extend({
                 u.addClass(drawerButton, this._CssClasses.DRAWER_BTN);
 
                 var drawerButtonIcon = document.createElement('i');
-                drawerButtonIcon.className = 'fa fa-bars';
+                drawerButtonIcon.className = 'uf uf-reorderoption';
                 //drawerButtonIcon.textContent = this._Constant.MENU_ICON;
                 drawerButton.appendChild(drawerButtonIcon);
             }
