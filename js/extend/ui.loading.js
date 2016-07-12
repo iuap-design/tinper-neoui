@@ -82,7 +82,7 @@ u.compMgr.regComp({
 
 
 u.showLoading = function(op) {
-	var htmlStr = '<div class="alert alert-waiting"><i class="fa fa-spinner fa-spin"></i></div>';
+	var htmlStr = '<div class="alert alert-waiting"><i class="uf uf-spinnerofdots"></i></div>';
 	document.body.appendChild(u.makeDOM(htmlStr));
 	htmlStr = '<div class="alert-backdrop" role="waiting-backdrop"></div>';
 	document.body.appendChild(u.makeDOM(htmlStr));

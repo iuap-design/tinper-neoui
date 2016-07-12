@@ -55,14 +55,14 @@
         font-weight: bold;  
     }
 
-    & .fa-caret-down {
+    & .uf-caretdown {
       webkit-transition: transform .3s ease-in-out;
       transition: transform .3s ease-in-out;
       vertical-align: middle;
     }
 
     &-open {
-      & .fa-caret-down {
+      & .uf-caretdown {
         transform: rotate(180deg);
       }
       & + .u-navmenu-sub {
