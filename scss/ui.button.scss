@@ -137,9 +137,9 @@ input.u-button[type="submit"] {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(- $button-fab-font-size / 2, - $button-fab-font-size / 2);
+    transform: translate(- 50%, - $button-fab-font-size / 2);
     line-height: $button-fab-font-size;
-    width: $button-fab-font-size;
+    width: auto;
     width: auto \9;
     position:relative \9;
     top:0px \9;

@@ -5,11 +5,11 @@
         targetKeep: true,
         icon: "font",
         starType: "i",
-        starOff: "icon fa fa-star",
-        starOn: "icon fa fa-star orange-600",
-        cancelOff: "icon fa fa-minus-circle",
-        cancelOn: "icon  fa fa-minus-circle orange-600",
-        starHalf: "icon fa fa-half-o orange-500"
+        starOff: "icon uf uf-star",
+        starOn: "icon uf uf-star orange-600",
+        cancelOff: "icon uf uf-minussigninsideablackcircle",
+        cancelOn: "icon  uf uf-minussigninsideablackcircle orange-600",
+        starHalf: "icon uf uf-starhalfempty orange-500"
       };
       $('[data-plugin="rating"]').each(function() {
           var $this = $(this);
