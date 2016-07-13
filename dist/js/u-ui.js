@@ -9163,15 +9163,18 @@ u.Tooltip.prototype = {
 		if (this.tipId) {
 			this.$element.style.borderColor='rgb(241,90,74)';
 			var tipdiv=this.tipId;
-			// 算位置不是一个好办法，样式方面的还是要通过样式控制
-			//var left=this.$element.offsetLeft;
-			//var top=this.$element.offsetTop+this.$element.offsetHeight+4;
 			if(typeof tipdiv==='string'){
 				tipdiv = document.getElementById(tipdiv);
 			}
 			tipdiv.innerHTML = msg;
-			//tipdiv.style.left=left+'px';
-			//tipdiv.style.top=top+'px';
+			//如果notipFlag为true说明，可能是平台创建的，需要添加left、top值
+			if(this.notipFlag){
+				var left=this.$element.offsetLeft;
+				var top=this.$element.offsetTop+this.$element.offsetHeight+4;
+				tipdiv.style.left=left+'px';
+				tipdiv.style.top=top+'px';
+			}
+			
 			tipdiv.style.display = 'block';
 			// u.addClass(tipdiv.parentNode,'u-has-error');
 			// $('#' + this.tipId).html(msg).show()

@@ -3515,10 +3515,10 @@ input.u-button[type="submit"] {
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-0.4375rem, -0.4375rem);
-            transform: translate(-0.4375rem, -0.4375rem);
+    -webkit-transform: translate(-50%, -0.4375rem);
+            transform: translate(-50%, -0.4375rem);
     line-height: 0.875rem;
-    width: 0.875rem;
+    width: auto;
     width: auto \9;
     position: relative \9;
     top: 0px \9;
