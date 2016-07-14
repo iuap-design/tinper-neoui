@@ -503,7 +503,7 @@ $radio-dark-bg:               $brand-dark;
 $switch-color: unquote("rgb(#{$color-primary})") !default;
 $switch-faded-color: unquote("rgba(#{$color-primary}, 0.26)") !default;
 $switch-thumb-color: #fff !default;
-$switch-track-color: unquote("rgba(#{$color-primary})") !default;
+$switch-track-color: unquote("rgb(#{$color-primary})") !default;
 
 $switch-off-thumb-color: unquote("rgb(#{$palette-grey-50})") !default;
 $switch-off-track-color: unquote("rgb(#{$color-white})") !default;
