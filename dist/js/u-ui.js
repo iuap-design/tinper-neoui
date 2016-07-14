@@ -8235,7 +8235,7 @@ if (u.compMgr)
 		currentPage: 1,
 		totalPages: 1,
 		pageSize: 10,
-		pageList: [10, 20, 50, 100],
+		pageList: [5,10, 20, 50, 100],
 		innerWindow: 2,
 		outerWindow: 0,
 		first: '&laquo;',
