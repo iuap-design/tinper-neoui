@@ -25,6 +25,15 @@
     box-sizing: border-box;
     font-family: $preferred_font;
     font-size: 14px;
+    border-radius: 4px;
+    &.round{
+        border-radius: 20px;
+    }
+    &.round{
+        border-color: #62a8ea;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
     &:focus {
         border-color: $input-border-focus;
         outline: none;
@@ -55,6 +64,13 @@
     &.sw {
         width: 200px;
     }
+}
+
+.form-control-static {
+    min-height: 36px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-bottom: 0;
 }
 
 .u-form-group {
@@ -145,11 +161,63 @@
 .u-form-control-feedback + .u-form-control {
     padding-right: $form-input-padding-left+$form-input-height;
 }
-
+.u-form-control-feedback.u-button-success{
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    color: #fff;
+}
+.noborder{
+    border:none;
+}
+.leftborder{
+    border-left: 1px solid #CECECE;
+}
+.rightborder{
+    border-right: 1px solid #CECECE;
+}
+.u-input-dark .u-form-control{
+    background: #f3f7f9;
+}
+.u-input-icon-left{
+    left: 0 !important;
+}
+.u-input-icon-left label{
+    margin-left: 10px;
+    margin-top: 6px;
+}
+.u-input-sm {
+    height: 32px;
+    padding: 6px 13px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 2px;
+}
+.u-input-lg {
+    height: 46px;
+    padding: 10px 18px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 4px;
+}
+.help-block {
+    display: block;
+    color: #bcc2c8;
+    margin-top: 7px;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+select[multiple]{
+    overflow-y: auto;
+    height: auto;
+}
+textarea.u-form-control{
+    height: auto;
+}
 .u-input-group {
     position: relative;
     //display: inline-table;
     vertical-align: middle;
+    margin-bottom:10px;
     & .u-input-group-addon,
     & .u-input-group-btn,
     & .u-form-control {
