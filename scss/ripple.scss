@@ -31,3 +31,14 @@
     background:none;
   }
 }
+
+.u-ripple-container {
+	display: block;
+  height: 100%;
+  left: 0rem;
+  position: absolute;
+  top: 0rem;
+  width: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
