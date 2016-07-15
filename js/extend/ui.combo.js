@@ -135,11 +135,14 @@ u.Combo = u.BaseComponent.extend({
             u.on(li, 'click', function () {
                 self.selectItem(this._index);
             })
-            // 不再提供点击特效
-            // var rippleContainer = document.createElement('span');
-            // u.addClass(rippleContainer, 'u-ripple');
-            // li.appendChild(rippleContainer);
-            // new URipple(li)
+            var rippleContainer = document.createElement('span');
+            u.addClass(rippleContainer, 'u-ripple-container');
+			var _rippleElement = document.createElement('span');
+			u.addClass(_rippleElement, 'u-ripple');
+			
+			rippleContainer.appendChild(_rippleElement);
+            li.appendChild(rippleContainer);
+            new URipple(li)
             this._ul.appendChild(li);
         }
     },
