@@ -2353,6 +2353,16 @@ $color-accent: $palette-pink-A200 !default;
   .u-ripple.oldIE {
     background: none; }
 
+.u-ripple-container {
+  display: block;
+  height: 100%;
+  left: 0rem;
+  position: absolute;
+  top: 0rem;
+  width: 100%;
+  z-index: 0;
+  overflow: hidden; }
+
 @font-face {
   font-family: "uf";
   src: url("../fonts/iconfont.eot?t=1467794727");

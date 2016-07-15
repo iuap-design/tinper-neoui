@@ -70,7 +70,7 @@ u.Combo = u.BaseComponent.extend({
     },
 
     show: function (evt) {
-        var self = this,width=this.element.offsetWidth;
+        var self = this,width=this._input.offsetWidth;
         u.showPanelByEle({
             ele:this._input,
             panel:this._ul,
