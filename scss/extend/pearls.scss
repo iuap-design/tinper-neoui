@@ -281,3 +281,177 @@ $pearl-xs-size: 24px;
     }
   }
 }
+.u-steps {
+  margin-bottom: 22px;
+  &.row {
+    display: block;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.u-step {
+  position: relative;
+  padding: 12px 20px;
+  margin: 0;
+  font-size: inherit;
+  color: #a3afb7;
+  vertical-align: top;
+  background-color: #f3f7f9;
+  border-radius: 0;
+}
+
+.u-step-icon {
+  float: left;
+  margin-right: .5em;
+  font-size: 20px;
+}
+
+.u-step-number {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  line-height: 40px;
+  color: #fff;
+  text-align: center;
+  background: #e4eaec;
+  border-radius: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  ~ .u-step-desc {
+    min-height: 40px;
+    margin-left: 50px;
+  }
+}
+
+.u-step-title {
+  margin-bottom: 0;
+  font-size: 20px;
+  color: #526069;
+}
+
+.u-step-desc {
+  text-align: left;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.u-steps-vertical .u-step {
+  display: block;
+  padding: 18px 20px;
+  &[class*=col-] {
+    float: none;
+    width: 100%;
+  }
+}
+
+.u-step {
+  &.current {
+    color: #fff;
+    background-color: #3f51b5;
+    .u-step-title {
+      color: #fff;
+    }
+    .u-step-number {
+      color: #3f51b5;
+      background-color: #fff;
+    }
+  }
+  &.disabled {
+    color: #ccd5db;
+    pointer-events: none;
+    cursor: auto;
+    .u-step-title {
+      color: #ccd5db;
+    }
+    .u-step-number {
+      background-color: #ccd5db;
+    }
+  }
+  &.error {
+    color: #fff;
+    background-color: #f96868;
+    .u-step-title {
+      color: #fff;
+    }
+    .u-step-number {
+      color: #f96868;
+      background-color: #fff;
+    }
+  }
+  &.done {
+    color: #fff;
+    background-color: #46be8a;
+    .u-step-title {
+      color: #fff;
+    }
+    .u-step-number {
+      color: #46be8a;
+      background-color: #fff;
+    }
+  }
+}
+
+.u-steps-lg {
+  .u-step {
+    padding: 20px 20px;
+    font-size: 16px;
+  }
+  .u-step-icon, .u-step-title {
+    font-size: 22px;
+  }
+  .u-step-number {
+    width: 46px;
+    height: 46px;
+    font-size: 28px;
+    line-height: 46px;
+    ~ .u-step-desc {
+      min-height: 46px;
+      margin-left: 56px;
+    }
+  }
+}
+
+.u-steps-sm {
+  .u-step {
+    font-size: 12px;
+  }
+  .u-step-icon, .u-step-title {
+    font-size: 18px;
+  }
+  .u-step-number {
+    width: 30px;
+    height: 30px;
+    font-size: 24px;
+    line-height: 30px;
+    ~ .u-step-desc {
+      min-height: 30px;
+      margin-left: 40px;
+    }
+  }
+}
+
+.u-steps-xs {
+  .u-step {
+    font-size: 10px;
+  }
+  .u-step-icon, .u-step-title {
+    font-size: 16px;
+  }
+  .u-step-number {
+    width: 24px;
+    height: 24px;
+    font-size: 20px;
+    line-height: 24px;
+    ~ .u-step-desc {
+      min-height: 24px;
+      margin-left: 34px;
+    }
+  }
+}
