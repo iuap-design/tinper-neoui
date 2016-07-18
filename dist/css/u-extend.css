@@ -77,6 +77,29 @@ $color-accent: $palette-pink-A200 !default;
 /* Typography */
 /* Shadows */
 /* Animations */
+.u-input-icon-left + .u-form-control {
+  padding-left: 30px; }
+
+.u-input-icon-left label.u-radio {
+  margin-top: 2px;
+  position: inherit;
+  margin-left: -9px; }
+
+.input-group-addon {
+  width: auto;
+  padding: 0 5px; }
+
+.u-button-file input[type=file] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  min-width: 100%;
+  min-height: 100%;
+  text-align: 0;
+  cursor: pointer;
+  opacity: 0; }
+
 .u-form-control {
   height: 36px;
   width: 100%;
@@ -3003,6 +3026,29 @@ $color-accent: $palette-pink-A200 !default;
 /* Typography */
 /* Shadows */
 /* Animations */
+.u-input-icon-left + .u-form-control {
+  padding-left: 30px; }
+
+.u-input-icon-left label.u-radio {
+  margin-top: 2px;
+  position: inherit;
+  margin-left: -9px; }
+
+.input-group-addon {
+  width: auto;
+  padding: 0 5px; }
+
+.u-button-file input[type=file] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  min-width: 100%;
+  min-height: 100%;
+  text-align: 0;
+  cursor: pointer;
+  opacity: 0; }
+
 .u-form-control {
   height: 36px;
   width: 100%;

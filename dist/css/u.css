@@ -2365,14 +2365,14 @@ $color-accent: $palette-pink-A200 !default;
 
 @font-face {
   font-family: "uf";
-  src: url("../fonts/iconfont.eot?t=1467794727");
+  src: url("iconfont.eot?t=1468564771");
   /* IE9*/
-  src: url("../fonts/iconfont.eot?t=1467794727#iefix") format("embedded-opentype"), url("../fonts/iconfont.woff?t=1467794727") format("woff"), url("../fonts/iconfont.ttf?t=1467794727") format("truetype"), url("../fonts/iconfont.svg?t=1467794727#uf") format("svg");
+  src: url("iconfont.eot?t=1468564771#iefix") format("embedded-opentype"), url("iconfont.woff?t=1468564771") format("woff"), url("iconfont.ttf?t=1468564771") format("truetype"), url("iconfont.svg?t=1468564771#uf") format("svg");
   /* iOS 4.1- */ }
 
 .uf {
   font-family: "uf" !important;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
@@ -3391,6 +3391,12 @@ $color-accent: $palette-pink-A200 !default;
 
 .uf-zoomout:before {
   content: "\e75c"; }
+
+.uf-addsquarebutton2:before {
+  content: "\e607"; }
+
+.uf-warningmd:before {
+  content: "\e698"; }
 
 /*  IMAGES  */
 /* 默认颜色 */
@@ -8125,6 +8131,29 @@ $color-accent: $palette-pink-A200 !default;
 /* Typography */
 /* Shadows */
 /* Animations */
+.u-input-icon-left + .u-form-control {
+  padding-left: 30px; }
+
+.u-input-icon-left label.u-radio {
+  margin-top: 2px;
+  position: inherit;
+  margin-left: -9px; }
+
+.input-group-addon {
+  width: auto;
+  padding: 0 5px; }
+
+.u-button-file input[type=file] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  min-width: 100%;
+  min-height: 100%;
+  text-align: 0;
+  cursor: pointer;
+  opacity: 0; }
+
 .u-form-control {
   height: 36px;
   width: 100%;
@@ -11051,6 +11080,29 @@ $color-accent: $palette-pink-A200 !default;
 /* Typography */
 /* Shadows */
 /* Animations */
+.u-input-icon-left + .u-form-control {
+  padding-left: 30px; }
+
+.u-input-icon-left label.u-radio {
+  margin-top: 2px;
+  position: inherit;
+  margin-left: -9px; }
+
+.input-group-addon {
+  width: auto;
+  padding: 0 5px; }
+
+.u-button-file input[type=file] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  min-width: 100%;
+  min-height: 100%;
+  text-align: 0;
+  cursor: pointer;
+  opacity: 0; }
+
 .u-form-control {
   height: 36px;
   width: 100%;
