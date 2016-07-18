@@ -4,7 +4,7 @@ combobox组合框是由一个文本输入控件和一个下拉菜单组成的，
 
 # 插件依赖
 
-依赖于 http://design.yyuap.com/static/uui/3.0.6/js/u.js
+首先依赖于 http://design.yyuap.com/static/uui/latest/js/u.js
 
 
 # 用法
