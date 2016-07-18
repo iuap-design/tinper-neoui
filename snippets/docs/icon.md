@@ -8,13 +8,20 @@
 
 1、通过CDN引入
 
-`<link href="//design.yyuap.com/static/uui/3.0.6/css/iconfont.css" rel="stylesheet">`
+````
+<link href="//design.yyuap.com/static/uui/latest/css/u.css" rel="stylesheet">
+````
 
 2、赋值整个`iconfont` 文件夹到您的项目中,使用路径引入
 
-`<link rel="stylesheet" href="path/to/iconfont/css/iconfont.css">`
+```
+<link rel="stylesheet" href="path/to/iconfont/css/u.css">
+```
+
+
 
 ##显示某个图标
+
 使用方法
 
 `<i class="uf uf-图标字体类名"></i>`
