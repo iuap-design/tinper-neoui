@@ -2415,7 +2415,7 @@ $color-accent: $palette-pink-A200 !default;
   transition: all 300ms; }
 
 .u-msg-dialog {
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   background-color: #FFFFFF;

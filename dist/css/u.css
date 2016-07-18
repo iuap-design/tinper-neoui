@@ -2365,9 +2365,9 @@ $color-accent: $palette-pink-A200 !default;
 
 @font-face {
   font-family: "uf";
-  src: url("iconfont.eot?t=1468564771");
+  src: url("../fonts/iconfont.eot?t=1468564771");
   /* IE9*/
-  src: url("iconfont.eot?t=1468564771#iefix") format("embedded-opentype"), url("iconfont.woff?t=1468564771") format("woff"), url("iconfont.ttf?t=1468564771") format("truetype"), url("iconfont.svg?t=1468564771#uf") format("svg");
+  src: url("../fonts/iconfont.eot?t=1468564771#iefix") format("embedded-opentype"), url("../fonts/iconfont.woff?t=1468564771") format("woff"), url("../fonts/iconfont.ttf?t=1468564771") format("truetype"), url("../fonts/iconfont.svg?t=1468564771#uf") format("svg");
   /* iOS 4.1- */ }
 
 .uf {
@@ -10469,7 +10469,7 @@ $color-accent: $palette-pink-A200 !default;
   transition: all 300ms; }
 
 .u-msg-dialog {
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   background-color: #FFFFFF;
