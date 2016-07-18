@@ -1,113 +1,115 @@
+if(!window.hasJsExtensions){
 
-if (!String.prototype.trim) {
-    String.prototype.trim = function () {
-        return this.replace(/^\s*(\b.*\b|)\s*$/, "$1");
-    };
-}
-
-if (!Array.prototype.indexOf) {
-    Array.prototype.indexOf = function (obj) {
-        for (var i = 0; i < this.length; i++) {
-            if (this[i] == obj)
-                return i;
-        }
-        return -1;
-    };
-}
-
-if (!Array.prototype.remove) {
-	Array.prototype.remove = function(index) {
-		if (index < 0 || index > this.length) {
-			alert("index out of bound");
-			return;
-		}
-		this.splice(index, 1);
-	};
-}
-// 遍历数组,执行函数
-if (!Array.prototype.forEach) {
-    Array.prototype.forEach = function (fn) {
-        for (var i = 0, len = this.length; i < len; i++) {
-            fn(this[i], i, this);
-        }
-    };
-}
-
-if(!NodeList.prototype.forEach)
-    NodeList.prototype.forEach = Array.prototype.forEach;
-
-    
-function isDomElement(obj) {
-    if (window['HTMLElement']) {
-        return obj instanceof HTMLElement;
-    } else {
-        return obj && obj.tagName && obj.nodeType === 1;
-    }
-}
-/*IE8的querySelectorAll返回的对象不是Array也不是NodeList，不能调用forEach，因此重写此方法*/
-/* 此处没有IE8标识，因此使用HTMLElement来进行判断*/
-if(!window['HTMLElement']){
-    var _querySelectorAll = Element.prototype.querySelectorAll;
-    Element.prototype.querySelectorAll = function(selector) {
-        var result = _querySelectorAll.call(this,selector);
-        if(!isDomElement(this)){
-            return result;
-        }
-        var resArr = [];
-        for(var i = 0;i < result.length;i++){
-            resArr.push(result[i]);
-        }
-        return resArr;
+    window.hasJsExtensions = true;
+    if (!String.prototype.trim) {
+        String.prototype.trim = function () {
+            return this.replace(/^\s*(\b.*\b|)\s*$/, "$1");
+        };
     }
 
-    var _docquerySelectorAll = document.querySelectorAll;
-    document.querySelectorAll = function(selector) {
-        try{
-            var result = _docquerySelectorAll.call(this,selector);
-            var resArr = [];
-            if(result.length > 0){
-                for(var i = 0;i < result.length;i++){
-                    resArr.push(result[i]);
-                }
-                return resArr;
-            }else{
+    if (!Array.prototype.indexOf) {
+        Array.prototype.indexOf = function (obj) {
+            for (var i = 0; i < this.length; i++) {
+                if (this[i] == obj)
+                    return i;
+            }
+            return -1;
+        };
+    }
+
+    if (!Array.prototype.remove) {
+    	Array.prototype.remove = function(index) {
+    		if (index < 0 || index > this.length) {
+    			alert("index out of bound");
+    			return;
+    		}
+    		this.splice(index, 1);
+    	};
+    }
+    // 遍历数组,执行函数
+    if (!Array.prototype.forEach) {
+        Array.prototype.forEach = function (fn) {
+            for (var i = 0, len = this.length; i < len; i++) {
+                fn(this[i], i, this);
+            }
+        };
+    }
+
+    if(!NodeList.prototype.forEach)
+        NodeList.prototype.forEach = Array.prototype.forEach;
+
+        
+    function isDomElement(obj) {
+        if (window['HTMLElement']) {
+            return obj instanceof HTMLElement;
+        } else {
+            return obj && obj.tagName && obj.nodeType === 1;
+        }
+    }
+    /*IE8的querySelectorAll返回的对象不是Array也不是NodeList，不能调用forEach，因此重写此方法*/
+    /* 此处没有IE8标识，因此使用HTMLElement来进行判断*/
+    if(!window['HTMLElement']){
+        var _querySelectorAll = Element.prototype.querySelectorAll;
+        Element.prototype.querySelectorAll = function(selector) {
+            var result = _querySelectorAll.call(this,selector);
+            if(!isDomElement(this)){
                 return result;
             }
+            var resArr = [];
+            for(var i = 0;i < result.length;i++){
+                resArr.push(result[i]);
+            }
+            return resArr;
+        }
+
+        var _docquerySelectorAll = document.querySelectorAll;
+        document.querySelectorAll = function(selector) {
+            try{
+                var result = _docquerySelectorAll.call(this,selector);
+                var resArr = [];
+                if(result.length > 0){
+                    for(var i = 0;i < result.length;i++){
+                        resArr.push(result[i]);
+                    }
+                    return resArr;
+                }else{
+                    return result;
+                }
+                
+            }catch(e){
+
+            }
             
-        }catch(e){
-
         }
-        
     }
-}
 
-if(!Element.prototype.addEventListener){
-    Element.prototype.addEventListener = function(event,fun){
-        var tag = this;
-        this.attachEvent("on"+event,function(){
-            fun.apply(tag,arguments);//这里是关键
-        });
-    }
-}
-
-
-// 绑定环境
-if(typeof Function.prototype.bind !== 'function'){
-    Function.prototype.bind = function(context){
-        var fn = this;
-        var args = [];
-        for(var i = 1, len = arguments.length; i < len; i ++){
-            args.push(arguments[i]);
+    if(!Element.prototype.addEventListener){
+        Element.prototype.addEventListener = function(event,fun){
+            var tag = this;
+            this.attachEvent("on"+event,function(){
+                fun.apply(tag,arguments);//这里是关键
+            });
         }
+    }
 
-        return function(){
-            // for(var j = 1, len = arguments.length; j < len; j ++){
-            //     args.push(arguments[j]);
-            // }
-            return fn.apply(context, args.concat(Array.prototype.slice.call(arguments)));
+
+    // 绑定环境
+    if(typeof Function.prototype.bind !== 'function'){
+        Function.prototype.bind = function(context){
+            var fn = this;
+            var args = [];
+            for(var i = 1, len = arguments.length; i < len; i ++){
+                args.push(arguments[i]);
+            }
+
+            return function(){
+                // for(var j = 1, len = arguments.length; j < len; j ++){
+                //     args.push(arguments[j]);
+                // }
+                return fn.apply(context, args.concat(Array.prototype.slice.call(arguments)));
+            };
         };
-    };
-}
+    }
 
 // 获取当前js文件的路径
 	window.getCurrentJsPath = function() {
@@ -177,3 +179,4 @@ if(typeof Function.prototype.bind !== 'function'){
                 }
         return string
 	};
+}

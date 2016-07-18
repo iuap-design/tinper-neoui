@@ -5154,8 +5154,8 @@ dBack: function() {
 showMaster: function() {
 	if(this._master){
 		if (u.isIE8 || u.isIE9)
-			this._master.style.display = 'block';
-		else{
+			this._master.style.display = 'none';//IE下暂时不显示此区域
+ 		else{
 			this._master.style.transform = 'translate3d(0,0,0)';
 		}
 		if (!this.isNarrow)
