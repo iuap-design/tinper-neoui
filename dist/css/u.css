@@ -2372,7 +2372,7 @@ $color-accent: $palette-pink-A200 !default;
 
 .uf {
   font-family: "uf" !important;
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
