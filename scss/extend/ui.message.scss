@@ -1,5 +1,5 @@
-@import "./mixins/variables";
-@import "./mixins/mixins";
+@import "../mixins/variables";
+@import "../mixins/mixins";
 
 $snackbar-border-radius: .2 * $unit !default;
 $snackbar-button-offset: 4.8 * $unit !default;

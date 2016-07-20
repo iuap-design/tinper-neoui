@@ -1,6 +1,6 @@
 // 表单样式  参考bootstarp
-@import "./mixins/variables";
-@import "./mixins/mixins";
+@import "../mixins/variables";
+@import "../mixins/mixins";
 @mixin before {
     &:before {
         display: table;
