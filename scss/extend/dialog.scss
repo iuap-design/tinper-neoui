@@ -80,6 +80,14 @@
      -webkit-box-sizing: border-box;
 
   }
+
+// 只有一个按钮时，样式居中
+  .u-msg-footer.only-one-btn  button{
+    margin-left: 50%;
+    float: none;
+    transform: translateX(-50%);
+  }
+
   .u-msg-button , .u-msg-ok , .u-msg-cancel, .u-msg-close{
     float: right;
   }

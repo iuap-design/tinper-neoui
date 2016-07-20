@@ -116,10 +116,10 @@ $color-accent: $palette-pink-A200 !default;
     border-color: #62a8ea;
     box-shadow: none; }
   .u-form-control:focus {
-    border-color: rgb(107,202,234);
+    border-color: rgb(63,81,181);
     outline: none; }
     .u-form-control:focus ~ .fa-search, .u-form-control:focus ~ .uf-magnifyingglass {
-      color: rgb(107,202,234); }
+      color: rgb(63,81,181); }
   .u-form-control[readonly], .u-form-control[disabled] {
     border-color: rgb(241,241,241);
     background-color: rgb(241,241,241); }
@@ -209,7 +209,7 @@ $color-accent: $palette-pink-A200 !default;
   .u-form-control-feedback.refer {
     cursor: pointer; }
     .u-form-control-feedback.refer:hover {
-      color: rgb(107,202,234); }
+      color: rgb(63,81,181); }
 
 .u-form-control-feedback + .u-form-control {
   padding-right: 48px; }
@@ -1437,7 +1437,8 @@ $color-accent: $palette-pink-A200 !default;
   margin-bottom: 10px;
   list-style: none;
   background-color: transparent;
-  border-radius: 3px; }
+  border-radius: 3px;
+  font-size: 14px; }
   .u-breadcrumb > li {
     display: inline-block;
     float: left; }
@@ -2467,6 +2468,11 @@ $color-accent: $palette-pink-A200 !default;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box; }
+  .u-msg-dialog .u-msg-footer.only-one-btn button {
+    margin-left: 50%;
+    float: none;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
   .u-msg-dialog .u-msg-button, .u-msg-dialog .u-msg-ok, .u-msg-dialog .u-msg-cancel, .u-msg-dialog .u-msg-close {
     float: right; }
   .u-msg-dialog .u-msg-cancel {
@@ -3065,10 +3071,10 @@ $color-accent: $palette-pink-A200 !default;
     border-color: #62a8ea;
     box-shadow: none; }
   .u-form-control:focus {
-    border-color: rgb(107,202,234);
+    border-color: rgb(63,81,181);
     outline: none; }
     .u-form-control:focus ~ .fa-search, .u-form-control:focus ~ .uf-magnifyingglass {
-      color: rgb(107,202,234); }
+      color: rgb(63,81,181); }
   .u-form-control[readonly], .u-form-control[disabled] {
     border-color: rgb(241,241,241);
     background-color: rgb(241,241,241); }
@@ -3158,7 +3164,7 @@ $color-accent: $palette-pink-A200 !default;
   .u-form-control-feedback.refer {
     cursor: pointer; }
     .u-form-control-feedback.refer:hover {
-      color: rgb(107,202,234); }
+      color: rgb(63,81,181); }
 
 .u-form-control-feedback + .u-form-control {
   padding-right: 48px; }

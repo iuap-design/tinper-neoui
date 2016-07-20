@@ -82,13 +82,15 @@
         text-decoration : none;
           background-color : #eee;
     }
-    &.is-active{
+    .u-tabs.is-upgraded &.is-active{
         background-color : $tab-highlight-color;
         color : #FFFFFF;
         &:after{
           height:0px;
         }
     }
+
+    .u-tabs.is-upgraded
 }
 
 

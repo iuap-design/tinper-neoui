@@ -16,7 +16,7 @@ u.messageDialogTemplate = '<div class="u-msg-dialog">'+
                             '<div class="u-msg-content">'+
                                 '<p>{msg}</p>'+
                             '</div>'+
-                            '<div class="u-msg-footer"><button class="u-msg-button u-button primary raised">{btnText}</button></div>'+
+                            '<div class="u-msg-footer only-one-btn"><button class="u-msg-button u-button primary raised">{btnText}</button></div>'+
                            '</div>';
 
 u.messageDialog = function(options){
