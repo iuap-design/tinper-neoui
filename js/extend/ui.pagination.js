@@ -314,9 +314,12 @@
 		})
 		u.on(this.$ul.querySelector('.page_z'), 'change', function() {
 			var pz = (me.$element.querySelector(".page_z")&&me.$element.querySelector(".page_z").value)  || options.pageSize;
-			me.trigger('sizeChange', pz)
+			var oldPageSize = me.options.pageSize;
+			if(oldPageSize != pz){
+				me.options.pageSize = pz;
+				me.trigger('sizeChange', pz)
+			}
 		})
-
 	}
 
 
@@ -361,6 +364,7 @@
 
 		}
 		if (pageSize != oldPageSize){
+			options.pageSize = pageSize;
 			this.trigger('sizeChange', [pageSize, pageIndex - 1])
 		}else{
 			this.trigger('pageChange', pageIndex - 1)
