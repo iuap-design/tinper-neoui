@@ -1820,10 +1820,10 @@ $color-accent: $palette-pink-A200 !default;
   text-decoration: none;
   background-color: #eee; }
 
-.u-tabs-pill .u-tabs__tab.is-active {
+.u-tabs.is-upgraded .u-tabs-pill .u-tabs__tab.is-active {
   background-color: rgb(63,81,181);
   color: #FFFFFF; }
-  .u-tabs-pill .u-tabs__tab.is-active:after {
+  .u-tabs.is-upgraded .u-tabs-pill .u-tabs__tab.is-active:after {
     height: 0px; }
 
 .u-tabs__panel {
@@ -2416,7 +2416,7 @@ $color-accent: $palette-pink-A200 !default;
   transition: all 300ms; }
 
 .u-msg-dialog {
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   background-color: #FFFFFF;
@@ -4658,7 +4658,7 @@ $color-accent: $palette-pink-A200 !default;
   display: flex;
   -webkit-align-items: center;
           align-items: center;
-  padding: 7px 0px 7px 20px;
+  padding: 7px 0px 7px 15px;
   margin: 0 auto;
   margin-top: 0.5rem;
   margin-top: 22px \9;
@@ -4671,15 +4671,16 @@ $color-accent: $palette-pink-A200 !default;
   text-overflow: ellipsis;
   white-space: nowrap;*/
   word-wrap: break-word;
-  break-word: break-all; }
+  break-word: break-all;
+  border: 1px solid transparent; }
   .u-message.u-meserror {
     background-color: #fff6f7;
-    border: #f8aea9 1px solid;
-    color: #f15a4a; }
+    color: #f15a4a;
+    border-color: #fff6f7; }
   .u-message.u-meswarning {
     color: #ff9436;
     background-color: rgba(255, 224, 178, 0.8);
-    border-color: #ffe0b2; }
+    border-color: rgba(255, 224, 178, 0.8); }
   .u-message.dark.u-mesinfo {
     color: #fff;
     background-color: #00bcd4;
@@ -4750,7 +4751,7 @@ $color-accent: $palette-pink-A200 !default;
   .u-message .u-msg-close {
     position: absolute;
     top: 6px;
-    right: 40px;
+    right: 15px;
     cursor: pointer; }
     .u-message .u-msg-close:hover {
       color: #B4B4B4; }
@@ -4832,9 +4833,9 @@ $color-accent: $palette-pink-A200 !default;
       .u-navmenu .u-navmenu-link {
         padding: 16px 16px; } }
     .u-navmenu .u-navmenu-link:hover {
-      background-color: rgb(224,224,224); }
+      background-color: rgb(245,245,245); }
     .u-navmenu .u-navmenu-link-current {
-      background-color: rgb(224,224,224);
+      background-color: rgb(238,238,238);
       color: rgb(66,66,66);
       font-weight: bold; }
     .u-navmenu .u-navmenu-link .uf-caretdown {
