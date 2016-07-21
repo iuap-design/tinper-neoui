@@ -5138,10 +5138,6 @@ $color-accent: $palette-pink-A200 !default;
   white-space: nowrap;
   font-size: 13px;
   background-color: rgb(255,255,255); }
-  .u-table .u-checkbox-outline {
-    top: -11px; }
-  .u-table .u-checkbox-focus-helper {
-    top: -11px; }
   .u-table thead {
     padding-bottom: 3px; }
     .u-table thead .u-table-select {
@@ -10471,7 +10467,7 @@ $color-accent: $palette-pink-A200 !default;
   transition: all 300ms; }
 
 .u-msg-dialog {
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   background-color: #FFFFFF;
