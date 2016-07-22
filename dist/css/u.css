@@ -2365,9 +2365,9 @@ $color-accent: $palette-pink-A200 !default;
 
 @font-face {
   font-family: "uf";
-  src: url("../fonts/iconfont.eot?t=1468564771");
+  src: url("../fonts/iconfont.eot?t=1469087701");
   /* IE9*/
-  src: url("../fonts/iconfont.eot?t=1468564771#iefix") format("embedded-opentype"), url("../fonts/iconfont.woff?t=1468564771") format("woff"), url("../fonts/iconfont.ttf?t=1468564771") format("truetype"), url("../fonts/iconfont.svg?t=1468564771#uf") format("svg");
+  src: url("../fonts/iconfont.eot?t=1469087701#iefix") format("embedded-opentype"), url("../fonts/iconfont.woff?t=1469087701") format("woff"), url("../fonts/iconfont.ttf?t=1469087701") format("truetype"), url("../fonts/iconfont.svg?t=1469087701#uf") format("svg");
   /* iOS 4.1- */ }
 
 .uf {
@@ -3394,6 +3394,15 @@ $color-accent: $palette-pink-A200 !default;
 
 .uf-addsquarebutton2:before {
   content: "\e607"; }
+
+.uf-downarrow1:before {
+  content: "\e6e6"; }
+
+.uf-leftarrow1:before {
+  content: "\e708"; }
+
+.uf-rightarrow:before {
+  content: "\e709"; }
 
 .uf-warningmd:before {
   content: "\e698"; }
@@ -4530,6 +4539,9 @@ $color-accent: $palette-pink-A200 !default;
 
 .u-navlayout-fixed-drawer > .u-navlayout-drawer {
   display: block \9; }
+
+.u-navlayout > .u-navlayout-header {
+  margin-left: 240px \9; }
 
 /*  IMAGES  */
 /* 默认颜色 */
@@ -11400,7 +11412,7 @@ $color-accent: $palette-pink-A200 !default;
   background-color: white;
   text-align: center;
   color: #666666;
-  padding: 7px 13px;
+  padding: 6px 11px;
   line-height: 1.57142857; }
 
 .u-pagination > li:first-child > a,
@@ -11496,7 +11508,7 @@ $color-accent: $palette-pink-A200 !default;
   background-color: transparent;
   border-bottom: 0px solid #d7d7d7;
   border-top: 0px solid #d7d7d7;
-  padding: 8px 13px;
+  padding: 7px 11px;
   line-height: 1.57142857; }
 
 .u-pagination > li[role="gap"] > a:hover,
@@ -11516,6 +11528,9 @@ $color-accent: $palette-pink-A200 !default;
 
 .u-pagination li, .u-pagination a {
   box-sizing: content-box; }
+
+.u-pagination i.uf, .u-pagination i.fa {
+  padding: 0px; }
 
 .u-pagination-no-border > li > a,
 .u-pagination-no-border > li[role="next"] > a {

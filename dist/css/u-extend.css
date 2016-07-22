@@ -3349,7 +3349,7 @@ $color-accent: $palette-pink-A200 !default;
   background-color: white;
   text-align: center;
   color: #666666;
-  padding: 7px 13px;
+  padding: 6px 11px;
   line-height: 1.57142857; }
 
 .u-pagination > li:first-child > a,
@@ -3445,7 +3445,7 @@ $color-accent: $palette-pink-A200 !default;
   background-color: transparent;
   border-bottom: 0px solid #d7d7d7;
   border-top: 0px solid #d7d7d7;
-  padding: 8px 13px;
+  padding: 7px 11px;
   line-height: 1.57142857; }
 
 .u-pagination > li[role="gap"] > a:hover,
@@ -3465,6 +3465,9 @@ $color-accent: $palette-pink-A200 !default;
 
 .u-pagination li, .u-pagination a {
   box-sizing: content-box; }
+
+.u-pagination i.uf, .u-pagination i.fa {
+  padding: 0px; }
 
 .u-pagination-no-border > li > a,
 .u-pagination-no-border > li[role="next"] > a {
