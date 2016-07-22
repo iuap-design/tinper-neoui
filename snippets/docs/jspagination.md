@@ -5,7 +5,7 @@
 
 # 插件依赖
 
-依赖于  http://design.yyuap.com/static/uui/3.0.6/js/u.js
+依赖于 http://design.yyuap.com/static/uui/latest/js/u.js
 
 # 用法
 
@@ -51,5 +51,5 @@ replaceExamp
 	  </tr>
 	</tbody>
 </table>
-	
+​	
 

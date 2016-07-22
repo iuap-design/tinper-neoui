@@ -281,14 +281,14 @@ $input-lable-color:unquote("rgb(#{$palette-u-gray-900})") !default
 
 /*  Navlayout  */
 
-$layout-nav-color: unquote("rgb(#{$palette-grey-300})") !default;
+$layout-nav-color: unquote("rgb(#{$palette-grey-100})") !default;
 
 // Drawer
 $layout-drawer-bg-color: unquote("rgb(#{$palette-grey-50})") !default;
 $layout-drawer-border-color: unquote("rgb(#{$palette-grey-300})") !default;
 $layout-text-color: unquote("rgb(#{$palette-grey-800})") !default;
 $layout-drawer-navigation-color: #757575 !default;
-$layout-drawer-navigation-link-active-background: unquote("rgb(#{$palette-grey-300})") !default;
+$layout-drawer-navigation-link-active-background: unquote("rgb(#{$palette-grey-200})") !default;
 $layout-drawer-navigation-link-active-color: $layout-text-color !default;
 
 // Header
@@ -314,7 +314,7 @@ $layout-drawer-button-desktop-size: 48px !default;
 
 $layout-header-mobile-row-height: 56px !default;
 $layout-mobile-header-height: $layout-header-mobile-row-height;
-$layout-header-desktop-row-height: 64px !default;
+$layout-header-desktop-row-height: 44px !default;
 $layout-desktop-header-height: $layout-header-desktop-row-height;
 
 $layout-header-desktop-baseline: 80px !default;
@@ -693,7 +693,7 @@ $card-subtitle-color: unquote("rgba(#{$color-black}, 0.54)") !default;
 
 /* ============ Forms ============*/
 $input-border:unquote("rgb(#{$palette-u-gray-500})");
-$input-border-focus:unquote("rgb(#{$palette-u-blue-400})");
+$input-border-focus:unquote("rgb(#{$color-primary})");
 $input-border-disabled:unquote("rgb(#{$palette-u-gray-100})");
 $input-bg-disabled:unquote("rgb(#{$palette-u-gray-100})");
 $input-color:unquote("rgb(#{$palette-u-gray-A100})");

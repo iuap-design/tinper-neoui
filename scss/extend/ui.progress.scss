@@ -1,4 +1,4 @@
-@import "./mixins/variables";
+@import "../mixins/variables";
 
 .u-progress {
   display: block;
@@ -213,7 +213,7 @@
   }
   > {
     .progressbar {
-      background-color: rgb(63, 81, 181);
+      background-color: unquote("rgb(#{$color-primary})");
       z-index: 1;
       top: 0;
       border-radius: 3px;

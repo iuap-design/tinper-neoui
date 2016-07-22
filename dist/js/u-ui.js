@@ -5154,8 +5154,8 @@ dBack: function() {
 showMaster: function() {
 	if(this._master){
 		if (u.isIE8 || u.isIE9)
-			this._master.style.display = 'block';
-		else{
+			this._master.style.display = 'none';//IE下暂时不显示此区域
+ 		else{
 			this._master.style.transform = 'translate3d(0,0,0)';
 		}
 		if (!this.isNarrow)
@@ -6231,7 +6231,7 @@ u.messageDialogTemplate = '<div class="u-msg-dialog">'+
                             '<div class="u-msg-content">'+
                                 '<p>{msg}</p>'+
                             '</div>'+
-                            '<div class="u-msg-footer"><button class="u-msg-button u-button primary raised">{btnText}</button></div>'+
+                            '<div class="u-msg-footer only-one-btn"><button class="u-msg-button u-button primary raised">{btnText}</button></div>'+
                            '</div>';
 
 u.messageDialog = function(options){

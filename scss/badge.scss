@@ -38,6 +38,7 @@
 
     background: $badge-background;
     color: $badge-color;
+    box-sizing: border-box;
   }
 
   &.u-badge-no-background {

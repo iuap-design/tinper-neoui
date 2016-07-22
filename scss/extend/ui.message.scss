@@ -1,5 +1,5 @@
-@import "./mixins/variables";
-@import "./mixins/mixins";
+@import "../mixins/variables";
+@import "../mixins/mixins";
 
 $snackbar-border-radius: .2 * $unit !default;
 $snackbar-button-offset: 4.8 * $unit !default;
@@ -19,7 +19,7 @@ $snackbar-vertical-offset: 0.5 * $unit !default;
   align-items: center;
   // padding: $snackbar-vertical-offset $snackbar-horizontal-offset;
   // padding: 22px 38px \9;
-  padding:7px 0px 7px 20px;
+  padding:7px 0px 7px 15px;
   margin: 0 auto;
   margin-top: $snackbar-vertical-offset;
   margin-top: 22px \9;
@@ -33,15 +33,17 @@ $snackbar-vertical-offset: 0.5 * $unit !default;
   white-space: nowrap;*/
   word-wrap: break-word;
   break-word: break-all;
+  border: 1px solid transparent;
   &.u-meserror {
     background-color: #fff6f7;
-    border: #f8aea9 1px solid;
+    // border: #f8aea9 1px solid;
     color: #f15a4a;
+    border-color: #fff6f7;
   }
   &.u-meswarning {
     color: #ff9436;
     background-color: rgba(255,224,178,.8);
-    border-color: #ffe0b2;
+    border-color: rgba(255,224,178,.8);
   }
   &.dark.u-mesinfo {
     color: #fff;
@@ -148,7 +150,7 @@ $snackbar-vertical-offset: 0.5 * $unit !default;
   & .u-msg-close{
     position: absolute;
     top: 6px;
-    right: 40px;
+    right: 15px;
     cursor: pointer;
     //color:#CECECE;
     &:hover{
