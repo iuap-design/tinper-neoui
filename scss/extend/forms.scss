@@ -27,6 +27,28 @@
     width: auto;
     padding: 0 5px;
 }
+.u-form-group-lg .u-form-label {
+    padding-top: 11px;
+    font-size: 18px;
+}
+.u-form-group-lg .u-form-control {
+    height: 46px;
+    padding: 10px 18px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 4px;
+}
+..u-form-group-sm .u-form-label {
+    padding-top: 7px;
+    font-size: 12px;
+}
+.u-form-group-sm .u-form-control {
+    height: 32px;
+    padding: 6px 13px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 2px;
+}
 .u-button-file input[type=file] {
     position: absolute;
     top: 0;
