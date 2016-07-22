@@ -52,7 +52,7 @@ var UISrcPath = [
     'js/extend/ui.loader.js',
     'js/ui.progress.js',
     'js/ui.message.js',
-    'js/messageDialog.js',
+    'js/extend/messageDialog.js',
     'js/extend/confirmDialog.js',
     'js/extend/threeBtnDialog.js',
     'js/dialog.js',

@@ -30,7 +30,7 @@
   // width: 34px;
   text-align: center;
   color:#666666;
-  padding: 7px 13px;
+  padding: 6px 11px;
   line-height: 1.57142857;
 }
 
@@ -139,7 +139,7 @@
   // width: 22px;
   // height: 34px;
   // line-height: 32px;
-  padding: 8px 13px;
+  padding: 7px 11px;
   line-height: 1.57142857;
 }
 
@@ -166,6 +166,10 @@
   box-sizing:content-box;
 }
 
+
+.u-pagination i.uf,.u-pagination i.fa {
+    padding: 0px;
+}
 
 
 //无边框
