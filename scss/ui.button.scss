@@ -485,3 +485,55 @@ input.u-button[type="submit"] {
   line-height: 1.5;
   border-radius: 2px;
 }
+
+.u-button-group .default:hover{
+    color: #333 !important;
+    background-color: #e6e6e6 !important;
+    border-color: #adadad !important;
+    
+}
+
+.u-button-group .primary{
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+.u-button-group .u-button{
+    border-radius: 0;
+    border: 1px solid transparent !important;
+    height: 33px;
+}
+
+.u-button-group .default{
+    color: #333 !important;
+    background-color: #fff !important;
+    border-color: #ccc !important;
+    
+}
+.u-button-group .u-button:first-child{
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.u-button-group .u-button:last-child{
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.u-button-group .u-button:not(:first-child){
+    margin-left: -1px;
+}
+.u-button-group.u-button-group-xg .u-button{
+    padding: 10px 18px;
+    font-size: 18px !important;
+    height: 50px;
+}
+.u-button-group.u-button-group-lg .u-button{
+    padding: 6px 15px;
+    font-size: 14px !important;
+    height: 40px;
+
+}
+.u-button-group.u-button-group-xs .u-button{
+    padding: 1px 5px;
+    font-size: 12px !important;
+    height: 28px;
+}
