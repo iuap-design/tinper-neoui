@@ -26,7 +26,7 @@
 
 `<i class="uf uf-图标字体类名"></i>`
 
-例如：显示照相机的图标
+例如：显示安卓的图标
 
 `<i class="uf uf-androidcharactersymbol"></i>`
 
