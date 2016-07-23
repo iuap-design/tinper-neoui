@@ -9370,7 +9370,7 @@ Refer.fn.create = function () {
                         '<div class="content"></div>' +
                     '</div>' +
                     '<div class="u-msg-footer">' +
-                        '<button class="u-msg-ok u-button">保存<span class="u-button-container"><span class="u-ripple"></span></span></button>' +
+                        '<button class="u-msg-ok u-button">确定<span class="u-button-container"><span class="u-ripple"></span></span></button>' +
                         '<button class="u-msg-cancel u-button">取消<span class="u-button-container"><span class="u-ripple"></span></span></button>' +
                     '</div>' +
                 '</div>');

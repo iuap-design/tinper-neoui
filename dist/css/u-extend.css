@@ -89,6 +89,28 @@ $color-accent: $palette-pink-A200 !default;
   width: auto;
   padding: 0 5px; }
 
+.u-form-group-lg .u-form-label {
+  padding-top: 11px;
+  font-size: 18px; }
+
+.u-form-group-lg .u-form-control {
+  height: 46px;
+  padding: 10px 18px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 4px; }
+
+.u-form-group-sm .u-form-label {
+  padding-top: 7px;
+  font-size: 12px; }
+
+.u-form-group-sm .u-form-control {
+  height: 32px;
+  padding: 6px 13px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 2px; }
+
 .u-button-file input[type=file] {
   position: absolute;
   top: 0;
@@ -2457,7 +2479,8 @@ $color-accent: $palette-pink-A200 !default;
     font-size: 14px;
     line-height: 1.57142857;
     color: #757575;
-    font-weight: 300; }
+    font-weight: 300;
+    height: calc(100% - 121px); }
   .u-msg-dialog .u-msg-content h4 {
     margin: 0; }
   .u-msg-dialog .u-msg-footer {
@@ -3043,6 +3066,28 @@ $color-accent: $palette-pink-A200 !default;
 .input-group-addon {
   width: auto;
   padding: 0 5px; }
+
+.u-form-group-lg .u-form-label {
+  padding-top: 11px;
+  font-size: 18px; }
+
+.u-form-group-lg .u-form-control {
+  height: 46px;
+  padding: 10px 18px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 4px; }
+
+.u-form-group-sm .u-form-label {
+  padding-top: 7px;
+  font-size: 12px; }
+
+.u-form-group-sm .u-form-control {
+  height: 32px;
+  padding: 6px 13px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 2px; }
 
 .u-button-file input[type=file] {
   position: absolute;

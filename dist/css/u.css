@@ -3791,6 +3791,52 @@ input.u-button[type="submit"] {
   line-height: 1.5;
   border-radius: 2px; }
 
+.u-button-group .default:hover {
+  color: #333 !important;
+  background-color: #e6e6e6 !important;
+  border-color: #adadad !important; }
+
+.u-button-group .primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4; }
+
+.u-button-group .u-button {
+  border-radius: 0;
+  border: 1px solid transparent !important;
+  height: 33px; }
+
+.u-button-group .default {
+  color: #333 !important;
+  background-color: #fff !important;
+  border-color: #ccc !important; }
+
+.u-button-group .u-button:first-child {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px; }
+
+.u-button-group .u-button:last-child {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px; }
+
+.u-button-group .u-button:not(:first-child) {
+  margin-left: -1px; }
+
+.u-button-group.u-button-group-xg .u-button {
+  padding: 10px 18px;
+  font-size: 18px !important;
+  height: 50px; }
+
+.u-button-group.u-button-group-lg .u-button {
+  padding: 6px 15px;
+  font-size: 14px !important;
+  height: 40px; }
+
+.u-button-group.u-button-group-xs .u-button {
+  padding: 1px 5px;
+  font-size: 12px !important;
+  height: 28px; }
+
 /*  IMAGES  */
 /* 默认颜色 */
 /* 主题颜色放入 themeColors.scss
@@ -8152,6 +8198,28 @@ $color-accent: $palette-pink-A200 !default;
   width: auto;
   padding: 0 5px; }
 
+.u-form-group-lg .u-form-label {
+  padding-top: 11px;
+  font-size: 18px; }
+
+.u-form-group-lg .u-form-control {
+  height: 46px;
+  padding: 10px 18px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 4px; }
+
+.u-form-group-sm .u-form-label {
+  padding-top: 7px;
+  font-size: 12px; }
+
+.u-form-group-sm .u-form-control {
+  height: 32px;
+  padding: 6px 13px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 2px; }
+
 .u-button-file input[type=file] {
   position: absolute;
   top: 0;
@@ -10520,7 +10588,8 @@ $color-accent: $palette-pink-A200 !default;
     font-size: 14px;
     line-height: 1.57142857;
     color: #757575;
-    font-weight: 300; }
+    font-weight: 300;
+    height: calc(100% - 121px); }
   .u-msg-dialog .u-msg-content h4 {
     margin: 0; }
   .u-msg-dialog .u-msg-footer {
@@ -11106,6 +11175,28 @@ $color-accent: $palette-pink-A200 !default;
 .input-group-addon {
   width: auto;
   padding: 0 5px; }
+
+.u-form-group-lg .u-form-label {
+  padding-top: 11px;
+  font-size: 18px; }
+
+.u-form-group-lg .u-form-control {
+  height: 46px;
+  padding: 10px 18px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 4px; }
+
+.u-form-group-sm .u-form-label {
+  padding-top: 7px;
+  font-size: 12px; }
+
+.u-form-group-sm .u-form-control {
+  height: 32px;
+  padding: 6px 13px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 2px; }
 
 .u-button-file input[type=file] {
   position: absolute;
