@@ -203,7 +203,14 @@ gulp.task('font', function () {
 
 });
 
-
+/**
+ * 复制图片文件
+ * @return {[type]}   [description]
+ */
+gulp.task('image', function () {
+    return gulp.src('./vendor/images/**')
+        .pipe(gulp.dest('./dist/images'));
+});
 
 /**
  * 本地起一个静态 server ，用于调试
@@ -236,5 +243,5 @@ gulp.task('clean', function () {
     .on('error', errHandle);
 });
 
-gulp.task('dev', ['font', 'sass-ui', 'es-ui', 'polyfill', 'serve'])
-gulp.task('dist', ['font', 'sass-ui', 'es-ui', 'polyfill'])
+gulp.task('dev', ['image', 'font', 'sass-ui', 'es-ui', 'polyfill', 'serve'])
+gulp.task('dist', ['image', 'font', 'sass-ui', 'es-ui', 'polyfill'])
