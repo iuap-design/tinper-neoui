@@ -7817,19 +7817,22 @@ u.Combo = u.BaseComponent.extend({
     },
 
     show: function (evt) {
+        this.element.parentNode.appendChild(this._ul);
         var self = this,width=this._input.offsetWidth;
-        u.showPanelByEle({
-            ele:this._input,
-            panel:this._ul,
-            position:"bottomLeft"
-        });
-        document.body.onscroll = function(){
+        if(this.options.showFix){
+            this._ul.style.position = 'fixed';
             u.showPanelByEle({
-                ele:self._input,
-                panel:self._ul,
+                ele:this._input,
+                panel:this._ul,
                 position:"bottomLeft"
             });
-        }  
+        }else{
+            var left = this.element.offsetLeft,
+            inputHeight = this.element.offsetHeight,
+            top = this.element.offsetTop + inputHeight;
+            this._ul.style.left = left + 'px';
+            this._ul.style.top = top + 'px';
+        }
 	    this._ul.style.width = width + 'px';
         u.addClass(this._ul, 'is-animating');
         this._ul.style.zIndex = u.getZIndex();
@@ -7871,8 +7874,8 @@ u.Combo = u.BaseComponent.extend({
         }
         if (!this._ul) {
             this._ul = u.makeDOM('<ul class="u-combo-ul"></ul>');
-            // this.element.parentNode.appendChild(this._ul);
-            document.body.appendChild(this._ul);
+            
+            // document.body.appendChild(this._ul);
         }
         this._ul.innerHTML = '';
         //TODO 增加filter

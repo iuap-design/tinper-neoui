@@ -3881,8 +3881,7 @@ $color-accent: $palette-pink-A200 !default;
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
-  margin: 0;
-  padding: 20px 0; }
+  margin: 0; }
   .u-text .u-button {
     position: absolute;
     bottom: 20px; }
@@ -3905,7 +3904,6 @@ $color-accent: $palette-pink-A200 !default;
   display: block;
   font-size: 14px;
   margin: 0;
-  padding: 4px 0;
   width: 100%;
   background: none;
   text-align: left;
@@ -10784,7 +10782,7 @@ $color-accent: $palette-pink-A200 !default;
 
 .u-combo-ul {
   background-color: #fff;
-  position: fixed;
+  position: absolute;
   list-style: none;
   height: auto;
   width: auto;

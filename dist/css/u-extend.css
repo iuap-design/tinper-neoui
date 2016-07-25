@@ -2561,7 +2561,7 @@ $color-accent: $palette-pink-A200 !default;
 
 .u-combo-ul {
   background-color: #fff;
-  position: fixed;
+  position: absolute;
   list-style: none;
   height: auto;
   width: auto;
