@@ -13,7 +13,7 @@
   width: 100%;
   max-width: 100%;
   margin: 0;
-  padding: $input-text-vertical-spacing 0;
+  //padding: $input-text-vertical-spacing 0;
 
   // Align buttons, if used.
   & .u-button {
@@ -47,7 +47,7 @@
   display: block;
   font-size: $input-text-font-size;
   margin: 0;
-  padding: $input-text-padding 0;
+  //padding: $input-text-padding 0;
   width: $input-text-width;
   background: none;
   text-align: left;
@@ -204,4 +204,124 @@
   display: block;
   text-align: center;
   cursor: pointer;
+}
+.u-text-feedback{
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20px 0;
+  z-index: 2;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.u-input-group{
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+.u-input-group .u-input-group-addon{
+    padding: 0 12px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #555111;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+.u-input-group .u-form-control {
+    
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    z-index: 2;
+    float: left;
+    margin-bottom: 0;
+    /*margin-left: -1px;*/
+}
+.u-input-group.u-input-group-lg .u-input-group-addon{
+    height: 46px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+.u-input-group.u-input-group-lg .u-form-control{
+    height: 46px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+.u-input-group.u-input-group-sm .u-input-group-addon{
+    height: 30px;
+    padding: 5px 10px;
+    font-size: 12px !important;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+.u-input-group.u-input-group-sm .u-form-control{
+    height: 30px;
+    padding: 5px 10px;
+    font-size: 12px !important;
+    line-height: 1.5;
+    border-top-right-radius: 3px;
+    border-radius: 3px;
+}
+.u-input-group .u-input-group-addon:first-child{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right-color: transparent;
+}
+.u-input-group .u-input-group-addon:last-child{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left-color: transparent;
+}
+.u-input-group .u-form-control:last-child{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.u-input-group .u-form-control:first-child{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.u-input-group .u-form-control:not(:first-child):not(:last-child), .u-input-group-addon:not(:first-child):not(:last-child), .u-input-group-btn:not(:first-child):not(:last-child){
+    border-radius: 0;
+}
+.u-input-group .u-form-control + .u-input-group-addon{
+    margin-left: -1px;
+}
+.u-input-group .u-input-group-addon .u-checkbox{
+    height: 23px;
+    padding-left: 16px;
+}
+.u-input-group .u-input-group-addon .u-radio{
+    height: 34px;
+    padding-left: 16px;
+    vertical-align: middle;
+}
+.u-input-group .u-input-group-btn{
+  vertical-align: middle;
+  border: 1px solid #ccc;
+  
+}
+.u-input-group .u-input-group-btn:first-child{
+    border-right-color: transparent;
+}
+.u-input-group .u-input-group-btn:last-child{
+    border-left-color: transparent;
+}
+.u-input-group .u-input-group-btn .u-menu-default li:hover{
+    color: #262626;
+    text-decoration: none;
+    background-color: #f5f5f5;
+}
+.u-input-group .u-input-group-btn .u-menu-default li:hover a{
+    color: #262626;
 }
