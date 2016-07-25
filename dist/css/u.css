@@ -12432,7 +12432,10 @@ $color-accent: $palette-pink-A200 !default;
   height: 28px;
   position: absolute;
   left: 6px;
-  top: 6px; }
+  top: 6px;
+  display: none; }
+  .is-active .loadingImg {
+    display: block; }
 
 .u-loader-container {
   position: absolute;
