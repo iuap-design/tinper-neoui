@@ -1,11 +1,5 @@
 # panel控件
 
-panel控件
-
-# 如何使用
-
-暂无
-
 # 示例
 
 replaceExamp
