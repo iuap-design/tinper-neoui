@@ -4052,7 +4052,8 @@ $color-accent: $palette-pink-A200 !default;
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.3333333;
-  border-radius: 6px; }
+  border-radius: 6px;
+  box-sizing: border-box; }
 
 .u-input-group.u-input-group-lg .u-form-control {
   height: 46px;
@@ -4066,7 +4067,8 @@ $color-accent: $palette-pink-A200 !default;
   padding: 5px 10px;
   font-size: 12px !important;
   line-height: 1.5;
-  border-radius: 3px; }
+  border-radius: 3px;
+  box-sizing: border-box; }
 
 .u-input-group.u-input-group-sm .u-form-control {
   height: 30px;
@@ -5031,7 +5033,7 @@ $color-accent: $palette-pink-A200 !default;
   border: 1px solid #e0e0e0; }
 
 .img-bordered-primary {
-  border-color: "63,81,181"; }
+  border-color: rgb(63,81,181); }
 
 .img-bordered-orange {
   border-color: rgb(255,152,0); }
@@ -8635,6 +8637,52 @@ textarea.u-form-control {
   border-top: 1px solid #e0e0e0;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px; }
+
+.u-media-object {
+  display: block; }
+
+.u-media-left {
+  padding-right: 10px; }
+
+.u-media-body, .u-media-left, .u-media-right {
+  display: table-cell;
+  vertical-align: top; }
+
+.u-media {
+  margin-top: 15px; }
+
+.u-media:first-child {
+  margin-top: 5px; }
+
+.u-media-body {
+  width: 670px; }
+
+.u-media-middle {
+  vertical-align: middle; }
+
+.u-media-bottom {
+  vertical-align: bottom; }
+
+.u-list-group .u-list-group-item {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd; }
+
+.u-list-group-item > .u-badge {
+  margin-top: 13px; }
+
+.u-list-group a:hover {
+  color: #555;
+  background-color: #f5f5f5; }
+
+.u-list-group .u-list-group-item.active, .u-list-group .u-list-group-item.active:hover, .u-list-group .u-list-group-item.active:focus {
+  z-index: 2;
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #337ab7; }
 
 .u-tag {
   padding: 0.25em 0.6em 0.25em;
@@ -13264,10 +13312,9 @@ $color-accent: $palette-pink-A200 !default;
   padding: 5px; }
 
 .u-menu-container.is-visible .u-menu-item {
-  width: calc(100% - 51px);
-  padding: 5px 18px;
   border-radius: 4px;
-  color: #7C7171; }
+  color: #7C7171;
+  width: 100%; }
 
 .inverse .u-navlayout-header {
   background: #fff; }

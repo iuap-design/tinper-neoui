@@ -8287,7 +8287,7 @@ if (u.compMgr)
 		//预设显示页码数截断修正
 		var fix = 0;
 		var pageProxy;
-        if (current - 2 <= windows) {
+        if (current - 2 <= windows+1) {
             for (var i = 1; i <= current ; i++) {
 				pageProxy = new PageProxy(options, i);
                 htmlArr.push(View.page(this, options, pageProxy));

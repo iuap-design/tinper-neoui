@@ -250,6 +250,7 @@
     font-size: 18px;
     line-height: 1.3333333;
     border-radius: 6px;
+    box-sizing: border-box;
 }
 .u-input-group.u-input-group-lg .u-form-control{
     height: 46px;
@@ -264,6 +265,7 @@
     font-size: 12px !important;
     line-height: 1.5;
     border-radius: 3px;
+    box-sizing: border-box;
 }
 .u-input-group.u-input-group-sm .u-form-control{
     height: 30px;
