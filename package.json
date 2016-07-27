@@ -15,7 +15,7 @@
   "keywords": [
     "neoui",
     "iUAP",
-    "Design", 
+    "Design",
     "UI",
     "Framework"
   ],
@@ -31,6 +31,8 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.9.0",
     "browser-sync": "^2.12.8",
+    "conventional-changelog": "^1.1.0",
+    "conventional-changelog-cli": "^1.2.0",
     "file": "^0.2.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
