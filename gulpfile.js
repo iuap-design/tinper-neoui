@@ -62,7 +62,7 @@ var UISrcPath = [
     'js/extend/ui.combo.js',
     'js/data-table.js',
     'js/extend/ui.pagination.js',
-    'js/tooltip.js',
+    'js/ui.tooltip.js',
     'js/validate.js',
     'js/extend/ui.refer.js',
     'js/extend/slidePanel.js',

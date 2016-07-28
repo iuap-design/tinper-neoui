@@ -8653,26 +8653,28 @@ u.Tooltip.prototype = {
         this.tipDom.querySelector('.tooltip-inner').innerHTML = this.options.title;
         this.tipDom.style.zIndex = u.getZIndex();
         this.container.appendChild(this.tipDom);
-        /*var placement = this.options.placement;
-        var pos = this.getPosition()
-        var actualWidth = this.tipDom.offsetWidth
-        var actualHeight = this.tipDom.offsetHeight
-        var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
 
-        this.applyPlacement(calculatedOffset, placement)*/
         u.addClass(this.tipDom,'active');
-        u.showPanelByEle({
-            ele:this.element,
-            panel:this.tipDom,
-            position:this.options.placement
-        });
-        document.body.onscroll = function(){
-            u.showPanelByEle({
-                ele:self.element,
-                panel:self.tipDom,
-                position:self.options.placement
-            });
+        var inputLeft = this.element.offsetLeft;
+        var inputTop = this.element.offsetTop;
+        var inputWidth = this.element.offsetWidth;
+        var inputHeight = this.element.offsetHeight;
+        var topWidth = this.tipDom.offsetWidth;
+        var topHeight = this.tipDom.offsetHeight;
+        if(this.options.placement == 'top'){
+            this.left = this.element.offsetLeft + inputWidth/2;
+            this.top = this.element.offsetTop - topHeight;
         }
+        this.tipDom.style.left = this.left + 'px';
+        this.tipDom.style.top = this.top + 'px';
+        // var placement = this.options.placement;
+        // var pos = this.getPosition()
+        // var actualWidth = this.tipDom.offsetWidth
+        // var actualHeight = this.tipDom.offsetHeight
+        // var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
+
+        // this.applyPlacement(calculatedOffset, placement)
+
     },
     hide: function(){
 		if (this.container.contains(this.tipDom)){
@@ -9190,8 +9192,7 @@ u.Tooltip.prototype = {
 				"title": msg,
 				"trigger": "manual",
 				"selector": "validtip",
-				"placement": this.placement,
-				"container":"body"
+				"placement": this.placement
 			}
 			if (this.options.tipTemplate)
 				tipOptions.template = this.options.tipTemplate

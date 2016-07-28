@@ -395,8 +395,7 @@
 				"title": msg,
 				"trigger": "manual",
 				"selector": "validtip",
-				"placement": this.placement,
-				"container":"body"
+				"placement": this.placement
 			}
 			if (this.options.tipTemplate)
 				tipOptions.template = this.options.tipTemplate
