@@ -67,8 +67,8 @@
     width: 40px;
     border: 1px solid #ddd;
     padding-left: 2px;
-    height: 32px;
-    line-height: 32px;
+    height: 35px;
+    line-height: 35px;
     color:#333333;
 }
 
@@ -77,21 +77,22 @@
     width: 50px;
     border: 1px solid #ddd;
     padding-left: 2px;
-    height: 32px;
-    line-height: 32px;
+    height: 35px;
+    line-height: 35px;
     color:#333333;
 }
 
 .pagination-state > .pagination-jump {
     margin: 0 10px;
     width: 50px;
-    line-height: 28px;
+    line-height: 30px;
     border: 1px solid #ddd;
     background-color: white;
-    font-size:14px;
-    font-family:'微软雅黑';
+    font-size: 14px;
+    font-family: '微软雅黑';
     cursor: pointer;
-     color:#333333;
+    color: #333333;
+    height: 35px;
 }
 
 .pagination-state > .pagination-jump:hover {
