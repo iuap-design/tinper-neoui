@@ -8653,26 +8653,28 @@ u.Tooltip.prototype = {
         this.tipDom.querySelector('.tooltip-inner').innerHTML = this.options.title;
         this.tipDom.style.zIndex = u.getZIndex();
         this.container.appendChild(this.tipDom);
-        /*var placement = this.options.placement;
-        var pos = this.getPosition()
-        var actualWidth = this.tipDom.offsetWidth
-        var actualHeight = this.tipDom.offsetHeight
-        var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
 
-        this.applyPlacement(calculatedOffset, placement)*/
         u.addClass(this.tipDom,'active');
-        u.showPanelByEle({
-            ele:this.element,
-            panel:this.tipDom,
-            position:this.options.placement
-        });
-        document.body.onscroll = function(){
-            u.showPanelByEle({
-                ele:self.element,
-                panel:self.tipDom,
-                position:self.options.placement
-            });
+        var inputLeft = this.element.offsetLeft;
+        var inputTop = this.element.offsetTop;
+        var inputWidth = this.element.offsetWidth;
+        var inputHeight = this.element.offsetHeight;
+        var topWidth = this.tipDom.offsetWidth;
+        var topHeight = this.tipDom.offsetHeight;
+        if(this.options.placement == 'top'){
+            this.left = this.element.offsetLeft + inputWidth/2;
+            this.top = this.element.offsetTop - topHeight;
         }
+        this.tipDom.style.left = this.left + 'px';
+        this.tipDom.style.top = this.top + 'px';
+        // var placement = this.options.placement;
+        // var pos = this.getPosition()
+        // var actualWidth = this.tipDom.offsetWidth
+        // var actualHeight = this.tipDom.offsetHeight
+        // var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
+
+        // this.applyPlacement(calculatedOffset, placement)
+
     },
     hide: function(){
 		if (this.container.contains(this.tipDom)){
@@ -9163,53 +9165,52 @@ u.Tooltip.prototype = {
 
 	u.Validate.fn.showMsg = function(msg) {
 
+		if(this.showMsgFlag == false || this.showMsgFlag == 'false'){
+			return;
+		}
+		var self = this
+		if (this.tipId) {
+			this.$element.style.borderColor='rgb(241,90,74)';
+			var tipdiv=this.tipId;
+			if(typeof tipdiv==='string'){
+				tipdiv = document.getElementById(tipdiv);
+			}
+			tipdiv.innerHTML = msg;
+			//如果notipFlag为true说明，可能是平台创建的，需要添加left、top值
+			if(this.notipFlag){
+				var left=this.$element.offsetLeft;
+				var top=this.$element.offsetTop+this.$element.offsetHeight+4;
+				tipdiv.style.left=left+'px';
+				tipdiv.style.top=top+'px';
+			}
+			
+			tipdiv.style.display = 'block';
+			// u.addClass(tipdiv.parentNode,'u-has-error');
+			// $('#' + this.tipId).html(msg).show()
+		} else {
+			var tipOptions = {
+				"title": msg,
+				"trigger": "manual",
+				"selector": "validtip",
+				"placement": this.placement
+			}
+			if (this.options.tipTemplate)
+				tipOptions.template = this.options.tipTemplate
+			if(!this.tooltip)
+				this.tooltip = new u.Tooltip(this.element,tipOptions)
+			this.tooltip.setTitle(msg);
+			this.tooltip.show();
+			
+		}
+		if(this.tipAliveTime !== -1) {
+			clearTimeout(this.timeout)
+			this.timeout = setTimeout(function(){
+				// self.tooltip.hide();
+				self.hideMsg();
+			},this.tipAliveTime)
 
-	    if (this.showMsgFlag == false || this.showMsgFlag == 'false') {
-	        return;
-	    }
-	    var self = this
-	    if (this.tipId) {
-	        this.$element.style.borderColor = 'rgb(241,90,74)';
-	        var tipdiv = this.tipId;
-	        if (typeof tipdiv === 'string') {
-	            tipdiv = document.getElementById(tipdiv);
-	        }
-	        tipdiv.innerHTML = msg;
-	        //如果notipFlag为true说明，可能是平台创建的，需要添加left、top值
-	        if (this.notipFlag) {
-	            var left = this.$element.offsetLeft;
-	            var top = this.$element.offsetTop + this.$element.offsetHeight + 4;
-	            tipdiv.style.left = left + 'px';
-	            tipdiv.style.top = top + 'px';
-	        }
+		}
 
-	        tipdiv.style.display = 'block';
-	        // u.addClass(tipdiv.parentNode,'u-has-error');
-	        // $('#' + this.tipId).html(msg).show()
-	    } else {
-	        var tipOptions = {
-	            "title": msg,
-	            "trigger": "manual",
-	            "selector": "validtip",
-	            "placement": this.placement,
-	            "container": "body"
-	        }
-	        if (this.options.tipTemplate)
-	            tipOptions.template = this.options.tipTemplate
-	        if (!this.tooltip)
-	            this.tooltip = new u.Tooltip(this.element, tipOptions)
-	        this.tooltip.setTitle(msg);
-	        this.tooltip.show();
-
-	    }
-	    if (this.tipAliveTime !== -1) {
-	        clearTimeout(this.timeout)
-	        this.timeout = setTimeout(function() {
-	            // self.tooltip.hide();
-	            self.hideMsg();
-	        }, this.tipAliveTime)
-
-	    }
 	}
 	u.Validate.fn.hideMsg = function() {
 	    //隐藏成功信息

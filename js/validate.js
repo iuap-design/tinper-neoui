@@ -368,53 +368,52 @@
 
 	u.Validate.fn.showMsg = function(msg) {
 
+		if(this.showMsgFlag == false || this.showMsgFlag == 'false'){
+			return;
+		}
+		var self = this
+		if (this.tipId) {
+			this.$element.style.borderColor='rgb(241,90,74)';
+			var tipdiv=this.tipId;
+			if(typeof tipdiv==='string'){
+				tipdiv = document.getElementById(tipdiv);
+			}
+			tipdiv.innerHTML = msg;
+			//如果notipFlag为true说明，可能是平台创建的，需要添加left、top值
+			if(this.notipFlag){
+				var left=this.$element.offsetLeft;
+				var top=this.$element.offsetTop+this.$element.offsetHeight+4;
+				tipdiv.style.left=left+'px';
+				tipdiv.style.top=top+'px';
+			}
+			
+			tipdiv.style.display = 'block';
+			// u.addClass(tipdiv.parentNode,'u-has-error');
+			// $('#' + this.tipId).html(msg).show()
+		} else {
+			var tipOptions = {
+				"title": msg,
+				"trigger": "manual",
+				"selector": "validtip",
+				"placement": this.placement
+			}
+			if (this.options.tipTemplate)
+				tipOptions.template = this.options.tipTemplate
+			if(!this.tooltip)
+				this.tooltip = new u.Tooltip(this.element,tipOptions)
+			this.tooltip.setTitle(msg);
+			this.tooltip.show();
+			
+		}
+		if(this.tipAliveTime !== -1) {
+			clearTimeout(this.timeout)
+			this.timeout = setTimeout(function(){
+				// self.tooltip.hide();
+				self.hideMsg();
+			},this.tipAliveTime)
 
-	    if (this.showMsgFlag == false || this.showMsgFlag == 'false') {
-	        return;
-	    }
-	    var self = this
-	    if (this.tipId) {
-	        this.$element.style.borderColor = 'rgb(241,90,74)';
-	        var tipdiv = this.tipId;
-	        if (typeof tipdiv === 'string') {
-	            tipdiv = document.getElementById(tipdiv);
-	        }
-	        tipdiv.innerHTML = msg;
-	        //如果notipFlag为true说明，可能是平台创建的，需要添加left、top值
-	        if (this.notipFlag) {
-	            var left = this.$element.offsetLeft;
-	            var top = this.$element.offsetTop + this.$element.offsetHeight + 4;
-	            tipdiv.style.left = left + 'px';
-	            tipdiv.style.top = top + 'px';
-	        }
+		}
 
-	        tipdiv.style.display = 'block';
-	        // u.addClass(tipdiv.parentNode,'u-has-error');
-	        // $('#' + this.tipId).html(msg).show()
-	    } else {
-	        var tipOptions = {
-	            "title": msg,
-	            "trigger": "manual",
-	            "selector": "validtip",
-	            "placement": this.placement,
-	            "container": "body"
-	        }
-	        if (this.options.tipTemplate)
-	            tipOptions.template = this.options.tipTemplate
-	        if (!this.tooltip)
-	            this.tooltip = new u.Tooltip(this.element, tipOptions)
-	        this.tooltip.setTitle(msg);
-	        this.tooltip.show();
-
-	    }
-	    if (this.tipAliveTime !== -1) {
-	        clearTimeout(this.timeout)
-	        this.timeout = setTimeout(function() {
-	            // self.tooltip.hide();
-	            self.hideMsg();
-	        }, this.tipAliveTime)
-
-	    }
 	}
 	u.Validate.fn.hideMsg = function() {
 	    //隐藏成功信息

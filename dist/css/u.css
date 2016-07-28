@@ -8308,7 +8308,7 @@ $color-accent: $palette-pink-A200 !default;
   position: inherit;
   margin-left: -9px; }
 
-.input-group-addon {
+.u-input-group .input-group-addon {
   width: auto;
   padding: 0 5px; }
 
@@ -10984,10 +10984,6 @@ $color-accent: $palette-pink-A200 !default;
   max-width: $tooltip-max-width;
   padding: $tooltip-padding;
   margin: $tooltip-margin 0;
-  font-family: Roboto, sans-serif;
-  font-size: $tooltip-font-size;
-  font-weight: $font-weight-bold;
-  line-height: $font-size-small;
   color: $tooltip-color;
   text-align: center;
   text-transform: none;
@@ -11001,7 +10997,7 @@ $color-accent: $palette-pink-A200 !default;
   }
 }*/
 .tooltip {
-  position: fixed;
+  position: absolute;
   z-index: 1900;
   display: block;
   font-size: 12px;
@@ -11332,7 +11328,7 @@ $color-accent: $palette-pink-A200 !default;
   position: inherit;
   margin-left: -9px; }
 
-.input-group-addon {
+.u-input-group .input-group-addon {
   width: auto;
   padding: 0 5px; }
 
