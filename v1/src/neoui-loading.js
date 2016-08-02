@@ -98,7 +98,7 @@ var hideLoading = function() {
 }
 
 //兼容性保留
-u.showWaiting = u.showLoading
-u.removeWaiting = u.hideLoading
+var showWaiting = showLoading
+var removeWaiting = hideLoading
 
-export {Loading,showLoading,hideLoading};
+export {Loading,showLoading,hideLoading,showWaiting,removeWaiting};

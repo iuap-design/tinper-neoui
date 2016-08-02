@@ -83,6 +83,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _neouiLoading = __webpack_require__(24);
 	
 	var _neouiMenu = __webpack_require__(25);
+	
+	var _neouiMessage = __webpack_require__(26);
+	
+	var _neouiMultilang = __webpack_require__(27);
 
 /***/ },
 /* 1 */
@@ -5336,7 +5340,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.hideLoading = exports.showLoading = exports.Loading = undefined;
+	exports.removeWaiting = exports.showWaiting = exports.hideLoading = exports.showLoading = exports.Loading = undefined;
 	
 	var _BaseComponent = __webpack_require__(2);
 	
@@ -5440,12 +5444,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	//兼容性保留
-	u.showWaiting = u.showLoading;
-	u.removeWaiting = u.hideLoading;
+	var showWaiting = showLoading;
+	var removeWaiting = hideLoading;
 	
 	exports.Loading = Loading;
 	exports.showLoading = showLoading;
 	exports.hideLoading = hideLoading;
+	exports.showWaiting = showWaiting;
+	exports.removeWaiting = removeWaiting;
 
 /***/ },
 /* 25 */
@@ -5464,6 +5470,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _event = __webpack_require__(5);
 	
+	var _compMgr = __webpack_require__(9);
+	
+	/**
+	 * Module : neoui-menu
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-02 19:22:32
+	 */
 	var Menu = _BaseComponent.BaseComponent.extend({
 		_Keycodes: {
 			ENTER: 13,
@@ -5852,20 +5865,258 @@ return /******/ (function(modules) { // webpackBootstrap
 				this.show(evt);
 			}
 		}
-	}); /**
-	     * Module : neoui-menu
-	     * Author : Kvkens(yueming@yonyou.com)
-	     * Date	  : 2016-08-02 19:22:32
-	     */
+	});
 	
-	
-	compMgr.regComp({
+	_compMgr.compMgr.regComp({
 		comp: Menu,
 		compAsString: 'u.Menu',
 		css: 'u-menu'
 	});
 	
 	exports.Menu = Menu;
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.showMessage = exports.showMessageDialog = undefined;
+	
+	var _dom = __webpack_require__(10);
+	
+	var _event = __webpack_require__(5);
+	
+	/**
+	 * Module : neoui-message
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-02 19:40:59
+	 */
+	
+	var messageTemplate = '<div class="u-message"><span class="u-msg-close uf uf-removesymbol"></span>{msg}</div>';
+	
+	var showMessage = function showMessage(options) {
+		var msg, position, width, height, showSeconds, msgType, template;
+		if (typeof options === 'string') {
+			options = {
+				msg: options
+			};
+		}
+		msg = options['msg'] || "";
+		position = options['position'] || "bottom-right"; //center. top-left, top-center, top-right, bottom-left, bottom-center, bottom-right,
+		//TODO 后面改规则：没设宽高时，自适应
+		width = options['width'] || "";
+		// height = options['height'] || "100px";
+		msgType = options['msgType'] || 'info';
+		//默认为当用户输入的时间，当用户输入的时间为false并且msgType=='info'时，默认显示时间为2s
+		showSeconds = parseInt(options['showSeconds']) || (msgType == 'info' ? 2 : 0);
+	
+		template = options['template'] || messageTemplate;
+	
+		template = template.replace('{msg}', msg);
+		var msgDom = (0, _dom.makeDOM)(template);
+		(0, _dom.addClass)(msgDom, 'u-mes' + msgType);
+		msgDom.style.width = width;
+		// msgDom.style.height = height;
+		// msgDom.style.lineHeight = height;
+		if (position == 'bottom-right') {
+			msgDom.style.bottom = '10px';
+		}
+	
+		if (position == 'center') {
+			msgDom.style.bottom = '50%';
+			msgDom.style.transform = 'translateY(50%)';
+		}
+		var closeBtn = msgDom.querySelector('.u-msg-close');
+		//new Button({el:closeBtn});
+		(0, _event.on)(closeBtn, 'click', function () {
+			(0, _dom.removeClass)(msgDom, "active");
+			setTimeout(function () {
+				try {
+					document.body.removeChild(msgDom);
+				} catch (e) {}
+			}, 500);
+		});
+		document.body.appendChild(msgDom);
+	
+		if (showSeconds > 0) {
+			setTimeout(function () {
+				closeBtn.click();
+			}, showSeconds * 1000);
+		}
+		setTimeout(function () {
+			(0, _dom.addClass)(msgDom, "active");
+		}, showSeconds * 1);
+	};
+	
+	var showMessageDialog = showMessage;
+	
+	exports.showMessageDialog = showMessageDialog;
+	exports.showMessage = showMessage;
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.Multilang = undefined;
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                   * Module : neoui-multilang
+	                                                                                                                                                                                                                                                   * Author : Kvkens(yueming@yonyou.com)
+	                                                                                                                                                                                                                                                   * Date	  : 2016-08-02 20:19:37
+	                                                                                                                                                                                                                                                   */
+	
+	var _BaseComponent = __webpack_require__(2);
+	
+	var _extend = __webpack_require__(7);
+	
+	var _util = __webpack_require__(4);
+	
+	var _dom = __webpack_require__(10);
+	
+	var _event = __webpack_require__(5);
+	
+	var _compMgr = __webpack_require__(9);
+	
+	var Multilang = _BaseComponent.BaseComponent.extend({
+		DEFAULTS: {
+			dataSource: {},
+			onSelect: function onSelect() {}
+		},
+		init: function init() {
+			var self = this;
+			var element = this.element;
+			this.options = (0, _extend.extend)({}, this.DEFAULTS, this.options);
+			this.multinfo(this.options.multinfo);
+			this.addData(this.options.multidata);
+		}
+	});
+	Multilang.fn = Multilang.prototype;
+	Multilang.fn.addData = function (val) {
+		var target = this.element,
+		    tmparray,
+		    target_div = target.parentNode;
+		if ((typeof val === 'undefined' ? 'undefined' : _typeof(val)) == "object") {
+			tmparray = val;
+		} else {
+			tmparray = val.split(",");
+		}
+		target_div.value = tmparray;
+		(0, _util.each)(tmparray, function (i, node) {
+			target_div.querySelectorAll(".m_context")[i].innerHTML = node;
+		});
+	};
+	Multilang.fn.multinfo = function (sort) {
+	
+		var target = this.element,
+		    me = this,
+		    tmplabel = "",
+		    close_menu = true,
+		    tmpfield = "name";
+		if (sort.lang_name) {
+			tmpfield = sort.lang_name;
+		}
+		if ((0, _util.isArray)(sort)) {
+	
+			(0, _dom.wrap)(target, "<div class='multilang_body'><input class='lang_value' contenteditable='true'><span class='uf uf-caretdown lang_icon'><span class='m_icon'></span></span>");
+			(0, _dom.css)(target, "display", "none");
+	
+			(0, _util.each)(sort, function (i, node) {
+				if (i) {
+					tmplabel += "<label attr='" + tmpfield + (i + 1) + "'><span class='m_context'></span><span class='m_icon'>" + node + "</span></label>";
+				} else {
+					tmplabel += "<label attr='" + tmpfield + "'><span class='m_context'></span><span class='m_icon'>" + node + "</span></label>";
+				}
+			});
+			var target_div = target.parentNode;
+	
+			target_div.insertAdjacentHTML("beforeEnd", "<div class='multilang_menu '>" + tmplabel + "</div>");
+			var tmpIconv = target_div.querySelector(".lang_icon"),
+			    target_menu = target_div.querySelector(".multilang_menu"),
+			    tmpvaluebox = target_div.querySelector(".lang_value");
+			(0, _event.on)(tmpIconv, "click", function () {
+				var target_icon = this;
+				target_div.querySelector(".lang_value").focus();
+				if ((0, _dom.css)(target_menu, "display") == "block") {
+					(0, _dom.css)(target_menu, "display", "none");
+				} else {
+					(0, _dom.css)(target_menu, "display", "block");
+				}
+			});
+			(0, _event.on)(target_menu, "mouseenter", function () {
+				close_menu = false;
+			});
+			(0, _event.on)(target_menu, "mouseleave", function () {
+				close_menu = true;
+			});
+	
+			(0, _event.on)(tmpvaluebox, "blur", function () {
+				//this//
+				//target_box = me.fixtarget(target_input),
+				//target_div = target_input.parents(".multilang_body"),
+				target = this;
+				tmpkey = target.className.split(" ")[2], tmptext = target.value;
+	
+				if ((0, _dom.hasClass)(target, "ready_change")) {
+					me.changeData(target_div, tmpkey, tmptext);
+				}
+				if (close_menu) {
+					(0, _dom.css)(target_menu, "display", "none");
+				}
+			});
+			(0, _event.on)(target_menu, "click", "label", function () {
+				var target_label = this,
+				    tmpfield = target_label.getAttribute("attr"),
+				    tmptext = target_label.querySelector(".m_context").innerHTML,
+				    tmpicon = target_label.querySelector(".m_icon").cloneNode(true);
+	
+				tmpvaluebox.setAttribute("class", "ready_change lang_value " + tmpfield);
+				tmpvaluebox.value = tmptext;
+				tmpvaluebox.focus();
+				var tmpicom = target_div.querySelector(".lang_icon"),
+				    oldicon = target_div.querySelector(".m_icon");
+				(0, _dom.removeClass)(tmpicom, "uf-caretdown");
+				tmpicom.replaceChild(tmpicon, oldicon);
+			});
+		} else {
+			console.error('Not object');
+		}
+	};
+	Multilang.fn.changeData = function (target_div, field, text) {
+		var tmpdata = target_div.value;
+		tmplabel = target_div.querySelector("label[attr='" + field + "']");
+		tmpcontext = tmplabel.querySelector(".m_context");
+		tmpcontext.innerHTML = text;
+		tmpcontext.value = text;
+		(0, _util.each)(target_div.querySelectorAll(".m_context"), function (i, node) {
+			tmpdata[i] = node.innerHTML;
+		});
+	
+		(0, _event.trigger)(this.element, 'change.u.multilang', {
+			newValue: text,
+			field: field
+		});
+	};
+	Multilang.fn.getData = function () {
+		var target = $(multilang.target).next(".multilang_body")[0],
+		    multilang_data = target.value;
+		return multilang_data;
+	};
+	_compMgr.compMgr.regComp({
+		comp: Multilang,
+		compAsString: 'u.Multilang',
+		css: 'u-multilang'
+	});
+	
+	exports.Multilang = Multilang;
 
 /***/ }
 /******/ ])
