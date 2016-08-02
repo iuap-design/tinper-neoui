@@ -16,7 +16,10 @@ import {MDLayout} from './neoui-layout.md';
 import {NavLayout,NavLayoutTab} from './neoui-layout.nav';
 import {slidePanel} from './neoui-layout.slidePanel';
 import {showLoader,hideLoader} from './neoui-loader';
-import {Loading,showLoading,hideLoading} from './neoui-loading';
+import {Loading,showLoading,hideLoading,showWaiting,removeWaiting} from './neoui-loading';
 import {Menu} from './neoui-menu';
+import {showMessageDialog,showMessage} from './neoui-message';
+import {Multilang} from './neoui-multilang';
+
 
 
