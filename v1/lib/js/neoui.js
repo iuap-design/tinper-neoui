@@ -57,6 +57,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	
 	var _neouiButton = __webpack_require__(1);
+	
+	var _neouiCheckbox = __webpack_require__(12);
+	
+	var _neouiCombo = __webpack_require__(13);
+	
+	var _neouiTextfield = __webpack_require__(14);
 
 /***/ },
 /* 1 */
@@ -1986,6 +1992,796 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Ripple = URipple;
 	
 	exports.Ripple = Ripple;
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.Checkbox = undefined;
+	
+	var _BaseComponent = __webpack_require__(2);
+	
+	var _dom = __webpack_require__(10);
+	
+	var _event = __webpack_require__(5);
+	
+	var _compMgr = __webpack_require__(9);
+	
+	/**
+	 * Module : neoui-checkbox
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-02 13:55:07
+	 */
+	var Checkbox = _BaseComponent.BaseComponent.extend({
+	    _Constant: {
+	        TINY_TIMEOUT: 0.001
+	    },
+	
+	    _CssClasses: {
+	        INPUT: 'u-checkbox-input',
+	        BOX_OUTLINE: 'u-checkbox-outline',
+	        FOCUS_HELPER: 'u-checkbox-focus-helper',
+	        TICK_OUTLINE: 'u-checkbox-tick-outline',
+	        IS_FOCUSED: 'is-focused',
+	        IS_DISABLED: 'is-disabled',
+	        IS_CHECKED: 'is-checked',
+	        IS_UPGRADED: 'is-upgraded'
+	    },
+	    init: function init() {
+	        this._inputElement = this.element.querySelector('input');
+	
+	        var boxOutline = document.createElement('span');
+	        (0, _dom.addClass)(boxOutline, this._CssClasses.BOX_OUTLINE);
+	
+	        var tickContainer = document.createElement('span');
+	        (0, _dom.addClass)(tickContainer, this._CssClasses.FOCUS_HELPER);
+	
+	        var tickOutline = document.createElement('span');
+	        (0, _dom.addClass)(tickOutline, this._CssClasses.TICK_OUTLINE);
+	
+	        boxOutline.appendChild(tickOutline);
+	
+	        this.element.appendChild(tickContainer);
+	        this.element.appendChild(boxOutline);
+	
+	        //if (this.element.classList.contains(this._CssClasses.RIPPLE_EFFECT)) {
+	        //  addClass(this.element,this._CssClasses.RIPPLE_IGNORE_EVENTS);
+	        this.rippleContainerElement_ = document.createElement('span');
+	        //this.rippleContainerElement_.classList.add(this._CssClasses.RIPPLE_CONTAINER);
+	        //this.rippleContainerElement_.classList.add(this._CssClasses.RIPPLE_EFFECT);
+	        //this.rippleContainerElement_.classList.add(this._CssClasses.RIPPLE_CENTER);
+	        this.boundRippleMouseUp = this._onMouseUp.bind(this);
+	        this.rippleContainerElement_.addEventListener('mouseup', this.boundRippleMouseUp);
+	
+	        //var ripple = document.createElement('span');
+	        //ripple.classList.add(this._CssClasses.RIPPLE);
+	
+	        //this.rippleContainerElement_.appendChild(ripple);
+	        this.element.appendChild(this.rippleContainerElement_);
+	        new URipple(this.rippleContainerElement_);
+	
+	        //}
+	        this.boundInputOnChange = this._onChange.bind(this);
+	        this.boundInputOnFocus = this._onFocus.bind(this);
+	        this.boundInputOnBlur = this._onBlur.bind(this);
+	        this.boundElementMouseUp = this._onMouseUp.bind(this);
+	        //this._inputElement.addEventListener('change', this.boundInputOnChange);
+	        //this._inputElement.addEventListener('focus', this.boundInputOnFocus);
+	        //this._inputElement.addEventListener('blur', this.boundInputOnBlur);
+	        //this.element.addEventListener('mouseup', this.boundElementMouseUp);
+	        if (!(0, _dom.hasClass)(this.element, 'only-style')) {
+	            (0, _event.on)(this.element, 'click', function (e) {
+	                if (!this._inputElement.disabled) {
+	                    this.toggle();
+	                    (0, _event.stopEvent)(e);
+	                }
+	            }.bind(this));
+	        }
+	
+	        this._updateClasses();
+	        (0, _dom.addClass)(this.element, this._CssClasses.IS_UPGRADED);
+	    },
+	
+	    _onChange: function _onChange(event) {
+	        this._updateClasses();
+	        this.trigger('change', { isChecked: this._inputElement.checked });
+	    },
+	
+	    _onFocus: function _onFocus() {
+	        (0, _dom.addClass)(this.element, this._CssClasses.IS_FOCUSED);
+	    },
+	
+	    _onBlur: function _onBlur() {
+	        (0, _dom.removeClass)(this.element, this._CssClasses.IS_FOCUSED);
+	    },
+	
+	    _onMouseUp: function _onMouseUp(event) {
+	        this._blur();
+	    },
+	
+	    /**
+	     * Handle class updates.
+	     *
+	     * @private
+	     */
+	    _updateClasses: function _updateClasses() {
+	        this.checkDisabled();
+	        this.checkToggleState();
+	    },
+	
+	    /**
+	     * Add blur.
+	     *
+	     * @private
+	     */
+	    _blur: function _blur() {
+	        // TODO: figure out why there's a focus event being fired after our blur,
+	        // so that we can avoid this hack.
+	        window.setTimeout(function () {
+	            this._inputElement.blur();
+	        }.bind(this), /** @type {number} */this._Constant.TINY_TIMEOUT);
+	    },
+	
+	    // Public methods.
+	
+	    /**
+	     * Check the inputs toggle state and update display.
+	     *
+	     * @public
+	     */
+	    checkToggleState: function checkToggleState() {
+	        if (this._inputElement.checked) {
+	            (0, _dom.addClass)(this.element, this._CssClasses.IS_CHECKED);
+	        } else {
+	            (0, _dom.removeClass)(this.element, this._CssClasses.IS_CHECKED);
+	        }
+	    },
+	
+	    /**
+	     * Check the inputs disabled state and update display.
+	     *
+	     * @public
+	     */
+	    checkDisabled: function checkDisabled() {
+	        if (this._inputElement.disabled) {
+	            (0, _dom.addClass)(this.element, this._CssClasses.IS_DISABLED);
+	        } else {
+	            (0, _dom.removeClass)(this.element, this._CssClasses.IS_DISABLED);
+	        }
+	    },
+	
+	    isChecked: function isChecked() {
+	        //return hasClass(this.element,this._CssClasses.IS_CHECKED);
+	        return this._inputElement.checked;
+	    },
+	
+	    toggle: function toggle() {
+	        //return;
+	        if (this.isChecked()) {
+	            this.uncheck();
+	        } else {
+	            this.check();
+	        }
+	    },
+	
+	    /**
+	     * Disable checkbox.
+	     *
+	     * @public
+	     */
+	    disable: function disable() {
+	        this._inputElement.disabled = true;
+	        this._updateClasses();
+	    },
+	
+	    /**
+	     * Enable checkbox.
+	     *
+	     * @public
+	     */
+	    enable: function enable() {
+	        this._inputElement.disabled = false;
+	        this._updateClasses();
+	    },
+	
+	    /**
+	     * Check checkbox.
+	     *
+	     * @public
+	     */
+	    check: function check() {
+	        this._inputElement.checked = true;
+	        this._updateClasses();
+	        this.boundInputOnChange();
+	    },
+	
+	    /**
+	     * Uncheck checkbox.
+	     *
+	     * @public
+	     */
+	    uncheck: function uncheck() {
+	        this._inputElement.checked = false;
+	        this._updateClasses();
+	        this.boundInputOnChange();
+	    }
+	
+	});
+	
+	_compMgr.compMgr.regComp({
+	    comp: Checkbox,
+	    compAsString: 'u.Checkbox',
+	    css: 'u-checkbox'
+	});
+	exports.Checkbox = Checkbox;
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.Combo = undefined;
+	
+	var _BaseComponent = __webpack_require__(2);
+	
+	var _dom = __webpack_require__(10);
+	
+	var _env = __webpack_require__(6);
+	
+	var _event = __webpack_require__(5);
+	
+	var _neouiTextfield = __webpack_require__(14);
+	
+	var _compMgr = __webpack_require__(9);
+	
+	/**
+	 * Module : neoui-combo
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-02 14:09:22
+	 */
+	
+	var Combo = _BaseComponent.BaseComponent.extend({
+		init: function init() {
+			this.mutilSelect = this.options['mutilSelect'] || false;
+			if ((0, _dom.hasClass)(this.element, 'mutil-select')) {
+				this.mutilSelect = true;
+			}
+	
+			this.onlySelect = this.options['onlySelect'] || false;
+			if (this.mutilSelect) this.onlySelect = true;
+	
+			this.comboDatas = [];
+			var i,
+			    option,
+			    datas = [],
+			    self = this;
+			//addClass(this.element, 'u-text')
+			new _neouiTextfield.Text(this.element);
+			var options = this.element.getElementsByTagName('option');
+			for (i = 0; i < options.length; i++) {
+				option = options[i];
+				datas.push({
+					value: option.value,
+					name: option.text
+				});
+			}
+	
+			this.setComboData(datas);
+			this._input = this.element.querySelector("input");
+			if (this.onlySelect || _env.env.isMobile) {
+				setTimeout(function () {
+					self._input.setAttribute('readonly', 'readonly');
+				}, 1000);
+			} else {
+				(0, _event.on)(this._input, 'blur', function (e) {
+					var v = this.value;
+					/*校验数值是否存在于datasource的name中*/
+					for (var i = 0; i < self.comboDatas.length; i++) {
+						if (v == self.comboDatas[i].name) {
+							v = self.comboDatas[i].value;
+							break;
+						}
+					}
+					self.setValue(v);
+				});
+			}
+			this._combo_name_par = this.element.querySelector(".u-combo-name-par");
+			(0, _event.on)(this._input, 'focus', function (e) {
+				self._inputFocus = true;
+				self.show(e);
+				(0, _event.stopEvent)(e);
+			});
+			(0, _event.on)(this._input, 'blur', function (e) {
+				self._inputFocus = false;
+			});
+	
+			(0, _event.on)(this.input, 'keydown', function (e) {
+				var keyCode = e.keyCode;
+				if (e.keyCode == 13) {
+					// 回车
+					this.blur();
+				}
+			});
+			this.iconBtn = this.element.querySelector("[data-role='combo-button']");
+			if (this.iconBtn) {
+				(0, _event.on)(this.iconBtn, 'click', function (e) {
+					self._input.focus();
+					(0, _event.stopEvent)(e);
+				});
+			}
+		},
+	
+		show: function show(evt) {
+	
+			var self = this,
+			    width = this._input.offsetWidth;
+			if (this.options.showFix) {
+				document.body.appendChild(this._ul);
+				this._ul.style.position = 'fixed';
+				(0, _dom.showPanelByEle)({
+					ele: this._input,
+					panel: this._ul,
+					position: "bottomLeft"
+				});
+			} else {
+				this.element.parentNode.appendChild(this._ul);
+				var left = this.element.offsetLeft,
+				    inputHeight = this.element.offsetHeight,
+				    top = this.element.offsetTop + inputHeight;
+				this._ul.style.left = left + 'px';
+				this._ul.style.top = top + 'px';
+			}
+			this._ul.style.width = width + 'px';
+			(0, _dom.addClass)(this._ul, 'is-animating');
+			this._ul.style.zIndex = (0, _dom.getZIndex)();
+			(0, _dom.addClass)(this._ul, 'is-visible');
+	
+			var callback = function (e) {
+				if (e === evt || e.target === this._input || self._inputFocus == true) return;
+				if (this.mutilSelect && ((0, _dom.closest)(e.target, 'u-combo-ul') === self._ul || (0, _dom.closest)(e.target, 'u-combo-name-par') || (0, _dom.closest)(e.target, 'u-combo-name'))) return;
+				off(document, 'click', callback);
+				// document.removeEventListener('click', callback);
+				this.hide();
+			}.bind(this);
+			(0, _event.on)(document, 'click', callback);
+			(0, _event.on)(document.body, 'touchend', callback);
+			// document.addEventListener('click', callback);
+		},
+	
+		hide: function hide() {
+			(0, _dom.removeClass)(this._ul, 'is-visible');
+			this._ul.style.zIndex = -1;
+			this.trigger('select', {
+				value: this.value
+			});
+		},
+	
+		/**
+	  * 设置下拉数据
+	  * @param datas  数据项
+	  * @param options  指定name value对应字段 可以为空
+	  */
+		setComboData: function setComboData(datas, options) {
+			var i,
+			    li,
+			    self = this;
+			if (!options) this.comboDatas = datas;else {
+				this.comboDatas = [];
+				for (var i = 0; i < datas.length; i++) {
+					this.comboDatas.push({
+						name: datas[i][options.name],
+						value: datas[i][options.value]
+					});
+				}
+			}
+			if (!this._ul) {
+				this._ul = (0, _dom.makeDOM)('<ul class="u-combo-ul"></ul>');
+	
+				// document.body.appendChild(this._ul);
+			}
+			this._ul.innerHTML = '';
+			//TODO 增加filter
+			for (i = 0; i < this.comboDatas.length; i++) {
+				li = (0, _dom.makeDOM)('<li class="u-combo-li">' + this.comboDatas[i].name + '</li>'); //document.createElement('li');
+				li._index = i;
+				(0, _event.on)(li, 'click', function () {
+					self.selectItem(this._index);
+				});
+				var rippleContainer = document.createElement('span');
+				(0, _dom.addClass)(rippleContainer, 'u-ripple-container');
+				var _rippleElement = document.createElement('span');
+				(0, _dom.addClass)(_rippleElement, 'u-ripple');
+	
+				rippleContainer.appendChild(_rippleElement);
+				li.appendChild(rippleContainer);
+				new URipple(li);
+				this._ul.appendChild(li);
+			}
+		},
+	
+		selectItem: function selectItem(index) {
+			var self = this;
+	
+			if (this.mutilSelect) {
+				var val = this.comboDatas[index].value;
+				var name = this.comboDatas[index].name;
+				var index = (this.value + ',').indexOf(val + ',');
+				var l = val.length + 1;
+				var flag;
+				if (index != -1) {
+					// 已经选中
+					this.value = this.value.substring(0, index) + this.value.substring(index + l);
+					flag = '-';
+				} else {
+					this.value = !this.value ? val + ',' : this.value + val + ',';
+					flag = '+';
+				}
+	
+				if (flag == '+') {
+					var nameDiv = (0, _dom.makeDOM)('<div class="u-combo-name" key="' + val + '">' + name + /*<a href="javascript:void(0)" class="remove">x</a>*/'</div>');
+					var parNameDiv = (0, _dom.makeDOM)('<div class="u-combo-name-par" style="position:absolute"></div>');
+					/*var _a = nameDiv.querySelector('a');
+	    on(_a, 'click', function(){
+	        var values = self.value.split(',');
+	        values.splice(values.indexOf(val),1);
+	        self.value = values.join(',');
+	        self._combo_name_par.removeChild(nameDiv);
+	        self._updateItemSelect();
+	        self.trigger('select', {value: self.value, name: name});
+	    });*/
+					if (!this._combo_name_par) {
+						this._input.parentNode.insertBefore(parNameDiv, this._input);
+						this._combo_name_par = parNameDiv;
+					}
+					this._combo_name_par.appendChild(nameDiv);
+				} else {
+					if (this._combo_name_par) {
+						var comboDiv = this._combo_name_par.querySelector('[key="' + val + '"]');
+						if (comboDiv) this._combo_name_par.removeChild(comboDiv);
+					}
+				}
+	
+				this._updateItemSelect();
+	
+				// this.trigger('select', {value: this.value, name: name});
+			} else {
+				this.value = this.comboDatas[index].value;
+				this._input.value = this.comboDatas[index].name;
+				this._updateItemSelect();
+				// this.trigger('select', {value: this.value, name: this._input.value});
+			}
+		},
+	
+		_updateItemSelect: function _updateItemSelect() {
+			var lis = this._ul.querySelectorAll('.u-combo-li');
+			if (this.mutilSelect) {
+				var values = this.value.split(',');
+				for (var i = 0; i < lis.length; i++) {
+					if (values.indexOf(this.comboDatas[i].value) > -1) {
+						(0, _dom.addClass)(lis[i], 'is-selected');
+					} else {
+						(0, _dom.removeClass)(lis[i], 'is-selected');
+					}
+				}
+				/*根据多选区域div的高度调整input的高度*/
+				var h = this._combo_name_par.offsetHeight;
+				if (h < 25) h = 25;
+				this._input.style.height = h + 'px';
+			} else {
+				for (var i = 0; i < lis.length; i++) {
+					if (this.value == this.comboDatas[i].value) {
+						(0, _dom.addClass)(lis[i], 'is-selected');
+					} else {
+						(0, _dom.removeClass)(lis[i], 'is-selected');
+					}
+				}
+			}
+		},
+	
+		/**
+	  *设置值
+	  * @param value
+	  */
+		setValue: function setValue(value) {
+			var self = this;
+			value = value + '';
+			value = value || '';
+	
+			var values = value.split(',');
+			if (this.mutilSelect === true) {
+				if (self._combo_name_par) self._combo_name_par.innerHTML = '';
+				this.value = '';
+			}
+			if (!value) {
+				this._input.value = '';
+				this.value = '';
+			}
+			var matched = false;
+			this.comboDatas.forEach(function (item, index) {
+				if (this.mutilSelect === true) {
+					if (values.indexOf(item.value) != -1) {
+						this.selectItem(index);
+					}
+				} else {
+					if (item.value === value) {
+						this.selectItem(index);
+						matched = true;
+						return;
+					}
+				}
+			}.bind(this));
+			if (!this.onlySelect && !matched) {
+				this.value = value;
+				this._input.value = value;
+				this.trigger('select', {
+					value: this.value,
+					name: this._input.value
+				});
+			}
+		},
+	
+		/**
+	  * 设置显示名
+	  * @param name
+	  */
+		setName: function setName(name) {
+			this.comboDatas.forEach(function (item, index) {
+				if (item.name === name) {
+					this.selectItem(index);
+					return;
+				}
+			}.bind(this));
+		}
+	
+	});
+	
+	_compMgr.compMgr.regComp({
+		comp: Combo,
+		compAsString: 'u.Combo',
+		css: 'u-combo'
+	});
+	exports.Combo = Combo;
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.Text = undefined;
+	
+	var _BaseComponent = __webpack_require__(2);
+	
+	var _dom = __webpack_require__(10);
+	
+	var _env = __webpack_require__(6);
+	
+	var _event = __webpack_require__(5);
+	
+	var _compMgr = __webpack_require__(9);
+	
+	var Text = _BaseComponent.BaseComponent.extend({
+	    _Constant: {
+	        NO_MAX_ROWS: -1,
+	        MAX_ROWS_ATTRIBUTE: 'maxrows'
+	    },
+	
+	    _CssClasses: {
+	        LABEL: 'u-label',
+	        INPUT: 'u-input',
+	        IS_DIRTY: 'is-dirty',
+	        IS_FOCUSED: 'is-focused',
+	        IS_DISABLED: 'is-disabled',
+	        IS_INVALID: 'is-invalid',
+	        IS_UPGRADED: 'is-upgraded'
+	    },
+	
+	    init: function init() {
+	        var oThis = this;
+	        this.maxRows = this._Constant.NO_MAX_ROWS;
+	        this.label_ = this.element.querySelector('.' + this._CssClasses.LABEL);
+	        this._input = this.element.querySelector('input');
+	
+	        if (this._input) {
+	            if (this._input.hasAttribute(
+	            /** @type {string} */this._Constant.MAX_ROWS_ATTRIBUTE)) {
+	                this.maxRows = parseInt(this._input.getAttribute(
+	                /** @type {string} */this._Constant.MAX_ROWS_ATTRIBUTE), 10);
+	                if (isNaN(this.maxRows)) {
+	                    this.maxRows = this._Constant.NO_MAX_ROWS;
+	                }
+	            }
+	
+	            this.boundUpdateClassesHandler = this._updateClasses.bind(this);
+	            this.boundFocusHandler = this._focus.bind(this);
+	            this.boundBlurHandler = this._blur.bind(this);
+	            this.boundResetHandler = this._reset.bind(this);
+	            this._input.addEventListener('input', this.boundUpdateClassesHandler);
+	            if (_env.env.isIE8) {
+	                this._input.addEventListener('propertychange', function () {
+	                    oThis._updateClasses();
+	                });
+	            }
+	            this._input.addEventListener('focus', this.boundFocusHandler);
+	            if (_env.env.isIE8 || _env.env.isIE9) {
+	                if (this.label_) {
+	                    this.label_.addEventListener('click', function () {
+	                        this._input.focus();
+	                    }.bind(this));
+	                }
+	            }
+	
+	            this._input.addEventListener('blur', this.boundBlurHandler);
+	            this._input.addEventListener('reset', this.boundResetHandler);
+	
+	            if (this.maxRows !== this._Constant.NO_MAX_ROWS) {
+	                // TODO: This should handle pasting multi line text.
+	                // Currently doesn't.
+	                this.boundKeyDownHandler = this._down.bind(this);
+	                this._input.addEventListener('keydown', this.boundKeyDownHandler);
+	            }
+	            var invalid = (0, _dom.hasClass)(this.element, this._CssClasses.IS_INVALID);
+	            this._updateClasses();
+	            (0, _dom.addClass)(this.element, this._CssClasses.IS_UPGRADED);
+	            if (invalid) {
+	                (0, _dom.addClass)(this.element, this._CssClasses.IS_INVALID);
+	            }
+	        }
+	    },
+	
+	    /**
+	     * Handle input being entered.
+	     *
+	     * @param {Event} event The event that fired.
+	     * @private
+	     */
+	    _down: function _down(event) {
+	        var currentRowCount = event.target.value.split('\n').length;
+	        if (event.keyCode === 13) {
+	            if (currentRowCount >= this.maxRows) {
+	                event.preventDefault();
+	            }
+	        }
+	    },
+	    /**
+	     * Handle focus.
+	     *
+	     * @param {Event} event The event that fired.
+	     * @private
+	     */
+	    _focus: function _focus(event) {
+	        (0, _dom.addClass)(this.element, this._CssClasses.IS_FOCUSED);
+	    },
+	    /**
+	     * Handle lost focus.
+	     *
+	     * @param {Event} event The event that fired.
+	     * @private
+	     */
+	    _blur: function _blur(event) {
+	        (0, _dom.removeClass)(this.element, this._CssClasses.IS_FOCUSED);
+	    },
+	    /**
+	     * Handle reset event from out side.
+	     *
+	     * @param {Event} event The event that fired.
+	     * @private
+	     */
+	    _reset: function _reset(event) {
+	        this._updateClasses();
+	    },
+	    /**
+	     * Handle class updates.
+	     *
+	     * @private
+	     */
+	    _updateClasses: function _updateClasses() {
+	        this.checkDisabled();
+	        this.checkValidity();
+	        this.checkDirty();
+	    },
+	
+	    // Public methods.
+	
+	    /**
+	     * Check the disabled state and update field accordingly.
+	     *
+	     * @public
+	     */
+	    checkDisabled: function checkDisabled() {
+	        if (this._input.disabled) {
+	            (0, _dom.addClass)(this.element, this._CssClasses.IS_DISABLED);
+	        } else {
+	            (0, _dom.removeClass)(this.element, this._CssClasses.IS_DISABLED);
+	        }
+	    },
+	    /**
+	     * Check the validity state and update field accordingly.
+	     *
+	     * @public
+	     */
+	    checkValidity: function checkValidity() {
+	        if (this._input.validity) {
+	            if (this._input.validity.valid) {
+	                (0, _dom.removeClass)(this.element, this._CssClasses.IS_INVALID);
+	            } else {
+	                (0, _dom.addClass)(this.element, this._CssClasses.IS_INVALID);
+	            }
+	        }
+	    },
+	    /**
+	     * Check the dirty state and update field accordingly.
+	     *
+	     * @public
+	     */
+	    checkDirty: function checkDirty() {
+	        if (this._input.value && this._input.value.length > 0) {
+	            (0, _dom.addClass)(this.element, this._CssClasses.IS_DIRTY);
+	        } else {
+	            (0, _dom.removeClass)(this.element, this._CssClasses.IS_DIRTY);
+	        }
+	    },
+	    /**
+	     * Disable text field.
+	     *
+	     * @public
+	     */
+	    disable: function disable() {
+	        this._input.disabled = true;
+	        this._updateClasses();
+	    },
+	    /**
+	     * Enable text field.
+	     *
+	     * @public
+	     */
+	    enable: function enable() {
+	        this._input.disabled = false;
+	        this._updateClasses();
+	    },
+	    /**
+	     * Update text field value.
+	     *
+	     * @param {string} value The value to which to set the control (optional).
+	     * @public
+	     */
+	    change: function change(value) {
+	        this._input.value = value || '';
+	        this._updateClasses();
+	    }
+	
+	});
+	
+	//if (compMgr)
+	//    compMgr.addPlug({
+	//        name:'text',
+	//        plug: Text
+	//    })
+	
+	/**
+	 * Module : neoui-combo
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-02 14:22:46
+	 */
+	
+	_compMgr.compMgr.regComp({
+	    comp: Text,
+	    compAsString: 'u.Text',
+	    css: 'u-text'
+	});
+	exports.Text = Text;
 
 /***/ }
 /******/ ])

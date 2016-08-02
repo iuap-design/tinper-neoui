@@ -1,4 +1,17 @@
-u.Text = u.BaseComponent.extend({
+/**
+ * Module : neoui-combo
+ * Author : Kvkens(yueming@yonyou.com)
+ * Date	  : 2016-08-02 14:22:46
+ */
+
+import {BaseComponent} from './sparrow/BaseComponent';
+import {addClass,removeClass,hasClass} from './sparrow/dom';
+import {env} from './sparrow/env';
+import {on,stopEvent} from './sparrow/event';
+import {compMgr} from './sparrow/compMgr';
+
+
+var Text = BaseComponent.extend({
     _Constant: {
         NO_MAX_ROWS: -1,
         MAX_ROWS_ATTRIBUTE: 'maxrows'
@@ -35,13 +48,13 @@ u.Text = u.BaseComponent.extend({
             this.boundBlurHandler = this._blur.bind(this);
             this.boundResetHandler = this._reset.bind(this);
             this._input.addEventListener('input', this.boundUpdateClassesHandler);
-            if(u.isIE8){
+            if(env.isIE8){
                 this._input.addEventListener('propertychange', function(){
                     oThis._updateClasses();
                 });
             }
             this._input.addEventListener('focus', this.boundFocusHandler);
-            if(u.isIE8 || u.isIE9){
+            if(env.isIE8 || env.isIE9){
                 if(this.label_){
                     this.label_.addEventListener('click', function(){
                         this._input.focus();
@@ -58,11 +71,11 @@ u.Text = u.BaseComponent.extend({
                 this.boundKeyDownHandler = this._down.bind(this);
                 this._input.addEventListener('keydown', this.boundKeyDownHandler);
             }
-            var invalid = u.hasClass(this.element, this._CssClasses.IS_INVALID);
+            var invalid = hasClass(this.element, this._CssClasses.IS_INVALID);
             this._updateClasses();
-            u.addClass(this.element, this._CssClasses.IS_UPGRADED);
+            addClass(this.element, this._CssClasses.IS_UPGRADED);
             if (invalid) {
-                u.addClass(this.element, this._CssClasses.IS_INVALID);
+                addClass(this.element, this._CssClasses.IS_INVALID);
             }
         }
     },
@@ -88,7 +101,7 @@ u.Text = u.BaseComponent.extend({
      * @private
      */
     _focus : function (event) {
-        u.addClass(this.element, this._CssClasses.IS_FOCUSED);
+        addClass(this.element, this._CssClasses.IS_FOCUSED);
     },
     /**
      * Handle lost focus.
@@ -97,7 +110,7 @@ u.Text = u.BaseComponent.extend({
      * @private
      */
     _blur : function (event) {
-        u.removeClass(this.element, this._CssClasses.IS_FOCUSED);
+        removeClass(this.element, this._CssClasses.IS_FOCUSED);
     },
     /**
      * Handle reset event from out side.
@@ -128,9 +141,9 @@ u.Text = u.BaseComponent.extend({
      */
     checkDisabled : function () {
         if (this._input.disabled) {
-            u.addClass(this.element, this._CssClasses.IS_DISABLED);
+            addClass(this.element, this._CssClasses.IS_DISABLED);
         } else {
-            u.removeClass(this.element, this._CssClasses.IS_DISABLED);
+            removeClass(this.element, this._CssClasses.IS_DISABLED);
         }
     },
     /**
@@ -141,9 +154,9 @@ u.Text = u.BaseComponent.extend({
     checkValidity : function () {
         if (this._input.validity) {
             if (this._input.validity.valid) {
-                u.removeClass(this.element, this._CssClasses.IS_INVALID);
+                removeClass(this.element, this._CssClasses.IS_INVALID);
             } else {
-                u.addClass(this.element, this._CssClasses.IS_INVALID);
+                addClass(this.element, this._CssClasses.IS_INVALID);
             }
         }
     },
@@ -154,9 +167,9 @@ u.Text = u.BaseComponent.extend({
      */
     checkDirty: function () {
         if (this._input.value && this._input.value.length > 0) {
-            u.addClass(this.element, this._CssClasses.IS_DIRTY);
+            addClass(this.element, this._CssClasses.IS_DIRTY);
         } else {
-            u.removeClass(this.element, this._CssClasses.IS_DIRTY);
+            removeClass(this.element, this._CssClasses.IS_DIRTY);
         }
     },
     /**
@@ -193,14 +206,15 @@ u.Text = u.BaseComponent.extend({
 
 
 
-//if (u.compMgr)
-//    u.compMgr.addPlug({
+//if (compMgr)
+//    compMgr.addPlug({
 //        name:'text',
-//        plug: u.Text
+//        plug: Text
 //    })
 
-u.compMgr.regComp({
-    comp: u.Text,
+compMgr.regComp({
+    comp: Text,
     compAsString: 'u.Text',
     css: 'u-text'
 });
+export {Text};

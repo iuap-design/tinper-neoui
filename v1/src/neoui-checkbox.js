@@ -1,4 +1,14 @@
-u.Checkbox = u.BaseComponent.extend({
+/**
+ * Module : neoui-checkbox
+ * Author : Kvkens(yueming@yonyou.com)
+ * Date	  : 2016-08-02 13:55:07
+ */
+import {BaseComponent} from './sparrow/BaseComponent';
+import {addClass,removeClass,hasClass} from './sparrow/dom';
+import {on,stopEvent} from './sparrow/event';
+import {compMgr} from './sparrow/compMgr';
+
+var Checkbox = BaseComponent.extend({
     _Constant: {
         TINY_TIMEOUT: 0.001
     },
@@ -17,13 +27,13 @@ u.Checkbox = u.BaseComponent.extend({
         this._inputElement = this.element.querySelector('input');
 
         var boxOutline = document.createElement('span');
-        u.addClass(boxOutline, this._CssClasses.BOX_OUTLINE);
+        addClass(boxOutline, this._CssClasses.BOX_OUTLINE);
 
         var tickContainer = document.createElement('span');
-        u.addClass(tickContainer, this._CssClasses.FOCUS_HELPER)
+        addClass(tickContainer, this._CssClasses.FOCUS_HELPER)
 
         var tickOutline = document.createElement('span');
-        u.addClass(tickOutline, this._CssClasses.TICK_OUTLINE);
+        addClass(tickOutline, this._CssClasses.TICK_OUTLINE);
 
         boxOutline.appendChild(tickOutline);
 
@@ -31,7 +41,7 @@ u.Checkbox = u.BaseComponent.extend({
         this.element.appendChild(boxOutline);
 
         //if (this.element.classList.contains(this._CssClasses.RIPPLE_EFFECT)) {
-        //  u.addClass(this.element,this._CssClasses.RIPPLE_IGNORE_EVENTS);
+        //  addClass(this.element,this._CssClasses.RIPPLE_IGNORE_EVENTS);
         this.rippleContainerElement_ = document.createElement('span');
         //this.rippleContainerElement_.classList.add(this._CssClasses.RIPPLE_CONTAINER);
         //this.rippleContainerElement_.classList.add(this._CssClasses.RIPPLE_EFFECT);
@@ -55,18 +65,18 @@ u.Checkbox = u.BaseComponent.extend({
         //this._inputElement.addEventListener('focus', this.boundInputOnFocus);
         //this._inputElement.addEventListener('blur', this.boundInputOnBlur);
         //this.element.addEventListener('mouseup', this.boundElementMouseUp);
-        if (!u.hasClass(this.element, 'only-style')){
-            u.on(this.element, 'click', function(e){
+        if (!hasClass(this.element, 'only-style')){
+            on(this.element, 'click', function(e){
                 if(!this._inputElement.disabled){
                     this.toggle();
-                    u.stopEvent(e);
+                    stopEvent(e);
                 }
             }.bind(this));
         }
 
 
         this._updateClasses();
-        u.addClass(this.element, this._CssClasses.IS_UPGRADED);
+        addClass(this.element, this._CssClasses.IS_UPGRADED);
 
     },
 
@@ -76,11 +86,11 @@ u.Checkbox = u.BaseComponent.extend({
     },
 
     _onFocus: function () {
-        u.addClass(this.element, this._CssClasses.IS_FOCUSED)
+        addClass(this.element, this._CssClasses.IS_FOCUSED)
     },
 
     _onBlur: function () {
-        u.removeClass(this.element, this._CssClasses.IS_FOCUSED)
+        removeClass(this.element, this._CssClasses.IS_FOCUSED)
     },
 
     _onMouseUp: function (event) {
@@ -119,9 +129,9 @@ u.Checkbox = u.BaseComponent.extend({
      */
     checkToggleState: function () {
         if (this._inputElement.checked) {
-            u.addClass(this.element, this._CssClasses.IS_CHECKED)
+            addClass(this.element, this._CssClasses.IS_CHECKED)
         } else {
-            u.removeClass(this.element, this._CssClasses.IS_CHECKED)
+            removeClass(this.element, this._CssClasses.IS_CHECKED)
         }
     },
 
@@ -133,15 +143,15 @@ u.Checkbox = u.BaseComponent.extend({
      */
     checkDisabled: function () {
         if (this._inputElement.disabled) {
-            u.addClass(this.element, this._CssClasses.IS_DISABLED)
+            addClass(this.element, this._CssClasses.IS_DISABLED)
         } else {
-            u.removeClass(this.element, this._CssClasses.IS_DISABLED)
+            removeClass(this.element, this._CssClasses.IS_DISABLED)
         }
     },
 
 
     isChecked: function(){
-        //return u.hasClass(this.element,this._CssClasses.IS_CHECKED);
+        //return hasClass(this.element,this._CssClasses.IS_CHECKED);
         return this._inputElement.checked
     },
 
@@ -203,9 +213,9 @@ u.Checkbox = u.BaseComponent.extend({
 });
 
 
-if (u.compMgr)
-    u.compMgr.regComp({
-        comp: u.Checkbox,
-        compAsString: 'u.Checkbox',
-        css: 'u-checkbox'
-    })
+compMgr.regComp({
+    comp: Checkbox,
+    compAsString: 'u.Checkbox',
+    css: 'u-checkbox'
+});
+export {Checkbox};
