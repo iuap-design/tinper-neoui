@@ -243,5 +243,32 @@ gulp.task('clean', function () {
     .on('error', errHandle);
 });
 
+/**
+ * 插件CSS 构建
+ */
+gulp.task('vsass', function(){
+    gulp.src('./scss/**/*')
+        .pipe(gulp.dest('./v1/scss/bundle'));
+});
+gulp.task('vcss', ['vsass'], function(){
+    gulp.src('./v1/scss/*.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('./v1/lib/css'))
+        .pipe(sourcemaps.init())
+        .pipe(minifycss())
+        .pipe(rename({
+            suffix:'.min'
+        }))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('./v1/lib/css'));
+});
+
+gulp.task('test',function(){
+    gulp.src('./v1/scss/layout.nav.scss')
+        .pipe(gulp.dest('./vi/scss'));
+});
+
+
 gulp.task('dev', ['image', 'font', 'sass-ui', 'es-ui', 'polyfill', 'serve'])
 gulp.task('dist', ['image', 'font', 'sass-ui', 'es-ui', 'polyfill'])
+gulp.task('vbuild',['vcss']);

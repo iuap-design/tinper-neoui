@@ -7,6 +7,7 @@
     "clean": "gulp clean",
     "dev": "gulp dev",
     "prod": "gulp prod",
+    "vsass":"gulp vbuild",
     "neoui-build": "webpack --colors --progress --mode=build",
     "neoui-dev": "webpack --progress --colors  --mode=dev"
   },
