@@ -263,11 +263,6 @@ gulp.task('vcss', ['vsass'], function(){
         .pipe(gulp.dest('./v1/lib/css'));
 });
 
-gulp.task('test',function(){
-    gulp.src('./v1/scss/layout.nav.scss')
-        .pipe(gulp.dest('./vi/scss'));
-});
-
 
 gulp.task('dev', ['image', 'font', 'sass-ui', 'es-ui', 'polyfill', 'serve'])
 gulp.task('dist', ['image', 'font', 'sass-ui', 'es-ui', 'polyfill'])
