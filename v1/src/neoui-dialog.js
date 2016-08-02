@@ -1,9 +1,15 @@
 /**
- * Module : dialog
+ * Module : neoui-dialog
  * Author : Kvkens(yueming@yonyou.com)
- * Date	  : 2016-08-02 10:49:50
+ * Date	  : 2016-08-02 15:29:55
  */
 
+import {BaseComponent} from './sparrow/BaseComponent';
+import {addClass,removeClass,hasClass,getStyle,makeDOM} from './sparrow/dom';
+import {on,stopEvent,trigger} from './sparrow/event';
+import {extend} from './sparrow/extend';
+import {Button} from './neoui-button';
+import {compMgr} from './sparrow/compMgr';
 
 /**
  * messageDialog.js
@@ -16,54 +22,58 @@
  * @param options
  */
 
-u.messageDialogTemplate = '<div class="u-msg-dialog">'+
-                            '<div class="u-msg-title">'+
-                            '<h4>{title}</h4>'+
-                            '</div>'+
-                            '<div class="u-msg-content">'+
-                                '<p>{msg}</p>'+
-                            '</div>'+
-                            '<div class="u-msg-footer only-one-btn"><button class="u-msg-button u-button primary raised">{btnText}</button></div>'+
-                           '</div>';
+var messageDialogTemplate = '<div class="u-msg-dialog">' +
+	'<div class="u-msg-title">' +
+	'<h4>{title}</h4>' +
+	'</div>' +
+	'<div class="u-msg-content">' +
+	'<p>{msg}</p>' +
+	'</div>' +
+	'<div class="u-msg-footer only-one-btn"><button class="u-msg-button u-button primary raised">{btnText}</button></div>' +
+	'</div>';
 
-u.messageDialog = function(options){
-    var title,msg, btnText,template;
-    if (typeof options === 'string'){
-        options = {msg:options};
-    }
-    msg = options['msg'] || "";
-    title = options['title'] || "提示";
-    btnText = options['btnText'] || "确定";
-    template = options['template'] || u.messageDialogTemplate;
+var messageDialog = function(options) {
+	var title, msg, btnText, template;
+	if(typeof options === 'string') {
+		options = {
+			msg: options
+		};
+	}
+	msg = options['msg'] || "";
+	title = options['title'] || "提示";
+	btnText = options['btnText'] || "确定";
+	template = options['template'] || messageDialogTemplate;
 
-    template = template.replace('{msg}', msg);
-    template = template.replace('{title}', title);
-    template = template.replace('{btnText}', btnText);
+	template = template.replace('{msg}', msg);
+	template = template.replace('{title}', title);
+	template = template.replace('{btnText}', btnText);
 
-    var msgDom = u.makeDOM(template);
+	var msgDom = makeDOM(template);
 
-    var closeBtn = msgDom.querySelector('.u-msg-button');
-    new u.Button({el:closeBtn});
-    u.on(closeBtn, 'click', function(){
-        document.body.removeChild(msgDom);
-        document.body.removeChild(overlayDiv);
-    })
-    var overlayDiv = u.makeModal(msgDom);
-    document.body.appendChild(msgDom);
+	var closeBtn = msgDom.querySelector('.u-msg-button');
+	new Button({
+		el: closeBtn
+	});
+	on(closeBtn, 'click', function() {
+		document.body.removeChild(msgDom);
+		document.body.removeChild(overlayDiv);
+	})
+	var overlayDiv = makeModal(msgDom);
+	document.body.appendChild(msgDom);
 
-    this.resizeFun = function(){
-        var cDom = msgDom.querySelector('.u-msg-content');
-        if (!cDom) return;
-        cDom.style.height = '';
-        var wholeHeight = msgDom.offsetHeight;
-        var contentHeight = msgDom.scrollHeight;
-        if(contentHeight > wholeHeight && cDom)
-            cDom.style.height = wholeHeight - (56+46) + 'px';
+	this.resizeFun = function() {
+		var cDom = msgDom.querySelector('.u-msg-content');
+		if(!cDom) return;
+		cDom.style.height = '';
+		var wholeHeight = msgDom.offsetHeight;
+		var contentHeight = msgDom.scrollHeight;
+		if(contentHeight > wholeHeight && cDom)
+			cDom.style.height = wholeHeight - (56 + 46) + 'px';
 
-    }.bind(this);
+	}.bind(this);
 
-    this.resizeFun();
-    u.on(window,'resize',this.resizeFun);
+	this.resizeFun();
+	on(window, 'resize', this.resizeFun);
 };
 
 /**
@@ -71,64 +81,68 @@ u.messageDialog = function(options){
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-07-29 10:21:33
  */
-u.confirmDialogTemplate = '<div class="u-msg-dialog">'+
-    '<div class="u-msg-title">'+
-    '<h4>{title}</h4>'+
-    '</div>'+
-    '<div class="u-msg-content">'+
-    '<p>{msg}</p>'+
-    '</div>'+
-    '<div class="u-msg-footer"><button class="u-msg-ok u-button primary raised">{okText}</button><button class="u-msg-cancel u-button">{cancelText}</button></div>'+
-    '</div>';
+var confirmDialogTemplate = '<div class="u-msg-dialog">' +
+	'<div class="u-msg-title">' +
+	'<h4>{title}</h4>' +
+	'</div>' +
+	'<div class="u-msg-content">' +
+	'<p>{msg}</p>' +
+	'</div>' +
+	'<div class="u-msg-footer"><button class="u-msg-ok u-button primary raised">{okText}</button><button class="u-msg-cancel u-button">{cancelText}</button></div>' +
+	'</div>';
 
-u.confirmDialog = function(options){
-    var title,msg, okText,cancelText,template,onOk,onCancel;
-    msg = options['msg'] || "";
-    title = options['title'] || "确认";
-    okText = options['okText'] || "确定";
-    cancelText = options['cancelText'] || "取消";
-    onOk = options['onOk'] || function(){};
-    onCancel = options['onCancel'] || function(){};
-    template = options['template'] || u.confirmDialogTemplate;
+var confirmDialog = function(options) {
+	var title, msg, okText, cancelText, template, onOk, onCancel;
+	msg = options['msg'] || "";
+	title = options['title'] || "确认";
+	okText = options['okText'] || "确定";
+	cancelText = options['cancelText'] || "取消";
+	onOk = options['onOk'] || function() {};
+	onCancel = options['onCancel'] || function() {};
+	template = options['template'] || confirmDialogTemplate;
 
-    template = template.replace('{msg}', msg);
-    template = template.replace('{title}', title);
-    template = template.replace('{okText}', okText);
-    template = template.replace('{cancelText}', cancelText);
+	template = template.replace('{msg}', msg);
+	template = template.replace('{title}', title);
+	template = template.replace('{okText}', okText);
+	template = template.replace('{cancelText}', cancelText);
 
-    var msgDom = u.makeDOM(template);
-    var okBtn = msgDom.querySelector('.u-msg-ok');
-    var cancelBtn = msgDom.querySelector('.u-msg-cancel');
-    new u.Button({el:okBtn});
-    new u.Button({el:cancelBtn});
-    u.on(okBtn, 'click', function(){
-        if (onOk() !== false) {
-            document.body.removeChild(msgDom);
-            document.body.removeChild(overlayDiv);
-        }
-    })
-    u.on(cancelBtn, 'click', function(){
-        if (onCancel() !== false) {
-            document.body.removeChild(msgDom);
-            document.body.removeChild(overlayDiv);
-        }
-    })
-    var overlayDiv = u.makeModal(msgDom);
-    document.body.appendChild(msgDom);
+	var msgDom = makeDOM(template);
+	var okBtn = msgDom.querySelector('.u-msg-ok');
+	var cancelBtn = msgDom.querySelector('.u-msg-cancel');
+	new Button({
+		el: okBtn
+	});
+	new Button({
+		el: cancelBtn
+	});
+	on(okBtn, 'click', function() {
+		if(onOk() !== false) {
+			document.body.removeChild(msgDom);
+			document.body.removeChild(overlayDiv);
+		}
+	})
+	on(cancelBtn, 'click', function() {
+		if(onCancel() !== false) {
+			document.body.removeChild(msgDom);
+			document.body.removeChild(overlayDiv);
+		}
+	})
+	var overlayDiv = makeModal(msgDom);
+	document.body.appendChild(msgDom);
 
-    this.resizeFun = function(){
-        var cDom = msgDom.querySelector('.u-msg-content');
-        if (!cDom) return;
-        cDom.style.height = '';
-        var wholeHeight = msgDom.offsetHeight;
-        var contentHeight = msgDom.scrollHeight;
-        if(contentHeight > wholeHeight && cDom)
-            cDom.style.height = wholeHeight - (56+46) + 'px';
+	this.resizeFun = function() {
+		var cDom = msgDom.querySelector('.u-msg-content');
+		if(!cDom) return;
+		cDom.style.height = '';
+		var wholeHeight = msgDom.offsetHeight;
+		var contentHeight = msgDom.scrollHeight;
+		if(contentHeight > wholeHeight && cDom)
+			cDom.style.height = wholeHeight - (56 + 46) + 'px';
 
-    }.bind(this);
+	}.bind(this);
 
-    this.resizeFun();
-    u.on(window,'resize',this.resizeFun);
+	this.resizeFun();
+	on(window, 'resize', this.resizeFun);
 
 };
 
@@ -139,7 +153,7 @@ u.confirmDialog = function(options){
 /**
  * 三按钮确认框（是 否  取消）
  */
-u.threeBtnDialog = function(){
+var threeBtnDialog = function() {
 
 }
 
@@ -147,7 +161,7 @@ u.threeBtnDialog = function(){
  * dialog.js
  */
 
-u.dialogTemplate = '<div class="u-msg-dialog" id="{id}" style="{width}{height}">' +
+var dialogTemplate = '<div class="u-msg-dialog" id="{id}" style="{width}{height}">' +
 	'{close}' +
 	'</div>';
 
@@ -161,12 +175,12 @@ var dialogMode = function(options) {
 		id: '',
 		content: '',
 		hasCloseMenu: true,
-		template: u.dialogTemplate,
+		template: dialogTemplate,
 		width: '',
 		height: ''
 	}
 
-	options = u.extend(defaultOptions, options);
+	options = extend(defaultOptions, options);
 	this.id = options['id'];
 	this.hasCloseMenu = options['hasCloseMenu'];
 	this.content = options['content'];
@@ -187,7 +201,7 @@ var dialogMode = function(options) {
 	}.bind(this);
 
 	this.resizeFun();
-	u.on(window, 'resize', this.resizeFun);
+	on(window, 'resize', this.resizeFun);
 }
 
 dialogMode.prototype.create = function() {
@@ -202,18 +216,18 @@ dialogMode.prototype.create = function() {
 	templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
 
 	this.contentDom = document.querySelector(this.content); //
-	this.templateDom = u.makeDOM(templateStr);
+	this.templateDom = makeDOM(templateStr);
 	if(this.contentDom) { // msg第一种方式传入选择器，如果可以查找到对应dom节点，则创建整体dialog之后在msg位置添加dom元素
 		this.contentDomParent = this.contentDom.parentNode;
 		this.contentDom.style.display = 'block';
 	} else { // 如果查找不到对应dom节点，则按照字符串处理，直接将msg拼到template之后创建dialog
-		this.contentDom = u.makeDOM('<div><div class="u-msg-content"><p>' + this.content + '</p></div></div>');
+		this.contentDom = makeDOM('<div><div class="u-msg-content"><p>' + this.content + '</p></div></div>');
 	}
 	this.templateDom.appendChild(this.contentDom);
-	this.overlayDiv = u.makeModal(this.templateDom);
+	this.overlayDiv = makeModal(this.templateDom);
 	if(this.hasCloseMenu) {
 		this.closeDiv = this.templateDom.querySelector('.u-msg-close');
-		u.on(this.closeDiv, 'click', function() {
+		on(this.closeDiv, 'click', function() {
 			oThis.close();
 		});
 	}
@@ -248,7 +262,7 @@ dialogMode.prototype.close = function() {
 	this.isClosed = true;
 }
 
-u.dialog = function(options) {
+var dialog = function(options) {
 	return new dialogMode(options);
 }
 
@@ -259,7 +273,7 @@ u.dialog = function(options) {
                             ]
                     }
  */
-u.dialogWizard = function(options) {
+var dialogWizard = function(options) {
 	var dialogs = [],
 		curIndex = 0;
 	options.dialogs = options.dialogs || [],
@@ -268,7 +282,7 @@ u.dialogWizard = function(options) {
 		throw new Error('未加入对话框');
 	}
 	for(var i = 0; i < len; i++) {
-		dialogs.push(u.dialog(u.extend(options.dialogs[i], {
+		dialogs.push(dialog(extend(options.dialogs[i], {
 			lazyShow: true
 		})));
 	}
@@ -291,3 +305,10 @@ u.dialogWizard = function(options) {
 	}
 	return new wizard();
 }
+
+
+export {messageDialog,
+		confirmDialog,
+		dialogMode,
+		dialog,
+		dialogWizard};

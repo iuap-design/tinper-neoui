@@ -1,4 +1,14 @@
-u.Table = u.BaseComponent.extend({
+/**
+ * Module : neoui-datatable
+ * Author : Kvkens(yueming@yonyou.com)
+ * Date	  : 2016-08-02 15:23:19
+ */
+
+import {BaseComponent} from './sparrow/BaseComponent';
+import {compMgr} from './sparrow/compMgr';
+
+
+var Table = BaseComponent.extend({
     _CssClasses: {
 
         SELECTABLE: 'selectable',
@@ -88,7 +98,7 @@ u.Table = u.BaseComponent.extend({
         }
 
         label.appendChild(checkbox);
-        new u.Checkbox(label);
+        new Checkbox(label);
         return label;
     }
 
@@ -96,9 +106,11 @@ u.Table = u.BaseComponent.extend({
 
 
 
-if (u.compMgr)
-    u.compMgr.regComp({
-        comp: u.Table,
-        compAsString: 'u.Table',
-        css: 'u-table'
-    })
+
+compMgr.regComp({
+    comp: Table,
+    compAsString: 'u.Table',
+    css: 'u-table'
+});
+
+export {Table};

@@ -1,5 +1,5 @@
 /**
- * Module : webpack entry index
+ * Module : neoui-combobox
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-08-02 12:56:32
  */
@@ -8,7 +8,7 @@ import {BaseComponent} from './sparrow/BaseComponent';
 import {addClass,removeClass,hasClass,getStyle} from './sparrow/dom';
 import {on,stopEvent,trigger} from './sparrow/event';
 import {extend} from './sparrow/extend';
-import {isArray,isEmptyObject} from './sparrow/env';
+import {env} from './sparrow/env';
 import {compMgr} from './sparrow/compMgr';
 
 
@@ -58,7 +58,7 @@ var Combobox = BaseComponent.extend({
 
 					} else if (self.options.mutil == "true" || self.options.mutil == true) {
 						
-						if(!isArray(pk) ){
+						if(!env.isArray(pk) ){
 							if(typeof pk == "string" && pk !== ""){                   		
 								pk = pk.split(',');
 								self.mutilPks = pk;
@@ -180,7 +180,7 @@ var Combobox = BaseComponent.extend({
 	Combobox.fn.createDom = function() {
 
 		var data = this.options.dataSource;
-		if (isEmptyObject(data)) {
+		if (env.isEmptyObject(data)) {
 			throw new Error("dataSource为空！");
 		}
 

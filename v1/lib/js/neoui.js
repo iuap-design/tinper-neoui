@@ -56,15 +56,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 	
-	var _neouiButton = __webpack_require__(1);
+	var _neouiAutocomplete = __webpack_require__(1);
 	
-	var _neouiCheckbox = __webpack_require__(12);
+	var _neouiButton = __webpack_require__(12);
 	
-	var _neouiCombo = __webpack_require__(13);
+	var _neouiCheckbox = __webpack_require__(14);
 	
-	var _neouiTextfield = __webpack_require__(14);
+	var _neouiCombo = __webpack_require__(15);
 	
-	var _neouiCombobox = __webpack_require__(15);
+	var _neouiTextfield = __webpack_require__(16);
+	
+	var _neouiCombobox = __webpack_require__(17);
+	
+	var _neouiDataTable = __webpack_require__(18);
+	
+	var _neouiDialog = __webpack_require__(19);
+	
+	var _neouiLayout = __webpack_require__(20);
 
 /***/ },
 /* 1 */
@@ -75,51 +83,586 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.Button = undefined;
+	exports.Autocomplete = undefined;
 	
 	var _BaseComponent = __webpack_require__(2);
 	
 	var _dom = __webpack_require__(10);
 	
-	var _env = __webpack_require__(6);
-	
 	var _event = __webpack_require__(5);
 	
-	var _ripple = __webpack_require__(11);
+	var _extend = __webpack_require__(7);
+	
+	var _env = __webpack_require__(6);
+	
+	var _ajax = __webpack_require__(11);
 	
 	var _compMgr = __webpack_require__(9);
 	
-	/**
-	 * Module : neoui-button
-	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-08-02 13:01:05
-	 */
-	
-	var Button = _BaseComponent.BaseComponent.extend({
+	var Autocomplete = _BaseComponent.BaseComponent.extend({
+		defaults: {
+			inputClass: "ac_input",
+			resultsClass: "ac_results",
+			lineSeparator: "\n",
+			cellSeparator: "|",
+			minChars: 1,
+			delay: 400,
+			matchCase: 0,
+			matchSubset: 1,
+			matchContains: 0,
+			cacheLength: 1,
+			mustMatch: 0,
+			extraParams: {},
+			loadingClass: "ac_loading",
+			selectFirst: false,
+			selectOnly: false,
+			maxItemsToShow: -1,
+			autoFill: false,
+			width: 0,
+			source: null,
+			select: null,
+			multiSelect: false
+		},
 		init: function init() {
-			var rippleContainer = document.createElement('span');
-			(0, _dom.addClass)(rippleContainer, 'u-button-container');
-			this._rippleElement = document.createElement('span');
-			(0, _dom.addClass)(this._rippleElement, 'u-ripple');
-			if (_env.env.isIE8) (0, _dom.addClass)(this._rippleElement, 'oldIE');
-			rippleContainer.appendChild(this._rippleElement);
-			(0, _event.on)(this._rippleElement, 'mouseup', this.element.blur);
-			this.element.appendChild(rippleContainer);
+			var self = this;
+			this.options = (0, _extend.extend)({}, this.defaults, this.options);
+			this.requestIndex = 0;
+			this.pending = 0;
+			if (this.options.inputClass) {
+				(0, _dom.addClass)(this.element, this.options.inputClass);
+			}
+			this._results = document.querySelector('#autocompdiv');
+			if (!this._results) {
+				this._results = (0, _dom.makeDOM)('<div id="autocompdiv"></div>');
+				document.body.appendChild(this._results);
+			}
+			this._results.style.display = 'none';
+			this._results.style.position = 'absolute';
+			(0, _dom.addClass)(this._results, this.options.resultsClass);
+			if (this.options.width) {
+				this._results.style.width = this.options.width;
+			}
+			this.timeout = null;
+			this.prev = "";
+			this.active = -1;
+			this.cache = {};
+			this.keyb = false;
+			this.hasFocus = false;
+			this.lastKeyPressCode = null;
+			this._initSource();
+			(0, _event.on)(this.element, 'keydown', function (e) {
+				self.lastKeyPressCode = e.keyCode;
+				switch (e.keyCode) {
+					case 38:
+						// up
+						(0, _event.stopEvent)(e);
+						self.moveSelect(-1);
+						break;
+					case 40:
+						// down
+						(0, _event.stopEvent)(e);
+						self.moveSelect(1);
+						break;
+					case 9: // tab
+					case 13:
+						// return
+						if (self.selectCurrent()) {
+							// make sure to blur off the current field
+							// self.element.blur();
+							(0, _event.stopEvent)(e);
+						}
+						break;
+					default:
+						self.active = -1;
+						if (self.timeout) clearTimeout(self.timeout);
+						self.timeout = setTimeout(function () {
+							self.onChange();
+						}, self.options.delay);
+						break;
+				}
+			});
+			(0, _event.on)(this.element, 'focus', function () {
+				self.hasFocus = true;
+			});
+			(0, _event.on)(this.element, 'blur', function () {
+				self.hasFocus = false;
+				self.hideResults();
+			});
+			this.hideResultsNow();
+		},
+		flushCache: function flushCache() {
+			this.cache = {};
+			this.cache.data = {};
+			this.cache.length = 0;
+		},
+		_initSource: function _initSource() {
+			var array,
+			    url,
+			    self = this;
+			if (_env.env.isArray(this.options.source)) {
+				array = this.options.source;
+				this.source = function (request, response) {
+					//				response( $.ui.autocomplete.filter( array, request.term ) );
+					response(self.filterData(request.term, array));
+				};
+			} else if (typeof this.options.source === "string") {
+				url = this.options.source;
+				this.source = function (request, response) {
+					if (self.xhr) {
+						self.xhr.abort();
+					}
+					self.xhr = (0, _ajax.ajax)({
+						url: url,
+						data: request,
+						dataType: "json",
+						success: function success(data) {
+							response(data);
+						},
+						error: function error() {
+							response([]);
+						}
+					});
+				};
+			} else {
+				this.source = this.options.source;
+			}
+		},
+		_response: function _response() {
+			var self = this;
+			var index = ++this.requestIndex;
 	
-			(0, _event.on)(this.element, 'mouseup', this.element.blur);
-			(0, _event.on)(this.element, 'mouseleave', this.element.blur);
-			this.ripple = new _ripple.Ripple(this.element);
+			return function (content) {
+				if (index === self.requestIndex) {
+					self.__response(content);
+				}
+	
+				self.pending--;
+				if (!self.pending) {}
+			};
+		},
+		__response: function __response(content) {
+			if (content) this.receiveData2(content);
+			this.showResults();
+		},
+		onChange: function onChange() {
+			// ignore if the following keys are pressed: [del] [shift] [capslock]
+			if (this.lastKeyPressCode == 46 || this.lastKeyPressCode > 8 && this.lastKeyPressCode < 32) return this._results.style.disply = 'none';
+			if (!this.element.value) return;
+			var vs = this.element.value.split(','),
+			    v = vs[vs.length - 1].trim();
+			if (v == this.prev) return;
+			this.prev = v;
+			if (v.length >= this.options.minChars) {
+				(0, _dom.addClass)(this.element, this.options.loadingClass);
+				this.pending++;
+				this.source({
+					term: v
+				}, this._response());
+			} else {
+				(0, _dom.removeClass)(this.element, this.options.loadingClass);
+				this._results.style.display = 'none';
+			}
+		},
+		moveSelect: function moveSelect(step) {
+			var lis = this._results.querySelectorAll('li');
+			if (!lis) return;
+	
+			this.active += step;
+	
+			if (this.active < 0) {
+				this.active = 0;
+			} else if (this.active >= lis.length) {
+				this.active = lis.length - 1;
+			}
+			lis.forEach(function (li) {
+				(0, _dom.removeClass)(li, 'ac_over');
+			});
+			(0, _dom.addClass)(lis[this.active], 'ac_over');
+		},
+		selectCurrent: function selectCurrent() {
+			var li = this._results.querySelector('li.ac_over'); //$("li.ac_over", this.$results[0])[0];
+			if (!li) {
+				var _li = this._results.querySelectorAll('li'); //$("li", this.$results[0]);
+				if (this.options.selectOnly) {
+					if (_li.length == 1) li = _li[0];
+				} else if (this.options.selectFirst) {
+					li = _li[0];
+				}
+			}
+			if (li) {
+				this.selectItem(li);
+				return true;
+			} else {
+				return false;
+			}
+		},
+		selectItem: function selectItem(li) {
+			var self = this;
+			if (!li) {
+				li = document.createElement("li");
+				li.selectValue = "";
+			}
+			var v = li.selectValue ? li.selectValue : li.innerHTML;
+			this.lastSelected = v;
+			this.prev = v;
+			this._results.innerHTML = '';
+			if (this.options.multiSelect) {
+	
+				if ((this.element.value + ',').indexOf(v + ',') != -1) return;
+				var vs = this.element.value.split(',');
+				var lastValue = this.element.value.substring(0, this.element.value.lastIndexOf(','));
+	
+				this.element.value = (lastValue ? lastValue + ', ' : lastValue) + v + ', ';
+			} else {
+				this.element.value = v;
+			}
+	
+			this.hideResultsNow();
+	
+			this.element.focus();
+	
+			if (this.options.select) setTimeout(function () {
+				self.options.select(li._item, self);
+			}, 1);
+		},
+		createSelection: function createSelection(start, end) {
+			// get a reference to the input element
+			var field = this.element;
+			if (field.createTextRange) {
+				var selRange = field.createTextRange();
+				selRange.collapse(true);
+				selRange.moveStart("character", start);
+				selRange.moveEnd("character", end);
+				selRange.select();
+			} else if (field.setSelectionRange) {
+				field.setSelectionRange(start, end);
+			} else {
+				if (field.selectionStart) {
+					field.selectionStart = start;
+					field.selectionEnd = end;
+				}
+			}
+			field.focus();
+		},
+		// fills in the input box w/the first match (assumed to be the best match)
+		autoFill: function autoFill(sValue) {
+			// if the last user key pressed was backspace, don't autofill
+			if (this.lastKeyPressCode != 8) {
+				// fill in the value (keep the case the user has typed)
+				this.element.value = this.element.value + sValue.substring(this.prev.length);
+				// select the portion of the value not typed by the user (so the next character will erase)
+				this.createSelection(this.prev.length, sValue.length);
+			}
+		},
+		showResults: function showResults() {
+			// get the position of the input field right now (in case the DOM is shifted)
+			var pos = findPos(this.element);
+			// either use the specified width, or autocalculate based on form element
+			var iWidth = this.options.width > 0 ? this.options.width : this.element.offsetWidth;
+			// reposition
+			if ('100%' === this.options.width) {
+				this._results.style.top = pos.y + this.element.offsetHeight + "px";
+				this._results.style.left = pos.x + "px";
+				this._results.style.display = 'block';
+			} else {
+				this._results.style.width = parseInt(iWidth) + "px";
+				this._results.style.top = pos.y + this.element.offsetHeight + "px";
+				this._results.style.left = pos.x + "px";
+				this._results.style.display = 'block';
+			}
+		},
+		hideResults: function hideResults() {
+			var self = this;
+			if (this.timeout) clearTimeout(this.timeout);
+			this.timeout = setTimeout(function () {
+				self.hideResultsNow();
+			}, 200);
+		},
+		hideResultsNow: function hideResultsNow() {
+			if (this.timeout) clearTimeout(this.timeout);
+			(0, _dom.removeClass)(this.element, this.options.loadingClass);
+			//if (this.$results.is(":visible")) {
+			this._results.style.display = 'none';
+			//}
+			if (this.options.mustMatch) {
+				var v = this.element.value;
+				if (v != this.lastSelected) {
+					this.selectItem(null);
+				}
+			}
+		},
+		receiveData: function receiveData(q, data) {
+			if (data) {
+				(0, _dom.removeClass)(this.element, this.options.loadingClass);
+				this._results.innerHTML = '';
+	
+				if (!this.hasFocus || data.length == 0) return this.hideResultsNow();
+	
+				this._results.appendChild(this.dataToDom(data));
+				// autofill in the complete box w/the first match as long as the user hasn't entered in more data
+				if (this.options.autoFill && this.element.value.toLowerCase() == q.toLowerCase()) this.autoFill(data[0][0]);
+				this.showResults();
+			} else {
+				this.hideResultsNow();
+			}
+		},
+		filterData: function filterData(v, items) {
+			if (!v) return items;
+			var _items = [];
+			for (var i = 0, count = items.length; i < count; i++) {
+				var label = items[i].label;
+				if (label.indexOf(v) > -1) _items.push(items[i]);
+			}
+			return _items;
+		},
+		receiveData2: function receiveData2(items) {
+			if (items) {
+				(0, _dom.removeClass)(this.element, this.options.loadingClass);
+				this._results.innerHTML = '';
+	
+				// if the field no longer has focus or if there are no matches, do not display the drop down
+				if (!this.hasFocus || items.length == 0) return this.hideResultsNow();
+	
+				this._results.appendChild(this.dataToDom2(items));
+				this.showResults();
+			} else {
+				this.hideResultsNow();
+			}
+		},
+		dataToDom2: function dataToDom2(items) {
+			var ul = document.createElement("ul");
+			var num = items.length;
+			var me = this;
+			var showMoreMenu = false;
+	
+			// limited results to a max number
+			if (this.options.maxItemsToShow > 0 && this.options.maxItemsToShow < num) {
+				num = this.options.maxItemsToShow;
+				if (this.options.moreMenuClick) {
+					showMoreMenu = true;
+				}
+			}
+	
+			for (var i = 0; i < num; i++) {
+				var item = items[i];
+				if (!item) continue;
+				var li = document.createElement("li");
+				if (this.options.formatItem) li.innerHTML = this.options.formatItem(item, i, num);else li.innerHTML = item.label;
+				li.selectValue = item.label;
+				li._item = item;
+				ul.appendChild(li);
+				(0, _event.on)(li, 'mouseenter', function () {
+					var _li = ul.querySelector('li.ac_over');
+					if (_li) (0, _dom.removeClass)(_li, 'ac_over');;
+					(0, _dom.addClass)(this, "ac_over");
+					me.active = indexOf(ul.querySelectorAll('li'), this);
+				});
+				(0, _event.on)(li, 'mouseleave', function () {
+					(0, _dom.removeClass)(this, "ac_over");
+				});
+				(0, _event.on)(li, 'mousedown', function (e) {
+					(0, _event.stopEvent)(e);
+					me.selectItem(this);
+				});
+			}
+			if (showMoreMenu) {
+				var li = document.createElement("li");
+				li.innerHTML = '更多';
+				ul.appendChild(li);
+				(0, _event.on)(li, 'mouseenter', function () {
+					var _li = ul.querySelector('li.ac_over');
+					if (_li) (0, _dom.removeClass)(_li, 'ac_over');;
+					(0, _dom.addClass)(this, "ac_over");
+				});
+				(0, _event.on)(li, 'mouseleave', function () {
+					(0, _dom.removeClass)(this, "ac_over");
+				});
+				(0, _event.on)(li, 'mousedown', function (e) {
+					(0, _event.stopEvent)(e);
+					me.options.moreMenuClick.call(me);
+				});
+			}
+			return ul;
+		},
+		parseData: function parseData() {
+			if (!data) return null;
+			var parsed = [];
+			var rows = data.split(this.options.lineSeparator);
+			for (var i = 0; i < rows.length; i++) {
+				var row = rows[i];
+				if (row) {
+					parsed[parsed.length] = row.split(this.options.cellSeparator);
+				}
+			}
+			return parsed;
+		},
+		dataToDom: function dataToDom(data) {
+			var ul = document.createElement("ul");
+			var num = data.length;
+			var self = this;
+			var showMoreMenu = false;
+	
+			// limited results to a max number
+			if (this.options.maxItemsToShow > 0 && this.options.maxItemsToShow < num) {
+				num = this.options.maxItemsToShow;
+				if (this.options.moreMenuClick) {
+					showMoreMenu = true;
+				}
+			}
+	
+			for (var i = 0; i < num; i++) {
+				var row = data[i];
+				if (!row) continue;
+				var li = document.createElement("li");
+				if (this.options.formatItem) {
+					li.innerHTML = this.options.formatItem(row, i, num);
+					li.selectValue = row[0];
+				} else {
+					li.innerHTML = row[0];
+					li.selectValue = row[0];
+				}
+				var extra = null;
+				if (row.length > 1) {
+					extra = [];
+					for (var j = 1; j < row.length; j++) {
+						extra[extra.length] = row[j];
+					}
+				}
+				li.extra = extra;
+				ul.appendChild(li);
+				(0, _event.on)(li, 'mouseenter', function () {
+					var _li = ul.querySelector('li.ac_over');
+					if (_li) (0, _dom.removeClass)(_li, 'ac_over');;
+					(0, _dom.addClass)(this, "ac_over");
+					self.active = indexOf(ul.querySelectorAll('li'), this);
+				});
+				(0, _event.on)(li, 'mouseleave', function () {
+					(0, _dom.removeClass)(this, "ac_over");
+				});
+				(0, _event.on)(li, 'mousedown', function () {
+					(0, _event.stopEvent)(e);
+					self.selectItem(this);
+				});
+			}
+			if (showMoreMenu) {
+				var li = document.createElement("li");
+				li.innerHTML = '更多';
+				ul.appendChild(li);
+				(0, _event.on)(li, 'mouseenter', function () {
+					var _li = ul.querySelector('li.ac_over');
+					if (_li) (0, _dom.removeClass)(_li, 'ac_over');;
+					(0, _dom.addClass)(this, "ac_over");
+				});
+				(0, _event.on)(li, 'mouseleave', function () {
+					(0, _dom.removeClass)(this, "ac_over");
+				});
+				(0, _event.on)(li, 'mousedown', function (e) {
+					(0, _event.stopEvent)(e);
+					self.options.moreMenuClick.call(self);
+				});
+			}
+			return ul;
+		},
+		requestData: function requestData() {
+			var self = this;
+			if (!this.options.matchCase) q = q.toLowerCase();
+			var data = this.options.cacheLength ? this.loadFromCache(q) : null;
+			// recieve the cached data
+			if (data) {
+				this.receiveData(q, data);
+				// if an AJAX url has been supplied, try loading the data now
+			} else if (typeof this.options.url == "string" && this.options.url.length > 0) {
+				(0, _ajax.ajax)({
+					url: this.makeUrl(q),
+					success: function success(data) {
+						data = self.parseData(data);
+						self.addToCache(q, data);
+						self.receiveData(q, data);
+					}
+				});
+				// if there's been no data found, remove the loading class
+			} else {
+				(0, _dom.removeClass)(this.element, this.options.loadingClass);
+			}
+		},
+		makeUrl: function makeUrl(q) {
+			var url = this.options.url + "?q=" + encodeURI(q);
+			for (var i in this.options.extraParams) {
+				url += "&" + i + "=" + encodeURI(this.options.extraParams[i]);
+			}
+			return url;
+		},
+		loadFromCache: function loadFromCache() {
+			if (!q) return null;
+			if (this.cache.data[q]) return this.cache.data[q];
+			if (this.options.matchSubset) {
+				for (var i = q.length - 1; i >= this.options.minChars; i--) {
+					var qs = q.substr(0, i);
+					var c = this.cache.data[qs];
+					if (c) {
+						var csub = [];
+						for (var j = 0; j < c.length; j++) {
+							var x = c[j];
+							var x0 = x[0];
+							if (this.matchSubset(x0, q)) {
+								csub[csub.length] = x;
+							}
+						}
+						return csub;
+					}
+				}
+			}
+			return null;
+		},
+		matchSubset: function matchSubset(s, sub) {
+			if (!this.options.matchCase) s = s.toLowerCase();
+			var i = s.indexOf(sub);
+			if (i == -1) return false;
+			return i == 0 || this.options.matchContains;
+		},
+		addToCache: function addToCache(q, data) {
+			if (!data || !q || !this.options.cacheLength) return;
+			if (!this.cache.length || this.cache.length > this.options.cacheLength) {
+				this.flushCache();
+				this.cache.length++;
+			} else if (!this.cache[q]) {
+				this.cache.length++;
+			}
+			this.cache.data[q] = data;
 		}
+	}); /**
+	     * Module : neoui-autocompete
+	     * Author : Kvkens(yueming@yonyou.com)
+	     * Date	  : 2016-08-02 15:14:43
+	     */
 	
-	});
+	function findPos(obj) {
+		var curleft = obj.offsetLeft || 0;
+		var curtop = obj.offsetTop || 0;
+		while (obj = obj.offsetParent) {
+			curleft += obj.offsetLeft;
+			curtop += obj.offsetTop;
+		}
+		return {
+			x: curleft,
+			y: curtop
+		};
+	}
+	
+	function indexOf(element, e) {
+		for (var i = 0; i < element.length; i++) {
+			if (element[i] == e) return i;
+		}
+		return -1;
+	};
 	
 	_compMgr.compMgr.regComp({
-		comp: Button,
-		compAsString: 'u.Button',
-		css: 'u-button'
+		comp: Autocomplete,
+		compAsString: 'u.Autocomplete',
+		css: 'u-autocomplete'
 	});
 	
-	exports.Button = Button;
+	exports.Autocomplete = Autocomplete;
 
 /***/ },
 /* 2 */
@@ -1771,6 +2314,187 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.ajax = undefined;
+	
+	var _env = __webpack_require__(6);
+	
+	var XmlHttp = {
+		get: "get",
+		post: "post",
+		reqCount: 4,
+		createXhr: function createXhr() {
+			var xmlhttp = null;
+			/*if (window.XMLHttpRequest) {
+	    xmlhttp = new XMLHttpRequest();
+	  } else {
+	    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	  }*/
+			if (_env.env.isIE8) {
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); //IE低版本创建XMLHTTP  
+			} else if (_env.env.isIE) {
+				xmlhttp = new ActiveXObject("Msxml2.XMLHTTP"); //IE高版本创建XMLHTTP
+			} else if (window.XMLHttpRequest) {
+				xmlhttp = new XMLHttpRequest();
+			}
+			return xmlhttp;
+		},
+		ajax: function ajax(_json) {
+			var url = _json["url"];
+			var callback = _json["success"];
+			var async = _json["async"] == undefined ? true : _json["async"];
+			var error = _json["error"];
+			var params = _json["data"] || {};
+			var method = (_json["type"] == undefined ? XmlHttp.post : _json["type"]).toLowerCase();
+			var gzipFlag = params.compressType;
+			url = XmlHttp.serializeUrl(url);
+			params = XmlHttp.serializeParams(params);
+			if (method == XmlHttp.get && params != null) {
+				url += "&" + params;
+				params = null; //如果是get请求,保证最终会执行send(null)
+			}
+	
+			var xmlhttp = XmlHttp.createXhr();
+			//xmlhttp.open(method, url+ escape(new Date()), async);
+			xmlhttp.open(method, url, async);
+	
+			if (method == XmlHttp.post) {
+				xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=UTF-8");
+			}
+	
+			var execount = 0;
+			// 异步
+			if (async) {
+				// readyState 从 1~4发生4次变化
+				xmlhttp.onreadystatechange = function () {
+					execount++;
+					// 等待readyState状态不再变化之后,再执行回调函数
+					//if (execount == XmlHttp.reqCount) {// 火狐下存在问题，修改判断方式
+					if (xmlhttp.readyState == XmlHttp.reqCount) {
+						XmlHttp.execBack(xmlhttp, callback, error);
+					}
+				};
+				// send方法要在在回调函数之后执行
+				xmlhttp.send(params);
+			} else {
+				// 同步 readyState 直接变为 4
+				// 并且 send 方法要在回调函数之前执行
+				xmlhttp.send(params);
+				XmlHttp.execBack(xmlhttp, callback, error);
+			}
+		},
+		execBack: function execBack(xmlhttp, callback, error) {
+			//if (xmlhttp.readyState == 4
+			if (xmlhttp.status == 200 || xmlhttp.status == 304 || xmlhttp.readyState == 4) {
+				callback(xmlhttp.responseText, xmlhttp.status, xmlhttp);
+			} else {
+				if (error) {
+					error(xmlhttp.responseText, xmlhttp.status, xmlhttp);
+				} else {
+					var errorMsg = "no error callback function!";
+					if (xmlhttp.responseText) {
+						errorMsg = xmlhttp.responseText;
+					}
+					alert(errorMsg);
+					// throw errorMsg;
+				}
+			}
+		},
+		serializeUrl: function serializeUrl(url) {
+			var cache = "cache=" + Math.random();
+			if (url.indexOf("?") > 0) {
+				url += "&" + cache;
+			} else {
+				url += "?" + cache;
+			}
+			return url;
+		},
+		serializeParams: function serializeParams(params) {
+			var ud = undefined;
+			if (ud == params || params == null || params == "") {
+				return null;
+			}
+			if (params.constructor == Object) {
+				var result = "";
+				for (var p in params) {
+					result += p + "=" + encodeURIComponent(params[p]) + "&";
+				}
+				return result.substring(0, result.length - 1);
+			}
+			return params;
+		}
+	}; /**
+	    * Module : Sparrow ajax
+	    * Author : Kvkens(yueming@yonyou.com)
+	    * Date	  : 2016-07-28 19:06:36
+	    */
+	
+	var ajax = XmlHttp.ajax;
+	exports.ajax = ajax;
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.Button = undefined;
+	
+	var _BaseComponent = __webpack_require__(2);
+	
+	var _dom = __webpack_require__(10);
+	
+	var _env = __webpack_require__(6);
+	
+	var _event = __webpack_require__(5);
+	
+	var _ripple = __webpack_require__(13);
+	
+	var _compMgr = __webpack_require__(9);
+	
+	/**
+	 * Module : neoui-button
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-02 13:01:05
+	 */
+	
+	var Button = _BaseComponent.BaseComponent.extend({
+		init: function init() {
+			var rippleContainer = document.createElement('span');
+			(0, _dom.addClass)(rippleContainer, 'u-button-container');
+			this._rippleElement = document.createElement('span');
+			(0, _dom.addClass)(this._rippleElement, 'u-ripple');
+			if (_env.env.isIE8) (0, _dom.addClass)(this._rippleElement, 'oldIE');
+			rippleContainer.appendChild(this._rippleElement);
+			(0, _event.on)(this._rippleElement, 'mouseup', this.element.blur);
+			this.element.appendChild(rippleContainer);
+	
+			(0, _event.on)(this.element, 'mouseup', this.element.blur);
+			(0, _event.on)(this.element, 'mouseleave', this.element.blur);
+			this.ripple = new _ripple.Ripple(this.element);
+		}
+	
+	});
+	
+	_compMgr.compMgr.regComp({
+		comp: Button,
+		compAsString: 'u.Button',
+		css: 'u-button'
+	});
+	
+	exports.Button = Button;
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
@@ -1996,7 +2720,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.Ripple = Ripple;
 
 /***/ },
-/* 12 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2223,7 +2947,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.Checkbox = Checkbox;
 
 /***/ },
-/* 13 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2241,7 +2965,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _event = __webpack_require__(5);
 	
-	var _neouiTextfield = __webpack_require__(14);
+	var _neouiTextfield = __webpack_require__(16);
 	
 	var _compMgr = __webpack_require__(9);
 	
@@ -2554,7 +3278,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.Combo = Combo;
 
 /***/ },
-/* 14 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2786,7 +3510,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.Text = Text;
 
 /***/ },
-/* 15 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2809,7 +3533,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _compMgr = __webpack_require__(9);
 	
 	/**
-	 * Module : webpack entry index
+	 * Module : neoui-combobox
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-08-02 12:56:32
 	 */
@@ -2858,7 +3582,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						}
 					} else if (self.options.mutil == "true" || self.options.mutil == true) {
 	
-						if (!(0, _env.isArray)(pk)) {
+						if (!_env.env.isArray(pk)) {
 							if (typeof pk == "string" && pk !== "") {
 								pk = pk.split(',');
 								self.mutilPks = pk;
@@ -2963,7 +3687,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Combobox.fn.createDom = function () {
 	
 		var data = this.options.dataSource;
-		if ((0, _env.isEmptyObject)(data)) {
+		if (_env.env.isEmptyObject(data)) {
 			throw new Error("dataSource为空！");
 		}
 	
@@ -3302,6 +4026,659 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	
 	exports.Combobox = Combobox;
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.Table = undefined;
+	
+	var _BaseComponent = __webpack_require__(2);
+	
+	var _compMgr = __webpack_require__(9);
+	
+	/**
+	 * Module : neoui-datatable
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-02 15:23:19
+	 */
+	
+	var Table = _BaseComponent.BaseComponent.extend({
+	    _CssClasses: {
+	
+	        SELECTABLE: 'selectable',
+	        SELECT_ELEMENT: 'u-table-select',
+	        IS_SELECTED: 'is-selected',
+	        IS_UPGRADED: 'is-upgraded'
+	    },
+	
+	    init: function init() {
+	        var self = this;
+	        this.element_ = this.element;
+	        if (this.element_) {
+	            var firstHeader = this.element_.querySelector('th');
+	            var bodyRows = Array.prototype.slice.call(this.element_.querySelectorAll('tbody tr'));
+	            var footRows = Array.prototype.slice.call(this.element_.querySelectorAll('tfoot tr'));
+	            var rows = bodyRows.concat(footRows);
+	
+	            //if (this.element_.classList.contains(this._CssClasses.SELECTABLE)) {
+	            //    var th = document.createElement('th');
+	            //    var headerCheckbox = this._createCheckbox(null, rows);
+	            //    th.appendChild(headerCheckbox);
+	            //    firstHeader.parentElement.insertBefore(th, firstHeader);
+	            //
+	            //    for (var i = 0; i < rows.length; i++) {
+	            //        var firstCell = rows[i].querySelector('td');
+	            //        if (firstCell) {
+	            //            var td = document.createElement('td');
+	            //            if (rows[i].parentNode.nodeName.toUpperCase() === 'TBODY') {
+	            //                var rowCheckbox = this._createCheckbox(rows[i]);
+	            //                td.appendChild(rowCheckbox);
+	            //            }
+	            //            rows[i].insertBefore(td, firstCell);
+	            //        }
+	            //    }
+	            //    this.element_.classList.add(this._CssClasses.IS_UPGRADED);
+	            //}
+	        }
+	    },
+	    _selectRow: function _selectRow(checkbox, row, opt_rows) {
+	        if (row) {
+	            return function () {
+	                if (checkbox.checked) {
+	                    row.classList.add(this._CssClasses.IS_SELECTED);
+	                } else {
+	                    row.classList.remove(this._CssClasses.IS_SELECTED);
+	                }
+	            }.bind(this);
+	        }
+	
+	        if (opt_rows) {
+	            return function () {
+	                var i;
+	                var el;
+	                if (checkbox.checked) {
+	                    for (i = 0; i < opt_rows.length; i++) {
+	                        el = opt_rows[i].querySelector('td').querySelector('.u-checkbox');
+	                        // el['MaterialCheckbox'].check();
+	                        opt_rows[i].classList.add(this._CssClasses.IS_SELECTED);
+	                    }
+	                } else {
+	                    for (i = 0; i < opt_rows.length; i++) {
+	                        el = opt_rows[i].querySelector('td').querySelector('.u-checkbox');
+	                        //el['MaterialCheckbox'].uncheck();
+	                        opt_rows[i].classList.remove(this._CssClasses.IS_SELECTED);
+	                    }
+	                }
+	            }.bind(this);
+	        }
+	    },
+	    _createCheckbox: function _createCheckbox(row, opt_rows) {
+	        var label = document.createElement('label');
+	        var labelClasses = ['u-checkbox', this._CssClasses.SELECT_ELEMENT];
+	        label.className = labelClasses.join(' ');
+	        var checkbox = document.createElement('input');
+	        checkbox.type = 'checkbox';
+	        checkbox.classList.add('u-checkbox-input');
+	
+	        if (row) {
+	            checkbox.checked = row.classList.contains(this._CssClasses.IS_SELECTED);
+	            checkbox.addEventListener('change', this._selectRow(checkbox, row));
+	        } else if (opt_rows) {
+	            checkbox.addEventListener('change', this._selectRow(checkbox, null, opt_rows));
+	        }
+	
+	        label.appendChild(checkbox);
+	        new Checkbox(label);
+	        return label;
+	    }
+	
+	});
+	
+	_compMgr.compMgr.regComp({
+	    comp: Table,
+	    compAsString: 'u.Table',
+	    css: 'u-table'
+	});
+	
+	exports.Table = Table;
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.dialogWizard = exports.dialog = exports.dialogMode = exports.confirmDialog = exports.messageDialog = undefined;
+	
+	var _BaseComponent = __webpack_require__(2);
+	
+	var _dom = __webpack_require__(10);
+	
+	var _event = __webpack_require__(5);
+	
+	var _extend = __webpack_require__(7);
+	
+	var _neouiButton = __webpack_require__(12);
+	
+	var _compMgr = __webpack_require__(9);
+	
+	/**
+	 * messageDialog.js
+	 */
+	
+	/**
+	 * Module : neoui-dialog
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-02 15:29:55
+	 */
+	
+	'use strict';
+	
+	/**
+	 * 消息提示框
+	 * @param options
+	 */
+	
+	var messageDialogTemplate = '<div class="u-msg-dialog">' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content">' + '<p>{msg}</p>' + '</div>' + '<div class="u-msg-footer only-one-btn"><button class="u-msg-button u-button primary raised">{btnText}</button></div>' + '</div>';
+	
+	var messageDialog = function messageDialog(options) {
+		var title, msg, btnText, template;
+		if (typeof options === 'string') {
+			options = {
+				msg: options
+			};
+		}
+		msg = options['msg'] || "";
+		title = options['title'] || "提示";
+		btnText = options['btnText'] || "确定";
+		template = options['template'] || messageDialogTemplate;
+	
+		template = template.replace('{msg}', msg);
+		template = template.replace('{title}', title);
+		template = template.replace('{btnText}', btnText);
+	
+		var msgDom = (0, _dom.makeDOM)(template);
+	
+		var closeBtn = msgDom.querySelector('.u-msg-button');
+		new _neouiButton.Button({
+			el: closeBtn
+		});
+		(0, _event.on)(closeBtn, 'click', function () {
+			document.body.removeChild(msgDom);
+			document.body.removeChild(overlayDiv);
+		});
+		var overlayDiv = makeModal(msgDom);
+		document.body.appendChild(msgDom);
+	
+		this.resizeFun = function () {
+			var cDom = msgDom.querySelector('.u-msg-content');
+			if (!cDom) return;
+			cDom.style.height = '';
+			var wholeHeight = msgDom.offsetHeight;
+			var contentHeight = msgDom.scrollHeight;
+			if (contentHeight > wholeHeight && cDom) cDom.style.height = wholeHeight - (56 + 46) + 'px';
+		}.bind(this);
+	
+		this.resizeFun();
+		(0, _event.on)(window, 'resize', this.resizeFun);
+	};
+	
+	/**
+	 * Module : confirmDialog
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-07-29 10:21:33
+	 */
+	var confirmDialogTemplate = '<div class="u-msg-dialog">' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content">' + '<p>{msg}</p>' + '</div>' + '<div class="u-msg-footer"><button class="u-msg-ok u-button primary raised">{okText}</button><button class="u-msg-cancel u-button">{cancelText}</button></div>' + '</div>';
+	
+	var confirmDialog = function confirmDialog(options) {
+		var title, msg, okText, cancelText, template, onOk, onCancel;
+		msg = options['msg'] || "";
+		title = options['title'] || "确认";
+		okText = options['okText'] || "确定";
+		cancelText = options['cancelText'] || "取消";
+		onOk = options['onOk'] || function () {};
+		onCancel = options['onCancel'] || function () {};
+		template = options['template'] || confirmDialogTemplate;
+	
+		template = template.replace('{msg}', msg);
+		template = template.replace('{title}', title);
+		template = template.replace('{okText}', okText);
+		template = template.replace('{cancelText}', cancelText);
+	
+		var msgDom = (0, _dom.makeDOM)(template);
+		var okBtn = msgDom.querySelector('.u-msg-ok');
+		var cancelBtn = msgDom.querySelector('.u-msg-cancel');
+		new _neouiButton.Button({
+			el: okBtn
+		});
+		new _neouiButton.Button({
+			el: cancelBtn
+		});
+		(0, _event.on)(okBtn, 'click', function () {
+			if (onOk() !== false) {
+				document.body.removeChild(msgDom);
+				document.body.removeChild(overlayDiv);
+			}
+		});
+		(0, _event.on)(cancelBtn, 'click', function () {
+			if (onCancel() !== false) {
+				document.body.removeChild(msgDom);
+				document.body.removeChild(overlayDiv);
+			}
+		});
+		var overlayDiv = makeModal(msgDom);
+		document.body.appendChild(msgDom);
+	
+		this.resizeFun = function () {
+			var cDom = msgDom.querySelector('.u-msg-content');
+			if (!cDom) return;
+			cDom.style.height = '';
+			var wholeHeight = msgDom.offsetHeight;
+			var contentHeight = msgDom.scrollHeight;
+			if (contentHeight > wholeHeight && cDom) cDom.style.height = wholeHeight - (56 + 46) + 'px';
+		}.bind(this);
+	
+		this.resizeFun();
+		(0, _event.on)(window, 'resize', this.resizeFun);
+	};
+	
+	/**
+	 * Created by dingrf on 2015-11-19.
+	 */
+	
+	/**
+	 * 三按钮确认框（是 否  取消）
+	 */
+	var threeBtnDialog = function threeBtnDialog() {};
+	
+	/**
+	 * dialog.js
+	 */
+	
+	var dialogTemplate = '<div class="u-msg-dialog" id="{id}" style="{width}{height}">' + '{close}' + '</div>';
+	
+	var dialogMode = function dialogMode(options) {
+		if (typeof options === 'string') {
+			options = {
+				content: options
+			};
+		}
+		var defaultOptions = {
+			id: '',
+			content: '',
+			hasCloseMenu: true,
+			template: dialogTemplate,
+			width: '',
+			height: ''
+		};
+	
+		options = (0, _extend.extend)(defaultOptions, options);
+		this.id = options['id'];
+		this.hasCloseMenu = options['hasCloseMenu'];
+		this.content = options['content'];
+		this.template = options['template'];
+		this.width = options['width'];
+		this.height = options['height'];
+		this.lazyShow = options['lazyShow'];
+		this.create();
+	
+		this.resizeFun = function () {
+			var cDom = this.contentDom.querySelector('.u-msg-content');
+			cDom.style.height = '';
+			var wholeHeight = this.templateDom.offsetHeight;
+			var contentHeight = this.contentDom.offsetHeight;
+			if (contentHeight > wholeHeight && cDom) cDom.style.height = wholeHeight - (56 + 46) + 'px';
+		}.bind(this);
+	
+		this.resizeFun();
+		(0, _event.on)(window, 'resize', this.resizeFun);
+	};
+	
+	dialogMode.prototype.create = function () {
+		var closeStr = '';
+		var oThis = this;
+		if (this.hasCloseMenu) {
+			var closeStr = '<div class="u-msg-close"> <span aria-hidden="true">&times;</span></div>';
+		}
+		var templateStr = this.template.replace('{id}', this.id);
+		templateStr = templateStr.replace('{close}', closeStr);
+		templateStr = templateStr.replace('{width}', this.width ? 'width:' + this.width + ';' : '');
+		templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
+	
+		this.contentDom = document.querySelector(this.content); //
+		this.templateDom = (0, _dom.makeDOM)(templateStr);
+		if (this.contentDom) {
+			// msg第一种方式传入选择器，如果可以查找到对应dom节点，则创建整体dialog之后在msg位置添加dom元素
+			this.contentDomParent = this.contentDom.parentNode;
+			this.contentDom.style.display = 'block';
+		} else {
+			// 如果查找不到对应dom节点，则按照字符串处理，直接将msg拼到template之后创建dialog
+			this.contentDom = (0, _dom.makeDOM)('<div><div class="u-msg-content"><p>' + this.content + '</p></div></div>');
+		}
+		this.templateDom.appendChild(this.contentDom);
+		this.overlayDiv = makeModal(this.templateDom);
+		if (this.hasCloseMenu) {
+			this.closeDiv = this.templateDom.querySelector('.u-msg-close');
+			(0, _event.on)(this.closeDiv, 'click', function () {
+				oThis.close();
+			});
+		}
+		if (this.lazyShow) {
+			this.templateDom.style.display = 'none';
+			this.overlayDiv.style.display = 'none';
+		}
+		document.body.appendChild(this.templateDom);
+		this.isClosed = false;
+	};
+	
+	dialogMode.prototype.show = function () {
+		if (this.isClosed) {
+			this.create();
+		}
+		this.templateDom.style.display = 'block';
+		this.overlayDiv.style.display = 'block';
+	};
+	
+	dialogMode.prototype.hide = function () {
+		this.templateDom.style.display = 'none';
+		this.overlayDiv.style.display = 'none';
+	};
+	
+	dialogMode.prototype.close = function () {
+		if (this.contentDom) {
+			this.contentDom.style.display = 'none';
+			this.contentDomParent.appendChild(this.contentDom);
+		}
+		document.body.removeChild(this.templateDom);
+		document.body.removeChild(this.overlayDiv);
+		this.isClosed = true;
+	};
+	
+	var dialog = function dialog(options) {
+		return new dialogMode(options);
+	};
+	
+	/**
+	 * 对话框向导
+	 * @param options:  {dialogs: [{content:".J-goods-pro-add-1-dialog",hasCloseMenu:false},
+	                               {content:".J-goods-pro-add-2-dialog",hasCloseMenu:false},
+	                            ]
+	                    }
+	 */
+	var dialogWizard = function dialogWizard(options) {
+		var dialogs = [],
+		    curIndex = 0;
+		options.dialogs = options.dialogs || [], len = options.dialogs.length;
+		if (len == 0) {
+			throw new Error('未加入对话框');
+		}
+		for (var i = 0; i < len; i++) {
+			dialogs.push(dialog((0, _extend.extend)(options.dialogs[i], {
+				lazyShow: true
+			})));
+		}
+		var wizard = function wizard() {};
+		wizard.prototype.show = function () {
+			dialogs[curIndex].show();
+		};
+		wizard.prototype.next = function () {
+			dialogs[curIndex].hide();
+			dialogs[++curIndex].show();
+		};
+		wizard.prototype.prev = function () {
+			dialogs[curIndex].hide();
+			dialogs[--curIndex].show();
+		};
+		wizard.prototype.close = function () {
+			for (var i = 0; i < len; i++) {
+				dialogs[i].close();
+			}
+		};
+		return new wizard();
+	};
+	
+	exports.messageDialog = messageDialog;
+	exports.confirmDialog = confirmDialog;
+	exports.dialogMode = dialogMode;
+	exports.dialog = dialog;
+	exports.dialogWizard = dialogWizard;
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.MDLayout = undefined;
+	
+	var _BaseComponent = __webpack_require__(2);
+	
+	var _dom = __webpack_require__(10);
+	
+	var _event = __webpack_require__(5);
+	
+	var _extend = __webpack_require__(7);
+	
+	var _env = __webpack_require__(6);
+	
+	var _neouiButton = __webpack_require__(12);
+	
+	var _compMgr = __webpack_require__(9);
+	
+	var MDLayout = _BaseComponent.BaseComponent.extend({
+		_CssClasses: {
+			MASTER: 'u-mdlayout-master',
+			DETAIL: 'u-mdlayout-detail',
+			PAGE: 'u-mdlayout-page',
+			PAGE_HEADER: 'u-mdlayout-page-header',
+			PAGE_SECTION: 'u-mdlayout-page-section',
+			PAGE_FOOTER: 'u-mdlayout-page-footer'
+		},
+		init: function init() {
+			//this.browser = _getBrowserInfo();
+			var me = this;
+			this.minWidth = 600;
+			//this.options = $.extend({}, MDLayout.DEFAULTS, options)
+			//this.$element.css('position','relative').css('width','100%').css('height','100%').css('overflow','hidden')
+			this._master = this.element.querySelector('.' + this._CssClasses.MASTER);
+			this._detail = this.element.querySelector('.' + this._CssClasses.DETAIL);
+	
+			//this.$master.css('float','left').css('height','100%')
+			//this.$detail.css('height','100%').css('overflow','hidden').css('position','relative');
+			if (this.master) this.masterWidth = this._master.offsetWidth;else this.masterWidth = 0;
+			this.detailWidth = this._detail.offsetWidth;
+			if (this._master) this.mPages = this._master.querySelectorAll('.' + this._CssClasses.PAGE);
+			this.dPages = this._detail.querySelectorAll('.' + this._CssClasses.PAGE);
+			this.mPageMap = {};
+			this.dPageMap = {};
+			if (this._master) this.initPages(this.mPages, 'master');
+			this.initPages(this.dPages, 'detail');
+	
+			this.mHistory = [];
+			this.dHistory = [];
+			this.isNarrow = null;
+			this.response();
+			(0, _event.on)(window, 'resize', function () {
+				me.response();
+			});
+		},
+	
+		initPages: function initPages(pages, type) {
+			var pageMap, pWidth;
+			if (type === 'master') {
+				pageMap = this.mPageMap;
+				pWidth = this.masterWidth;
+			} else {
+				pageMap = this.dPageMap;
+				pWidth = this.detailWidth;
+			}
+			for (var i = 0; i < pages.length; i++) {
+				var pid = pages[i].getAttribute('id');
+				if (!pid) throw new Error('u-mdlayout-page mast have id attribute');
+				pageMap[pid] = pages[i];
+				if (i === 0) {
+					if (type === 'master') this.current_m_pageId = pid;else this.current_d_pageId = pid;
+					(0, _dom.addClass)(pages[i], 'current');
+					//pages[i].style.transform = 'translate3d('+ pWidth +'px,0,0)';
+					pages[i].style.transform = 'translate3d(0,0,0)';
+				} else {
+					pages[i].style.transform = 'translate3d(' + pWidth + 'px,0,0)';
+				}
+				if (_env.env.isIE8 || _env.env.isIE9) {
+					(0, _dom.addClass)(pages[i], 'let-ie9');
+				}
+			}
+		},
+	
+		//	MDLayout.DEFAULTS = {
+		//		minWidth: 600,
+		////		masterFloat: false,
+		//		afterNarrow:function(){},
+		//		afterUnNarrow:function(){},
+		//		afterMasterGo:function(pageId){},
+		//		afterMasterBack:function(pageId){},
+		//		afterDetailGo:function(pageId){},
+		//		afterDetailBack:function(pageId){}
+		//	}
+	
+		response: function response() {
+			var totalWidth = this.element.offsetWidth;
+			if (totalWidth < this.minWidth) {
+				if (this.isNarrow == null || this.isNarrow == false) this.isNarrow = true;
+				this.hideMaster();
+			} else {
+				if (this.isNarrow == null || this.isNarrow == true) this.isNarrow = false;
+				this.showMaster();
+			}
+			this.calcWidth();
+		},
+	
+		calcWidth: function calcWidth() {
+			if (!(_env.env.isIE8 || _env.env.isIE9)) {
+				this.detailWidth = this._detail.offsetWidth;
+				if (this._master) this.masterWidth = this._master.offsetWidth;else this.masterWidth = 0;
+				//TODO this.mHistory中的panel应该置为-值
+				for (var i = 0; i < this.dPages.length; i++) {
+					var pid = this.dPages[i].getAttribute('id');
+					if (pid !== this.current_d_pageId) {
+						this.dPages[i].style.transform = 'translate3d(' + this.detailWidth + 'px,0,0)';
+					}
+				}
+				//this.$detail.find('[data-role="page"]').css('transform','translate3d('+ this.detailWidth +'px,0,0)')
+				//this.$detail.find('#' + this.current_d_pageId).css('transform','translate3d(0,0,0)')
+			}
+		},
+	
+		mGo: function mGo(pageId) {
+			if (this.current_m_pageId == pageId) return;
+			this.mHistory.push(this.current_m_pageId);
+			_hidePage(this.mPageMap[this.current_m_pageId], this, '-' + this.masterWidth);
+			this.current_m_pageId = pageId;
+			_showPage(this.mPageMap[this.current_m_pageId], this);
+		},
+	
+		mBack: function mBack() {
+			if (this.mHistory.length == 0) return;
+			_hidePage(this.mPageMap[this.current_m_pageId], this, this.masterWidth);
+			this.current_m_pageId = this.mHistory.pop();
+			_showPage(this.mPageMap[this.current_m_pageId], this);
+		},
+	
+		dGo: function dGo(pageId) {
+			if (this.current_d_pageId == pageId) return;
+			this.dHistory.push(this.current_d_pageId);
+			_hidePage(this.dPageMap[this.current_d_pageId], this, '-' + this.detailWidth);
+			this.current_d_pageId = pageId;
+			_showPage(this.dPageMap[this.current_d_pageId], this);
+		},
+	
+		dBack: function dBack() {
+			if (this.dHistory.length == 0) return;
+			_hidePage(this.dPageMap[this.current_d_pageId], this, this.detailWidth);
+			this.current_d_pageId = this.dHistory.pop();
+			_showPage(this.dPageMap[this.current_d_pageId], this);
+		},
+	
+		showMaster: function showMaster() {
+			if (this._master) {
+				if (_env.env.isIE8 || _env.env.isIE9) this._master.style.display = 'none'; //IE下暂时不显示此区域
+				else {
+						this._master.style.transform = 'translate3d(0,0,0)';
+					}
+				if (!this.isNarrow) this._master.style.position = 'relative';
+			}
+		},
+	
+		hideMaster: function hideMaster() {
+			if (this._master) {
+				if (this._master.offsetLeft < 0 || this._master.style.display == 'none') return;
+				if (_env.env.isIE8 || _env.env.isIE9) this._master.style.display = 'none';else {
+					this._master.style.transform = 'translate3d(-' + this.masterWidth + 'px,0,0)';
+				}
+				this._master.style.position = 'absolute';
+				this._master.style.zIndex = 5;
+				this.calcWidth();
+			}
+		}
+	});
+	
+	/**
+	 * masterFloat属性只有在宽屏下起作用，为true时，master层浮动于detail层之上
+	 *
+	 */
+	//	MDLayout.fn.setMasterFloat = function(float){
+	//		this.masterFloat = float;
+	//
+	//	}
+	
+	//function _getBrowserInfo(){
+	//	var browser = {};
+	//	var ua = navigator.userAgent.toLowerCase();
+	//	var s;
+	//	(s = ua.match(/rv:([\d.]+)\) like gecko/)) ? browser.ie = parseInt(s[1]) :
+	//			(s = ua.match(/msie ([\d.]+)/)) ? browser.ie = s[1] :
+	//					(s = ua.match(/firefox\/([\d.]+)/)) ? browser.firefox = s[1] :
+	//							(s = ua.match(/chrome\/([\d.]+)/)) ? browser.chrome = s[1] :
+	//									(s = ua.match(/opera.([\d.]+)/)) ? browser.opera = s[1] :
+	//											(s = ua.match(/version\/([\d.]+).*safari/)) ? browser.safari = s[1] : 0;
+	//	return browser;
+	//}
+	
+	/**
+	 * Module : neoui-layout-md
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-02 15:42:33
+	 */
+	
+	function _showPage(el, me) {
+		(0, _dom.addClass)(el, 'current');
+		if (!(_env.env.isIE8 || _env.env.isIE9)) el.style.transform = 'translate3d(0,0,0)';
+	}
+	
+	function _hidePage(el, me, width) {
+		(0, _dom.removeClass)(el, 'current');
+		if (!(_env.env.isIE8 || _env.env.isIE9)) el.style.transform = 'translate3d(' + width + 'px,0,0)';
+	}
+	
+	_compMgr.compMgr.regComp({
+		comp: MDLayout,
+		compAsString: 'u.MDLayout',
+		css: 'u-mdlayout'
+	});
+	
+	exports.MDLayout = MDLayout;
 
 /***/ }
 /******/ ])
