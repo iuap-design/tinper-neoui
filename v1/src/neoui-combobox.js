@@ -1,7 +1,7 @@
 /**
  * Module : neoui-combobox
  * Author : Kvkens(yueming@yonyou.com)
- * Date	  : 2016-08-02 12:56:32
+ * Date	  : 2016-08-02 18:42:07
  */
 
 import {BaseComponent} from './sparrow/BaseComponent';
