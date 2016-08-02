@@ -1,10 +1,24 @@
-	u.Validate = u.BaseComponent.extend({
+/**
+ * Module : neoui-combo
+ * Author : Kvkens(yueming@yonyou.com)
+ * Date	  : 2016-08-02 14:09:22
+ */
+import {BaseComponent} from './sparrow/BaseComponent';
+import {extend} from './sparrow/extend.js';
+import {makeDOM} from './sparrow/dom';
+import {on} from './sparrow/event';
+import {isNumber} from './sparrow/util';
+
+// u.Validate
+
+
+var Validate = BaseComponent.extend({
 
 	    init: function() {
 	        var self = this
 	        this.$element = this.element
 	        this.$form = this.form
-	        this.options = u.extend({}, this.DEFAULTS, this.options, JSON.parse(this.element.getAttribute('uvalidate')));
+	        this.options = extend({}, this.DEFAULTS, this.options, JSON.parse(this.element.getAttribute('uvalidate')));
 	        this.required = false
 	        this.timeout = null;
 	        this.tipAliveTime = this.options['tipAliveTime'] === undefined ? 3000 : this.options['tipAliveTime'];
@@ -12,16 +26,16 @@
 	        this.required = this.options['required'] ? this.options['required'] : false
 	        this.validType = this.options['validType'] ? this.options['validType'] : null
 	            //校验模式  blur  submit
-	        this.validMode = this.options['validMode'] ? this.options['validMode'] : u.Validate.DEFAULTS.validMode
+	        this.validMode = this.options['validMode'] ? this.options['validMode'] : Validate.DEFAULTS.validMode
 	            //空提示
-	        this.nullMsg = this.options['nullMsg'] ? this.options['nullMsg'] : u.Validate.NULLMSG[this.validType]
+	        this.nullMsg = this.options['nullMsg'] ? this.options['nullMsg'] : Validate.NULLMSG[this.validType]
 	            //是否必填
 	        if (this.required && !this.nullMsg)
-	            this.nullMsg = u.Validate.NULLMSG['required']
+	            this.nullMsg = Validate.NULLMSG['required']
 	            //错误必填
-	        this.errorMsg = this.options['errorMsg'] ? this.options['errorMsg'] : u.Validate.ERRORMSG[this.validType]
+	        this.errorMsg = this.options['errorMsg'] ? this.options['errorMsg'] : Validate.ERRORMSG[this.validType]
 	            //正则校验
-	        this.regExp = this.options['reg'] ? this.options['reg'] : u.Validate.REG[this.validType]
+	        this.regExp = this.options['reg'] ? this.options['reg'] : Validate.REG[this.validType]
 	        try {
 	            if (typeof this.regExp == 'string')
 	                this.regExp = eval(this.regExp)
@@ -39,7 +53,7 @@
 
 	        // 要求显示成功提示，并没有成功提示dom的id时，则创建成功提示dom
 	        if (this.hasSuccess && !this.successId) {
-	            this.successId = u.makeDOM('<span class="u-form-control-success uf uf-checkedsymbol" ></span>');
+	            this.successId = makeDOM('<span class="u-form-control-success uf uf-checkedsymbol" ></span>');
 
 	            if (this.$element.nextSibling) {
 	                this.$element.parentNode.insertBefore(this.successId, this.$element.nextSibling);
@@ -50,7 +64,7 @@
 	        }
 	        //不是默认的tip提示方式并且tipId没有定义时创建默认tipid	
 	        if (this.notipFlag && !this.tipId) {
-	            this.tipId = u.makeDOM('<span class="u-form-control-info uf uf-exclamationsign "></span>');
+	            this.tipId = makeDOM('<span class="u-form-control-info uf uf-exclamationsign "></span>');
 	            this.$element.parentNode.appendChild(this.tipId);
 
 	            if (this.$element.nextSibling) {
@@ -60,7 +74,7 @@
 	            }
 	        }
 	        //提示框位置
-	        this.placement = this.options['placement'] ? this.options['placement'] : u.Validate.DEFAULTS.placement
+	        this.placement = this.options['placement'] ? this.options['placement'] : Validate.DEFAULTS.placement
 	            //
 	        this.minLength = this.options['minLength'] > 0 ? this.options['minLength'] : null
 	        this.maxLength = this.options['maxLength'] > 0 ? this.options['maxLength'] : null
@@ -68,10 +82,10 @@
 	        this.max = this.options['max'] !== undefined ? this.options['max'] : null
 	        this.minNotEq = this.options['minNotEq'] !== undefined ? this.options['minNotEq'] : null
 	        this.maxNotEq = this.options['maxNotEq'] !== undefined ? this.options['maxNotEq'] : null
-	        this.min = u.isNumber(this.min) ? this.min : null
-	        this.max = u.isNumber(this.max) ? this.max : null
-	        this.minNotEq = u.isNumber(this.minNotEq) ? this.minNotEq : null
-	        this.maxNotEq = u.isNumber(this.maxNotEq) ? this.maxNotEq : null
+	        this.min = isNumber(this.min) ? this.min : null
+	        this.max = isNumber(this.max) ? this.max : null
+	        this.minNotEq = isNumber(this.minNotEq) ? this.minNotEq : null
+	        this.maxNotEq = isNumber(this.maxNotEq) ? this.maxNotEq : null
 	        this.create()
 	    }
 	});
@@ -80,15 +94,15 @@
 
 
 
-	u.Validate.fn = u.Validate.prototype
-	    //u.Validate.tipTemplate = '<div class="tooltip" role="tooltip"><div class="tooltip-arrow tooltip-arrow-c"></div><div class="tooltip-arrow"></div><div class="tooltip-inner" style="color:#ed7103;border:1px solid #ed7103;background-color:#fff7f0;"></div></div>'
+	Validate.fn = Validate.prototype
+	    //Validate.tipTemplate = '<div class="tooltip" role="tooltip"><div class="tooltip-arrow tooltip-arrow-c"></div><div class="tooltip-arrow"></div><div class="tooltip-inner" style="color:#ed7103;border:1px solid #ed7103;background-color:#fff7f0;"></div></div>'
 
-	u.Validate.DEFAULTS = {
+	Validate.DEFAULTS = {
 	    validMode: 'blur',
 	    placement: "top"
 	}
 
-	u.Validate.NULLMSG = {
+	Validate.NULLMSG = {
 	    "required": trans('validate.required', "不能为空！"),
 	    "integer": trans('validate.integer', "请填写整数！"),
 	    "float": trans('validate.float', "请填写数字！"),
@@ -101,7 +115,7 @@
 
 	}
 
-	u.Validate.ERRORMSG = {
+	Validate.ERRORMSG = {
 	    "integer": trans('validate.error_integer', "整数格式不对！"),
 	    "float": trans('validate.error_float', "数字格式不对！"),
 	    "zipCode": trans('validate.error_zipCode', "邮政编码格式不对！"),
@@ -112,7 +126,7 @@
 	    "datetime": trans('validate.error_datetime', "日期格式不对！")
 	}
 
-	u.Validate.REG = {
+	Validate.REG = {
 	    "integer": /^-?\d+$/,
 	    "float": /^-?\d+(\.\d+)?$/,
 	    "zipCode": /^[0-9]{6}$/,
@@ -127,23 +141,23 @@
 
 
 
-	u.Validate.fn.create = function() {
+	Validate.fn.create = function() {
 	    var self = this
-	    u.on(this.element, 'blur', function(e) {
+	    on(this.element, 'blur', function(e) {
 	        if (self.validMode == 'blur') {
 	            self.passed = self.doValid()
 
 	        }
 	    })
-	    u.on(this.element, 'focus', function(e) {
+	    on(this.element, 'focus', function(e) {
 	        //隐藏错误信息
 	        self.hideMsg()
 	    })
-	    u.on(this.element, 'change', function(e) {
+	    on(this.element, 'change', function(e) {
 	        //隐藏错误信息
 	        self.hideMsg()
 	    })
-	    u.on(this.element, 'keydown', function(e) {
+	    on(this.element, 'keydown', function(e) {
 	        var event = window.event || e;
 	        if (self["validType"] == "float") {
 	            var tmp = self.element.value;
@@ -196,11 +210,11 @@
 	    })
 	}
 
-	u.Validate.fn.updateOptions = function(options) {
+	Validate.fn.updateOptions = function(options) {
 
 	}
 
-	u.Validate.fn.doValid = function(options) {
+	Validate.fn.doValid = function(options) {
 	    var self = this;
 	    var pValue;
 	    this.showMsgFlag = true;
@@ -298,7 +312,7 @@
 	    return { passed: true }
 	}
 
-	u.Validate.fn.check = u.Validate.fn.doValid;
+	Validate.fn.check = Validate.fn.doValid;
 
 	//	Validate.fn.getValue = function() {
 	//		var inputval
@@ -318,7 +332,7 @@
 	//		return this.isEmpty(inputval) ? "" : inputval;
 	//	}
 
-	u.Validate.fn.some = Array.prototype.some ?
+	Validate.fn.some = Array.prototype.some ?
 	    Array.prototype.some : function() {
 	        var flag;
 	        for (var i = 0; i < this.length; i++) {
@@ -330,7 +344,7 @@
 	        return flag;
 	    };
 
-	u.Validate.fn.getValue = function() {
+	Validate.fn.getValue = function() {
 	    var inputval = '';
 	    //checkbox、radio为u-meta绑定时
 	    var bool = this.some.call(this.$element.querySelectorAll('[type="checkbox"],[type="radio"]'), function(ele) {
@@ -362,11 +376,11 @@
 	    return this.isEmpty(inputval) ? "" : inputval;
 	}
 
-	u.Validate.fn.isEmpty = function(val) {
+	Validate.fn.isEmpty = function(val) {
 	    return val === "" || val === undefined || val === null //|| val === $.trim(this.$element.attr("tip"));
 	}
 
-	u.Validate.fn.showMsg = function(msg) {
+	Validate.fn.showMsg = function(msg) {
 
 		if(this.showMsgFlag == false || this.showMsgFlag == 'false'){
 			return;
@@ -415,7 +429,7 @@
 		}
 
 	}
-	u.Validate.fn.hideMsg = function() {
+	Validate.fn.hideMsg = function() {
 	    //隐藏成功信息
 	    // if(this.successId||this.tipId){
 	    // 	document.getElementById(this.successId).style.display='none';
@@ -444,7 +458,7 @@
 	/**
 	 * 只有单一元素时使用
 	 */
-	u.Validate.fn._needClean = function() {
+	Validate.fn._needClean = function() {
 	    return true; //this.validates[0].needClean
 	}
 
@@ -457,8 +471,8 @@
 	    //element本身需要校验
 	    if (element.attributes["uvalidate"]) {
 	        options = element.attributes["uvalidate"] ? JSON.parse(element.attributes["uvalidate"].value) : {};
-	        options = u.extend({ el: element }, options);
-	        element['u.Validate'] = new u.Validate(options);
+	        options = extend({ el: element }, options);
+	        element['u.Validate'] = new Validate(options);
 	    }
 
 	    //element是个父元素，校验子元素
@@ -466,8 +480,8 @@
 	    u.each(childEle, function(i, child) {
 	        if (!child['u.Validate']) { //如果该元素上没有校验
 	            options = child.attributes["validate"] ? JSON.parse(child.attributes["validate"].value) : {};
-	            options = u.extend({ el: child }, options);
-	            child['u.Validate'] = new u.Validate(options);
+	            options = extend({ el: child }, options);
+	            child['u.Validate'] = new Validate(options);
 	        }
 	    });
 	}
@@ -493,7 +507,7 @@
 	}
 	if (u.compMgr)
 	    u.compMgr.regComp({
-	        comp: u.Validate,
+	        comp: Validate,
 	        compAsString: 'u.Validate',
 	        css: 'u-validate'
 	    })
