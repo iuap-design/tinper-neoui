@@ -1,5 +1,19 @@
+/**
+ * Module : neoui-layout-md
+ * Author : Kvkens(yueming@yonyou.com)
+ * Date	  : 2016-08-02 15:42:33
+ */
 
-u.MDLayout = u.BaseComponent.extend({
+import {BaseComponent} from './sparrow/BaseComponent';
+import {addClass,removeClass,hasClass,getStyle,makeDOM} from './sparrow/dom';
+import {on,stopEvent,trigger} from './sparrow/event';
+import {extend} from './sparrow/extend';
+import {env} from './sparrow/env';
+import {Button} from './neoui-button';
+import {compMgr} from './sparrow/compMgr';
+
+
+var MDLayout = BaseComponent.extend({
 	_CssClasses: {
 	MASTER: 'u-mdlayout-master',
 	DETAIL: 'u-mdlayout-detail',
@@ -37,7 +51,7 @@ u.MDLayout = u.BaseComponent.extend({
 		this.dHistory = [];
 		this.isNarrow = null;
 		this.response();
-		u.on(window, 'resize', function(){
+		on(window, 'resize', function(){
 			me.response();
 		})
 	},
@@ -61,14 +75,14 @@ initPages: function(pages, type){
 				this.current_m_pageId = pid;
 			else
 				this.current_d_pageId = pid;
-			u.addClass(pages[i],'current');
+			addClass(pages[i],'current');
 			//pages[i].style.transform = 'translate3d('+ pWidth +'px,0,0)';
 			pages[i].style.transform = 'translate3d(0,0,0)';
 		}else{
 			pages[i].style.transform = 'translate3d('+ pWidth +'px,0,0)';
 		}
-		if (u.isIE8 || u.isIE9){
-			u.addClass(pages[i],'let-ie9');
+		if (env.isIE8 || env.isIE9){
+			addClass(pages[i],'let-ie9');
 		}
 	}
 },
@@ -104,7 +118,7 @@ response: function() {
 },
 
 calcWidth: function(){
-	if (!(u.isIE8 || u.isIE9)){
+	if (!(env.isIE8 || env.isIE9)){
 		this.detailWidth = this._detail.offsetWidth;
 		if(this._master)
 			this.masterWidth = this._master.offsetWidth;
@@ -155,7 +169,7 @@ dBack: function() {
 
 showMaster: function() {
 	if(this._master){
-		if (u.isIE8 || u.isIE9)
+		if (env.isIE8 || env.isIE9)
 			this._master.style.display = 'none';//IE下暂时不显示此区域
  		else{
 			this._master.style.transform = 'translate3d(0,0,0)';
@@ -169,7 +183,7 @@ hideMaster: function() {
 	if(this._master){
 		if (this._master.offsetLeft < 0 || this._master.style.display == 'none')
 			return;
-		if (u.isIE8 || u.isIE9)
+		if (env.isIE8 || env.isIE9)
 			this._master.style.display = 'none';
 		else{
 			this._master.style.transform = 'translate3d(-'+ this.masterWidth +'px,0,0)';
@@ -204,22 +218,23 @@ hideMaster: function() {
 //}
 
 function _showPage(el,me){
-	u.addClass(el,'current');
-	if (!(u.isIE8 || u.isIE9))
+	addClass(el,'current');
+	if (!(env.isIE8 || env.isIE9))
 		el.style.transform = 'translate3d(0,0,0)';
 }
 
 function _hidePage(el,me,width){
-	u.removeClass(el,'current');
-	if (!(u.isIE8 || u.isIE9))
+	removeClass(el,'current');
+	if (!(env.isIE8 || env.isIE9))
 		el.style.transform = 'translate3d('+ width +'px,0,0)';
 }
 
 
-u.compMgr.regComp({
-	comp: u.MDLayout,
+compMgr.regComp({
+	comp: MDLayout,
 	compAsString: 'u.MDLayout',
 	css: 'u-mdlayout'
 });
 
 
+export {MDLayout};

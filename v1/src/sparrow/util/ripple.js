@@ -202,4 +202,4 @@ var URipple = function URipple(element) {
 
 var Ripple = URipple;
 
-export {Ripple};
+export {Ripple,URipple};

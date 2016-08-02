@@ -1,4 +1,18 @@
-u.Combobox = u.BaseComponent.extend({
+/**
+ * Module : neoui-combobox
+ * Author : Kvkens(yueming@yonyou.com)
+ * Date	  : 2016-08-02 18:42:07
+ */
+
+import {BaseComponent} from './sparrow/BaseComponent';
+import {addClass,removeClass,hasClass,getStyle} from './sparrow/dom';
+import {on,stopEvent,trigger} from './sparrow/event';
+import {extend} from './sparrow/extend';
+import {env} from './sparrow/env';
+import {compMgr} from './sparrow/compMgr';
+
+
+var Combobox = BaseComponent.extend({
 		DEFAULTS : {
 			dataSource:{},
 			mutil: false,
@@ -9,7 +23,7 @@ u.Combobox = u.BaseComponent.extend({
 		init:function(){
 			var self = this;			 
 			var element = this.element;
-			this.options = u.extend({}, this.DEFAULTS, this.options);
+			this.options = extend({}, this.DEFAULTS, this.options);
 			this.items = [];
 			//this.oLis = [];
 			this.mutilPks = [];
@@ -44,7 +58,7 @@ u.Combobox = u.BaseComponent.extend({
 
 					} else if (self.options.mutil == "true" || self.options.mutil == true) {
 						
-						if(!u.isArray(pk) ){
+						if(!env.isArray(pk) ){
 							if(typeof pk == "string" && pk !== ""){                   		
 								pk = pk.split(',');
 								self.mutilPks = pk;
@@ -79,7 +93,7 @@ u.Combobox = u.BaseComponent.extend({
 									//activeSelect.append(imageFont);
 								//	activeSelect.append(selectName);
 								
-									u.on(activeSelect.querySelector(".uf-removesymbol"),'mousedown', function() {
+									on(activeSelect.querySelector(".uf-removesymbol"),'mousedown', function() {
 
 										//var $this = $(this);
 										//var lis = self.oLis;
@@ -109,7 +123,7 @@ u.Combobox = u.BaseComponent.extend({
 										activeSelect.removeChild(this.parentNode);
 										element.trueValue = '';
 										element.trueValue = valueArr.toString();
-										u.trigger(element,'mutilSelect',valueArr.toString())
+										trigger(element,'mutilSelect',valueArr.toString())
 									});
 
 
@@ -161,12 +175,12 @@ u.Combobox = u.BaseComponent.extend({
 
 	
 
-	u.Combobox.fn = u.Combobox.prototype;
+	Combobox.fn = Combobox.prototype;
 
-	u.Combobox.fn.createDom = function() {
+	Combobox.fn.createDom = function() {
 
 		var data = this.options.dataSource;
-		if (u.isEmptyObject(data)) {
+		if (env.isEmptyObject(data)) {
 			throw new Error("dataSource为空！");
 		}
 
@@ -213,9 +227,9 @@ u.Combobox = u.BaseComponent.extend({
 
 	}
 
-	u.Combobox.fn.focusEvent = function() {
+	Combobox.fn.focusEvent = function() {
 		var self = this;
-		u.on(this.element,'click', function(e) {
+		on(this.element,'click', function(e) {
 			if(self.options.readchange == true) return;
 			var returnValue = self.show();
 
@@ -236,11 +250,11 @@ u.Combobox = u.BaseComponent.extend({
 	}
 
 	//下拉图标的点击事件
-	u.Combobox.fn.clickEvent = function() {
+	Combobox.fn.clickEvent = function() {
 		var self = this;		
 		//var caret = this.$element.next('.input-group-addon')[0] || this.$element.next(':button')[0];
 		var caret = this.element.nextSibling
-		u.on(caret,'click',function(e) {
+		on(caret,'click',function(e) {
 			self.show();
 			self.floatLayer();
 			self.floatLayerEvent();
@@ -254,16 +268,16 @@ u.Combobox = u.BaseComponent.extend({
 	}
 
 	//tab键切换 下拉隐藏	
-	u.Combobox.fn.blurEvent = function() {
+	Combobox.fn.blurEvent = function() {
 		var self = this;
         
-		u.on(this.element,'keyup', function(e) {
+		on(this.element,'keyup', function(e) {
 			var key = e.which || e.keyCode;
 			if (key == 9)
 				self.show();
 			
 		})
-		u.on(this.element,'keydown', function(e) {
+		on(this.element,'keydown', function(e) {
 			var key = e.which || e.keyCode;
 			if(key == 9)
 			self.hide();
@@ -272,7 +286,7 @@ u.Combobox = u.BaseComponent.extend({
 
 
 
-	u.Combobox.fn.floatLayer = function() {
+	Combobox.fn.floatLayer = function() {
 
 		if (!document.querySelector(".select-floatDiv")) {
 
@@ -283,9 +297,9 @@ u.Combobox = u.BaseComponent.extend({
 
 	}
 
-	u.Combobox.fn.floatLayerEvent = function() {
+	Combobox.fn.floatLayerEvent = function() {
 		var self = this;
-		u.on(document.querySelector(".select-floatDiv"),"click",function(e) {
+		on(document.querySelector(".select-floatDiv"),"click",function(e) {
 
 			self.hide();
 			this.parentNode.removeChild(this);
@@ -300,7 +314,7 @@ u.Combobox = u.BaseComponent.extend({
 
 	}
 
-	u.Combobox.fn.show = function() {
+	Combobox.fn.show = function() {
 
 		//var oLis = this.oLis;
 		var oLis = this.oDiv.querySelector("ul").childNodes;
@@ -319,7 +333,7 @@ u.Combobox = u.BaseComponent.extend({
 
 		var selectHeight = this.options.dataSource.length * 30 + 10 + 10;
 
-		var differ = (top + u.getStyle(this.element,"height") + selectHeight) - (window.outerHeight + window.scrollY);
+		var differ = (top + getStyle(this.element,"height") + selectHeight) - (window.outerHeight + window.scrollY);
 		var oDiv = this.oDiv;
 
 		if (differ > 0) {
@@ -330,24 +344,24 @@ u.Combobox = u.BaseComponent.extend({
 		} else {
 
 			oDiv.style.left = left + 'px';
-			oDiv.style.top = top + u.getStyle(this.element,"height") + 'px';
+			oDiv.style.top = top + getStyle(this.element,"height") + 'px';
 
 		}
 
 		oDiv.style.display = 'block';
 	}
 
-	u.Combobox.fn.hide = function() {
+	Combobox.fn.hide = function() {
 		this.oDiv.style.display = 'none';
 	}
 
-	u.Combobox.fn.singleDivValue = function() {
+	Combobox.fn.singleDivValue = function() {
 		var self = this;
 		//var oLis = this.oLis;
 		var oLis = this.oDiv.querySelector("ul").childNodes;
 		for (var i = 0; i < oLis.length; i++) {
 			
-			u.on(oLis[i],"click",function(){
+			on(oLis[i],"click",function(){
 				
 				var item = this.item
 				self.element.value = item.pk;
@@ -356,19 +370,19 @@ u.Combobox = u.BaseComponent.extend({
 
 				self.options.onSelect(item);
 
-				u.trigger(self.element,'change');
+				trigger(self.element,'change');
 				
 			})
 
 		}
 	}
 
-	u.Combobox.fn.mutilDivValue = function() {
+	Combobox.fn.mutilDivValue = function() {
 		var self = this;
 		//var oLis = this.oLis;
 		var oLis = this.oDiv.querySelector("ul").childNodes;
 		for (var i = 0; i < oLis.length; i++) {
-			u.on(oLis[i],"click",function(){
+			on(oLis[i],"click",function(){
 				
 				var pk = this.item.pk;
 				var mutilpks = self.mutilPks;
@@ -391,12 +405,12 @@ u.Combobox = u.BaseComponent.extend({
 				mutilpks.push(pk);
 
 				self.element.value = mutilpks;
-                u.trigger(self.element,'mutilSelect',mutilpks.toString());
+                trigger(self.element,'mutilSelect',mutilpks.toString());
                // element.trigger('mutilSelect',mutilpks.toString())
 
 				self.oDiv.style.display = 'none';
 				this.style.display = 'none';
-				u.trigger(self.element,'change');
+				trigger(self.element,'change');
 				
 				
 				
@@ -405,7 +419,7 @@ u.Combobox = u.BaseComponent.extend({
 		}
 	}
 
-	u.Combobox.fn.singleSelect = function() {
+	Combobox.fn.singleSelect = function() {
 
 		this.createDom();
 		this.focusEvent();
@@ -413,7 +427,7 @@ u.Combobox = u.BaseComponent.extend({
 
 	}
 
-	u.Combobox.fn.mutilSelect = function() {
+	Combobox.fn.mutilSelect = function() {
 
 		this.createDom();
 		this.mutilDivValue();
@@ -421,9 +435,9 @@ u.Combobox = u.BaseComponent.extend({
 
 	}
    //过滤下拉选项
-   u.Combobox.fn.comboFilter = function(){
+   Combobox.fn.comboFilter = function(){
    	 var self = this;
-	 u.on(this.oDiv,"keyup",function(){
+	 on(this.oDiv,"keyup",function(){
    	
    	 	 var content = this.querySelector('.select-search input').value
    	 	
@@ -442,9 +456,9 @@ u.Combobox = u.BaseComponent.extend({
    }
    
    //过滤的后续处理
-   u.Combobox.fn.comboFilterClean = function(){
+   Combobox.fn.comboFilterClean = function(){
    	  var self = this;
-	   u.on(self.element,"click",function(){
+	   on(self.element,"click",function(){
    	 // $(this.$element).on('click',function(){
    	  	// $(self.oDiv).find('.select-search input').val('')  	
 		 self.oDiv.querySelector('.select-search input').value = ""	 
@@ -531,11 +545,10 @@ u.Combobox = u.BaseComponent.extend({
 	// }
 
 	// $.fn.Combobox = Plugin;
-	if (u.compMgr)
-	
-	u.compMgr.regComp({
-		comp: u.Combobox,
-		compAsString: 'u.Combobox',
-		css: 'u-combobox'
-	})
+compMgr.regComp({
+	comp: Combobox,
+	compAsString: 'u.Combobox',
+	css: 'u-combobox'
+});
 
+export {Combobox};
