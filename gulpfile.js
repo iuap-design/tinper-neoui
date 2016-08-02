@@ -12,7 +12,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var base64 = require('gulp-base64');
 var util = require('gulp-util');
 
-var makeumd = require('./makeumd.js');
+var version = require('./version.js');
 /**
  * SASS 源文件索引
  * @type {Array}
@@ -137,7 +137,7 @@ gulp.task('sass-ui-u-extend-init', function(){
 })
 
 gulp.task('sass-ui', ['sass-ui-u-init', 'sass-ui-u-extend-init'], function(){
-    makeumd.init([
+    version.init([
             'dist/css/u.css',
             'dist/css/u.min.css',
             'dist/css/u-extend.css',
@@ -163,7 +163,7 @@ gulp.task("es-ui-init", function () {
 });
 
 gulp.task('es-ui', ['es-ui-init'], function(){
-     makeumd.init([
+     version.init([
             'dist/js/u-ui.js',
             'dist/js/u-ui.min.js',
         ]);
@@ -182,7 +182,7 @@ gulp.task("polyfill-init", function () {
 
 
 gulp.task('polyfill', ['polyfill-init'], function(){
-     makeumd.init([
+     version.init([
             'dist/js/u-polyfill.js',
             'dist/js/u-polyfill.min.js',
         ]);

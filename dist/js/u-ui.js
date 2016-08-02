@@ -7817,9 +7817,10 @@ u.Combo = u.BaseComponent.extend({
     },
 
     show: function (evt) {
-        this.element.parentNode.appendChild(this._ul);
+        
         var self = this,width=this._input.offsetWidth;
         if(this.options.showFix){
+            document.body.appendChild(this._ul);
             this._ul.style.position = 'fixed';
             u.showPanelByEle({
                 ele:this._input,
@@ -7827,6 +7828,7 @@ u.Combo = u.BaseComponent.extend({
                 position:"bottomLeft"
             });
         }else{
+            this.element.parentNode.appendChild(this._ul);
             var left = this.element.offsetLeft,
             inputHeight = this.element.offsetHeight,
             top = this.element.offsetTop + inputHeight;

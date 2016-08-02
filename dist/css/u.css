@@ -10707,7 +10707,7 @@ $color-accent: $palette-pink-A200 !default;
   transition: all 300ms; }
 
 .u-msg-dialog {
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   background-color: #FFFFFF;
@@ -13261,9 +13261,9 @@ $color-accent: $palette-pink-A200 !default;
 .u-navlayout-header-row {
   padding-left: 0; }
 
-.u-navlayout-drawer {
-  left: 21px; }
-
+/*.u-navlayout-drawer{
+    left: 21px;
+}*/
 .margin-right-20 {
   margin-right: 20px; }
 
