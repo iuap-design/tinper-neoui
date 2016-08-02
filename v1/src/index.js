@@ -4,7 +4,4 @@
  * Date	  : 2016-08-02 12:56:32
  */
 
-import {compMgr} from './neoui-button';
-
-var u = window.u || {};
-u.compMgr = compMgr;
+import {Button} from './neoui-button';

@@ -36,4 +36,4 @@ compMgr.regComp({
 	css: 'u-button'
 });
 
-export {compMgr};
+export {Button};

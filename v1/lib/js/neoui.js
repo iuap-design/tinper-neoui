@@ -57,14 +57,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	
 	var _neouiButton = __webpack_require__(1);
-	
-	var u = window.u || {}; /**
-	                         * Module : webpack entry index
-	                         * Author : Kvkens(yueming@yonyou.com)
-	                         * Date	  : 2016-08-02 12:56:32
-	                         */
-	
-	u.compMgr = _neouiButton.compMgr;
 
 /***/ },
 /* 1 */
@@ -75,7 +67,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.compMgr = undefined;
+	exports.Button = undefined;
 	
 	var _BaseComponent = __webpack_require__(2);
 	
@@ -119,7 +111,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		css: 'u-button'
 	});
 	
-	exports.compMgr = _compMgr.compMgr;
+	exports.Button = Button;
 
 /***/ },
 /* 2 */
