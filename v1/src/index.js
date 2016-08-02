@@ -8,3 +8,4 @@ import {Button} from './neoui-button';
 import {Checkbox} from './neoui-checkbox';
 import {Combo} from './neoui-combo';
 import {Text} from './neoui-textfield';
+import {Combobox} from './neoui-combobox';
