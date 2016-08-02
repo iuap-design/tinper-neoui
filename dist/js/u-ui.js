@@ -8007,7 +8007,7 @@ u.Combo = u.BaseComponent.extend({
                     this.selectItem(index)
                 }
             }else {
-                if (item.value === value) {
+                if (item.value+ '' === value) {
                     this.selectItem(index);
                     matched = true;
                     return;
