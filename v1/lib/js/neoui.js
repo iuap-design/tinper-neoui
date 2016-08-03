@@ -76,27 +76,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _neouiLayout2 = __webpack_require__(21);
 	
-	var _neouiLayout3 = __webpack_require__(22);
+	var _neouiLoader = __webpack_require__(22);
 	
-	var _neouiLoader = __webpack_require__(23);
+	var _neouiLoading = __webpack_require__(23);
 	
-	var _neouiLoading = __webpack_require__(24);
+	var _neouiMenu = __webpack_require__(24);
 	
-	var _neouiMenu = __webpack_require__(25);
+	var _neouiMessage = __webpack_require__(25);
 	
-	var _neouiMessage = __webpack_require__(26);
+	var _neouiMultilang = __webpack_require__(26);
 	
-	var _neouiMultilang = __webpack_require__(27);
+	var _neouiNavmenu = __webpack_require__(27);
 	
-	var _neouiNavmenu = __webpack_require__(28);
+	var _neouiPagination = __webpack_require__(28);
 	
-	var _neouiPagination = __webpack_require__(29);
+	var _neouiProgress = __webpack_require__(29);
 	
-	var _neouiProgress = __webpack_require__(30);
+	var _neouiRadio = __webpack_require__(30);
 	
-	var _neouiTooltip = __webpack_require__(31);
+	var _neouiRefer = __webpack_require__(31);
 	
-	var _neouiValidate = __webpack_require__(32);
+	var _neouiSlidePanel = __webpack_require__(32);
+	
+	var _neouiTooltip = __webpack_require__(33);
+	
+	var _neouiValidate = __webpack_require__(34);
 
 /***/ },
 /* 1 */
@@ -5206,87 +5210,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.slidePanel = undefined;
-	
-	var _BaseComponent = __webpack_require__(2);
-	
-	var _dom = __webpack_require__(10);
-	
-	var _event = __webpack_require__(5);
-	
-	var _env = __webpack_require__(6);
-	
-	var _ajax = __webpack_require__(11);
-	
-	var _compMgr = __webpack_require__(9);
-	
-	/**
-	 * Module : neoui-slidepanel
-	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-08-02 18:56:32
-	 */
-	
-	var slidePanelTemplate = ['<div class="slidePanel slidePanel-right  slidePanel-show slidePanel-dragging" style="transform:translate3d(100%,0,0);">', '<div class="slidePanel-content site-sidebar-content"></div>', '<div class="slidePanel-handler"></div>', '</div>'];
-	
-	var slidePanel = function slidePanel(options) {
-	    var url = options['url'],
-	        width = options['width'] || '700px',
-	        callback = options['callback'] || function () {},
-	        slideDom = (0, _dom.makeDOM)(slidePanelTemplate.join('')),
-	        overlayDiv = makeModal(slideDom);
-	    slideDom.style.width = width;
-	    overlayDiv.style.opacity = 0;
-	    document.body.appendChild(slideDom);
-	    //overlayDiv.style.opacity = 0.5;
-	    (0, _ajax.ajax)({
-	        type: 'get',
-	        url: url,
-	        success: function success(data) {
-	            var content = slideDom.querySelector('.slidePanel-content');
-	            content.innerHTML = data;
-	            callback();
-	            setTimeout(function () {
-	                slideDom.style.transform = 'translate3d(0,0,0)';
-	                overlayDiv.style.opacity = 0.5;
-	            }, 1);
-	        }
-	    });
-	
-	    (0, _event.on)(overlayDiv, 'click', function () {
-	        (0, _event.on)(slideDom, 'transitionend', function () {
-	            document.body.removeChild(slideDom);
-	            document.body.removeChild(overlayDiv);
-	        });
-	        (0, _event.on)(slideDom, 'webkitTransitionEnd', function () {
-	            document.body.removeChild(slideDom);
-	            document.body.removeChild(overlayDiv);
-	        });
-	        slideDom.style.transform = 'translate3d(100%,0,0)';
-	        overlayDiv.style.opacity = 0;
-	        if (_env.env.isIE8) {
-	            document.body.removeChild(slideDom);
-	            document.body.removeChild(overlayDiv);
-	        }
-	    });
-	
-	    return {
-	        close: function close() {
-	            overlayDiv.click();
-	        }
-	    };
-	};
-	
-	exports.slidePanel = slidePanel;
-
-/***/ },
-/* 23 */
-/***/ function(module, exports, __webpack_require__) {
-
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
@@ -5342,7 +5265,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.hideLoader = hideLoader;
 
 /***/ },
-/* 24 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5464,7 +5387,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.removeWaiting = removeWaiting;
 
 /***/ },
-/* 25 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5886,7 +5809,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.Menu = Menu;
 
 /***/ },
-/* 26 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5968,7 +5891,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.showMessage = showMessage;
 
 /***/ },
-/* 27 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6129,7 +6052,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.Multilang = Multilang;
 
 /***/ },
-/* 28 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6228,7 +6151,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.NavMenu = NavMenu;
 
 /***/ },
-/* 29 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6663,7 +6586,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.pagination = pagination;
 
 /***/ },
-/* 30 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6783,7 +6706,503 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.Progress = Progress;
 
 /***/ },
+/* 30 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.Radio = undefined;
+	
+	var _BaseComponent = __webpack_require__(2);
+	
+	var _dom = __webpack_require__(10);
+	
+	var _env = __webpack_require__(6);
+	
+	var _compMgr = __webpack_require__(9);
+	
+	/**
+	 * Module : neoui-radio
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-03 11:16:00
+	 */
+	
+	var Radio = _BaseComponent.BaseComponent.extend({
+	    Constant_: {
+	        TINY_TIMEOUT: 0.001
+	    },
+	
+	    _CssClasses: {
+	        IS_FOCUSED: 'is-focused',
+	        IS_DISABLED: 'is-disabled',
+	        IS_CHECKED: 'is-checked',
+	        IS_UPGRADED: 'is-upgraded',
+	        JS_RADIO: 'u-radio',
+	        RADIO_BTN: 'u-radio-button',
+	        RADIO_OUTER_CIRCLE: 'u-radio-outer-circle',
+	        RADIO_INNER_CIRCLE: 'u-radio-inner-circle'
+	    },
+	
+	    init: function init() {
+	        this._btnElement = this.element.querySelector('input');
+	
+	        this._boundChangeHandler = this._onChange.bind(this);
+	        this._boundFocusHandler = this._onChange.bind(this);
+	        this._boundBlurHandler = this._onBlur.bind(this);
+	        this._boundMouseUpHandler = this._onMouseup.bind(this);
+	
+	        var outerCircle = document.createElement('span');
+	        (0, _dom.addClass)(outerCircle, this._CssClasses.RADIO_OUTER_CIRCLE);
+	
+	        var innerCircle = document.createElement('span');
+	        (0, _dom.addClass)(innerCircle, this._CssClasses.RADIO_INNER_CIRCLE);
+	
+	        this.element.appendChild(outerCircle);
+	        this.element.appendChild(innerCircle);
+	
+	        var rippleContainer;
+	        //if (this.element.classList.contains( this._CssClasses.RIPPLE_EFFECT)) {
+	        //  addClass(this.element,this._CssClasses.RIPPLE_IGNORE_EVENTS);
+	        rippleContainer = document.createElement('span');
+	        //rippleContainer.classList.add(this._CssClasses.RIPPLE_CONTAINER);
+	        //rippleContainer.classList.add(this._CssClasses.RIPPLE_EFFECT);
+	        //rippleContainer.classList.add(this._CssClasses.RIPPLE_CENTER);
+	        rippleContainer.addEventListener('mouseup', this._boundMouseUpHandler);
+	
+	        //var ripple = document.createElement('span');
+	        //ripple.classList.add(this._CssClasses.RIPPLE);
+	
+	        //rippleContainer.appendChild(ripple);
+	        this.element.appendChild(rippleContainer);
+	        new URipple(rippleContainer);
+	        //}
+	
+	        this._btnElement.addEventListener('change', this._boundChangeHandler);
+	        this._btnElement.addEventListener('focus', this._boundFocusHandler);
+	        this._btnElement.addEventListener('blur', this._boundBlurHandler);
+	        this.element.addEventListener('mouseup', this._boundMouseUpHandler);
+	
+	        this._updateClasses();
+	        (0, _dom.addClass)(this.element, this._CssClasses.IS_UPGRADED);
+	    },
+	
+	    _onChange: function _onChange(event) {
+	        // Since other radio buttons don't get change events, we need to look for
+	        // them to update their classes.
+	        var radios = document.querySelectorAll('.' + this._CssClasses.JS_RADIO);
+	        for (var i = 0; i < radios.length; i++) {
+	            var button = radios[i].querySelector('.' + this._CssClasses.RADIO_BTN);
+	            // Different name == different group, so no point updating those.
+	            if (button.getAttribute('name') === this._btnElement.getAttribute('name')) {
+	                if (radios[i]['Radio']) {
+	                    radios[i]['Radio']._updateClasses();
+	                }
+	            }
+	        }
+	        this.trigger('change', { isChecked: this._btnElement.checked });
+	    },
+	
+	    /**
+	     * Handle focus.
+	     *
+	     * @param {Event} event The event that fired.
+	     * @private
+	     */
+	    _onFocus: function _onFocus(event) {
+	        (0, _dom.addClass)(this.element, this._CssClasses.IS_FOCUSED);
+	    },
+	
+	    /**
+	     * Handle lost focus.
+	     *
+	     * @param {Event} event The event that fired.
+	     * @private
+	     */
+	    _onBlur: function _onBlur(event) {
+	        (0, _dom.removeClass)(this.element, this._CssClasses.IS_FOCUSED);
+	    },
+	
+	    /**
+	     * Handle mouseup.
+	     *
+	     * @param {Event} event The event that fired.
+	     * @private
+	     */
+	    _onMouseup: function _onMouseup(event) {
+	        this._blur();
+	    },
+	
+	    /**
+	     * Update classes.
+	     *
+	     * @private
+	     */
+	    _updateClasses: function _updateClasses() {
+	        this.checkDisabled();
+	        this.checkToggleState();
+	    },
+	
+	    /**
+	     * Add blur.
+	     *
+	     * @private
+	     */
+	    _blur: function _blur() {
+	
+	        // TODO: figure out why there's a focus event being fired after our blur,
+	        // so that we can avoid this hack.
+	        window.setTimeout(function () {
+	            this._btnElement.blur();
+	        }.bind(this), /** @type {number} */this.Constant_.TINY_TIMEOUT);
+	    },
+	
+	    // Public methods.
+	
+	    /**
+	     * Check the components disabled state.
+	     *
+	     * @public
+	     */
+	    checkDisabled: function checkDisabled() {
+	        if (this._btnElement.disabled) {
+	            (0, _dom.addClass)(this.element, this._CssClasses.IS_DISABLED);
+	        } else {
+	            (0, _dom.removeClass)(this.element, this._CssClasses.IS_DISABLED);
+	        }
+	    },
+	
+	    /**
+	     * Check the components toggled state.
+	     *
+	     * @public
+	     */
+	    checkToggleState: function checkToggleState() {
+	        if (this._btnElement.checked) {
+	            (0, _dom.addClass)(this.element, this._CssClasses.IS_CHECKED);
+	        } else {
+	            (0, _dom.removeClass)(this.element, this._CssClasses.IS_CHECKED);
+	        }
+	    },
+	
+	    /**
+	     * Disable radio.
+	     *
+	     * @public
+	     */
+	    disable: function disable() {
+	        this._btnElement.disabled = true;
+	        this._updateClasses();
+	    },
+	
+	    /**
+	     * Enable radio.
+	     *
+	     * @public
+	     */
+	    enable: function enable() {
+	        this._btnElement.disabled = false;
+	        this._updateClasses();
+	    },
+	
+	    /**
+	     * Check radio.
+	     *
+	     * @public
+	     */
+	    check: function check() {
+	        this._btnElement.checked = true;
+	        this._updateClasses();
+	    },
+	
+	    uncheck: function uncheck() {
+	        this._btnElement.checked = false;
+	        this._updateClasses();
+	    }
+	
+	});
+	
+	_compMgr.compMgr.regComp({
+	    comp: Radio,
+	    compAsString: 'u.Radio',
+	    css: 'u-radio'
+	});
+	
+	exports.Radio = Radio;
+
+/***/ },
 /* 31 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.refer = undefined;
+	
+	var _BaseComponent = __webpack_require__(2);
+	
+	var _extend = __webpack_require__(7);
+	
+	var _dom = __webpack_require__(10);
+	
+	var _event = __webpack_require__(5);
+	
+	var _util = __webpack_require__(4);
+	
+	var _neouiDialog = __webpack_require__(19);
+	
+	/**
+	 * Module : neoui-refer
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-03 11:29:40
+	 */
+	var Refer = function Refer(options) {
+	    var contentId = options['contentId'];
+	    if ((0, _util.isEmptyObject)(contentId)) throw new Error('contentId is null');
+	    this.options = (0, _extend.extend)({}, Refer.DEFAULTS, options);
+	    this.params = this.options['params'];
+	    this.create();
+	    this.loaded = false;
+	};
+	
+	Refer.DEFAULTS = {
+	    isPOPMode: false,
+	    searchInput: null,
+	    contentId: null,
+	    okId: 'okBtn',
+	    cancelId: 'cancelBtn',
+	    width: null,
+	    height: null,
+	    title: '参照',
+	    setVal: function setVal() {},
+	    onOk: function onOk() {},
+	    onCancel: function onCancel() {}
+	};
+	
+	Refer.fn = Refer.prototype;
+	
+	Refer.fn.create = function () {
+	    var self = this;
+	    self.setVal = this.options.setVal;
+	    self.searchInput = this.options.searchInput;
+	
+	    var prefixID = this.options.contentId.replace(/[^\w\s]/gi, '\\$&');
+	    if (!this.options.isPOPMode) {
+	        //TODO 后续支持非弹窗模式
+	
+	        //if ($('#' + this.options.contentId).length === 0) {
+	        //    $('body').append($('<div>').attr('id', this.options.contentId));
+	        //}
+	        //this.$contentEle = $('#' + prefixID)
+	        //this.$okBtn = $('#' + prefixID + this.options.okId)
+	        //this.$cancelBtn = $('#' + prefixID + this.options.cancelId)
+	    } else {
+	        var dialog = document.querySelector('#' + prefixID);
+	        self.isDefaultDialog = true;
+	        if (dialog == null) {
+	            //var d = document.createElement('DIV')
+	            //d.innerHTML = '<div class="modal" id="' + prefixID + '"><div class="modal-dialog"><div class="modal-content">' + '<div class="modal-header"><h4 class="modal-title">Modal title</h4></div>' + '<div class="modal-body"></div><div class="modal-footer">' + '<button   type="button" class="btn btn-primary okBtn">确定</button>' + '<button  type="button" class="btn btn-default cancelBtn" data-dismiss="modal">取消</button></div></div></div></div>'
+	            dialog = (0, _dom.makeDOM)('	<div style="display:none;height:100%" id="' + prefixID + '">' + '<div class="u-msg-title"><h4 class="title">单据名称</h4></div>' + '<div class="u-msg-content">' + '<div class="content"></div>' + '</div>' + '<div class="u-msg-footer">' + '<button class="u-msg-ok u-button">确定<span class="u-button-container"><span class="u-ripple"></span></span></button>' + '<button class="u-msg-cancel u-button">取消<span class="u-button-container"><span class="u-ripple"></span></span></button>' + '</div>' + '</div>');
+	            document.body.appendChild(dialog);
+	            //dialog = document.body.querySelector('#' + prefixID);
+	        }
+	        //this.$contentEle = dialog.find('.modal-body');
+	        this.titleDiv = dialog.querySelector('.title');
+	        this.contentDiv = dialog.querySelector('.content');
+	        this.okBtn = dialog.querySelector('.u-msg-ok');
+	        this.cancelBtn = dialog.querySelector('.u-msg-cancel');
+	        this.dialog = dialog;
+	        //if (this.options.width)
+	        //    dialog.find('.modal-content').css('width', this.options.width)
+	        //if (this.options.height)
+	        //    this.$contentEle.css('height', this.options.height)
+	        //this.dialog.find('.modal-title').html(this.options.title)
+	        this.titleDiv.innerHTML = this.options.title;
+	    }
+	    (0, _event.on)(this.okBtn, 'click', function () {
+	        self.submit();
+	    });
+	
+	    (0, _event.on)(this.cancelBtn, 'click', function () {
+	        self.cancel();
+	    });
+	};
+	
+	Refer.fn.submit = function () {
+	    var data = this.submitData();
+	    this.options.onOk(data);
+	    Plugin.destroy(this);
+	};
+	
+	Refer.fn.cancel = function () {
+	    this.options.onCancel();
+	    Plugin.destroy(this);
+	};
+	
+	Refer.fn.open = function () {
+	    var self = this;
+	    if (self.isDefaultDialog) {
+	        var opt = { id: this.options.contentId, content: '#' + this.options.contentId, hasCloseMenu: true };
+	        if (this.options.height) opt.height = this.options.height;
+	        if (this.options.width) opt.width = this.options.width;
+	        self.modalDialog = (0, _neouiDialog.dialog)(opt);
+	        //self.dialog.modal('show')
+	    }
+	    if (this.options['module']) {
+	        self.contentDiv.innerHTML = this.options['module'].template;
+	        this.options['module'].init(self);
+	    }
+	    //else if(require && require.amd){
+	    //    require([this.options.pageUrl], function(module) {
+	    //        self.contentDiv.innerHTML =  module.template;
+	    //        module.init(self);
+	    //        self.loaded = true;
+	    //    })
+	    //}
+	};
+	
+	/**
+	 * 参照页面中需注册此方法
+	 */
+	Refer.fn.registerSubmitFunc = function (func) {
+	    this.submitData = func;
+	};
+	
+	Refer.fn.submitData = function () {};
+	
+	var Plugin = function Plugin(options) {
+	    var r = new Refer(options);
+	
+	    Plugin.addRefer(r);
+	    r.open();
+	    return r;
+	};
+	
+	Refer.fn.destroy = function () {
+	    if (this.dialog) {
+	        if (this.isDefaultDialog) {
+	            //this.dialog.modal('hide');
+	            //	            this.dialog.modal('removeBackdrop');
+	            this.modalDialog.close();
+	        }
+	        //this.dialog.parent().remove();
+	        this.dialog.parentElement.removeChild(this.dialog);
+	    }
+	    delete this.options;
+	};
+	
+	/**
+	 * 参照实列
+	 */
+	Plugin.instances = {};
+	
+	Plugin.openRefer = function (options) {
+	    var r = new Refer(options);
+	    Plugin.addRefer(r);
+	    r.open();
+	};
+	
+	Plugin.getRefer = function (id) {
+	    return Plugin.instances[id];
+	};
+	
+	Plugin.addRefer = function (refer) {
+	    Plugin.instances[refer.options.id] = refer;
+	};
+	
+	Plugin.destroy = function (refer) {
+	    var r = Plugin.instances[refer.options.id];
+	    delete Plugin.instances[refer.options.id];
+	    r.destroy();
+	};
+	
+	var refer = Plugin;
+	
+	exports.refer = refer;
+
+/***/ },
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.slidePanel = undefined;
+	
+	var _dom = __webpack_require__(10);
+	
+	var _ajax = __webpack_require__(11);
+	
+	var _event = __webpack_require__(5);
+	
+	var _env = __webpack_require__(6);
+	
+	/**
+	 * Module : neoui-slidePanel
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-03 13:18:48
+	 */
+	
+	var slidePanelTemplate = ['<div class="slidePanel slidePanel-right  slidePanel-show slidePanel-dragging" style="transform:translate3d(100%,0,0);">', '<div class="slidePanel-content site-sidebar-content"></div>', '<div class="slidePanel-handler"></div>', '</div>'];
+	
+	var slidePanel = function slidePanel(options) {
+		var url = options['url'],
+		    width = options['width'] || '700px',
+		    callback = options['callback'] || function () {},
+		    slideDom = (0, _dom.makeDOM)(slidePanelTemplate.join('')),
+		    overlayDiv = makeModal(slideDom);
+		slideDom.style.width = width;
+		overlayDiv.style.opacity = 0;
+		document.body.appendChild(slideDom);
+		//overlayDiv.style.opacity = 0.5;
+		(0, _ajax.ajax)({
+			type: 'get',
+			url: url,
+			success: function success(data) {
+				var content = slideDom.querySelector('.slidePanel-content');
+				content.innerHTML = data;
+				callback();
+				setTimeout(function () {
+					slideDom.style.transform = 'translate3d(0,0,0)';
+					overlayDiv.style.opacity = 0.5;
+				}, 1);
+			}
+		});
+	
+		(0, _event.on)(overlayDiv, 'click', function () {
+			(0, _event.on)(slideDom, 'transitionend', function () {
+				document.body.removeChild(slideDom);
+				document.body.removeChild(overlayDiv);
+			});
+			(0, _event.on)(slideDom, 'webkitTransitionEnd', function () {
+				document.body.removeChild(slideDom);
+				document.body.removeChild(overlayDiv);
+			});
+			slideDom.style.transform = 'translate3d(100%,0,0)';
+			overlayDiv.style.opacity = 0;
+			if (_env.env.isIE8) {
+				document.body.removeChild(slideDom);
+				document.body.removeChild(overlayDiv);
+			}
+		});
+	
+		return {
+			close: function close() {
+				overlayDiv.click();
+			}
+		};
+	};
+	
+	exports.slidePanel = slidePanel;
+
+/***/ },
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7028,7 +7447,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.Tooltip = Tooltip;
 
 /***/ },
-/* 32 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7055,9 +7474,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _util = __webpack_require__(4);
 	
-	var _neouiTooltip = __webpack_require__(31);
+	var _neouiTooltip = __webpack_require__(33);
 	
-	var _i18n = __webpack_require__(33);
+	var _i18n = __webpack_require__(35);
 	
 	var _compMgr = __webpack_require__(9);
 	
@@ -7507,7 +7926,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	// 对某个dom容器内的元素进行校验
-	exports.doValidate = doValidate = function doValidate(element) {
+	var doValidate = function doValidate(element) {
 		var passed = true,
 		    childEle,
 		    result;
@@ -7534,7 +7953,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.doValidate = doValidate;
 
 /***/ },
-/* 33 */
+/* 35 */
 /***/ function(module, exports) {
 
 	"use strict";

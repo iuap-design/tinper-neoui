@@ -489,7 +489,7 @@ var Validate = BaseComponent.extend({
 	}
 
 	// 对某个dom容器内的元素进行校验
-	doValidate = function(element) {
+var	doValidate = function(element) {
 	    var passed = true,
 	        childEle, result;
 	    if (typeof element === 'string') {

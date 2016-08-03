@@ -1,4 +1,16 @@
-u.Radio = u.BaseComponent.extend({
+/**
+ * Module : neoui-radio
+ * Author : Kvkens(yueming@yonyou.com)
+ * Date	  : 2016-08-03 11:16:00
+ */
+
+import {BaseComponent} from './sparrow/BaseComponent';
+import {addClass,hasClass,removeClass} from './sparrow/dom';
+import {env} from './sparrow/env';
+import {compMgr} from './sparrow/compMgr';
+
+
+var Radio = BaseComponent.extend({
     Constant_: {
         TINY_TIMEOUT: 0.001
     },
@@ -23,17 +35,17 @@ u.Radio = u.BaseComponent.extend({
         this._boundMouseUpHandler = this._onMouseup.bind(this);
 
         var outerCircle = document.createElement('span');
-        u.addClass(outerCircle, this._CssClasses.RADIO_OUTER_CIRCLE);
+        addClass(outerCircle, this._CssClasses.RADIO_OUTER_CIRCLE);
 
         var innerCircle = document.createElement('span');
-        u.addClass(innerCircle, this._CssClasses.RADIO_INNER_CIRCLE);
+        addClass(innerCircle, this._CssClasses.RADIO_INNER_CIRCLE);
 
         this.element.appendChild(outerCircle);
         this.element.appendChild(innerCircle);
 
         var rippleContainer;
         //if (this.element.classList.contains( this._CssClasses.RIPPLE_EFFECT)) {
-        //  u.addClass(this.element,this._CssClasses.RIPPLE_IGNORE_EVENTS);
+        //  addClass(this.element,this._CssClasses.RIPPLE_IGNORE_EVENTS);
         rippleContainer = document.createElement('span');
         //rippleContainer.classList.add(this._CssClasses.RIPPLE_CONTAINER);
         //rippleContainer.classList.add(this._CssClasses.RIPPLE_EFFECT);
@@ -54,7 +66,7 @@ u.Radio = u.BaseComponent.extend({
         this.element.addEventListener('mouseup', this._boundMouseUpHandler);
 
         this._updateClasses();
-        u.addClass(this.element, this._CssClasses.IS_UPGRADED);
+        addClass(this.element, this._CssClasses.IS_UPGRADED);
 
     },
 
@@ -66,8 +78,8 @@ u.Radio = u.BaseComponent.extend({
             var button = radios[i].querySelector('.' + this._CssClasses.RADIO_BTN);
             // Different name == different group, so no point updating those.
             if (button.getAttribute('name') === this._btnElement.getAttribute('name')) {
-                if(radios[i]['u.Radio']){
-                    radios[i]['u.Radio']._updateClasses();
+                if(radios[i]['Radio']){
+                    radios[i]['Radio']._updateClasses();
                 }
             }
         }
@@ -81,7 +93,7 @@ u.Radio = u.BaseComponent.extend({
      * @private
      */
     _onFocus: function (event) {
-        u.addClass(this.element, this._CssClasses.IS_FOCUSED);
+        addClass(this.element, this._CssClasses.IS_FOCUSED);
     },
 
     /**
@@ -91,7 +103,7 @@ u.Radio = u.BaseComponent.extend({
      * @private
      */
     _onBlur: function (event) {
-        u.removeClass(this.element, this._CssClasses.IS_FOCUSED);
+        removeClass(this.element, this._CssClasses.IS_FOCUSED);
     },
 
     /**
@@ -137,9 +149,9 @@ u.Radio = u.BaseComponent.extend({
      */
     checkDisabled: function () {
         if (this._btnElement.disabled) {
-            u.addClass(this.element, this._CssClasses.IS_DISABLED);
+            addClass(this.element, this._CssClasses.IS_DISABLED);
         } else {
-            u.removeClass(this.element, this._CssClasses.IS_DISABLED);
+            removeClass(this.element, this._CssClasses.IS_DISABLED);
         }
     },
 
@@ -151,9 +163,9 @@ u.Radio = u.BaseComponent.extend({
      */
     checkToggleState: function () {
         if (this._btnElement.checked) {
-            u.addClass(this.element, this._CssClasses.IS_CHECKED);
+            addClass(this.element, this._CssClasses.IS_CHECKED);
         } else {
-            u.removeClass(this.element, this._CssClasses.IS_CHECKED);
+            removeClass(this.element, this._CssClasses.IS_CHECKED);
         }
     },
 
@@ -199,8 +211,10 @@ u.Radio = u.BaseComponent.extend({
 });
 
 
-u.compMgr.regComp({
-    comp: u.Radio,
+compMgr.regComp({
+    comp: Radio,
     compAsString: 'u.Radio',
     css: 'u-radio'
 });
+
+export {Radio};
