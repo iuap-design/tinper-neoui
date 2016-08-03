@@ -1,4 +1,17 @@
-u.Tabs = u.BaseComponent.extend({
+/**
+ * Module : neoui-tabs
+ * Author : Kvkens(yueming@yonyou.com)
+ * Date	  : 2016-08-03 14:12:27
+ */
+
+import {BaseComponent} from './sparrow/BaseComponent';
+import {addClass,removeClass} from './sparrow/dom';
+import {stopEvent} from './sparrow/event';
+import {Ripple} from './sparrow/util/ripple';
+import {compMgr} from './sparrow/compMgr';
+
+
+var Tabs = BaseComponent.extend({
 	_Constant: {},
 	_CssClasses: {
 		TAB_CLASS: 'u-tabs__tab',
@@ -18,7 +31,7 @@ u.Tabs = u.BaseComponent.extend({
 	 * @private
 	 */
 	initTabs_: function() {
-		u.addClass(this.element,this._CssClasses.U_JS_RIPPLE_EFFECT_IGNORE_EVENTS)
+		addClass(this.element, this._CssClasses.U_JS_RIPPLE_EFFECT_IGNORE_EVENTS)
 
 		// Select element tabs, document panels
 		this.tabs_ = this.element.querySelectorAll('.' + this._CssClasses.TAB_CLASS);
@@ -26,10 +39,10 @@ u.Tabs = u.BaseComponent.extend({
 			this.element.querySelectorAll('.' + this._CssClasses.PANEL_CLASS);
 
 		// Create new tabs for each tab element
-		for (var i = 0; i < this.tabs_.length; i++) {
+		for(var i = 0; i < this.tabs_.length; i++) {
 			new Tab(this.tabs_[i], this);
 		}
-		u.addClass(this.element,this._CssClasses.UPGRADED_CLASS)
+		addClass(this.element, this._CssClasses.UPGRADED_CLASS)
 	},
 
 	/**
@@ -38,8 +51,8 @@ u.Tabs = u.BaseComponent.extend({
 	 * @private
 	 */
 	resetTabState_: function() {
-		for (var k = 0; k < this.tabs_.length; k++) {
-			u.removeClass(this.tabs_[k],this._CssClasses.ACTIVE_CLASS)
+		for(var k = 0; k < this.tabs_.length; k++) {
+			removeClass(this.tabs_[k], this._CssClasses.ACTIVE_CLASS)
 		}
 	},
 
@@ -49,17 +62,17 @@ u.Tabs = u.BaseComponent.extend({
 	 * @private
 	 */
 	resetPanelState_: function() {
-		for (var j = 0; j < this.panels_.length; j++) {
-			u.removeClass(this.panels_[j],this._CssClasses.ACTIVE_CLASS)
+		for(var j = 0; j < this.panels_.length; j++) {
+			removeClass(this.panels_[j], this._CssClasses.ACTIVE_CLASS)
 		}
 	},
-	show: function(itemId){
+	show: function(itemId) {
 		var panel = this.element.querySelector('#' + itemId);
 		var tab = this.element.querySelector("[href='#" + itemId + "']");
 		this.resetTabState_();
 		this.resetPanelState_();
-		u.addClass(tab,this._CssClasses.ACTIVE_CLASS);
-		u.addClass(panel,this._CssClasses.ACTIVE_CLASS);
+		addClass(tab, this._CssClasses.ACTIVE_CLASS);
+		addClass(panel, this._CssClasses.ACTIVE_CLASS);
 
 	},
 
@@ -67,7 +80,7 @@ u.Tabs = u.BaseComponent.extend({
 	 * Initialize element.
 	 */
 	init: function() {
-		if (this.element) {
+		if(this.element) {
 			this.initTabs_();
 		}
 	}
@@ -81,35 +94,35 @@ u.Tabs = u.BaseComponent.extend({
  * @param {Tabs} ctx The Tabs object that owns the tab.
  */
 function Tab(tab, ctx) {
-	if (tab) {
-			var rippleContainer = document.createElement('span');
-			u.addClass(rippleContainer,ctx._CssClasses.U_RIPPLE_CONTAINER);
-			u.addClass(rippleContainer,ctx._CssClasses.U_JS_RIPPLE_EFFECT);
-			var ripple = document.createElement('span');
-			u.addClass(ripple,ctx._CssClasses.U_RIPPLE);
-			rippleContainer.appendChild(ripple);
-			tab.appendChild(rippleContainer);
+	if(tab) {
+		var rippleContainer = document.createElement('span');
+		addClass(rippleContainer, ctx._CssClasses.U_RIPPLE_CONTAINER);
+		addClass(rippleContainer, ctx._CssClasses.U_JS_RIPPLE_EFFECT);
+		var ripple = document.createElement('span');
+		addClass(ripple, ctx._CssClasses.U_RIPPLE);
+		rippleContainer.appendChild(ripple);
+		tab.appendChild(rippleContainer);
 
-      tab.ripple = new u.Ripple(tab)
-
+		tab.ripple = new Ripple(tab)
 
 		tab.addEventListener('click', function(e) {
-			u.stopEvent(e);
+			stopEvent(e);
 			// e.preventDefault();
 			var href = tab.href.split('#')[1];
 			var panel = ctx.element.querySelector('#' + href);
 			ctx.resetTabState_();
 			ctx.resetPanelState_();
-			u.addClass(tab,ctx._CssClasses.ACTIVE_CLASS);
-			u.addClass(panel,ctx._CssClasses.ACTIVE_CLASS);
+			addClass(tab, ctx._CssClasses.ACTIVE_CLASS);
+			addClass(panel, ctx._CssClasses.ACTIVE_CLASS);
 		});
 
 	}
 }
 
-
-u.compMgr.regComp({
-	comp: u.Tabs,
+compMgr.regComp({
+	comp: Tabs,
 	compAsString: 'u.Tabs',
 	css: 'u-tabs'
-})
+});
+
+export {Tabs};

@@ -8,7 +8,6 @@ import {Autocomplete} from 'neoui-autocomplete';
 import {Button} from 'neoui-button';
 import {Checkbox} from 'neoui-checkbox';
 import {Combo} from 'neoui-combo';
-import {Text} from 'neoui-textfield';
 import {Combobox} from 'neoui-combobox';
 import {Table} from 'neoui-data-table';
 import {messageDialog,confirmDialog,dialogMode,dialog,dialogWizard} from 'neoui-dialog';
@@ -25,8 +24,9 @@ import {Progress} from 'neoui-progress';
 import {Radio} from 'neoui-radio';
 import {refer} from 'neoui-refer';
 import {slidePanel} from 'neoui-slidePanel';
-
-
+import {Switch} from 'neoui-switch';
+import {Tabs} from 'neoui-tabs';
+import {Text} from 'neoui-textfield';
 import {Tooltip} from 'neoui-tooltip';
 import {Validate,validate,doValidate} from 'neoui-validate';
 
