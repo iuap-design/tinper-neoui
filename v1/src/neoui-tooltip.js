@@ -1,10 +1,20 @@
-u.Tooltip = function(element,options){
+/**
+ * Module : neoui-combo
+ * Author : Kvkens(yueming@yonyou.com)
+ * Date   : 2016-08-02 14:09:22
+ */
+import {extend} from './sparrow/extend.js';
+import {on} from './sparrow/event';
+import {makeDOM,addClass,removeClass,getZIndex} from './sparrow/dom';
+
+
+var Tooltip = function(element,options){
 	this.init(element,options)
 	//this.show()
 }
 
 
-u.Tooltip.prototype = {
+Tooltip.prototype = {
     defaults:{
         animation: true,
         placement: 'top',
@@ -22,7 +32,7 @@ u.Tooltip.prototype = {
     },
     init: function (element,options) {
 		this.element = element
-        this.options = u.extend({}, this.defaults, options);
+        this.options = extend({}, this.defaults, options);
         this._viewport = this.options.viewport && document.querySelector(this.options.viewport.selector || this.options.viewport);
 
         var triggers = this.options.trigger.split(' ')
@@ -30,12 +40,12 @@ u.Tooltip.prototype = {
         for (var i = triggers.length; i--;) {
             var trigger = triggers[i]
             if (trigger == 'click') {
-                u.on(this.element, 'click', this.toggle.bind(this));
+                on(this.element, 'click', this.toggle.bind(this));
             } else if (trigger != 'manual') {
                 var eventIn = trigger == 'hover' ? 'mouseenter' : 'focusin'
                 var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout'
-                u.on(this.element, eventIn, this.enter.bind(this));
-                u.on(this.element, eventOut, this.leave.bind(this));
+                on(this.element, eventIn, this.enter.bind(this));
+                on(this.element, eventOut, this.leave.bind(this));
             }
         }
         this.options.title = this.options.title || this.element.getAttribute('title');
@@ -47,10 +57,10 @@ u.Tooltip.prototype = {
             }
         };
         //tip模板对应的dom
-        this.tipDom = u.makeDOM(this.options.template);
-        u.addClass(this.tipDom,this.options.placement);
+        this.tipDom = makeDOM(this.options.template);
+        addClass(this.tipDom,this.options.placement);
         if(this.options.colorLevel){
-             u.addClass(this.tipDom,this.options.colorLevel);
+             addClass(this.tipDom,this.options.colorLevel);
          }
         this.arrrow = this.tipDom.querySelector('.tooltip-arrow');
 
@@ -79,10 +89,10 @@ u.Tooltip.prototype = {
     show: function(){
         var self = this;
         this.tipDom.querySelector('.tooltip-inner').innerHTML = this.options.title;
-        this.tipDom.style.zIndex = u.getZIndex();
+        this.tipDom.style.zIndex = getZIndex();
         this.container.appendChild(this.tipDom);
 
-        u.addClass(this.tipDom,'active');
+        addClass(this.tipDom,'active');
         var inputLeft = this.element.offsetLeft;
         var inputTop = this.element.offsetTop;
         var inputWidth = this.element.offsetWidth;
@@ -106,7 +116,7 @@ u.Tooltip.prototype = {
     },
     hide: function(){
 		if (this.container.contains(this.tipDom)){
-			u.removeClass(this.tipDom, 'active');
+			removeClass(this.tipDom, 'active');
 			this.container.removeChild(this.tipDom);
 		}
     },
@@ -130,7 +140,7 @@ u.Tooltip.prototype = {
         this.tipDom.style.left = offset.left + 'px';
         this.tipDom.style.top = offset.top + 'px';
 
-        u.addClass(this.tipDom,'active');
+        addClass(this.tipDom,'active');
 
         // check to see if placing tip in new offset caused the tip to resize itself
         var actualWidth = this.tipDom.offsetWidth
@@ -170,13 +180,13 @@ u.Tooltip.prototype = {
         var elRect = el.getBoundingClientRect()
         if (elRect.width == null) {
             // width and height are missing in IE8, so compute them manually; see https://github.com/twbs/bootstrap/issues/14093
-            elRect = u.extend({}, elRect, {width: elRect.right - elRect.left, height: elRect.bottom - elRect.top})
+            elRect = extend({}, elRect, {width: elRect.right - elRect.left, height: elRect.bottom - elRect.top})
         }
         var elOffset = isBody ? {top: 0, left: 0} : {top:el.offsetTop, left: el.offsetLeft};
         var scroll = {scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : el.scrollTop}
         var outerDims = isBody ? {width: window.innerWidth || document.body.clientWidth, height: window.innerHeight || document.body.clientHeight} : null
-		//return u.extend({}, elRect, scroll, outerDims, elOffset)
-        return u.extend({}, elRect, scroll, outerDims)
+		//return extend({}, elRect, scroll, outerDims, elOffset)
+        return extend({}, elRect, scroll, outerDims)
 
     },
     getViewportAdjustedDelta: function(placement, pos, actualWidth, actualHeight){
@@ -223,3 +233,7 @@ u.Tooltip.prototype = {
     }
 
 };
+
+export{
+    Tooltip  
+}
