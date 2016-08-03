@@ -1,9 +1,9 @@
 /**
- * Module : neoui-combo
+ * Module : neoui-tooltip
  * Author : Kvkens(yueming@yonyou.com)
- * Date   : 2016-08-02 14:09:22
+ * Date   : 2016-08-03 10:43:21
  */
-import {extend} from './sparrow/extend.js';
+import {extend} from './sparrow/extend';
 import {on} from './sparrow/event';
 import {makeDOM,addClass,removeClass,getZIndex} from './sparrow/dom';
 
@@ -121,19 +121,19 @@ Tooltip.prototype = {
 		}
     },
     applyPlacement: function(offset, placement){
-        var width = this.tipDom.offsetWidth
-        var height = this.tipDom.offsetHeight
+        var width = this.tipDom.offsetWidth;
+        var height = this.tipDom.offsetHeight;
 
         // manually read margins because getBoundingClientRect includes difference
-        var marginTop = parseInt(this.tipDom.style.marginTop, 10)
-        var marginLeft = parseInt(this.tipDom.style.marginTop, 10)
+        var marginTop = parseInt(this.tipDom.style.marginTop, 10);
+        var marginLeft = parseInt(this.tipDom.style.marginTop, 10);
 
         // we must check for NaN for ie 8/9
-        if (isNaN(marginTop))  marginTop = 0
-        if (isNaN(marginLeft)) marginLeft = 0
+        if (isNaN(marginTop))  marginTop = 0;
+        if (isNaN(marginLeft)) marginLeft = 0;
 
-        offset.top = offset.top + marginTop
-        offset.left = offset.left + marginLeft
+        offset.top = offset.top + marginTop;
+        offset.left = offset.left + marginLeft;
 
         // $.fn.offset doesn't round pixel values
         // so we use setOffset directly with our own function B-0

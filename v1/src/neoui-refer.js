@@ -1,34 +1,23 @@
-/* ========================================================================
- * UUI: refer.js v 1.0.0
- *
- * ========================================================================
- * Copyright 2015 yonyou, Inc.
- *
- * ======================================================================== */
-
 /**
- * u.refer({
-* contentId: 'mycontent' //内容区id，如果不提供，创建弹出框口div，以弹出方式打开参照
-* pageUrl:'xxxx' //自定义参照需要设置此属性
-* dataUrl:'yyyyy' //标准参照需要设置此属性
-* isPOPMode: false,
-* module:  {template:'<div></div>', init：function(){}}    //js模块
-* params{}
-* onOk: function(data){
-*
-* },
-* onCancel: function(){
-*
-* }
-* })
+ * Module : neoui-refer
+ * Author : Kvkens(yueming@yonyou.com)
+ * Date	  : 2016-08-03 11:29:40
  */
+import {BaseComponent} from './sparrow/BaseComponent';
+import {extend} from './sparrow/extend.js';
+import {makeDOM} from './sparrow/dom';
+import {on} from './sparrow/event';
+import {isEmptyObject} from './sparrow/util';
+import {dialog} from './neoui-dialog';
+
+
 
 
 var Refer = function (options) {
     var contentId = options['contentId'];
-    if (u.isEmptyObject(contentId))
+    if (isEmptyObject(contentId))
         throw new Error('contentId is null');
-    this.options = u.extend({}, Refer.DEFAULTS, options);
+    this.options = extend({}, Refer.DEFAULTS, options);
     this.params = this.options['params'];
     this.create();
     this.loaded = false;
@@ -74,7 +63,7 @@ Refer.fn.create = function () {
         if (dialog == null) {
             //var d = document.createElement('DIV')
             //d.innerHTML = '<div class="modal" id="' + prefixID + '"><div class="modal-dialog"><div class="modal-content">' + '<div class="modal-header"><h4 class="modal-title">Modal title</h4></div>' + '<div class="modal-body"></div><div class="modal-footer">' + '<button   type="button" class="btn btn-primary okBtn">确定</button>' + '<button  type="button" class="btn btn-default cancelBtn" data-dismiss="modal">取消</button></div></div></div></div>'
-            dialog = u.makeDOM('	<div style="display:none;height:100%" id="' + prefixID + '">' +
+            dialog = makeDOM('	<div style="display:none;height:100%" id="' + prefixID + '">' +
                     '<div class="u-msg-title"><h4 class="title">单据名称</h4></div>' +
                     '<div class="u-msg-content">' +
                         '<div class="content"></div>' +
@@ -101,11 +90,11 @@ Refer.fn.create = function () {
         this.titleDiv.innerHTML = this.options.title;
 
     }
-    u.on(this.okBtn, 'click', function(){
+    on(this.okBtn, 'click', function(){
         self.submit();
     })
 
-    u.on(this.cancelBtn, 'click', function(){
+    on(this.cancelBtn, 'click', function(){
         self.cancel();
     })
 }
@@ -130,7 +119,7 @@ Refer.fn.open = function () {
             opt.height = this.options.height;
         if (this.options.width)
             opt.width = this.options.width;
-        self.modalDialog = u.dialog(opt);
+        self.modalDialog = dialog(opt);
         //self.dialog.modal('show')
     }
     if (this.options['module']){
@@ -202,6 +191,7 @@ Plugin.destroy = function (refer) {
     r.destroy()
 }
 
-u.refer = Plugin;
+var refer = Plugin;
 
 
+export {refer};
