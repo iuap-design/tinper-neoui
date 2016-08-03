@@ -2,23 +2,51 @@ var webpack = require('webpack');
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var path = require('path');
 var env = require('yargs').argv.mode;
-
-var libraryName = 'neoui';
+var fs = require('fs');
 
 var plugins = [],
-	outputFile;
+	entryobj = {},
+	libraryName,
+	outputFile,
+	entryFile;
+
+// 多路径配置
+var entries =  fs.readdirSync('./v1/src/').filter(function(file) {
+	return file.match(/\.js$/);
+});
+
+function objpush(element, index, array) {
+	var name = element.split('.js')[0];
+	if(name === 'index'){
+
+	} else {
+		entryobj[name] = [ './v1/src/' + element ];
+	}
+}
+entries.forEach(objpush);
+
+
 
 if(env === 'build') {
 	plugins.push(new UglifyJsPlugin({
 		minimize: true
 	}));
+	libraryName = '[name]';
 	outputFile = libraryName + '.min.js';
+	entryFile = entryobj;
 } else {
+	libraryName = 'neoui';
 	outputFile = libraryName + '.js';
+	entryFile = __dirname + '/v1/src/index.js';
 }
 
+
 var config = {
-	entry: __dirname + '/v1/src/index.js',
+	// entry: __dirname + '/v1/src/index.js',
+	// entry : fs.readdirSync('./v1/src/').filter(function(file) {
+	// 	return file.match(/\.js$/);
+	// }),
+	entry: entryFile,
 	devtool: 'source-map',
 	output: {
 		path: __dirname + '/v1/lib/js',
