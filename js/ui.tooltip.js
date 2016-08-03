@@ -18,7 +18,8 @@ u.Tooltip.prototype = {
         viewport: {
             selector: 'body',
             padding: 0
-        }
+        },
+        showFix: false
     },
     init: function (element,options) {
 		this.element = element
@@ -80,21 +81,38 @@ u.Tooltip.prototype = {
         var self = this;
         this.tipDom.querySelector('.tooltip-inner').innerHTML = this.options.title;
         this.tipDom.style.zIndex = u.getZIndex();
-        this.container.appendChild(this.tipDom);
+
+        if(this.options.showFix){
+            document.body.appendChild(this.tipDom);
+            this.tipDom.style.position = 'fixed';
+            u.showPanelByEle({
+                ele:this.element,
+                panel:this.tipDom,
+                position:"top"
+            });
+            // fix情况下滚动时隐藏
+            u.on(document,'scroll',function(){
+                self.hide();
+            })
+        }else{
+            this.container.appendChild(this.tipDom);
+            var inputLeft = this.element.offsetLeft;
+            var inputTop = this.element.offsetTop;
+            var inputWidth = this.element.offsetWidth;
+            var inputHeight = this.element.offsetHeight;
+            var topWidth = this.tipDom.offsetWidth;
+            var topHeight = this.tipDom.offsetHeight;
+            if(this.options.placement == 'top'){
+                this.left = this.element.offsetLeft + inputWidth/2;
+                this.top = this.element.offsetTop - topHeight;
+            }
+            this.tipDom.style.left = this.left + 'px';
+            this.tipDom.style.top = this.top + 'px';
+        }
+        
 
         u.addClass(this.tipDom,'active');
-        var inputLeft = this.element.offsetLeft;
-        var inputTop = this.element.offsetTop;
-        var inputWidth = this.element.offsetWidth;
-        var inputHeight = this.element.offsetHeight;
-        var topWidth = this.tipDom.offsetWidth;
-        var topHeight = this.tipDom.offsetHeight;
-        if(this.options.placement == 'top'){
-            this.left = this.element.offsetLeft + inputWidth/2;
-            this.top = this.element.offsetTop - topHeight;
-        }
-        this.tipDom.style.left = this.left + 'px';
-        this.tipDom.style.top = this.top + 'px';
+        
         // var placement = this.options.placement;
         // var pos = this.getPosition()
         // var actualWidth = this.tipDom.offsetWidth
@@ -105,10 +123,18 @@ u.Tooltip.prototype = {
 
     },
     hide: function(){
-		if (this.container.contains(this.tipDom)){
-			u.removeClass(this.tipDom, 'active');
-			this.container.removeChild(this.tipDom);
-		}
+        if(this.options.showFix){
+            if (document.body.contains(this.tipDom)){
+                u.removeClass(this.tipDom, 'active');
+                document.body.removeChild(this.tipDom);
+            }
+        }else{
+            if (this.container.contains(this.tipDom)){
+                u.removeClass(this.tipDom, 'active');
+                this.container.removeChild(this.tipDom);
+            }
+        }
+		
     },
     applyPlacement: function(offset, placement){
         var width = this.tipDom.offsetWidth
