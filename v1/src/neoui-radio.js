@@ -7,6 +7,8 @@
 import {BaseComponent} from './sparrow/BaseComponent';
 import {addClass,hasClass,removeClass} from './sparrow/dom';
 import {env} from './sparrow/env';
+import {on} from './sparrow/event';
+import {URipple} from './sparrow/util/ripple';
 import {compMgr} from './sparrow/compMgr';
 
 
@@ -213,8 +215,19 @@ var Radio = BaseComponent.extend({
 
 compMgr.regComp({
     comp: Radio,
-    compAsString: 'u.Radio',
+    compAsString: 'Radio',
     css: 'u-radio'
 });
+
+
+
+if(document.readyState && document.readyState === 'complete') {
+	compMgr.updateComp();
+} else {
+	on(window, 'load', function() {
+		//扫描并生成控件
+		compMgr.updateComp();
+	});
+}
 
 export {Radio};

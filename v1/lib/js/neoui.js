@@ -2,11 +2,11 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define("neoui", [], factory);
+		define("u", [], factory);
 	else if(typeof exports === 'object')
-		exports["neoui"] = factory();
+		exports["u"] = factory();
 	else
-		root["neoui"] = factory();
+		root["u"] = factory();
 })(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -2517,10 +2517,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	_compMgr.compMgr.regComp({
 		comp: Button,
-		compAsString: 'u.Button',
+		compAsString: 'Button',
 		css: 'u-button'
 	});
-	
+	if (document.readyState && document.readyState === 'complete') {
+		_compMgr.compMgr.updateComp();
+	} else {
+		(0, _event.on)(window, 'load', function () {
+			//扫描并生成控件
+			_compMgr.compMgr.updateComp();
+		});
+	}
 	exports.Button = Button;
 
 /***/ },
@@ -2769,13 +2776,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _event = __webpack_require__(5);
 	
+	var _ripple = __webpack_require__(13);
+	
 	var _compMgr = __webpack_require__(9);
 	
-	/**
-	 * Module : neoui-checkbox
-	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-08-02 13:55:07
-	 */
 	var Checkbox = _BaseComponent.BaseComponent.extend({
 	    _Constant: {
 	        TINY_TIMEOUT: 0.001
@@ -2822,7 +2826,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	        //this.rippleContainerElement_.appendChild(ripple);
 	        this.element.appendChild(this.rippleContainerElement_);
-	        new URipple(this.rippleContainerElement_);
+	        new _ripple.URipple(this.rippleContainerElement_);
 	
 	        //}
 	        this.boundInputOnChange = this._onChange.bind(this);
@@ -2970,13 +2974,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.boundInputOnChange();
 	    }
 	
-	});
+	}); /**
+	     * Module : neoui-checkbox
+	     * Author : Kvkens(yueming@yonyou.com)
+	     * Date	  : 2016-08-02 13:55:07
+	     */
+	
 	
 	_compMgr.compMgr.regComp({
 	    comp: Checkbox,
-	    compAsString: 'u.Checkbox',
+	    compAsString: 'Checkbox',
 	    css: 'u-checkbox'
 	});
+	if (document.readyState && document.readyState === 'complete') {
+	    _compMgr.compMgr.updateComp();
+	} else {
+	    (0, _event.on)(window, 'load', function () {
+	        //扫描并生成控件
+	        _compMgr.compMgr.updateComp();
+	    });
+	}
 	exports.Checkbox = Checkbox;
 
 /***/ },
@@ -3000,13 +3017,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _neouiTextfield = __webpack_require__(16);
 	
-	var _compMgr = __webpack_require__(9);
+	var _ripple = __webpack_require__(13);
 	
-	/**
-	 * Module : neoui-combo
-	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-08-02 14:09:22
-	 */
+	var _compMgr = __webpack_require__(9);
 	
 	var Combo = _BaseComponent.BaseComponent.extend({
 		init: function init() {
@@ -3162,7 +3175,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 				rippleContainer.appendChild(_rippleElement);
 				li.appendChild(rippleContainer);
-				new URipple(li);
+				new _ripple.URipple(li);
 				this._ul.appendChild(li);
 			}
 		},
@@ -3301,13 +3314,25 @@ return /******/ (function(modules) { // webpackBootstrap
 			}.bind(this));
 		}
 	
-	});
+	}); /**
+	     * Module : neoui-combo
+	     * Author : Kvkens(yueming@yonyou.com)
+	     * Date	  : 2016-08-02 14:09:22
+	     */
 	
 	_compMgr.compMgr.regComp({
 		comp: Combo,
-		compAsString: 'u.Combo',
+		compAsString: 'Combo',
 		css: 'u-combo'
 	});
+	if (document.readyState && document.readyState === 'complete') {
+		_compMgr.compMgr.updateComp();
+	} else {
+		(0, _event.on)(window, 'load', function () {
+			//扫描并生成控件
+			_compMgr.compMgr.updateComp();
+		});
+	}
 	exports.Combo = Combo;
 
 /***/ },
@@ -4054,9 +4079,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	// $.fn.Combobox = Plugin;
 	_compMgr.compMgr.regComp({
 		comp: Combobox,
-		compAsString: 'u.Combobox',
+		compAsString: 'Combobox',
 		css: 'u-combobox'
 	});
+	
+	if (document.readyState && document.readyState === 'complete') {
+		_compMgr.compMgr.updateComp();
+	} else {
+		(0, _event.on)(window, 'load', function () {
+			//扫描并生成控件
+			_compMgr.compMgr.updateComp();
+		});
+	}
 	
 	exports.Combobox = Combobox;
 
@@ -4072,6 +4106,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.Table = undefined;
 	
 	var _BaseComponent = __webpack_require__(2);
+	
+	var _event = __webpack_require__(5);
+	
+	var _neouiCheckbox = __webpack_require__(14);
 	
 	var _compMgr = __webpack_require__(9);
 	
@@ -4098,26 +4136,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var bodyRows = Array.prototype.slice.call(this.element_.querySelectorAll('tbody tr'));
 	            var footRows = Array.prototype.slice.call(this.element_.querySelectorAll('tfoot tr'));
 	            var rows = bodyRows.concat(footRows);
-	
-	            //if (this.element_.classList.contains(this._CssClasses.SELECTABLE)) {
-	            //    var th = document.createElement('th');
-	            //    var headerCheckbox = this._createCheckbox(null, rows);
-	            //    th.appendChild(headerCheckbox);
-	            //    firstHeader.parentElement.insertBefore(th, firstHeader);
-	            //
-	            //    for (var i = 0; i < rows.length; i++) {
-	            //        var firstCell = rows[i].querySelector('td');
-	            //        if (firstCell) {
-	            //            var td = document.createElement('td');
-	            //            if (rows[i].parentNode.nodeName.toUpperCase() === 'TBODY') {
-	            //                var rowCheckbox = this._createCheckbox(rows[i]);
-	            //                td.appendChild(rowCheckbox);
-	            //            }
-	            //            rows[i].insertBefore(td, firstCell);
-	            //        }
-	            //    }
-	            //    this.element_.classList.add(this._CssClasses.IS_UPGRADED);
-	            //}
 	        }
 	    },
 	    _selectRow: function _selectRow(checkbox, row, opt_rows) {
@@ -4167,7 +4185,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	
 	        label.appendChild(checkbox);
-	        new Checkbox(label);
+	        new _neouiCheckbox.Checkbox(label);
 	        return label;
 	    }
 	
@@ -4175,9 +4193,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	_compMgr.compMgr.regComp({
 	    comp: Table,
-	    compAsString: 'u.Table',
+	    compAsString: 'Table',
 	    css: 'u-table'
 	});
+	
+	if (document.readyState && document.readyState === 'complete') {
+	    _compMgr.compMgr.updateComp();
+	} else {
+	    (0, _event.on)(window, 'load', function () {
+	        //扫描并生成控件
+	        _compMgr.compMgr.updateComp();
+	    });
+	}
 	
 	exports.Table = Table;
 
@@ -6726,6 +6753,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _env = __webpack_require__(6);
 	
+	var _event = __webpack_require__(5);
+	
+	var _ripple = __webpack_require__(13);
+	
 	var _compMgr = __webpack_require__(9);
 	
 	/**
@@ -6781,7 +6812,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	        //rippleContainer.appendChild(ripple);
 	        this.element.appendChild(rippleContainer);
-	        new URipple(rippleContainer);
+	        new _ripple.URipple(rippleContainer);
 	        //}
 	
 	        this._btnElement.addEventListener('change', this._boundChangeHandler);
@@ -6930,9 +6961,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	_compMgr.compMgr.regComp({
 	    comp: Radio,
-	    compAsString: 'u.Radio',
+	    compAsString: 'Radio',
 	    css: 'u-radio'
 	});
+	
+	if (document.readyState && document.readyState === 'complete') {
+	    _compMgr.compMgr.updateComp();
+	} else {
+	    (0, _event.on)(window, 'load', function () {
+	        //扫描并生成控件
+	        _compMgr.compMgr.updateComp();
+	    });
+	}
 	
 	exports.Radio = Radio;
 
@@ -7220,6 +7260,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _dom = __webpack_require__(10);
 	
+	var _event = __webpack_require__(5);
+	
+	var _ripple = __webpack_require__(13);
+	
 	var _compMgr = __webpack_require__(9);
 	
 	var Switch = _BaseComponent.BaseComponent.extend({
@@ -7269,7 +7313,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 			//this._rippleContainerElement.appendChild(ripple);
 			this.element.appendChild(this._rippleContainerElement);
-			new URipple(this._rippleContainerElement);
+			new _ripple.URipple(this._rippleContainerElement);
 			//}
 	
 			this.boundChangeHandler = this._onChange.bind(this);
@@ -7377,9 +7421,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	_compMgr.compMgr.regComp({
 		comp: Switch,
-		compAsString: 'u.Switch',
+		compAsString: 'Switch',
 		css: 'u-switch'
 	});
+	
+	if (document.readyState && document.readyState === 'complete') {
+		_compMgr.compMgr.updateComp();
+	} else {
+		(0, _event.on)(window, 'load', function () {
+			//扫描并生成控件
+			_compMgr.compMgr.updateComp();
+		});
+	}
 	
 	exports.Switch = Switch;
 

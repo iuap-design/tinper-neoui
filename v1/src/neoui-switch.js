@@ -6,6 +6,8 @@
 
 import {BaseComponent} from './sparrow/BaseComponent';
 import {addClass,removeClass} from './sparrow/dom';
+import {on} from './sparrow/event';
+import {URipple} from './sparrow/util/ripple';
 import {compMgr} from './sparrow/compMgr';
 
 var Switch = BaseComponent.extend({
@@ -160,8 +162,17 @@ var Switch = BaseComponent.extend({
 
 compMgr.regComp({
 	comp: Switch,
-	compAsString: 'u.Switch',
+	compAsString: 'Switch',
 	css: 'u-switch'
 });
+
+if(document.readyState && document.readyState === 'complete') {
+	compMgr.updateComp();
+} else {
+	on(window, 'load', function() {
+		//扫描并生成控件
+		compMgr.updateComp();
+	});
+}
 
 export {Switch};

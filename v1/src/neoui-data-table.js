@@ -5,6 +5,8 @@
  */
 
 import {BaseComponent} from './sparrow/BaseComponent';
+import {on} from './sparrow/event';
+import {Checkbox} from './neoui-checkbox';
 import {compMgr} from './sparrow/compMgr';
 
 
@@ -26,25 +28,6 @@ var Table = BaseComponent.extend({
             var footRows = Array.prototype.slice.call(this.element_.querySelectorAll('tfoot tr'));
             var rows = bodyRows.concat(footRows);
 
-            //if (this.element_.classList.contains(this._CssClasses.SELECTABLE)) {
-            //    var th = document.createElement('th');
-            //    var headerCheckbox = this._createCheckbox(null, rows);
-            //    th.appendChild(headerCheckbox);
-            //    firstHeader.parentElement.insertBefore(th, firstHeader);
-            //
-            //    for (var i = 0; i < rows.length; i++) {
-            //        var firstCell = rows[i].querySelector('td');
-            //        if (firstCell) {
-            //            var td = document.createElement('td');
-            //            if (rows[i].parentNode.nodeName.toUpperCase() === 'TBODY') {
-            //                var rowCheckbox = this._createCheckbox(rows[i]);
-            //                td.appendChild(rowCheckbox);
-            //            }
-            //            rows[i].insertBefore(td, firstCell);
-            //        }
-            //    }
-            //    this.element_.classList.add(this._CssClasses.IS_UPGRADED);
-            //}
         }
     },
     _selectRow: function(checkbox, row, opt_rows){
@@ -109,8 +92,17 @@ var Table = BaseComponent.extend({
 
 compMgr.regComp({
     comp: Table,
-    compAsString: 'u.Table',
+    compAsString: 'Table',
     css: 'u-table'
 });
+
+if(document.readyState && document.readyState === 'complete') {
+	compMgr.updateComp();
+} else {
+	on(window, 'load', function() {
+		//扫描并生成控件
+		compMgr.updateComp();
+	});
+}
 
 export {Table};

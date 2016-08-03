@@ -51,7 +51,7 @@ var config = {
 	output: {
 		path: __dirname + '/v1/lib/js',
 		filename: outputFile,
-		library: libraryName,
+		library: 'u',
 		libraryTarget: 'umd',
 		umdNamedDefine: true
 	},

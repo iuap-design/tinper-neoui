@@ -6,6 +6,7 @@
 import {BaseComponent} from './sparrow/BaseComponent';
 import {addClass,removeClass,hasClass} from './sparrow/dom';
 import {on,stopEvent} from './sparrow/event';
+import {URipple} from './sparrow/util/ripple';
 import {compMgr} from './sparrow/compMgr';
 
 var Checkbox = BaseComponent.extend({
@@ -215,7 +216,15 @@ var Checkbox = BaseComponent.extend({
 
 compMgr.regComp({
     comp: Checkbox,
-    compAsString: 'u.Checkbox',
+    compAsString: 'Checkbox',
     css: 'u-checkbox'
 });
+if(document.readyState && document.readyState === 'complete') {
+	compMgr.updateComp();
+} else {
+	on(window, 'load', function() {
+		//扫描并生成控件
+		compMgr.updateComp();
+	});
+}
 export {Checkbox};

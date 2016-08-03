@@ -9,6 +9,7 @@ import {addClass,removeClass,hasClass,showPanelByEle,getZIndex,closest,makeDOM} 
 import {env} from './sparrow/env';
 import {on,stopEvent} from './sparrow/event';
 import {Text} from './neoui-textfield';
+import {URipple} from './sparrow/util/ripple';
 import {compMgr} from './sparrow/compMgr';
 
 var Combo = BaseComponent.extend({
@@ -313,7 +314,15 @@ var Combo = BaseComponent.extend({
 
 compMgr.regComp({
 	comp: Combo,
-	compAsString: 'u.Combo',
+	compAsString: 'Combo',
 	css: 'u-combo'
 });
+if(document.readyState && document.readyState === 'complete') {
+	compMgr.updateComp();
+} else {
+	on(window, 'load', function() {
+		//扫描并生成控件
+		compMgr.updateComp();
+	});
+}
 export {Combo};

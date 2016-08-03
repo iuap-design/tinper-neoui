@@ -32,8 +32,15 @@ var Button = BaseComponent.extend({
 
 compMgr.regComp({
 	comp: Button,
-	compAsString: 'u.Button',
+	compAsString: 'Button',
 	css: 'u-button'
 });
-
+if(document.readyState && document.readyState === 'complete') {
+	compMgr.updateComp();
+} else {
+	on(window, 'load', function() {
+		//扫描并生成控件
+		compMgr.updateComp();
+	});
+}
 export {Button};

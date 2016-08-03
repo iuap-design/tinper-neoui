@@ -547,8 +547,18 @@ var Combobox = BaseComponent.extend({
 	// $.fn.Combobox = Plugin;
 compMgr.regComp({
 	comp: Combobox,
-	compAsString: 'u.Combobox',
+	compAsString: 'Combobox',
 	css: 'u-combobox'
 });
+
+if(document.readyState && document.readyState === 'complete') {
+	compMgr.updateComp();
+} else {
+	on(window, 'load', function() {
+		//扫描并生成控件
+		compMgr.updateComp();
+	});
+}
+
 
 export {Combobox};
