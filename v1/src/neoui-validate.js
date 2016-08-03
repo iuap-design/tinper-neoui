@@ -7,8 +7,9 @@ import {BaseComponent} from './sparrow/BaseComponent';
 import {extend} from './sparrow/extend.js';
 import {makeDOM} from './sparrow/dom';
 import {on} from './sparrow/event';
-import {isNumber} from './sparrow/util';
-
+import {isNumber, inArray, each} from './sparrow/util';
+import {Tooltip} from './neoui-tooltip';
+import {compMgr} from './sparrow/compMgr';
 // u.Validate
 
 
@@ -170,7 +171,7 @@ var Validate = BaseComponent.extend({
 	            } else if (event.ctrlKey && (event.keyCode == 67 || event.keyCode == 86)) {
 	                //复制粘贴
 	                return true;
-	            } else if (!((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || (u.inArray(event.keyCode, [8, 110, 190, 189, 109]) > -1))) {
+	            } else if (!((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || (inArray(event.keyCode, [8, 110, 190, 189, 109]) > -1))) {
 	                event.returnValue = false;
 	                return false;
 	            } else if ((!tmp || tmp.indexOf(".") > -1) && (event.keyCode == 190 || event.keyCode == 110)) {
@@ -197,7 +198,7 @@ var Validate = BaseComponent.extend({
 	            } else if (event.ctrlKey && (event.keyCode == 67 || event.keyCode == 86)) {
 	                //复制粘贴
 	                return true;
-	            } else if (!((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || (u.inArray(event.keyCode, [8, 109, 189]) > -1))) {
+	            } else if (!((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || (inArray(event.keyCode, [8, 109, 189]) > -1))) {
 	                event.returnValue = false;
 	                return false;
 	            }
@@ -414,7 +415,7 @@ var Validate = BaseComponent.extend({
 			if (this.options.tipTemplate)
 				tipOptions.template = this.options.tipTemplate
 			if(!this.tooltip)
-				this.tooltip = new u.Tooltip(this.element,tipOptions)
+				this.tooltip = new Tooltip(this.element,tipOptions)
 			this.tooltip.setTitle(msg);
 			this.tooltip.show();
 			
@@ -462,7 +463,7 @@ var Validate = BaseComponent.extend({
 	    return true; //this.validates[0].needClean
 	}
 
-	u.validate = function(element) {
+	var validate = function(element) {
 	    var self = this,
 	        options, childEle;
 	    if (typeof element === 'string') {
@@ -477,7 +478,7 @@ var Validate = BaseComponent.extend({
 
 	    //element是个父元素，校验子元素
 	    childEle = element.querySelectorAll('[uvalidate]');
-	    u.each(childEle, function(i, child) {
+	    each(childEle, function(i, child) {
 	        if (!child['u.Validate']) { //如果该元素上没有校验
 	            options = child.attributes["validate"] ? JSON.parse(child.attributes["validate"].value) : {};
 	            options = extend({ el: child }, options);
@@ -487,14 +488,14 @@ var Validate = BaseComponent.extend({
 	}
 
 	// 对某个dom容器内的元素进行校验
-	u.doValidate = function(element) {
+	doValidate = function(element) {
 	    var passed = true,
 	        childEle, result;
 	    if (typeof element === 'string') {
 	        element = document.querySelector(element);
 	    }
 	    childEle = element.querySelectorAll('input');
-	    u.each(childEle, function(i, child) {
+	    each(childEle, function(i, child) {
 	        if (child['u.Validate'] && child['u.Validate'].check) {
 	            result = child['u.Validate'].check({ trueValue: true, showMsg: true });
 	            if (typeof result === 'object')
@@ -505,9 +506,16 @@ var Validate = BaseComponent.extend({
 	    });
 	    return passed;
 	}
-	if (u.compMgr)
-	    u.compMgr.regComp({
+	if (compMgr)
+	    compMgr.regComp({
 	        comp: Validate,
 	        compAsString: 'u.Validate',
 	        css: 'u-validate'
 	    })
+
+	export {
+		Validate,
+		validate,
+		doValidate
+	};
+
