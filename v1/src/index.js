@@ -20,6 +20,11 @@ import {Loading,showLoading,hideLoading,showWaiting,removeWaiting} from './neoui
 import {Menu} from './neoui-menu';
 import {showMessageDialog,showMessage} from './neoui-message';
 import {Multilang} from './neoui-multilang';
+import {NavMenu} from './neoui-navmenu';
+import {pagination} from './neoui-pagination';
+import {Progress} from './neoui-progress';
 
 
+import {Tooltip} from './neoui-tooltip';
+import {Validate,validate,doValidate} from './neoui-validate';
 

@@ -1,11 +1,22 @@
-u.Progress = u.BaseComponent.extend({
+/**
+ * Module : neoui-progress
+ * Author : Kvkens(yueming@yonyou.com)
+ * Date	  : 2016-08-03 10:46:37
+ */
+
+import {BaseComponent} from './sparrow/BaseComponent';
+import {addClass,hasClass} from './sparrow/dom';
+import {env} from './sparrow/env';
+import {compMgr} from './sparrow/compMgr';
+
+var Progress = BaseComponent.extend({
 	_Constant: {},
 	_CssClasses: {
 		INDETERMINATE_CLASS: 'u-progress__indeterminate'
 	},
 	setProgress: function(p) {
 		
-		if (u.hasClass(this.element,this._CssClasses.INDETERMINATE_CLASS)) {
+		if (hasClass(this.element,this._CssClasses.INDETERMINATE_CLASS)) {
 			return;
 		}
 
@@ -19,7 +30,7 @@ u.Progress = u.BaseComponent.extend({
      */
 	setProgressHeight: function(p) {
 
-		if (u.hasClass(this.element,this._CssClasses.INDETERMINATE_CLASS)) {
+		if (hasClass(this.element,this._CssClasses.INDETERMINATE_CLASS)) {
 			return;
 		}
 
@@ -34,7 +45,7 @@ u.Progress = u.BaseComponent.extend({
 	 */
 	setProgressHTML: function(html) {
 
-		if (u.hasClass(this.element,this._CssClasses.INDETERMINATE_CLASS)) {
+		if (hasClass(this.element,this._CssClasses.INDETERMINATE_CLASS)) {
 			return;
 		}
 
@@ -67,11 +78,11 @@ u.Progress = u.BaseComponent.extend({
 		this.bufferbar_.style.width = '100%';
 		this.auxbar_.style.width = '0%';
 
-		u.addClass(this.element,'is-upgraded');
+		addClass(this.element,'is-upgraded');
 
-		if(u.isIE8 || u.isIE9){
+		if(env.isIE8 || env.isIE9){
 
-			if (u.hasClass(this.element,this._CssClasses.INDETERMINATE_CLASS)) {
+			if (hasClass(this.element,this._CssClasses.INDETERMINATE_CLASS)) {
 				var p = 0;
 				var oThis = this;
 				setInterval(function(){
@@ -87,8 +98,10 @@ u.Progress = u.BaseComponent.extend({
 });
 
 
-u.compMgr.regComp({
-	comp: u.Progress,
+compMgr.regComp({
+	comp: Progress,
 	compAsString: 'u.Progress',
 	css: 'u-progress'
-})
+});
+
+export {Progress};

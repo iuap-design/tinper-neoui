@@ -1,7 +1,7 @@
 /**
- * Module : neoui-combo
+ * Module : neoui-validate
  * Author : Kvkens(yueming@yonyou.com)
- * Date	  : 2016-08-02 14:09:22
+ * Date	  : 2016-08-03 10:15:22
  */
 import {BaseComponent} from './sparrow/BaseComponent';
 import {extend} from './sparrow/extend.js';
@@ -9,6 +9,7 @@ import {makeDOM} from './sparrow/dom';
 import {on} from './sparrow/event';
 import {isNumber, inArray, each} from './sparrow/util';
 import {Tooltip} from './neoui-tooltip';
+import {trans} from './sparrow/util/i18n';
 import {compMgr} from './sparrow/compMgr';
 // u.Validate
 
