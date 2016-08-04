@@ -1,7 +1,7 @@
 /**
  * Module : webpack entry index
  * Author : Kvkens(yueming@yonyou.com)
- * Date	  : 2016-08-02 19:56:32
+ * Date	  : 2016-08-04 13:39:34
  */
 
 //Sparrow import

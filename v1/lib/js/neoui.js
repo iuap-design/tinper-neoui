@@ -6470,7 +6470,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			document.body.removeChild(msgDom);
 			document.body.removeChild(overlayDiv);
 		});
-		var overlayDiv = makeModal(msgDom);
+		var overlayDiv = (0, _dom.makeModal)(msgDom);
 		document.body.appendChild(msgDom);
 	
 		this.resizeFun = function () {
@@ -6529,7 +6529,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				document.body.removeChild(overlayDiv);
 			}
 		});
-		var overlayDiv = makeModal(msgDom);
+		var overlayDiv = (0, _dom.makeModal)(msgDom);
 		document.body.appendChild(msgDom);
 	
 		this.resizeFun = function () {
@@ -6619,7 +6619,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			this.contentDom = (0, _dom.makeDOM)('<div><div class="u-msg-content"><p>' + this.content + '</p></div></div>');
 		}
 		this.templateDom.appendChild(this.contentDom);
-		this.overlayDiv = makeModal(this.templateDom);
+		this.overlayDiv = (0, _dom.makeModal)(this.templateDom);
 		if (this.hasCloseMenu) {
 			this.closeDiv = this.templateDom.querySelector('.u-msg-close');
 			(0, _event.on)(this.closeDiv, 'click', function () {
@@ -7654,6 +7654,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _event = __webpack_require__(6);
 	
+	var _ripple = __webpack_require__(18);
+	
+	var _env = __webpack_require__(5);
+	
 	var _compMgr = __webpack_require__(10);
 	
 	/**
@@ -7724,7 +7728,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var rippleContainer = document.createElement('span');
 				(0, _dom.addClass)(rippleContainer, 'u-ripple');
 				item.appendChild(rippleContainer);
-				new URipple(item);
+				new _ripple.URipple(item);
 			}
 			//}
 	
@@ -7979,7 +7983,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				// Add a click listener to the document, to close the menu.
 				var firstFlag = true;
 				var callback = function (e) {
-					if (env.isIE8) {
+					if (_env.env.isIE8) {
 						if (firstFlag) {
 							firstFlag = false;
 							return;

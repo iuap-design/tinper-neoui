@@ -6,6 +6,8 @@
 import {BaseComponent} from './sparrow/BaseComponent';
 import {addClass,removeClass,makeDOM,hasClass} from './sparrow/dom';
 import {on,off,stopEvent} from './sparrow/event';
+import {URipple} from './sparrow/util/ripple';
+import {env} from './sparrow/env';
 import {compMgr} from './sparrow/compMgr';
 
 var Menu = BaseComponent.extend({
