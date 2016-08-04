@@ -10,8 +10,15 @@ var plugins = [],
 	outputFile,
 	entryFile;
 
+// entry js文件目录
+var exportJs = './js/';
+var indexJs = '/js/index.js';
+
+// out js文件目录
+var outJs = '/dist/js';
+
 // 多路径配置
-var entries =  fs.readdirSync('./v1/src/').filter(function(file) {
+var entries =  fs.readdirSync(exportJs).filter(function(file) {
 	return file.match(/\.js$/);
 });
 
@@ -20,7 +27,7 @@ function objpush(element, index, array) {
 	if(name === 'index'){
 
 	} else {
-		entryobj[name] = [ './v1/src/' + element ];
+		entryobj[name] = [ exportJs + element ];
 	}
 }
 entries.forEach(objpush);
@@ -37,7 +44,7 @@ if(env === 'build') {
 } else {
 	libraryName = 'neoui';
 	outputFile = libraryName + '.js';
-	entryFile = __dirname + '/v1/src/index.js';
+	entryFile = __dirname + indexJs;
 }
 
 
@@ -49,7 +56,7 @@ var config = {
 	entry: entryFile,
 	devtool: 'source-map',
 	output: {
-		path: __dirname + '/v1/lib/js',
+		path: __dirname + outJs,
 		filename: outputFile,
 		library: 'u',
 		libraryTarget: 'umd',
@@ -67,7 +74,7 @@ var config = {
 		}]
 	},
 	resolve: {
-		root: path.resolve('./v1/src'),
+		root: path.resolve('./js'),
 		extensions: ['', '.js']
 	},
 	plugins: plugins

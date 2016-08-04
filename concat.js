@@ -2,7 +2,7 @@ var fs = require('fs');
 var path = require('path');
 
 // js原始文件目录 
-var src = __dirname + '/v1/lib/js';
+var src = __dirname + '/js';
 
 // css原始文件目录
 var src_css = __dirname + '/dist/css/plugin';
