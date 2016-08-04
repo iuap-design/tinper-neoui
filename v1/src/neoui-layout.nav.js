@@ -492,8 +492,17 @@ var NavLayoutTab = UNavLayoutTab;
 
 compMgr.regComp({
     comp: NavLayout,
-    compAsString: 'u.NavLayout',
+    compAsString: 'NavLayout',
     css: 'u-navlayout'
 });
+
+if(document.readyState && document.readyState === 'complete') {
+	compMgr.updateComp();
+} else {
+	on(window, 'load', function() {
+		//扫描并生成控件
+		compMgr.updateComp();
+	});
+}
 
 export {NavLayout,NavLayoutTab};

@@ -6,7 +6,7 @@
 
 import {BaseComponent} from './sparrow/BaseComponent';
 import {addClass,removeClass} from './sparrow/dom';
-import {stopEvent} from './sparrow/event';
+import {on,stopEvent} from './sparrow/event';
 import {Ripple} from './sparrow/util/ripple';
 import {compMgr} from './sparrow/compMgr';
 
@@ -121,8 +121,16 @@ function Tab(tab, ctx) {
 
 compMgr.regComp({
 	comp: Tabs,
-	compAsString: 'u.Tabs',
+	compAsString: 'Tabs',
 	css: 'u-tabs'
 });
+if(document.readyState && document.readyState === 'complete') {
+	compMgr.updateComp();
+} else {
+	on(window, 'load', function() {
+		//扫描并生成控件
+		compMgr.updateComp();
+	});
+}
 
 export {Tabs};
