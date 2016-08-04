@@ -43,9 +43,9 @@ for(var i=0; i<files.length; i++){
 		var readable,writable;
 		var now = fs.statSync(_src);
 		if(now.isFile()){
-			readable = fs.createReadStream( _src );
-			writable = fs.createWriteStream( _dst );
-			readable.pipe(writable);			
+			readable = fs.readFileSync( _src );
+			writable = fs.writeFileSync( _dst, readable );
+			// readable.pipe(writable);			
 		}
 
 		// css
@@ -56,10 +56,9 @@ for(var i=0; i<files.length; i++){
 		if(cssExist){
 			var now_css = fs.statSync(_src_css);
 			if(now_css.isFile()){
-				
-				readablecss = fs.createReadStream( _src_css );
-				writablecss = fs.createWriteStream( _dst_css );
-				readablecss.pipe(readablecss);			
+				readablecss = fs.readFileSync( _src_css );
+				writablecss = fs.writeFileSync( _dst_css, readablecss );
+				// readablecss.pipe(readablecss);			
 			}			
 		}
 	}
