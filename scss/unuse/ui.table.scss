@@ -1,5 +1,5 @@
-@import "./mixins/variables";
-@import "./mixins/mixins";
+@import "./minxin-mixins/minxin-variables";
+@import "./minxin-mixins/minxin-mixins";
 .u-table {
   position: relative;
   border: $data-table-dividers;
@@ -132,7 +132,7 @@
 //global
 // 22/14
 
-//variables
+//minxin-variables
 
 
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.

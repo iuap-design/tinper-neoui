@@ -1,0 +1,215 @@
+@import "../core/minxin-variables";
+@import "../core/minxin-mixins";
+.u-switch {
+  position: relative;
+
+  z-index: 1;
+
+  vertical-align: middle;
+
+  display: inline-block;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: $switch-label-height;
+  margin: 0;
+  padding: 0;
+
+  overflow: visible;
+
+  &.is-upgraded {
+    padding-left: $switch-track-length - 8px;
+  }
+
+  // avoids blue box around switch
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.u-switch-input {
+  line-height: $switch-label-height;
+
+  .u-switch.is-upgraded & {
+    // Hide input element, while still making it respond to focus.
+    position: absolute;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+  }
+}
+
+.u-switch-track {
+  background: $switch-off-track-color;
+  background: $switch-off-track-color-IE8 \9;
+  position: absolute;
+  left: 0;
+  top: 3px;
+  height: $switch-track-height;
+  width: $switch-track-length;
+  border-radius: $switch-track-height;
+  border: 1px solid #e0e0e0;
+
+  cursor: pointer;
+
+  .u-switch.is-checked & {
+    background: $switch-track-color;
+    background: $switch-off-track-color-IE8 \9;
+  }
+
+  fieldset[disabled] .u-switch,
+  .u-switch.is-disabled & {
+    background: $switch-disabled-track-color;
+    cursor: auto;
+  }
+}
+
+.u-switch-thumb {
+  background: $switch-off-thumb-color;
+  background: rgb(88,88,88) \9;
+  position: absolute;
+  left: 0;
+  top: 4px;
+  height: $switch-thumb-size;
+  width: $switch-thumb-size;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  @include shadow-2dp();
+
+  @include material-animation-default(0.28s);
+  transition-property: left;
+
+  .u-switch.is-checked & {
+    background: $switch-thumb-color;
+    left: 21px;
+
+    @include shadow-3dp();
+  }
+
+  fieldset[disabled] .u-switch,
+  .u-switch.is-disabled & {
+    background: $switch-disabled-thumb-color;
+    cursor: auto;
+  }
+}
+
+.u-switch-focus-helper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-$switch-helper-size / 2, -$switch-helper-size / 2);
+
+  display: inline-block;
+
+  box-sizing: border-box;
+  width: $switch-helper-size;
+  height: $switch-helper-size;
+  border-radius: 50%;
+
+  background-color: transparent;
+
+  .u-switch.is-focused & {
+    box-shadow: 0 0 0px (($switch-ripple-size - $switch-helper-size) / 2)
+        rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .u-switch.is-focused.is-checked & {
+    box-shadow: 0 0 0px (($switch-ripple-size - $switch-helper-size) / 2)
+        $switch-faded-color;
+    background-color: $switch-faded-color;
+  }
+}
+
+.u-switch-label {
+  position: relative;
+  cursor: pointer;
+  font-size: $switch-label-font-size;
+  line-height: $switch-label-height;
+  margin: 0;
+  left: 24px;
+
+  fieldset[disabled] .u-switch,
+  .u-switch.is-disabled & {
+    color: $switch-disabled-thumb-color;
+    cursor: auto;
+  }
+}
+.u-switch-primary {
+  @include switch-styles-variant($switch-primary-bg);
+}
+.u-switch-success {
+  @include switch-styles-variant($switch-success-bg);
+}
+.u-switch-info {
+  @include switch-styles-variant($switch-info-bg);
+}
+.u-switch-danger {
+  @include switch-styles-variant($switch-danger-bg);
+}
+.u-switch-warning {
+  @include switch-styles-variant($switch-warning-bg);
+}
+.u-switch-dark {
+  @include switch-styles-variant($switch-dark-bg);
+}
+.u-switch-lg {
+    @include switch-size($switch-width-lg, $switch-height-lg, $switch-border-radius-lg, $switch-border-left-lg);
+}
+.u-switch-default {
+    @include switch-size($switch-width-default, $switch-height-default, $switch-border-radius-default, $switch-border-left-default);
+}
+.u-switch-sm {
+    @include switch-size($switch-width-sm, $switch-height-sm, $switch-border-radius-sm, $switch-border-left-sm);
+}
+//.u-switch-ripple-container {
+//  position: absolute;
+//  z-index: 2;
+//  top: -($switch-ripple-size - $switch-label-height) / 2;
+//  left: $switch-thumb-size / 2 - $switch-ripple-size / 2;
+//
+//  box-sizing: border-box;
+//  width: $switch-ripple-size;
+//  height: $switch-ripple-size;
+//  border-radius: 50%;
+//
+//  cursor: pointer;
+//
+//  overflow: hidden;
+//  -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+//
+//  transition-duration: 0.40s;
+//  transition-timing-function: step-end;
+//  transition-property: left;
+//
+//  & .mdl-ripple {
+//    background: $switch-color;
+//  }
+//
+//  fieldset[disabled] .u-switch,
+//  .u-switch.is-disabled & {
+//    cursor: auto;
+//  }
+//
+//  fieldset[disabled] .u-switch & .mdl-ripple,
+//  .u-switch.is-disabled & .mdl-ripple {
+//    background: transparent;
+//  }
+//
+//  .u-switch.is-checked & {
+//    left: $switch-track-length - $switch-ripple-size / 2 -
+//        $switch-thumb-size / 2;
+//  }
+//}

@@ -6,12 +6,10 @@ var src = __dirname + '/js';
 
 // css原始文件目录
 var src_css = __dirname + '/dist/css/plugin';
-// var src_css = __dirname + '/v1/lib/css';
 
 var files = fs.readdirSync(src);
 
 var rootPath = './dist/plugin';
-// var rootPath = './v1/lib/plugins';
 
 
 
@@ -52,17 +50,16 @@ for(var i=0; i<files.length; i++){
 
 		// css
 		var _src_css = src_css + '/' + dirNameLower + '.css';
-		// console.log(_src_css);
 		var _dst_css = rootPath + '/' + dirNameLower + '/' + dirNameLower + '.css';
 		var cssExist = fs.existsSync(_src_css);
-		var readable_css,writable_css;
+		var readablecss,writablecss;
 		if(cssExist){
-			var now_css = fs.statSync(_src_css); 
-			// console.log(now_css);
+			var now_css = fs.statSync(_src_css);
 			if(now_css.isFile()){
-				readable_css = fs.createReadStream( _src_css );
-				writable_css = fs.createWriteStream( _dst_css );
-				readable_css.pipe(readable_css);			
+				
+				readablecss = fs.createReadStream( _src_css );
+				writablecss = fs.createWriteStream( _dst_css );
+				readablecss.pipe(readablecss);			
 			}			
 		}
 	}

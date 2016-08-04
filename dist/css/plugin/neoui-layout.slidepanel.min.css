@@ -1,2 +1,1 @@
 .slidePanel{position:fixed;z-index:1310;max-width:100%;max-height:100%;visibility:hidden;background:#fff;-webkit-box-shadow:-10px 0 20px 0 rgba(66,66,66,.2);box-shadow:-10px 0 20px 0 rgba(66,66,66,.2);transition:all .3s}.slidePanel-show{visibility:visible}.slidePanel-right{right:0}.slidePanel-left,.slidePanel-right{top:0;bottom:0;width:700px}.site-sidebar-content{height:100%}
-/*# sourceMappingURL=neoui-layout.slidepanel.min.css.map */

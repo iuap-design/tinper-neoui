@@ -10,7 +10,7 @@
     "vsass": "gulp vbuild",
     "neoui-build": "webpack --colors --progress --mode=build",
     "neoui-dev": "webpack --progress --colors  --mode=dev",
-    "plugin": "webpack --colors --progress --mode=build && gulp distcss && node concat"
+    "plugin": "webpack --colors --progress --mode=build && gulp distbuild && node concat"
   },
   "repository": {
     "type": "git",

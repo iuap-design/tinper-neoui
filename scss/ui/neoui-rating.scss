@@ -1,0 +1,46 @@
+
+
+@import "../core/minxin-variables";
+@import "../core/minxin-mixins";
+.rating-hint {
+  display: inline;
+  margin-left: 10px;
+  vertical-align: sub;
+}
+
+.rating:before {
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    content: '';
+}
+.u-rating {
+  display: inline-block;
+  margin: 0 .5rem 0 0;
+  font-size: 0;
+  vertical-align: middle;
+  
+  .icon{
+      width: 1em;
+      height: auto;
+      padding: 0;
+      margin: 0 10px 0 0;
+      font-size: 14px;
+      color: #bdbdbd;
+      vertical-align: middle;
+      cursor: pointer;
+  }
+
+}
+.u-rating-lg {
+  .icon{
+    font-size:12px;
+  }
+}
+.u-rating-sm {
+  .icon{
+    font-size:18px;
+  }
+}
+

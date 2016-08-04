@@ -270,8 +270,11 @@ gulp.task('vbuild',['vcss']);
 
 
 
-// 执行重构后dist/css目录输出
-gulp.task('buildcss', function(){
+/**
+ * [执行重构后dist/css目录输出]
+ * 产出map文件
+ */
+gulp.task('mapcss', function(){
     gulp.src('./scss/neoui.scss')
         .pipe(sass())
         .pipe(gulp.dest('./dist/css'))
@@ -283,9 +286,8 @@ gulp.task('buildcss', function(){
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./dist/css'));
 });
-
-gulp.task('cssplugin',function(){
-    gulp.src('./scss/extend/*.*')
+gulp.task('mapcssplugin',function(){
+    gulp.src('./scss/ui/*.*')
         .pipe(sass())
         .pipe(gulp.dest('./dist/css/plugin'))
         .pipe(sourcemaps.init())
@@ -295,6 +297,32 @@ gulp.task('cssplugin',function(){
         }))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./dist/css/plugin'));
-
 });
-gulp.task('distcss',['buildcss', 'cssplugin']);
+
+/**
+ * [执行重构后dist/css目录输出]
+ * 不产出map文件
+ */
+gulp.task('buildcss', function(){
+    gulp.src('./scss/neoui.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('./dist/css'))
+        .pipe(minifycss())
+        .pipe(rename({
+            suffix:'.min'
+        }))
+        .pipe(gulp.dest('./dist/css'));
+});
+gulp.task('buildcssplugin',function(){
+    gulp.src('./scss/ui/*.*')
+        .pipe(sass())
+        .pipe(gulp.dest('./dist/css/plugin'))
+        .pipe(minifycss())
+        .pipe(rename({
+            suffix:'.min'
+        }))
+        .pipe(gulp.dest('./dist/css/plugin'));
+});
+
+gulp.task('distmap', ['mapcss', 'mapcssplugin']);
+gulp.task('distbuild', ['buildcss','buildcssplugin']);

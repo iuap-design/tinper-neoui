@@ -1,0 +1,281 @@
+@import "../core/minxin-variables";
+
+
+.u-loading {
+  display: inline-block;
+  position: relative;
+  width: $loading-size;
+  height: $loading-size;
+
+  &:not(.is-upgraded).is-active:after {
+    content: "Loading...";
+  }
+
+  &.is-upgraded.is-active {
+    animation: u-loading-container-rotate $loading-duration linear infinite;
+  }
+}
+
+@keyframes u-loading-container-rotate {
+  to { transform: rotate(360deg) }
+}
+
+.u-loading-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.u-loading-layer-1 {
+  border-color: $loading-color-1;
+
+  .u-loading-single-color & {
+    border-color: $loading-single-color;
+  }
+
+  .u-loading.is-active & {
+    animation:
+        u-loading-fill-unfill-rotate (4 * $loading-arc-time)
+            $animation-curve-fast-out-slow-in infinite both,
+        u-loading-layer-1-fade-in-out (4 * $loading-arc-time)
+            $animation-curve-fast-out-slow-in infinite both;
+  }
+}
+
+.u-loading-layer-2 {
+  border-color: $loading-color-2;
+
+  .u-loading-single-color & {
+    border-color: $loading-single-color;
+  }
+
+  .u-loading.is-active & {
+    animation:
+        u-loading-fill-unfill-rotate (4 * $loading-arc-time)
+            $animation-curve-fast-out-slow-in infinite both,
+        u-loading-layer-2-fade-in-out (4 * $loading-arc-time)
+            $animation-curve-fast-out-slow-in infinite both;
+  }
+}
+
+.u-loading-layer-3 {
+  border-color: $loading-color-3;
+
+  .u-loading-single-color & {
+    border-color: $loading-single-color;
+  }
+
+  .u-loading.is-active & {
+    animation:
+        u-loading-fill-unfill-rotate (4 * $loading-arc-time)
+            $animation-curve-fast-out-slow-in infinite both,
+        u-loading-layer-3-fade-in-out (4 * $loading-arc-time)
+            $animation-curve-fast-out-slow-in infinite both;
+  }
+}
+
+.u-loading-layer-4 {
+  border-color: $loading-color-4;
+
+  .u-loading-single-color & {
+    border-color: $loading-single-color;
+  }
+
+  .u-loading.is-active & {
+    animation:
+        u-loading-fill-unfill-rotate (4 * $loading-arc-time)
+            $animation-curve-fast-out-slow-in infinite both,
+        u-loading-layer-4-fade-in-out (4 * $loading-arc-time)
+            $animation-curve-fast-out-slow-in infinite both;
+  }
+}
+
+@keyframes u-loading-fill-unfill-rotate {
+  12.5% { transform: rotate(0.5 * $loading-arc-size);  }
+  25%   { transform: rotate($loading-arc-size);  }
+  37.5% { transform: rotate(1.5 * $loading-arc-size);  }
+  50%   { transform: rotate(2 * $loading-arc-size);  }
+  62.5% { transform: rotate(2.5 * $loading-arc-size);  }
+  75%   { transform: rotate(3 * $loading-arc-size);  }
+  87.5% { transform: rotate(3.5 * $loading-arc-size); }
+  to    { transform: rotate(4 * $loading-arc-size); }
+}
+
+/**
+* HACK: Even though the intention is to have the current .u-loading__layer-N
+* at `opacity: 1`, we set it to `opacity: 0.99` instead since this forces Chrome
+* to do proper subpixel rendering for the elements being animated. This is
+* especially visible in Chrome 39 on Ubuntu 14.04. See:
+*
+* - https://github.com/Polymer/paper-spinner/issues/9
+* - https://code.google.com/p/chromium/issues/detail?id=436255
+*/
+@keyframes u-loading-layer-1-fade-in-out {
+  from { opacity: 0.99; }
+  25% { opacity: 0.99; }
+  26% { opacity: 0; }
+  89% { opacity: 0; }
+  90% { opacity: 0.99; }
+  100% { opacity: 0.99; }
+}
+
+@keyframes u-loading-layer-2-fade-in-out {
+  from { opacity: 0; }
+  15% { opacity: 0; }
+  25% { opacity: 0.99; }
+  50% { opacity: 0.99; }
+  51% { opacity: 0; }
+}
+
+@keyframes u-loading-layer-3-fade-in-out {
+  from { opacity: 0; }
+  40% { opacity: 0; }
+  50% { opacity: 0.99; }
+  75% { opacity: 0.99; }
+  76% { opacity: 0; }
+}
+
+@keyframes u-loading-layer-4-fade-in-out {
+  from { opacity: 0; }
+  65% { opacity: 0; }
+  75% { opacity: 0.99; }
+  90% { opacity: 0.99; }
+  100% { opacity: 0; }
+}
+
+/**
+* Patch the gap that appear between the two adjacent
+* div.u-loading__circle-clipper while the spinner is rotating
+* (appears on Chrome 38, Safari 7.1, and IE 11).
+*
+* Update: the gap no longer appears on Chrome when .u-loading__layer-N's
+* opacity is 0.99, but still does on Safari and IE.
+*/
+.u-loading-gap-patch {
+  position: absolute;
+  box-sizing: border-box;
+  top: 0;
+  left: 45%;
+  width: 10%;
+  height: 100%;
+  overflow: hidden;
+  border-color: inherit;
+
+  & .u-loading-circle {
+    width: 1000%;
+    left: -450%;
+  }
+}
+
+.u-loading-circle-clipper {
+  display: inline-block;
+  position: relative;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  border-color: inherit;
+
+  & .u-loading-circle {
+    width: 200%;
+  }
+}
+
+.u-loading-circle {
+  box-sizing: border-box;
+  height: 100%;
+  border-width: $loading-stroke-width;
+  border-style: solid;
+  border-color: inherit;
+  border-bottom-color: transparent !important;
+  border-radius: 50%;
+  animation: none;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  .u-loading-left & {
+    border-right-color: transparent !important;
+    transform: rotate(129deg);
+
+    .u-loading.is-active & {
+      animation: u-loading-left-spin $loading-arc-time
+          $animation-curve-fast-out-slow-in infinite both;
+    }
+  }
+
+  .u-loading-right & {
+    left: -100%;
+    border-left-color: transparent !important;
+    transform: rotate(-129deg);
+
+    .u-loading.is-active & {
+      animation: u-loading-right-spin $loading-arc-time
+          $animation-curve-fast-out-slow-in infinite both;
+    }
+  }
+}
+
+@keyframes u-loading-left-spin {
+  from { transform: rotate(130deg); }
+  50% { transform: rotate(-5deg); }
+  to { transform: rotate(130deg); }
+}
+
+@keyframes u-loading-right-spin {
+  from { transform: rotate(-130deg); }
+  50% { transform: rotate(5deg); }
+  to { transform: rotate(-130deg); }
+}
+
+
+
+.alert-backdrop {
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    z-index:98;
+    background-color:#000;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    -webkit-transition: opacity .15s linear;
+    transition: opacity .15s linear;    
+//  .transition(opacity .15s linear);
+}
+
+.alert-waiting {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    margin-left: -100px;
+    margin-top: -100px;
+    display: block;
+    z-index: 99;
+}
+
+.alert-waiting i{
+    font-size: 100px;
+    margin: 36px 38px;
+    color: #0090d9;
+}
+
+.loadingImg{
+    background: url(../images/loading.gif) no-repeat scroll 0 0 transparent;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  left: 6px;
+  top: 6px; 
+  display: none;
+  .is-active &{
+    display:block;
+  }
+}
+
