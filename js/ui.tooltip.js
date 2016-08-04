@@ -106,7 +106,9 @@ u.Tooltip.prototype = {
                 this.left = this.element.offsetLeft + inputWidth/2;
                 this.top = this.element.offsetTop - topHeight;
             }
-            this.tipDom.style.left = this.left + 'px';
+            // 水平居中
+            this.tipDom.style.left = this.left - this.tipDom.clientWidth/2 + 'px';
+            // this.tipDom.style.left = this.left + 'px';
             this.tipDom.style.top = this.top + 'px';
         }
         
