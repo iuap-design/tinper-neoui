@@ -1,0 +1,142 @@
+@charset "UTF-8";
+/*  IMAGES  */
+/* 默认颜色 */
+/* 主题颜色放入 themeColors.scss
+$color-primary: $palette-indigo-500 !default;
+$color-primary-dark: $palette-indigo-700 !default;
+$color-accent: $palette-pink-A200 !default;
+*/
+/* 客户化 */
+/* 波纹效果 */
+/* 动画 */
+/* 阴影 */
+/* ==========  字体  ========== */
+/* 控件 */
+/* UButton */
+/* UText */
+/*  Navlayout  */
+/* gridlayout */
+/* menu */
+/* CHECKBOX */
+/*  Radio  */
+/* Switch  */
+/* loading */
+/* datetimepicker */
+/* message */
+/* DATA TABLE */
+/* tooltip*/
+/* 进度条 */
+/* ==========  Content Tabs  ========== */
+/* CARD */
+/* Card dimensions */
+/* Cover image */
+/* ==========  Card  ========== */
+/* ============ Forms ============*/
+/* BADGE */
+/* Typography */
+/* Shadows */
+/* Animations */
+.u-tag {
+  padding: 0.25em 0.6em 0.25em;
+  font-weight: 400;
+  border-radius: 0.3em;
+  display: inline;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: #FFFFFF;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em; }
+  a .u-tag:hover, a .u-tag:focus {
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer; }
+  .u-tag.u-tag-outline {
+    color: #eeeeee;
+    background-color: transparent;
+    border-color: #eeeeee; }
+
+.u-tag-outline {
+  border: 1px solid transparent; }
+
+.u-tag-round {
+  border-radius: 1em; }
+
+.u-tag-default {
+  color: #757575;
+  color: #757575;
+  background-color: #e0e0e0;
+  background-color: rgb(224,224,224); }
+  .u-tag-default[href]:hover, .u-tag-default[href]:focus {
+    background-color: rgb(238,238,238); }
+  .u-tag-default.u-tag-outline {
+    color: rgb(224,224,224);
+    background-color: transparent;
+    border-color: rgb(224,224,224); }
+  .u-tag-default[href]:hover, .u-tag-default[href]:focus {
+    color: rgb(206,206,206); }
+  .u-tag-default.u-tag-outline {
+    color: #757575; }
+
+.u-tag-primary {
+  background-color: rgb(63,81,181); }
+  .u-tag-primary[href]:hover, .u-tag-primary[href]:focus {
+    background-color: rgb(92,107,192); }
+  .u-tag-primary.u-tag-outline {
+    color: rgb(63,81,181);
+    background-color: transparent;
+    border-color: rgb(63,81,181); }
+
+.u-tag-success {
+  background-color: rgb(76,175,80); }
+  .u-tag-success[href]:hover, .u-tag-success[href]:focus {
+    background-color: rgb(102,187,106); }
+  .u-tag-success.u-tag-outline {
+    color: rgb(76,175,80);
+    background-color: transparent;
+    border-color: rgb(76,175,80); }
+
+.u-tag-info {
+  background-color: rgb(0,188,212); }
+  .u-tag-info[href]:hover, .u-tag-info[href]:focus {
+    background-color: rgb(38,198,218); }
+  .u-tag-info.u-tag-outline {
+    color: rgb(0,188,212);
+    background-color: transparent;
+    border-color: rgb(0,188,212); }
+
+.u-tag-warning {
+  background-color: rgb(255,152,0); }
+  .u-tag-warning[href]:hover, .u-tag-warning[href]:focus {
+    background-color: rgb(255,167,38); }
+  .u-tag-warning.u-tag-outline {
+    color: rgb(255,152,0);
+    background-color: transparent;
+    border-color: rgb(255,152,0); }
+
+.u-tag-danger {
+  background-color: rgb(244,67,54); }
+  .u-tag-danger[href]:hover, .u-tag-danger[href]:focus {
+    background-color: rgb(239,83,80); }
+  .u-tag-danger.u-tag-outline {
+    color: rgb(244,67,54);
+    background-color: transparent;
+    border-color: rgb(244,67,54); }
+
+.u-tag-dark {
+  background-color: rgb(97,97,97); }
+  .u-tag-dark[href]:hover, .u-tag-dark[href]:focus {
+    background-color: rgb(117,117,117); }
+  .u-tag-dark.u-tag-outline {
+    color: rgb(97,97,97);
+    background-color: transparent;
+    border-color: rgb(97,97,97); }
+
+.u-tag-lg {
+  font-size: 16px; }
+
+.u-tag-sm {
+  padding: 0.1em 0.5em 0.1em;
+  font-size: 10px; }

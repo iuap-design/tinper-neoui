@@ -1,0 +1,112 @@
+@charset "UTF-8";
+/*  IMAGES  */
+/* 默认颜色 */
+/* 主题颜色放入 themeColors.scss
+$color-primary: $palette-indigo-500 !default;
+$color-primary-dark: $palette-indigo-700 !default;
+$color-accent: $palette-pink-A200 !default;
+*/
+/* 客户化 */
+/* 波纹效果 */
+/* 动画 */
+/* 阴影 */
+/* ==========  字体  ========== */
+/* 控件 */
+/* UButton */
+/* UText */
+/*  Navlayout  */
+/* gridlayout */
+/* menu */
+/* CHECKBOX */
+/*  Radio  */
+/* Switch  */
+/* loading */
+/* datetimepicker */
+/* message */
+/* DATA TABLE */
+/* tooltip*/
+/* 进度条 */
+/* ==========  Content Tabs  ========== */
+/* CARD */
+/* Card dimensions */
+/* Cover image */
+/* ==========  Card  ========== */
+/* ============ Forms ============*/
+/* BADGE */
+/* Typography */
+/* Shadows */
+/* Animations */
+.u-badge {
+  position: relative;
+  white-space: nowrap;
+  margin-right: 24px; }
+  .u-badge:not([data-badge]) {
+    margin-right: auto; }
+  .u-badge[data-badge]:after {
+    content: attr(data-badge);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    position: absolute;
+    top: -11px;
+    left: 10px;
+    font-family: "Microsoft YaHei", "Helvetica", "Arial", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    min-width: 11px;
+    padding: 0 6px;
+    height: 18px;
+    border-radius: 11px;
+    background: rgb(67,160,71);
+    color: rgb(255,255,255);
+    box-sizing: border-box; }
+    .u-button .u-badge[data-badge]:after {
+      top: -10px;
+      right: -5px; }
+  .u-badge.u-badge-no-background[data-badge]:after {
+    color: rgb(67,160,71);
+    background: rgba(255,255,255,0.2);
+    box-shadow: 0 0 1px gray; }
+  .u-badge.u-badge-overlap {
+    margin-right: 10px; }
+    .u-badge.u-badge-overlap:after {
+      right: -10px; }
+
+.u-badge-primary.u-badge[data-badge]:after {
+  color: #FFFFFF;
+  background-color: rgb(63,81,181); }
+  .u-badge-primary.u-badge[data-badge]:after[href]:hover, .u-badge-primary.u-badge[data-badge]:after[href]:focus {
+    color: #FFFFFF; }
+
+.u-badge-success.u-badge[data-badge]:after {
+  color: #FFFFFF;
+  background-color: rgb(76,175,80); }
+  .u-badge-success.u-badge[data-badge]:after[href]:hover, .u-badge-success.u-badge[data-badge]:after[href]:focus {
+    color: #FFFFFF; }
+
+.u-badge-info.u-badge[data-badge]:after {
+  color: #FFFFFF;
+  background-color: rgb(0,188,212); }
+  .u-badge-info.u-badge[data-badge]:after[href]:hover, .u-badge-info.u-badge[data-badge]:after[href]:focus {
+    color: #FFFFFF; }
+
+.u-badge-warning.u-badge[data-badge]:after {
+  color: #FFFFFF;
+  background-color: rgb(255,152,0); }
+  .u-badge-warning.u-badge[data-badge]:after[href]:hover, .u-badge-warning.u-badge[data-badge]:after[href]:focus {
+    color: #FFFFFF; }
+
+.u-badge-danger.u-badge[data-badge]:after {
+  color: #FFFFFF;
+  background-color: rgb(244,67,54); }
+  .u-badge-danger.u-badge[data-badge]:after[href]:hover, .u-badge-danger.u-badge[data-badge]:after[href]:focus {
+    color: #FFFFFF; }
+
+.u-badge-dark.u-badge[data-badge]:after {
+  color: #FFFFFF;
+  background-color: rgb(97,97,97); }
+  .u-badge-dark.u-badge[data-badge]:after[href]:hover, .u-badge-dark.u-badge[data-badge]:after[href]:focus {
+    color: #FFFFFF; }

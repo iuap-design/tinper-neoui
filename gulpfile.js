@@ -267,3 +267,39 @@ gulp.task('vcss', ['vsass'], function(){
 gulp.task('dev', ['image', 'font', 'sass-ui', 'es-ui', 'polyfill', 'serve'])
 gulp.task('dist', ['image', 'font', 'sass-ui', 'es-ui', 'polyfill'])
 gulp.task('vbuild',['vcss']);
+
+
+// gulp.task('li', function(){
+//     gulp.src('./scss/origin/*.*')
+//         .pipe(rename({
+//             prefix: "neoui-"
+//         }))
+//         .pipe(gulp.dest('./scss/extend/'));
+// });
+
+gulp.task('buildcss', function(){
+    gulp.src('./scss/neoui.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('./dist/css'))
+        .pipe(sourcemaps.init())
+        .pipe(minifycss())
+        .pipe(rename({
+            suffix:'.min'
+        }))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('./dist/css'));
+});
+
+gulp.task('cssplugin',function(){
+    gulp.src('./scss/extend/*.*')
+        .pipe(sass())
+        .pipe(gulp.dest('./dist/css/plugin'))
+        .pipe(sourcemaps.init())
+        .pipe(minifycss())
+        .pipe(rename({
+            suffix:'.min'
+        }))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('./dist/css/plugin'));
+
+});
