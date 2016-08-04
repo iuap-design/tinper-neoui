@@ -3210,38 +3210,40 @@ u.date= {
         if (isNaN(_date)){
             // IE的话对"2016-2-13 12:13:22"进行处理
             var index1,index2,index3,s1,s2,s3;
-            index1 = value.indexOf('-');
-            index2 = value.indexOf(':');
-            index3 = value.indexOf(' ');
-            if(index1 > 0 || index2 > 0 || index3 > 0){
-                _date = new Date();
-                if(index3 > 0){
-                    s3 = value.split(' ');
-                    s1 = s3[0].split('-');
-                    s2 = s3[1].split(':'); 
-                }else if(index1 > 0){
-                    s1 = value.split('-');
-                }else if(index2 > 0){
-                    s2 = value.split(':');
-                }
-                if(s1 && s1.length > 0){
-                    _date.setYear(s1[0]);
-                    _date.setMonth(parseInt(s1[1] -1));
-                    _date.setDate(s1[2]?s1[2]:0);
-                    dateFlag = true;
-                }
-                if(s2 && s2.length > 0){
-                    _date.setHours(s2[0]?s2[0]:0);
-                    _date.setMinutes(s2[1]?s2[1]:0);
-                    _date.setSeconds(s2[2]?s2[2]:0);
-                    dateFlag = true;
-                }
-            }else{
-                _date = new Date(parseInt(value))
-                if (isNaN(_date)) {
-                    throw new TypeError('invalid Date parameter');
+            if(value.indexOf){
+                index1 = value.indexOf('-');
+                index2 = value.indexOf(':');
+                index3 = value.indexOf(' ');
+                if(index1 > 0 || index2 > 0 || index3 > 0){
+                    _date = new Date();
+                    if(index3 > 0){
+                        s3 = value.split(' ');
+                        s1 = s3[0].split('-');
+                        s2 = s3[1].split(':'); 
+                    }else if(index1 > 0){
+                        s1 = value.split('-');
+                    }else if(index2 > 0){
+                        s2 = value.split(':');
+                    }
+                    if(s1 && s1.length > 0){
+                        _date.setYear(s1[0]);
+                        _date.setMonth(parseInt(s1[1] -1));
+                        _date.setDate(s1[2]?s1[2]:0);
+                        dateFlag = true;
+                    }
+                    if(s2 && s2.length > 0){
+                        _date.setHours(s2[0]?s2[0]:0);
+                        _date.setMinutes(s2[1]?s2[1]:0);
+                        _date.setSeconds(s2[2]?s2[2]:0);
+                        dateFlag = true;
+                    }
                 }else{
-                    dateFlag = true;
+                    _date = new Date(parseInt(value))
+                    if (isNaN(_date)) {
+                        throw new TypeError('invalid Date parameter');
+                    }else{
+                        dateFlag = true;
+                    }
                 }
             }
         }else{
@@ -7828,12 +7830,29 @@ u.Combo = u.BaseComponent.extend({
                 position:"bottomLeft"
             });
         }else{
-            this.element.parentNode.appendChild(this._ul);
-            var left = this.element.offsetLeft,
-            inputHeight = this.element.offsetHeight,
-            top = this.element.offsetTop + inputHeight;
-            this._ul.style.left = left + 'px';
-            this._ul.style.top = top + 'px';
+            // this.element.parentNode.appendChild(this._ul);
+            // var left = this.element.offsetLeft,
+            // inputHeight = this.element.offsetHeight,
+            // top = this.element.offsetTop + inputHeight;
+            // this._ul.style.left = left + 'px';
+            // this._ul.style.top = top + 'px';
+            var bodyWidth = document.body.clientWidth,bodyHeight = document.body.clientHeight,
+                panelWidth = this._ul.offsetWidth,panelHeight = this._ul.offsetHeight
+            this.element.appendChild(this._ul);
+            this.element.style.position = 'relative';
+            this.left = this._input.offsetLeft;
+            var inputHeight = this._input.offsetHeight;
+            this.top = this._input.offsetTop + inputHeight;
+            if(this.left + panelWidth > bodyWidth){
+                this.left = bodyWidth - panelWidth;
+            }
+
+            if((this.top + panelHeight) > bodyHeight){
+                this.top = bodyHeight - panelHeight;
+            }
+            
+            this._ul.style.left = this.left + 'px';
+            this._ul.style.top = this.top + 'px'; 
         }
 	    this._ul.style.width = width + 'px';
         u.addClass(this._ul, 'is-animating');
