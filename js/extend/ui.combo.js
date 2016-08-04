@@ -81,12 +81,29 @@ u.Combo = u.BaseComponent.extend({
                 position:"bottomLeft"
             });
         }else{
-            this.element.parentNode.appendChild(this._ul);
-            var left = this.element.offsetLeft,
-            inputHeight = this.element.offsetHeight,
-            top = this.element.offsetTop + inputHeight;
-            this._ul.style.left = left + 'px';
-            this._ul.style.top = top + 'px';
+            // this.element.parentNode.appendChild(this._ul);
+            // var left = this.element.offsetLeft,
+            // inputHeight = this.element.offsetHeight,
+            // top = this.element.offsetTop + inputHeight;
+            // this._ul.style.left = left + 'px';
+            // this._ul.style.top = top + 'px';
+            var bodyWidth = document.body.clientWidth,bodyHeight = document.body.clientHeight,
+                panelWidth = this._ul.offsetWidth,panelHeight = this._ul.offsetHeight
+            this.element.appendChild(this._ul);
+            this.element.style.position = 'relative';
+            this.left = this._input.offsetLeft;
+            var inputHeight = this._input.offsetHeight;
+            this.top = this._input.offsetTop + inputHeight;
+            if(this.left + panelWidth > bodyWidth){
+                this.left = bodyWidth - panelWidth;
+            }
+
+            if((this.top + panelHeight) > bodyHeight){
+                this.top = bodyHeight - panelHeight;
+            }
+            
+            this._ul.style.left = this.left + 'px';
+            this._ul.style.top = this.top + 'px'; 
         }
 	    this._ul.style.width = width + 'px';
         u.addClass(this._ul, 'is-animating');
