@@ -5,25 +5,25 @@
  */
 
 //Sparrow import
-import {extend} from './sparrow/extend';
-import {setCookie,getCookie} from './sparrow/cookies';
-import {createShellObject,execIgnoreError,getFunction,getJSObject,isDate,isNumber,isArray,isEmptyObject,inArray,isDomElement,each} from './sparrow/util';
-import {env} from './sparrow/env';
-import {on,off,trigger,stopEvent,event} from './sparrow/event';
-import {addClass,removeClass,hasClass,toggleClass,closest,css,wrap,getStyle,getZIndex,makeDOM,makeModal,getOffset,getScroll,showPanelByEle} from './sparrow/dom';
-import {Class} from './sparrow/class';
-import {core} from './sparrow/core';
-import {compMgr} from './sparrow/compMgr';
-import {BaseComponent} from './sparrow/BaseComponent';
-import {ajax} from './sparrow/ajax';
-import {floatRender,integerRender,dateRender,dateTimeRender,timeRender,percentRender,dateToUTCString} from './sparrow/util/dataRender';
-import {NumberFormater,DateFormater} from './sparrow/util/formater';
-import {date} from './sparrow/util/dateUtils';
-import {AddressMasker,NumberMasker,CurrencyMasker,PercentMasker} from './sparrow/util/masker'
-import {hotkeys} from './sparrow/util/hotKeys';
-import {Ripple} from './sparrow/util/ripple';
-import {RSAUtils,BigInt,BarrettMu,twoDigit} from './sparrow/util/rsautils';
-import {trans} from './sparrow/util/i18n';
+import {extend} from 'sparrow/extend';
+import {setCookie,getCookie} from 'sparrow/cookies';
+import {createShellObject,execIgnoreError,getFunction,getJSObject,isDate,isNumber,isArray,isEmptyObject,inArray,isDomElement,each} from 'sparrow/util';
+import {env} from 'sparrow/env';
+import {on,off,trigger,stopEvent,event} from 'sparrow/event';
+import {addClass,removeClass,hasClass,toggleClass,closest,css,wrap,getStyle,getZIndex,makeDOM,makeModal,getOffset,getScroll,showPanelByEle} from 'sparrow/dom';
+import {Class} from 'sparrow/class';
+import {core} from 'sparrow/core';
+import {compMgr} from 'sparrow/compMgr';
+import {BaseComponent} from 'sparrow/BaseComponent';
+import {ajax} from 'sparrow/ajax';
+import {floatRender,integerRender,dateRender,dateTimeRender,timeRender,percentRender,dateToUTCString} from 'sparrow/util/dataRender';
+import {NumberFormater,DateFormater} from 'sparrow/util/formater';
+import {date} from 'sparrow/util/dateUtils';
+import {AddressMasker,NumberMasker,CurrencyMasker,PercentMasker} from 'sparrow/util/masker'
+import {hotkeys} from 'sparrow/util/hotKeys';
+import {Ripple} from 'sparrow/util/ripple';
+import {RSAUtils,BigInt,BarrettMu,twoDigit} from 'sparrow/util/rsautils';
+import {trans} from 'sparrow/util/i18n';
 
 //Neoui import
 import {Autocomplete} from 'neoui-autocomplete';
