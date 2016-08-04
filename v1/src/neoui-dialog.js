@@ -5,7 +5,7 @@
  */
 
 import {BaseComponent} from './sparrow/BaseComponent';
-import {addClass,removeClass,hasClass,getStyle,makeDOM} from './sparrow/dom';
+import {addClass,removeClass,hasClass,getStyle,makeDOM,makeModal} from './sparrow/dom';
 import {on,stopEvent,trigger} from './sparrow/event';
 import {extend} from './sparrow/extend';
 import {Button} from './neoui-button';
