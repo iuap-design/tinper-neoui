@@ -424,8 +424,17 @@ function Plugin(option) {
 if(compMgr)
 	compMgr.regComp({
 	comp: pagination,
-	compAsString: 'u.pagination',
+	compAsString: 'pagination',
 	css: 'u-pagination'
 });
+
+if(document.readyState && document.readyState === 'complete') {
+	compMgr.updateComp();
+} else {
+	on(window, 'load', function() {
+		//扫描并生成控件
+		compMgr.updateComp();
+	});
+}
 
 export {pagination};

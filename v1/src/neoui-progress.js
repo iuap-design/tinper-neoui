@@ -7,6 +7,7 @@
 import {BaseComponent} from './sparrow/BaseComponent';
 import {addClass,hasClass} from './sparrow/dom';
 import {env} from './sparrow/env';
+import {on} from './sparrow/event';
 import {compMgr} from './sparrow/compMgr';
 
 var Progress = BaseComponent.extend({
@@ -100,8 +101,15 @@ var Progress = BaseComponent.extend({
 
 compMgr.regComp({
 	comp: Progress,
-	compAsString: 'u.Progress',
+	compAsString: 'Progress',
 	css: 'u-progress'
 });
-
+if(document.readyState && document.readyState === 'complete') {
+	compMgr.updateComp();
+} else {
+	on(window, 'load', function() {
+		//扫描并生成控件
+		compMgr.updateComp();
+	});
+}
 export {Progress};

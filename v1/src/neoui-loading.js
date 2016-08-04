@@ -6,6 +6,7 @@
 import {BaseComponent} from './sparrow/BaseComponent';
 import {addClass,removeClass,makeDOM} from './sparrow/dom';
 import {env} from './sparrow/env';
+import {on} from './sparrow/event';
 import {compMgr} from './sparrow/compMgr';
 
 var Loading = BaseComponent.extend({
@@ -79,7 +80,7 @@ var Loading = BaseComponent.extend({
 
 compMgr.regComp({
 	comp: Loading,
-	compAsString: 'u.Loading',
+	compAsString: 'Loading',
 	css: 'u-loading'
 });
 
@@ -96,7 +97,14 @@ var hideLoading = function() {
 		document.body.removeChild(divs[i]);
 	}
 }
-
+if(document.readyState && document.readyState === 'complete') {
+	compMgr.updateComp();
+} else {
+	on(window, 'load', function() {
+		//扫描并生成控件
+		compMgr.updateComp();
+	});
+}
 //兼容性保留
 var showWaiting = showLoading
 var removeWaiting = hideLoading
