@@ -62,7 +62,7 @@ for(var i=0; i<files.length; i++){
 			if(now_css.isFile()){
 				readable_css = fs.createReadStream( _src_css );
 				writable_css = fs.createWriteStream( _dst_css );
-				readable_css.pipe(writable);			
+				readable_css.pipe(readable_css);			
 			}			
 		}
 	}
