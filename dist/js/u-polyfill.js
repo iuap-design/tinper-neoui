@@ -102,6 +102,12 @@ if(!window.hasJsExtensions){
         };
     }
 
+    if(!Date.now){  
+        Date.now = function(){  
+            return new Date().valueOf();  
+        }  
+    }  
+
     if (!Array.prototype.remove) {
     	Array.prototype.remove = function(index) {
     		if (index < 0 || index > this.length) {

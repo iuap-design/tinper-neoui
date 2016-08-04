@@ -32,6 +32,8 @@
 	        this.notipFlag = this.options['notipFlag']; // 错误信息提示方式是否为tip，默认为true
 	        this.hasSuccess = this.options['hasSuccess']; //是否含有正确提示
 
+	        this.showFix = this.options['showFix'];
+
 	        //提示div的id 为空时使用tooltop来提示
 	        this.tipId = this.options['tipId'] ? this.options['tipId'] : null
 	            //校验成功提示信息的div
@@ -395,7 +397,8 @@
 				"title": msg,
 				"trigger": "manual",
 				"selector": "validtip",
-				"placement": this.placement
+				"placement": this.placement,
+				"showFix": this.showFix
 			}
 			if (this.options.tipTemplate)
 				tipOptions.template = this.options.tipTemplate
