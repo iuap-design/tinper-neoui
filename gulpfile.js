@@ -269,14 +269,8 @@ gulp.task('dist', ['image', 'font', 'sass-ui', 'es-ui', 'polyfill'])
 gulp.task('vbuild',['vcss']);
 
 
-// gulp.task('li', function(){
-//     gulp.src('./scss/origin/*.*')
-//         .pipe(rename({
-//             prefix: "neoui-"
-//         }))
-//         .pipe(gulp.dest('./scss/extend/'));
-// });
 
+// 执行重构后dist/css目录输出
 gulp.task('buildcss', function(){
     gulp.src('./scss/neoui.scss')
         .pipe(sass())
@@ -303,3 +297,4 @@ gulp.task('cssplugin',function(){
         .pipe(gulp.dest('./dist/css/plugin'));
 
 });
+gulp.task('distcss',['buildcss', 'cssplugin']);
