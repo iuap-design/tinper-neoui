@@ -4,11 +4,11 @@
  * Date	  : 2016-08-03 14:12:27
  */
 
-import {BaseComponent} from './sparrow/BaseComponent';
-import {addClass,removeClass} from './sparrow/dom';
-import {on,stopEvent} from './sparrow/event';
-import {Ripple} from './sparrow/util/ripple';
-import {compMgr} from './sparrow/compMgr';
+import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
+import {addClass,removeClass} from 'neoui-sparrow/lib/dom';
+import {on,stopEvent} from 'neoui-sparrow/lib/event';
+import {Ripple} from 'neoui-sparrow/lib/util/ripple';
+import {compMgr} from 'neoui-sparrow/lib/compMgr';
 
 
 var Tabs = BaseComponent.extend({

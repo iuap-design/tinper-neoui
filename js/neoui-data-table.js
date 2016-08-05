@@ -4,10 +4,10 @@
  * Date	  : 2016-08-02 15:23:19
  */
 
-import {BaseComponent} from './sparrow/BaseComponent';
-import {on} from './sparrow/event';
+import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
+import {on} from 'neoui-sparrow/lib/event';
 import {Checkbox} from './neoui-checkbox';
-import {compMgr} from './sparrow/compMgr';
+import {compMgr} from 'neoui-sparrow/lib/compMgr';
 
 
 var Table = BaseComponent.extend({

@@ -4,12 +4,12 @@
  * Date	  : 2016-08-02 20:19:37
  */
 
-import {BaseComponent} from './sparrow/BaseComponent';
-import {extend} from './sparrow/extend';
-import {each,isArray} from './sparrow/util';
-import {wrap,css,hasClass,removeClass} from './sparrow/dom';
-import {on,trigger} from './sparrow/event';
-import {compMgr} from './sparrow/compMgr';
+import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
+import {extend} from 'neoui-sparrow/lib/extend';
+import {each,isArray} from 'neoui-sparrow/lib/util';
+import {wrap,css,hasClass,removeClass} from 'neoui-sparrow/lib/dom';
+import {on,trigger} from 'neoui-sparrow/lib/event';
+import {compMgr} from 'neoui-sparrow/lib/compMgr';
 
 
 var Multilang = BaseComponent.extend({

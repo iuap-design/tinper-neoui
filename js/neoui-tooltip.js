@@ -3,9 +3,9 @@
  * Author : Kvkens(yueming@yonyou.com)
  * Date   : 2016-08-03 10:43:21
  */
-import {extend} from './sparrow/extend';
-import {on} from './sparrow/event';
-import {makeDOM,addClass,removeClass,getZIndex} from './sparrow/dom';
+import {extend} from 'neoui-sparrow/lib/extend';
+import {on} from 'neoui-sparrow/lib/event';
+import {makeDOM,addClass,removeClass,getZIndex} from 'neoui-sparrow/lib/dom';
 
 
 var Tooltip = function(element,options){

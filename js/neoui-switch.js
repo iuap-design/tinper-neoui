@@ -4,11 +4,11 @@
  * Date	  : 2016-08-03 13:39:55
  */
 
-import {BaseComponent} from './sparrow/BaseComponent';
-import {addClass,removeClass} from './sparrow/dom';
-import {on} from './sparrow/event';
-import {URipple} from './sparrow/util/ripple';
-import {compMgr} from './sparrow/compMgr';
+import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
+import {addClass,removeClass} from 'neoui-sparrow/lib/dom';
+import {on} from 'neoui-sparrow/lib/event';
+import {URipple} from 'neoui-sparrow/lib/util/ripple';
+import {compMgr} from 'neoui-sparrow/lib/compMgr';
 
 var Switch = BaseComponent.extend({
 	_Constant: {
