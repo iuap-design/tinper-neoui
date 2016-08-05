@@ -3,8 +3,25 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>NeoUI Test</title>
+		<link rel="stylesheet" type="text/css" href="../dist/css/neoui.min.css"/>
 	</head>
 	<body>
-		<script type="text/javascript" src="../lib/js/neoui.js" ></script>
+		<button id="modalBtn" class="u-button" >Success</button>
+		<script type="text/javascript" src="../dist/js/neoui.js" ></script>
+		<script type="text/javascript">
+			var msgBtn2 = document.body.querySelector("#modalBtn");
+			u.on(msgBtn2,'click', function(){
+			        u.confirmDialog({
+			            msg: "是否保存单据？",       //modal内容
+			            title: "测试确认",           //modal title
+			            onOk: function () {          //确认后的回调
+			                alert('ok')
+			            },
+			            onCancel: function () {         //取消后的回调
+			                alert('cancel')
+			            }
+			        });
+			});
+		</script>
 	</body>
 </html>

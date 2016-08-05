@@ -154,4 +154,5 @@ var ex = {
 	trans: trans
 
 };
+extend(ex,env);
 export default ex;
