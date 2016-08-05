@@ -4,12 +4,12 @@
  * Date	  : 2016-08-02 18:42:07
  */
 
-import {BaseComponent} from './sparrow/BaseComponent';
-import {addClass,removeClass,hasClass,getStyle} from './sparrow/dom';
-import {on,stopEvent,trigger} from './sparrow/event';
-import {extend} from './sparrow/extend';
-import {env} from './sparrow/env';
-import {compMgr} from './sparrow/compMgr';
+import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
+import {addClass,removeClass,hasClass,getStyle} from 'neoui-sparrow/lib/dom';
+import {on,stopEvent,trigger} from 'neoui-sparrow/lib/event';
+import {extend} from 'neoui-sparrow/lib/extend';
+import {env} from 'neoui-sparrow/lib/env';
+import {compMgr} from 'neoui-sparrow/lib/compMgr';
 
 
 var Combobox = BaseComponent.extend({

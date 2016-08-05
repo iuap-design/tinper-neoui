@@ -3,7 +3,7 @@
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-08-02 19:02:09
  */
-import {makeDOM} from './sparrow/dom';
+import {makeDOM} from 'neoui-sparrow/lib/dom';
 
 /*
  *加载loading

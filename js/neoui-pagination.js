@@ -4,12 +4,12 @@
  * Date	  : 2016-08-03 08:45:49
  */
 
-import {BaseComponent} from './sparrow/BaseComponent';
-import {extend} from './sparrow/extend';
-import {addClass,wrap,css,hasClass,removeClass,closest} from './sparrow/dom';
-import {each} from './sparrow/util';
-import {on} from './sparrow/event';
-import {compMgr} from './sparrow/compMgr';
+import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
+import {extend} from 'neoui-sparrow/lib/extend';
+import {addClass,wrap,css,hasClass,removeClass,closest} from 'neoui-sparrow/lib/dom';
+import {each} from 'neoui-sparrow/lib/util';
+import {on} from 'neoui-sparrow/lib/event';
+import {compMgr} from 'neoui-sparrow/lib/compMgr';
 
 var pagination = BaseComponent.extend({
 

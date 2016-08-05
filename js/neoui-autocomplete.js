@@ -4,13 +4,13 @@
  * Date	  : 2016-08-02 15:14:43
  */
 
-import {BaseComponent} from './sparrow/BaseComponent';
-import {addClass,removeClass,hasClass,getStyle,makeDOM} from './sparrow/dom';
-import {on,stopEvent,trigger} from './sparrow/event';
-import {extend} from './sparrow/extend';
-import {env} from './sparrow/env';
-import {ajax} from './sparrow/ajax';
-import {compMgr} from './sparrow/compMgr';
+import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
+import {addClass,removeClass,hasClass,getStyle,makeDOM} from 'neoui-sparrow/lib/dom';
+import {on,stopEvent,trigger} from 'neoui-sparrow/lib/event';
+import {extend} from 'neoui-sparrow/lib/extend';
+import {env} from 'neoui-sparrow/lib/env';
+import {ajax} from 'neoui-sparrow/lib/ajax';
+import {compMgr} from 'neoui-sparrow/lib/compMgr';
 
 
 var Autocomplete = BaseComponent.extend({

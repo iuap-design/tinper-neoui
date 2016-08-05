@@ -3,11 +3,11 @@
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-08-03 11:29:40
  */
-import {BaseComponent} from './sparrow/BaseComponent';
-import {extend} from './sparrow/extend.js';
-import {makeDOM} from './sparrow/dom';
-import {on} from './sparrow/event';
-import {isEmptyObject} from './sparrow/util';
+import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
+import {extend} from 'neoui-sparrow/lib/extend.js';
+import {makeDOM} from 'neoui-sparrow/lib/dom';
+import {on} from 'neoui-sparrow/lib/event';
+import {isEmptyObject} from 'neoui-sparrow/lib/util';
 import {dialog} from './neoui-dialog';
 
 

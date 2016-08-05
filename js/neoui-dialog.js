@@ -4,12 +4,12 @@
  * Date	  : 2016-08-02 15:29:55
  */
 
-import {BaseComponent} from './sparrow/BaseComponent';
-import {addClass,removeClass,hasClass,getStyle,makeDOM,makeModal} from './sparrow/dom';
-import {on,stopEvent,trigger} from './sparrow/event';
-import {extend} from './sparrow/extend';
+import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
+import {addClass,removeClass,hasClass,getStyle,makeDOM,makeModal} from 'neoui-sparrow/lib/dom';
+import {on,stopEvent,trigger} from 'neoui-sparrow/lib/event';
+import {extend} from 'neoui-sparrow/lib/extend';
 import {Button} from './neoui-button';
-import {compMgr} from './sparrow/compMgr';
+import {compMgr} from 'neoui-sparrow/lib/compMgr';
 
 /**
  * messageDialog.js

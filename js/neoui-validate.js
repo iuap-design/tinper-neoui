@@ -3,14 +3,14 @@
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-08-03 10:15:22
  */
-import {BaseComponent} from './sparrow/BaseComponent';
-import {extend} from './sparrow/extend.js';
-import {makeDOM} from './sparrow/dom';
-import {on} from './sparrow/event';
-import {isNumber, inArray, each} from './sparrow/util';
+import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
+import {extend} from 'neoui-sparrow/lib/extend.js';
+import {makeDOM} from 'neoui-sparrow/lib/dom';
+import {on} from 'neoui-sparrow/lib/event';
+import {isNumber, inArray, each} from 'neoui-sparrow/lib/util';
 import {Tooltip} from './neoui-tooltip';
-import {trans} from './sparrow/util/i18n';
-import {compMgr} from './sparrow/compMgr';
+import {trans} from 'neoui-sparrow/lib/util/i18n';
+import {compMgr} from 'neoui-sparrow/lib/compMgr';
 // u.Validate
 
 

@@ -3,11 +3,11 @@
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-08-02 13:55:07
  */
-import {BaseComponent} from './sparrow/BaseComponent';
-import {addClass,removeClass,hasClass} from './sparrow/dom';
-import {on,stopEvent} from './sparrow/event';
-import {URipple} from './sparrow/util/ripple';
-import {compMgr} from './sparrow/compMgr';
+import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
+import {addClass,removeClass,hasClass} from 'neoui-sparrow/lib/dom';
+import {on,stopEvent} from 'neoui-sparrow/lib/event';
+import {URipple} from 'neoui-sparrow/lib/util/ripple';
+import {compMgr} from 'neoui-sparrow/lib/compMgr';
 
 var Checkbox = BaseComponent.extend({
     _Constant: {

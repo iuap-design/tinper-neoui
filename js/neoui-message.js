@@ -4,8 +4,8 @@
  * Date	  : 2016-08-02 19:40:59
  */
 
-import {addClass,removeClass,makeDOM} from './sparrow/dom';
-import {on} from './sparrow/event';
+import {addClass,removeClass,makeDOM} from 'neoui-sparrow/lib/dom';
+import {on} from 'neoui-sparrow/lib/event';
 
 
 var messageTemplate = '<div class="u-message"><span class="u-msg-close uf uf-removesymbol"></span>{msg}</div>';
