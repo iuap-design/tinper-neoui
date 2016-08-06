@@ -82,7 +82,7 @@ var config = {
 	output: {
 		path: __dirname + outJs,
 		filename: outputFile,
-		library: 'u',
+		//library: 'u',
 		libraryTarget: 'umd',
 		umdNamedDefine: true
 	},
