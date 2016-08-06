@@ -13,7 +13,7 @@
     "neoui-build":"npm run build_normal && npm run build_min",
     "neoui-dev": "webpack --progress --colors  --mode=product_normal && webpack --progress --colors  --mode=product_min",
     "plugin": "npm run neoui-build && gulp neoplugin && node concat",
-    "prod":"npm run neoui-dev && gulp neo"
+    "product":"npm run neoui-dev && gulp neo"
   },
   "repository": {
     "type": "git",
