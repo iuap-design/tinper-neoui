@@ -272,7 +272,7 @@ gulp.task('vbuild',['vcss']);
 
 /**
  * [执行重构后dist/css目录输出]
- * 产出map文件
+ * 产出map文件,暂时不输出
  */
 gulp.task('mapcss', function(){
     gulp.src('./scss/neoui.scss')
@@ -326,3 +326,18 @@ gulp.task('buildcssplugin',function(){
 
 gulp.task('distmap', ['mapcss', 'mapcssplugin']);
 gulp.task('distbuild', ['buildcss','buildcssplugin']);
+
+/**
+ * 输出合并后的:
+ * neoui.css
+ * neoui.min.css
+ */
+gulp.task('neo',['buildcss']);
+
+/**
+ * 输出单独插件
+ * 输出目录:./dist/plugin
+ * 输出plugin.css & plugin.min.css
+ */
+gulp.task('neoplugin',['buildcssplugin']);
+

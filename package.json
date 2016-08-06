@@ -8,9 +8,12 @@
     "dev": "gulp dev",
     "prod": "gulp prod",
     "vsass": "gulp vbuild",
-    "neoui-build": "webpack --colors --progress --mode=build",
-    "neoui-dev": "webpack --progress --colors  --mode=dev",
-    "plugin": "webpack --colors --progress --mode=build && gulp distbuild && node concat"
+    "build_normal": "webpack --colors --progress --mode=build_normal",
+    "build_min":"webpack --colors --progress --mode=build_min",
+    "neoui-build":"npm run build_normal && npm run build_min",
+    "neoui-dev": "webpack --progress --colors  --mode=product_normal && webpack --progress --colors  --mode=product_min",
+    "plugin": "npm run neoui-build && gulp neoplugin && node concat",
+    "prod":"npm run neoui-dev && gulp neo"
   },
   "repository": {
     "type": "git",

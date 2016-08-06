@@ -8,7 +8,8 @@ var plugins = [],
 	entryobj = {},
 	libraryName,
 	outputFile,
-	entryFile;
+	entryFile,
+	devToolSelect;
 
 // entry js文件目录
 var exportJs = './js/';
@@ -33,18 +34,41 @@ function objpush(element, index, array) {
 entries.forEach(objpush);
 
 
+// var PROD = JSON.parse(process.env.PROD_ENV || '0');
+// console.log(PROD);
 
-if(env === 'build') {
+/**
+ * product_normal 用于输出合并后未压缩版
+ * product_min 用于输出合并后压缩版
+ * build_normal 用于输出未压缩的插件
+ * build_min 用于输出压缩的插件
+ */
+if(env === 'build_normal') {
+	devToolSelect = '';
+	libraryName = '[name]';
+	outputFile = libraryName + '.js';
+	entryFile = entryobj;
+} else if(env === 'build_min'){
 	plugins.push(new UglifyJsPlugin({
 		minimize: true
 	}));
+	devToolSelect = 'source-map';
 	libraryName = '[name]';
 	outputFile = libraryName + '.min.js';
 	entryFile = entryobj;
-} else {
+} else if(env === 'product_normal'){
 	libraryName = 'neoui';
+	devToolSelect = '';
 	outputFile = libraryName + '.js';
 	entryFile = __dirname + indexJs;
+} else if(env === 'product_min'){
+	libraryName = 'neoui';
+	devToolSelect = '';
+	plugins.push(new UglifyJsPlugin({
+		minimize: true
+	}));
+	outputFile = libraryName + '.min.js';
+	entryFile = __dirname + indexJs;	
 }
 
 
@@ -54,7 +78,7 @@ var config = {
 	// 	return file.match(/\.js$/);
 	// }),
 	entry: entryFile,
-	devtool: 'source-map',
+	devtool: devToolSelect,
 	output: {
 		path: __dirname + outJs,
 		filename: outputFile,
