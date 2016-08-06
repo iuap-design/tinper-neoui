@@ -172,19 +172,19 @@ gulp.task('es-ui', ['es-ui-init'], function(){
 
 gulp.task("polyfill-init", function () {
     return gulp.src(polyPath)
-            .pipe(concat("u-polyfill.js"))
+            .pipe(concat("neoui-polyfill.js"))
             .pipe(gulp.dest("./dist/js"))
             .pipe(uglify())
             .on('error', errHandle)
-            .pipe(concat("u-polyfill.min.js"))
+            .pipe(concat("neoui-polyfill.min.js"))
             .pipe(gulp.dest("./dist/js"));
 });
 
 
 gulp.task('polyfill', ['polyfill-init'], function(){
      version.init([
-            'dist/js/u-polyfill.js',
-            'dist/js/u-polyfill.min.js',
+            'dist/js/neoui-polyfill.js',
+            'dist/js/neoui-polyfill.min.js',
         ]);
 })
 
@@ -331,8 +331,24 @@ gulp.task('distbuild', ['buildcss','buildcssplugin']);
  * 输出合并后的:
  * neoui.css
  * neoui.min.css
+ * neoui-polyfill.js
+ * neoui-polyfill.min.js
  */
-gulp.task('neo',['buildcss']);
+gulp.task('neo',['buildcss','polyfill-init'],function(){
+    version.init([
+        'dist/js/neoui-polyfill.js',
+        'dist/js/neoui-polyfill.min.js',
+        'dist/js/neoui.js',
+        'dist/js/neoui.min.js'
+    ]);    
+});
+gulp.task('cssvs', function(){
+    version.init([
+        'dist/css/neoui.css',
+        'dist/css/neoui.min.css'
+    ]);    
+});
+
 
 /**
  * 输出单独插件
