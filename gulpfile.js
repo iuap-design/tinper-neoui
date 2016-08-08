@@ -307,6 +307,7 @@ gulp.task('mapcssplugin',function(){
 gulp.task('buildcss', function(){
     gulp.src('./scss/neoui.scss')
         .pipe(sass())
+        .pipe(base64())
         .pipe(stripCssComments())
         .pipe(gulp.dest('./dist/css'))
         .pipe(minifycss())
