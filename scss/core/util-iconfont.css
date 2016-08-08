@@ -1,10 +1,10 @@
 
 @font-face {font-family: "uf";
-  src: url('../../fonts/iconfont.eot?t=1469087701'); /* IE9*/
-  src: url('../../fonts/iconfont.eot?t=1469087701#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('../../fonts/iconfont.woff?t=1469087701') format('woff'), /* chrome, firefox */
-  url('../../fonts/iconfont.ttf?t=1469087701') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('../../fonts/iconfont.svg?t=1469087701#uf') format('svg'); /* iOS 4.1- */
+  src: url('../fonts/iconfont.eot?t=1469087701'); /* IE9*/
+  src: url('../fonts/iconfont.eot?t=1469087701#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/iconfont.woff?t=1469087701') format('woff'), /* chrome, firefox */
+  url('../fonts/iconfont.ttf?t=1469087701') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../fonts/iconfont.svg?t=1469087701#uf') format('svg'); /* iOS 4.1- */
 }
 
 .uf {
