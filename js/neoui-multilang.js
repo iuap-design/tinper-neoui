@@ -143,7 +143,7 @@ Multilang.fn.getData = function() {
 }
 compMgr.regComp({
 	comp: Multilang,
-	compAsString: 'Multilang',
+	compAsString: 'u.Multilang',
 	css: 'u-multilang'
 });
 

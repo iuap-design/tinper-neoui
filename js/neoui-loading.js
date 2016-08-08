@@ -80,7 +80,7 @@ var Loading = BaseComponent.extend({
 
 compMgr.regComp({
 	comp: Loading,
-	compAsString: 'Loading',
+	compAsString: 'u.Loading',
 	css: 'u-loading'
 });
 

@@ -214,7 +214,7 @@ var Text = BaseComponent.extend({
 
 compMgr.regComp({
     comp: Text,
-    compAsString: 'Text',
+    compAsString: 'u.Text',
     css: 'u-text'
 });
 if(document.readyState && document.readyState === 'complete') {

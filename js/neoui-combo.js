@@ -322,7 +322,7 @@ var Combo = BaseComponent.extend({
 
 compMgr.regComp({
 	comp: Combo,
-	compAsString: 'Combo',
+	compAsString: 'u.Combo',
 	css: 'u-combo'
 });
 if(document.readyState && document.readyState === 'complete') {

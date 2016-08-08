@@ -7,8 +7,29 @@
 	</head>
 	<body>
 		<button id="modalBtn" class="u-button" >Success</button>
-		<script type="text/javascript" src="../dist/js/neoui.js" ></script>
+		<br />
+				<div id='paginationGap' class='u-pagination pagination-gap'>
+		</div>
+		<br />
+		<br />
+		<div class="u-combo mutil-select" id="combo3">
+		    <div class="u-input-group u-has-feedback">
+		        <input class="u-form-control" />
+		        <span class="u-form-control-feedback uf uf-anglearrowdown" data-role="combo-button"></span>
+		    </div>
+		</div>
+		<br />
+		<div class="example">
+		    <div class='u-time'>
+		        <input class="u-input" type="text">
+		    </div>
+		</div>
+		<script type="text/javascript" src="../dist/js/neoui.min.js" ></script>
 		<script type="text/javascript">
+		window.onload=function(){
+			document.getElementById('combo3')['u.Combo'].setComboData([{value:'01',name:'男'},{value:'02',name:'女'}]);
+
+		}
 			var msgBtn2 = document.body.querySelector("#modalBtn");
 			u.on(msgBtn2,'click', function(){
 			        u.confirmDialog({
@@ -22,6 +43,12 @@
 			            }
 			        });
 			});
+			
+			 var paginationGap = document.getElementById('paginationGap');
+
+			 var comp = new u.pagination({ el: paginationGap, showState:true  });
+			
+			 comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
 		</script>
 	</body>
 </html>

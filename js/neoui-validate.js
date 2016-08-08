@@ -538,7 +538,7 @@ var doValidate = function(element) {
 
 compMgr.regComp({
     comp: Validate,
-    compAsString: 'Validate',
+    compAsString: 'u.Validate',
     css: 'u-validate'
 });
 if(document.readyState && document.readyState === 'complete') {

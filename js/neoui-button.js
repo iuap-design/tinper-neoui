@@ -32,7 +32,7 @@ var Button = BaseComponent.extend({
 
 compMgr.regComp({
 	comp: Button,
-	compAsString: 'Button',
+	compAsString: 'u.Button',
 	css: 'u-button'
 });
 if(document.readyState && document.readyState === 'complete') {

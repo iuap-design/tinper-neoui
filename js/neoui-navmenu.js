@@ -80,7 +80,7 @@ var NavMenu = BaseComponent.extend({
 
 compMgr.regComp({
 	comp: NavMenu,
-	compAsString: 'NavMenu',
+	compAsString: 'u.NavMenu',
 	css: 'u-navmenu'
 });
 
