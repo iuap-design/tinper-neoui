@@ -578,5 +578,13 @@ compMgr.regComp({
 	compAsString: 'u.Autocomplete',
 	css: 'u-autocomplete'
 });
+if(document.readyState && document.readyState === 'complete') {
+	compMgr.updateComp();
+} else {
+	on(window, 'load', function() {
+		//扫描并生成控件
+		compMgr.updateComp();
+	});
+}
 
 export {Autocomplete};
