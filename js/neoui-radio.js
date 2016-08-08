@@ -80,8 +80,8 @@ var Radio = BaseComponent.extend({
             var button = radios[i].querySelector('.' + this._CssClasses.RADIO_BTN);
             // Different name == different group, so no point updating those.
             if (button.getAttribute('name') === this._btnElement.getAttribute('name')) {
-                if(radios[i]['Radio']){
-                    radios[i]['Radio']._updateClasses();
+                if(radios[i]['u.Radio']){
+                    radios[i]['u.Radio']._updateClasses();
                 }
             }
         }
