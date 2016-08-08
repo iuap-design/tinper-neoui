@@ -9,6 +9,7 @@ import {addClass,removeClass,hasClass,getStyle,makeDOM} from 'neoui-sparrow/lib/
 import {on,stopEvent,trigger} from 'neoui-sparrow/lib/event';
 import {extend} from 'neoui-sparrow/lib/extend';
 import {env} from 'neoui-sparrow/lib/env';
+import {isArray} from 'neoui-sparrow/lib/util';
 import {ajax} from 'neoui-sparrow/lib/ajax';
 import {compMgr} from 'neoui-sparrow/lib/compMgr';
 
@@ -109,7 +110,7 @@ var Autocomplete = BaseComponent.extend({
 	},
 	_initSource: function() {
 		var array, url, self = this;
-		if(env.isArray(this.options.source)) {
+		if(isArray(this.options.source)) {
 			array = this.options.source;
 			this.source = function(request, response) {
 				//				response( $.ui.autocomplete.filter( array, request.term ) );

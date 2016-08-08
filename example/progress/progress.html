@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css"  href="../../../vendor/uui/css/u.css">
+</head>
+<body>
+
+<p>
+<p>不同颜色进度条</p>
+<div id="p11" class="u-progress"></div>
+<br/>
+<div id="p12" class="u-progress u-progress-primary"></div>
+<br/>
+<div id="p13" class="u-progress u-progress-danger"></div>
+<br/>
+<div id="p14" class="u-progress u-progress-info"></div>
+<br/>
+<div id="p15" class="u-progress u-progress-success"></div>
+<br/>
+<div id="p16" class="u-progress u-progress-warning"></div>
+<br/>
+<div id="p17" class="u-progress u-progress-dark"></div>
+</p>
+<p>
+<p>不同尺寸进度条</p>
+<div id="p22" class="u-progress u-progress-lg"></div>
+<br/>
+<div id="p23" class="u-progress u-progress-md"></div>
+<br/>
+<div id="p24" class="u-progress u-progress-sm"></div>
+<br/>
+<div id="p25" class="u-progress"></div>
+
+</p>
+<p>
+<p>不确定进度的进度条 </p>
+<div id="p2" class="u-progress u-progress__indeterminate"></div>
+</p>
+
+<p>有缓冲标识的进度条</p>
+<div id="p3" class="u-progress"></div>
+
+
+<script src="../../../vendor/uui/js/u-polyfill.js"></script>
+<script src="../../../vendor/uui/js/u-ui.js"></script>
+<script>
+	u.on(window, 'load', function() {
+    'use strict';
+    document.querySelector('#p11')['u.Progress'].setProgress(69);
+    document.querySelector('#p3')['u.Progress'].setProgress(33).setBuffer(87);
+    document.querySelector('#p12')['u.Progress'].setProgress(69);
+    document.querySelector('#p13')['u.Progress'].setProgress(69);
+    document.querySelector('#p14')['u.Progress'].setProgress(69);
+    document.querySelector('#p15')['u.Progress'].setProgress(69)
+    document.querySelector('#p16')['u.Progress'].setProgress(69);
+    document.querySelector('#p17')['u.Progress'].setProgress(69);
+    document.querySelector('#p22')['u.Progress'].setProgress(69);
+    document.querySelector('#p23')['u.Progress'].setProgress(69)
+    document.querySelector('#p24')['u.Progress'].setProgress(69);
+    document.querySelector('#p25')['u.Progress'].setProgress(69);
+
+});
+	
+</script>
+</body>
+</html>

@@ -6,9 +6,11 @@
 		<link rel="stylesheet" type="text/css" href="../dist/css/neoui.min.css"/>
 	</head>
 	<body>
+
 		<button id="modalBtn" class="u-button" >Success</button>
 		<br />
-				<div id='paginationGap' class='u-pagination pagination-gap'>
+		
+		<div id='paginationGap' class='u-pagination pagination-gap'>
 		</div>
 		<br />
 		<br />
@@ -32,23 +34,21 @@
 		}
 			var msgBtn2 = document.body.querySelector("#modalBtn");
 			u.on(msgBtn2,'click', function(){
-			        u.confirmDialog({
-			            msg: "是否保存单据？",       //modal内容
-			            title: "测试确认",           //modal title
-			            onOk: function () {          //确认后的回调
-			                alert('ok')
-			            },
-			            onCancel: function () {         //取消后的回调
-			                alert('cancel')
-			            }
-			        });
+			    u.confirmDialog({
+			        msg: "是否保存单据？",       //modal内容
+			        title: "测试确认",           //modal title
+			        onOk: function () {          //确认后的回调
+			            alert('ok')
+			        },
+			        onCancel: function () {         //取消后的回调
+			            alert('cancel')
+			        }
+			    });
 			});
-			
-			 var paginationGap = document.getElementById('paginationGap');
 
-			 var comp = new u.pagination({ el: paginationGap, showState:true  });
-			
-			 comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
+			var paginationGap = document.getElementById('paginationGap');
+			var comp = new u.pagination({ el: paginationGap, showState:true  });
+			comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
 		</script>
 	</body>
 </html>

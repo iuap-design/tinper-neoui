@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../vendor/uui/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../vendor/uui/css/u.css">
+</head>
+
+<body>
+    <center>
+        <!-- Left aligned menu below button -->
+        <button id="demo-menu-lower-left" class="u-button floating u-button-icon">
+            <i class="fa fa-ellipsis-v"></i>
+        </button>
+        左对齐
+        <ul class="u-menu u-menu-bottom-left" for="demo-menu-lower-left">
+            <li class="u-menu-item">新增</li>
+            <li class="u-menu-item">修改</li>
+            <li disabled class="u-menu-item">删除</li>
+            <li class="u-menu-item">审核</li>
+        </ul>
+        <p>
+            <!-- right aligned menu below button -->
+            <button id="demo-menu-lower-right" class="u-button floating u-button-icon">
+                <i class="fa fa-ellipsis-v"></i>
+            </button>右对齐
+            <ul class="u-menu u-menu-bottom-right" for="demo-menu-lower-right">
+                <li class="u-menu-item">新增</li>
+                <li class="u-menu-item">修改</li>
+                <li disabled class="u-menu-item">删除</li>
+                <li class="u-menu-item">审核</li>
+            </ul>
+        </p>
+        菜单按钮
+        <button class="u-button  raised u-menu-button" id="demo-menu-lower-right1">
+            联查
+            <span class="u-right-icon fa fa-angle-down"></span>
+        </button>
+        <ul class="u-menu u-menu-bottom-right" for="demo-menu-lower-right1">
+            <li class="u-menu-item"><a href="javascript:void(0)">报价单</a></li>
+            <li class="u-menu-item"><a href="javascript:void(0)">到货单</a></li>
+        </ul>
+        <br/>
+        <br/> 分割按钮
+        <div class="u-button-group u-split">
+            <button class="u-button u-split-pre">
+                打印
+            </button>
+            <div class="u-button-group u-split-sub">
+                <button class="u-button u-dropdown-toggle" id="split">
+                    <span class=" fa fa-angle-down "></span>
+                </button>
+                <ul class="u-menu u-menu-bottom-right" for="split">
+                    <li class="u-menu-item"><a href="javascript:void(0)" onclick="alert('报价单')">报价单</a></li>
+                    <li class="u-menu-item"><a href="javascript:void(0)" onclick="alert('到货单')">到货单</a></li>
+                </ul>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <p>不同色彩下拉</p>
+        <div class="u-row">
+            <div class="u-col-3">
+                <button class="u-button  u-button-success u-menu-button" id="demo-menu-sucess">
+                    success
+                    <span class="u-right-icon fa fa-angle-down"></span>
+                </button>
+                <ul class="u-menu u-menu-bottom-right u-menu-success" for="demo-menu-sucess">
+                    <li class="u-menu-item"><a href="javascript:void(0)">action zero</a></li>
+                    <li class="u-menu-item"><a href="javascript:void(0)">action one</a></li>
+                    <li class="u-menu-item"><a href="javascript:void(0)">action two</a></li>
+                    <li class="u-menu-item"><a href="javascript:void(0)">action three</a></li>
+                </ul>
+            </div>
+            <div class="u-col-3">
+                <button class="u-button  u-button-info u-menu-button" id="demo-menu-info">
+                    info
+                    <span class="u-right-icon fa fa-angle-down"></span>
+                </button>
+                <ul class="u-menu u-menu-bottom-right u-menu-info" for="demo-menu-info">
+                    <li class="u-menu-item"><a href="javascript:void(0)">action zero</a></li>
+                    <li class="u-menu-item"><a href="javascript:void(0)">action one</a></li>
+                    <li class="u-menu-item"><a href="javascript:void(0)">action two</a></li>
+                    <li class="u-menu-item"><a href="javascript:void(0)">action three</a></li>
+                </ul>
+            </div>
+            <div class="u-col-3">
+                <button class="u-button  u-button-danger u-menu-button" id="demo-menu-danger">
+                    danger
+                    <span class="u-right-icon fa fa-angle-down"></span>
+                </button>
+                <ul class="u-menu u-menu-bottom-right u-menu-danger" for="demo-menu-danger">
+                    <li class="u-menu-item"><a href="javascript:void(0)">action zero</a></li>
+                    <li class="u-menu-item"><a href="javascript:void(0)">action one</a></li>
+                    <li class="u-menu-item"><a href="javascript:void(0)">action two</a></li>
+                    <li class="u-menu-item"><a href="javascript:void(0)">action three</a></li>
+                </ul>
+            </div>
+            <div class="u-col-3">
+                <button class="u-button  u-button-warning u-menu-button" id="demo-menu-warning">
+                    warning
+                    <span class="u-right-icon fa fa-angle-down"></span>
+                </button>
+                <ul class="u-menu u-menu-bottom-right u-menu-warning" for="demo-menu-warning">
+                    <li class="u-menu-item"><a href="javascript:void(0)">action zero</a></li>
+                    <li class="u-menu-item"><a href="javascript:void(0)">action one</a></li>
+                    <li class="u-menu-item"><a href="javascript:void(0)">action two</a></li>
+                    <li class="u-menu-item"><a href="javascript:void(0)">action three</a></li>
+                </ul>
+            </div>
+        </div>
+        <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        </style>
+        <script src="../../../vendor/uui/js/u-polyfill.js"></script>
+        <script src="../../../vendor/uui/js/u-ui.js"></script>
+    </center>
+</body>
+
+</html>

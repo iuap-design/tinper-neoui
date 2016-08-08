@@ -1,0 +1,492 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1" />
+		<title>Hello UUI</title>
+		<style>
+			.divcss {
+				width: 90%;
+				margin: 0 auto;
+				background-color: #999
+			}
+			.gridw {
+				width: 90%;
+				margin: 0 auto
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="../../../project/libs/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet"  href="../../../vendor/uui/fonts/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="../../../vendor/uui/css/u.css" />
+		<link rel="stylesheet" type="text/css" href="../../../vendor/uui/css/grid.css" />
+	</head>
+
+	<body>
+		<div class="divcss">
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>表格</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp1"></div>
+				</div>
+			</div>
+			<br />
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数：width设置为500px</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp2"></div>
+				</div>
+			</div>
+			<br />
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数：Height设置为200px</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp4"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:columnWidth设置为200px</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp5"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:columnWidth设置为300px</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp6"></div>
+				</div>
+			</div>
+			<br />
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:sortable设置为true</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp8"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:sortable设置为false</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp9"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:canDrag设置为ture</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp10"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:canDrag设置为false</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp11"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:showHeader设置为true</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp12"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:showHeader设置为false</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp13"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:columnMenu设置为true</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp14"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:columnMenu设置为false</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp15"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:showNumCol设置为true</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp16"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:showNumCol设置为false</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp17"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:multiSelect设置为true</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp18"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:multiSelect设置为false</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp19"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:showSumRow设置为true</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp20"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:showSumRow设置为false</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp21"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:editable默认</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp22"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:editable设置为false</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp23"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:showTree设置为true</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp24"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:showTree设置为false</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp25"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:showTree设置为true,autoExpand设置为ture</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp26"></div>
+				</div>
+			</div>
+			<br />
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:showTree设置为true,autoExpand设置为false</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp27"></div>
+				</div>
+			</div>
+			<br />
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridCompColumn参数：第四列：autoExpand为false，第五列：autoExpand为true，其他为默认</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp29"></div>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridCompColumn参数：sortable设置为true/false；gridComp参数：sortable设置为false</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp30"></div>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridCompColumn参数：sortable设置为true/false；gridComp参数：sortable设置为true</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp31"></div>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridCompColumn参数：canDrag设置为true/false；gridComp参数：canDrag设置为false</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp32"></div>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridCompColumn参数：canDrag设置为true/false；gridComp参数：canDrag设置为true</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp33"></div>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridCompColumn参数：fixed设置为true/false</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp34"></div>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridCompColumn参数：visible设置为true/false</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp35"></div>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridCompColumn参数：sumCol设置为true/false</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp36"></div>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridCompColumn参数：editable设置为true/false,gridComp参数：editable设置为false</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp37"></div>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridCompColumn参数：editable设置为true/false,gridComp参数：editable设置为true</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp38"></div>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridCompColumn参数:editType为function</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp39"></div>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridCompColumn参数:dataType为string/Data/DataTime</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp40"></div>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridCompColumn参数:renderType为function</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp41"></div>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp参数:transMap设置语言：ml_show_column：显示/隐藏列，ml_clear_set：清除设置，ml_no_rows：无数据</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp42"></div>
+					<button class="btn-pill" type="button" id="deleteOneRow2">删除一行</button>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp事件：onBeforeRowSelected,单数行可以选中，双数行无法选中</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp43"></div>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp事件：onRowSelected,单数行弹出提示，双数行无提示</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp44"></div>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp事件：setRowSelect选中行，setRowUnselect反选一行,onBeforeRowUnSelected反选前触发前，单行可反选，双行不可反选， onRowUnSelected反选之后显示ID</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp45"></div>
+					<button type="button" class="btn-pill" id="setRowselect1">选中一行</button>
+					<button type="button" class="btn-pill" id="setRowUnselect1">反选一行</button>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp事件：onBeforeAllRowSelected设置为false</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp46"></div>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp事件：onBeforeAllRowSelected设置为true,onAllRowSelected弹出显示</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp47"></div>
+				</div>
+			</div>
+			<br>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp事件：onBeforeAllRowUnSelected反选前设置,onAllRowUnSelected反选后弹出显示</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp48"></div>
+					<button class="btn-pill" type="button" id="allrowselected1">全选</button>
+					<button class="btn-pill" type="button" id="allrowunselected1">全反选</button>
+				</div>
+			</div>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>gridComp事件：onBeforeRowEditConfirm编辑确定前设置</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp49"></div>
+				</div>
+			</div>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>表格事件</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp50"></div>
+					<button class="btn-pill" type="button" id="changedatasource1">更换数据源</button>
+					<button class="btn-pill" type="button" id="changedatasource2">更换数据源2</button>
+					<button class="btn-pill" type="button" id="getSelectRowsIndex1">获取所选行对应的行号</button>
+					<button class="btn-pill" type="button" id="getSelectRows1">获取所选行</button>
+					<button class="btn-pill" type="button" id="addOneRow1">添加一行</button>
+					<button class="btn-pill" type="button" id="addRows1">添加多行</button>
+					<button class="btn-pill" type="button" id="deleteOneRow1">删除一行</button>
+					<button class="btn-pill" type="button" id="deleteRows1">删除多行</button>
+					<button class="btn-pill" type="button" id="updateRow1">更改一行</button>
+					<button class="btn-pill" type="button" id="updateValueAt1">更改某个元素</button>
+					<button class="btn-pill" type="button" id="getRowByIndex1">根据行号获取行</button>
+					<button class="btn-pill" type="button" id="setRenderType1">设置RenderType</button>
+					<button class="btn-pill" type="button" id="setEditType1">设置editType</button>
+					<button class="btn-pill" type="button" id="setEditable1">设置是否可以修改</button>
+				</div>
+			</div>
+			<div class="grid simple gridw">
+				<div class="grid-title">
+					<h4>树表事件</h4>
+				</div>
+				<div class="grid-body">
+					<div class="grid" id="grid-comp51"></div>
+					<button class="btn-pill" type="button" id="getAllChildRow1">获取子元素</button>
+					<button class="btn-pill" type="button" id="getAllChildRowIndex1">获取子元素索引</button>
+
+				</div>
+			</div>
+		</div>
+
+		<script src="../../../project/libs/jquery/jquery-1.11.2.js"></script>
+		<script src="../../../project/libs/bootstrap/js/bootstrap.js"></script>
+		<script src="../../../vendor/uui/js/u-polyfill.js"></script>
+		<script src="../../../vendor/uui/js/u.js"></script>
+		<script src="../../../vendor/uui/js/u-grid.js"></script>
+		<script src="grid.js"></script>
+	</body>
+
+</html>

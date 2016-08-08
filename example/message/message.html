@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../../../vendor/uui/fonts/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css"  href="../../../vendor/uui/css/u.css">
+</head>
+<body>
+  <div>
+    <h4 class="example-title">Simple</h4>
+    <div class="u-message u-mesnews active" >    
+        <span class="u-msg-close fa fa-close"></span>
+        NEWS!!!
+        
+    </div>
+    <div class="u-message u-mesinfo active">
+        <span class="u-msg-close fa fa-close"></span>
+        INFO!!!
+        
+    </div>
+    <div class="u-message u-messuccess active">    
+        <span class="u-msg-close fa fa-close"></span>
+        SUCCESS!!!
+    </div>
+    <div class="u-message u-mesdanger active">
+        <span class="u-msg-close fa fa-close"></span>
+        DANGER!!!
+    </div>
+    <div class="u-message u-meswarning active">
+        <span class="u-msg-close fa fa-close"></span>
+        WARNING!!!
+    </div>
+  </div>
+  <div class="example">
+    <h4 class="example-title">Dark With Icon</h4>
+    <div class="u-message dark u-mesnews active" >    
+        <span class="u-msg-close fa fa-close"></span>
+        <i class="fa fa-bell margin-r-10"></i>NEWS!!!
+    </div>
+    <div class="u-message dark u-mesinfo active">
+        <span class="u-msg-close fa fa-close"></span>
+        <i class="fa fa-info-circle margin-r-10"></i>INFO!!!
+    </div>
+    <div class="u-message dark u-messuccess active">    
+        <span class="u-msg-close fa fa-close"></span>
+        <i class="fa fa-check-circle margin-r-10"></i>SUCCESS!!!
+    </div>
+    <div class="u-message dark u-mesdanger active">
+        <span class="u-msg-close fa fa-close"></span>
+        <i class="fa fa-times-circle margin-r-10"></i>DANGER!!!
+    </div>
+    <div class="u-message dark u-meswarning active">
+        <span class="u-msg-close fa fa-close"></span>
+        <i class="fa fa-warning margin-r-10"></i>WARNING!!!
+    </div>
+  </div>
+  <div>
+      <h4 class="example-title">Click</h4>
+  </div>   
+  <button id="msgBtn" class="u-button" >Success</button>
+  <button id="errorBtn" class="u-button" >Error</button>
+  <button id="warnBtn" class="u-button" >Warning</button>
+  <script src="../../../vendor/uui/js/u-polyfill.js"></script>
+  <script src="../../../vendor/uui/js/u-ui.js"></script>
+
+<script>
+    var msgBtn = document.body.querySelector("#msgBtn");
+    var errorBtn = document.body.querySelector("#errorBtn");
+    var warnBtn = document.body.querySelector("#warnBtn");
+    var rightInfo='<i class="fa fa-check-circle margin-r-10"></i>成功信息!!!';
+    u.on(msgBtn,'click', function(){ 
+        u.showMessage({msg:rightInfo,position:"top-center",msgType:"success"})
+    })
+
+    var errorInfo='<i class="fa fa-times-circle margin-r-10"></i>错误信息!!!'
+    u.on(errorBtn,'click', function(){ 
+        u.showMessage({msg:errorInfo,position:"bottom-right",msgType:"danger"})
+    })
+
+    var warningInfo='<i class="fa fa-warning margin-r-10"></i>警告信息!!!';
+    u.on(warnBtn,'click', function(){ 
+        u.showMessage({msg:warningInfo,position:"bottom-right",msgType:"warning"})
+    })
+</script>
+
+<style type="text/css">
+    .margin-r-10{
+        margin-right: 10px; 
+    }
+    .u-message{
+        position: inherit;
+    }
+</style>
+</body>
+</html>
