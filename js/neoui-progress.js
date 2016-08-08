@@ -101,7 +101,7 @@ var Progress = BaseComponent.extend({
 
 compMgr.regComp({
 	comp: Progress,
-	compAsString: 'Progress',
+	compAsString: 'u.Progress',
 	css: 'u-progress'
 });
 if(document.readyState && document.readyState === 'complete') {

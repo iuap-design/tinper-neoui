@@ -409,7 +409,7 @@ var Menu = BaseComponent.extend({
 
 compMgr.regComp({
 	comp: Menu,
-	compAsString: 'Menu',
+	compAsString: 'u.Menu',
 	css: 'u-menu'
 });
 if(document.readyState && document.readyState === 'complete') {

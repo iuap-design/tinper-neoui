@@ -162,7 +162,7 @@ var Switch = BaseComponent.extend({
 
 compMgr.regComp({
 	comp: Switch,
-	compAsString: 'Switch',
+	compAsString: 'u.Switch',
 	css: 'u-switch'
 });
 

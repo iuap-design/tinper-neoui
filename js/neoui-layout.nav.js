@@ -492,7 +492,7 @@ var NavLayoutTab = UNavLayoutTab;
 
 compMgr.regComp({
     comp: NavLayout,
-    compAsString: 'NavLayout',
+    compAsString: 'u.NavLayout',
     css: 'u-navlayout'
 });
 

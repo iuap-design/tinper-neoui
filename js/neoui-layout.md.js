@@ -232,7 +232,7 @@ function _hidePage(el,me,width){
 
 compMgr.regComp({
 	comp: MDLayout,
-	compAsString: 'MDLayout',
+	compAsString: 'u.MDLayout',
 	css: 'u-mdlayout'
 });
 if(document.readyState && document.readyState === 'complete') {

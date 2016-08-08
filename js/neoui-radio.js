@@ -215,7 +215,7 @@ var Radio = BaseComponent.extend({
 
 compMgr.regComp({
     comp: Radio,
-    compAsString: 'Radio',
+    compAsString: 'u.Radio',
     css: 'u-radio'
 });
 

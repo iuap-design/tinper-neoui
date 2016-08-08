@@ -547,7 +547,7 @@ var Combobox = BaseComponent.extend({
 	// $.fn.Combobox = Plugin;
 compMgr.regComp({
 	comp: Combobox,
-	compAsString: 'Combobox',
+	compAsString: 'u.Combobox',
 	css: 'u-combobox'
 });
 

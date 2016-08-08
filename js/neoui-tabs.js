@@ -121,7 +121,7 @@ function Tab(tab, ctx) {
 
 compMgr.regComp({
 	comp: Tabs,
-	compAsString: 'Tabs',
+	compAsString: 'u.Tabs',
 	css: 'u-tabs'
 });
 if(document.readyState && document.readyState === 'complete') {

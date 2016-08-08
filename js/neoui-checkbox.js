@@ -216,7 +216,7 @@ var Checkbox = BaseComponent.extend({
 
 compMgr.regComp({
     comp: Checkbox,
-    compAsString: 'Checkbox',
+    compAsString: 'u.Checkbox',
     css: 'u-checkbox'
 });
 if(document.readyState && document.readyState === 'complete') {

@@ -424,7 +424,7 @@ function Plugin(option) {
 if(compMgr)
 	compMgr.regComp({
 	comp: pagination,
-	compAsString: 'pagination',
+	compAsString: 'u.pagination',
 	css: 'u-pagination'
 });
 

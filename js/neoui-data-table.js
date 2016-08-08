@@ -92,7 +92,7 @@ var Table = BaseComponent.extend({
 
 compMgr.regComp({
     comp: Table,
-    compAsString: 'Table',
+    compAsString: 'u.Table',
     css: 'u-table'
 });
 
