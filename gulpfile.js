@@ -11,6 +11,7 @@ var minifycss = require('gulp-minify-css');
 var sourcemaps = require('gulp-sourcemaps');
 var base64 = require('gulp-base64');
 var util = require('gulp-util');
+var stripCssComments = require('gulp-strip-css-comments');
 
 var version = require('./version.js');
 /**
@@ -306,6 +307,7 @@ gulp.task('mapcssplugin',function(){
 gulp.task('buildcss', function(){
     gulp.src('./scss/neoui.scss')
         .pipe(sass())
+        .pipe(stripCssComments())
         .pipe(gulp.dest('./dist/css'))
         .pipe(minifycss())
         .pipe(rename({
@@ -342,7 +344,7 @@ gulp.task('neo',['buildcss','polyfill-init'],function(){
         'dist/js/neoui.min.js'
     ]);    
 });
-gulp.task('cssvs', function(){
+gulp.task('cssvs', ['neo'], function(){
     version.init([
         'dist/css/neoui.css',
         'dist/css/neoui.min.css'

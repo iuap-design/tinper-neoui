@@ -13,7 +13,7 @@
     "neoui-build": "npm run build_normal && npm run build_min",
     "neoui-dev": "webpack --progress --colors  --mode=product_normal && webpack --progress --colors  --mode=product_min",
     "plugin": "npm run neoui-build && gulp neoplugin && node concat",
-    "product": "npm run neoui-dev && gulp neo && gulp cssvs"
+    "product": "npm run neoui-dev && gulp cssvs"
   },
   "repository": {
     "type": "git",
@@ -56,6 +56,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.1",
     "gulp-sourcemaps": "^1.6.0",
+    "gulp-strip-css-comments": "^1.2.0",
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
     "mocha": "^3.0.0",
