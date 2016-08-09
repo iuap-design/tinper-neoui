@@ -16,7 +16,8 @@ var exportJs = './js/';
 var indexJs = '/js/index.js';
 
 // out js文件目录
-var outJs = '/dist/js';
+// var outJs = '/dist/js';
+var outJs;
 
 // 多路径配置
 var entries =  fs.readdirSync(exportJs).filter(function(file) {
@@ -48,6 +49,7 @@ if(env === 'build_normal') {
 	libraryName = '[name]';
 	outputFile = libraryName + '.js';
 	entryFile = entryobj;
+	outJs = '/dist/js/plugin';
 } else if(env === 'build_min'){
 	plugins.push(new UglifyJsPlugin({
 		minimize: true
@@ -56,11 +58,13 @@ if(env === 'build_normal') {
 	libraryName = '[name]';
 	outputFile = libraryName + '.min.js';
 	entryFile = entryobj;
+	outJs = '/dist/js/plugin';
 } else if(env === 'product_normal'){
 	libraryName = 'neoui';
 	devToolSelect = '';
 	outputFile = libraryName + '.js';
 	entryFile = __dirname + indexJs;
+	outJs = '/dist/js';
 } else if(env === 'product_min'){
 	libraryName = 'neoui';
 	devToolSelect = '';
@@ -68,7 +72,8 @@ if(env === 'build_normal') {
 		minimize: true
 	}));
 	outputFile = libraryName + '.min.js';
-	entryFile = __dirname + indexJs;	
+	entryFile = __dirname + indexJs;
+	outJs = '/dist/js';	
 }
 
 

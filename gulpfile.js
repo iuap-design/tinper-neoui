@@ -337,10 +337,8 @@ gulp.task('distbuild', ['buildcss','buildcssplugin']);
  * neoui-polyfill.js
  * neoui-polyfill.min.js
  */
-gulp.task('neo',['buildcss','polyfill-init'],function(){
+gulp.task('neo',['buildcss'],function(){
     version.init([
-        'dist/js/neoui-polyfill.js',
-        'dist/js/neoui-polyfill.min.js',
         'dist/js/neoui.js',
         'dist/js/neoui.min.js'
     ]);    
