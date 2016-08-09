@@ -13,7 +13,8 @@
     "neoui-build": "npm run build_normal && npm run build_min",
     "neoui-dev": "webpack --progress --colors  --mode=product_normal && webpack --progress --colors  --mode=product_min",
     "plugin": "npm run neoui-build && gulp neoplugin && node concat",
-    "product": "npm run neoui-dev && gulp cssvs"
+    "product": "npm run neoui-dev && gulp cssvs",
+    "es" : "babel js -d lib"
   },
   "repository": {
     "type": "git",
