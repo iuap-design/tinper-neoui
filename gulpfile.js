@@ -337,7 +337,17 @@ gulp.task('distbuild', ['buildcss','buildcssplugin']);
  * neoui-polyfill.js
  * neoui-polyfill.min.js
  */
-gulp.task('neo',['buildcss'],function(){
+gulp.task('vendorui', function(){
+    // gulp.src(['vendor/ui/slider.js','vendor/ui/wizard.js','dist/js/neoui.js'])
+    gulp.src(['vendor/ui/*.js','dist/js/neoui.js'])
+        .pipe(concat('neoui.js'))
+        .pipe(gulp.dest('./dist/js'))
+        .pipe(uglify())
+        .pipe(rename('neoui.min.js'))
+        .pipe(gulp.dest('./dist/js'));
+
+});
+gulp.task('neo',['buildcss', 'vendorui'],function(){
     version.init([
         'dist/js/neoui.js',
         'dist/js/neoui.min.js'
