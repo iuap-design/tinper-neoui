@@ -3,12 +3,12 @@
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-08-02 19:22:32
  */
-import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
-import {addClass,removeClass,makeDOM,hasClass} from 'neoui-sparrow/lib/dom';
-import {on,off,stopEvent} from 'neoui-sparrow/lib/event';
-import {URipple} from 'neoui-sparrow/lib/util/ripple';
-import {env} from 'neoui-sparrow/lib/env';
-import {compMgr} from 'neoui-sparrow/lib/compMgr';
+import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
+import {addClass,removeClass,makeDOM,hasClass} from 'neoui-sparrow/js/dom';
+import {on,off,stopEvent} from 'neoui-sparrow/js/event';
+import {URipple} from 'neoui-sparrow/js/util/ripple';
+import {env} from 'neoui-sparrow/js/env';
+import {compMgr} from 'neoui-sparrow/js/compMgr';
 
 var Menu = BaseComponent.extend({
 	_Keycodes: {

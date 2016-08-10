@@ -3,11 +3,11 @@
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-08-02 19:11:45
  */
-import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
-import {addClass,removeClass,makeDOM} from 'neoui-sparrow/lib/dom';
-import {env} from 'neoui-sparrow/lib/env';
-import {on} from 'neoui-sparrow/lib/event';
-import {compMgr} from 'neoui-sparrow/lib/compMgr';
+import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
+import {addClass,removeClass,makeDOM} from 'neoui-sparrow/js/dom';
+import {env} from 'neoui-sparrow/js/env';
+import {on} from 'neoui-sparrow/js/event';
+import {compMgr} from 'neoui-sparrow/js/compMgr';
 
 var Loading = BaseComponent.extend({
 	_Constant: {

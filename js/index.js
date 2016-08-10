@@ -1,29 +1,29 @@
 /**
  * Module : Neoui webpack entry index
  * Author : Kvkens(yueming@yonyou.com)
- * Date	  : 2016-08-05 13:48:39
+ * Date	  : 2016-08-10 16:19:39
  */
 
 //Sparrow import
 import {extend} from 'neoui-sparrow/lib/extend';
-import {setCookie,getCookie} from 'neoui-sparrow/lib/cookies';
-import {createShellObject,execIgnoreError,getFunction,getJSObject,isDate,isNumber,isArray,isEmptyObject,inArray,isDomElement,each} from 'neoui-sparrow/lib/util';
-import {env} from 'neoui-sparrow/lib/env';
-import {on,off,trigger,stopEvent,event} from 'neoui-sparrow/lib/event';
-import {addClass,removeClass,hasClass,toggleClass,closest,css,wrap,getStyle,getZIndex,makeDOM,makeModal,getOffset,getScroll,showPanelByEle} from 'neoui-sparrow/lib/dom';
-import {Class} from 'neoui-sparrow/lib/class';
-import {core} from 'neoui-sparrow/lib/core';
-import {compMgr} from 'neoui-sparrow/lib/compMgr';
-import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
-import {ajax} from 'neoui-sparrow/lib/ajax';
-import {floatRender,integerRender,dateRender,dateTimeRender,timeRender,percentRender,dateToUTCString} from 'neoui-sparrow/lib/util/dataRender';
-import {NumberFormater,DateFormater} from 'neoui-sparrow/lib/util/formater';
-import {date} from 'neoui-sparrow/lib/util/dateUtils';
-import {AddressMasker,NumberMasker,CurrencyMasker,PercentMasker} from 'neoui-sparrow/lib/util/masker'
-import {hotkeys} from 'neoui-sparrow/lib/util/hotKeys';
-import {Ripple} from 'neoui-sparrow/lib/util/ripple';
-import {RSAUtils,BigInt,BarrettMu,twoDigit} from 'neoui-sparrow/lib/util/rsautils';
-import {trans} from 'neoui-sparrow/lib/util/i18n';
+//import {setCookie,getCookie} from 'neoui-sparrow/lib/cookies';
+//import {createShellObject,execIgnoreError,getFunction,getJSObject,isDate,isNumber,isArray,isEmptyObject,inArray,isDomElement,each} from 'neoui-sparrow/lib/util';
+//import {env} from 'neoui-sparrow/lib/env';
+//import {on,off,trigger,stopEvent,event} from 'neoui-sparrow/lib/event';
+//import {addClass,removeClass,hasClass,toggleClass,closest,css,wrap,getStyle,getZIndex,makeDOM,makeModal,getOffset,getScroll,showPanelByEle} from 'neoui-sparrow/lib/dom';
+//import {Class} from 'neoui-sparrow/lib/class';
+//import {core} from 'neoui-sparrow/lib/core';
+//import {compMgr} from 'neoui-sparrow/lib/compMgr';
+//import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
+//import {ajax} from 'neoui-sparrow/lib/ajax';
+//import {floatRender,integerRender,dateRender,dateTimeRender,timeRender,percentRender,dateToUTCString} from 'neoui-sparrow/lib/util/dataRender';
+//import {NumberFormater,DateFormater} from 'neoui-sparrow/lib/util/formater';
+//import {date} from 'neoui-sparrow/lib/util/dateUtils';
+//import {AddressMasker,NumberMasker,CurrencyMasker,PercentMasker} from 'neoui-sparrow/lib/util/masker'
+//import {hotkeys} from 'neoui-sparrow/lib/util/hotKeys';
+//import {Ripple} from 'neoui-sparrow/lib/util/ripple';
+//import {RSAUtils,BigInt,BarrettMu,twoDigit} from 'neoui-sparrow/lib/util/rsautils';
+//import {trans} from 'neoui-sparrow/lib/util/i18n';
 
 //Neoui import
 import {Autocomplete} from './neoui-autocomplete';
@@ -91,68 +91,71 @@ var ex = {
 	Tooltip : Tooltip,
 	Validate : Validate,
 	validate : validate,
-	doValidate :doValidate,
+	doValidate :doValidate
 	
-	ajax: ajax,
-	extend : extend,
-	setCookie: setCookie,
-	getCookie: getCookie,
-	createShellObject: createShellObject,
-	execIgnoreError: execIgnoreError,
-	getFunction: getFunction,
-	getJSObject: getJSObject,
-	isDate: isDate,
-	isNumber: isNumber,
-	isArray: isArray,
-	isEmptyObject: isEmptyObject,
-	inArray: inArray,
-	isDomElement: isDomElement,
-	each: each,
-	on: on,
-	off: off,
-	trigger: trigger,
-	stopEvent: stopEvent,
-	event: event,
-	addClass: addClass,
-	removeClass: removeClass,
-	hasClass: hasClass,
-	toggleClass: toggleClass,
-	closest: closest,
-	css: css,
-	wrap: wrap,
-	getStyle: getStyle,
-	getZIndex: getZIndex,
-	makeDOM: makeDOM,
-	makeModal: makeModal,
-	getOffset: getOffset,
-	getScroll: getScroll,
-	showPanelByEle: showPanelByEle,
-	Class: Class,
-	core: core,
-	compMgr: compMgr,
-	BaseComponent: BaseComponent,
-	floatRender: floatRender,
-	integerRender: integerRender,
-	dateRender: dateRender,
-	dateTimeRender: dateTimeRender,
-	timeRender: timeRender,
-	percentRender: percentRender,
-	dateToUTCString: dateToUTCString,
-	date: date,
-	NumberFormater: NumberFormater,
-	DateFormater: DateFormater,
-	AddressMasker: AddressMasker,
-	NumberMasker: NumberMasker,
-	CurrencyMasker: CurrencyMasker,
-	PercentMasker: PercentMasker,
-	hotkeys: hotkeys,
-	Ripple: Ripple,
-	RSAUtils: RSAUtils,
-	BigInt: BigInt,
-	BarrettMu: BarrettMu,
-	twoDigit: twoDigit,
-	trans: trans
+//	ajax: ajax,
+//	extend : extend,
+//	setCookie: setCookie,
+//	getCookie: getCookie,
+//	createShellObject: createShellObject,
+//	execIgnoreError: execIgnoreError,
+//	getFunction: getFunction,
+//	getJSObject: getJSObject,
+//	isDate: isDate,
+//	isNumber: isNumber,
+//	isArray: isArray,
+//	isEmptyObject: isEmptyObject,
+//	inArray: inArray,
+//	isDomElement: isDomElement,
+//	each: each,
+//	on: on,
+//	off: off,
+//	trigger: trigger,
+//	stopEvent: stopEvent,
+//	event: event,
+//	addClass: addClass,
+//	removeClass: removeClass,
+//	hasClass: hasClass,
+//	toggleClass: toggleClass,
+//	closest: closest,
+//	css: css,
+//	wrap: wrap,
+//	getStyle: getStyle,
+//	getZIndex: getZIndex,
+//	makeDOM: makeDOM,
+//	makeModal: makeModal,
+//	getOffset: getOffset,
+//	getScroll: getScroll,
+//	showPanelByEle: showPanelByEle,
+//	Class: Class,
+//	core: core,
+//	compMgr: compMgr,
+//	BaseComponent: BaseComponent,
+//	floatRender: floatRender,
+//	integerRender: integerRender,
+//	dateRender: dateRender,
+//	dateTimeRender: dateTimeRender,
+//	timeRender: timeRender,
+//	percentRender: percentRender,
+//	dateToUTCString: dateToUTCString,
+//	date: date,
+//	NumberFormater: NumberFormater,
+//	DateFormater: DateFormater,
+//	AddressMasker: AddressMasker,
+//	NumberMasker: NumberMasker,
+//	CurrencyMasker: CurrencyMasker,
+//	PercentMasker: PercentMasker,
+//	hotkeys: hotkeys,
+//	Ripple: Ripple,
+//	RSAUtils: RSAUtils,
+//	BigInt: BigInt,
+//	BarrettMu: BarrettMu,
+//	twoDigit: twoDigit,
+//	trans: trans
 
 };
-extend(ex,env);
+//extend(ex,env);
+
+extend(ex,window.u || {});
+
 export {ex as u};

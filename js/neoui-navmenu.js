@@ -4,12 +4,12 @@
  * Date	  : 2016-08-03 08:45:49
  */
 
-import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
-import {extend} from 'neoui-sparrow/lib/extend';
-import {addClass,wrap,css,hasClass,removeClass,closest} from 'neoui-sparrow/lib/dom';
-import {on,trigger} from 'neoui-sparrow/lib/event';
-import {Ripple} from 'neoui-sparrow/lib/util/ripple';
-import {compMgr} from 'neoui-sparrow/lib/compMgr';
+import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
+import {extend} from 'neoui-sparrow/js/extend';
+import {addClass,wrap,css,hasClass,removeClass,closest} from 'neoui-sparrow/js/dom';
+import {on,trigger} from 'neoui-sparrow/js/event';
+import {Ripple} from 'neoui-sparrow/js/util/ripple';
+import {compMgr} from 'neoui-sparrow/js/compMgr';
 
 
 var NavMenu = BaseComponent.extend({

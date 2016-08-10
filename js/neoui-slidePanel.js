@@ -4,10 +4,10 @@
  * Date	  : 2016-08-03 13:18:48
  */
 
-import {makeDOM} from 'neoui-sparrow/lib/dom';
-import {ajax} from 'neoui-sparrow/lib/ajax';
-import {on} from 'neoui-sparrow/lib/event';
-import {env} from 'neoui-sparrow/lib/env';
+import {makeDOM} from 'neoui-sparrow/js/dom';
+import {ajax} from 'neoui-sparrow/js/ajax';
+import {on} from 'neoui-sparrow/js/event';
+import {env} from 'neoui-sparrow/js/env';
 
 var slidePanelTemplate = ['<div class="slidePanel slidePanel-right  slidePanel-show slidePanel-dragging" style="transform:translate3d(100%,0,0);">',
 	'<div class="slidePanel-content site-sidebar-content"></div>',

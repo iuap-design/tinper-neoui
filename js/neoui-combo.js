@@ -4,13 +4,13 @@
  * Date	  : 2016-08-06 13:19:10
  */
 
-import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
-import {addClass,removeClass,hasClass,showPanelByEle,getZIndex,closest,makeDOM} from 'neoui-sparrow/lib/dom';
-import {env} from 'neoui-sparrow/lib/env';
-import {on,off,stopEvent} from 'neoui-sparrow/lib/event';
+import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
+import {addClass,removeClass,hasClass,showPanelByEle,getZIndex,closest,makeDOM} from 'neoui-sparrow/js/dom';
+import {env} from 'neoui-sparrow/js/env';
+import {on,off,stopEvent} from 'neoui-sparrow/js/event';
 import {Text} from './neoui-textfield';
-import {URipple} from 'neoui-sparrow/lib/util/ripple';
-import {compMgr} from 'neoui-sparrow/lib/compMgr';
+import {URipple} from 'neoui-sparrow/js/util/ripple';
+import {compMgr} from 'neoui-sparrow/js/compMgr';
 
 var Combo = BaseComponent.extend({
 	
