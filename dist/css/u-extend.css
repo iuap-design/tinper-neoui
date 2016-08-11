@@ -4766,7 +4766,8 @@ $color-accent: $palette-pink-A200 !default;
   white-space: nowrap;*/
   word-wrap: break-word;
   break-word: break-all;
-  border: 1px solid transparent; }
+  border: 1px solid transparent;
+  z-index: 99999; }
   .u-message.u-meserror {
     background-color: #fff6f7;
     color: #f15a4a;
