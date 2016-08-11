@@ -1,6 +1,6 @@
 {
   "name": "neoui",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "UI Framework Used For Enterprise.",
   "main": "index.js",
   "scripts": {
