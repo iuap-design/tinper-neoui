@@ -51,6 +51,12 @@ import {Tabs} from './neoui-tabs';
 import {Text} from './neoui-textfield';
 import {Tooltip} from './neoui-tooltip';
 import {Validate,validate,doValidate} from './neoui-validate';
+import {DateTimePicker} from './neoui-datetimepicker';
+import {Time} from './neoui-time';
+import {ClockPicker} from './neoui-clockpicker';
+import {Month} from './neoui-month';
+import {Year} from './neoui-year';
+import {YearMonth} from './neoui-yearmonth';
 
 
 var ex = {
@@ -91,7 +97,14 @@ var ex = {
 	Tooltip : Tooltip,
 	Validate : Validate,
 	validate : validate,
-	doValidate :doValidate
+	doValidate :doValidate,
+	DateTimePicker: DateTimePicker,
+	Time: Time,
+	ClockPicker : ClockPicker,
+	Month : Month,
+	Year : Year,
+	YearMonth : YearMonth
+
 	
 //	ajax: ajax,
 //	extend : extend,
