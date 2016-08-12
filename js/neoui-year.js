@@ -8,6 +8,7 @@ import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
 import {on, off, stopEvent} from 'neoui-sparrow/js/event';
 import {addClass, makeDOM, showPanelByEle, getZIndex, removeClass} from 'neoui-sparrow/js/dom';
 import {extend} from 'neoui-sparrow/js/extend'; 
+import {compMgr} from 'neoui-sparrow/js/compMgr';
 
 var Year = BaseComponent.extend({
 	DEFAULTS : {
