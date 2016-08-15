@@ -21,6 +21,8 @@
     }
     .media-heading {
       font-size: $list-group-media-heading-font-size;
+      margin: 0px;
+      margin-bottom: 5px;
     }
   }
 }
@@ -110,9 +112,12 @@ button.u-list-group-item {
     // Force color to inherit for custom content
     .u-list-group-item-heading {
       color: inherit;
+      margin: 0px;
+      margin-bottom: 5px;
     }
     .u-list-group-item-text {
       color: $list-group-disabled-text-color;
+      margin: 0px;
     }
   }
 
@@ -178,6 +183,7 @@ button.u-list-group-item {
 
 .u-list-group-item > .u-badge {
   float: right;
+  margin-top: 13px;
 }
 
 /*链接*/
@@ -304,6 +310,10 @@ a.u-list-group-item {
   overflow: auto;
   display: table-cell;
   vertical-align: top;
+  p {
+    margin: 0 0 11px;
+    font-size: 14px;
+  }
 }
 
 .media-left, .media-right {
