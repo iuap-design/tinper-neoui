@@ -34,6 +34,7 @@ $snackbar-vertical-offset: 0.5 * $unit !default;
   word-wrap: break-word;
   break-word: break-all;
   border: 1px solid transparent;
+  z-index: 99999;
   &.u-meserror {
     background-color: #fff6f7;
     // border: #f8aea9 1px solid;
