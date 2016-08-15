@@ -12502,10 +12502,10 @@ return /******/ (function(modules) { // webpackBootstrap
 			this.max = this.options['max'] !== undefined ? this.options['max'] : null;
 			this.minNotEq = this.options['minNotEq'] !== undefined ? this.options['minNotEq'] : null;
 			this.maxNotEq = this.options['maxNotEq'] !== undefined ? this.options['maxNotEq'] : null;
-			this.min = env.isNumber(this.min) ? this.min : null;
-			this.max = env.isNumber(this.max) ? this.max : null;
-			this.minNotEq = env.isNumber(this.minNotEq) ? this.minNotEq : null;
-			this.maxNotEq = env.isNumber(this.maxNotEq) ? this.maxNotEq : null;
+			this.min = (0, _util.isNumber)(this.min) ? this.min : null;
+			this.max = (0, _util.isNumber)(this.max) ? this.max : null;
+			this.minNotEq = (0, _util.isNumber)(this.minNotEq) ? this.minNotEq : null;
+			this.maxNotEq = (0, _util.isNumber)(this.maxNotEq) ? this.maxNotEq : null;
 			this.create();
 		}
 	});
@@ -13000,6 +13000,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _compMgr = __webpack_require__(11);
 
+	var _ripple = __webpack_require__(15);
+
 	var DateTimePicker = _BaseComponent.BaseComponent.extend({});
 
 	DateTimePicker.fn = DateTimePicker.prototype;
@@ -13236,7 +13238,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    for (i = 0; i < 12; i++) {
 
 	        cell = (0, _dom.makeDOM)('<div class="u-date-content-year-cell">' + (this.startYear + i) + '</div>');
-	        new URipple(cell);
+	        new _ripple.URipple(cell);
 	        if (this.startYear + i == _year) {
 	            (0, _dom.addClass)(cell, 'current');
 	        }
@@ -13333,7 +13335,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            (0, _dom.addClass)(cells[i], 'u-disabled');
 	        }
 	        cells[i]._value = i;
-	        new URipple(cells[i]);
+	        new _ripple.URipple(cells[i]);
 	    }
 	    (0, _event.on)(monthPage, 'click', function (e) {
 	        if ((0, _dom.hasClass)(e.target, 'u-disabled')) return;
@@ -13378,6 +13380,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var year,
 	        month,
 	        day,
+	        date,
 	        time,
 	        template,
 	        datePage,
@@ -13459,7 +13462,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        cell._value = tempDate.getDate();
 	        cell._month = tempDate.getMonth();
 	        cell._year = tempDate.getFullYear();
-	        new URipple(cell);
+	        new _ripple.URipple(cell);
 	        dateDiv.appendChild(cell);
 	        tempDate = _dateUtils.date.add(tempDate, 'd', 1);
 	    }
@@ -14000,9 +14003,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var rippleContainer = document.createElement('span');
 	        (0, _dom.addClass)(rippleContainer, 'u-ripple');
 	        this.btnClean.appendChild(rippleContainer);
-	        new URipple(this.btnOk);
-	        new URipple(this.btnCancel);
-	        new URipple(this.btnClean);
+	        new _ripple.URipple(this.btnOk);
+	        new _ripple.URipple(this.btnCancel);
+	        new _ripple.URipple(this.btnClean);
 	        (0, _event.on)(this.btnOk, 'click', function (e) {
 	            this.onOk();
 	            (0, _event.stopEvent)(e);

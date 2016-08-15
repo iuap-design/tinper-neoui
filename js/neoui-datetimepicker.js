@@ -7,7 +7,7 @@ import {core} from 'neoui-sparrow/js/core';
 import {date as udate} from 'neoui-sparrow/js/util/dateUtils';
 import {Validate} from './neoui-validate';
 import {compMgr} from 'neoui-sparrow/js/compMgr';
-
+import {URipple} from 'neoui-sparrow/js/util/ripple';
 
 var DateTimePicker = BaseComponent.extend({
 });
@@ -392,7 +392,7 @@ DateTimePicker.fn._fillDate = function(type){
     //     this._dateMobileScroll()
     //     return
     // }
-    var year,month,day,time,template,datePage,titleDiv,dateDiv,weekSpans,language,tempDate, i,cell,self = this;
+    var year,month,day,date,time,template,datePage,titleDiv,dateDiv,weekSpans,language,tempDate, i,cell,self = this;
     type = type || 'current';
     if ('current' === type) {
         tempDate = this.pickerDate;

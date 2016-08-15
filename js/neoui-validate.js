@@ -84,10 +84,10 @@ var Validate = BaseComponent.extend({
 		this.max = this.options['max'] !== undefined ? this.options['max'] : null
 		this.minNotEq = this.options['minNotEq'] !== undefined ? this.options['minNotEq'] : null
 		this.maxNotEq = this.options['maxNotEq'] !== undefined ? this.options['maxNotEq'] : null
-		this.min = env.isNumber(this.min) ? this.min : null
-		this.max = env.isNumber(this.max) ? this.max : null
-		this.minNotEq = env.isNumber(this.minNotEq) ? this.minNotEq : null
-		this.maxNotEq = env.isNumber(this.maxNotEq) ? this.maxNotEq : null
+		this.min = isNumber(this.min) ? this.min : null
+		this.max = isNumber(this.max) ? this.max : null
+		this.minNotEq = isNumber(this.minNotEq) ? this.minNotEq : null
+		this.maxNotEq = isNumber(this.maxNotEq) ? this.maxNotEq : null
 		this.create()
 	}
 });
