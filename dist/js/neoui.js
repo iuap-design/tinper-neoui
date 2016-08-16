@@ -4155,7 +4155,7 @@ $.fn.bootstrapWizard.defaults = {
 })(jQuery);
 
 /** 
- * neoui v3.2.0
+ * neoui v3.4.0
  * UI Framework Used For Enterprise.
  * author : yonyou FED
  * homepage : https://github.com/iuap-design/neoui#readme
@@ -6544,7 +6544,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Module : Sparrow dom
 	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-07-27 21:46:50
+	 * Date	  : 2016-08-16 13:59:17
 	 */
 	var removeClass = function removeClass(element, value) {
 		if (typeof element.classList === 'undefined') {
@@ -6710,21 +6710,28 @@ return /******/ (function(modules) { // webpackBootstrap
 		var ele = obj.ele,
 		    panel = obj.panel,
 		    position = obj.position,
-		    off = getOffset(ele),
-		    scroll = getScroll(ele),
-		    offLeft = off.left,
-		    offTop = off.top,
-		    scrollLeft = scroll.left,
-		    scrollTop = scroll.top,
-		    eleWidth = ele.offsetWidth,
-		    eleHeight = ele.offsetHeight,
-		    panelWidth = panel.offsetWidth,
-		    panelHeight = panel.offsetHeight,
-		    bodyWidth = document.body.clientWidth,
+
+		// off = u.getOffset(ele),scroll = u.getScroll(ele),
+		// offLeft = off.left,offTop = off.top,
+		// scrollLeft = scroll.left,scrollTop = scroll.top,
+		// eleWidth = ele.offsetWidth,eleHeight = ele.offsetHeight,
+		// panelWidth = panel.offsetWidth,panelHeight = panel.offsetHeight,
+		bodyWidth = document.body.clientWidth,
 		    bodyHeight = document.body.clientHeight,
 		    position = position || 'top',
-		    left = offLeft - scrollLeft,
-		    top = offTop - scrollTop;
+
+		// left = offLeft - scrollLeft,top = offTop - scrollTop,
+		eleRect = obj.ele.getBoundingClientRect(),
+		    panelRect = obj.panel.getBoundingClientRect(),
+		    eleWidth = eleRect.width,
+		    eleHeight = eleRect.height,
+		    left = eleRect.left,
+		    top = eleRect.top,
+		    panelWidth = panelRect.width,
+		    panelHeight = panelRect.height,
+		    docWidth = document.documentElement.clientWidth,
+		    docHeight = document.documentElement.clientHeight;
+
 		// 基准点为Ele的左上角
 		// 后续根据需要完善
 		if (position == 'left') {
@@ -6744,15 +6751,14 @@ return /******/ (function(modules) { // webpackBootstrap
 			top = top + eleHeight;
 		}
 
-		// if((left + panelWidth) > bodyWidth)
-		//     left = bodyWidth - panelWidth;
-		// if(left < 0)
-		//     left = 0;
+		if (left + panelWidth > docWidth) left = docWidth - panelWidth - 10;
+		if (left < 0) left = 0;
 
-		// if((top + panelHeight) > bodyHeight)
-		//     top = bodyHeight - panelHeight;
-		// if(top < 0)
-		//     top = 0;
+		if (top + panelHeight > docHeight) {
+			top = docHeight - panelHeight - 10;
+		}
+
+		if (top < 0) top = 0;
 		panel.style.left = left + 'px';
 		panel.style.top = top + 'px';
 	};
@@ -14221,15 +14227,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _extend = __webpack_require__(9);
 
-	var _extend2 = _interopRequireDefault(_extend);
-
 	var _util = __webpack_require__(6);
 
 	var _cookies = __webpack_require__(42);
 
 	var _enumerables = __webpack_require__(10);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var environment = {};
 	/**
@@ -14370,7 +14372,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		if (typeof getMetaFunc == 'function') {
 			var meta = getMetaFunc.call(this);
 			return meta[type];
-		} else return (0, _extend2.default)({}, maskerMeta[type]);
+		} else return (0, _extend.extend)({}, maskerMeta[type]);
 	};
 	environment.languages = (0, _cookies.getCookie)(_enumerables.U_LANGUAGES) ? (0, _cookies.getCookie)(_enumerables.U_LANGUAGES).split(',') : navigator.language ? navigator.language : 'zh-CN';
 	if (environment.languages == 'zh-cn') environment.languages = 'zh-CN';
