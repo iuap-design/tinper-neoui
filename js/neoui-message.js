@@ -44,24 +44,25 @@ var showMessage = function(options) {
 	}
 	var closeBtn = msgDom.querySelector('.u-msg-close');
 	//new Button({el:closeBtn});
-	on(closeBtn, 'click', function() {
-		removeClass(msgDom, "active")
-		setTimeout(function() {
-			try {
-				document.body.removeChild(msgDom);
-			} catch(e) {
+	var closeFun = function(){
+    	u.removeClass(msgDom,"active")
+        setTimeout(function(){
+            try{
+                document.body.removeChild(msgDom);
+            }catch(e){
+ 
+            }
+        },500) 
+    }
+    u.on(closeBtn, 'click', closeFun);
+    document.body.appendChild(msgDom);
+   
+    if (showSeconds > 0 ){
+        setTimeout(function(){
+        	closeFun();
+        },showSeconds* 1000)
+    }
 
-			}
-
-		}, 500)
-	})
-	document.body.appendChild(msgDom);
-
-	if(showSeconds > 0) {
-		setTimeout(function() {
-			closeBtn.click();
-		}, showSeconds * 1000)
-	}
 	setTimeout(function() {
 		addClass(msgDom, "active")
 	}, showSeconds * 1)
