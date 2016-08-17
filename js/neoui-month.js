@@ -8,6 +8,7 @@ import {on, off, stopEvent} from 'neoui-sparrow/js/event';
 import {addClass, makeDOM, showPanelByEle, getZIndex, removeClass} from 'neoui-sparrow/js/dom';
 import {extend} from 'neoui-sparrow/js/extend'; 
 import {compMgr} from 'neoui-sparrow/js/compMgr';
+import {URipple} from 'neoui-sparrow/js/util/ripple';
 
 const Month = BaseComponent.extend({
 	DEFAULTS : {

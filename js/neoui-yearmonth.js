@@ -10,6 +10,7 @@ import {addClass, makeDOM, showPanelByEle, getZIndex, removeClass} from 'neoui-s
 import {extend} from 'neoui-sparrow/js/extend'; 
 import {isIE8} from 'neoui-sparrow/js/env'; 
 import {compMgr} from 'neoui-sparrow/js/compMgr';
+import {URipple} from 'neoui-sparrow/js/util/ripple';
 
 const YearMonth = BaseComponent.extend({
 	DEFAULTS : {
