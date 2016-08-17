@@ -4155,7 +4155,7 @@ $.fn.bootstrapWizard.defaults = {
 })(jQuery);
 
 /** 
- * neoui v3.4.0
+ * neoui v3.4.2
  * UI Framework Used For Enterprise.
  * author : yonyou FED
  * homepage : https://github.com/iuap-design/neoui#readme
@@ -15418,6 +15418,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _compMgr = __webpack_require__(11);
 
+	var _ripple = __webpack_require__(15);
+
+	/**
+	 * Module : neoui-month
+	 * Author : liuyk(liuyk@yonyou.com)
+	 * Date	  : 2016-08-11 15:17:07
+	 */
 	var Month = _BaseComponent.BaseComponent.extend({
 		DEFAULTS: {},
 		init: function init() {
@@ -15486,7 +15493,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					(0, _dom.addClass)(cells[i], 'current');
 				}
 				cells[i]._value = i + 1;
-				new URipple(cells[i]);
+				new _ripple.URipple(cells[i]);
 			}
 			(0, _event.on)(monthPage, 'click', function (e) {
 				var _m = e.target._value;
@@ -15605,12 +15612,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			(0, _dom.removeClass)(this.panelDiv, 'is-visible');
 			this.panelDiv.style.zIndex = -1;
 		}
-	}); /**
-	     * Module : neoui-month
-	     * Author : liuyk(liuyk@yonyou.com)
-	     * Date	  : 2016-08-11 15:17:07
-	     */
-
+	});
 
 	_compMgr.compMgr.regComp({
 		comp: Month,
@@ -15647,6 +15649,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _extend = __webpack_require__(9);
 
 	var _compMgr = __webpack_require__(11);
+
+	var _ripple = __webpack_require__(15);
+
+	/**
+	 * Module : neoui-year
+	 * Author : liuyk(liuyk@yonyou.com)
+	 * Date	  : 2016-08-11 15:17:07
+	 */
 
 	var Year = _BaseComponent.BaseComponent.extend({
 		DEFAULTS: {},
@@ -15714,7 +15724,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			yearDiv = yearPage.querySelector('.u-date-content-panel');
 			for (i = 0; i < 12; i++) {
 				cell = (0, _dom.makeDOM)('<div class="u-date-content-year-cell">' + (this.startYear + i) + '</div>');
-				new URipple(cell);
+				new _ripple.URipple(cell);
 				if (this.startYear + i == this.year) {
 					(0, _dom.addClass)(cell, 'current');
 				}
@@ -15835,11 +15845,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			(0, _dom.removeClass)(this.panelDiv, 'is-visible');
 			this.panelDiv.style.zIndex = -1;
 		}
-	}); /**
-	     * Module : neoui-year
-	     * Author : liuyk(liuyk@yonyou.com)
-	     * Date	  : 2016-08-11 15:17:07
-	     */
+	});
 
 	_compMgr.compMgr.regComp({
 		comp: Year,
@@ -15879,11 +15885,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _compMgr = __webpack_require__(11);
 
-	/**
-	 * Module : neoui-year
-	 * Author : liuyk(liuyk@yonyou.com)
-	 * Date   : 2016-08-11 15:17:07
-	 */
+	var _ripple = __webpack_require__(15);
 
 	var YearMonth = _BaseComponent.BaseComponent.extend({
 	    DEFAULTS: {},
@@ -15953,7 +15955,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        yearDiv = yearPage.querySelector('.u-date-content-panel');
 	        for (i = 0; i < 12; i++) {
 	            cell = (0, _dom.makeDOM)('<div class="u-date-content-year-cell">' + (this.startYear + i) + '</div>');
-	            new URipple(cell);
+	            new _ripple.URipple(cell);
 	            if (this.startYear + i == this.year) {
 	                (0, _dom.addClass)(cell, 'current');
 	            }
@@ -15994,7 +15996,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                (0, _dom.addClass)(cells[i], 'current');
 	            }
 	            cells[i]._value = i + 1;
-	            new URipple(cells[i]);
+	            new _ripple.URipple(cells[i]);
 	        }
 	        var oThis = this;
 	        (0, _event.on)(monthPage, 'click', function (e) {
@@ -16163,7 +16165,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        (0, _dom.removeClass)(this.panelDiv, 'is-visible');
 	        this.panelDiv.style.zIndex = -1;
 	    }
-	});
+	}); /**
+	     * Module : neoui-year
+	     * Author : liuyk(liuyk@yonyou.com)
+	     * Date   : 2016-08-11 15:17:07
+	     */
 
 	_compMgr.compMgr.regComp({
 	    comp: YearMonth,
