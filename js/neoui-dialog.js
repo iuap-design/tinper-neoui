@@ -215,14 +215,29 @@ dialogMode.prototype.create = function() {
 	templateStr = templateStr.replace('{width}', this.width ? 'width:' + this.width + ';' : '');
 	templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
 
-	this.contentDom = document.querySelector(this.content); //
+	var htmlReg = /^(\s*)?<[a-zA-Z]+/ig;
+	var selectReg = /^(\.|#)/;
+	if(htmlReg.test(this.content)){
+		this.contentDom= makeDOM(this.content);
+		this.contentDomParent = this.contentDom.parentNode;
+		this.contentDom.style.display = 'block';
+	}else if(selectReg.test(this.content)){
+		this.contentDom = document.querySelector(this.content);
+		this.contentDomParent = this.contentDom.parentNode;
+		this.contentDom.style.display = 'block';
+	}else{
+		this.contentDom = makeDOM('<div><div class="u-msg-content"><p>' + this.content + '</p></div></div>');
+	}
+	this.templateDom = makeDOM(templateStr);
+
+	/*this.contentDom = document.querySelector(this.content); //
 	this.templateDom = makeDOM(templateStr);
 	if(this.contentDom) { // msg第一种方式传入选择器，如果可以查找到对应dom节点，则创建整体dialog之后在msg位置添加dom元素
 		this.contentDomParent = this.contentDom.parentNode;
 		this.contentDom.style.display = 'block';
 	} else { // 如果查找不到对应dom节点，则按照字符串处理，直接将msg拼到template之后创建dialog
 		this.contentDom = makeDOM('<div><div class="u-msg-content"><p>' + this.content + '</p></div></div>');
-	}
+	}*/
 	this.templateDom.appendChild(this.contentDom);
 	this.overlayDiv = makeModal(this.templateDom);
 	if(this.hasCloseMenu) {

@@ -28,13 +28,15 @@ var Year = BaseComponent.extend({
 	
 		on(this.input, 'blur',function(e){
 			self._inputFocus = false;
-        	this.setValue(this.input.value);
-        }.bind(this));
+        	self.setValue(self.input.value);
+        });
         
 		// 添加focus事件
 		this.focusEvent();
 		// 添加右侧图标click事件
 		this.clickEvent();
+		// 添加keydown事件
+		this.keydownEvent();
 	},
 
 	createPanel: function(){
@@ -126,7 +128,21 @@ var Year = BaseComponent.extend({
 			stopEvent(e);
 		});
 	},
-
+	keydownEvent:function(){
+		var self = this;
+		on(self.input, "keydown", function (e) {
+			var code = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+			if (!(code >= 48 && code <= 57||code==37||code==39||code==8 ||code==46)) {
+				//阻止默认浏览器动作(W3C)
+				if ( e && e.preventDefault )
+					e.preventDefault();
+				//IE中阻止函数器默认动作的方式
+				else
+					window.event.returnValue = false;
+				return false;
+			}
+		});
+	},
 	//下拉图标的点击事件
 	clickEvent: function() {
 		var self = this;		

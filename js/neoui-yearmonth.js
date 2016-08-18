@@ -29,8 +29,8 @@ const YearMonth = BaseComponent.extend({
 		
 		on(this.input, 'blur',function(e){
             self._inputFocus = false;
-        	this.setValue(this.input.value);
-        }.bind(this));
+        	self.setValue(self.input.value);
+        });
         
 		// 添加focus事件
 		this.focusEvent();

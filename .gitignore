@@ -1,4 +1,4 @@
-# Logs
+﻿# Logs
 logs
 *.log
 npm-debug.log*
@@ -48,3 +48,5 @@ snippets/temp
 
 # Optional REPL history
 .node_repl_history
+# IDE
+.idea
