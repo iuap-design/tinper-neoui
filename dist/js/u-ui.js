@@ -474,8 +474,8 @@ u.extend(u, {
 				input instanceof Date;
 	},
 	isNumber : function(obj){
-		//return obj === +obj
-		return (obj - parseFloat( obj ) + 1) >= 0;
+		return obj === +obj;
+		// return (obj - parseFloat( obj ) + 1) >= 0;
 	},
 	isArray: Array.isArray || function (val) {
 		return Object.prototype.toString.call(val) === '[object Array]';
