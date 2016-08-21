@@ -20,7 +20,7 @@ var Combo = BaseComponent.extend({
         }
 
         this.onlySelect = this.options['onlySelect'] || false;
-        if(!this.mutilSelect)
+        if(this.mutilSelect)
             this.onlySelect = true;
 
         this.comboDatas = [];
@@ -64,10 +64,37 @@ var Combo = BaseComponent.extend({
             self._inputFocus = false;
         })
 
-        on(this.input, 'keydown',function(e){
+        this.isAutoTip = this.options['isAutoTip'] || false; //是否支持自动提示
+        if (hasClass(this.element, 'is-auto-tip')){
+            this.isAutoTip = true;
+        }
+        on(this._input, 'keydown',function(e){
             var keyCode = e.keyCode;
-            if( e.keyCode == 13){// 回车
-                this.blur();
+
+            if( self.isAutoTip ){
+                switch (keyCode) {
+                    case 38: // up
+                        u.stopEvent(e);
+                        break;
+                    case 40: // down
+                        u.stopEvent(e);
+                        break;
+                    case 9: // tab
+                    case 13: // return
+                        // make sure to blur off the current field
+                        // self.element.blur();
+                        u.stopEvent(e);
+                        break;
+                    default:
+                        if (self.timeout) clearTimeout(self.timeout);
+                        self.timeout = setTimeout(function() {
+                            self.onChange();
+                        }, 400);
+                        break;
+                }
+            } else{
+                // 回车
+                if(keyCode == 13) this.blur();
             }
         });
         this.iconBtn = this.element.querySelector("[data-role='combo-button']");
@@ -77,6 +104,21 @@ var Combo = BaseComponent.extend({
                 stopEvent(e);
             })
         }
+    },
+
+    //输入框内容发生变化时修改提示词.
+    onChange: function() {
+        var v = this._input.value;
+        if(!v) v = '';
+        var filterData = [];
+        for(var i = 0, len = this.initialComboData.length; i< len; i++){
+            if(this.initialComboData[i].name.indexOf(v) >= 0
+                || this.initialComboData[i].value.indexOf(v) >= 0) {
+                filterData.push(this.initialComboData[i]);
+            }
+        }
+        this.setComboData(filterData);
+        this.show();
     },
 
     show: function (evt) {
@@ -146,18 +188,25 @@ var Combo = BaseComponent.extend({
      */
     setComboData: function (datas, options) {
         var i, li, self = this;
+
+        //统一指定datas格式为[{name:"",value:""}].
         if (!options)
             this.comboDatas = datas;
         else{
-            this.comboDatas = []
+            this.comboDatas = [];
             for(var i = 0; i< datas.length; i++){
                 this.comboDatas.push({name:datas[i][options.name],value:datas[i][options.value]});
             }
         }
+
+        //将初始数据保留一份,以便input输入内容改变时自动提示的数据从全部数据里头筛选.
+        if(!(this.initialComboData && this.initialComboData.length)){
+            this.initialComboData = this.comboDatas;
+        }
+
+        //若没有下拉的ul,新生成一个ul结构.
         if (!this._ul) {
             this._ul = makeDOM('<ul class="u-combo-ul"></ul>');
-            
-            // document.body.appendChild(this._ul);
         }
         this._ul.innerHTML = '';
         //TODO 增加filter
@@ -174,7 +223,7 @@ var Combo = BaseComponent.extend({
 			
 			rippleContainer.appendChild(_rippleElement);
             li.appendChild(rippleContainer);
-            new URipple(li)
+            new URipple(li);
             this._ul.appendChild(li);
         }
     },
@@ -315,8 +364,6 @@ var Combo = BaseComponent.extend({
             }
         }.bind(this));
     }
-
-
 });
 
 compMgr.regComp({

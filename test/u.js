@@ -1190,6 +1190,8 @@ return /******/ (function(modules) { // webpackBootstrap
 		isUnix: false,
 		isLinux: false,
 		isAndroid: false,
+		isAndroidPAD: false,
+		isAndroidPhone: false,
 		isMac: false,
 		hasTouch: false,
 		isMobile: false
@@ -1245,12 +1247,6 @@ return /******/ (function(modules) { // webpackBootstrap
 				version: match[1] || "0"
 			};
 		}
-		if (match != null) {
-			browserMatch = {
-				browser: "",
-				version: "0"
-			};
-		}
 
 		if (s = ua.match(/opera.([\d.]+)/)) {
 			u.isOpera = true;
@@ -1281,6 +1277,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			u.isIPAD = true;
 			u.isStandard = true;
 		}
+
 		if (ua.match(/iphone/i)) {
 			u.isIOS = true;
 			u.isIphone = true;
@@ -1307,6 +1304,14 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 
 		u.version = version ? browserMatch.version ? browserMatch.version : 0 : 0;
+		if (u.isAndroid) {
+			if (window.screen.width >= 768 && window.screen.width < 1024) {
+				u.isAndroidPAD = true;
+			}
+			if (window.screen.width <= 768) {
+				u.isAndroidPhone = true;
+			}
+		}
 		if (u.isIE) {
 			var intVersion = parseInt(u.version);
 			var mode = document.documentMode;
@@ -1335,13 +1340,13 @@ return /******/ (function(modules) { // webpackBootstrap
 					u.isIE9_CORE = true;
 				} else if (browserMatch.version == 11) {
 					u.isIE11 = true;
-				} else {}
+				}
 			}
 		}
 		if ("ontouchend" in document) {
 			u.hasTouch = true;
 		}
-		if (u.isIOS || u.isAndroid) u.isMobile = true;
+		if (u.isIphone || u.isAndroidPhone) u.isMobile = true;
 	})();
 
 	var env = u;
@@ -2114,21 +2119,24 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 16 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.compsValidateMultiParam = exports.compsValidate = undefined;
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                   * Module : kero app validate
+	                                                                                                                                                                                                                                                   * Author : liuyk(liuyk@yonyou.com)
+	                                                                                                                                                                                                                                                   * Date   : 2016-07-29 09:34:01
+	                                                                                                                                                                                                                                                   */
 
-	/**
-	 * Module : kero app validate
-	 * Author : liuyk(liuyk@yonyou.com)
-	 * Date   : 2016-07-29 09:34:01
-	 */
+	var _env = __webpack_require__(7);
+
+	var _dom = __webpack_require__(5);
 
 	/**
 	 * 控件数据校验
@@ -2159,6 +2167,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    for (var i = 0; i < comps.length; i++) {
 	        if (comps[i].doValidate) {
 	            result = comps[i].doValidate({ trueValue: true, showMsg: showMsg });
+	            // 如果passed为true,result.passed为false说明第一次出现错误校验
+	            if (passed && !result.passed) {
+	                var off = (0, _dom.getOffset)(comps[i].element);
+	                //滚动到第一次出现错误的地方
+	                window.scrollTo(0, off.top - 30);
+	                if (_env.env.isIPAD) {
+	                    // ipad上面云表单提交校验的时候没有滚动到对应位置
+	                    window.top.scrollTo(0, off.top - 30);
+	                }
+	            }
 	            passed = result.passed && passed;
 	            if (!result.passed) {
 	                notPassedArr.push(result);
@@ -9433,7 +9451,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 
 	        this.onlySelect = this.options['onlySelect'] || false;
-	        if (!this.mutilSelect) this.onlySelect = true;
+	        if (this.mutilSelect) this.onlySelect = true;
 
 	        this.comboDatas = [];
 	        var i,
@@ -9477,11 +9495,40 @@ return /******/ (function(modules) { // webpackBootstrap
 	            self._inputFocus = false;
 	        });
 
-	        (0, _event.on)(this.input, 'keydown', function (e) {
+	        this.isAutoTip = this.options['isAutoTip'] || false; //是否支持自动提示
+	        if ((0, _dom.hasClass)(this.element, 'is-auto-tip')) {
+	            this.isAutoTip = true;
+	        }
+	        (0, _event.on)(this._input, 'keydown', function (e) {
 	            var keyCode = e.keyCode;
-	            if (e.keyCode == 13) {
+
+	            if (self.isAutoTip) {
+	                switch (keyCode) {
+	                    case 38:
+	                        // up
+	                        u.stopEvent(e);
+	                        break;
+	                    case 40:
+	                        // down
+	                        u.stopEvent(e);
+	                        break;
+	                    case 9: // tab
+	                    case 13:
+	                        // return
+	                        // make sure to blur off the current field
+	                        // self.element.blur();
+	                        u.stopEvent(e);
+	                        break;
+	                    default:
+	                        if (self.timeout) clearTimeout(self.timeout);
+	                        self.timeout = setTimeout(function () {
+	                            self.onChange();
+	                        }, 400);
+	                        break;
+	                }
+	            } else {
 	                // 回车
-	                this.blur();
+	                if (keyCode == 13) this.blur();
 	            }
 	        });
 	        this.iconBtn = this.element.querySelector("[data-role='combo-button']");
@@ -9491,6 +9538,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	                (0, _event.stopEvent)(e);
 	            });
 	        }
+	    },
+
+	    //输入框内容发生变化时修改提示词.
+	    onChange: function onChange() {
+	        var v = this._input.value;
+	        if (!v) v = '';
+	        var filterData = [];
+	        for (var i = 0, len = this.initialComboData.length; i < len; i++) {
+	            if (this.initialComboData[i].name.indexOf(v) >= 0 || this.initialComboData[i].value.indexOf(v) >= 0) {
+	                filterData.push(this.initialComboData[i]);
+	            }
+	        }
+	        this.setComboData(filterData);
+	        this.show();
 	    },
 
 	    show: function show(evt) {
@@ -9564,16 +9625,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var i,
 	            li,
 	            self = this;
+
+	        //统一指定datas格式为[{name:"",value:""}].
 	        if (!options) this.comboDatas = datas;else {
 	            this.comboDatas = [];
 	            for (var i = 0; i < datas.length; i++) {
 	                this.comboDatas.push({ name: datas[i][options.name], value: datas[i][options.value] });
 	            }
 	        }
+
+	        //将初始数据保留一份,以便input输入内容改变时自动提示的数据从全部数据里头筛选.
+	        if (!(this.initialComboData && this.initialComboData.length)) {
+	            this.initialComboData = this.comboDatas;
+	        }
+
+	        //若没有下拉的ul,新生成一个ul结构.
 	        if (!this._ul) {
 	            this._ul = (0, _dom.makeDOM)('<ul class="u-combo-ul"></ul>');
-
-	            // document.body.appendChild(this._ul);
 	        }
 	        this._ul.innerHTML = '';
 	        //TODO 增加filter
@@ -9725,7 +9793,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        }.bind(this));
 	    }
-
 	}); /**
 	     * Module : neoui-combo
 	     * Author : Kvkens(yueming@yonyou.com)
@@ -13337,6 +13404,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			    rowMsg = '',
 			    wholeMsg = '',
 			    columnShowMsg = '';
+			hasErrow = false;
 
 			// 遍历所有列
 			for (var j = 0; j < gridColumnArr.length; j++) {
@@ -13419,6 +13487,17 @@ return /******/ (function(modules) { // webpackBootstrap
 				// 如果存在错误信息并且提示信息
 				if (!columnPassedFlag && options.showMsg) {
 					columnShowMsg += title + ':' + columnMsg + '<br>';
+				}
+				if (!columnPassedFlag) {
+					if (!hasErrow) {
+						// 滚动条要滚动到第一次出现错误的数据列
+						hasErrow = true;
+						var ind = this.grid.getIndexOfColumn(column);
+						var thDom = $('#' + this.grid.options.id + '_header_table th', this.grid.$ele)[ind];
+						var left = thDom.attrLeftTotalWidth;
+						var contentDom = $('#' + this.grid.options.id + '_content_div', this.grid.$ele)[0];
+						contentDom.scrollLeft = left;
+					}
 				}
 			}
 			if (columnShowMsg) (0, _neouiMessage.showMessage)({ msg: columnShowMsg, showSeconds: 3 });
@@ -14440,21 +14519,23 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 		var closeBtn = msgDom.querySelector('.u-msg-close');
 		//new Button({el:closeBtn});
-		(0, _event.on)(closeBtn, 'click', function () {
-			(0, _dom.removeClass)(msgDom, "active");
+		var closeFun = function closeFun() {
+			u.removeClass(msgDom, "active");
 			setTimeout(function () {
 				try {
 					document.body.removeChild(msgDom);
 				} catch (e) {}
 			}, 500);
-		});
+		};
+		u.on(closeBtn, 'click', closeFun);
 		document.body.appendChild(msgDom);
 
 		if (showSeconds > 0) {
 			setTimeout(function () {
-				closeBtn.click();
+				closeFun();
 			}, showSeconds * 1000);
 		}
+
 		setTimeout(function () {
 			(0, _dom.addClass)(msgDom, "active");
 		}, showSeconds * 1);
@@ -17352,8 +17433,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        (0, _event.on)(this.input, 'blur', function (e) {
 	            self._inputFocus = false;
-	            this.setValue(this.input.value);
-	        }.bind(this));
+	            self.setValue(self.input.value);
+	        });
 
 	        // 添加focus事件
 	        this.focusEvent();
@@ -20681,16 +20762,29 @@ return /******/ (function(modules) { // webpackBootstrap
 		templateStr = templateStr.replace('{width}', this.width ? 'width:' + this.width + ';' : '');
 		templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
 
-		this.contentDom = document.querySelector(this.content); //
-		this.templateDom = (0, _dom.makeDOM)(templateStr);
-		if (this.contentDom) {
-			// msg第一种方式传入选择器，如果可以查找到对应dom节点，则创建整体dialog之后在msg位置添加dom元素
+		var htmlReg = /^(\s*)?<[a-zA-Z]+/ig;
+		var selectReg = /^(\.|#)/;
+		if (htmlReg.test(this.content)) {
+			this.contentDom = (0, _dom.makeDOM)(this.content);
+			this.contentDomParent = this.contentDom.parentNode;
+			this.contentDom.style.display = 'block';
+		} else if (selectReg.test(this.content)) {
+			this.contentDom = document.querySelector(this.content);
 			this.contentDomParent = this.contentDom.parentNode;
 			this.contentDom.style.display = 'block';
 		} else {
-			// 如果查找不到对应dom节点，则按照字符串处理，直接将msg拼到template之后创建dialog
 			this.contentDom = (0, _dom.makeDOM)('<div><div class="u-msg-content"><p>' + this.content + '</p></div></div>');
 		}
+		this.templateDom = (0, _dom.makeDOM)(templateStr);
+
+		/*this.contentDom = document.querySelector(this.content); //
+	 this.templateDom = makeDOM(templateStr);
+	 if(this.contentDom) { // msg第一种方式传入选择器，如果可以查找到对应dom节点，则创建整体dialog之后在msg位置添加dom元素
+	 	this.contentDomParent = this.contentDom.parentNode;
+	 	this.contentDom.style.display = 'block';
+	 } else { // 如果查找不到对应dom节点，则按照字符串处理，直接将msg拼到template之后创建dialog
+	 	this.contentDom = makeDOM('<div><div class="u-msg-content"><p>' + this.content + '</p></div></div>');
+	 }*/
 		this.templateDom.appendChild(this.contentDom);
 		this.overlayDiv = (0, _dom.makeModal)(this.templateDom);
 		if (this.hasCloseMenu) {
