@@ -13,7 +13,6 @@ import {URipple} from 'neoui-sparrow/js/util/ripple';
 import {compMgr} from 'neoui-sparrow/js/compMgr';
 
 var Combo = BaseComponent.extend({
-	
     init: function () {
         this.mutilSelect = this.options['mutilSelect'] || false;
         if (hasClass(this.element, 'mutil-select')){
@@ -21,7 +20,7 @@ var Combo = BaseComponent.extend({
         }
 
         this.onlySelect = this.options['onlySelect'] || false;
-        if(this.mutilSelect)
+        if(!this.mutilSelect)
             this.onlySelect = true;
 
         this.comboDatas = [];
@@ -99,7 +98,7 @@ var Combo = BaseComponent.extend({
             // this._ul.style.left = left + 'px';
             // this._ul.style.top = top + 'px';
             var bodyWidth = document.body.clientWidth,bodyHeight = document.body.clientHeight,
-                panelWidth = this._ul.offsetWidth,panelHeight = this._ul.offsetHeight
+                panelWidth = this._ul.offsetWidth,panelHeight = this._ul.offsetHeight;
             this.element.appendChild(this._ul);
             this.element.style.position = 'relative';
             this.left = this._input.offsetLeft;
