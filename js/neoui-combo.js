@@ -65,9 +65,9 @@ var Combo = BaseComponent.extend({
         })
 
         this.isAutoTip = this.options['isAutoTip'] || false; //是否支持自动提示
-        if (hasClass(this.element, 'is-auto-tip')){
-            this.isAutoTip = true;
-        }
+        //if (hasClass(this.element, 'is-auto-tip')){
+        //    this.isAutoTip = true;
+        //}
         on(this._input, 'keydown',function(e){
             var keyCode = e.keyCode;
 
