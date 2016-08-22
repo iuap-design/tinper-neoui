@@ -1,77 +1,94 @@
 // Component: 数据统计工具
 // ========================================================================
 
+.u-counter-content {
+  position: relative;
+}
 .u-counter {
   text-align: center;
 
   & > .u-counter-number,
-  .counter-number-group {
+  .u-counter-number-group {
     color: $counter-number-color;
     font-size: $counter-number-font-size;
   }
 }
 
-.counter-label {
+.u-counter-label {
   display: block;
 }
 
-.counter-icon {
+.u-counter-icon {
   font-size: $counter-icon-font-size;
 }
 
 // Size Modifier
 // ========================================================================
 
-.counter-lg {
-  & > .counter-number,
-  .counter-number-group {
+.u-counter-lg {
+  & > .u-counter-number,
+  .u-counter-number-group {
     font-size: $counter-lg-number-font-size;
   }
 
-  .counter-icon {
+  .u-counter-icon .uf{
     font-size: $counter-lg-icon-font-size
   }
 }
 
-.counter-md {
-  & > .counter-number,
-  .counter-number-group {
+.u-counter-md {
+  & > .u-counter-number,
+  .u-counter-number-group {
     font-size: $counter-md-number-font-size;
   }
 
-  .counter-icon {
+  .u-counter-icon .uf{
     font-size: $counter-md-icon-font-size
   }
 }
 
-.counter-sm {
-  & > .counter-number,
-  .counter-number-group {
+.u-counter-sm {
+  & > .u-counter-number,
+  .u-counter-number-group {
     font-size: $counter-sm-number-font-size;
   }
 
-  .counter-icon {
+  .u-counter-icon .uf {
     font-size: $counter-sm-icon-font-size
   }
 
-  .counter-number-related + .counter-number,
-  .counter-number + .counter-number-related {
+  .u-counter-number-related + .u-counter-number,
+  .u-counter-number + .u-counter-number-related {
     margin-left: 0;
   }
 }
 
-// Modifier: 'counter-inverse'
+// Modifier: 'u-counter-inverse'
 // ========================================================================
 
-.counter-inverse {
+.u-counter-inverse {
   color: $counter-inverse-color;
 
-  & > .counter-number,
-  .counter-number-group {
+  & > .u-counter-number,
+  .u-counter-number-group {
     color: $counter-inverse-color;
   }
 
-  .counter-icon {
+  .u-counter-icon {
     color: $counter-inverse-color;
   }
+}
+.font-size-60 .uf{
+  font-size: 60px;
+}
+
+.u-counter-watermark {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    line-height: 1;
+    opacity: .1;
+}
+.u-counter-watermark.darker {
+    color: #000;
 }
