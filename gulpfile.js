@@ -50,12 +50,23 @@ var errHandle = function ( err ) {
  * @param  {[type]} (      [description]
  * @return {[type]}        [description]
  */
-gulp.task('font', function () {
-  gulp.src('./vendor/font-awesome/**')
-      .pipe(gulp.dest('./dist/fonts/font-awesome'));
-  return gulp.src('./fonts/**')
-         .pipe(gulp.dest('./dist/fonts'));
+
+// gulp.task('font', function () {
+//   gulp.src('./vendor/font-awesome/**')
+//       .pipe(gulp.dest('./dist/fonts/font-awesome'));
+//   return gulp.src('./fonts/**')
+//          .pipe(gulp.dest('./dist/fonts'));
+// });
+
+gulp.task('fontcss', function() {
+    gulp.src('./vendor/font-awesome/css/**')
+        .pipe(gulp.dest('./dist/css'))
 });
+gulp.task('fontfile', function() {
+    gulp.src(['./fonts/*.*','./vendor/font-awesome/fonts/*.*'])
+        .pipe(gulp.dest('./dist/fonts'));
+
+})
 
 /**
  * 复制图片文件
@@ -130,6 +141,7 @@ gulp.task('buildcss', function(){
         .pipe(base64())
         .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
         .pipe(stripCssComments())
+        .pipe(rename('u.css'))
         .pipe(gulp.dest('./dist/css'))
         .pipe(minifycss())
         .pipe(rename({
@@ -176,11 +188,11 @@ gulp.task('neo',['buildcss', 'buildjs'],function(){
 });
 gulp.task('neoui', ['neo'], function(){
     version.init([
-        'dist/css/neoui.css',
-        'dist/css/neoui.min.css'
+        'dist/css/u.css',
+        'dist/css/u.min.css'
     ]);    
 });
 
-gulp.task('dist', ['neoui','image','font']);
+gulp.task('dist', ['neoui','image','fontcss','fontfile']);
 
 

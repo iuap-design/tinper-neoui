@@ -4155,7 +4155,7 @@ $.fn.bootstrapWizard.defaults = {
 })(jQuery);
 
 /** 
- * neoui v4.1.1
+ * neoui v4.1.2
  * UI Framework Used For Enterprise.
  * author : yonyou FED
  * homepage : https://github.com/iuap-design/neoui#readme
