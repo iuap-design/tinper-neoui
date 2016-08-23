@@ -932,3 +932,20 @@ $blognav-active-color:unquote("rgb(#{$color-primary})");
 // widget
 $widget-padding-left:30px;
 $widget-padding-top:10px;
+
+
+// couter 数据统计
+
+$counter-number-color:        $gray-darkest;
+$counter-number-font-size:    20px;
+$counter-icon-font-size:      $counter-number-font-size;
+
+$counter-lg-number-font-size: 40px;
+$counter-md-number-font-size: 30px;
+$counter-sm-number-font-size: 14px;
+
+$counter-lg-icon-font-size:   $counter-lg-number-font-size;
+$counter-md-icon-font-size:   $counter-md-number-font-size;
+$counter-sm-icon-font-size:   $counter-sm-number-font-size;
+
+$counter-inverse-color:       $inverse;

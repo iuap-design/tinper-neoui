@@ -117,7 +117,7 @@
 }
 .u-tabs__tab-bar-left {
   height: 150px;
-  div {
+  &>div {
     float: left;
   }
   .u-tabs__panel {

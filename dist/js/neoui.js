@@ -4155,23 +4155,13 @@ $.fn.bootstrapWizard.defaults = {
 })(jQuery);
 
 /** 
- * neoui v3.4.2
+ * neoui v4.1.2
  * UI Framework Used For Enterprise.
  * author : yonyou FED
  * homepage : https://github.com/iuap-design/neoui#readme
  * bugs : https://github.com/iuap-design/neoui/issues
  **/ 
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else {
-		var a = factory();
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
-})(this, function() {
-return /******/ (function(modules) { // webpackBootstrap
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -4425,7 +4415,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	//Neoui import
 	(0, _extend.extend)(ex, window.u || {});
-
+	window.u = ex;
 	exports.u = ex;
 
 /***/ },
@@ -6028,6 +6018,8 @@ return /******/ (function(modules) { // webpackBootstrap
 		isUnix: false,
 		isLinux: false,
 		isAndroid: false,
+		isAndroidPAD: false,
+		isAndroidPhone: false,
 		isMac: false,
 		hasTouch: false,
 		isMobile: false
@@ -6083,12 +6075,6 @@ return /******/ (function(modules) { // webpackBootstrap
 				version: match[1] || "0"
 			};
 		}
-		if (match != null) {
-			browserMatch = {
-				browser: "",
-				version: "0"
-			};
-		}
 
 		if (s = ua.match(/opera.([\d.]+)/)) {
 			u.isOpera = true;
@@ -6119,6 +6105,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			u.isIPAD = true;
 			u.isStandard = true;
 		}
+
 		if (ua.match(/iphone/i)) {
 			u.isIOS = true;
 			u.isIphone = true;
@@ -6145,6 +6132,14 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 
 		u.version = version ? browserMatch.version ? browserMatch.version : 0 : 0;
+		if (u.isAndroid) {
+			if (window.screen.width >= 768 && window.screen.width < 1024) {
+				u.isAndroidPAD = true;
+			}
+			if (window.screen.width <= 768) {
+				u.isAndroidPhone = true;
+			}
+		}
 		if (u.isIE) {
 			var intVersion = parseInt(u.version);
 			var mode = document.documentMode;
@@ -6173,13 +6168,13 @@ return /******/ (function(modules) { // webpackBootstrap
 					u.isIE9_CORE = true;
 				} else if (browserMatch.version == 11) {
 					u.isIE11 = true;
-				} else {}
+				}
 			}
 		}
 		if ("ontouchend" in document) {
 			u.hasTouch = true;
 		}
-		if (u.isIOS || u.isAndroid) u.isMobile = true;
+		if (u.isIphone || u.isAndroidPhone) u.isMobile = true;
 	})();
 
 	var env = u;
@@ -7458,7 +7453,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _compMgr = __webpack_require__(11);
 
 	var Combo = _BaseComponent.BaseComponent.extend({
-
 	    init: function init() {
 	        this.mutilSelect = this.options['mutilSelect'] || false;
 	        if ((0, _dom.hasClass)(this.element, 'mutil-select')) {
@@ -7510,11 +7504,40 @@ return /******/ (function(modules) { // webpackBootstrap
 	            self._inputFocus = false;
 	        });
 
-	        (0, _event.on)(this.input, 'keydown', function (e) {
+	        this.isAutoTip = this.options['isAutoTip'] || false; //是否支持自动提示
+	        //if (hasClass(this.element, 'is-auto-tip')){
+	        //    this.isAutoTip = true;
+	        //}
+	        (0, _event.on)(this._input, 'keydown', function (e) {
 	            var keyCode = e.keyCode;
-	            if (e.keyCode == 13) {
+
+	            if (self.isAutoTip) {
+	                switch (keyCode) {
+	                    case 38:
+	                        // up
+	                        u.stopEvent(e);
+	                        break;
+	                    case 40:
+	                        // down
+	                        u.stopEvent(e);
+	                        break;
+	                    case 9: // tab
+	                    case 13:
+	                        // return
+	                        // make sure to blur off the current field
+	                        // self.element.blur();
+	                        u.stopEvent(e);
+	                        break;
+	                    default:
+	                        if (self.timeout) clearTimeout(self.timeout);
+	                        self.timeout = setTimeout(function () {
+	                            self.onChange();
+	                        }, 400);
+	                        break;
+	                }
+	            } else {
 	                // 回车
-	                this.blur();
+	                if (keyCode == 13) this.blur();
 	            }
 	        });
 	        this.iconBtn = this.element.querySelector("[data-role='combo-button']");
@@ -7524,6 +7547,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	                (0, _event.stopEvent)(e);
 	            });
 	        }
+	    },
+
+	    //输入框内容发生变化时修改提示词.
+	    onChange: function onChange() {
+	        var v = this._input.value;
+	        if (!v) v = '';
+	        var filterData = [];
+	        for (var i = 0, len = this.initialComboData.length; i < len; i++) {
+	            if (this.initialComboData[i].name.indexOf(v) >= 0 || this.initialComboData[i].value.indexOf(v) >= 0) {
+	                filterData.push(this.initialComboData[i]);
+	            }
+	        }
+	        this.setComboData(filterData);
+	        this.show();
 	    },
 
 	    show: function show(evt) {
@@ -7597,16 +7634,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var i,
 	            li,
 	            self = this;
+
+	        //统一指定datas格式为[{name:"",value:""}].
 	        if (!options) this.comboDatas = datas;else {
 	            this.comboDatas = [];
 	            for (var i = 0; i < datas.length; i++) {
 	                this.comboDatas.push({ name: datas[i][options.name], value: datas[i][options.value] });
 	            }
 	        }
+
+	        //将初始数据保留一份,以便input输入内容改变时自动提示的数据从全部数据里头筛选.
+	        if (!(this.initialComboData && this.initialComboData.length)) {
+	            this.initialComboData = this.comboDatas;
+	        }
+
+	        //若没有下拉的ul,新生成一个ul结构.
 	        if (!this._ul) {
 	            this._ul = (0, _dom.makeDOM)('<ul class="u-combo-ul"></ul>');
-
-	            // document.body.appendChild(this._ul);
 	        }
 	        this._ul.innerHTML = '';
 	        //TODO 增加filter
@@ -7758,7 +7802,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        }.bind(this));
 	    }
-
 	}); /**
 	     * Module : neoui-combo
 	     * Author : Kvkens(yueming@yonyou.com)
@@ -8867,16 +8910,29 @@ return /******/ (function(modules) { // webpackBootstrap
 		templateStr = templateStr.replace('{width}', this.width ? 'width:' + this.width + ';' : '');
 		templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
 
-		this.contentDom = document.querySelector(this.content); //
-		this.templateDom = (0, _dom.makeDOM)(templateStr);
-		if (this.contentDom) {
-			// msg第一种方式传入选择器，如果可以查找到对应dom节点，则创建整体dialog之后在msg位置添加dom元素
+		var htmlReg = /^(\s*)?<[a-zA-Z]+/ig;
+		var selectReg = /^(\.|#)/;
+		if (htmlReg.test(this.content)) {
+			this.contentDom = (0, _dom.makeDOM)(this.content);
+			this.contentDomParent = this.contentDom.parentNode;
+			this.contentDom.style.display = 'block';
+		} else if (selectReg.test(this.content)) {
+			this.contentDom = document.querySelector(this.content);
 			this.contentDomParent = this.contentDom.parentNode;
 			this.contentDom.style.display = 'block';
 		} else {
-			// 如果查找不到对应dom节点，则按照字符串处理，直接将msg拼到template之后创建dialog
 			this.contentDom = (0, _dom.makeDOM)('<div><div class="u-msg-content"><p>' + this.content + '</p></div></div>');
 		}
+		this.templateDom = (0, _dom.makeDOM)(templateStr);
+
+		/*this.contentDom = document.querySelector(this.content); //
+	 this.templateDom = makeDOM(templateStr);
+	 if(this.contentDom) { // msg第一种方式传入选择器，如果可以查找到对应dom节点，则创建整体dialog之后在msg位置添加dom元素
+	 	this.contentDomParent = this.contentDom.parentNode;
+	 	this.contentDom.style.display = 'block';
+	 } else { // 如果查找不到对应dom节点，则按照字符串处理，直接将msg拼到template之后创建dialog
+	 	this.contentDom = makeDOM('<div><div class="u-msg-content"><p>' + this.content + '</p></div></div>');
+	 }*/
 		this.templateDom.appendChild(this.contentDom);
 		this.overlayDiv = (0, _dom.makeModal)(this.templateDom);
 		if (this.hasCloseMenu) {
@@ -10387,21 +10443,23 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 		var closeBtn = msgDom.querySelector('.u-msg-close');
 		//new Button({el:closeBtn});
-		(0, _event.on)(closeBtn, 'click', function () {
+		var closeFun = function closeFun() {
 			(0, _dom.removeClass)(msgDom, "active");
 			setTimeout(function () {
 				try {
 					document.body.removeChild(msgDom);
 				} catch (e) {}
 			}, 500);
-		});
+		};
+		(0, _event.on)(closeBtn, 'click', closeFun);
 		document.body.appendChild(msgDom);
 
 		if (showSeconds > 0) {
 			setTimeout(function () {
-				closeBtn.click();
+				closeFun();
 			}, showSeconds * 1000);
 		}
+
 		setTimeout(function () {
 			(0, _dom.addClass)(msgDom, "active");
 		}, showSeconds * 1);
@@ -10725,31 +10783,24 @@ return /******/ (function(modules) { // webpackBootstrap
 		this.isCurrent = function () {
 			return page == options.currentPage;
 		};
-
 		this.isFirst = function () {
 			return page == 1;
 		};
-
 		this.isLast = function () {
 			return page == options.totalPages;
 		};
-
 		this.isPrev = function () {
 			return page == options.currentPage - 1;
 		};
-
 		this.isNext = function () {
 			return page == options.currentPage + 1;
 		};
-
 		this.isLeftOuter = function () {
 			return page <= options.outerWindow;
 		};
-
 		this.isRightOuter = function () {
 			return options.totalPages - page < options.outerWindow;
 		};
-
 		this.isInsideWindow = function () {
 			if (options.currentPage < options.innerWindow + 1) {
 				return page <= options.innerWindow * 2 + 1;
@@ -10759,7 +10810,6 @@ return /******/ (function(modules) { // webpackBootstrap
 				return Math.abs(options.currentPage - page) <= options.innerWindow;
 			}
 		};
-
 		this.number = function () {
 			return page;
 		};
@@ -10772,28 +10822,22 @@ return /******/ (function(modules) { // webpackBootstrap
 		firstPage: function firstPage(pagin, options, currentPageProxy) {
 			return '<li role="first"' + (currentPageProxy.isFirst() ? 'class="disabled"' : '') + '><a >' + options.first + '</a></li>';
 		},
-
 		prevPage: function prevPage(pagin, options, currentPageProxy) {
 			return '<li role="prev"' + (currentPageProxy.isFirst() ? 'class="disabled"' : '') + '><a  rel="prev">' + options.prev + '</a></li>';
 		},
-
 		nextPage: function nextPage(pagin, options, currentPageProxy) {
 			return '<li role="next"' + (currentPageProxy.isLast() ? 'class="disabled"' : '') + '><a  rel="next">' + options.next + '</a></li>';
 		},
-
 		lastPage: function lastPage(pagin, options, currentPageProxy) {
 
 			return '<li role="last"' + (currentPageProxy.isLast() ? 'class="disabled"' : '') + '><a >' + options.last + '</a></li>';
 		},
-
 		gap: function gap(pagin, options) {
 			return '<li role="gap" class="disabled"><a href="#">' + options.gap + '</a></li>';
 		},
-
 		page: function page(pagin, options, pageProxy) {
 			return '<li role="page"' + (pageProxy.isCurrent() ? 'class="active"' : '') + '><a ' + (pageProxy.isNext() ? ' rel="next"' : '') + (pageProxy.isPrev() ? 'rel="prev"' : '') + '>' + pageProxy.number() + '</a></li>';
 		}
-
 	};
 
 	//pagination.prototype.compType = 'pagination';
@@ -10822,6 +10866,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		totalText: '共',
 		truncate: false,
 		showState: true,
+		showTotal: true, //初始默认显示总条数 “共xxx条”
+		showColumn: true, //初始默认显示每页条数 “显示xx条”
+		showJump: true, //初始默认显示跳转信息 “到xx页 确定”
 		page: function page(_page) {
 			return true;
 		}
@@ -10912,63 +10959,36 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 		htmlArr.unshift(View.prevPage(this, options, currentPageProxy));
 		htmlArr.push(View.nextPage(this, options, currentPageProxy));
-		/*
-	 if (!currentPageProxy.isFirst() || !options.truncate) {
-	 		if (options.first) {
-	 		htmlArr.push(View.firstPage(this, options, currentPageProxy))
-	 	}
-	 	if (options.prev) {
-	 		htmlArr.push(View.prevPage(this, options, currentPageProxy));
-	 	}
-	 }
-	 
-	 var wasTruncated = false;
-	 	for (var i = 1, length = options.totalPages; i <= length; i++) {
-	 	var pageProxy = new PageProxy(options, i);
-	 	if (pageProxy.isLeftOuter() || pageProxy.isRightOuter() || pageProxy.isInsideWindow()) {
-	 		htmlArr.push(View.page(this, options, pageProxy));
-	 		wasTruncated = false;
-	 	} else {
-	 		if (!wasTruncated && options.outerWindow > 0) {
-	 			htmlArr.push(View.gap(this, options));
-	 			wasTruncated = true;
-	 		}
-	 	}
-	 }
-	 	if (!currentPageProxy.isLast() || !options.truncate) {
-	 	if (options.next) {
-	 		htmlArr.push(View.nextPage(this, options, currentPageProxy));
-	 	}
-	 		if (options.last) {
-	 		htmlArr.push(View.lastPage(this, options, currentPageProxy));
-	 	}
-	 }
-	 */
+
 		if (options.totalCount === undefined || options.totalCount <= 0) {
 			options.totalCount = 0;
 		}
 		if (options.showState) {
-			var htmlStr = '<div class="pagination-state">' + options.totalText + '&nbsp;' + options.totalCount + '&nbsp;条</div>';
-			htmlArr.push(htmlStr);
-
-			if (options.jumppage || options.pageSize) {
-
-				var pageOption = '';
-				options.pageList.forEach(function (item) {
-					if (options.pageSize - 0 == item) {
-						pageOption += '<option selected>' + item + '</option>';
-					} else {
-						pageOption += '<option>' + item + '</option>';
-					}
-				});
-				var jumppagehtml = '到<input class="page_j" value=' + options.currentPage + '>页<input class="pagination-jump" type="button" value="确定"/>';
-				var sizehtml = '显示<select  class="page_z">' + pageOption + '</select>条&nbsp;&nbsp;';
-				var tmpjump = "<div class='pagination-state'>" + (options.pageSize ? sizehtml : "") + (options.jumppage ? jumppagehtml : "") + "</div>";
-				htmlArr.push(tmpjump);
-				//<i class='jump_page fa fa-arrow-circle-right' style='margin-left: 8px; cursor: pointer;'></i>
+			// 处理pageOption字符串
+			var pageOption = '';
+			options.pageList.forEach(function (item) {
+				if (options.pageSize - 0 == item) {
+					pageOption += '<option selected>' + item + '</option>';
+				} else {
+					pageOption += '<option>' + item + '</option>';
+				}
+			});
+			var htmlTmp = '';
+			//分别得到分页条后“共xxx条”、“显示xx条”、“到xx页 确定”三个html片段
+			if (options.showTotal) {
+				htmlTmp += '<div class="pagination-state">' + options.totalText + '&nbsp;' + options.totalCount + '&nbsp;条</div>';
 			}
+			if (options.showColumn) {
+				htmlTmp += '<div class="pagination-state">显示<select  class="page_z">' + pageOption + '</select>条</div>';
+			}
+			if (options.showJump) {
+				htmlTmp += '<div class="pagination-state">到<input class="page_j" value=' + options.currentPage + '>页<input class="pagination-jump" type="button" value="确定"/></div>';
+			}
+
+			htmlArr.push(htmlTmp);
 		}
 
+		//在将htmlArr插入到页面之前，对htmlArr进行处理
 		this.$ul.innerHTML = "";
 		this.$ul.insertAdjacentHTML('beforeEnd', htmlArr.join(''));
 
@@ -13231,11 +13251,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	     on(this._headerMonth, 'click', function(e){
+	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });    
-	     on(this._headerTime, 'click', function(e){
+	      on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -13320,11 +13340,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	     on(this._headerMonth, 'click', function(e){
+	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });    
-	     on(this._headerTime, 'click', function(e){
+	      on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -15447,6 +15467,8 @@ return /******/ (function(modules) { // webpackBootstrap
 			this.focusEvent();
 			// 添加右侧图标click事件
 			this.clickEvent();
+			// 添加keydown事件
+			this.keydownEvent();
 		},
 
 		createPanel: function createPanel() {
@@ -15512,13 +15534,14 @@ return /******/ (function(modules) { // webpackBootstrap
 		setValue: function setValue(value) {
 			value = value ? value : '';
 			this.value = value;
-			if (value) {
+			if (parseInt(this.value) > 0 && parseInt(this.value) < 13) {
 				this.month = value;
+				this.input.value = this.month;
+				this.trigger('valueChange', { value: value });
 			} else {
 				this.month = this.defaultMonth;
+				this.input.value = '';
 			}
-			this.input.value = value;
-			this.trigger('valueChange', { value: value });
 		},
 
 		focusEvent: function focusEvent() {
@@ -15531,6 +15554,19 @@ return /******/ (function(modules) { // webpackBootstrap
 					e.stopPropagation();
 				} else {
 					e.cancelBubble = true;
+				}
+			});
+		},
+		keydownEvent: function keydownEvent() {
+			var self = this;
+			(0, _event.on)(self.input, "keydown", function (e) {
+				var code = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+				if (!(code >= 48 && code <= 57 || code == 37 || code == 39 || code == 8 || code == 46)) {
+					//阻止默认浏览器动作(W3C)
+					if (e && e.preventDefault) e.preventDefault();
+					//IE中阻止函数器默认动作的方式
+					else window.event.returnValue = false;
+					return false;
 				}
 			});
 		},
@@ -15674,13 +15710,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			(0, _event.on)(this.input, 'blur', function (e) {
 				self._inputFocus = false;
-				this.setValue(this.input.value);
-			}.bind(this));
+				self.setValue(self.input.value);
+			});
 
 			// 添加focus事件
 			this.focusEvent();
 			// 添加右侧图标click事件
 			this.clickEvent();
+			// 添加keydown事件
+			this.keydownEvent();
 		},
 
 		createPanel: function createPanel() {
@@ -15767,7 +15805,19 @@ return /******/ (function(modules) { // webpackBootstrap
 				(0, _event.stopEvent)(e);
 			});
 		},
-
+		keydownEvent: function keydownEvent() {
+			var self = this;
+			(0, _event.on)(self.input, "keydown", function (e) {
+				var code = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+				if (!(code >= 48 && code <= 57 || code == 37 || code == 39 || code == 8 || code == 46)) {
+					//阻止默认浏览器动作(W3C)
+					if (e && e.preventDefault) e.preventDefault();
+					//IE中阻止函数器默认动作的方式
+					else window.event.returnValue = false;
+					return false;
+				}
+			});
+		},
 		//下拉图标的点击事件
 		clickEvent: function clickEvent() {
 			var self = this;
@@ -15903,8 +15953,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        (0, _event.on)(this.input, 'blur', function (e) {
 	            self._inputFocus = false;
-	            this.setValue(this.input.value);
-	        }.bind(this));
+	            self.setValue(self.input.value);
+	        });
 
 	        // 添加focus事件
 	        this.focusEvent();
@@ -16187,6 +16237,4 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.YearMonth = YearMonth;
 
 /***/ }
-/******/ ])
-});
-;
+/******/ ]);

@@ -19,31 +19,24 @@ var PageProxy = function(options, page) {
 	this.isCurrent = function() {
 		return page == options.currentPage;
 	}
-
 	this.isFirst = function() {
 		return page == 1;
 	}
-
 	this.isLast = function() {
 		return page == options.totalPages;
 	}
-
 	this.isPrev = function() {
 		return page == (options.currentPage - 1);
 	}
-
 	this.isNext = function() {
 		return page == (options.currentPage + 1);
 	}
-
 	this.isLeftOuter = function() {
 		return page <= options.outerWindow;
 	}
-
 	this.isRightOuter = function() {
 		return(options.totalPages - page) < options.outerWindow;
 	}
-
 	this.isInsideWindow = function() {
 		if(options.currentPage < options.innerWindow + 1) {
 			return page <= ((options.innerWindow * 2) + 1);
@@ -53,7 +46,6 @@ var PageProxy = function(options, page) {
 			return Math.abs(options.currentPage - page) <= options.innerWindow;
 		}
 	}
-
 	this.number = function() {
 		return page;
 	}
@@ -67,28 +59,22 @@ var View = {
 	firstPage: function(pagin, options, currentPageProxy) {
 		return '<li role="first"' + (currentPageProxy.isFirst() ? 'class="disabled"' : '') + '><a >' + options.first + '</a></li>';
 	},
-
 	prevPage: function(pagin, options, currentPageProxy) {
 		return '<li role="prev"' + (currentPageProxy.isFirst() ? 'class="disabled"' : '') + '><a  rel="prev">' + options.prev + '</a></li>';
 	},
-
 	nextPage: function(pagin, options, currentPageProxy) {
 		return '<li role="next"' + (currentPageProxy.isLast() ? 'class="disabled"' : '') + '><a  rel="next">' + options.next + '</a></li>';
 	},
-
 	lastPage: function(pagin, options, currentPageProxy) {
 
 		return '<li role="last"' + (currentPageProxy.isLast() ? 'class="disabled"' : '') + '><a >' + options.last + '</a></li>';
 	},
-
 	gap: function(pagin, options) {
 		return '<li role="gap" class="disabled"><a href="#">' + options.gap + '</a></li>';
 	},
-
 	page: function(pagin, options, pageProxy) {
 		return '<li role="page"' + (pageProxy.isCurrent() ? 'class="active"' : '') + '><a ' + (pageProxy.isNext() ? ' rel="next"' : '') + (pageProxy.isPrev() ? 'rel="prev"' : '') + '>' + pageProxy.number() + '</a></li>';
 	}
-
 }
 
 //pagination.prototype.compType = 'pagination';
@@ -117,6 +103,9 @@ pagination.prototype.DEFAULTS = {
 	totalText: '共',
 	truncate: false,
 	showState: true,
+	showTotal: true,//初始默认显示总条数 “共xxx条”
+	showColumn: true,//初始默认显示每页条数 “显示xx条”
+	showJump: true,//初始默认显示跳转信息 “到xx页 确定”
 	page: function(page) {
 		return true;
 	}
@@ -128,7 +117,7 @@ pagination.prototype.update = function(options) {
 	this.render();
 }
 pagination.prototype.render = function() {
-	var a = (new Date()).valueOf()
+	var a = (new Date()).valueOf();
 
 	var options = this.options;
 
@@ -139,7 +128,7 @@ pagination.prototype.render = function() {
 		this.$element.style.display = "block";
 	}
 
-	var htmlArr = []
+	var htmlArr = [];
 	var currentPageProxy = new PageProxy(options, options.currentPage);
 
 	//update pagination by pengyic@yonyou.com
@@ -208,70 +197,38 @@ pagination.prototype.render = function() {
 	}
 	htmlArr.unshift(View.prevPage(this, options, currentPageProxy));
 	htmlArr.push(View.nextPage(this, options, currentPageProxy));
-	/*
-	if (!currentPageProxy.isFirst() || !options.truncate) {
 
-		if (options.first) {
-			htmlArr.push(View.firstPage(this, options, currentPageProxy))
-		}
-		if (options.prev) {
-			htmlArr.push(View.prevPage(this, options, currentPageProxy));
-		}
-	}
-
-
-	var wasTruncated = false;
-
-	for (var i = 1, length = options.totalPages; i <= length; i++) {
-		var pageProxy = new PageProxy(options, i);
-		if (pageProxy.isLeftOuter() || pageProxy.isRightOuter() || pageProxy.isInsideWindow()) {
-			htmlArr.push(View.page(this, options, pageProxy));
-			wasTruncated = false;
-		} else {
-			if (!wasTruncated && options.outerWindow > 0) {
-				htmlArr.push(View.gap(this, options));
-				wasTruncated = true;
-			}
-		}
-	}
-
-	if (!currentPageProxy.isLast() || !options.truncate) {
-		if (options.next) {
-			htmlArr.push(View.nextPage(this, options, currentPageProxy));
-		}
-
-		if (options.last) {
-			htmlArr.push(View.lastPage(this, options, currentPageProxy));
-		}
-	}
-	*/
 	if(options.totalCount === undefined || options.totalCount <= 0) {
 		options.totalCount = 0;
 	}
 	if(options.showState) {
-		var htmlStr = '<div class="pagination-state">' + options.totalText + '&nbsp;' + options.totalCount + '&nbsp;条</div>';
-		htmlArr.push(htmlStr);
-
-		if(options.jumppage || options.pageSize) {
-
-			var pageOption = '';
-			options.pageList.forEach(function(item) {
-				if(options.pageSize - 0 == item) {
-					pageOption += '<option selected>' + item + '</option>'
-				} else {
-					pageOption += '<option>' + item + '</option>'
-				}
-			});
-			var jumppagehtml = '到<input class="page_j" value=' + options.currentPage + '>页<input class="pagination-jump" type="button" value="确定"/>';
-			var sizehtml = '显示<select  class="page_z">' + pageOption + '</select>条&nbsp;&nbsp;'
-			var tmpjump = "<div class='pagination-state'>" + (options.pageSize ? sizehtml : "") + (options.jumppage ? jumppagehtml : "") + "</div>";
-			htmlArr.push(tmpjump)
-				//<i class='jump_page fa fa-arrow-circle-right' style='margin-left: 8px; cursor: pointer;'></i>
+		// 处理pageOption字符串
+		var pageOption = '';
+		options.pageList.forEach(function(item) {
+			if(options.pageSize - 0 == item) {
+				pageOption += '<option selected>' + item + '</option>'
+			} else {
+				pageOption += '<option>' + item + '</option>'
+			}
+		});
+		var htmlTmp = '';
+		//分别得到分页条后“共xxx条”、“显示xx条”、“到xx页 确定”三个html片段
+		if(options.showTotal){
+			htmlTmp += '<div class="pagination-state">' + options.totalText + '&nbsp;' + options.totalCount + '&nbsp;条</div>';
 		}
+		if(options.showColumn){
+			htmlTmp += '<div class="pagination-state">显示<select  class="page_z">' + pageOption + '</select>条</div>';
+		}
+		if(options.showJump){
+			htmlTmp += '<div class="pagination-state">到<input class="page_j" value=' + options.currentPage + '>页<input class="pagination-jump" type="button" value="确定"/></div>';
+		}
+
+		htmlArr.push(htmlTmp);
 	}
 
+	//在将htmlArr插入到页面之前，对htmlArr进行处理
 	this.$ul.innerHTML = "";
-	this.$ul.insertAdjacentHTML('beforeEnd', htmlArr.join(''))
+	this.$ul.insertAdjacentHTML('beforeEnd', htmlArr.join(''));
 
 	var me = this;
 	on(this.$ul.querySelector(".pagination-jump"), "click", function() {

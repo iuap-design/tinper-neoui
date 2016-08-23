@@ -33,6 +33,8 @@ const Month = BaseComponent.extend({
 		this.focusEvent();
 		// 添加右侧图标click事件
 		this.clickEvent();
+		// 添加keydown事件
+		this.keydownEvent();
 	},
 
 	createPanel: function(){
@@ -117,15 +119,16 @@ const Month = BaseComponent.extend({
 
 
 	setValue: function(value) {
-		value = value? value: '';
+		value = value ? value : '';
 		this.value = value;
-		if(value){
+		if (parseInt(this.value) > 0 && parseInt(this.value) < 13) {
 			this.month = value;
-		}else{
+			this.input.value = this.month;
+			this.trigger('valueChange', { value: value });
+		} else {
 			this.month = this.defaultMonth;
+			this.input.value = '';
 		}
-		this.input.value = value;
-		this.trigger('valueChange', {value:value})
 	},
 
 	focusEvent: function() {
@@ -140,6 +143,21 @@ const Month = BaseComponent.extend({
 				e.cancelBubble = true;
 			}
 
+		});
+	},
+	keydownEvent:function(){
+		var self = this;
+		on(self.input, "keydown", function (e) {
+			var code = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+			if (!(code >= 48 && code <= 57||code==37||code==39||code==8 ||code==46)) {
+				//阻止默认浏览器动作(W3C)
+				if ( e && e.preventDefault )
+					e.preventDefault();
+				//IE中阻止函数器默认动作的方式
+				else
+					window.event.returnValue = false;
+				return false;
+			}
 		});
 	},
 
