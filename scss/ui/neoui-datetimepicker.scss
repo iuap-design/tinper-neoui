@@ -9,24 +9,25 @@ $date-bg-color: rgb(27,174,222) !default;
  * time.scss
  */
 .u-time-content{
-    width: 100%;
-    height: 56px;
-    line-height: 56px;
-    text-align: center;
+  width: 100%;
+  height: 56px;
+  line-height: 56px;
+  text-align: center;
 }
-
 .u-time-cell{
-    display: inline-block;
-    width: 33%;
-    height: 100%;
+  display: inline-block;
+  width: 33%;
+  height: 100%;
 }
-
 .u-time-input{
-    border: none;
-    height: 25px \9; 
-    line-height: 25px \9; 
-    width: 20px;
-    text-align: center;
+   border: none;
+   height: 25px \9;
+   line-height: 25px \9;
+   width: 20px;
+   text-align: center;
+ }
+.u-time .u-date-panel .u-time-nav .u-button{
+      position: relative;
 }
 
 /**

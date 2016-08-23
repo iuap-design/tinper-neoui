@@ -45,7 +45,7 @@ var showMessage = function(options) {
 	var closeBtn = msgDom.querySelector('.u-msg-close');
 	//new Button({el:closeBtn});
 	var closeFun = function(){
-    	u.removeClass(msgDom,"active")
+    	removeClass(msgDom,"active")
         setTimeout(function(){
             try{
                 document.body.removeChild(msgDom);
@@ -54,7 +54,7 @@ var showMessage = function(options) {
             }
         },500) 
     }
-    u.on(closeBtn, 'click', closeFun);
+    on(closeBtn, 'click', closeFun);
     document.body.appendChild(msgDom);
    
     if (showSeconds > 0 ){

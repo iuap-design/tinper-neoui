@@ -4155,23 +4155,13 @@ $.fn.bootstrapWizard.defaults = {
 })(jQuery);
 
 /** 
- * neoui v4.1.1
+ * neoui v4.1.2
  * UI Framework Used For Enterprise.
  * author : yonyou FED
  * homepage : https://github.com/iuap-design/neoui#readme
  * bugs : https://github.com/iuap-design/neoui/issues
  **/ 
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else {
-		var a = factory();
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
-})(this, function() {
-return /******/ (function(modules) { // webpackBootstrap
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -4425,7 +4415,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	//Neoui import
 	(0, _extend.extend)(ex, window.u || {});
-
+	window.u = ex;
 	exports.u = ex;
 
 /***/ },
@@ -10454,14 +10444,14 @@ return /******/ (function(modules) { // webpackBootstrap
 		var closeBtn = msgDom.querySelector('.u-msg-close');
 		//new Button({el:closeBtn});
 		var closeFun = function closeFun() {
-			u.removeClass(msgDom, "active");
+			(0, _dom.removeClass)(msgDom, "active");
 			setTimeout(function () {
 				try {
 					document.body.removeChild(msgDom);
 				} catch (e) {}
 			}, 500);
 		};
-		u.on(closeBtn, 'click', closeFun);
+		(0, _event.on)(closeBtn, 'click', closeFun);
 		document.body.appendChild(msgDom);
 
 		if (showSeconds > 0) {
@@ -16247,6 +16237,4 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.YearMonth = YearMonth;
 
 /***/ }
-/******/ ])
-});
-;
+/******/ ]);

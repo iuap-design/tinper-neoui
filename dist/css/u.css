@@ -11183,6 +11183,9 @@ small {
   width: 20px;
   text-align: center; }
 
+.u-time .u-date-panel .u-time-nav .u-button {
+  position: relative; }
+
 
 .u-clock-ul {
   background-color: #fff;
@@ -14654,3 +14657,65 @@ small {
   to {
     opacity: 1;
     -webkit-transform: translateY(100%); } }
+
+.u-counter-content {
+  position: relative; }
+
+.u-counter {
+  text-align: center; }
+  .u-counter > .u-counter-number,
+  .u-counter .u-counter-number-group {
+    color: rgb(66,66,66);
+    font-size: 20px; }
+
+.u-counter-label {
+  display: block; }
+
+.u-counter-icon {
+  font-size: 20px; }
+
+.u-counter-lg > .u-counter-number,
+.u-counter-lg .u-counter-number-group {
+  font-size: 40px; }
+
+.u-counter-lg .u-counter-icon .uf {
+  font-size: 40px; }
+
+.u-counter-md > .u-counter-number,
+.u-counter-md .u-counter-number-group {
+  font-size: 30px; }
+
+.u-counter-md .u-counter-icon .uf {
+  font-size: 30px; }
+
+.u-counter-sm > .u-counter-number,
+.u-counter-sm .u-counter-number-group {
+  font-size: 14px; }
+
+.u-counter-sm .u-counter-icon .uf {
+  font-size: 14px; }
+
+.u-counter-sm .u-counter-number-related + .u-counter-number,
+.u-counter-sm .u-counter-number + .u-counter-number-related {
+  margin-left: 0; }
+
+.u-counter-inverse {
+  color: rgb(255,255,255); }
+  .u-counter-inverse > .u-counter-number,
+  .u-counter-inverse .u-counter-number-group {
+    color: rgb(255,255,255); }
+  .u-counter-inverse .u-counter-icon {
+    color: rgb(255,255,255); }
+
+.font-size-60 .uf {
+  font-size: 60px; }
+
+.u-counter-watermark {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  line-height: 1;
+  opacity: .1; }
+
+.u-counter-watermark.darker {
+  color: #000; }
