@@ -107,7 +107,7 @@ var Menu = BaseComponent.extend({
 				// manually specify position.
 			} else if(hasClass(this.element, 'u-menu-bottom-right')) {
 				// Position below the "for" element, aligned to its right.
-				this._container.style.left = (this.element.style.left+this.for_element.offsetWidth) + 'px';
+				this._container.style.left = this.for_element.offsetLeft+this.for_element.offsetWidth-this.element.offsetWidth + 'px';
 				// this._container.style.right = (forRect.right - rect.right) + 'px';
 				this._container.style.top = this.for_element.offsetTop + this.for_element.offsetHeight + 'px';
 			} else if(hasClass(this.element, 'u-menu-top-left')) {
