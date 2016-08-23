@@ -7205,6 +7205,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _compMgr = __webpack_require__(4);
 
+	var _dom = __webpack_require__(5);
+
+	var _event = __webpack_require__(6);
+
 	/**
 	 * Module : Kero Check Adapter
 	 * Author : Kvkens(yueming@yonyou.com)
@@ -7279,7 +7283,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var nameDivs = this.element.querySelectorAll('[data-role=name]');
 	            self.lastNameDiv = nameDivs[nameDivs.length - 1];
 	            self.lastNameDiv.innerHTML = '其他';
-	            self.otherInput = makeDOM('<input disabled type="text">');
+	            self.otherInput = (0, _dom.makeDOM)('<input disabled type="text">');
 	            self.lastNameDiv.parentNode.appendChild(self.otherInput);
 	            self.lastCheck.value = '';
 
@@ -7324,12 +7328,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                //self.slice = false;
 	            });
 
-	            on(self.otherInput, 'blur', function (e) {
+	            (0, _event.on)(self.otherInput, 'blur', function (e) {
 	                self.lastCheck.oldValue = self.lastCheck.value;
 	                self.lastCheck.value = this.value;
 	                self.otherComp.trigger('change');
 	            });
-	            on(self.otherInput, 'click', function (e) {
+	            (0, _event.on)(self.otherInput, 'click', function (e) {
 	                stopEvent(e);
 	            });
 	        }
@@ -7386,7 +7390,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (this.isGroup) {
 	            this.trueValue = val;
 	            if (this.options.hasOther) {
-	                otherVal = '';
+	                var otherVal = '';
 	                if (val) otherVal = val + ',';
 	            }
 	            this.element.querySelectorAll('.u-checkbox').forEach(function (ele) {
@@ -9328,7 +9332,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.onlySelect = this.options.onlySelect || false;
 	        this.showFix = this.options.showFix || false;
 	        this.validType = 'combobox';
-	        this.comp = new _neouiCombo.Combo({ el: this.element, mutilSelect: this.mutil, onlySelect: this.onlySelect, showFix: this.showFix });
+	        this.isAutoTip = this.options.isAutoTip || false;
+	        this.comp = new _neouiCombo.Combo({ el: this.element, mutilSelect: this.mutil, onlySelect: this.onlySelect, showFix: this.showFix, isAutoTip: this.isAutoTip });
 	        this.element['u.Combo'] = this.comp;
 	        if (this.datasource) {
 	            this.comp.setComboData(this.datasource);
@@ -9496,9 +9501,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 
 	        this.isAutoTip = this.options['isAutoTip'] || false; //是否支持自动提示
-	        if ((0, _dom.hasClass)(this.element, 'is-auto-tip')) {
+	        /*if (hasClass(this.element, 'is-auto-tip')){
 	            this.isAutoTip = true;
-	        }
+	        }*/
 	        (0, _event.on)(this._input, 'keydown', function (e) {
 	            var keyCode = e.keyCode;
 
@@ -14941,13 +14946,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	    },
 	    modelValueChange: function modelValueChange(val) {
+	        var self = this;
 	        if (this.slice) return;
 	        if (this.isGroup) {
 	            this.element.querySelectorAll('[type=checkbox]').forEach(function (ele) {
 	                if (ele.checked != (val + ',').indexOf(ele.value) > -1) {
-	                    this.slice = true;
+	                    self.slice = true;
 	                    ele.checked = !ele.checked;
-	                    this.slice = false;
+	                    self.slice = false;
 	                }
 	            });
 	        } else {
@@ -15116,11 +15122,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        //var Pagination = function(element, options, viewModel) {
 
+	        this.options.showTotal = this.options.showTotal || true; //初始默认显示总条数 “共xxx条”
+	        this.options.showColumn = this.options.showColumn || true; //初始默认显示每页条数 “显示xx条”
+	        this.options.showJump = this.options.showJump || true; //初始默认显示跳转信息 “到xx页 确定”
+
+
 	        if (!this.dataModel.pageSize() && this.options.pageSize) this.dataModel.pageSize(this.options.pageSize);
 	        this.options.pageSize = this.dataModel.pageSize() || this.options.pageSize;
 	        //this.$element.pagination(options);
 	        //this.comp = this.$element.data('u.pagination');
-	        var options = (0, _extend.extend)({}, { el: this.element, jumppage: true }, this.options);
+	        var options = (0, _extend.extend)({}, { el: this.element }, this.options);
 	        this.comp = new _neouiPagination.pagination(options);
 	        this.element['u.pagination'] = this.comp;
 	        this.comp.dataModel = this.dataModel;
@@ -15239,31 +15250,24 @@ return /******/ (function(modules) { // webpackBootstrap
 		this.isCurrent = function () {
 			return page == options.currentPage;
 		};
-
 		this.isFirst = function () {
 			return page == 1;
 		};
-
 		this.isLast = function () {
 			return page == options.totalPages;
 		};
-
 		this.isPrev = function () {
 			return page == options.currentPage - 1;
 		};
-
 		this.isNext = function () {
 			return page == options.currentPage + 1;
 		};
-
 		this.isLeftOuter = function () {
 			return page <= options.outerWindow;
 		};
-
 		this.isRightOuter = function () {
 			return options.totalPages - page < options.outerWindow;
 		};
-
 		this.isInsideWindow = function () {
 			if (options.currentPage < options.innerWindow + 1) {
 				return page <= options.innerWindow * 2 + 1;
@@ -15273,7 +15277,6 @@ return /******/ (function(modules) { // webpackBootstrap
 				return Math.abs(options.currentPage - page) <= options.innerWindow;
 			}
 		};
-
 		this.number = function () {
 			return page;
 		};
@@ -15286,28 +15289,22 @@ return /******/ (function(modules) { // webpackBootstrap
 		firstPage: function firstPage(pagin, options, currentPageProxy) {
 			return '<li role="first"' + (currentPageProxy.isFirst() ? 'class="disabled"' : '') + '><a >' + options.first + '</a></li>';
 		},
-
 		prevPage: function prevPage(pagin, options, currentPageProxy) {
 			return '<li role="prev"' + (currentPageProxy.isFirst() ? 'class="disabled"' : '') + '><a  rel="prev">' + options.prev + '</a></li>';
 		},
-
 		nextPage: function nextPage(pagin, options, currentPageProxy) {
 			return '<li role="next"' + (currentPageProxy.isLast() ? 'class="disabled"' : '') + '><a  rel="next">' + options.next + '</a></li>';
 		},
-
 		lastPage: function lastPage(pagin, options, currentPageProxy) {
 
 			return '<li role="last"' + (currentPageProxy.isLast() ? 'class="disabled"' : '') + '><a >' + options.last + '</a></li>';
 		},
-
 		gap: function gap(pagin, options) {
 			return '<li role="gap" class="disabled"><a href="#">' + options.gap + '</a></li>';
 		},
-
 		page: function page(pagin, options, pageProxy) {
 			return '<li role="page"' + (pageProxy.isCurrent() ? 'class="active"' : '') + '><a ' + (pageProxy.isNext() ? ' rel="next"' : '') + (pageProxy.isPrev() ? 'rel="prev"' : '') + '>' + pageProxy.number() + '</a></li>';
 		}
-
 	};
 
 	//pagination.prototype.compType = 'pagination';
@@ -15336,6 +15333,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		totalText: '共',
 		truncate: false,
 		showState: true,
+		showTotal: true, //初始默认显示总条数 “共xxx条”
+		showColumn: true, //初始默认显示每页条数 “显示xx条”
+		showJump: true, //初始默认显示跳转信息 “到xx页 确定”
 		page: function page(_page) {
 			return true;
 		}
@@ -15426,63 +15426,36 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 		htmlArr.unshift(View.prevPage(this, options, currentPageProxy));
 		htmlArr.push(View.nextPage(this, options, currentPageProxy));
-		/*
-	 if (!currentPageProxy.isFirst() || !options.truncate) {
-	 		if (options.first) {
-	 		htmlArr.push(View.firstPage(this, options, currentPageProxy))
-	 	}
-	 	if (options.prev) {
-	 		htmlArr.push(View.prevPage(this, options, currentPageProxy));
-	 	}
-	 }
-	 
-	 var wasTruncated = false;
-	 	for (var i = 1, length = options.totalPages; i <= length; i++) {
-	 	var pageProxy = new PageProxy(options, i);
-	 	if (pageProxy.isLeftOuter() || pageProxy.isRightOuter() || pageProxy.isInsideWindow()) {
-	 		htmlArr.push(View.page(this, options, pageProxy));
-	 		wasTruncated = false;
-	 	} else {
-	 		if (!wasTruncated && options.outerWindow > 0) {
-	 			htmlArr.push(View.gap(this, options));
-	 			wasTruncated = true;
-	 		}
-	 	}
-	 }
-	 	if (!currentPageProxy.isLast() || !options.truncate) {
-	 	if (options.next) {
-	 		htmlArr.push(View.nextPage(this, options, currentPageProxy));
-	 	}
-	 		if (options.last) {
-	 		htmlArr.push(View.lastPage(this, options, currentPageProxy));
-	 	}
-	 }
-	 */
+
 		if (options.totalCount === undefined || options.totalCount <= 0) {
 			options.totalCount = 0;
 		}
 		if (options.showState) {
-			var htmlStr = '<div class="pagination-state">' + options.totalText + '&nbsp;' + options.totalCount + '&nbsp;条</div>';
-			htmlArr.push(htmlStr);
-
-			if (options.jumppage || options.pageSize) {
-
-				var pageOption = '';
-				options.pageList.forEach(function (item) {
-					if (options.pageSize - 0 == item) {
-						pageOption += '<option selected>' + item + '</option>';
-					} else {
-						pageOption += '<option>' + item + '</option>';
-					}
-				});
-				var jumppagehtml = '到<input class="page_j" value=' + options.currentPage + '>页<input class="pagination-jump" type="button" value="确定"/>';
-				var sizehtml = '显示<select  class="page_z">' + pageOption + '</select>条&nbsp;&nbsp;';
-				var tmpjump = "<div class='pagination-state'>" + (options.pageSize ? sizehtml : "") + (options.jumppage ? jumppagehtml : "") + "</div>";
-				htmlArr.push(tmpjump);
-				//<i class='jump_page fa fa-arrow-circle-right' style='margin-left: 8px; cursor: pointer;'></i>
+			// 处理pageOption字符串
+			var pageOption = '';
+			options.pageList.forEach(function (item) {
+				if (options.pageSize - 0 == item) {
+					pageOption += '<option selected>' + item + '</option>';
+				} else {
+					pageOption += '<option>' + item + '</option>';
+				}
+			});
+			var htmlTmp = '';
+			//分别得到分页条后“共xxx条”、“显示xx条”、“到xx页 确定”三个html片段
+			if (options.showTotal) {
+				htmlTmp += '<div class="pagination-state">' + options.totalText + '&nbsp;' + options.totalCount + '&nbsp;条</div>';
 			}
+			if (options.showColumn) {
+				htmlTmp += '<div class="pagination-state">显示<select  class="page_z">' + pageOption + '</select>条</div>';
+			}
+			if (options.showJump) {
+				htmlTmp += '<div class="pagination-state">到<input class="page_j" value=' + options.currentPage + '>页<input class="pagination-jump" type="button" value="确定"/></div>';
+			}
+
+			htmlArr.push(htmlTmp);
 		}
 
+		//在将htmlArr插入到页面之前，对htmlArr进行处理
 		this.$ul.innerHTML = "";
 		this.$ul.insertAdjacentHTML('beforeEnd', htmlArr.join(''));
 
