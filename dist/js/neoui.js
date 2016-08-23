@@ -4415,7 +4415,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	//Neoui import
 	(0, _extend.extend)(ex, window.u || {});
-
+	window.u = ex;
 	exports.u = ex;
 
 /***/ },

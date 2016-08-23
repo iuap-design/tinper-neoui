@@ -170,5 +170,5 @@ var ex = {
 //extend(ex,env);
 
 extend(ex,window.u || {});
-
+window.u = ex;
 export {ex as u};
