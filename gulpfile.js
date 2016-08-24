@@ -182,17 +182,17 @@ gulp.task('buildjs', function(){
 });
 gulp.task('neo',['buildcss', 'buildjs'],function(){
     version.init([
-        'dist/js/neoui.js',
-        'dist/js/neoui.min.js'
+        './dist/js/neoui.js',
+        './dist/js/neoui.min.js'
     ]);    
 });
 gulp.task('neoui', ['neo'], function(){
     version.init([
-        'dist/css/u.css',
-        'dist/css/u.min.css'
+        './dist/css/u.css',
+        './dist/css/u.min.css'
     ]);    
 });
 
-gulp.task('dist', ['neoui','image','fontcss','fontfile']);
+gulp.task('dist', ['buildcss','buildjs', 'image','fontcss','fontfile']);
 
 
