@@ -7,8 +7,7 @@ npm-debug.log*
 
 # 删除生成目录内容
 dist/plugin
-# dist/js
-# dist/css
+dist/
 
 /docs/
 /examples/
