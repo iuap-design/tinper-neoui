@@ -1,6 +1,6 @@
 {
   "name": "neoui",
-  "version": "4.1.2",
+  "version": "4.1.5",
   "description": "UI Framework Used For Enterprise.",
   "main": "index.js",
   "scripts": {
@@ -64,6 +64,6 @@
     "example": "examples"
   },
   "dependencies": {
-    "neoui-sparrow": "^1.4.2"
+    "neoui-sparrow": "^1.4.5"
   }
 }

@@ -1,5 +1,9 @@
-/*
-u.compMgr.updateComp();
-document.getElementById('combo3')['u.Combo'].setComboData([{value:'01',name:'java'},{value:'02',name:'javascript'},{value:'03',name:'C'},{value:'04',name:'C++'}]);
-*/
-u.compMgr.updateComp();
+var paginationLg = document.getElementById("paginationLg");
+var comp = new u.pagination({el:paginationLg,showState:true,showTotal:false});
+comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200});
+var paginationDefault = document.getElementById("paginationDefault");
+var comp = new u.pagination({el:paginationDefault,showJump:false});
+comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200});
+var paginationSm = document.getElementById("paginationSm");
+var comp = new u.pagination({el:paginationSm,showColumn:false});
+comp.update({totalPages: 100,pageSize:20,currentPage:1,totalCount:200});
