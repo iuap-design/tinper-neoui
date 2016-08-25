@@ -78,7 +78,7 @@
 }
 
 .u-tabs-pill .u-tabs__tab{
-    &:hover{
+    &:not(.is-active):hover{
         text-decoration : none;
           background-color : #eee;
     }
@@ -89,6 +89,11 @@
           height:0px;
         }
     }
+}
+
+.u-tabs-pill .u-tabs__tab.is-active{
+  color: #fff !important;
+  background-color: rgb(63,81,181);
 }
 
 
