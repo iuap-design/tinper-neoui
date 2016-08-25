@@ -73,7 +73,7 @@ $gray-lighter:  unquote("rgb(#{$palette-grey-300})") !default;
 $gray-lightest:unquote("rgb(#{$palette-grey-200})") !default;
 $inverse: unquote("rgb(#{$color-white})") !default;
 $border-color-base:       $gray-lighter;
-$line-height-base:        1.57142857; 
+$line-height-base:        1.57142857;
 /* 客户化 */
 @if $styleguide-generate-template == true {
   $color-primary: '$color-primary';
@@ -85,7 +85,7 @@ $line-height-base:        1.57142857;
 
 
 /* 波纹效果 */
-$ripple-bg-color: unquote("rgb(#{$color-light-contrast})") !default;
+$ripple-bg-color: unquote("rgb(#{$color-dark-contrast})") !default;
 
 /* 动画 */
 $animation-curve-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1) !default;
@@ -134,9 +134,9 @@ $subtitle-color:        $gray-darker;
 $text-color:            $gray-dark;
 $prompt-color:          $gray;
 //全局不同状态颜色
-$active-color-base:  unquote("rgb(#{$palette-indigo-700})") !default; 
-$normal-color-base:  unquote("rgb(#{$palette-indigo-500})") !default; 
-$hover-color-base:   unquote("rgb(#{$palette-indigo-500})") !default; 
+$active-color-base:  unquote("rgb(#{$palette-indigo-700})") !default;
+$normal-color-base:  unquote("rgb(#{$palette-indigo-500})") !default;
+$hover-color-base:   unquote("rgb(#{$palette-indigo-500})") !default;
 $bg-color-base:       $gray-lightest;
 $disabled-color-base: $gray-light;
 // 全局链接颜色
@@ -149,29 +149,29 @@ $brand-default: $gray-lighter;
 $brand-default-hover: $gray-lightest;
 $brand-default-active:  $gray-light;
 
-$brand-primary : unquote("rgb(#{$palette-indigo-500})") !default; 
-$brand-primary-hover: unquote("rgb(#{$palette-indigo-400})") !default; 
-$brand-primary-active: unquote("rgb(#{$palette-indigo-600})") !default; 
+$brand-primary : unquote("rgb(#{$palette-indigo-500})") !default;
+$brand-primary-hover: unquote("rgb(#{$palette-indigo-400})") !default;
+$brand-primary-active: unquote("rgb(#{$palette-indigo-600})") !default;
 
 $brand-success: unquote("rgb(#{$palette-green-500})") !default;
-$brand-success-hover: unquote("rgb(#{$palette-green-400})") !default; 
-$brand-success-active: unquote("rgb(#{$palette-green-600})") !default; 
+$brand-success-hover: unquote("rgb(#{$palette-green-400})") !default;
+$brand-success-active: unquote("rgb(#{$palette-green-600})") !default;
 
 $brand-info: unquote("rgb(#{$palette-cyan-500})") !default;
-$brand-info-hover: unquote("rgb(#{$palette-cyan-400})") !default; 
-$brand-info-active: unquote("rgb(#{$palette-cyan-600})") !default; 
+$brand-info-hover: unquote("rgb(#{$palette-cyan-400})") !default;
+$brand-info-active: unquote("rgb(#{$palette-cyan-600})") !default;
 
 $brand-warning: unquote("rgb(#{$palette-orange-500})") !default;
-$brand-warning-hover: unquote("rgb(#{$palette-orange-400})") !default; 
-$brand-warning-active: unquote("rgb(#{$palette-orange-600})") !default; 
+$brand-warning-hover: unquote("rgb(#{$palette-orange-400})") !default;
+$brand-warning-active: unquote("rgb(#{$palette-orange-600})") !default;
 
 $brand-danger:  unquote("rgb(#{$palette-red-500})") !default;
-$brand-danger-hover: unquote("rgb(#{$palette-red-400})") !default; 
-$brand-danger-active: unquote("rgb(#{$palette-red-600})") !default; 
+$brand-danger-hover: unquote("rgb(#{$palette-red-400})") !default;
+$brand-danger-active: unquote("rgb(#{$palette-red-600})") !default;
 
 $brand-dark:  $gray-darker;
-$brand-dark-hover: $gray-dark; 
-$brand-dark-active:$gray-darkest; 
+$brand-dark-hover: $gray-dark;
+$brand-dark-active:$gray-darkest;
 
 
 /* UButton */
