@@ -6752,7 +6752,7 @@ input.u-button[type="submit"] {
       -ms-user-select: none;
           user-select: none; }
   .u-combo-li:hover {
-    background-color: rgb(233,247,252); }
+    background-color: #D3D3D3; }
   .u-combo-li:focus {
     outline: none;
     background-color: rgb(196,234,246); }
@@ -7188,7 +7188,7 @@ input.u-button[type="submit"] {
 
 
 .u-input-icon-left + .u-form-control {
-  padding-left: 30px; }
+  padding-left: 45px; }
 
 .u-input-icon-left label.u-radio {
   margin-top: 2px;
@@ -7409,6 +7409,10 @@ textarea.u-form-control {
     display: table-cell; }
   .u-input-group.sw {
     width: 200px; }
+  .u-input-group.mw {
+    width: 300px; }
+  .u-input-group.lw {
+    width: 400px; }
   .u-input-group .u-form-control {
     width: 100%; }
   .u-input-group .u-checkbox {
@@ -10852,7 +10856,7 @@ small {
   display: inline-block;
   width: 36px;
   height: 36px;
-  line-height: 32px;
+  line-height: 36px;
   color: rgb(255,255,255);
   text-align: center;
   background: rgb(189,189,189);
