@@ -165,7 +165,7 @@ input.u-button[type="submit"] {
   }
 
   &:active {
-    @include shadow-4dp();
+    // @include shadow-4dp();
     background-color: $button-active-color;
   }
 
@@ -229,7 +229,7 @@ input.u-button[type="submit"] {
 .u-button.accent {
   color: $button-fab-color-alt;
   background: $button-fab-text-color-alt;
-  
+
   &.raised,&.floating{
     color: $button-fab-text-color-alt;
     background-color: $button-fab-color-alt;
@@ -372,13 +372,55 @@ input.u-button[type="submit"] {
     border-color: #e53935;
 }
 
+//边框按钮
+.u-button-border{
+    color: rgb(63,81,181);
+    border: 1px solid rgb(63,81,181);
+}
+.u-button-border:hover{
+    color: white;
+    background: rgb(63,81,181);
+}
+.u-button-border.success{
+    color: #4caf50;
+    border: 1px solid #4caf50;
+}
+.u-button-border.success:hover{
+    color: white;
+    background: #4caf50;
+}
+.u-button-border.info{
+    color: #00bcd4;
+    border: 1px solid #00bcd4;
+}
+.u-button-border.info:hover{
+    color: white;
+    background: #00bcd4;
+}
+.u-button-border.danger{
+    color: #f44336;
+    border: 1px solid #f44336;
+}
+.u-button-border.danger:hover{
+    color: white;
+    background: #f44336;
+}
+.u-button-border.warning{
+    color: #ff9800;
+    border: 1px solid #ff9800;
+}
+.u-button-border.warning:hover{
+    color: white;
+    background: #ff9800;
+}
+
 //大型
 .u-button-lg {
     @include button-size($button-padding-y-lg, $button-padding-x-lg, $font-size-lg, $button-border-radius-lg);
 }
 //特大型
 .u-button-xg {
- 
+
   @include button-size($button-padding-y-xg, $button-padding-x-xg, $font-size-xg, $button-border-radius-xg);
 }
 
@@ -430,10 +472,11 @@ input.u-button[type="submit"] {
       }
       margin-left: 0;
     }
+    border-left:1px solid;
     box-shadow: none;
     position: relative;
     float: left;
-    padding: 6px 15px;
+    padding: 6px 10px;
     font-size: 14px;
     line-height: 1.57142857;
     border-radius: 0;
@@ -490,7 +533,7 @@ input.u-button[type="submit"] {
     color: #333 !important;
     background-color: #e6e6e6 !important;
     border-color: #adadad !important;
-    
+
 }
 
 .u-button-group .primary{
@@ -508,7 +551,7 @@ input.u-button[type="submit"] {
     color: #333 !important;
     background-color: #fff !important;
     border-color: #ccc !important;
-    
+
 }
 .u-button-group .u-button:first-child{
     border-top-left-radius: 3px;

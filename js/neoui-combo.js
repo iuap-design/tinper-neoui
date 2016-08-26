@@ -296,10 +296,12 @@ var Combo = BaseComponent.extend({
                 }
             }
             /*根据多选区域div的高度调整input的高度*/
-            var h = this._combo_name_par.offsetHeight;
-            if(h < 25)
-                h = 25
-            this._input.style.height = h + 'px';
+            /*实际上input的高度并不需要调整*/
+            /*var h = this._combo_name_par.offsetHeight;
+            if(h < 25){
+                h = 25;
+                this._input.style.height = h + 'px';
+            }*/
         } else {
             for(var i=0;i<lis.length;i++) {
                 if(this.value == this.comboDatas[i].value) {

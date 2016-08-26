@@ -107,7 +107,8 @@ $pearl-xs-size: 24px;
   display: inline-block;
   width: $pearl-size;
   height: $pearl-size;
-  line-height: ($pearl-size - 2*$pearl-border-size);
+  //line-height: ($pearl-size - 2*$pearl-border-size);
+  line-height: $pearl-size ;//修改样式版中步骤中数字偏上的情况
   color: $pearl-color;
   text-align: center;
   background: $pearl-bg;

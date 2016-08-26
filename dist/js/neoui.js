@@ -4154,24 +4154,7 @@ $.fn.bootstrapWizard.defaults = {
 
 })(jQuery);
 
-/** 
- * neoui v4.1.2
- * UI Framework Used For Enterprise.
- * author : yonyou FED
- * homepage : https://github.com/iuap-design/neoui#readme
- * bugs : https://github.com/iuap-design/neoui/issues
- **/ 
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else {
-		var a = factory();
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
-})(this, function() {
-return /******/ (function(modules) { // webpackBootstrap
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -4425,7 +4408,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	//Neoui import
 	(0, _extend.extend)(ex, window.u || {});
-
+	window.u = ex;
 	exports.u = ex;
 
 /***/ },
@@ -7747,9 +7730,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                }
 	            }
 	            /*根据多选区域div的高度调整input的高度*/
-	            var h = this._combo_name_par.offsetHeight;
-	            if (h < 25) h = 25;
-	            this._input.style.height = h + 'px';
+	            /*实际上input的高度并不需要调整*/
+	            /*var h = this._combo_name_par.offsetHeight;
+	            if(h < 25){
+	                h = 25;
+	                this._input.style.height = h + 'px';
+	            }*/
 	        } else {
 	            for (var i = 0; i < lis.length; i++) {
 	                if (this.value == this.comboDatas[i].value) {
@@ -10086,7 +10072,8 @@ return /******/ (function(modules) { // webpackBootstrap
 					// manually specify position.
 				} else if ((0, _dom.hasClass)(this.element, 'u-menu-bottom-right')) {
 					// Position below the "for" element, aligned to its right.
-					this._container.style.right = forRect.right - rect.right + 'px';
+					this._container.style.left = this.for_element.offsetLeft + this.for_element.offsetWidth - this.element.offsetWidth + 'px';
+					// this._container.style.right = (forRect.right - rect.right) + 'px';
 					this._container.style.top = this.for_element.offsetTop + this.for_element.offsetHeight + 'px';
 				} else if ((0, _dom.hasClass)(this.element, 'u-menu-top-left')) {
 					// Position above the "for" element, aligned to its left.
@@ -10454,14 +10441,14 @@ return /******/ (function(modules) { // webpackBootstrap
 		var closeBtn = msgDom.querySelector('.u-msg-close');
 		//new Button({el:closeBtn});
 		var closeFun = function closeFun() {
-			u.removeClass(msgDom, "active");
+			(0, _dom.removeClass)(msgDom, "active");
 			setTimeout(function () {
 				try {
 					document.body.removeChild(msgDom);
 				} catch (e) {}
 			}, 500);
 		};
-		u.on(closeBtn, 'click', closeFun);
+		(0, _event.on)(closeBtn, 'click', closeFun);
 		document.body.appendChild(msgDom);
 
 		if (showSeconds > 0) {
@@ -11844,11 +11831,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			var thumb = document.createElement('div');
 			(0, _dom.addClass)(thumb, this._CssClasses.THUMB);
-
-			var focusHelper = document.createElement('span');
-			(0, _dom.addClass)(focusHelper, this._CssClasses.FOCUS_HELPER);
-
-			thumb.appendChild(focusHelper);
+			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
+			/*var focusHelper = document.createElement('span');
+	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
+	  		thumb.appendChild(focusHelper);*/
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);
@@ -16248,6 +16234,4 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.YearMonth = YearMonth;
 
 /***/ }
-/******/ ])
-});
-;
+/******/ ]);
