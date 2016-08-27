@@ -141,6 +141,9 @@
     cursor: auto;
   }
 }
+/*图片checkbox选中时增加边框*/
+.u-checkbox.is-checked .u-checkbox-label img{
+  border: 1px solid rgb(63,81,181); }
 
 //.u-checkbox__ripple-container {
 //  position: absolute;

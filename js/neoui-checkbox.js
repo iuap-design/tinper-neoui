@@ -27,19 +27,20 @@ var Checkbox = BaseComponent.extend({
     init: function () {
         this._inputElement = this.element.querySelector('input');
 
-        var boxOutline = document.createElement('span');
-        addClass(boxOutline, this._CssClasses.BOX_OUTLINE);
+        /*去掉图片checkbox前面的checkbox框效果，去掉以下代码*/
+        /*var boxOutline = document.createElement('span');
+         (0, _dom.addClass)(boxOutline, this._CssClasses.BOX_OUTLINE);
 
-        var tickContainer = document.createElement('span');
-        addClass(tickContainer, this._CssClasses.FOCUS_HELPER)
+         var tickContainer = document.createElement('span');
+         (0, _dom.addClass)(tickContainer, this._CssClasses.FOCUS_HELPER);
 
-        var tickOutline = document.createElement('span');
-        addClass(tickOutline, this._CssClasses.TICK_OUTLINE);
+         var tickOutline = document.createElement('span');
+         (0, _dom.addClass)(tickOutline, this._CssClasses.TICK_OUTLINE);
 
-        boxOutline.appendChild(tickOutline);
-
-        this.element.appendChild(tickContainer);
-        this.element.appendChild(boxOutline);
+         boxOutline.appendChild(tickOutline);
+         this.element.appendChild(tickContainer);
+         this.element.appendChild(boxOutline);*/
+        /*图片checkbox效果结束*/
 
         //if (this.element.classList.contains(this._CssClasses.RIPPLE_EFFECT)) {
         //  addClass(this.element,this._CssClasses.RIPPLE_IGNORE_EVENTS);
