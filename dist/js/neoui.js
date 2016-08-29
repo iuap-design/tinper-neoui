@@ -7196,7 +7196,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _BaseComponent = __webpack_require__(4);
 
-	var _dom = __webpack_require__(12);
+	var _dom2 = __webpack_require__(12);
 
 	var _event = __webpack_require__(7);
 
@@ -7232,7 +7232,6 @@ $.fn.bootstrapWizard.defaults = {
 	        (0, _dom.addClass)(tickOutline, this._CssClasses.TICK_OUTLINE);
 
 	        boxOutline.appendChild(tickOutline);
-
 	        this.element.appendChild(tickContainer);
 	        this.element.appendChild(boxOutline);
 
@@ -7261,7 +7260,7 @@ $.fn.bootstrapWizard.defaults = {
 	        //this._inputElement.addEventListener('focus', this.boundInputOnFocus);
 	        //this._inputElement.addEventListener('blur', this.boundInputOnBlur);
 	        //this.element.addEventListener('mouseup', this.boundElementMouseUp);
-	        if (!(0, _dom.hasClass)(this.element, 'only-style')) {
+	        if (!(0, _dom2.hasClass)(this.element, 'only-style')) {
 	            (0, _event.on)(this.element, 'click', function (e) {
 	                if (!this._inputElement.disabled) {
 	                    this.toggle();
@@ -7271,7 +7270,7 @@ $.fn.bootstrapWizard.defaults = {
 	        }
 
 	        this._updateClasses();
-	        (0, _dom.addClass)(this.element, this._CssClasses.IS_UPGRADED);
+	        (0, _dom2.addClass)(this.element, this._CssClasses.IS_UPGRADED);
 	    },
 
 	    _onChange: function _onChange(event) {
@@ -7280,11 +7279,11 @@ $.fn.bootstrapWizard.defaults = {
 	    },
 
 	    _onFocus: function _onFocus() {
-	        (0, _dom.addClass)(this.element, this._CssClasses.IS_FOCUSED);
+	        (0, _dom2.addClass)(this.element, this._CssClasses.IS_FOCUSED);
 	    },
 
 	    _onBlur: function _onBlur() {
-	        (0, _dom.removeClass)(this.element, this._CssClasses.IS_FOCUSED);
+	        (0, _dom2.removeClass)(this.element, this._CssClasses.IS_FOCUSED);
 	    },
 
 	    _onMouseUp: function _onMouseUp(event) {
@@ -7323,9 +7322,9 @@ $.fn.bootstrapWizard.defaults = {
 	     */
 	    checkToggleState: function checkToggleState() {
 	        if (this._inputElement.checked) {
-	            (0, _dom.addClass)(this.element, this._CssClasses.IS_CHECKED);
+	            (0, _dom2.addClass)(this.element, this._CssClasses.IS_CHECKED);
 	        } else {
-	            (0, _dom.removeClass)(this.element, this._CssClasses.IS_CHECKED);
+	            (0, _dom2.removeClass)(this.element, this._CssClasses.IS_CHECKED);
 	        }
 	    },
 
@@ -7336,9 +7335,9 @@ $.fn.bootstrapWizard.defaults = {
 	     */
 	    checkDisabled: function checkDisabled() {
 	        if (this._inputElement.disabled) {
-	            (0, _dom.addClass)(this.element, this._CssClasses.IS_DISABLED);
+	            (0, _dom2.addClass)(this.element, this._CssClasses.IS_DISABLED);
 	        } else {
-	            (0, _dom.removeClass)(this.element, this._CssClasses.IS_DISABLED);
+	            (0, _dom2.removeClass)(this.element, this._CssClasses.IS_DISABLED);
 	        }
 	    },
 

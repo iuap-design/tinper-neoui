@@ -115,7 +115,7 @@ input.u-button[type="submit"] {
 }
 
 //Floating bottons
-.u-button.floating {
+.u-button-floating {
   border-radius: 50%;
   font-size: $button-fab-font-size;
   height: $button-fab-size;
@@ -210,36 +210,22 @@ input.u-button[type="submit"] {
   }
 }
 
-.u-button.primary {
-  color: $button-primary-color-alt;
-  background: $button-secondary-color-alt;
-  &.raised,&.floating{
-    color: $button-secondary-color-alt;
+.u-button-primary{
+  color: $button-secondary-color-alt;
+  background-color: $button-primary-color-alt;
+  border:1px  $button-primary-color-alt solid;
+  &:hover{
     background-color: $button-primary-color-alt;
-    border:1px  $button-primary-color-alt solid;
-    &:hover{
-      background-color: $button-primary-color-alt;
-    }
-  }
-   &:hover {
-    background-color: $button-hover-color;
   }
 }
 
-.u-button.accent {
-  color: $button-fab-color-alt;
-  background: $button-fab-text-color-alt;
 
-  &.raised,&.floating{
-    color: $button-fab-text-color-alt;
+.u-button-accent {
+  color: $button-fab-text-color-alt;
+  background-color: $button-fab-color-alt;
+  border:1px  $button-fab-color-alt solid;
+  &:hover{
     background-color: $button-fab-color-alt;
-    border:1px  $button-fab-color-alt solid;
-    &:hover{
-      background-color: $button-fab-color-alt;
-    }
-  }
-   &:hover {
-    background-color: $button-hover-color;
   }
 }
 
