@@ -113,6 +113,17 @@ $z-index-normal: 1;
 $z-index-low: -100;
 $z-index-lower: -200;
 
+$zindex-modal:            1700;
+$zindex-modal-background: 1600;
+$zindex-navbar-fixed:     1500;
+$zindex-menubar:          1400;
+$zindex-overlay:          1300;
+$zindex-dropdown:         1200;
+$zindex-navbar:           1200;
+$zindex-header:           1100;
+$zindex-footer:           1000;
+
+
 /* ==========  字体  ========== */
 
 $text-color-primary: unquote("rgba(#{$color-black}, 0.87)") !default;
@@ -610,7 +621,8 @@ $data-table-card-padding: 24px !default;
 $data-table-button-padding-right: 16px !default;
 $data-table-cell-top: $data-table-card-padding / 2;
 
-$line-height-computed:    round(($font-size-small * $line-height-base));
+// $line-height-computed:    round(($font-size-small * $line-height-base));
+$line-height-computed:    round((14px * $line-height-base));
 $table-bg:                transparent;
 $table-cell-padding:            8px;
 $table-border-color:            $border-color-base;
@@ -949,3 +961,71 @@ $counter-md-icon-font-size:   $counter-md-number-font-size;
 $counter-sm-icon-font-size:   $counter-sm-number-font-size;
 
 $counter-inverse-color:       $inverse;
+
+
+// navbar
+
+// Basics of a navbar
+$navbar-height:                    50px;
+$navbar-margin-bottom:             $line-height-computed;
+$navbar-border-radius:             $border-radius-base;
+$navbar-padding-horizontal:        floor(($grid-gutter-width / 2));
+$navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2);
+$navbar-collapse-max-height:       340px;
+
+$navbar-avatar-margin-horizontal:  (($navbar-height - 32px) / 2);
+
+$navbar-brand-padding-horizontal:  20px;
+$navbar-brand-logo-height:         32px;
+
+$navbar-default-color:                    $text-color;
+$navbar-default-bg:                       $inverse;
+$navbar-default-border:                   $border-color-base;
+
+// Navbar links
+$navbar-default-link-color:               $text-color;
+$navbar-default-link-hover-color:         $gray-darker;
+$navbar-default-link-hover-bg:            rgba(238,238,238, 30%);
+$navbar-default-link-active-color:        $navbar-default-link-hover-color;
+$navbar-default-link-active-bg:           rgba(238,238,238, 60%);
+$navbar-default-link-disabled-color:      $disabled-color-base;
+$navbar-default-link-disabled-bg:         transparent;
+
+// Navbar brand label
+$navbar-default-brand-color:              $title-color;
+$navbar-default-brand-hover-color:        $navbar-default-brand-color;
+$navbar-default-brand-hover-bg:           none;
+
+// Navbar toggle
+$navbar-default-toggle-hover-bg:          $navbar-default-link-hover-bg;
+$navbar-default-toggle-icon-bar-bg:       $navbar-default-color;
+$navbar-default-toggle-border-color:      transparent;
+
+
+// Inverted navbar
+// Reset inverted navbar basics
+$navbar-inverse-color:                     $inverse;
+$navbar-inverse-bg:                        $brand-primary;
+$navbar-inverse-border:                    rgba(0, 0, 0, .1);
+
+// Inverted navbar links
+$navbar-inverse-link-color:                $inverse;
+$navbar-inverse-link-hover-color:          $inverse;
+$navbar-inverse-link-hover-bg:             rgba(0, 0, 0, .1);
+$navbar-inverse-link-active-color:         $navbar-inverse-link-hover-color;
+$navbar-inverse-link-active-bg:            $navbar-inverse-link-hover-bg;
+$navbar-inverse-link-disabled-color:       $inverse;
+$navbar-inverse-link-disabled-bg:          transparent;
+
+// Inverted navbar brand label
+$navbar-inverse-brand-color:               $navbar-inverse-link-color;
+$navbar-inverse-brand-hover-color:         $inverse;
+$navbar-inverse-brand-hover-bg:            none;
+
+// Inverted navbar toggle
+$navbar-inverse-toggle-hover-bg:           $navbar-inverse-link-hover-bg;
+$navbar-inverse-toggle-icon-bar-bg:        $inverse;
+$navbar-inverse-toggle-border-color:       transparent;
+
+//hamburger
+$hamburger-size: 17px;

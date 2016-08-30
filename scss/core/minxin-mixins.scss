@@ -267,6 +267,37 @@
 
 
 
+// Transitions
+
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
+@mixin transition-property($transition-property) {
+  -webkit-transition-property: $transition-property;
+          transition-property: $transition-property;
+}
+@mixin transition-delay($transition-delay) {
+  -webkit-transition-delay: $transition-delay;
+          transition-delay: $transition-delay;
+}
+@mixin transition-duration($transition-duration) {
+  -webkit-transition-duration: $transition-duration;
+          transition-duration: $transition-duration;
+}
+@mixin transition-timing-function($timing-function) {
+  -webkit-transition-timing-function: $timing-function;
+          transition-timing-function: $timing-function;
+}
+@mixin transition-transform($transition) {
+  -webkit-transition: -webkit-transform $transition;
+     -moz-transition: -moz-transform $transition;
+       -o-transition: -o-transform $transition;
+          transition: transform $transition;
+}
+
+
 @mixin border-top-radius($radius) {
   border-top-right-radius: $radius;
    border-top-left-radius: $radius;
@@ -283,7 +314,6 @@
   border-bottom-left-radius: $radius;
      border-top-left-radius: $radius;
 }
-
 
 //按钮尺寸
 @mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
@@ -545,4 +575,12 @@
 
 @mixin text-hide() {
   @include hide-text();
+}
+
+
+// nav
+
+@mixin navbar-vertical-align($element-height) {
+  margin-top: (($navbar-height - $element-height) / 2);
+  margin-bottom: (($navbar-height - $element-height) / 2);
 }
