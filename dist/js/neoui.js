@@ -7262,9 +7262,11 @@ $.fn.bootstrapWizard.defaults = {
 	        //this.element.addEventListener('mouseup', this.boundElementMouseUp);
 	        if (!(0, _dom.hasClass)(this.element, 'only-style')) {
 	            (0, _event.on)(this.element, 'click', function (e) {
-	                if (!this._inputElement.disabled) {
-	                    this.toggle();
-	                    (0, _event.stopEvent)(e);
+	                if (e.target.nodeName != 'INPUT') {
+	                    if (!this._inputElement.disabled) {
+	                        this.toggle();
+	                        (0, _event.stopEvent)(e);
+	                    }
 	                }
 	            }.bind(this));
 	        }
