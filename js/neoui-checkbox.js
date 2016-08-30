@@ -69,9 +69,11 @@ var Checkbox = BaseComponent.extend({
         //this.element.addEventListener('mouseup', this.boundElementMouseUp);
         if (!hasClass(this.element, 'only-style')){
             on(this.element, 'click', function(e){
-                if(!this._inputElement.disabled){
-                    this.toggle();
-                    stopEvent(e);
+                if(e.target.nodeName != 'INPUT'){
+                    if(!this._inputElement.disabled){
+                        this.toggle();
+                        stopEvent(e);
+                    }
                 }
             }.bind(this));
         }
