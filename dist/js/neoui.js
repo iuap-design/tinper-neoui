@@ -7232,7 +7232,6 @@ $.fn.bootstrapWizard.defaults = {
 	        (0, _dom.addClass)(tickOutline, this._CssClasses.TICK_OUTLINE);
 
 	        boxOutline.appendChild(tickOutline);
-
 	        this.element.appendChild(tickContainer);
 	        this.element.appendChild(boxOutline);
 
@@ -13045,11 +13044,11 @@ $.fn.bootstrapWizard.defaults = {
 	    //new UText(this._element);
 	    this._input = this._element.querySelector("input");
 
-	    if (_env.env.isMobile) {
-	        // setTimeout(function(){
-	        //     self._input.setAttribute('readonly','readonly');
-	        // },1000);
-	    }
+	    // if(env.isMobile){
+	    //     // setTimeout(function(){
+	    //     //     self._input.setAttribute('readonly','readonly');
+	    //     // },1000);
+	    // }
 
 	    setTimeout(function () {
 	        self._input.setAttribute('readonly', 'readonly');
@@ -13057,7 +13056,8 @@ $.fn.bootstrapWizard.defaults = {
 
 	    (0, _event.on)(this._input, 'focus', function (e) {
 	        // 用来关闭键盘
-	        if (_env.env.isMobile) this.blur();
+	        /*if(env.isMobile)
+	            this.blur();*/
 	        self._inputFocus = true;
 	        if (self.isShow !== true) {
 	            self.show(e);
@@ -13997,10 +13997,10 @@ $.fn.bootstrapWizard.defaults = {
 	    var self = this;
 	    if (!this._panel) {
 	        this._panel = (0, _dom.makeDOM)(dateTimePickerTemplateArr.join(""));
-	        if (_env.env.isMobile) {
-	            (0, _dom.removeClass)(this._panel, 'u-date-panel');
-	            (0, _dom.addClass)(this._panel, 'u-date-panel-mobile');
-	        }
+	        /*if(env.isMobile){
+	            removeClass(this._panel,'u-date-panel')
+	            addClass(this._panel,'u-date-panel-mobile');
+	        }*/
 	        this._dateNav = this._panel.querySelector('.u-date-nav');
 	        if (this.type === 'date' && !_env.env.isMobile) {
 	            this._dateNav.style.display = 'none';
@@ -14078,12 +14078,12 @@ $.fn.bootstrapWizard.defaults = {
 	    (0, _event.on)(window, 'resize', function () {
 	        self._response();
 	    });
-	    if (_env.env.isMobile) {
-	        this.overlayDiv = (0, _dom.makeModal)(this._panel);
-	        (0, _event.on)(this.overlayDiv, 'click', function () {
+	    /*if(env.isMobile){
+	        this.overlayDiv = makeModal(this._panel);
+	        on(this.overlayDiv, 'click', function(){
 	            self.onCancel();
-	        });
-	    }
+	        })
+	    }*/
 	    (0, _dom.addClass)(this._panel, 'is-visible');
 	    if (!_env.env.isMobile) {
 	        if (this.options.showFix) {

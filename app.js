@@ -324,7 +324,7 @@ function replaceMdFun(filePath,itemName){
 							tmpPath = tmpPath.replace(/\\/g,'/');
 							// console.log(tmpPath);
 							// snippets/examples/badge/1-base/widget.css
-							console.log(item)
+							// console.log(item)
 							var cssIndex = item.indexOf('.css');
 							var htmlIndex = item.indexOf('.html');
 							var jsIndex = item.indexOf('.js');
@@ -332,12 +332,14 @@ function replaceMdFun(filePath,itemName){
 							if(cssIndex > -1 || htmlIndex > -1 ||jsIndex > -1){
 								var readPage = fs.readFileSync(tmpPath);
 								if(readPage.toString().length > 0){
-									codeStr += '<div class="examples-code"><pre><code>' + readPage.toString().replace(/\</g,'&lt;') + '</code></pre>\r\n</div>\r\n';
-									if(cssIndex > -1){
+									if(item == 'codeWidget.html' || item == 'codeWidget.js' || item == 'codeWidget.css'){
+										codeStr += '<div class="examples-code"><pre><code>' + readPage.toString().replace(/\</g,'&lt;') + '</code></pre>\r\n</div>\r\n';
+									}
+									if(cssIndex > -1 && item == 'widget.css'){
 										styleStr += '<div class="example-content ex-hide"><style>' + readPage.toString() + '\r\n' + '</style></div>\r\n';
-									}else if(htmlIndex > -1){
+									}else if(htmlIndex > -1 && item == 'widget.html'){
 										showStr += '<div class="example-content">' + readPage.toString() + '</div>\r\n';
-									}else if(jsIndex > -1){
+									}else if(jsIndex > -1 && item == 'widget.js'){
 										jsStr += '<div class="example-content ex-hide"><script>' + readPage.toString() + '\r\n' + '</script></div>\r\n';
 									}
 
@@ -361,7 +363,7 @@ function replaceMdFun(filePath,itemName){
 								fs.mkdirSync(nowFilePath);
 							}
 							if(now == 1){
-								console.log(headStr);
+								// console.log(headStr);
 								nowFilePath = nowFilePath + '/' + dir + '.txt';//snippets/temp/datatable/grid/base.txt
 								fs.appendFileSync(nowFilePath,headStr + styleStr + showStr + jsStr + codeStr, 'utf8');
 							}

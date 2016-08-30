@@ -29,11 +29,11 @@ DateTimePicker.fn.init = function(){
     //new UText(this._element);
     this._input = this._element.querySelector("input");
     
-    if(env.isMobile){
-        // setTimeout(function(){
-        //     self._input.setAttribute('readonly','readonly');
-        // },1000);
-    }
+    // if(env.isMobile){
+    //     // setTimeout(function(){
+    //     //     self._input.setAttribute('readonly','readonly');
+    //     // },1000);
+    // }
 
     setTimeout(function(){
         self._input.setAttribute('readonly','readonly');
@@ -41,8 +41,8 @@ DateTimePicker.fn.init = function(){
    
     on(this._input, 'focus', function(e){
         // 用来关闭键盘
-        if(env.isMobile)
-            this.blur();
+        /*if(env.isMobile)
+            this.blur();*/
         self._inputFocus = true;
         if (self.isShow !== true){
             self.show(e);
@@ -1019,10 +1019,10 @@ DateTimePicker.fn.show = function(evt){
     var self = this;
     if (!this._panel){
         this._panel = makeDOM(dateTimePickerTemplateArr.join(""));
-        if(env.isMobile){
+        /*if(env.isMobile){
             removeClass(this._panel,'u-date-panel')
             addClass(this._panel,'u-date-panel-mobile');
-        }
+        }*/
         this._dateNav = this._panel.querySelector('.u-date-nav');
         if (this.type === 'date' && !env.isMobile){
            this._dateNav.style.display = 'none';
@@ -1103,12 +1103,12 @@ DateTimePicker.fn.show = function(evt){
     on(window, 'resize', function(){
         self._response();
     });
-    if(env.isMobile){
+    /*if(env.isMobile){
         this.overlayDiv = makeModal(this._panel);
         on(this.overlayDiv, 'click', function(){
             self.onCancel();
         })
-    }
+    }*/
     addClass(this._panel, 'is-visible');
     if(!env.isMobile){
         if(this.options.showFix){

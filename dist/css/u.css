@@ -6046,7 +6046,7 @@ main {
 .u-button {
   background: transparent;
   border: none;
-  border-radius: 0.125rem;
+  border-radius: 0.25rem;
   color: rgb(51,51,51);
   position: relative;
   min-width: 4.5rem;
@@ -6119,7 +6119,7 @@ input.u-button[type="submit"] {
   .u-button.waves-effect.u-button-sm {
     font-size: 12px; }
 
-.u-button.floating {
+.u-button-floating {
   border-radius: 50%;
   font-size: 0.875rem;
   height: 2.375rem;
@@ -6135,7 +6135,7 @@ input.u-button[type="submit"] {
   position: relative;
   line-height: normal;
   border: 1px solid rgb(224,224,224); }
-  .u-button.floating .fa, .u-button.floating .uf {
+  .u-button-floating .fa, .u-button-floating .uf {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -6148,31 +6148,31 @@ input.u-button[type="submit"] {
     top: 0px \9;
     left: 0px \9;
     padding: 0px; }
-  .u-button.floating.mini {
+  .u-button-floating.mini {
     height: 1.875rem;
     min-width: 1.875rem;
     width: 1.875rem; }
-  .u-button.floating.flat {
+  .u-button-floating.flat {
     background: transparent;
     border: none;
     box-shadow: none; }
-  .u-button.floating .u-button-container {
+  .u-button-floating .u-button-container {
     border-radius: 50%;
     -webkit-mask-image: -webkit-radial-gradient(circle, white, black); }
-  .u-button.floating:active {
+  .u-button-floating:active {
     background-color: rgba(158,158,158, 0.40); }
-  .u-button.floating:focus:not(:active) {
+  .u-button-floating:focus:not(:active) {
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.18), 0 0.5rem 1rem rgba(0, 0, 0, 0.36);
     background-color: rgba(158,158,158, 0.40); }
-  .u-button.floating.colored {
+  .u-button-floating.colored {
     background: rgb(67,160,71);
     color: rgb(255,255,255);
     background: rgb(255,255,255); }
-    .u-button.floating.colored:hover {
+    .u-button-floating.colored:hover {
       background-color: rgb(67,160,71); }
-    .u-button.floating.colored:focus:not(:active) {
+    .u-button-floating.colored:focus:not(:active) {
       background-color: rgb(67,160,71); }
-    .u-button.floating.colored:active {
+    .u-button-floating.colored:active {
       background-color: rgb(67,160,71); }
 
 .u-button-container {
@@ -6188,29 +6188,19 @@ input.u-button[type="submit"] {
   .u-button-container .u-button.disabled {
     background-color: transparent; }
 
-.u-button.primary {
-  color: rgb(63,81,181);
-  background: rgb(255,255,255); }
-  .u-button.primary.raised, .u-button.primary.floating {
-    color: rgb(255,255,255);
-    background-color: rgb(63,81,181);
-    border: 1px rgb(63,81,181) solid; }
-    .u-button.primary.raised:hover, .u-button.primary.floating:hover {
-      background-color: rgb(63,81,181); }
-  .u-button.primary:hover {
-    background-color: #F7F7F7; }
+.u-button-primary {
+  color: rgb(255,255,255);
+  background-color: rgb(63,81,181);
+  border: 1px rgb(63,81,181) solid; }
+  .u-button-primary:hover {
+    background-color: rgb(63,81,181); }
 
-.u-button.accent {
-  color: rgb(67,160,71);
-  background: rgb(255,255,255); }
-  .u-button.accent.raised, .u-button.accent.floating {
-    color: rgb(255,255,255);
-    background-color: rgb(67,160,71);
-    border: 1px rgb(67,160,71) solid; }
-    .u-button.accent.raised:hover, .u-button.accent.floating:hover {
-      background-color: rgb(67,160,71); }
-  .u-button.accent:hover {
-    background-color: #F7F7F7; }
+.u-button-accent {
+  color: rgb(255,255,255);
+  background-color: rgb(67,160,71);
+  border: 1px rgb(67,160,71) solid; }
+  .u-button-accent:hover {
+    background-color: rgb(67,160,71); }
 
 .u-button .uf, .u-button .fa {
   vertical-align: middle; }
@@ -6476,6 +6466,9 @@ input.u-button[type="submit"] {
   font-size: 12px !important;
   height: 28px; }
 
+.vertical-align-bottom.u-button {
+  vertical-align: bottom; }
+
 
 
 
@@ -6727,6 +6720,10 @@ input.u-button[type="submit"] {
   .u-checkbox.is-disabled .u-checkbox-label {
     color: rgb(191,191,191);
     cursor: auto; }
+
+
+.u-checkbox.is-checked .u-checkbox-label img {
+  border: 1px solid #3f51b5; }
 
 .u-checkbox-primary.is-checked .u-checkbox-outline {
   border: 1px solid rgb(63,81,181); }
@@ -10365,7 +10362,7 @@ small {
     display: block;
     -webkit-flex-shrink: 0;
             flex-shrink: 0;
-    padding: 16px 40px;
+    padding: 11px 30px;
     margin: 0;
     color: #757575;
     text-decoration: none;
