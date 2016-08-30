@@ -29,13 +29,13 @@ var Checkbox = BaseComponent.extend({
 
 
         var boxOutline = document.createElement('span');
-         (0, _dom.addClass)(boxOutline, this._CssClasses.BOX_OUTLINE);
+        addClass(boxOutline, this._CssClasses.BOX_OUTLINE);
 
          var tickContainer = document.createElement('span');
-         (0, _dom.addClass)(tickContainer, this._CssClasses.FOCUS_HELPER);
+        addClass(tickContainer, this._CssClasses.FOCUS_HELPER);
 
          var tickOutline = document.createElement('span');
-         (0, _dom.addClass)(tickOutline, this._CssClasses.TICK_OUTLINE);
+        addClass(tickOutline, this._CssClasses.TICK_OUTLINE);
 
          boxOutline.appendChild(tickOutline);
          this.element.appendChild(tickContainer);
