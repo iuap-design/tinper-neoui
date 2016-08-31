@@ -158,14 +158,12 @@ $pearl-xs-size: 24px;
     &:after {
       background-color: $pearl-disabled-line-bg;
     }
-
     .u-step-pearl-number, .u-step-pearl-icon {
       color: $pearl-disabled-color;
       background-color: $pearl-disabled-bg;
       border-color: $pearl-disabled-border-color;
     }
   }
-
   &.error {
     &:before {
       background-color: $pearl-error-line-bg;
