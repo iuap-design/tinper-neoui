@@ -34,11 +34,11 @@ $pearl-disabled-bg: $pearl-bg;
 $pearl-disabled-line-bg: $pearl-line-bg;
 $pearl-disabled-border-color: $pearl-disabled-bg;
 
-$pearl-title-margin-top: 0.5em;
+$u-step-title-margin-top: 0.5em;
 
-$pearl-title-font-size: 16px;
-$pearl-number-font-size: 18px;
-$pearl-icon-font-size: $pearl-number-font-size;
+$u-step-title-font-size: 16px;
+$u-step-number-font-size: 18px;
+$u-step-icon-font-size: $u-step-number-font-size;
 $pearl-size: 36px;
 
 
@@ -58,21 +58,197 @@ $pearl-xs-icon-font-size: $pearl-xs-title-font-size;
 $pearl-xs-number-font-size: 12px;
 $pearl-xs-size: 24px;
 
+/*基础u-steps样式*/
+.u-steps {
+  margin-bottom: 22px;
+  &.row {
+    display: block;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
 
+.u-step {
+  position: relative;
+  padding: 12px 20px;
+  margin: 0;
+  font-size: inherit;
+  color: #a3afb7;
+  vertical-align: top;
+  background-color: #f3f7f9;
+  border-radius: 0;
+}
+
+.u-step-icon {
+  float: left;
+  margin-right: .5em;
+  font-size: 20px;
+}
+
+.u-step-number {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  line-height: 40px;
+  color: #fff;
+  text-align: center;
+  background: #e4eaec;
+  border-radius: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  ~ .u-step-desc {
+    min-height: 40px;
+    margin-left: 50px;
+  }
+}
+
+.u-step-title {
+  margin-bottom: 0;
+  font-size: 20px;
+  color: #526069;
+}
+
+.u-step-desc {
+  text-align: left;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.u-steps-vertical .u-step {
+  display: block;
+  padding: 18px 20px;
+  &[class*=col-] {
+    float: none;
+    width: 100%;
+  }
+}
+
+.u-step {
+  &.current {
+    color: #fff;
+    background-color: #3f51b5;
+    .u-step-title {
+      color: #fff;
+    }
+    .u-step-number {
+      color: #3f51b5;
+      background-color: #fff;
+    }
+  }
+  &.disabled {
+    color: #ccd5db;
+    pointer-events: none;
+    cursor: auto;
+    .u-step-title {
+      color: #ccd5db;
+    }
+    .u-step-number {
+      background-color: #ccd5db;
+    }
+  }
+  &.error {
+    color: #fff;
+    background-color: #f96868;
+    .u-step-title {
+      color: #fff;
+    }
+    .u-step-number {
+      color: #f96868;
+      background-color: #fff;
+    }
+  }
+  &.done {
+    color: #fff;
+    background-color: #46be8a;
+    .u-step-title {
+      color: #fff;
+    }
+    .u-step-number {
+      color: #46be8a;
+      background-color: #fff;
+    }
+  }
+}
+
+.u-steps-lg {
+  .u-step {
+    padding: 20px 20px;
+    font-size: 16px;
+  }
+  .u-step-icon, .u-step-title {
+    font-size: 22px;
+  }
+  .u-step-number {
+    width: 46px;
+    height: 46px;
+    font-size: 28px;
+    line-height: 46px;
+    ~ .u-step-desc {
+      min-height: 46px;
+      margin-left: 56px;
+    }
+  }
+}
+
+.u-steps-sm {
+  .u-step {
+    font-size: 12px;
+  }
+  .u-step-icon, .u-step-title {
+    font-size: 18px;
+  }
+  .u-step-number {
+    width: 30px;
+    height: 30px;
+    font-size: 24px;
+    line-height: 30px;
+    ~ .u-step-desc {
+      min-height: 30px;
+      margin-left: 40px;
+    }
+  }
+}
+
+.u-steps-xs {
+  .u-step {
+    font-size: 10px;
+  }
+  .u-step-icon, .u-step-title {
+    font-size: 16px;
+  }
+  .u-step-number {
+    width: 24px;
+    height: 24px;
+    font-size: 20px;
+    line-height: 24px;
+    ~ .u-step-desc {
+      min-height: 24px;
+      margin-left: 34px;
+    }
+  }
+}
 // Component: pearls
 // ========================================================================
-.u-steps {
+.u-pearls {
   &.row {
     display: block;
   }
+
   margin-bottom: $pearls-margin-bottom;
 }
 
-.u-step-pearl {
+.u-pearl {
   position: relative;
   padding: 0;
   margin: 0;
   text-align: center;
+  background-color: inherit;
 
   &:before,
   &:after {
@@ -98,9 +274,12 @@ $pearl-xs-size: 24px;
     display: none !important;
   }
 }
+.u-pearl.done,.u-pearl.current{
+  color: inherit;
+  background-color: inherit;
+}
 
-
-.u-step-pearl-number, .u-step-pearl-icon {
+.u-pearl .u-step-number, .u-pearl .u-step-icon {
   position: relative;
   z-index: 1;
   display: inline-block;
@@ -113,36 +292,44 @@ $pearl-xs-size: 24px;
   background: $pearl-bg;
   border-radius: 50%;
   border: $pearl-border-size solid $pearl-border-color;
+  top:0;
+  left:0;
+  -webkit-transform: inherit;
+  transform: inherit;
 }
 
-.u-step-pearl-number {
-  font-size: $pearl-number-font-size;
+.u-pearl .u-step-number {
+  font-size: $u-step-number-font-size;
 }
 
-.u-step-pearl-icon {
-  font-size: $pearl-icon-font-size;
+.u-pearl .u-step-icon {
+  font-size: $u-step-icon-font-size;
+  float: none;
 }
-
-.u-step-pearl-title {
-  margin-top: $pearl-title-margin-top;
+.u-pearl .u-step-desc{
+  margin-left:0;
+}
+.u-pearl .u-step-desc .u-step-title {
+  margin-top: $u-step-title-margin-top;
   display: block;
-  font-size: $pearl-title-font-size;
+  font-size: $u-step-title-font-size;
   color: $subtitle-color;
   margin-bottom: 0;
-
+  text-align: center;
   //.text-truncate();
 }
 
 
 // State Modifier
 // ========================================================================
-.u-step-pearl {
+.u-pearl {
   &.current {
     &:before,
     &:after {
       background-color: $pearl-current-line-bg;
     }
-    .u-step-pearl-number, .u-step-pearl-icon {
+
+    .u-step-number, .u-step-icon {
       color: $pearl-current-color;
       background-color: $pearl-current-bg;
       border-color: $pearl-current-border-color;
@@ -158,12 +345,14 @@ $pearl-xs-size: 24px;
     &:after {
       background-color: $pearl-disabled-line-bg;
     }
-    .u-step-pearl-number, .u-step-pearl-icon {
+
+    .u-step-number, .u-step-icon {
       color: $pearl-disabled-color;
       background-color: $pearl-disabled-bg;
       border-color: $pearl-disabled-border-color;
     }
   }
+
   &.error {
     &:before {
       background-color: $pearl-error-line-bg;
@@ -173,7 +362,7 @@ $pearl-xs-size: 24px;
       background-color: $pearl-line-bg;
     }
 
-    .u-step-pearl-number, .u-step-pearl-icon {
+    .u-step-number, .u-step-icon {
       color: $pearl-error-color;
       background-color: $pearl-error-bg;
       border-color: $pearl-error-border-color;
@@ -186,7 +375,7 @@ $pearl-xs-size: 24px;
       background-color: $pearl-done-line-bg;
     }
 
-    .u-step-pearl-number, .u-step-pearl-icon {
+    .u-step-number, .u-step-icon {
       color: $pearl-done-color;
       background-color: $pearl-done-bg;
       border-color: $pearl-done-border-color;
@@ -197,8 +386,8 @@ $pearl-xs-size: 24px;
 // Size Modifier
 // ========================================================================
 
-.u-steps-lg {
-  .u-step-pearl {
+.u-pearls-lg {
+  .u-step {
     &:before,
     &:after {
       top: ($pearl-lg-size/2);
@@ -224,8 +413,8 @@ $pearl-xs-size: 24px;
   }
 }
 
-.u-steps-sm {
-  .u-step-pearl {
+.u-pearls-sm {
+  .u-step {
     &:before,
     &:after {
       top: ($pearl-sm-size/2);
@@ -251,8 +440,8 @@ $pearl-xs-size: 24px;
   }
 }
 
-.u-steps-xs {
-  .u-step-pearl {
+.u-pearls-xs {
+  .u-step {
     &:before,
     &:after {
       top: ($pearl-xs-size/2);
@@ -275,191 +464,6 @@ $pearl-xs-size: 24px;
 
     &-icon {
       font-size: $pearl-xs-icon-font-size;
-    }
-  }
-}
-.u-steps {
-  margin-bottom: 22px;
-  &.row {
-    display: block;
-    margin-right: 0;
-    margin-left: 0;
-  }
-}
-
-/*.u-step {
-  position: relative;
-  padding: 12px 20px;
-  margin: 0;
-  font-size: inherit;
-  color: #a3afb7;
-  vertical-align: top;
-  background-color: #f3f7f9;
-  border-radius: 0;
-}*/
-.u-step {//公共子类
-  position: relative;
-  margin: 0;
-}
-.u-step-normal{//标准step样式
-  padding: 12px 20px;
-  font-size: inherit;
-  color: #a3afb7;
-  vertical-align: top;
-  background-color: #f3f7f9;
-  border-radius: 0;
-}
-.u-step-normal-icon {
-  float: left;
-  margin-right: .5em;
-  font-size: 20px;
-}
-
-.u-step-number{//公共u-step-number样式
-  color: #fff;
-  text-align: center;
-  border-radius: 50%;
-}
-.u-step-normal-number{//标准u-step-number样式
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
-  line-height: 40px;
-  background: #e4eaec;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  ~ .u-step-normal-desc {
-     min-height: 40px;
-     margin-left: 50px;
-  }
-}
-
-.u-step-normal-title {
-  margin-bottom: 0;
-  font-size: 20px;
-  color: #526069;
-}
-
-.u-step-normal-desc {
-  text-align: left;
-  p {
-    margin-bottom: 0;
-  }
-}
-
-.u-steps-vertical .u-step {
-  display: block;
-  padding: 18px 20px;
-  &[class*=col-] {
-    float: none;
-    width: 100%;
-  }
-}
-
-.u-step-normal {
-  &.current {
-    color: #fff;
-    background-color: #3f51b5;
-    .u-step-normal-title {
-      color: #fff;
-    }
-    .u-step-normal-number {
-      color: #3f51b5;
-      background-color: #fff;
-    }
-  }
-  &.disabled {
-    color: #ccd5db;
-    pointer-events: none;
-    cursor: auto;
-    .u-step-normal-title {
-      color: #ccd5db;
-    }
-    .u-step-normal-number {
-      background-color: #ccd5db;
-    }
-  }
-  &.error {
-    color: #fff;
-    background-color: #f96868;
-    .u-step-normal-title {
-      color: #fff;
-    }
-    .u-step-normal-number {
-      color: #f96868;
-      background-color: #fff;
-    }
-  }
-  &.done {
-    color: #fff;
-    background-color: #46be8a;
-    .u-step-normal-title {
-      color: #fff;
-    }
-    .u-step-normal-number {
-      color: #46be8a;
-      background-color: #fff;
-    }
-  }
-}
-
-.u-steps-lg {
-  .u-step-normal {
-    padding: 20px 20px;
-    font-size: 16px;
-  }
-  .u-step-normal-icon, .u-step-normal-title {
-    font-size: 22px;
-  }
-  .u-step-normal-number {
-    width: 46px;
-    height: 46px;
-    font-size: 28px;
-    line-height: 46px;
-    ~ .u-step-normal-desc {
-      min-height: 46px;
-      margin-left: 56px;
-    }
-  }
-}
-
-.u-steps-sm {
-  .u-step-normal {
-    font-size: 12px;
-  }
-  .u-step-normal-icon, .u-step-normal-title {
-    font-size: 18px;
-  }
-  .u-step-normal-number {
-    width: 30px;
-    height: 30px;
-    font-size: 24px;
-    line-height: 30px;
-    ~ .u-step-normal-desc {
-      min-height: 30px;
-      margin-left: 40px;
-    }
-  }
-}
-
-.u-steps-xs {
-  .u-step-normal {
-    font-size: 10px;
-  }
-  .u-step-normal-icon, .u-step-normal-title {
-    font-size: 16px;
-  }
-  .u-step-normal-number {
-    width: 24px;
-    height: 24px;
-    font-size: 20px;
-    line-height: 24px;
-    ~ .u-step-normal-desc {
-      min-height: 24px;
-      margin-left: 34px;
     }
   }
 }
