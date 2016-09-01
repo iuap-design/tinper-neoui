@@ -219,7 +219,7 @@
     font-size: 26px;
     line-height: $layout-drawer-button-desktop-size + 2;
     font-family: Helvetica, Arial, sans-serif;
-    margin: 10px 12px;
+    margin: $layout-drawer-button-desktop-margin-top 12px;
     top: 0;
     left: 0;
     color: $layout-header-text-color;
@@ -236,9 +236,16 @@
       }
     }
 
+    .uf {
+      font-size: 26px;
+    }
     @media screen and (max-width: $layout-screen-size-threshold) {
       margin: 4px;
       color: rgba(0, 0, 0, 0.5);
+      height: $layout-drawer-button-mobile-size;
+      width: $layout-drawer-button-mobile-size;
+      line-height: $layout-drawer-button-mobile-size + 2;
+      margin: $layout-drawer-button-mobile-margin-top 12px;
     }
 
     @media screen and (min-width: $layout-screen-size-threshold + 1px) {
@@ -249,6 +256,7 @@
       .u-navlayout-no-desktop-drawer-button & {
         display: none;
       }
+
     }
 
     .u-navlayout-no-drawer-button & {

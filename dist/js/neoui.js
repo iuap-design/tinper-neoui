@@ -13107,7 +13107,7 @@ $.fn.bootstrapWizard.defaults = {
 	    if (_env.env.isIE8 || _env.env.isIE9 || _env.env.isFF) {
 	        // this._dateContent.removeChild(this.contentPage);
 	        var pages = this._dateContent.querySelectorAll('.u-date-content-page');
-	        for (i = 0; i < pages.length; i++) {
+	        for (var i = 0; i < pages.length; i++) {
 	            this._dateContent.removeChild(pages[i]);
 	        }
 	        this.contentPage = newPage;
@@ -13124,7 +13124,7 @@ $.fn.bootstrapWizard.defaults = {
 	            newPage.removeEventListener('webkitTransitionEnd', cleanup);
 	            // this._dateContent.removeChild(this.contentPage);
 	            var pages = this._dateContent.querySelectorAll('.u-date-content-page');
-	            for (i = 0; i < pages.length; i++) {
+	            for (var i = 0; i < pages.length; i++) {
 	                this._dateContent.removeChild(pages[i]);
 	            }
 	            this.contentPage = newPage;
@@ -13159,7 +13159,7 @@ $.fn.bootstrapWizard.defaults = {
 	    this._dateContent.appendChild(newPage);
 	    if (_env.env.isIE8 || _env.env.isIE9 || _env.env.isFF) {
 	        var pages = this._dateContent.querySelectorAll('.u-date-content-page');
-	        for (i = 0; i < pages.length; i++) {
+	        for (var i = 0; i < pages.length; i++) {
 	            this._dateContent.removeChild(pages[i]);
 	        }
 	        // this._dateContent.removeChild(this.contentPage);
@@ -13172,7 +13172,7 @@ $.fn.bootstrapWizard.defaults = {
 	            newPage.removeEventListener('webkitTransitionEnd', cleanup);
 	            // this._dateContent.removeChild(this.contentPage);
 	            var pages = this._dateContent.querySelectorAll('.u-date-content-page');
-	            for (i = 0; i < pages.length; i++) {
+	            for (var i = 0; i < pages.length; i++) {
 	                this._dateContent.removeChild(pages[i]);
 	            }
 	            this.contentPage = newPage;
@@ -13260,7 +13260,7 @@ $.fn.bootstrapWizard.defaults = {
 	    });*/
 
 	    yearDiv = yearPage.querySelector('.u-date-content-panel');
-	    for (i = 0; i < 12; i++) {
+	    for (var i = 0; i < 12; i++) {
 
 	        cell = (0, _dom.makeDOM)('<div class="u-date-content-year-cell">' + (this.startYear + i) + '</div>');
 	        new _ripple.URipple(cell);
@@ -13349,7 +13349,7 @@ $.fn.bootstrapWizard.defaults = {
 	    });*/
 
 	    cells = monthPage.querySelectorAll('.u-date-content-year-cell');
-	    for (i = 0; i < cells.length; i++) {
+	    for (var i = 0; i < cells.length; i++) {
 	        if (_month - 1 == i) {
 	            (0, _dom.addClass)(cells[i], 'current');
 	        }
@@ -13464,7 +13464,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	    weekSpans = datePage.querySelectorAll('.u-date-week span');
 
-	    for (i = 0; i < 7; i++) {
+	    for (var i = 0; i < 7; i++) {
 	        weekSpans[i].innerHTML = _dateUtils.date._dateLocale[language].weekdaysMin[i];
 	    }
 	    dateDiv = datePage.querySelector('.u-date-content-panel');
