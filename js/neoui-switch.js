@@ -33,11 +33,11 @@ var Switch = BaseComponent.extend({
 
 		var thumb = document.createElement('div');
 		addClass(thumb, this._CssClasses.THUMB);
-
-		var focusHelper = document.createElement('span');
+		/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
+		/*var focusHelper = document.createElement('span');
 		addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
 
-		thumb.appendChild(focusHelper);
+		thumb.appendChild(focusHelper);*/
 
 		this.element.appendChild(track);
 		this.element.appendChild(thumb);

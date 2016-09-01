@@ -33,7 +33,7 @@
   & .u-navmenu-link {
     display: block;
     flex-shrink: 0;
-    padding: 16px $layout-header-desktop-indent;
+    padding: 11px 30px;
     margin: 0;
     color: $layout-drawer-navigation-color;
 
@@ -52,7 +52,7 @@
     &-current {
         background-color: $layout-drawer-navigation-link-active-background;
         color: $layout-drawer-navigation-link-active-color;
-        font-weight: bold;  
+        font-weight: bold;
     }
 
     & .uf-caretdown {
@@ -93,14 +93,14 @@
   }
 
   & .u-navmenu-sub .u-navmenu-link {
-    padding-left: 40px; 
+    padding-left: 40px;
   }
 
   &.u-navmenu-horizontal .u-navmenu-link-open + .u-navmenu-sub{
     max-height: 0;
   }
 
-} 
+}
 
 .u-navlayout-toolbar li{
     list-style: none;
@@ -148,25 +148,25 @@
     width:100%;
 }
 .menuAnimal{
-     transition:All 0.4s ease-in-out;    
-     -webkit-transition:All 0.4s ease-in-out;    
-     -moz-transition:All 0.4s ease-in-out;    
+     transition:All 0.4s ease-in-out;
+     -webkit-transition:All 0.4s ease-in-out;
+     -moz-transition:All 0.4s ease-in-out;
      -o-transition:All 0.4s ease-in-out;
 }
 
 
-.showAnimal:hover {    
-    transform:rotate(90deg);    
-    -webkit-transform:rotate(90deg);    
-    -moz-transform:rotate(90deg);    
-    -o-transform:rotate(90deg);    
+.showAnimal:hover {
+    transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
     -ms-transform:rotate(90deg);
  }
-.hideAnimal:hover {    
-    transform:rotate(-90deg);    
-    -webkit-transform:rotate(-90deg);    
-    -moz-transform:rotate(-90deg);    
-    -o-transform:rotate(-90deg);    
+.hideAnimal:hover {
+    transform:rotate(-90deg);
+    -webkit-transform:rotate(-90deg);
+    -moz-transform:rotate(-90deg);
+    -o-transform:rotate(-90deg);
     -ms-transform:rotate(-90deg);
  }
  .u-navlayout-header .u-navlayout-toolbar li a {
@@ -224,7 +224,7 @@
     padding-right: 0;
 }
 .u-menu-container.is-visible .u-menu-item{
-    border-radius: 4px;
+    // border-radius: 4px;
     color: #7C7171;
     width: 100%;
 }

@@ -4154,24 +4154,7 @@ $.fn.bootstrapWizard.defaults = {
 
 })(jQuery);
 
-/** 
- * neoui v4.1.2
- * UI Framework Used For Enterprise.
- * author : yonyou FED
- * homepage : https://github.com/iuap-design/neoui#readme
- * bugs : https://github.com/iuap-design/neoui/issues
- **/ 
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else {
-		var a = factory();
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
-})(this, function() {
-return /******/ (function(modules) { // webpackBootstrap
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -4425,7 +4408,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	//Neoui import
 	(0, _extend.extend)(ex, window.u || {});
-
+	window.u = ex;
 	exports.u = ex;
 
 /***/ },
@@ -7249,7 +7232,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        (0, _dom.addClass)(tickOutline, this._CssClasses.TICK_OUTLINE);
 
 	        boxOutline.appendChild(tickOutline);
-
 	        this.element.appendChild(tickContainer);
 	        this.element.appendChild(boxOutline);
 
@@ -7280,9 +7262,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        //this.element.addEventListener('mouseup', this.boundElementMouseUp);
 	        if (!(0, _dom.hasClass)(this.element, 'only-style')) {
 	            (0, _event.on)(this.element, 'click', function (e) {
-	                if (!this._inputElement.disabled) {
-	                    this.toggle();
-	                    (0, _event.stopEvent)(e);
+	                if (e.target.nodeName != 'INPUT') {
+	                    if (!this._inputElement.disabled) {
+	                        this.toggle();
+	                        (0, _event.stopEvent)(e);
+	                    }
 	                }
 	            }.bind(this));
 	        }
@@ -7747,9 +7731,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                }
 	            }
 	            /*根据多选区域div的高度调整input的高度*/
-	            var h = this._combo_name_par.offsetHeight;
-	            if (h < 25) h = 25;
-	            this._input.style.height = h + 'px';
+	            /*实际上input的高度并不需要调整*/
+	            /*var h = this._combo_name_par.offsetHeight;
+	            if(h < 25){
+	                h = 25;
+	                this._input.style.height = h + 'px';
+	            }*/
 	        } else {
 	            for (var i = 0; i < lis.length; i++) {
 	                if (this.value == this.comboDatas[i].value) {
@@ -8975,7 +8962,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	dialogMode.prototype.close = function () {
 		if (this.contentDom) {
 			this.contentDom.style.display = 'none';
-			this.contentDomParent.appendChild(this.contentDom);
+			this.contentDomParent && this.contentDomParent.appendChild(this.contentDom);
 		}
 		document.body.removeChild(this.templateDom);
 		document.body.removeChild(this.overlayDiv);
@@ -10086,7 +10073,8 @@ return /******/ (function(modules) { // webpackBootstrap
 					// manually specify position.
 				} else if ((0, _dom.hasClass)(this.element, 'u-menu-bottom-right')) {
 					// Position below the "for" element, aligned to its right.
-					this._container.style.right = forRect.right - rect.right + 'px';
+					this._container.style.left = this.for_element.offsetLeft + this.for_element.offsetWidth - this.element.offsetWidth + 'px';
+					// this._container.style.right = (forRect.right - rect.right) + 'px';
 					this._container.style.top = this.for_element.offsetTop + this.for_element.offsetHeight + 'px';
 				} else if ((0, _dom.hasClass)(this.element, 'u-menu-top-left')) {
 					// Position above the "for" element, aligned to its left.
@@ -10454,14 +10442,14 @@ return /******/ (function(modules) { // webpackBootstrap
 		var closeBtn = msgDom.querySelector('.u-msg-close');
 		//new Button({el:closeBtn});
 		var closeFun = function closeFun() {
-			u.removeClass(msgDom, "active");
+			(0, _dom.removeClass)(msgDom, "active");
 			setTimeout(function () {
 				try {
 					document.body.removeChild(msgDom);
 				} catch (e) {}
 			}, 500);
 		};
-		u.on(closeBtn, 'click', closeFun);
+		(0, _event.on)(closeBtn, 'click', closeFun);
 		document.body.appendChild(msgDom);
 
 		if (showSeconds > 0) {
@@ -11844,11 +11832,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			var thumb = document.createElement('div');
 			(0, _dom.addClass)(thumb, this._CssClasses.THUMB);
-
-			var focusHelper = document.createElement('span');
-			(0, _dom.addClass)(focusHelper, this._CssClasses.FOCUS_HELPER);
-
-			thumb.appendChild(focusHelper);
+			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
+			/*var focusHelper = document.createElement('span');
+	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
+	  		thumb.appendChild(focusHelper);*/
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);
@@ -12582,7 +12569,8 @@ return /******/ (function(modules) { // webpackBootstrap
 		"integer": /^-?\d+$/,
 		"float": /^-?\d+(\.\d+)?$/,
 		"zipCode": /^[0-9]{6}$/,
-		"phone": /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/,
+		// "phone": /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/,
+		"phone": /^1[3|4|5|7|8]\d{9}$/,
 		"landline": /^(0[0-9]{2,3}\-)?([2-9][0-9]{6,7})+(\-[0-9]{1,4})?$/,
 		"email": /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
 		"url": /^(\w+:\/\/)?\w+(\.\w+)+.*$/,
@@ -13058,11 +13046,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    //new UText(this._element);
 	    this._input = this._element.querySelector("input");
 
-	    if (_env.env.isMobile) {
-	        // setTimeout(function(){
-	        //     self._input.setAttribute('readonly','readonly');
-	        // },1000);
-	    }
+	    // if(env.isMobile){
+	    //     // setTimeout(function(){
+	    //     //     self._input.setAttribute('readonly','readonly');
+	    //     // },1000);
+	    // }
 
 	    setTimeout(function () {
 	        self._input.setAttribute('readonly', 'readonly');
@@ -13070,7 +13058,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    (0, _event.on)(this._input, 'focus', function (e) {
 	        // 用来关闭键盘
-	        if (_env.env.isMobile) this.blur();
+	        /*if(env.isMobile)
+	            this.blur();*/
 	        self._inputFocus = true;
 	        if (self.isShow !== true) {
 	            self.show(e);
@@ -13118,7 +13107,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (_env.env.isIE8 || _env.env.isIE9 || _env.env.isFF) {
 	        // this._dateContent.removeChild(this.contentPage);
 	        var pages = this._dateContent.querySelectorAll('.u-date-content-page');
-	        for (i = 0; i < pages.length; i++) {
+	        for (var i = 0; i < pages.length; i++) {
 	            this._dateContent.removeChild(pages[i]);
 	        }
 	        this.contentPage = newPage;
@@ -13135,7 +13124,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            newPage.removeEventListener('webkitTransitionEnd', cleanup);
 	            // this._dateContent.removeChild(this.contentPage);
 	            var pages = this._dateContent.querySelectorAll('.u-date-content-page');
-	            for (i = 0; i < pages.length; i++) {
+	            for (var i = 0; i < pages.length; i++) {
 	                this._dateContent.removeChild(pages[i]);
 	            }
 	            this.contentPage = newPage;
@@ -13170,7 +13159,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this._dateContent.appendChild(newPage);
 	    if (_env.env.isIE8 || _env.env.isIE9 || _env.env.isFF) {
 	        var pages = this._dateContent.querySelectorAll('.u-date-content-page');
-	        for (i = 0; i < pages.length; i++) {
+	        for (var i = 0; i < pages.length; i++) {
 	            this._dateContent.removeChild(pages[i]);
 	        }
 	        // this._dateContent.removeChild(this.contentPage);
@@ -13183,7 +13172,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            newPage.removeEventListener('webkitTransitionEnd', cleanup);
 	            // this._dateContent.removeChild(this.contentPage);
 	            var pages = this._dateContent.querySelectorAll('.u-date-content-page');
-	            for (i = 0; i < pages.length; i++) {
+	            for (var i = 0; i < pages.length; i++) {
 	                this._dateContent.removeChild(pages[i]);
 	            }
 	            this.contentPage = newPage;
@@ -13261,17 +13250,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	     on(this._headerMonth, 'click', function(e){
+	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });    
-	     on(this._headerTime, 'click', function(e){
+	      on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
 
 	    yearDiv = yearPage.querySelector('.u-date-content-panel');
-	    for (i = 0; i < 12; i++) {
+	    for (var i = 0; i < 12; i++) {
 
 	        cell = (0, _dom.makeDOM)('<div class="u-date-content-year-cell">' + (this.startYear + i) + '</div>');
 	        new _ripple.URipple(cell);
@@ -13350,17 +13339,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	     on(this._headerMonth, 'click', function(e){
+	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });    
-	     on(this._headerTime, 'click', function(e){
+	      on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
 
 	    cells = monthPage.querySelectorAll('.u-date-content-year-cell');
-	    for (i = 0; i < cells.length; i++) {
+	    for (var i = 0; i < cells.length; i++) {
 	        if (_month - 1 == i) {
 	            (0, _dom.addClass)(cells[i], 'current');
 	        }
@@ -13475,7 +13464,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    weekSpans = datePage.querySelectorAll('.u-date-week span');
 
-	    for (i = 0; i < 7; i++) {
+	    for (var i = 0; i < 7; i++) {
 	        weekSpans[i].innerHTML = _dateUtils.date._dateLocale[language].weekdaysMin[i];
 	    }
 	    dateDiv = datePage.querySelector('.u-date-content-panel');
@@ -14010,10 +13999,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var self = this;
 	    if (!this._panel) {
 	        this._panel = (0, _dom.makeDOM)(dateTimePickerTemplateArr.join(""));
-	        if (_env.env.isMobile) {
-	            (0, _dom.removeClass)(this._panel, 'u-date-panel');
-	            (0, _dom.addClass)(this._panel, 'u-date-panel-mobile');
-	        }
+	        /*if(env.isMobile){
+	            removeClass(this._panel,'u-date-panel')
+	            addClass(this._panel,'u-date-panel-mobile');
+	        }*/
 	        this._dateNav = this._panel.querySelector('.u-date-nav');
 	        if (this.type === 'date' && !_env.env.isMobile) {
 	            this._dateNav.style.display = 'none';
@@ -14091,12 +14080,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    (0, _event.on)(window, 'resize', function () {
 	        self._response();
 	    });
-	    if (_env.env.isMobile) {
-	        this.overlayDiv = (0, _dom.makeModal)(this._panel);
-	        (0, _event.on)(this.overlayDiv, 'click', function () {
+	    /*if(env.isMobile){
+	        this.overlayDiv = makeModal(this._panel);
+	        on(this.overlayDiv, 'click', function(){
 	            self.onCancel();
-	        });
-	    }
+	        })
+	    }*/
 	    (0, _dom.addClass)(this._panel, 'is-visible');
 	    if (!_env.env.isMobile) {
 	        if (this.options.showFix) {
@@ -16247,6 +16236,4 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.YearMonth = YearMonth;
 
 /***/ }
-/******/ ])
-});
-;
+/******/ ]);

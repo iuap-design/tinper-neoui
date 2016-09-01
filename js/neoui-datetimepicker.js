@@ -29,11 +29,11 @@ DateTimePicker.fn.init = function(){
     //new UText(this._element);
     this._input = this._element.querySelector("input");
     
-    if(env.isMobile){
-        // setTimeout(function(){
-        //     self._input.setAttribute('readonly','readonly');
-        // },1000);
-    }
+    // if(env.isMobile){
+    //     // setTimeout(function(){
+    //     //     self._input.setAttribute('readonly','readonly');
+    //     // },1000);
+    // }
 
     setTimeout(function(){
         self._input.setAttribute('readonly','readonly');
@@ -41,8 +41,8 @@ DateTimePicker.fn.init = function(){
    
     on(this._input, 'focus', function(e){
         // 用来关闭键盘
-        if(env.isMobile)
-            this.blur();
+        /*if(env.isMobile)
+            this.blur();*/
         self._inputFocus = true;
         if (self.isShow !== true){
             self.show(e);
@@ -93,7 +93,7 @@ DateTimePicker.fn._carousel = function(newPage, direction){
     if(env.isIE8 || env.isIE9 || env.isFF){
         // this._dateContent.removeChild(this.contentPage);
         var pages = this._dateContent.querySelectorAll('.u-date-content-page');
-        for (i = 0; i < pages.length; i++){
+        for (var i = 0; i < pages.length; i++){
             this._dateContent.removeChild(pages[i])
         }
         this.contentPage = newPage;
@@ -110,7 +110,7 @@ DateTimePicker.fn._carousel = function(newPage, direction){
             newPage.removeEventListener('webkitTransitionEnd', cleanup);
             // this._dateContent.removeChild(this.contentPage);
             var pages = this._dateContent.querySelectorAll('.u-date-content-page');
-            for (i = 0; i < pages.length; i++){
+            for (var i = 0; i < pages.length; i++){
                 this._dateContent.removeChild(pages[i])
             }
             this.contentPage = newPage;
@@ -146,7 +146,7 @@ DateTimePicker.fn._zoomIn = function(newPage){
     this._dateContent.appendChild(newPage);
     if(env.isIE8 || env.isIE9 || env.isFF){
         var pages = this._dateContent.querySelectorAll('.u-date-content-page');
-        for (i = 0; i < pages.length; i++){
+        for (var i = 0; i < pages.length; i++){
             this._dateContent.removeChild(pages[i])
         }
         // this._dateContent.removeChild(this.contentPage);
@@ -159,7 +159,7 @@ DateTimePicker.fn._zoomIn = function(newPage){
             newPage.removeEventListener('webkitTransitionEnd', cleanup);
             // this._dateContent.removeChild(this.contentPage);
             var pages = this._dateContent.querySelectorAll('.u-date-content-page');
-            for (i = 0; i < pages.length; i++){
+            for (var i = 0; i < pages.length; i++){
                 this._dateContent.removeChild(pages[i])
             }
             this.contentPage = newPage;
@@ -242,7 +242,7 @@ DateTimePicker.fn._fillYear = function(type){
     });*/
 
     yearDiv = yearPage.querySelector('.u-date-content-panel');
-    for(i = 0; i < 12; i++){
+    for(var i = 0; i < 12; i++){
 
         cell = makeDOM('<div class="u-date-content-year-cell">'+ (this.startYear + i) +'</div>');
         new URipple(cell);
@@ -339,7 +339,7 @@ DateTimePicker.fn._fillMonth = function(){
     });*/
 
     cells = monthPage.querySelectorAll('.u-date-content-year-cell');
-    for (i = 0; i < cells.length; i++){
+    for (var i = 0; i < cells.length; i++){
         if (_month - 1 == i){
             addClass(cells[i],'current');
         }
@@ -449,7 +449,7 @@ DateTimePicker.fn._fillDate = function(type){
 
     weekSpans = datePage.querySelectorAll('.u-date-week span');
 
-    for(i=0; i< 7; i++){
+    for(var i=0; i< 7; i++){
         weekSpans[i].innerHTML = udate._dateLocale[language].weekdaysMin[i];
     }
     dateDiv = datePage.querySelector('.u-date-content-panel');
@@ -1019,10 +1019,10 @@ DateTimePicker.fn.show = function(evt){
     var self = this;
     if (!this._panel){
         this._panel = makeDOM(dateTimePickerTemplateArr.join(""));
-        if(env.isMobile){
+        /*if(env.isMobile){
             removeClass(this._panel,'u-date-panel')
             addClass(this._panel,'u-date-panel-mobile');
-        }
+        }*/
         this._dateNav = this._panel.querySelector('.u-date-nav');
         if (this.type === 'date' && !env.isMobile){
            this._dateNav.style.display = 'none';
@@ -1103,12 +1103,12 @@ DateTimePicker.fn.show = function(evt){
     on(window, 'resize', function(){
         self._response();
     });
-    if(env.isMobile){
+    /*if(env.isMobile){
         this.overlayDiv = makeModal(this._panel);
         on(this.overlayDiv, 'click', function(){
             self.onCancel();
         })
-    }
+    }*/
     addClass(this._panel, 'is-visible');
     if(!env.isMobile){
         if(this.options.showFix){
