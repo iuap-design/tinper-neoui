@@ -137,4 +137,11 @@
   position: absolute;
   bottom: 2px;
   left: 4px;
+  height:25px;
+  overflow:hidden;
+  float:left;
+}
+
+.u-combo-overwidth:after{
+  content:'...'
 }
