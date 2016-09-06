@@ -1024,9 +1024,9 @@ DateTimePicker.fn.show = function(evt){
             addClass(this._panel,'u-date-panel-mobile');
         }*/
         this._dateNav = this._panel.querySelector('.u-date-nav');
-        if (this.type === 'date' && !env.isMobile){
-           this._dateNav.style.display = 'none';
-        }
+        // if (this.type === 'date' && !env.isMobile){
+        //    this._dateNav.style.display = 'none';
+        // }
         this._dateContent = this._panel.querySelector('.u-date-content');
         if(this.type == 'datetime'){
             /*if(env.isMobile){
