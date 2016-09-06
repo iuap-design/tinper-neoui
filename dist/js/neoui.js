@@ -10035,7 +10035,17 @@ $.fn.bootstrapWizard.defaults = {
 				forEl = document.getElementById(forElId);
 				if (forEl) {
 					this.for_element = forEl;
-					(0, _event.on)(forEl, 'click', this._handleForClick.bind(this));
+					var El = this.element;
+					console.log(this.for_element.getAttribute('data-event'));
+					if (this.for_element.getAttribute('data-event') == 'hover') {
+						(0, _event.on)(forEl, 'mouseover', this._handleForHover.bind(this));
+						(0, _event.on)(El, 'mouseover', this._handleForElHover.bind(this));
+						(0, _event.on)(forEl.parentElement, 'mouseout', this._handleForMouseout.bind(this));
+						(0, _event.on)(El, 'mouseout', this._handleForElMouseout.bind(this));
+					} else {
+						(0, _event.on)(forEl, 'click', this._handleForClick.bind(this));
+					}
+
 					(0, _event.on)(forEl, 'keydown', this._handleForKeyboardEvent.bind(this));
 				}
 			}
@@ -10081,6 +10091,60 @@ $.fn.bootstrapWizard.defaults = {
 
 			(0, _dom.addClass)(container, 'is-upgraded');
 		},
+		_handleForElHover: function _handleForElHover(evt) {
+			this.hoverFlag = false;
+		},
+		_handleForElMouseout: function _handleForElMouseout(evt) {
+			var self = this;
+			this.hoverFlag = true;
+			window.setTimeout(function () {
+				if (self.hoverFlag) {
+					self.toggle(evt, 'out');
+				}
+			}, 100);
+		},
+		_handleForMouseout: function _handleForMouseout(evt) {
+			var self = this;
+			this.hoverFlag = true;
+			window.setTimeout(function () {
+				if (self.hoverFlag) {
+					self.toggle(evt, 'out');
+				}
+			}, 100);
+		},
+		_handleForHover: function _handleForHover(evt) {
+
+			if (this.element && this.for_element) {
+				this.hoverFlag = false;
+				var rect = this.for_element.getBoundingClientRect();
+				var forRect = this.for_element.parentElement.getBoundingClientRect();
+
+				if ((0, _dom.hasClass)(this.element, 'u-menu-unaligned')) {
+					// Do not position the menu automatically. Requires the developer to
+					// manually specify position.
+				} else if ((0, _dom.hasClass)(this.element, 'u-menu-bottom-right')) {
+					// Position below the "for" element, aligned to its right.
+					this._container.style.left = this.for_element.offsetLeft + this.for_element.offsetWidth - this.element.offsetWidth + 'px';
+					// this._container.style.right = (forRect.right - rect.right) + 'px';
+					this._container.style.top = this.for_element.offsetTop + this.for_element.offsetHeight + 'px';
+				} else if ((0, _dom.hasClass)(this.element, 'u-menu-top-left')) {
+					// Position above the "for" element, aligned to its left.
+					this._container.style.left = this.for_element.offsetLeft + 'px';
+					this._container.style.bottom = forRect.bottom - rect.top + 'px';
+				} else if ((0, _dom.hasClass)(this.element, 'u-menu-top-right')) {
+					// Position above the "for" element, aligned to its right.
+					this._container.style.right = forRect.right - rect.right + 'px';
+					this._container.style.bottom = forRect.bottom - rect.top + 'px';
+				} else {
+					// Default: position below the "for" element, aligned to its left.
+					this._container.style.left = this.for_element.offsetLeft + 'px';
+					this._container.style.top = this.for_element.offsetTop + this.for_element.offsetHeight + 'px';
+				}
+			}
+
+			this.toggle(evt, 'over');
+		},
+
 		_handleForClick: function _handleForClick(evt) {
 			if (this.element && this.for_element) {
 				var rect = this.for_element.getBoundingClientRect();
@@ -10377,11 +10441,18 @@ $.fn.bootstrapWizard.defaults = {
 	  *
 	  * @public
 	  */
-		toggle: function toggle(evt) {
-			if ((0, _dom.hasClass)(this._container, 'is-visible')) {
-				this.hide();
+		toggle: function toggle(evt, tab) {
+
+			if (typeof tab == 'undefined') {
+				if ((0, _dom.hasClass)(this._container, 'is-visible')) {} else {
+					this.show(evt);
+				}
 			} else {
-				this.show(evt);
+				if (tab == 'over') {
+					this.show(evt);
+				} else {
+					this.hide();
+				}
 			}
 		}
 	});
@@ -11853,7 +11924,7 @@ $.fn.bootstrapWizard.defaults = {
 			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
 			/*var focusHelper = document.createElement('span');
 	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
-	  		thumb.appendChild(focusHelper);*/
+	  	thumb.appendChild(focusHelper);*/
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);
@@ -13268,11 +13339,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });    
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -13357,11 +13428,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });    
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
