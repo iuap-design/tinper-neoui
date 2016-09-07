@@ -19,6 +19,8 @@ var Combo = BaseComponent.extend({
             this.mutilSelect = true
         }
 
+
+
         this.onlySelect = this.options['onlySelect'] || false;
         if(this.mutilSelect)
             this.onlySelect = true;
@@ -35,6 +37,14 @@ var Combo = BaseComponent.extend({
 
         this.setComboData(datas);
         this._input = this.element.querySelector("input");
+
+
+        if(this.mutilSelect){
+            this.nowWidth = 0;
+            this.fullWidth = this._input.offsetWidth;
+        }
+
+
         if(this.onlySelect || env.isMobile){
             setTimeout(function(){
                 self._input.setAttribute('readonly','readonly');
@@ -247,7 +257,7 @@ var Combo = BaseComponent.extend({
             
             if(flag == '+'){
                 var nameDiv= makeDOM('<div class="u-combo-name" key="' + val + '">'+ name + /*<a href="javascript:void(0)" class="remove">x</a>*/'</div>');
-                var parNameDiv=makeDOM('<div class="u-combo-name-par" style="position:absolute"></div>');
+                var parNameDiv=makeDOM('<div class="u-combo-name-par" style="position:absolute;width:' + this.fullWidth + 'px;"></div>');
                 /*var _a = nameDiv.querySelector('a');
                 on(_a, 'click', function(){
                     var values = self.value.split(',');
@@ -262,11 +272,22 @@ var Combo = BaseComponent.extend({
                     this._combo_name_par=parNameDiv;
                 }
                 this._combo_name_par.appendChild(nameDiv);
+                var nWidth = nameDiv.offsetWidth + 20; 
+                this.nowWidth += nWidth;
+                if(this.nowWidth > this.fullWidth){
+                    this.nowWidth -= nWidth;
+                    this._combo_name_par.removeChild(nameDiv);
+                    addClass(this._combo_name_par,'u-combo-overwidth');
+                }
             }else{
                 if(this._combo_name_par){
                     var comboDiv = this._combo_name_par.querySelector('[key="'+val+'"]');
-                    if(comboDiv)
+                    if(comboDiv){
+                        var nWidth = comboDiv.offsetWidth + 20;
                         this._combo_name_par.removeChild(comboDiv);
+                        this.nowWidth -= nWidth;
+                        removeClass(this._combo_name_par,'u-combo-overwidth');
+                    }
                 }
             }
             

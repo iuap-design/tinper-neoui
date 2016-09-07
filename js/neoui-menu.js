@@ -50,7 +50,17 @@ var Menu = BaseComponent.extend({
 			forEl = document.getElementById(forElId);
 			if(forEl) {
 				this.for_element = forEl;
-				on(forEl, 'click', this._handleForClick.bind(this));
+				var El = this.element;
+				console.log(this.for_element.getAttribute('data-event'))
+				if (this.for_element.getAttribute('data-event') == 'hover') {
+					on(forEl, 'mouseover', this._handleForHover.bind(this));
+					on(El, 'mouseover', this._handleForElHover.bind(this));
+					on(forEl.parentElement, 'mouseout', this._handleForMouseout.bind(this));
+					on(El, 'mouseout', this._handleForElMouseout.bind(this));
+				} else {
+					on(forEl, 'click', this._handleForClick.bind(this));
+				}
+
 				on(forEl, 'keydown', this._handleForKeyboardEvent.bind(this))
 			}
 		}
@@ -97,6 +107,61 @@ var Menu = BaseComponent.extend({
 		addClass(container, 'is-upgraded');
 
 	},
+	_handleForElHover: function (evt) {
+		this.hoverFlag = false;
+	},
+	_handleForElMouseout: function (evt) {
+		var self = this;
+		this.hoverFlag = true;
+		window.setTimeout(function () {
+		 if(self.hoverFlag){
+			 self.toggle(evt, 'out');
+		 }
+	 },100);
+	},
+	_handleForMouseout: function (evt) {
+		var self = this;
+		this.hoverFlag = true;
+		window.setTimeout(function () {
+		 if(self.hoverFlag){
+			 self.toggle(evt, 'out');
+		 }
+	 },100);
+
+	},
+    _handleForHover: function (evt) {
+
+		if(this.element && this.for_element) {
+			this.hoverFlag = false;
+			var rect = this.for_element.getBoundingClientRect();
+			var forRect = this.for_element.parentElement.getBoundingClientRect();
+
+			if(hasClass(this.element, 'u-menu-unaligned')) {
+				// Do not position the menu automatically. Requires the developer to
+				// manually specify position.
+			} else if(hasClass(this.element, 'u-menu-bottom-right')) {
+				// Position below the "for" element, aligned to its right.
+				this._container.style.left = this.for_element.offsetLeft+this.for_element.offsetWidth-this.element.offsetWidth + 'px';
+				// this._container.style.right = (forRect.right - rect.right) + 'px';
+				this._container.style.top = this.for_element.offsetTop + this.for_element.offsetHeight + 'px';
+			} else if(hasClass(this.element, 'u-menu-top-left')) {
+				// Position above the "for" element, aligned to its left.
+				this._container.style.left = this.for_element.offsetLeft + 'px';
+				this._container.style.bottom = (forRect.bottom - rect.top) + 'px';
+			} else if(hasClass(this.element, 'u-menu-top-right')) {
+				// Position above the "for" element, aligned to its right.
+				this._container.style.right = (forRect.right - rect.right) + 'px';
+				this._container.style.bottom = (forRect.bottom - rect.top) + 'px';
+			} else {
+				// Default: position below the "for" element, aligned to its left.
+				this._container.style.left = this.for_element.offsetLeft + 'px';
+				this._container.style.top = this.for_element.offsetTop + this.for_element.offsetHeight + 'px';
+			}
+		}
+
+		this.toggle(evt, 'over');
+	},
+
 	_handleForClick: function(evt) {
 		if(this.element && this.for_element) {
 			var rect = this.for_element.getBoundingClientRect();
@@ -399,12 +464,22 @@ var Menu = BaseComponent.extend({
 	 *
 	 * @public
 	 */
-	toggle: function(evt) {
-		if(hasClass(this._container, 'is-visible')) {
-			this.hide();
+	toggle: function(evt, tab) {
+
+		if (typeof tab == 'undefined') {
+			if(hasClass(this._container, 'is-visible')) {
+
+			} else {
+				this.show(evt);
+			}
 		} else {
-			this.show(evt);
+			if (tab == 'over') {
+				this.show(evt)
+			} else {
+				this.hide();
+			}
 		}
+
 	}
 });
 

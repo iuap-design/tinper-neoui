@@ -7471,6 +7471,12 @@ $.fn.bootstrapWizard.defaults = {
 
 	        this.setComboData(datas);
 	        this._input = this.element.querySelector("input");
+
+	        if (this.mutilSelect) {
+	            this.nowWidth = 0;
+	            this.fullWidth = this._input.offsetWidth;
+	        }
+
 	        if (this.onlySelect || _env.env.isMobile) {
 	            setTimeout(function () {
 	                self._input.setAttribute('readonly', 'readonly');
@@ -7686,7 +7692,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	            if (flag == '+') {
 	                var nameDiv = (0, _dom.makeDOM)('<div class="u-combo-name" key="' + val + '">' + name + /*<a href="javascript:void(0)" class="remove">x</a>*/'</div>');
-	                var parNameDiv = (0, _dom.makeDOM)('<div class="u-combo-name-par" style="position:absolute"></div>');
+	                var parNameDiv = (0, _dom.makeDOM)('<div class="u-combo-name-par" style="position:absolute;width:' + this.fullWidth + 'px;"></div>');
 	                /*var _a = nameDiv.querySelector('a');
 	                on(_a, 'click', function(){
 	                    var values = self.value.split(',');
@@ -7701,10 +7707,22 @@ $.fn.bootstrapWizard.defaults = {
 	                    this._combo_name_par = parNameDiv;
 	                }
 	                this._combo_name_par.appendChild(nameDiv);
+	                var nWidth = nameDiv.offsetWidth + 20;
+	                this.nowWidth += nWidth;
+	                if (this.nowWidth > this.fullWidth) {
+	                    this.nowWidth -= nWidth;
+	                    this._combo_name_par.removeChild(nameDiv);
+	                    (0, _dom.addClass)(this._combo_name_par, 'u-combo-overwidth');
+	                }
 	            } else {
 	                if (this._combo_name_par) {
 	                    var comboDiv = this._combo_name_par.querySelector('[key="' + val + '"]');
-	                    if (comboDiv) this._combo_name_par.removeChild(comboDiv);
+	                    if (comboDiv) {
+	                        var nWidth = comboDiv.offsetWidth + 20;
+	                        this._combo_name_par.removeChild(comboDiv);
+	                        this.nowWidth -= nWidth;
+	                        (0, _dom.removeClass)(this._combo_name_par, 'u-combo-overwidth');
+	                    }
 	                }
 	            }
 
@@ -10017,7 +10035,17 @@ $.fn.bootstrapWizard.defaults = {
 				forEl = document.getElementById(forElId);
 				if (forEl) {
 					this.for_element = forEl;
-					(0, _event.on)(forEl, 'click', this._handleForClick.bind(this));
+					var El = this.element;
+					console.log(this.for_element.getAttribute('data-event'));
+					if (this.for_element.getAttribute('data-event') == 'hover') {
+						(0, _event.on)(forEl, 'mouseover', this._handleForHover.bind(this));
+						(0, _event.on)(El, 'mouseover', this._handleForElHover.bind(this));
+						(0, _event.on)(forEl.parentElement, 'mouseout', this._handleForMouseout.bind(this));
+						(0, _event.on)(El, 'mouseout', this._handleForElMouseout.bind(this));
+					} else {
+						(0, _event.on)(forEl, 'click', this._handleForClick.bind(this));
+					}
+
 					(0, _event.on)(forEl, 'keydown', this._handleForKeyboardEvent.bind(this));
 				}
 			}
@@ -10063,6 +10091,60 @@ $.fn.bootstrapWizard.defaults = {
 
 			(0, _dom.addClass)(container, 'is-upgraded');
 		},
+		_handleForElHover: function _handleForElHover(evt) {
+			this.hoverFlag = false;
+		},
+		_handleForElMouseout: function _handleForElMouseout(evt) {
+			var self = this;
+			this.hoverFlag = true;
+			window.setTimeout(function () {
+				if (self.hoverFlag) {
+					self.toggle(evt, 'out');
+				}
+			}, 100);
+		},
+		_handleForMouseout: function _handleForMouseout(evt) {
+			var self = this;
+			this.hoverFlag = true;
+			window.setTimeout(function () {
+				if (self.hoverFlag) {
+					self.toggle(evt, 'out');
+				}
+			}, 100);
+		},
+		_handleForHover: function _handleForHover(evt) {
+
+			if (this.element && this.for_element) {
+				this.hoverFlag = false;
+				var rect = this.for_element.getBoundingClientRect();
+				var forRect = this.for_element.parentElement.getBoundingClientRect();
+
+				if ((0, _dom.hasClass)(this.element, 'u-menu-unaligned')) {
+					// Do not position the menu automatically. Requires the developer to
+					// manually specify position.
+				} else if ((0, _dom.hasClass)(this.element, 'u-menu-bottom-right')) {
+					// Position below the "for" element, aligned to its right.
+					this._container.style.left = this.for_element.offsetLeft + this.for_element.offsetWidth - this.element.offsetWidth + 'px';
+					// this._container.style.right = (forRect.right - rect.right) + 'px';
+					this._container.style.top = this.for_element.offsetTop + this.for_element.offsetHeight + 'px';
+				} else if ((0, _dom.hasClass)(this.element, 'u-menu-top-left')) {
+					// Position above the "for" element, aligned to its left.
+					this._container.style.left = this.for_element.offsetLeft + 'px';
+					this._container.style.bottom = forRect.bottom - rect.top + 'px';
+				} else if ((0, _dom.hasClass)(this.element, 'u-menu-top-right')) {
+					// Position above the "for" element, aligned to its right.
+					this._container.style.right = forRect.right - rect.right + 'px';
+					this._container.style.bottom = forRect.bottom - rect.top + 'px';
+				} else {
+					// Default: position below the "for" element, aligned to its left.
+					this._container.style.left = this.for_element.offsetLeft + 'px';
+					this._container.style.top = this.for_element.offsetTop + this.for_element.offsetHeight + 'px';
+				}
+			}
+
+			this.toggle(evt, 'over');
+		},
+
 		_handleForClick: function _handleForClick(evt) {
 			if (this.element && this.for_element) {
 				var rect = this.for_element.getBoundingClientRect();
@@ -10359,11 +10441,18 @@ $.fn.bootstrapWizard.defaults = {
 	  *
 	  * @public
 	  */
-		toggle: function toggle(evt) {
-			if ((0, _dom.hasClass)(this._container, 'is-visible')) {
-				this.hide();
+		toggle: function toggle(evt, tab) {
+
+			if (typeof tab == 'undefined') {
+				if ((0, _dom.hasClass)(this._container, 'is-visible')) {} else {
+					this.show(evt);
+				}
 			} else {
-				this.show(evt);
+				if (tab == 'over') {
+					this.show(evt);
+				} else {
+					this.hide();
+				}
 			}
 		}
 	});
@@ -11835,7 +11924,7 @@ $.fn.bootstrapWizard.defaults = {
 			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
 			/*var focusHelper = document.createElement('span');
 	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
-	  		thumb.appendChild(focusHelper);*/
+	  	thumb.appendChild(focusHelper);*/
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);
@@ -13107,7 +13196,7 @@ $.fn.bootstrapWizard.defaults = {
 	    if (_env.env.isIE8 || _env.env.isIE9 || _env.env.isFF) {
 	        // this._dateContent.removeChild(this.contentPage);
 	        var pages = this._dateContent.querySelectorAll('.u-date-content-page');
-	        for (i = 0; i < pages.length; i++) {
+	        for (var i = 0; i < pages.length; i++) {
 	            this._dateContent.removeChild(pages[i]);
 	        }
 	        this.contentPage = newPage;
@@ -13124,7 +13213,7 @@ $.fn.bootstrapWizard.defaults = {
 	            newPage.removeEventListener('webkitTransitionEnd', cleanup);
 	            // this._dateContent.removeChild(this.contentPage);
 	            var pages = this._dateContent.querySelectorAll('.u-date-content-page');
-	            for (i = 0; i < pages.length; i++) {
+	            for (var i = 0; i < pages.length; i++) {
 	                this._dateContent.removeChild(pages[i]);
 	            }
 	            this.contentPage = newPage;
@@ -13159,7 +13248,7 @@ $.fn.bootstrapWizard.defaults = {
 	    this._dateContent.appendChild(newPage);
 	    if (_env.env.isIE8 || _env.env.isIE9 || _env.env.isFF) {
 	        var pages = this._dateContent.querySelectorAll('.u-date-content-page');
-	        for (i = 0; i < pages.length; i++) {
+	        for (var i = 0; i < pages.length; i++) {
 	            this._dateContent.removeChild(pages[i]);
 	        }
 	        // this._dateContent.removeChild(this.contentPage);
@@ -13172,7 +13261,7 @@ $.fn.bootstrapWizard.defaults = {
 	            newPage.removeEventListener('webkitTransitionEnd', cleanup);
 	            // this._dateContent.removeChild(this.contentPage);
 	            var pages = this._dateContent.querySelectorAll('.u-date-content-page');
-	            for (i = 0; i < pages.length; i++) {
+	            for (var i = 0; i < pages.length; i++) {
 	                this._dateContent.removeChild(pages[i]);
 	            }
 	            this.contentPage = newPage;
@@ -13250,17 +13339,17 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });    
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
 
 	    yearDiv = yearPage.querySelector('.u-date-content-panel');
-	    for (i = 0; i < 12; i++) {
+	    for (var i = 0; i < 12; i++) {
 
 	        cell = (0, _dom.makeDOM)('<div class="u-date-content-year-cell">' + (this.startYear + i) + '</div>');
 	        new _ripple.URipple(cell);
@@ -13339,17 +13428,17 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });    
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
 
 	    cells = monthPage.querySelectorAll('.u-date-content-year-cell');
-	    for (i = 0; i < cells.length; i++) {
+	    for (var i = 0; i < cells.length; i++) {
 	        if (_month - 1 == i) {
 	            (0, _dom.addClass)(cells[i], 'current');
 	        }
@@ -13464,7 +13553,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	    weekSpans = datePage.querySelectorAll('.u-date-week span');
 
-	    for (i = 0; i < 7; i++) {
+	    for (var i = 0; i < 7; i++) {
 	        weekSpans[i].innerHTML = _dateUtils.date._dateLocale[language].weekdaysMin[i];
 	    }
 	    dateDiv = datePage.querySelector('.u-date-content-panel');
@@ -14004,9 +14093,9 @@ $.fn.bootstrapWizard.defaults = {
 	            addClass(this._panel,'u-date-panel-mobile');
 	        }*/
 	        this._dateNav = this._panel.querySelector('.u-date-nav');
-	        if (this.type === 'date' && !_env.env.isMobile) {
-	            this._dateNav.style.display = 'none';
-	        }
+	        // if (this.type === 'date' && !env.isMobile){
+	        //    this._dateNav.style.display = 'none';
+	        // }
 	        this._dateContent = this._panel.querySelector('.u-date-content');
 	        if (this.type == 'datetime') {
 	            /*if(env.isMobile){
