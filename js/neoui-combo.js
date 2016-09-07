@@ -35,8 +35,9 @@ var Combo = BaseComponent.extend({
             datas.push({value: option.value, name: option.text});
         }
 
-        this.setComboData(datas);
         this._input = this.element.querySelector("input");
+        this.setComboData(datas);
+        
 
 
         if(this.mutilSelect){
@@ -53,6 +54,8 @@ var Combo = BaseComponent.extend({
         }else{
             on(this._input, 'blur', function(e){
                 var v = this.value;
+                if(!v)
+                    return;
                 /*校验数值是否存在于datasource的name中*/
                 for(var i = 0; i< self.comboDatas.length;i++){
                     if(v == self.comboDatas[i].name){
@@ -213,6 +216,9 @@ var Combo = BaseComponent.extend({
         if(!(this.initialComboData && this.initialComboData.length)){
             this.initialComboData = this.comboDatas;
         }
+
+        this.value = '';
+        this._input.value = '';
 
         //若没有下拉的ul,新生成一个ul结构.
         if (!this._ul) {
@@ -375,6 +381,10 @@ var Combo = BaseComponent.extend({
         }
     },
 
+    emptyValue: function() {
+        this.value = '';
+        this._input.value = '';
+    },
     /**
      * 设置显示名
      * @param name
