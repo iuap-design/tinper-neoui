@@ -188,6 +188,7 @@ var dialogMode = function(options) {
 	this.width = options['width'];
 	this.height = options['height'];
 	this.lazyShow = options['lazyShow'];
+	this.closeFun = options['closeFun'];
 	this.create();
 
 	this.resizeFun = function() {
@@ -268,6 +269,7 @@ dialogMode.prototype.hide = function() {
 }
 
 dialogMode.prototype.close = function() {
+	this.closeFun && this.closeFun.call(this);
 	if(this.contentDom) {
 		this.contentDom.style.display = 'none';
 		this.contentDomParent && this.contentDomParent.appendChild(this.contentDom);
@@ -276,6 +278,8 @@ dialogMode.prototype.close = function() {
 	document.body.removeChild(this.overlayDiv);
 	this.isClosed = true;
 }
+
+u.dialogMode = dialogMode;
 
 var dialog = function(options) {
 	return new dialogMode(options);
