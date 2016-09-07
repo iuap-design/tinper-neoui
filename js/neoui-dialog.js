@@ -156,6 +156,45 @@ var confirmDialog = function(options) {
 var threeBtnDialog = function() {
 
 }
+/**
+ * 禁用鼠标滚轮事件
+ * @return {[type]} [description]
+ */
+var disable_mouseWheel = function () {
+	if (document.addEventListener) {
+	  document.addEventListener('DOMMouseScroll', scrollFunc, false);
+	}
+	window.onmousewheel = document.onmousewheel = scrollFunc;
+};
+/**
+ * 事件禁用
+ * @param  {[type]} evt [description]
+ * @return {[type]}     [description]
+ */
+var scrollFunc = function (evt) {
+  evt = evt || window.event;
+    if(evt.preventDefault) {
+    // Firefox
+      evt.preventDefault();
+      evt.stopPropagation();
+    } else {
+      // IE
+      evt.cancelBubble=true;
+      evt.returnValue = false;
+  }
+  return false;
+};
+
+/**
+ * 开启鼠标滚轮事件
+ * @return {[type]} [description]
+ */
+var enable_mouseWheel = function () {
+	if (document.removeEventListener) {
+	  document.removeEventListener('DOMMouseScroll', scrollFunc, false);
+	}
+	window.onmousewheel = document.onmousewheel = null;
+};
 
 /**
  * dialog.js
@@ -260,11 +299,13 @@ dialogMode.prototype.show = function() {
 	}
 	this.templateDom.style.display = 'block';
 	this.overlayDiv.style.display = 'block';
+	disable_mouseWheel();
 }
 
 dialogMode.prototype.hide = function() {
 	this.templateDom.style.display = 'none';
 	this.overlayDiv.style.display = 'none';
+	enable_mouseWheel();
 }
 
 dialogMode.prototype.close = function() {
@@ -275,6 +316,7 @@ dialogMode.prototype.close = function() {
 	document.body.removeChild(this.templateDom);
 	document.body.removeChild(this.overlayDiv);
 	this.isClosed = true;
+		enable_mouseWheel();
 }
 
 var dialog = function(options) {
