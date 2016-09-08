@@ -355,6 +355,7 @@ var dialogWizard = function(options) {
 	var wizard = function() {}
 	wizard.prototype.show = function() {
 		dialogs[curIndex].show();
+		disable_mouseWheel();
 	}
 	wizard.prototype.next = function() {
 		dialogs[curIndex].hide();
@@ -368,6 +369,7 @@ var dialogWizard = function(options) {
 		for(var i = 0; i < len; i++) {
 			dialogs[i].close();
 		}
+		enable_mouseWheel();
 	}
 	return new wizard();
 }
