@@ -57,10 +57,11 @@ var messageDialog = function(options) {
 	on(closeBtn, 'click', function() {
 		document.body.removeChild(msgDom);
 		document.body.removeChild(overlayDiv);
+		enable_mouseWheel();
 	})
 	var overlayDiv = makeModal(msgDom);
 	document.body.appendChild(msgDom);
-
+    disable_mouseWheel();
 	this.resizeFun = function() {
 		var cDom = msgDom.querySelector('.u-msg-content');
 		if(!cDom) return;
@@ -119,16 +120,19 @@ var confirmDialog = function(options) {
 		if(onOk() !== false) {
 			document.body.removeChild(msgDom);
 			document.body.removeChild(overlayDiv);
+			enable_mouseWheel();
 		}
 	})
 	on(cancelBtn, 'click', function() {
 		if(onCancel() !== false) {
 			document.body.removeChild(msgDom);
 			document.body.removeChild(overlayDiv);
+			enable_mouseWheel();
 		}
 	})
 	var overlayDiv = makeModal(msgDom);
 	document.body.appendChild(msgDom);
+	disable_mouseWheel();
 
 	this.resizeFun = function() {
 		var cDom = msgDom.querySelector('.u-msg-content');
@@ -291,6 +295,7 @@ dialogMode.prototype.create = function() {
 		this.overlayDiv.style.display = 'none';
 	}
 	document.body.appendChild(this.templateDom);
+	disable_mouseWheel();
 	this.isClosed = false;
 };
 
