@@ -111,6 +111,7 @@ var Text = BaseComponent.extend({
      */
     _blur : function (event) {
         removeClass(this.element, this._CssClasses.IS_FOCUSED);
+        this.trigger('u.text.blur');
     },
     /**
      * Handle reset event from out side.

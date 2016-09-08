@@ -7469,8 +7469,8 @@ $.fn.bootstrapWizard.defaults = {
 	            datas.push({ value: option.value, name: option.text });
 	        }
 
-	        this.setComboData(datas);
 	        this._input = this.element.querySelector("input");
+	        this.setComboData(datas);
 
 	        if (this.mutilSelect) {
 	            this.nowWidth = 0;
@@ -7484,6 +7484,7 @@ $.fn.bootstrapWizard.defaults = {
 	        } else {
 	            (0, _event.on)(this._input, 'blur', function (e) {
 	                var v = this.value;
+	                if (!v) return;
 	                /*校验数值是否存在于datasource的name中*/
 	                for (var i = 0; i < self.comboDatas.length; i++) {
 	                    if (v == self.comboDatas[i].name) {
@@ -7648,6 +7649,9 @@ $.fn.bootstrapWizard.defaults = {
 	            this.initialComboData = this.comboDatas;
 	        }
 
+	        this.value = '';
+	        this._input.value = '';
+
 	        //若没有下拉的ul,新生成一个ul结构.
 	        if (!this._ul) {
 	            this._ul = (0, _dom.makeDOM)('<ul class="u-combo-ul"></ul>');
@@ -7805,6 +7809,10 @@ $.fn.bootstrapWizard.defaults = {
 	        }
 	    },
 
+	    emptyValue: function emptyValue() {
+	        this.value = '';
+	        this._input.value = '';
+	    },
 	    /**
 	     * 设置显示名
 	     * @param name
@@ -7959,6 +7967,7 @@ $.fn.bootstrapWizard.defaults = {
 	     */
 	    _blur: function _blur(event) {
 	        (0, _dom.removeClass)(this.element, this._CssClasses.IS_FOCUSED);
+	        this.trigger('u.text.blur');
 	    },
 	    /**
 	     * Handle reset event from out side.
@@ -8900,6 +8909,7 @@ $.fn.bootstrapWizard.defaults = {
 		this.width = options['width'];
 		this.height = options['height'];
 		this.lazyShow = options['lazyShow'];
+		this.closeFun = options['closeFun'];
 		this.create();
 
 		this.resizeFun = function () {
@@ -8978,6 +8988,7 @@ $.fn.bootstrapWizard.defaults = {
 	};
 
 	dialogMode.prototype.close = function () {
+		this.closeFun && this.closeFun.call(this);
 		if (this.contentDom) {
 			this.contentDom.style.display = 'none';
 			this.contentDomParent && this.contentDomParent.appendChild(this.contentDom);
@@ -8986,6 +8997,8 @@ $.fn.bootstrapWizard.defaults = {
 		document.body.removeChild(this.overlayDiv);
 		this.isClosed = true;
 	};
+
+	u.dialogMode = dialogMode;
 
 	var dialog = function dialog(options) {
 		return new dialogMode(options);
@@ -11924,7 +11937,7 @@ $.fn.bootstrapWizard.defaults = {
 			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
 			/*var focusHelper = document.createElement('span');
 	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
-	  	thumb.appendChild(focusHelper);*/
+	  		thumb.appendChild(focusHelper);*/
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);
@@ -13339,11 +13352,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	     on(this._headerMonth, 'click', function(e){
+	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });    
-	     on(this._headerTime, 'click', function(e){
+	      on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -13428,11 +13441,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	     on(this._headerMonth, 'click', function(e){
+	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });    
-	     on(this._headerTime, 'click', function(e){
+	      on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
