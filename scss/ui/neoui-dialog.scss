@@ -117,4 +117,12 @@
   .u-msg-close:hover{
     opacity: .5;
   }
+
+  &.u-iframe-dialog {
+    max-height: inherit;
+    .u-msg-content {
+      padding: 0px;
+      overflow: hidden;
+    }
+  }
 }
