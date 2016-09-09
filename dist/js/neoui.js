@@ -7470,8 +7470,8 @@ $.fn.bootstrapWizard.defaults = {
 	            datas.push({ value: option.value, name: option.text });
 	        }
 
-	        this.setComboData(datas);
 	        this._input = this.element.querySelector("input");
+	        this.setComboData(datas);
 
 	        if (this.mutilSelect) {
 	            this.nowWidth = 0;
@@ -7485,6 +7485,7 @@ $.fn.bootstrapWizard.defaults = {
 	        } else {
 	            (0, _event.on)(this._input, 'blur', function (e) {
 	                var v = this.value;
+	                if (!v) return;
 	                /*校验数值是否存在于datasource的name中*/
 	                for (var i = 0; i < self.comboDatas.length; i++) {
 	                    if (v == self.comboDatas[i].name) {
@@ -7649,6 +7650,9 @@ $.fn.bootstrapWizard.defaults = {
 	            this.initialComboData = this.comboDatas;
 	        }
 
+	        this.value = '';
+	        this._input.value = '';
+
 	        //若没有下拉的ul,新生成一个ul结构.
 	        if (!this._ul) {
 	            this._ul = (0, _dom.makeDOM)('<ul class="u-combo-ul"></ul>');
@@ -7806,6 +7810,10 @@ $.fn.bootstrapWizard.defaults = {
 	        }
 	    },
 
+	    emptyValue: function emptyValue() {
+	        this.value = '';
+	        this._input.value = '';
+	    },
 	    /**
 	     * 设置显示名
 	     * @param name
@@ -7960,6 +7968,7 @@ $.fn.bootstrapWizard.defaults = {
 	     */
 	    _blur: function _blur(event) {
 	        (0, _dom.removeClass)(this.element, this._CssClasses.IS_FOCUSED);
+	        this.trigger('u.text.blur');
 	    },
 	    /**
 	     * Handle reset event from out side.
@@ -8787,10 +8796,11 @@ $.fn.bootstrapWizard.defaults = {
 		(0, _event.on)(closeBtn, 'click', function () {
 			document.body.removeChild(msgDom);
 			document.body.removeChild(overlayDiv);
+			enable_mouseWheel();
 		});
 		var overlayDiv = (0, _dom.makeModal)(msgDom);
 		document.body.appendChild(msgDom);
-
+		disable_mouseWheel();
 		this.resizeFun = function () {
 			var cDom = msgDom.querySelector('.u-msg-content');
 			if (!cDom) return;
@@ -8839,16 +8849,19 @@ $.fn.bootstrapWizard.defaults = {
 			if (onOk() !== false) {
 				document.body.removeChild(msgDom);
 				document.body.removeChild(overlayDiv);
+				enable_mouseWheel();
 			}
 		});
 		(0, _event.on)(cancelBtn, 'click', function () {
 			if (onCancel() !== false) {
 				document.body.removeChild(msgDom);
 				document.body.removeChild(overlayDiv);
+				enable_mouseWheel();
 			}
 		});
 		var overlayDiv = (0, _dom.makeModal)(msgDom);
 		document.body.appendChild(msgDom);
+		disable_mouseWheel();
 
 		this.resizeFun = function () {
 			var cDom = msgDom.querySelector('.u-msg-content');
@@ -8871,6 +8884,45 @@ $.fn.bootstrapWizard.defaults = {
 	 * 三按钮确认框（是 否  取消）
 	 */
 	var threeBtnDialog = function threeBtnDialog() {};
+	/**
+	 * 禁用鼠标滚轮事件
+	 * @return {[type]} [description]
+	 */
+	var disable_mouseWheel = function disable_mouseWheel() {
+		if (document.addEventListener) {
+			document.addEventListener('DOMMouseScroll', scrollFunc, false);
+		}
+		window.onmousewheel = document.onmousewheel = scrollFunc;
+	};
+	/**
+	 * 事件禁用
+	 * @param  {[type]} evt [description]
+	 * @return {[type]}     [description]
+	 */
+	var scrollFunc = function scrollFunc(evt) {
+		evt = evt || window.event;
+		if (evt.preventDefault) {
+			// Firefox
+			evt.preventDefault();
+			evt.stopPropagation();
+		} else {
+			// IE
+			evt.cancelBubble = true;
+			evt.returnValue = false;
+		}
+		return false;
+	};
+
+	/**
+	 * 开启鼠标滚轮事件
+	 * @return {[type]} [description]
+	 */
+	var enable_mouseWheel = function enable_mouseWheel() {
+		if (document.removeEventListener) {
+			document.removeEventListener('DOMMouseScroll', scrollFunc, false);
+		}
+		window.onmousewheel = document.onmousewheel = null;
+	};
 
 	/**
 	 * dialog.js
@@ -8901,6 +8953,7 @@ $.fn.bootstrapWizard.defaults = {
 		this.width = options['width'];
 		this.height = options['height'];
 		this.lazyShow = options['lazyShow'];
+		this.closeFun = options['closeFun'];
 		this.create();
 
 		this.resizeFun = function () {
@@ -8962,6 +9015,7 @@ $.fn.bootstrapWizard.defaults = {
 			this.overlayDiv.style.display = 'none';
 		}
 		document.body.appendChild(this.templateDom);
+		disable_mouseWheel();
 		this.isClosed = false;
 	};
 
@@ -8971,14 +9025,17 @@ $.fn.bootstrapWizard.defaults = {
 		}
 		this.templateDom.style.display = 'block';
 		this.overlayDiv.style.display = 'block';
+		disable_mouseWheel();
 	};
 
 	dialogMode.prototype.hide = function () {
 		this.templateDom.style.display = 'none';
 		this.overlayDiv.style.display = 'none';
+		enable_mouseWheel();
 	};
 
 	dialogMode.prototype.close = function () {
+		this.closeFun && this.closeFun.call(this);
 		if (this.contentDom) {
 			this.contentDom.style.display = 'none';
 			this.contentDomParent && this.contentDomParent.appendChild(this.contentDom);
@@ -8986,7 +9043,10 @@ $.fn.bootstrapWizard.defaults = {
 		document.body.removeChild(this.templateDom);
 		document.body.removeChild(this.overlayDiv);
 		this.isClosed = true;
+		enable_mouseWheel();
 	};
+
+	u.dialogMode = dialogMode;
 
 	var dialog = function dialog(options) {
 		return new dialogMode(options);
@@ -9014,6 +9074,7 @@ $.fn.bootstrapWizard.defaults = {
 		var wizard = function wizard() {};
 		wizard.prototype.show = function () {
 			dialogs[curIndex].show();
+			disable_mouseWheel();
 		};
 		wizard.prototype.next = function () {
 			dialogs[curIndex].hide();
@@ -9027,6 +9088,7 @@ $.fn.bootstrapWizard.defaults = {
 			for (var i = 0; i < len; i++) {
 				dialogs[i].close();
 			}
+			enable_mouseWheel();
 		};
 		return new wizard();
 	};
@@ -12714,7 +12776,7 @@ $.fn.bootstrapWizard.defaults = {
 				if (typeof this.regExp == 'string') this.regExp = eval(this.regExp);
 			} catch (e) {}
 
-			this.notipFlag = this.options['notipFlag']; // 错误信息提示方式是否为tip，默认为true
+			this.notipFlag = this.options['notipFlag']; // 错误信息提示方式是否为tip，默认为false
 			this.hasSuccess = this.options['hasSuccess']; //是否含有正确提示
 
 			this.showFix = this.options['showFix'];
