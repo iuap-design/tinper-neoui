@@ -32,7 +32,7 @@ import {Checkbox} from './neoui-checkbox';
 import {Combo} from './neoui-combo';
 import {Combobox} from './neoui-combobox';
 import {Table} from './neoui-data-table';
-import {messageDialog,confirmDialog,dialogMode,dialog,dialogWizard} from './neoui-dialog';
+import {messageDialog,confirmDialog,dialogMode,dialog,dialogWizard,iframeDialog} from './neoui-dialog';
 import {MDLayout} from './neoui-layout.md';
 import {NavLayout,NavLayoutTab} from './neoui-layout.nav';
 import {showLoader,hideLoader} from './neoui-loader';
@@ -71,6 +71,7 @@ var ex = {
 	dialogMode : dialogMode,
 	dialog : dialog,
 	dialogWizard : dialogWizard,
+	iframeDialog : iframeDialog,
 	Loading : Loading,
 	showLoading : showLoading,
 	hideLoading : hideLoading,

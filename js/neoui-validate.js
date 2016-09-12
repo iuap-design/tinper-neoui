@@ -43,7 +43,7 @@ var Validate = BaseComponent.extend({
 
 		}
 
-		this.notipFlag = this.options['notipFlag']; // 错误信息提示方式是否为tip，默认为true
+		this.notipFlag = this.options['notipFlag']; // 错误信息提示方式是否为tip，默认为false
 		this.hasSuccess = this.options['hasSuccess']; //是否含有正确提示
 
 		this.showFix = this.options['showFix'];

@@ -4290,6 +4290,7 @@ $.fn.bootstrapWizard.defaults = {
 		dialogMode: _neouiDialog.dialogMode,
 		dialog: _neouiDialog.dialog,
 		dialogWizard: _neouiDialog.dialogWizard,
+		iframeDialog: _neouiDialog.iframeDialog,
 		Loading: _neouiLoading.Loading,
 		showLoading: _neouiLoading.showLoading,
 		hideLoading: _neouiLoading.hideLoading,
@@ -6459,7 +6460,8 @@ $.fn.bootstrapWizard.defaults = {
 	            classConstructor: config.comp,
 	            className: config.compAsString || config['compAsString'],
 	            cssClass: config.css || config['css'],
-	            callbacks: []
+	            callbacks: [],
+	            dependencies: config.dependencies || []
 	        };
 	        config.comp.prototype.compType = config.compAsString;
 	        for (var i = 0; i < this.registeredControls.length; i++) {
@@ -6474,9 +6476,36 @@ $.fn.bootstrapWizard.defaults = {
 	        };
 	        this.registeredControls.push(newConfig);
 	    },
+
 	    updateComp: function updateComp(ele) {
+	        this._reorderComps();
 	        for (var n = 0; n < this.registeredControls.length; n++) {
 	            _upgradeDomInternal(this.registeredControls[n].className, null, ele);
+	        }
+	    },
+	    // 后续遍历registeredControls，重新排列
+	    _reorderComps: function _reorderComps() {
+	        var tmpArray = [];
+	        var dictory = {};
+
+	        for (var n = 0; n < this.registeredControls.length; n++) {
+	            dictory[this.registeredControls[n].className] = this.registeredControls[n];
+	        }
+	        for (var n = 0; n < this.registeredControls.length; n++) {
+	            traverse(this.registeredControls[n]);
+	        }
+
+	        this.registeredControls = tmpArray;
+
+	        function traverse(control) {
+	            if (u.inArray(control, tmpArray)) return;
+	            if (control.dependencies.length > 0) {
+	                for (var i = 0, len = control.dependencies.length; i < len; i++) {
+	                    var childControl = dictory[control.dependencies[i]];
+	                    traverse(childControl);
+	                }
+	            }
+	            tmpArray.push(control);
 	        }
 	    }
 	};
@@ -8737,7 +8766,7 @@ $.fn.bootstrapWizard.defaults = {
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.dialogWizard = exports.dialog = exports.dialogMode = exports.confirmDialog = exports.messageDialog = undefined;
+	exports.iframeDialog = exports.dialogWizard = exports.dialog = exports.dialogMode = exports.confirmDialog = exports.messageDialog = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
 
@@ -8795,10 +8824,11 @@ $.fn.bootstrapWizard.defaults = {
 		(0, _event.on)(closeBtn, 'click', function () {
 			document.body.removeChild(msgDom);
 			document.body.removeChild(overlayDiv);
+			enable_mouseWheel();
 		});
 		var overlayDiv = (0, _dom.makeModal)(msgDom);
 		document.body.appendChild(msgDom);
-
+		disable_mouseWheel();
 		this.resizeFun = function () {
 			var cDom = msgDom.querySelector('.u-msg-content');
 			if (!cDom) return;
@@ -8847,16 +8877,19 @@ $.fn.bootstrapWizard.defaults = {
 			if (onOk() !== false) {
 				document.body.removeChild(msgDom);
 				document.body.removeChild(overlayDiv);
+				enable_mouseWheel();
 			}
 		});
 		(0, _event.on)(cancelBtn, 'click', function () {
 			if (onCancel() !== false) {
 				document.body.removeChild(msgDom);
 				document.body.removeChild(overlayDiv);
+				enable_mouseWheel();
 			}
 		});
 		var overlayDiv = (0, _dom.makeModal)(msgDom);
 		document.body.appendChild(msgDom);
+		disable_mouseWheel();
 
 		this.resizeFun = function () {
 			var cDom = msgDom.querySelector('.u-msg-content');
@@ -8879,6 +8912,45 @@ $.fn.bootstrapWizard.defaults = {
 	 * 三按钮确认框（是 否  取消）
 	 */
 	var threeBtnDialog = function threeBtnDialog() {};
+	/**
+	 * 禁用鼠标滚轮事件
+	 * @return {[type]} [description]
+	 */
+	var disable_mouseWheel = function disable_mouseWheel() {
+		if (document.addEventListener) {
+			document.addEventListener('DOMMouseScroll', scrollFunc, false);
+		}
+		window.onmousewheel = document.onmousewheel = scrollFunc;
+	};
+	/**
+	 * 事件禁用
+	 * @param  {[type]} evt [description]
+	 * @return {[type]}     [description]
+	 */
+	var scrollFunc = function scrollFunc(evt) {
+		evt = evt || window.event;
+		if (evt.preventDefault) {
+			// Firefox
+			evt.preventDefault();
+			evt.stopPropagation();
+		} else {
+			// IE
+			evt.cancelBubble = true;
+			evt.returnValue = false;
+		}
+		return false;
+	};
+
+	/**
+	 * 开启鼠标滚轮事件
+	 * @return {[type]} [description]
+	 */
+	var enable_mouseWheel = function enable_mouseWheel() {
+		if (document.removeEventListener) {
+			document.removeEventListener('DOMMouseScroll', scrollFunc, false);
+		}
+		window.onmousewheel = document.onmousewheel = null;
+	};
 
 	/**
 	 * dialog.js
@@ -8971,6 +9043,7 @@ $.fn.bootstrapWizard.defaults = {
 			this.overlayDiv.style.display = 'none';
 		}
 		document.body.appendChild(this.templateDom);
+		disable_mouseWheel();
 		this.isClosed = false;
 	};
 
@@ -8980,11 +9053,13 @@ $.fn.bootstrapWizard.defaults = {
 		}
 		this.templateDom.style.display = 'block';
 		this.overlayDiv.style.display = 'block';
+		disable_mouseWheel();
 	};
 
 	dialogMode.prototype.hide = function () {
 		this.templateDom.style.display = 'none';
 		this.overlayDiv.style.display = 'none';
+		enable_mouseWheel();
 	};
 
 	dialogMode.prototype.close = function () {
@@ -8996,6 +9071,7 @@ $.fn.bootstrapWizard.defaults = {
 		document.body.removeChild(this.templateDom);
 		document.body.removeChild(this.overlayDiv);
 		this.isClosed = true;
+		enable_mouseWheel();
 	};
 
 	u.dialogMode = dialogMode;
@@ -9026,6 +9102,7 @@ $.fn.bootstrapWizard.defaults = {
 		var wizard = function wizard() {};
 		wizard.prototype.show = function () {
 			dialogs[curIndex].show();
+			disable_mouseWheel();
 		};
 		wizard.prototype.next = function () {
 			dialogs[curIndex].hide();
@@ -9039,8 +9116,147 @@ $.fn.bootstrapWizard.defaults = {
 			for (var i = 0; i < len; i++) {
 				dialogs[i].close();
 			}
+			enable_mouseWheel();
 		};
 		return new wizard();
+	};
+
+	/**
+	 * Module : iframeDialog
+	 * Author : wh(wanghaoo@yonyou.com)
+	 * Date	  : 2016-09-8 9:33
+	 */
+	var iframeDialogTemplate = '<div class="u-msg-dialog u-iframe-dialog" style="{width}{height}{top}">' + '{close}' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content">' + '<iframe src="{url}" width = "99%" height ="100%"></iframe>' + '</div>' + '{footer}';
+
+	// '<div class="u-msg-title">' +
+	// '<h4>{title}</h4>' +
+	// '</div>' +
+	// '<div class="u-msg-content">' +
+
+	// '</div>' +
+	// '<div class="u-msg-footer"><button class="u-msg-ok u-button primary raised">{okText}</button><button class="u-msg-cancel u-button">{cancelText}</button></div>' +
+	// '</div>';
+
+	var iframeDialogF = function iframeDialogF(options) {
+
+		var defaultOptions = {
+			hasCloseMenu: true,
+			hasFooter: false,
+			url: '',
+			width: '',
+			height: '',
+			title: '标题',
+			top: '10%',
+			onClose: function onClose() {},
+			onCancel: function onCancel() {},
+			onOk: function onOk() {}
+		};
+
+		options = (0, _extend.extend)(defaultOptions, options);
+		this.id = options['id'];
+		this.template = iframeDialogTemplate;
+		this.hasCloseMenu = options['hasCloseMenu'];
+		this.hasFooter = options['hasFooter'];
+		this.url = options['url'];
+		this.top = options['top'];
+		this.title = options['title'];
+		this.width = options['width'];
+		this.height = options['height'];
+		this.onClose = options['onClose'];
+		this.onOk = options['onOk'];
+		this.onCancel = options['onCancel'];
+		//是否有url，没有url直接跳出
+		if (!this.url) {
+			return;
+		}
+
+		this.create();
+
+		this.resizeFun = function () {
+			// var cDom = this.contentDom.querySelector('.u-msg-content');
+			// cDom.style.height = '';
+			// var wholeHeight = this.templateDom.offsetHeight;
+			// var contentHeight = this.contentDom.offsetHeight;
+			// if(contentHeight > wholeHeight && cDom)
+			// 	cDom.style.height = wholeHeight - (56 + 46) + 'px';
+
+			var wholeHeight = this.templateDom.offsetHeight;
+			var cDom = this.templateDom.querySelector('.u-msg-content');
+			if (this.hasFooter) {
+				cDom.style.height = wholeHeight - (56 + 52) + 'px';
+			} else {
+				cDom.style.height = wholeHeight - 52 + 'px';
+			}
+		}.bind(this);
+
+		this.resizeFun();
+		(0, _event.on)(window, 'resize', this.resizeFun);
+	};
+
+	iframeDialogF.prototype.create = function () {
+		var closeStr = '',
+		    footerStr = '';
+		var oThis = this;
+		if (this.hasCloseMenu) {
+			var closeStr = '<div class="u-msg-close"> <span aria-hidden="true">&times;</span></div>';
+		}
+		if (this.hasFooter) {
+			var footerStr = '<div class="u-msg-footer"><button class="u-msg-ok u-button primary raised">确定</button><button class="u-msg-cancel u-button">取消</button></div>' + '</div>';
+		}
+		var templateStr = this.template.replace('{close}', closeStr);
+		templateStr = templateStr.replace('{url}', this.url);
+		templateStr = templateStr.replace('{title}', this.title);
+		templateStr = templateStr.replace('{footer}', footerStr);
+		templateStr = templateStr.replace('{width}', this.width ? 'width:' + this.width + ';' : '');
+		templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
+		templateStr = templateStr.replace('{top}', this.top ? 'top:' + this.top + ';' : '');
+
+		this.templateDom = (0, _dom.makeDOM)(templateStr);
+		this.overlayDiv = (0, _dom.makeModal)(this.templateDom);
+
+		if (this.hasCloseMenu) {
+			this.closeDiv = this.templateDom.querySelector('.u-msg-close');
+			(0, _event.on)(this.closeDiv, 'click', function () {
+				if (oThis.onClose() !== false) {
+					oThis.close();
+				}
+			});
+		}
+
+		if (this.hasFooter) {
+			var okBtn = this.templateDom.querySelector('.u-msg-ok');
+			var cancelBtn = this.templateDom.querySelector('.u-msg-cancel');
+			var closeBtn = new _neouiButton.Button({
+				el: okBtn
+			});
+			new _neouiButton.Button({
+				el: cancelBtn
+			});
+			(0, _event.on)(okBtn, 'click', function () {
+				if (oThis.onOk() !== false) {
+					oThis.close();
+				}
+			});
+			(0, _event.on)(cancelBtn, 'click', function () {
+				if (oThis.onCancel() !== false) {
+					oThis.close();
+				}
+			});
+		}
+
+		document.body.appendChild(this.templateDom);
+		this.isClosed = false;
+	};
+
+	iframeDialogF.prototype.close = function () {
+
+		document.body.removeChild(this.templateDom);
+		document.body.removeChild(this.overlayDiv);
+		this.isClosed = true;
+	};
+
+	var iframeDialog = function iframeDialog(options) {
+		return new iframeDialogF(options);
 	};
 
 	exports.messageDialog = messageDialog;
@@ -9048,6 +9264,7 @@ $.fn.bootstrapWizard.defaults = {
 	exports.dialogMode = dialogMode;
 	exports.dialog = dialog;
 	exports.dialogWizard = dialogWizard;
+	exports.iframeDialog = iframeDialog;
 
 /***/ },
 /* 22 */
@@ -11937,7 +12154,7 @@ $.fn.bootstrapWizard.defaults = {
 			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
 			/*var focusHelper = document.createElement('span');
 	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
-	  		thumb.appendChild(focusHelper);*/
+	  	thumb.appendChild(focusHelper);*/
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);
@@ -12587,7 +12804,7 @@ $.fn.bootstrapWizard.defaults = {
 				if (typeof this.regExp == 'string') this.regExp = eval(this.regExp);
 			} catch (e) {}
 
-			this.notipFlag = this.options['notipFlag']; // 错误信息提示方式是否为tip，默认为true
+			this.notipFlag = this.options['notipFlag']; // 错误信息提示方式是否为tip，默认为false
 			this.hasSuccess = this.options['hasSuccess']; //是否含有正确提示
 
 			this.showFix = this.options['showFix'];
@@ -13352,11 +13569,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });    
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -13441,11 +13658,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });    
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
