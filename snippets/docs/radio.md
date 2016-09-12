@@ -4,7 +4,7 @@ radio提供了基本的单选框和不同色彩的单选框
 
 replaceExamp
 
-[试一试](http://design.yyuap.com/dist/pages/webIDE/index.html#/demos/ui/combobox)
+[试一试](http://design.yyuap.com/dist/pages/webIDE/index.html#/demos/ui/radio)
 
 # API
 
