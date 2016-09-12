@@ -13,3 +13,5 @@ checkbox提供了基础复选框、不同色彩复选框、图片复选框、个
 # 示例
 
 replaceExamp
+
+[试一试](http://design.yyuap.com/dist/pages/webIDE/index.html#/demos/ui/checkbox)

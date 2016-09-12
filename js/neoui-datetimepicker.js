@@ -2,7 +2,7 @@ import {extend} from 'neoui-sparrow/js/extend';
 import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
 import {env} from 'neoui-sparrow/js/env';
 import {on,off,trigger,stopEvent} from 'neoui-sparrow/js/event';
-import {addClass,removeClass,hasClass,closest,makeDOM,makeModal,showPanelByEle} from 'neoui-sparrow/js/dom';
+import {addClass,removeClass,hasClass,closest,makeDOM,makeModal,showPanelByEle,getElementLeft,getElementTop} from 'neoui-sparrow/js/dom';
 import {core} from 'neoui-sparrow/js/core';
 import {date as udate} from 'neoui-sparrow/js/util/dateUtils';
 import {Validate} from './neoui-validate';
@@ -28,7 +28,7 @@ DateTimePicker.fn.init = function(){
     //this._element.style.display = "inline-table"; // 存在右侧图标，因此修改display
     //new UText(this._element);
     this._input = this._element.querySelector("input");
-    
+
     // if(env.isMobile){
     //     // setTimeout(function(){
     //     //     self._input.setAttribute('readonly','readonly');
@@ -38,7 +38,7 @@ DateTimePicker.fn.init = function(){
     setTimeout(function(){
         self._input.setAttribute('readonly','readonly');
     },1000);
-   
+
     on(this._input, 'focus', function(e){
         // 用来关闭键盘
         /*if(env.isMobile)
@@ -175,7 +175,7 @@ DateTimePicker.fn._zoomIn = function(newPage){
                     removeClass(newPage, 'zoom-in');
             }.bind(this));
     }
-    
+
 };
 
 
@@ -234,7 +234,7 @@ DateTimePicker.fn._fillYear = function(type){
     on(this._headerMonth, 'click', function(e){
         self._fillMonth();
         stopEvent(e)
-    });    
+    });
 
     on(this._headerTime, 'click', function(e){
         self._fillTime();
@@ -331,7 +331,7 @@ DateTimePicker.fn._fillMonth = function(){
     on(this._headerMonth, 'click', function(e){
         self._fillMonth();
         stopEvent(e)
-    });    
+    });
 
     on(this._headerTime, 'click', function(e){
         self._fillTime();
@@ -440,7 +440,7 @@ DateTimePicker.fn._fillDate = function(type){
     on(this._headerMonth, 'click', function(e){
         self._fillMonth();
         stopEvent(e)
-    });    
+    });
 
     on(this._headerTime, 'click', function(e){
         self._fillTime();
@@ -461,7 +461,7 @@ DateTimePicker.fn._fillDate = function(type){
             addClass(cell, 'current');
         }
 
-        
+
         if(tempDate.getFullYear() < this.beginYear || (tempDate.getFullYear() == this.beginYear && tempDate.getMonth() < this.beginMonth)){
             addClass(cell,'u-disabled');
             removeClass(cell,'current');
@@ -571,7 +571,7 @@ DateTimePicker.fn._fillTime = function(type){
     on(this._headerMonth, 'click', function(e){
         self._fillMonth();
         stopEvent(e)
-    });    
+    });
 
     on(this._headerTime, 'click', function(e){
         self._fillTime();
@@ -785,7 +785,7 @@ DateTimePicker.fn._fillTime = function(type){
         this.sec = udate._formats['ss'](tempDate);
         //this.titleHourSpan.innerHTML = this.hours;
         //this.titleMinSpan.innerHTML = this.min;
-        
+
 
 
         on(this.hourDiv,'click',function(e){
@@ -804,7 +804,7 @@ DateTimePicker.fn._fillTime = function(type){
                 this.setHand();
             }
         }.bind(this));
-        
+
         on(this.minDiv,'click',function(e){
             var target = e.target;
             if(hasClass(target,'clockpicker-tick')){
@@ -821,9 +821,9 @@ DateTimePicker.fn._fillTime = function(type){
                 this.setHand();
             }
         }.bind(this));
-        
+
     }
-    
+
     this._zoomIn(timePage);
     if(!env.isIE8)
         this.setHand();
@@ -851,7 +851,7 @@ DateTimePicker.fn.setHandFun = function(x,y,roundBy5,dragging){
     var dialRadius = 100,
     innerRadius = 54,
     outerRadius = 80;
-    
+
     var radian = Math.atan2(x, - y),
         isHours = this.currentView === 'hours',
         unit = Math.PI / (isHours ? 6 : 30),
@@ -860,7 +860,7 @@ DateTimePicker.fn.setHandFun = function(x,y,roundBy5,dragging){
         inner = isHours && z < (outerRadius + innerRadius) / 2,
         radius = inner ? innerRadius : outerRadius,
         value;
-        
+
         if (this.twelvehour) {
             radius = outerRadius;
         }
@@ -905,7 +905,7 @@ DateTimePicker.fn.setHandFun = function(x,y,roundBy5,dragging){
             }
         }
     }
-    
+
     // Set clock hand and others' position
     var w = this._panel.offsetWidth;
         var u = w / 294;
@@ -1064,7 +1064,7 @@ DateTimePicker.fn.show = function(evt){
             self.onOk();
             stopEvent(e)
         });
-            
+
 
         // this.preBtn = makeDOM('<button class="u-date-pre-button u-button flat floating mini">&lt;</button>');
         // this.nextBtn = makeDOM('<button class="u-date-next-button u-button flat floating mini">&gt;</button>');
@@ -1090,11 +1090,11 @@ DateTimePicker.fn.show = function(evt){
         });
         // if(!env.isMobile){
             this._dateContent.appendChild(this.preBtn);
-            this._dateContent.appendChild(this.nextBtn);    
+            this._dateContent.appendChild(this.nextBtn);
         // }
-        
 
-        
+
+
     }
     this.pickerDate = this.date || new Date();
     this._updateDate();
@@ -1125,27 +1125,31 @@ DateTimePicker.fn.show = function(evt){
             //调整left和top
             // this._element.parentNode.appendChild(this._panel);
             this._element.appendChild(this._panel);
-            this._element.style.position = 'relative'; 
+            this._element.style.position = 'relative';
             // this.left = this.element.offsetLeft;
+            //
              this.left = this._input.offsetLeft;
             var inputHeight = this._input.offsetHeight;
             // this.top = this.element.offsetTop + inputHeight;
             this.top = this._input.offsetTop + inputHeight;
 
-            if(this.left + panelWidth > bodyWidth){
-                this.left = bodyWidth - panelWidth;
+            this.abLeft = getElementLeft(this._input);
+            this.abTop = getElementLeft(this._input);
+
+            if(this.abLeft + panelWidth > bodyWidth){
+                this.left = bodyWidth - panelWidth - this.abLeft;
             }
 
-            if((this.top + panelHeight) > bodyHeight){
-                this.top = bodyHeight - panelHeight;
+            if((this.abTop + panelHeight) > bodyHeight){
+                this.top = bodyHeight - panelHeight - this.abTop;
             }
-            
+
 
             this._panel.style.left = this.left + 'px';
             this._panel.style.top = this.top + 'px';
 
         }
-        
+
 
         this._panel.style.marginLeft = '0px';
         var callback = function (e) {
@@ -1164,9 +1168,9 @@ DateTimePicker.fn.show = function(evt){
                 self.onCancel();
             }
         });
-      
+
     }
-    
+
     this.isShow = true;
 };
 
@@ -1179,7 +1183,7 @@ DateTimePicker.fn.onOk = function(){
     this.isShow = false;
     removeClass(this._panel, 'is-visible');
     try{
-        document.body.removeChild(this.overlayDiv);    
+        document.body.removeChild(this.overlayDiv);
     }catch(e){
 
     }
@@ -1216,7 +1220,7 @@ DateTimePicker.fn.setDate = function(value){
         this.date = _date;
         this._input.value = udate.format(this.date,this.format);
     }
-    
+
 };
 /**
  *设置format
@@ -1234,7 +1238,7 @@ DateTimePicker.fn.setStartDate = function(startDate){
         this.beginMonth = this.beginDateObj.getMonth();
         this.beginDate = this.beginDateObj.getDate();
     }
-    
+
 }
 DateTimePicker.fn.setEnable = function(enable){
     if (enable === true || enable === 'true') {
