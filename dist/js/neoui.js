@@ -6460,7 +6460,8 @@ $.fn.bootstrapWizard.defaults = {
 	            classConstructor: config.comp,
 	            className: config.compAsString || config['compAsString'],
 	            cssClass: config.css || config['css'],
-	            callbacks: []
+	            callbacks: [],
+	            dependencies: config.dependencies || []
 	        };
 	        config.comp.prototype.compType = config.compAsString;
 	        for (var i = 0; i < this.registeredControls.length; i++) {
@@ -6475,9 +6476,36 @@ $.fn.bootstrapWizard.defaults = {
 	        };
 	        this.registeredControls.push(newConfig);
 	    },
+
 	    updateComp: function updateComp(ele) {
+	        this._reorderComps();
 	        for (var n = 0; n < this.registeredControls.length; n++) {
 	            _upgradeDomInternal(this.registeredControls[n].className, null, ele);
+	        }
+	    },
+	    // 后续遍历registeredControls，重新排列
+	    _reorderComps: function _reorderComps() {
+	        var tmpArray = [];
+	        var dictory = {};
+
+	        for (var n = 0; n < this.registeredControls.length; n++) {
+	            dictory[this.registeredControls[n].className] = this.registeredControls[n];
+	        }
+	        for (var n = 0; n < this.registeredControls.length; n++) {
+	            traverse(this.registeredControls[n]);
+	        }
+
+	        this.registeredControls = tmpArray;
+
+	        function traverse(control) {
+	            if (u.inArray(control, tmpArray)) return;
+	            if (control.dependencies.length > 0) {
+	                for (var i = 0, len = control.dependencies.length; i < len; i++) {
+	                    var childControl = dictory[control.dependencies[i]];
+	                    traverse(childControl);
+	                }
+	            }
+	            tmpArray.push(control);
 	        }
 	    }
 	};
@@ -12126,7 +12154,7 @@ $.fn.bootstrapWizard.defaults = {
 			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
 			/*var focusHelper = document.createElement('span');
 	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
-	  		thumb.appendChild(focusHelper);*/
+	  	thumb.appendChild(focusHelper);*/
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);
@@ -13541,11 +13569,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });    
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -13630,11 +13658,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });    
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
