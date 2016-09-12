@@ -1,0 +1,409 @@
+// 表单样式  参考bootstarp
+@import "../core/minxin-variables";
+@import "../core/minxin-mixins";
+@mixin before {
+    &:before {
+        display: table;
+        content: " ";
+    }
+}
+
+@mixin after {
+    &:after {
+        display: table;
+        content: " ";
+        clear: both;
+    }
+}
+.u-input-icon-left + .u-form-control {
+    padding-left: 45px;
+}
+.u-input-icon-left label.u-radio {
+    margin-top: 2px;
+    position: inherit;
+    margin-left: -9px;
+}
+.u-input-group .input-group-addon {
+    width: auto;
+    padding: 0 5px;
+}
+.u-form-group-lg .u-form-label {
+    padding-top: 11px;
+    font-size: 18px;
+}
+.u-form-group-lg .u-form-control {
+    height: 46px;
+    padding: 10px 18px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 4px;
+}
+.u-form-group-sm .u-form-label {
+    padding-top: 7px;
+    font-size: 12px;
+}
+.u-form-group-sm .u-form-control {
+    height: 32px;
+    padding: 6px 13px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 2px;
+}
+.u-button-file input[type=file] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    min-width: 100%;
+    min-height: 100%;
+    text-align: 0;
+    cursor: pointer;
+    opacity: 0;
+}
+.u-form-control {
+    height: $form-input-height;
+    width: 100%;
+    border: 1px solid $input-border;
+    padding: 6px $form-input-padding-left;
+    color: $input-color;
+    box-sizing: border-box;
+    font-family: $preferred_font;
+    font-size: 14px;
+    border-radius: 4px;
+    &.round{
+        border-radius: 20px;
+    }
+    &.round{
+        border-color: #62a8ea;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    &:focus {
+        border-color: $input-border-focus;
+        outline: none;
+        &~.fa-search,&~.uf-magnifyingglass {
+            color: $input-border-focus;
+        }
+    }
+    &[readonly],
+    &[disabled] {
+        border-color: $input-border-disabled;
+        background-color: $input-bg-disabled;
+        // border: 0px;
+        // background-color: #FFF;
+        & + .u-form-control-feedback,
+        & + .u-form-control-feedback:hover {
+            color: rgba(0, 0, 0, 0.6);
+        }
+    }
+    &[disabled] {
+        & + .u-form-control-feedback,
+        & + .u-form-control-feedback:hover {
+            cursor: not-allowed;
+        }
+    }
+    &.sm {
+        height: $form-input-height-sm;
+    }
+    &.sw {
+        width: 200px;
+    }
+}
+
+.form-control-static {
+    min-height: 36px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-bottom: 0;
+}
+
+.u-form-group {
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-right: 60px;
+    & label {
+        color: $form-label-color;
+        margin-bottom: 5px;
+    }
+    &.must-in {
+        .u-input-group-before {
+            color: red;
+        }
+    }
+    @include before();
+    @include after();
+}
+
+.u-control-label {
+    max-width: 200px;
+    display: inline-block;
+    color: $form-label-color;
+    /*特定样式*/
+    text-align: right;
+    margin-right: 10px;
+}
+
+.u-form-browse {
+    font-family: 'Microsoft YaHei';
+    font-size: 14px;
+    color: $input-color;
+    list-style:none;
+}
+
+.u-form-inline {
+    & .u-form-group {
+        display: inline-block;
+        & label {
+            max-length: 200px;
+            margin-right: 10px;
+            margin-bottom: 5px;
+        }
+        & .u-form-control {
+            display: inline-block;
+            width: auto;
+            vertical-align: middle;
+        }
+        & .u-input-group {
+            display: inline-table;
+        }
+    }
+}
+
+.u-has-feedback {
+    position: relative;
+    & .u-form-control {
+        padding-right: 42.5px;
+    }
+}
+
+.u-form-control-feedback {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    display: block;
+    width: $form-input-height;
+    height: $form-input-height;
+    line-height: $form-input-height;
+    text-align: center;
+    cursor: pointer;
+    color: $form-control-feedback-color;
+    // pointer-events: none;
+    &.sm {
+        height: $form-input-height-sm;
+        line-height: $form-input-height-sm;
+        font-size: 12px;
+    }
+    &.refer {
+        cursor: pointer;
+        &:hover {
+            color: $input-border-focus;
+        }
+    }
+}
+
+.u-form-control-feedback + .u-form-control {
+    padding-right: $form-input-padding-left+$form-input-height;
+}
+.u-form-control-feedback.u-button-success{
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    color: #fff;
+}
+.noborder{
+    border:none;
+}
+.leftborder{
+    border-left: 1px solid #CECECE;
+}
+.rightborder{
+    border-right: 1px solid #CECECE;
+}
+.u-input-dark .u-form-control{
+    background: #f3f7f9;
+}
+.u-input-icon-left{
+    left: 0 !important;
+}
+.u-input-icon-left label{
+    margin-left: 10px;
+    margin-top: 6px;
+}
+.u-input-sm {
+    height: 32px;
+    padding: 6px 13px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 2px;
+}
+.u-input-lg {
+    height: 46px;
+    padding: 10px 18px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 4px;
+}
+.help-block {
+    display: block;
+    color: #bcc2c8;
+    margin-top: 7px;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+select[multiple]{
+    overflow-y: auto;
+    height: auto;
+}
+textarea.u-form-control{
+    height: auto;
+}
+.u-input-group {
+    position: relative;
+    //display: inline-table;
+    vertical-align: middle;
+    margin-bottom:10px;
+    & .u-input-group-addon,
+    & .u-input-group-btn,
+    & .u-form-control {
+        width: auto;
+        display: table-cell;
+    }
+    &.sw {
+        width: 200px;
+    }
+    &.mw {
+        width: 300px;
+    }
+    &.lw {
+        width: 400px;
+    }
+    & .u-form-control {
+        width: 100%;
+    }
+    & .u-checkbox {
+        height:36px;
+        & .u-checkbox-focus-helper{
+            top: 3px;
+        }
+        & .u-checkbox-outline{
+            top: 3px;
+        }
+    }
+}
+
+//.u-input-group-addon {
+//  padding: 6px 12px;
+//  line-height: 1;
+//  text-align: center;
+//  border: 1px solid $input-border;
+//
+//  // Nuke default margins from checkboxes and radios to vertically center within.
+//  & input[type="radio"],
+//  & input[type="checkbox"] {
+//    margin-top: 0;
+//  }
+//  &:last-child{
+//    border-left: 0;
+//  }
+//}
+//
+.u-input-group-before {
+    font-size: 10px;
+    position: absolute;
+    //top: 12px;
+    padding: 0px 3px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+//校验样式
+// .u-has-error .u-form-control {
+//   border-color: $form-validate-error-color;
+// }
+// .u-has-error .u-form-control-info {
+//   color: $form-validate-error-color;
+//   display: block;
+//   margin-top: 4px;
+//   font-size:12px;
+//   font-family:$preferred_font;
+//   &:before{
+//     margin-right:5px;
+//     font-family: FontAwesome;
+//   }
+// }
+// .u-has-success {
+//   display: inline-block;
+//   position: relative;
+//   // padding-right: 20px;
+//   // & .u-form-control {
+//   //      width:auto;
+//   //  }
+//   & .u-form-control-success {
+//     color: green;
+//     display: inline;
+//     position: absolute;
+//     top: 25%;
+//     right: -20px;
+//     font-size:18px;
+//     color:#72ca97;
+//   }
+// }
+// //默认错误、成功的提示信息不显示
+// .u-form-control-success,
+// .u-form-control-info {
+//   display: none;
+// }
+.u-form-control-info {
+    position: absolute;
+    display: none;
+    color: rgb(241, 90, 74);
+    /*display: block;*/
+    margin-top: 4px;
+    font-size: 12px;
+    font-family: "Microsoft YaHei", "Helvetica", "Arial", sans-serif;
+}
+
+.u-form-control-info:before {
+    margin-right: 5px;
+    font-family: uf;
+}
+
+
+/*.u-has-success {
+  display: inline-block;
+  position: relative; }*/
+
+.u-form-control-success {
+    position: absolute;
+    color: green;
+    display: none;
+    /* position: absolute;
+    top: 25%;
+    right: -20px;*/
+    font-size: 18px;
+    color: #72ca97;
+}
+
+.u-form-horizontal {
+    & .u-form-group {
+        & > label {
+            text-align: right;
+            height: $form-input-height;
+            line-height: $form-input-height;
+        }
+    }
+}
+
+.u-input-label {
+    font-size: 13px;
+    line-height: $form-input-height;
+    &.right {
+        @media (min-width: $screen-sm-min) {
+            float: right;
+        }
+    }
+    &.sm {
+        font-size: 12px;
+        line-height: $form-input-height-sm;
+    }
+}

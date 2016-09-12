@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对齐方式</title>
+	<link rel="stylesheet" type="text/css" href="../../../vendor/uui/css/u.css">
+	<script type="text/javascript" src="../../../vendor/uui/js/u.js"></script>
+	<style type="text/css">
+		.example-box {
+		    position: relative;
+		    padding: 45px 15px 15px;
+		    margin-right: 0;
+		    margin-left: 0;
+		    border: 1px solid #e0e0e0;
+		}
+
+		.example {
+		    margin-top: 20px;
+		    margin-bottom: 20px;
+		}
+
+		.vertical-align-bottom.u-button{
+			vertical-align: bottom;
+		}
+	</style>
+</head>
+<body>
+
+	<p>浮动</p>
+	<div class="example example-box">
+      <button type="button" class="u-button  u-button-success ">Left</button>
+      <button type="button" class="u-button  u-button-success  pull-right" >Pull right</button>
+    </div>
+    <p>垂直居中</p>
+    <div class="example example-box u-container-fluid">
+    	<div class="u-row">
+
+    		<div class="u-col-6">
+    			<div class="vertical-align h" >
+          		    <button type="button" class="vertical-align-middle u-button  u-button-success ">垂直居中</button>
+		        </div>
+    		</div>
+    		<div class="u-col-6">
+    			<div class="vertical-align h" >
+		 			<button type="button" class="vertical-align-bottom u-button  u-button-success ">垂直向下</button>
+		 		</div>
+    		</div>
+    	</div>
+    </div>
+    <p>水平居中</p>
+    <div class="example example-box">
+    	<div class="h-64 w-64 bg-blue center-block ">
+    		我是内容
+    	</div>
+    </div>
+</body>
+</html>

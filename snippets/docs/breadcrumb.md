@@ -1,4 +1,4 @@
-# breadcut控件
+# breadcrumb控件
 
 用于带有层次的导航，active状态表明当前页面的位置
 

@@ -1,0 +1,77 @@
+@import "../core/minxin-variables";
+@import "../core/minxin-mixins";
+
+.img-rounded{
+	border-radius:4px;
+}
+.img-circle {
+	border-radius:50%;
+}
+.img-bordered{
+	padding: 3px;
+    border: 1px solid #e0e0e0;
+}
+.img-bordered-primary{
+	border-color:$button-primary-color-alt;
+}
+.img-bordered-orange{
+	border-color:$brand-warning;
+}
+
+.img-bordered-green{
+	border-color:$brand-success;
+}
+.u-thumbnail {
+	a {
+		> img {
+			margin-right: auto;
+			margin-left: auto;
+		}
+		> img {
+			display: block;
+			max-width: 100%;
+			height: auto;
+		}
+	}
+	> img {
+		margin-right: auto;
+		margin-left: auto;
+	}
+	> img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+.img-responsive {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+img {
+	vertical-align: middle;
+	border: 0;
+}
+
+.u-thumbnail {
+	display: block;
+	margin-bottom: 22px;
+	line-height: 1.57142857;
+	background-color: #fff;
+	border-radius: 3px;
+	padding: 0;
+	border: none;
+	-webkit-transition: all .25s ease-in-out;
+	-o-transition: all .25s ease-in-out;
+	transition: all .25s ease-in-out;
+	.u-caption {
+		position: relative;
+		display: block;
+		padding: 9px;
+		padding-right: 0;
+		padding-left: 0;
+		color: #757575;
+	}
+}

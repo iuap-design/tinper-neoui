@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>NeoUI Test</title>
+		<link rel="stylesheet" type="text/css" href="../dist/css/neoui.min.css"/>
+	</head>
+	<body>
+
+		<button id="modalBtn" class="u-button" >Success</button>
+		<br />
+		
+		<div id='paginationGap' class='u-pagination pagination-gap'>
+		</div>
+		<br />
+		<br />
+		<div class="u-combo mutil-select" id="combo3">
+		    <div class="u-input-group u-has-feedback">
+		        <input class="u-form-control" />
+		        <span class="u-form-control-feedback uf uf-anglearrowdown" data-role="combo-button"></span>
+		    </div>
+		</div>
+		<br />
+		<div class="example">
+		    <div class='u-time'>
+		        <input class="u-input" type="text">
+		    </div>
+		</div>
+		<script type="text/javascript" src="../dist/js/neoui.min.js" ></script>
+		<script type="text/javascript">
+		window.onload=function(){
+			document.getElementById('combo3')['u.Combo'].setComboData([{value:'01',name:'男'},{value:'02',name:'女'}]);
+
+		}
+			var msgBtn2 = document.body.querySelector("#modalBtn");
+			u.on(msgBtn2,'click', function(){
+			    u.confirmDialog({
+			        msg: "是否保存单据？",       //modal内容
+			        title: "测试确认",           //modal title
+			        onOk: function () {          //确认后的回调
+			            alert('ok')
+			        },
+			        onCancel: function () {         //取消后的回调
+			            alert('cancel')
+			        }
+			    });
+			});
+
+			var paginationGap = document.getElementById('paginationGap');
+			var comp = new u.pagination({ el: paginationGap, showState:true  });
+			comp.update({ totalPages: 100, pageSize: 20, currentPage: 1, totalCount: 200 });
+		</script>
+	</body>
+</html>

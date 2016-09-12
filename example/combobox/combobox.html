@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+   
+    <link rel="stylesheet" href="../../dist/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../dist/css/neoui.css">
+</head>
+<body>
+
+<div class="u-combo" id="combo1" style="margin: 10px">
+    <div class="u-input-group u-has-feedback">
+        <div class="u-input-group-before" style="color: red;">*</div>
+       <input class="u-form-control"/>
+       <span class="u-form-control-feedback fa fa-angle-down" data-role="combo-button"></span>
+    </div>
+    
+    <!--<option value="01">男</option>
+    <option value="02">女</option>-->
+</div>
+<br>
+<br>
+<br>
+<div class="u-combo" id="combo4" style="margin: 10px">
+    <input class="u-input"/>
+    <label class="u-label"></label>
+    <span class="u-combo-icon"></span>
+</div>
+<br>
+<br>
+<br>
+<div class="u-combo mutil-select" id="combo2">
+    <input class="u-input"/>
+    <label class="u-label"></label>
+    <span class="u-combo-icon"></span>
+    <!--<option value="01">java</option>
+    <option value="02">javascript</option>
+    <option value="03">C</option>
+    <option value="04">C++</option>-->
+</div>
+<br>
+<br>
+<br>
+<div class="u-combo mutil-select" id="combo3">
+    <div class="u-input-group u-has-feedback">
+       <input class="u-form-control"/>
+       <span class="u-form-control-feedback fa fa-angle-down" data-role="combo-button"></span>
+    </div>
+</div>
+
+
+
+<script src="../../dist/js/neoui-polyfill.js"></script>
+<script src="../../dist/js/neoui.js"></script>
+<script>
+    u.compMgr.updateComp();
+    document.getElementById('combo1')['u.Combo'].setComboData([{value:'01',name:'男'},{value:'02',name:'女'}]);
+    document.getElementById('combo2')['u.Combo'].setComboData([{value:'01',name:'java'},{value:'02',name:'javascript'},{value:'03',name:'C'},{value:'04',name:'C++'}]);
+     document.getElementById('combo3')['u.Combo'].setComboData([{value:'01',name:'java'},{value:'02',name:'javascript'},{value:'03',name:'C'},{value:'04',name:'C++'}]);
+     document.getElementById('combo4')['u.Combo'].setComboData([{value:'01',name:'男'},{value:'02',name:'女'}]);
+</script>
+
+</body>
+</html>

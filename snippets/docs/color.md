@@ -28,6 +28,9 @@
 <div class="example-wrap">
 <h2 class="example-title">调色板</h2>
 <p >调色板包含了主色和不同色阶的颜色</p>
+<h3>具体使用</h3>
+<p>1、引入u.css文件</p>
+<p>2、背景色使用样式类名为'.bg-颜色的名字'，字体使用样式类名为'.颜色的名字'。例如红色A700对应的背景色为<code>.bg-red-A700</code>,字体色为<code>.red-A700</code></p>
 <div class="u-row  color-palette">
 <div class="u-col-4">
 <h5 class="text-uppercase">red</h5>

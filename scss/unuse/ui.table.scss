@@ -1,0 +1,241 @@
+@import "./minxin-mixins/minxin-variables";
+@import "./minxin-mixins/minxin-mixins";
+.u-table {
+  position: relative;
+  border: $data-table-dividers;
+  border: $data-table-dividers-IE8 \9;
+  border-collapse: collapse;
+  white-space: nowrap;
+  font-size: $data-table-font-size;
+  background-color: unquote("rgb(#{$color-white})");
+    
+  thead {
+    padding-bottom: 3px;
+
+    .u-table-select {
+      margin-top: 0;
+    }
+    tr{
+      background-color: #eee;
+      th{
+        text-align: left;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      position: relative;
+      height: $data-table-row-height;
+      @include material-animation-default(0.28s);
+      transition-property: background-color;
+
+      &.is-selected {
+        background-color: $data-table-selection-color;
+      }
+
+      &:hover {
+        background-color: $data-table-hover-color;
+      }
+      td{
+        text-align: left;
+      }
+    }
+  }
+
+  td, th {
+    padding: 0 $data-table-column-padding 12px $data-table-column-padding;
+    text-align: right;
+
+    &:first-of-type {
+      padding-left: 24px;
+    }
+
+    &:last-of-type {
+      padding-right: 24px;
+    }
+  }
+
+  td {
+    position: relative;
+    vertical-align: middle;
+    height: $data-table-row-height;
+    border-top: $data-table-dividers;
+    border-bottom: $data-table-dividers;
+    border-top: $data-table-dividers-IE8 \9;
+    border-bottom: $data-table-dividers-IE8 \9;
+    padding-top: $data-table-cell-top;
+    box-sizing: border-box;
+
+    .mdl-data-table__select {
+      vertical-align: middle;
+    }
+  }
+
+  th {
+    position: relative;
+    vertical-align: bottom;
+    text-overflow: ellipsis;
+    @include typo-body-2();
+    line-height: $data-table-row-height;
+    height: $data-table-row-height;
+    font-size: $data-table-header-font-size;
+    color: $data-table-header-color;
+    //padding-bottom: 8px;
+    padding: 0 $data-table-column-padding 0 $data-table-column-padding;
+    box-sizing: border-box;
+
+    .u-table-header-sorted-ascending, .u-table-header-sorted-descending {
+      color: $data-table-header-sorted-color;
+      &:before {
+        font-size: $data-table-header-sort-icon-size;
+
+      }
+    }
+    
+    .u-table-header-sorted-ascending:before {
+      content: "\e5d8";
+    }
+    
+    .u-table-header-sorted-descending:before {
+      content: "\e5db";
+    }
+  }
+
+  .non-numeric{
+    text-align: left;
+  }
+}
+
+.u-table-select {
+  width: 16px;
+}
+
+//.u-table-cell-non-numeric {
+//  text-align: left;
+//}
+
+
+// table {
+//   background-color: $table-bg;
+// }
+// caption {
+//   padding-top: $table-cell-padding;
+//   padding-bottom: $table-cell-padding;
+//   color: $text-muted;
+//   text-align: left;
+// }
+// th {
+//   text-align: left;
+// }
+
+//global
+// 22/14
+
+//minxin-variables
+
+
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+
+
+// BaseTable
+
+.u-table-base {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: $line-height-computed;
+  background-color: $table-bg;
+  color: $gray-dark;
+  border-spacing: 0;
+  border-collapse: collapse;
+  font-size:14px;
+  font-family:$preferred_font;
+  // Cells
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        text-align: left;
+        padding: $table-cell-padding;
+        line-height: $line-height-base;
+        vertical-align: top;
+        border-top: 1px solid $table-border-color;
+      }
+    }
+  }
+
+  > thead > tr > th, > tfoot > tr > th {
+    font-weight: $font-weight-normal;
+    color: $gray-darker;
+  }
+  // Bottom align for column headings
+  > thead > tr > th {
+    text-align: left;
+    vertical-align: bottom;
+    border-bottom: 1px solid $table-border-color;
+  }
+  // Remove top border from thead by default
+  > caption + thead,
+  > colgroup + thead,
+  > thead:first-child {
+    > tr:first-child {
+      > th,
+      > td {
+        border-top: 0;
+      }
+    }
+  }
+  // Account for multiple tbody instances
+  > tbody + tbody {
+    border-top: 1px solid $table-border-color;
+  }
+
+  
+}
+
+
+
+.u-table-bordered {
+  border: 1px solid $table-border-color;
+  
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        border: 1px solid $table-border-color;
+      }
+    }
+  }
+  > thead > tr {
+    > th,
+    > td {
+      border-bottom-width: 1px;
+    }
+  }
+  > thead:first-child {
+    > tr:first-child {
+      > th {
+        border: 1px solid $table-border-color;
+      }
+    }
+  }
+}
+
+.u-table-hover {
+  > tbody > tr:hover {
+    background-color: $table-bg-hover;
+  }
+}
+
+
+// Zebra-striping
+
+.u-table-striped {
+  > tbody > tr:nth-of-type(odd) {
+    background-color: $table-bg-accent;
+  }
+}

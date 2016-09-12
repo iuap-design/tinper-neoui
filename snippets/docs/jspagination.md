@@ -25,7 +25,7 @@ replaceExamp
 	    <td>名称</td>
 	    <td>方法参数</td>
 	    <td>用法</td>
-	    <td>描述</td>
+	    <td style="width:10%">描述</td>
 	    <td></td>
 	  </tr>
 	  <tr>

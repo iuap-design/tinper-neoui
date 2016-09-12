@@ -1,0 +1,214 @@
+@import "../core/minxin-variables";
+
+@mixin clearfix {
+  //:before,
+  //:after {
+  //  content: " "; // 1
+  //  display: table; // 2
+  //}
+  //:after {
+  //  clear: both;
+  //}
+}
+
+// Centered container element
+@mixin container-fixed($gutter: $grid-gutter-width) {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left:  floor(($gutter / 2));
+  padding-right: ceil(($gutter / 2));
+  @include clearfix;
+  //&:extend(.clearfix all);
+}
+
+// Creates a wrapper for a series of columns
+@mixin make-row($gutter: $grid-gutter-width) {
+  margin-left:  ceil(($gutter / -2));
+  margin-right: floor(($gutter / -2));
+  box-sizing: border-box;
+  @include clearfix;
+}
+
+@mixin make-grid($type){
+  .u-col-#{$type}-push-0{
+    left:auto;
+  }
+  .u-col-#{$type}-pull-0{
+    right:auto;
+  }
+  @for $i from 1 through $grid-columns {
+    .u-col-#{$type}-#{$i}{
+      width:percentage($i/$grid-columns);
+    }
+    .u-col-#{$type}-push-#{$i}{
+      left: percentage($i/$grid-columns);
+    }
+    .u-col-#{$type}-pull-#{$i}{
+      right: percentage($i/$grid-columns);
+    }
+    .u-col-#{$type}-offset-#{$i}{
+      margin-left:percentage($i/$grid-columns);
+    }
+  }
+
+  @if $type == md {
+    .u-col-push-0{
+      left:auto;
+    }
+    .u-col-pull-0{
+      right:auto;
+
+
+
+
+
+
+    }
+    @for $i from 1 through $grid-columns {
+      .u-col-#{$i}{
+        width:percentage($i/$grid-columns);
+      }
+      .u-col-push-#{$i}{
+        left: percentage($i/$grid-columns);
+      }
+      .u-col-pull-#{$i}{
+        right: percentage($i/$grid-columns);
+      }
+      .u-col-offset-#{$i}{
+        margin-left:percentage($i/$grid-columns);
+      }
+    }
+  }
+}
+
+
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+
+.u-container {
+  @include container-fixed();
+
+  @media (min-width: $screen-sm-min) {
+    width: $container-sm;
+  }
+  @media (min-width: $screen-md-min) {
+    width: $container-md;
+  }
+  @media (min-width: $screen-lg-min) {
+    width: $container-lg;
+  }
+}
+
+// Fluid container
+//
+// Utilizes the mixin meant for fixed width containers, but without any defined
+// width for fluid, full width layouts.
+
+.u-container-fluid {
+  @include container-fixed();
+}
+
+
+// Row
+//
+// Rows contain and clear the floats of your columns.
+
+.u-row {
+  @include make-row();
+  &:before{
+    display: table;
+    content: " ";
+  };
+  &:after{
+    display: table;
+    content: " ";
+    clear: both;
+  }
+}
+
+// Columns
+//
+// Common styles for small and large grid columns
+// _md 类型是为了兼容 u-col-1 这种类名
+$allColumnName: '';
+$xsColumnName:'';
+$smColumnName:'';
+$mdColumnName:'';
+$_mdColumnName:'';
+$lgColumnName:'';
+@for $i from 1 through $grid-columns {
+  $array: xs sm md lg _md;
+  @for $j from 1 through length($array){
+    @if $j == 5{
+      $allColumnName: $allColumnName + '.u-col-#{$i}' + ',';
+    } @else{
+      $allColumnName: $allColumnName + '.u-col-#{nth($array, $j)}-#{$i}' + ',';
+    }
+
+    @if $j == 1 {
+      $xsColumnName: $xsColumnName + '.u-col-xs-#{$i}' + ',';
+    }
+    @else if $j == 2{
+      $smColumnName: $smColumnName + '.u-col-sm-#{$i}' + ',';
+    }
+    @else if $j == 3{
+      $mdColumnName: $mdColumnName + '.u-col-md-#{$i}' + ',';
+      $_mdColumnName:$_mdColumnName + '.u-col-#{$i}' + ',';
+    }
+    @else if $j == 4{
+      $lgColumnName: $lgColumnName + '.u-col-lg-#{$i}' + ',';
+    }
+  }
+}
+#{$allColumnName} {
+  position: relative;
+// Prevent columns from collapsing when empty
+  min-height: 1px;
+// Inner gutter via padding
+  padding-left:  ceil(($grid-gutter-width / 2));
+  padding-right: floor(($grid-gutter-width / 2));
+  box-sizing: border-box;
+}
+
+#{$xsColumnName}{
+  float:left;
+}
+
+@include make-grid(xs)
+
+// Small grid
+//
+// Columns, offsets, pushes, and pulls for the small device range, from phones
+// to tablets.
+@media (min-width: $screen-sm-min) {
+  #{$smColumnName}{
+    float:left;
+  }
+ @include make-grid(sm);
+}
+
+// Medium grid
+//
+// Columns, offsets, pushes, and pulls for the desktop device range.
+
+@media (min-width: $screen-md-min) {
+  #{$mdColumnName}{
+    float:left;
+  }
+  #{$_mdColumnName}{
+    float:left;
+  }
+  @include make-grid(md);
+}
+
+// Large grid
+//
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+
+@media (min-width: $screen-lg-min) {
+  #{$lgColumnName}{
+    float:left;
+  }
+  @include make-grid(lg);
+}

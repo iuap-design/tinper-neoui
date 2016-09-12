@@ -1,0 +1,83 @@
+
+@import "../core/minxin-variables";
+@import "../core/minxin-mixins";
+
+.u-panel{
+    font-family: Roboto,sans-serif;
+    font-size: 14px;
+    line-height: 1.57142857;
+    color: #757575;
+
+    position: relative;
+    margin-bottom: 30px;
+    border-width: 0;
+    -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.1);
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    .u-panel-heading{
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        position: relative;
+        padding: 0;
+        border-bottom: 1px solid transparent;
+    }
+    h4,h3{
+        font-family: Roboto,sans-serif;
+        font-weight: 600;
+        line-height: 1.2;
+        color: #424242;
+        font-size: 18px;
+        text-shadow: rgba(0,0,0,.15) 0 0 1px;
+    }
+}
+.u-panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    display: block;
+    padding: 20px 30px;
+    font-size: 18px;
+    color: #424242;
+    .small{
+      color:#757575;
+    }
+}
+.u-panel-body {
+    padding: 30px 30px;
+    position: relative;
+}
+.panel-heading+.panel-body{
+  padding-top:0;
+}
+.u-panel-bordered{
+    .u-panel-heading{
+        border-bottom: 1px solid #e0e0e0;
+        .panel-title{
+            padding-bottom: 20px;
+        }
+    }
+    .u-panel-body{
+        padding-top: 30px;
+    }
+    .u-panel-footer{        
+        border-top: 1px solid #e0e0e0;    
+        padding: 0 30px 15px;
+        background-color: transparent;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        padding-top: 15px;
+    }
+}
+.u-panel>:not(.panel-loading):not(.collapsing){
+    -webkit-transition: opacity .3s;
+    -o-transition: opacity .3s;
+    transition: opacity .3s;
+}
+.btn-group-vertical>.btn-group:after, .btn-group-vertical>.btn-group:before, .btn-toolbar:after, .btn-toolbar:before, .clearfix:after, .clearfix:before, .container-fluid:after, .container-fluid:before, .container:after, .container:before, .dl-horizontal dd:after, .dl-horizontal dd:before, .form-horizontal .form-group:after, .form-horizontal .form-group:before, .modal-footer:after, .modal-footer:before, .modal-header:after, .modal-header:before, .nav:after, .nav:before, .navbar-collapse:after, .navbar-collapse:before, .navbar-header:after, .navbar-header:before, .navbar:after, .navbar:before, .pager:after, .pager:before, .u-panel-body:after, .u-panel-body:before, .row:after, .row:before{
+    display: table;
+    content: " ";
+}
+.u-panel-body .h1:first-child, .panel-body .h2:first-child, .u-panel-body .h3:first-child, .u-panel-body .h4:first-child, .u-panel-body .h5:first-child, .u-panel-body .h6:first-child, .u-panel-body h1:first-child, .u-panel-body h2:first-child, .u-panel-body h3:first-child, .u-panel-body h4:first-child, .u-panel-body h5:first-child, .u-panel-body h6:first-child{
+    margin-top:0;
+}

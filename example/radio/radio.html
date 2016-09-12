@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../dist/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../dist/css/neoui.css">
+
+</head>
+<body style="padding: 20px">
+
+<p>可用未选radio</p>
+
+<label  class="u-radio" for="option-1">
+    <input type="radio" id="option-1" class="u-radio-button" name="options" value="1">
+    <span class="u-radio-label">First</span>
+</label>
+<p>可用已选radio</p>
+
+<label  class="u-radio" for="option-6">
+    <input type="radio" id="option-6" class="u-radio-button" name="options" value="1" checked>
+    <span class="u-radio-label">First</span>
+</label>
+<p>不可用未选radio</p>
+<label class="u-radio" for="option-2">
+    <input type="radio" disabled id="option-2" class="u-radio-button" name="options" value="2">
+    <span class="u-radio-label">Second</span>
+</label>
+<p>不可用已选radio</p>
+<label class="u-radio" for="option-3">
+    <input type="radio" disabled checked id="option-3" class="u-radio-button" name="options1" value="3">
+    <span class="u-radio-label">Second</span>
+</label>
+<br/>
+<br/>
+<br/>
+<br/>
+
+图片radio
+
+<label  class="u-radio" for="option-4">
+    <input type="radio" id="option-4" class="u-radio-button" name="imgoptions" value="4" checked>
+    <span class="u-radio-label"><img src="../img/1.png" height="30" width="30"></span>
+</label>
+<label class="u-radio" for="option-5">
+    <input type="radio" id="option-5" class="u-radio-button" name="imgoptions" value="5">
+    <span class="u-radio-label"><img src="../img/2.png" height="30" width="30"></span>
+</label>
+
+<p>不同色彩的radio</p>
+<label class="u-radio u-radio-success" >
+    <input type="radio" class="u-radio-button"  checked>
+    <span class="u-radio-label">green</span>
+</label>
+<label class="u-radio u-radio-info">
+    <input type="radio" class="u-radio-button"   checked>
+    <span class="u-radio-label">blue</span>
+</label>
+<label class="u-radio u-radio-warning">
+    <input type="radio" class="u-radio-button"  checked>
+    <span class="u-radio-label">yellow</span>
+</label>
+<label class="u-radio u-radio-danger">
+    <input type="radio" class="u-radio-button"   checked>
+    <span class="u-radio-label">red</span>
+</label>
+<label class="u-radio u-radio-dark">
+    <input type="radio" class="u-radio-button"  checked>
+    <span class="u-radio-label">grey</span>
+</label>
+<script src="../../dist/js/neoui-polyfill.js"></script>
+<script src="../../dist/js/plugin/neoui-radio.js"></script>
+
+</body>
+</html>

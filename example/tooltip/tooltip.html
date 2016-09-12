@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../../vendor/uui/css/u.css">
+    <script src="../../../vendor/uui/js/u-polyfill.js"></script>
+    <script src="../../../vendor/uui/js/u-ui.js"></script>
+    <style type="text/css">
+    .ws{
+    	width: 60px;
+    	display: inline-block;
+    	border: 1px solid #ddd;
+    	height:30px;
+    	line-height: 30px;
+    	text-align: center;
+    	margin-left: 60px;
+    	margin-top: 10px;
+    }
+    #example,#example1{
+    	margin-left: 60px;
+    }
+    #example label:first-child,#example1 label:first-child{
+		margin-left: 0px;
+    }
+    #example3,#example2{
+        margin: 10px;
+        float: left;
+        margin-left: 115px;
+    }
+    </style>
+
+</head>
+<body>
+<br/>
+<br/>
+<div id='example'>
+	<label id="top" class="ws">上提示</label>
+	<label id="down" class="ws">下提示</label>
+	<label id="left" class="ws">左提示</label>
+	<label id="right" class="ws">右提示</label>
+</div>
+
+
+
+<div id='example1'>
+	<p>各种颜色tooltips</p>
+	<label id="primary" class="ws">primary</label>
+	<label id="info" class="ws">info</label>
+	<label id="warning" class="ws">warning</label>
+	<label id="success" class="ws">success</label>
+	<label id="danger" class="ws">danger</label>
+</div>
+<div id='example2'>
+    <div class="tooltip top active" role="tooltip" >
+      <div class="tooltip-arrow"></div>
+      <div class="tooltip-inner">默认向上显示</div>
+  </div>
+</div>
+<div id='example2'>
+  <div class="tooltip bottom active" role="tooltip">
+      <div class="tooltip-arrow"></div>
+      <div class="tooltip-inner">向下显示</div>
+  </div>
+</div>
+<div id='example2'>
+  <div class="tooltip left active" role="tooltip">
+      <div class="tooltip-arrow"></div>
+      <div class="tooltip-inner">向左显示</div>
+  </div>
+</div>
+<div id='example2'>
+  <div class="tooltip right active" role="tooltip">
+      <div class="tooltip-arrow"></div>
+      <div class="tooltip-inner">向右显示</div>
+  </div>
+</div>
+<br>
+<div id='example3'>
+    <div class="tooltip tooltip-primary top active" role="tooltip">
+        <div class="tooltip-arrow"></div>
+        <div class="tooltip-inner">primary tooltip</div>
+    </div>
+</div>
+<div id='example3'>
+    <div class="tooltip tooltip-info top active" role="tooltip">
+        <div class="tooltip-arrow"></div>
+        <div class="tooltip-inner">info tooltip</div>
+    </div>
+</div>
+<div id='example3'>
+    <div class="tooltip tooltip-warning top active" role="tooltip">
+        <div class="tooltip-arrow"></div>
+        <div class="tooltip-inner">warning tooltip</div>
+    </div>
+</div>
+<div id='example3'>
+    <div class="tooltip tooltip-success top active" role="tooltip">
+        <div class="tooltip-arrow"></div>
+        <div class="tooltip-inner">success tooltip</div>
+    </div>
+</div>
+<div id='example3'>
+    <div class="tooltip tooltip-danger top active" role="tooltip" >
+        <div class="tooltip-arrow"></div>
+        <div class="tooltip-inner">danger tooltip</div>
+    </div>
+</div>
+<script src="tooltip.js"></script>
+</body>
+</html>

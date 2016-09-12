@@ -1,0 +1,381 @@
+@import "../core/minxin-variables";
+@import "../core/minxin-mixins";
+
+.u-list-group {
+  // 不需要设置list-style: none;因为.list-group-item的display为block
+  margin-bottom: 20px;
+  padding-left: 0; // reset padding because ul and ol
+  .media {
+    padding: 2px 0;
+    border-bottom: 0;
+    .pull-left,
+    .media-left {
+      padding-right: 20px;
+    }
+    .pull-right,
+    .media-right {
+      padding-left: 20px;
+    }
+    .pull-right {
+      .status {
+        margin-top: 15px;
+        margin-right: 5px;
+      }
+    }
+    .media-heading {
+      font-size: 14px;
+      margin: 0px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.u-list-group-full {
+  > .u-list-group-item {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+a.u-list-group-item {
+  border-radius: $border-radius-base;
+  &.disabled,
+  &.disabled:hover,
+  &.disabled:focus {
+    color: $list-group-link-disabled-color;
+    background-color: $list-group-link-disabled-bg;
+  }
+  &.active,
+  &.active:hover,
+  &.active:focus {
+    color: $list-group-link-active-color;
+    background-color: $list-group-link-active-bg;
+  }
+}
+
+.u-list-group-item {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  // Place the border on the list items and negative margin up for better styling
+  margin-bottom: -1px;
+  background-color: $list-group-bg;
+  border: 1px solid $list-group-border;
+
+  // Round the first and last items
+  &:first-child {
+    @include border-top-radius($list-group-border-radius);
+  }
+  &:last-child {
+    margin-bottom: 0;
+    @include border-bottom-radius($list-group-border-radius);
+  }
+  .icon {
+    margin-right: $list-group-item-icon-margin-right;
+  }
+}
+
+
+// Interactive list items
+//
+// Use anchor or button elements instead of `li`s or `div`s to create interactive items.
+// Includes an extra `.active` modifier class for showing selected items.
+
+a.u-list-group-item,
+button.u-list-group-item {
+  color: $list-group-link-color;
+
+  .u-list-group-item-heading {
+    color: $list-group-link-heading-color;
+  }
+
+  // Hover state
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: $list-group-link-hover-color;
+    background-color: $list-group-hover-bg;
+  }
+}
+
+button.u-list-group-item {
+  width: 100%;
+  text-align: left;
+}
+
+.u-list-group-item {
+  // Disabled state
+  &.disabled,
+  &.disabled:hover,
+  &.disabled:focus {
+    background-color: $list-group-disabled-bg;
+    color: $list-group-disabled-color;
+    cursor: $cursor-disabled;
+
+    // Force color to inherit for custom content
+    .u-list-group-item-heading {
+      color: inherit;
+      margin: 0px;
+      margin-bottom: 5px;
+    }
+    .u-list-group-item-text {
+      color: $list-group-disabled-text-color;
+      margin: 0px;
+    }
+  }
+
+  // Active class on item itself, not parent
+  &.active,
+  &.active:hover,
+  &.active:focus {
+    z-index: 2; // Place active items above their siblings for proper border styling
+    color: $list-group-active-color;
+    background-color: $list-group-active-bg;
+    border-color: $list-group-active-border;
+
+    // Force color to inherit for custom content
+    .u-list-group-item-heading,
+    .u-list-group-item-heading > small,
+    .u-list-group-item-heading > .small {
+      color: inherit;
+    }
+    .u-list-group-item-text {
+      color: $list-group-active-text-color;
+    }
+  }
+}
+/*边框*/
+
+.u-list-group-bordered {
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+  .u-list-group-item {
+    &.active {
+      color: #fff;
+      background-color: #303f9f;
+      border-color: #303f9f;
+      &:focus, &:hover {
+        color: #fff;
+        background-color: #303f9f;
+        border-color: #303f9f;
+      }
+    }
+    border-color: #e0e0e0;
+  }
+}
+
+/*分割线*/
+
+.u-list-group-divider .u-list-group-item {
+  &:first-child.active:hover {
+    border-top-color: transparent;
+  }
+  &:last-child {
+    border-bottom-color: #e0e0e0;
+  }
+  &.active:hover {
+    border-top-color: #e0e0e0;
+  }
+  &:first-child {
+    border-top-color: transparent;
+  }
+  border-top-color: #e0e0e0;
+}
+
+/*徽章*/
+
+.u-list-group-item > .u-badge {
+  float: right;
+  margin-top: 13px;
+}
+
+/*链接*/
+
+a.u-list-group-item {
+  &.active {
+    color: #fff;
+    background-color: #3f51b5;
+    -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+    &:focus, &:hover {
+      color: #fff;
+      background-color: #3f51b5;
+      -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+      box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+  border-radius: 3px;
+  cursor: pointer;
+  &.disabled {
+    color: #bdbdbd;
+    background-color: #eee;
+    &:focus, &:hover {
+      color: #bdbdbd;
+      background-color: #eee;
+    }
+  }
+}
+
+/*不同颜色*/
+
+.u-list-group-gap .u-list-group-item {
+  margin-bottom: 2px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.u-list-group-item-success {
+  color: #fff;
+  background-color: #4caf50;
+}
+
+.u-list-group-item-warning {
+  color: #fff;
+  background-color: #ff9800;
+}
+
+.u-list-group-item-info {
+  color: #fff;
+  background-color: #00bcd4;
+}
+
+.u-list-group-item-danger {
+  color: #fff;
+  background-color: #f44336;
+}
+
+.u-list-group-item-dark {
+  color: #fff;
+  background-color: #616161;
+}
+
+/*自定义*/
+
+.u-list-group-item.active {
+  .u-list-group-item-text, &:focus .u-list-group-item-text, &:hover .u-list-group-item-text {
+    color: #d1d6ef;
+  }
+}
+
+/*用户列表*/
+
+.u-list-group .media {
+  padding: 2px 0;
+  border-bottom: 0;
+}
+
+.media {
+  &:first-child {
+    margin-top: 0;
+  }
+  overflow: hidden;
+  zoom: 1;
+}
+
+.media-body {
+  overflow: hidden;
+  zoom: 1;
+}
+
+.media {
+  margin-top: 15px;
+}
+
+.u-list-group .media {
+  .media-right, .pull-right {
+    padding-left: 20px;
+  }
+}
+
+.media-left, .media > .pull-left {
+  padding-right: 10px;
+}
+
+.avatar {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  white-space: nowrap;
+  vertical-align: bottom;
+  border-radius: 1000px;
+  img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border: 0 none;
+    border-radius: 1000px;
+  }
+}
+
+.media-body {
+  overflow: hidden;
+  overflow: auto;
+  display: table-cell;
+  vertical-align: top;
+  p {
+    margin: 0 0 11px;
+    font-size: 14px;
+  }
+}
+
+.media-left, .media-right {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.media-body {
+  width: 10000px;
+}
+
+.media, .media-body {
+  overflow: hidden;
+  zoom: 1;
+}
+
+small {
+  font-size: 85%;
+}
+
+.status-lg {
+  width: 14px;
+  height: 14px;
+}
+
+.avatar-online i, .status-online {
+  background-color: #4caf50;
+}
+
+.avatar-busy i, .status-busy {
+  background-color: #ff9800;
+}
+
+.avatar-off i, .status-off {
+  background-color: #616161;
+}
+
+.avatar-away i, .status-away {
+  background-color: #f44336;
+}
+
+.status {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-radius: 100%;
+}
+
+.avatar-online i {
+  background-color: #4caf50;
+}
+
+.avatar i {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-radius: 100%;
+}

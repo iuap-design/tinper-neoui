@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- <link rel="stylesheet" href="../../../vendor/uui/fonts/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="../../dist/css/neoui.css">
+</head>
+<body>
+
+<form>
+    <p>"预存数据；C++",'Java','Python','JavaScript','C#','C','Jython','Html','html'</p>
+    <br/>
+    <label id="xShow"></label>
+    <br/>
+    <br/>
+    <input id="test1"/><br/>
+    <br/>
+    <br/>
+
+    <p>最多显示的条目数：默认为-1，设置为1</p>
+    <input id="autocomplete-maxItemsToShow"/><br/>
+    <br/>
+</form>
+
+<p>minChars:控制智能提示时输入的最少字符数</p>
+
+<form>
+    <input id="autocomplete-minchars"/><br/>
+    <br/>
+</form>
+
+<p>delay:设置弹出智能提示的延迟时间（单位ms）</p>
+
+<form>
+    <input id="autocomplete-delay"/><br/>
+    <br/>
+</form>
+
+
+<script src="../../dist/js/neoui.js"></script>
+
+<script>
+    var sourceValue = [
+        {
+            label : "C++"
+        },
+        {
+            label : 'Java'
+        },
+        {
+            label : 'Python'
+        },
+        {
+            label : 'JavaScript'
+        },
+        {
+            label : 'C#'
+        },
+        {
+            label : 'C'
+        },
+        {
+            label : 'Jython'
+        },
+        {
+            label : 'Html'
+        },
+        {
+            label : 'html'
+        }
+    ];
+
+    new u.Autocomplete({
+        el:'#test1',
+        source: sourceValue,
+        select: function(item){
+            alert('select');
+        }
+    })
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+@import "../core/minxin-variables";
+@import "../core/minxin-mixins";
+
+// minxin-variables
+// ========================================================================
+
+// $tag-bg:                    $bg-color-base;
+// $tag-border-radius:         0.3em;
+// $tag-padding:               .25em .6em .25em;
+
+// $tag-default-color:         #757575;
+// // $tag-default-font-size:     $font-size-base;
+
+// $tag-lg-font-size:          16px;
+
+// $tag-sm-font-size:          10px;
+// $tag-sm-padding:            .1em .5em .1em;
+
+// $tag-round-border-radius:   1em;
+
+//$tag-default-hover-color:   $gray;
+
+
+
+
+
+// Component: tag
+// ========================================================================
+
+.u-tag {
+  padding: $tag-padding;
+  font-weight: $font-weight-normal;
+  border-radius: $tag-border-radius;
+
+  display: inline;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: #FFFFFF;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+  a & {
+    &:hover,
+    &:focus {
+      color: #FFFFFF;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+  &.u-tag-outline {
+    color: $tag-bg;
+    background-color: transparent;
+    border-color: $tag-bg;
+  }
+}
+
+
+// Alternate styles: `tag-outline`
+// -------------------------
+
+.u-tag-outline {
+  border: 1px solid transparent;
+}
+
+// Modifier: `tag-round`
+// -------------------------
+
+.u-tag-round {
+  border-radius: $tag-round-border-radius;
+}
+
+
+// Color Modifier
+// ========================================================================
+
+// Modifier: `tag-default`
+// -------------------------
+
+.u-tag-default {
+  color: $tag-default-color;
+  color: #757575;
+  background-color: #e0e0e0;
+  @include tag-styles-variant($tag-default-bg, $tag-default-hover-bg);
+
+  &[href] {
+    &:hover,
+    &:focus {
+      color: $tag-default-hover-color;
+    }
+  }
+
+  &.u-tag-outline {
+    color: $tag-default-color;
+  }
+}
+
+// Modifier: `tag-primary`
+// -------------------------
+
+.u-tag-primary {
+  @include tag-styles-variant($tag-primary-bg, $tag-primary-hover-bg);
+}
+
+// Modifier: `tag-success`
+// -------------------------
+
+.u-tag-success {
+  @include tag-styles-variant($tag-success-bg, $tag-success-hover-bg);
+}
+
+// Modifier: `tag-info`
+// -------------------------
+
+.u-tag-info {
+  @include tag-styles-variant($tag-info-bg, $tag-info-hover-bg);
+}
+
+// Modifier: `tag-warning`
+// -------------------------
+
+.u-tag-warning {
+  @include tag-styles-variant($tag-warning-bg, $tag-warning-hover-bg);
+}
+
+// Modifier: `tag-danger`
+// -------------------------
+
+.u-tag-danger {
+  @include tag-styles-variant($tag-danger-bg, $tag-danger-hover-bg);
+}
+
+// Modifier: `tag-dark`
+// -------------------------
+
+.u-tag-dark {
+  @include tag-styles-variant($tag-dark-bg, $tag-dark-hover-bg);
+}
+
+// Size Modifier
+// ========================================================================
+
+// Modifier: `tag-lg`
+// -------------------------
+
+.u-tag-lg {
+  font-size: $tag-lg-font-size;
+}
+
+// Modifier: `tag-sm`
+// -------------------------
+
+.u-tag-sm {
+  padding: $tag-sm-padding;
+  font-size: $tag-sm-font-size;
+}
+

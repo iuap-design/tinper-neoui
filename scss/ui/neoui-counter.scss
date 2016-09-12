@@ -1,0 +1,97 @@
+
+@import "../core/minxin-variables";
+@import "../core/minxin-mixins";
+// Component: 数据统计工具
+// ========================================================================
+
+.u-counter-content {
+  position: relative;
+}
+.u-counter {
+  text-align: center;
+
+  & > .u-counter-number,
+  .u-counter-number-group {
+    color: $counter-number-color;
+    font-size: $counter-number-font-size;
+  }
+}
+
+.u-counter-label {
+  display: block;
+}
+
+.u-counter-icon {
+  font-size: $counter-icon-font-size;
+}
+
+// Size Modifier
+// ========================================================================
+
+.u-counter-lg {
+  & > .u-counter-number,
+  .u-counter-number-group {
+    font-size: $counter-lg-number-font-size;
+  }
+
+  .u-counter-icon .uf{
+    font-size: $counter-lg-icon-font-size
+  }
+}
+
+.u-counter-md {
+  & > .u-counter-number,
+  .u-counter-number-group {
+    font-size: $counter-md-number-font-size;
+  }
+
+  .u-counter-icon .uf{
+    font-size: $counter-md-icon-font-size
+  }
+}
+
+.u-counter-sm {
+  & > .u-counter-number,
+  .u-counter-number-group {
+    font-size: $counter-sm-number-font-size;
+  }
+
+  .u-counter-icon .uf {
+    font-size: $counter-sm-icon-font-size
+  }
+
+  .u-counter-number-related + .u-counter-number,
+  .u-counter-number + .u-counter-number-related {
+    margin-left: 0;
+  }
+}
+
+// Modifier: 'u-counter-inverse'
+// ========================================================================
+
+.u-counter-inverse {
+  color: $counter-inverse-color;
+
+  & > .u-counter-number,
+  .u-counter-number-group {
+    color: $counter-inverse-color;
+  }
+
+  .u-counter-icon {
+    color: $counter-inverse-color;
+  }
+}
+.font-size-60 .uf{
+  font-size: 60px;
+}
+
+.u-counter-watermark {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    line-height: 1;
+    opacity: .1;
+}
+.u-counter-watermark.darker {
+    color: #000;
+}

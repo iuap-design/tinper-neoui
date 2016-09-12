@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>breadcrumbs</title>
+    <link rel="stylesheet" type="text/css" href="../../../vendor/uui/fonts/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../dist/css/neoui.css">
+    <style type="text/css">
+    .md-home:before {
+        content: "\f015";
+        font-family: 'FontAwesome';
+    }
+    </style>
+</head>
+
+<body>
+    <div class="example">
+        <p>以“/”作为分隔符</p>
+        <ol class="u-breadcrumb">
+            <li><a class="u-link" href="javascript:void(0)">Home</a></li>
+            <li class="active">Library</li>
+        </ol>
+        <ol class="u-breadcrumb">
+            <li><a class="u-link" href="javascript:void(0)">Home</a></li>
+            <li><a class="u-link" href="javascript:void(0)">Library</a></li>
+            <li class="active">Data</li>
+        </ol>
+    </div>
+    <br/>
+    <div class="example">
+        <p>以“>>”作为分隔符</p>
+        <ol class="u-breadcrumb u-breadcrumb-arrow">
+            <li><a class="u-link" href="javascript:void(0)">Home</a></li>
+            <li class="active">Library</li>
+        </ol>
+        <ol class="u-breadcrumb u-breadcrumb-arrow">
+            <li><a class="u-link" href="javascript:void(0)">Home</a></li>
+            <li><a class="u-link" href="javascript:void(0)">Library</a></li>
+            <li class="active">Data</li>
+        </ol>
+    </div>
+    <br/>
+    <div class="example">
+        <p>含有图标的面包屑</p>
+        <ol class="u-breadcrumb">
+            <li><a class="icon md-home u-link" href="javascript:void(0)">Home</a></li>
+            <li class="active">Data</li>
+        </ol>
+        <ol class="u-breadcrumb breadcrumb-arrow">
+            <li><a class="icon md-home u-link" href="javascript:void(0)">Home</a></li>
+            <li><a class="u-link" href="javascript:void(0)">Library</a></li>
+            <li class="active">Data</li>
+        </ol>
+    </div>
+</body>
+
+</html>

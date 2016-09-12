@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>标签</title>
+  <link rel="stylesheet" type="text/css" href="../../../vendor/uui/fonts/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="../../../vendor/uui/css/u.css">
+  <script src="../../../vendor/uui/js/u-polyfill.js"></script>
+  <script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+  <script src="../../../vendor/uui/js/u-ui.js"></script>
+  <style type="text/css">
+    body{
+      font-size:14px
+    }
+  </style>
+</head>
+<body>
+  <p>default</p>
+  <div class="example">
+    <div class="u-rating" data-score="3" data-plugin="rating"></div>
+  </div>
+  <p>size</p>
+  <div class="example">
+      <div class="margin-bottom-10">
+          <div class="u-rating u-rating-sm" data-score="4" data-plugin="rating"></div>
+      </div>
+      <div class="margin-bottom-10">
+          <div class="u-rating" data-score="4" data-plugin="rating"></div>
+      </div>
+      <div>
+          <div class="u-rating u-rating-lg" data-score="4" data-plugin="rating"></div>
+      </div>
+  </div>
+
+  <p>number</p>
+  <div class="example">
+      <div class="u-rating" data-number="10" data-plugin="rating"></div>
+  </div>
+</body>
+<script>
+
+  (function(document, window, $) {
+    'use strict';
+    
+      var  defaults= {
+        targetKeep: true,
+        icon: "font",
+        starType: "i",
+        starOff: "icon fa fa-star",
+        starOn: "icon fa fa-star orange-600",
+        cancelOff: "icon fa fa-minus-circle",
+        cancelOn: "icon  fa fa-minus-circle orange-600",
+        starHalf: "icon fa fa-half-o orange-500"
+      };
+      $('[data-plugin="rating"]').each(function() {
+          var $this = $(this);
+          var options = $.extend(true, {}, defaults, $this.data());
+
+          if (options.hints) {
+            options.hints = options.hints.split(',');
+          }
+
+          $this.raty(options);
+      });
+      // }
+    // });
+  })(document, window, jQuery);
+  </script>
+</html>

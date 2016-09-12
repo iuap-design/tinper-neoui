@@ -1,0 +1,21 @@
+// 核心文件
+
+// 导入参数/函数类文件,minxin有依赖关系，此部分请按照顺序加载
+@import "./core/minxin-colors";
+@import "./core/minxin-themeColors";
+@import "./core/minxin-variables";
+@import "./core/minxin-mixins";
+@import "./core/minxin-palette";
+
+// 全局设置类文件
+@import "./core/set-normalize";
+@import "./core/set-global";
+@import "./core/set-resets";
+
+
+// 工具类文件
+@import "./core/util-iconfont";
+@import "./core/util-ripple";
+@import "./core/util-tool";
+@import "./core/util-utilities";
+@import "./core/util-shadow";
