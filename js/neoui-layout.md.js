@@ -51,9 +51,13 @@ var MDLayout = BaseComponent.extend({
 		this.dHistory = [];
 		this.isNarrow = null;
 		this.response();
-		on(window, 'resize', function(){
+		// on(window, 'resize', function(){
+		// 	me.response();
+		// })
+
+		setInterval(function(){
 			me.response();
-		})
+		},100)
 	},
 
 initPages: function(pages, type){
