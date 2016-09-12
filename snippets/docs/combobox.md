@@ -39,4 +39,8 @@ document.getElementById('domId')['u.Combo'].setComboData(dataArray);
 
 ```
 
+相关内容：
 
+[单选框在kero中使用](http://design.yyuap.com/dist/pages/kero/combobox_ex.html)    
+
+[单选框在grid中使用](http://design.yyuap.com/dist/pages/webIDE/index.html#/demos/grids/edit)
