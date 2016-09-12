@@ -7206,6 +7206,11 @@ input.u-button[type="submit"] {
     color: #000; }
   .u-msg-dialog .u-msg-close:hover {
     opacity: .5; }
+  .u-msg-dialog.u-iframe-dialog {
+    max-height: inherit; }
+    .u-msg-dialog.u-iframe-dialog .u-msg-content {
+      padding: 0px;
+      overflow: hidden; }
 
 .u-menu-item-head {
   display: block;
