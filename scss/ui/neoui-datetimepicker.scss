@@ -30,6 +30,11 @@ $date-bg-color: rgb(27,174,222) !default;
       position: relative;
 }
 
+.u-date-panel>.u-time-nav>.u-button{
+    position: initial;
+    padding-bottom: 13px;
+}
+
 /**
  * clockpicker.scss
  */
@@ -42,7 +47,7 @@ $date-bg-color: rgb(27,174,222) !default;
   padding: 8px 0;
   margin: 0;
   opacity: 0;
-  filter:alpha(opacity=0); 
+  filter:alpha(opacity=0);
   display: block;
   border: none;
   border-radius: 2px;
@@ -56,7 +61,7 @@ $date-bg-color: rgb(27,174,222) !default;
   display:none \9;
   &.is-visible{
     opacity:1;
-    filter:alpha(opacity=100); 
+    filter:alpha(opacity=100);
     transform: scale(1);
     display:block \9;
     //z-index: 999;
@@ -641,7 +646,7 @@ $date-bg-color: rgb(27,174,222) !default;
         text-align: center;
     }
     .u_time_cell div{
-        display: block;   
+        display: block;
         height: 56px;
         width: 100%;
         overflow: hidden;
@@ -664,7 +669,7 @@ $date-bg-color: rgb(27,174,222) !default;
     }
     .u-scroll{
         transition: all 0.100s ease-out;
-        user-select:none 
+        user-select:none
     }
     .scroll-box{
         overflow: hidden;
@@ -675,7 +680,7 @@ $date-bg-color: rgb(27,174,222) !default;
     .scroll-shadow{
         background: linear-gradient(#ffffff 0%,rgba(245,245,245,0) 52%, rgba(245,245,245,0) 48%, #ffffff 100%);
         z-index:99999;
-        position: absolute;			
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
@@ -694,7 +699,7 @@ $date-bg-color: rgb(27,174,222) !default;
 
     .scroll-touch dl{
         margin: 0px;
-    }	
+    }
     .scroll-touch dd{
         user-select:none ;
         height:60px;
@@ -720,7 +725,7 @@ $date-bg-color: rgb(27,174,222) !default;
         top: -4px;
     }
 }
- 
+
 
 
 
@@ -1024,7 +1029,7 @@ $date-bg-color: rgb(27,174,222) !default;
         text-align: center;
     }
     .u_time_cell div{
-        display: block;   
+        display: block;
         height: 56 /16 * 1.5 * $unit;
         width: 100%;
         overflow: hidden;
@@ -1047,7 +1052,7 @@ $date-bg-color: rgb(27,174,222) !default;
     }
     .u-scroll{
         transition: all 0.100s ease-out;
-        user-select:none 
+        user-select:none
     }
     .scroll-box{
         overflow: hidden;
@@ -1058,7 +1063,7 @@ $date-bg-color: rgb(27,174,222) !default;
     .scroll-shadow{
         background: linear-gradient(#ffffff 0%,rgba(245,245,245,0) 52%, rgba(245,245,245,0) 48%, #ffffff 100%);
         z-index:99999;
-        position: absolute;         
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
@@ -1077,7 +1082,7 @@ $date-bg-color: rgb(27,174,222) !default;
 
     .scroll-touch dl{
         margin: 0 /16 * 1.5 * $unit;
-    }   
+    }
     .scroll-touch dd{
         user-select:none ;
         height:60 /16 * 1.5 * $unit;
@@ -1135,7 +1140,7 @@ $date-bg-color: rgb(27,174,222) !default;
 
 
 
-.dw, 
+.dw,
 .dwo {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -1176,7 +1181,7 @@ $date-bg-color: rgb(27,174,222) !default;
     font-family: arial, verdana, sans-serif;
 }
 /* Modal overlay */
-.dw-persp, 
+.dw-persp,
 .dwo {
     width: 100%;
     height: 100%;
@@ -1198,7 +1203,7 @@ $date-bg-color: rgb(27,174,222) !default;
     max-width: 100%;
 }
 /* Top/Bottom mode */
-.dw-top .dw, 
+.dw-top .dw,
 .dw-bottom .dw {
     width: 100%;
     max-width: 100%;
@@ -1455,8 +1460,8 @@ $date-bg-color: rgb(27,174,222) !default;
     border-radius: 0 0 3px 0;
 }
 /* Top, bottom mode */
-.mbsc-android-holo.dw-liq .dwwr, 
-.mbsc-android-holo.dw-top .dwwr, 
+.mbsc-android-holo.dw-liq .dwwr,
+.mbsc-android-holo.dw-top .dwwr,
 .mbsc-android-holo.dw-bottom .dwwr,
 .mbsc-android-holo.dw-liq .dwbw .dwb,
 .mbsc-android-holo.dw-top .dwbw .dwb,
@@ -1746,7 +1751,7 @@ $date-bg-color: rgb(27,174,222) !default;
 /* Top / bottom mode */
 .mbsc-jqm.dw-liq .dw,
 .mbsc-jqm.dw-top .dw,
-.mbsc-jqm.dw-bottom .dw, 
+.mbsc-jqm.dw-bottom .dw,
 .mbsc-jqm.dw-liq .dwwr,
 .mbsc-jqm.dw-top .dwwr,
 .mbsc-jqm.dw-bottom .dwwr {
@@ -2819,23 +2824,23 @@ $date-bg-color: rgb(27,174,222) !default;
 .mbsc-wp .dw-ul .dw-hl .dw-i {
     background: #4c4c4c;
 }
-.mbsc-wp-light .dw-sel .dw-i, 
+.mbsc-wp-light .dw-sel .dw-i,
 .mbsc-wp-light .dw-ul .dw-hl .dw-i {
     color: #fff;
     background: #b5b5b5;
 }
 
-.mbsc-wp-lime .dw-sel .dw-i, 
+.mbsc-wp-lime .dw-sel .dw-i,
 .mbsc-wp-lime .dw-ul .dw-hl .dw-i {
     background: #a4c400;
     border-color: #a4c400;
 }
-.mbsc-wp-green .dw-sel .dw-i, 
+.mbsc-wp-green .dw-sel .dw-i,
 .mbsc-wp-green .dw-ul .dw-hl .dw-i {
     background: #60a917;
     border-color: #60a917;
 }
-.mbsc-wp-emerald .dw-sel .dw-i, 
+.mbsc-wp-emerald .dw-sel .dw-i,
 .mbsc-wp-emerald .dw-ul .dw-hl .dw-i {
     background: #008a00;
     border-color: #008a00;
@@ -2967,17 +2972,17 @@ $date-bg-color: rgb(27,174,222) !default;
 .mbsc-wp .dw-li .dw-i {
     width: 99.5%;
 }
-.mbsc-wp .wpa .dw-li, 
+.mbsc-wp .wpa .dw-li,
 .mbsc-wp .dwa .dw-li {
     opacity: .3;
     filter: Alpha(Opacity=30);
 }
-.mbsc-wp .wpa .dw-v, 
-.mbsc-wp .dwa .dw-v { 
+.mbsc-wp .wpa .dw-v,
+.mbsc-wp .dwa .dw-v {
     opacity: 1;
     filter: Alpha(Opacity=100);
 }
-.mbsc-wp .dw-day, 
+.mbsc-wp .dw-day,
 .mbsc-wp .dw-mon {
     display: block;
     color: #a9a9a9;
@@ -2995,7 +3000,7 @@ $date-bg-color: rgb(27,174,222) !default;
 .mbsc-wp .dw-sel .dw-i {
     color: #fff;
 }
-.mbsc-wp .dw-sel .dw-day, 
+.mbsc-wp .dw-sel .dw-day,
 .mbsc-wp .dw-sel .dw-mon {
     color: #fff;
 }
@@ -3003,7 +3008,7 @@ $date-bg-color: rgb(27,174,222) !default;
     border: 1px solid #4c4c4c;
     background: none;
 }
-.mbsc-wp .dwa .dw-day, 
+.mbsc-wp .dwa .dw-day,
 .mbsc-wp .dwa .dw-month {
     color: #a9a9a9;
 }
@@ -3105,15 +3110,15 @@ $date-bg-color: rgb(27,174,222) !default;
 .mbsc-wp-light .dw-i {
     border-color: #b5b5b5;
 }
-.mbsc-wp-light .dw-day, 
+.mbsc-wp-light .dw-day,
 .mbsc-wp-light .dw-mon {
     color: #6b6b6b;
 }
-.mbsc-wp-light .dw-sel .dw-day, 
+.mbsc-wp-light .dw-sel .dw-day,
 .mbsc-wp-light .dw-sel .dw-mon {
     color: #fff;
 }
-.mbsc-wp-light .mbsc-wp-none .dw-day, 
+.mbsc-wp-light .mbsc-wp-none .dw-day,
 .mbsc-wp-light .mbsc-wp-none .dw-mon {
     color: #6b6b6b;
 }
@@ -3122,7 +3127,7 @@ $date-bg-color: rgb(27,174,222) !default;
     border: 1px solid #b5b5b5;
     background: none;
 }
-.mbsc-wp-light .dwa .dw-day, 
+.mbsc-wp-light .dwa .dw-day,
 .mbsc-wp-light .dwa .dw-mon {
     color: #6b6b6b;
 }
@@ -3153,7 +3158,7 @@ $date-bg-color: rgb(27,174,222) !default;
 .mbsc-wp-light .dwwms .dw-msel:before {
     color: #000;
 }
-.mbsc-wp-light .mbsc-wp-none .dw-sel .dw-i, 
+.mbsc-wp-light .mbsc-wp-none .dw-sel .dw-i,
 .mbsc-wp-light .mbsc-wp-none .dw-hl .dw-i {
     color: #000;
 }
@@ -3178,8 +3183,8 @@ $date-bg-color: rgb(27,174,222) !default;
     animation-fill-mode: forwards;
     animation-duration: 200ms;
 }
-.dw-trans .dwo { 
-    -webkit-backface-visibility: hidden; 
+.dw-trans .dwo {
+    -webkit-backface-visibility: hidden;
 }
 .dw-in .dw {
     -webkit-animation-timing-function: ease-out;
@@ -3819,5 +3824,3 @@ $date-bg-color: rgb(27,174,222) !default;
         -moz-transform: translateY(100%);
     }
 }
-
- 
