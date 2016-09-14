@@ -5,7 +5,7 @@
  */
 
 //Sparrow import
-import {extend} from 'neoui-sparrow/lib/extend';
+import {extend} from 'neoui-sparrow/js/extend';
 //import {setCookie,getCookie} from 'neoui-sparrow/lib/cookies';
 //import {createShellObject,execIgnoreError,getFunction,getJSObject,isDate,isNumber,isArray,isEmptyObject,inArray,isDomElement,each} from 'neoui-sparrow/lib/util';
 //import {env} from 'neoui-sparrow/lib/env';
