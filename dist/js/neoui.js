@@ -6460,8 +6460,7 @@ $.fn.bootstrapWizard.defaults = {
 	            classConstructor: config.comp,
 	            className: config.compAsString || config['compAsString'],
 	            cssClass: config.css || config['css'],
-	            callbacks: [],
-	            dependencies: config.dependencies || []
+	            callbacks: []
 	        };
 	        config.comp.prototype.compType = config.compAsString;
 	        for (var i = 0; i < this.registeredControls.length; i++) {
@@ -6476,36 +6475,9 @@ $.fn.bootstrapWizard.defaults = {
 	        };
 	        this.registeredControls.push(newConfig);
 	    },
-
 	    updateComp: function updateComp(ele) {
-	        this._reorderComps();
 	        for (var n = 0; n < this.registeredControls.length; n++) {
 	            _upgradeDomInternal(this.registeredControls[n].className, null, ele);
-	        }
-	    },
-	    // 后续遍历registeredControls，重新排列
-	    _reorderComps: function _reorderComps() {
-	        var tmpArray = [];
-	        var dictory = {};
-
-	        for (var n = 0; n < this.registeredControls.length; n++) {
-	            dictory[this.registeredControls[n].className] = this.registeredControls[n];
-	        }
-	        for (var n = 0; n < this.registeredControls.length; n++) {
-	            traverse(this.registeredControls[n]);
-	        }
-
-	        this.registeredControls = tmpArray;
-
-	        function traverse(control) {
-	            if (u.inArray(control, tmpArray)) return;
-	            if (control.dependencies.length > 0) {
-	                for (var i = 0, len = control.dependencies.length; i < len; i++) {
-	                    var childControl = dictory[control.dependencies[i]];
-	                    traverse(childControl);
-	                }
-	            }
-	            tmpArray.push(control);
 	        }
 	    }
 	};
@@ -9324,9 +9296,13 @@ $.fn.bootstrapWizard.defaults = {
 			this.dHistory = [];
 			this.isNarrow = null;
 			this.response();
-			(0, _event.on)(window, 'resize', function () {
+			// on(window, 'resize', function(){
+			// 	me.response();
+			// })
+
+			setInterval(function () {
 				me.response();
-			});
+			}, 100);
 		},
 
 		initPages: function initPages(pages, type) {
