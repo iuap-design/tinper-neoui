@@ -12496,7 +12496,7 @@ $.fn.bootstrapWizard.defaults = {
 			if (this.options.showFix) {
 				document.body.appendChild(this.tipDom);
 				this.tipDom.style.position = 'fixed';
-				showPanelByEle({
+				(0, _dom.showPanelByEle)({
 					ele: this.element,
 					panel: this.tipDom,
 					position: "top"
