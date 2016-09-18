@@ -1,13 +1,4 @@
-.u-ribbon{
-  position: relative;
-  padding: 50px 15px 15px 50px;
-  background-color: #f3f7fa;
-  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.u-ribbon-title {
+.u-ribbon {
   position: absolute;
   top: -3px;
   left: -3px;
@@ -173,8 +164,8 @@
     }
 }
 .u-ribbon-bottom {
-    /*top: auto;
-    bottom: -2px;*/
+    top: auto;
+    bottom: -2px;
     .u-ribbon-inner {
       top: auto;
       bottom: 16px;
@@ -603,11 +594,4 @@
     border-top-color: transparent;
     border-bottom-color: rgb(239, 83, 80);
   }
-}
-.u-ribbon-bottom {
-  top: auto;
-  bottom: -2px;}
-.u-ribbon-title.u-ribbon-bottom .u-ribbon-inner{
-  top: auto;
-  bottom: 16px;
 }

@@ -12,6 +12,6 @@ env:
     - NPM_CONFIG_PROGRESS="false"
 
 before_install:
-  - npm install -g gulp
+  - npm install -g webpack
 
-script: gulp
+script: npm run product

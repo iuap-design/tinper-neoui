@@ -5,7 +5,7 @@
  */
 import {extend} from 'neoui-sparrow/js/extend';
 import {on} from 'neoui-sparrow/js/event';
-import {makeDOM,addClass,removeClass,getZIndex} from 'neoui-sparrow/js/dom';
+import {makeDOM,addClass,removeClass,getZIndex,showPanelByEle} from 'neoui-sparrow/js/dom';
 
 var Tooltip = function(element, options) {
 	this.init(element, options)
@@ -288,5 +288,5 @@ Tooltip.prototype = {
 
 
 export{
-    Tooltip  
+    Tooltip
 }

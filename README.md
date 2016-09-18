@@ -1,6 +1,6 @@
 # neoui
 
-![Bower version](https://img.shields.io/bower/v/neoui.svg)
+[![Bower](https://img.shields.io/bower/v/neoui.svg)](https://github.com/iuap-design/neoui)
 [![npm version](https://img.shields.io/npm/v/neoui.svg)](https://www.npmjs.com/package/neoui)
 [![Build Status](https://img.shields.io/travis/iuap-design/neoui/master.svg)](https://travis-ci.org/iuap-design/neoui)
 [![devDependency Status](https://img.shields.io/david/dev/iuap-design/neoui.svg)](https://david-dm.org/iuap-design/neoui#info=devDependencies)
