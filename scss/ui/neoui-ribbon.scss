@@ -158,7 +158,9 @@
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
   }
-  &.u-ribbon-reverse {
+  
+}
+.u-ribbon-reverse {
     right: -2px;
     left: auto;
     .u-ribbon-inner {
@@ -169,8 +171,8 @@
       -o-transform: rotate(45deg);
       transform: rotate(45deg);
     }
-  }
-  &.u-ribbon-bottom {
+}
+.u-ribbon-bottom {
     /*top: auto;
     bottom: -2px;*/
     .u-ribbon-inner {
@@ -187,9 +189,7 @@
       -o-transform: rotate(-45deg);
       transform: rotate(-45deg);
     }
-  }
 }
-
 .u-ribbon-corner {
   top: 0;
   left: 0;
