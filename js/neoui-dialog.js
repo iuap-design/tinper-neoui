@@ -326,7 +326,6 @@ dialogMode.prototype.close = function() {
 		enable_mouseWheel();
 }
 
-u.dialogMode = dialogMode;
 
 var dialog = function(options) {
 	return new dialogMode(options);
@@ -389,14 +388,14 @@ var iframeDialogTemplate = '<div class="u-msg-dialog u-iframe-dialog" style="{wi
     '<iframe src="{url}" width = "99%" height ="100%"></iframe>' +
     '</div>' +
     '{footer}';
-                    
+
 
 
 	// '<div class="u-msg-title">' +
 	// '<h4>{title}</h4>' +
 	// '</div>' +
 	// '<div class="u-msg-content">' +
-	
+
 	// '</div>' +
 	// '<div class="u-msg-footer"><button class="u-msg-ok u-button primary raised">{okText}</button><button class="u-msg-cancel u-button">{cancelText}</button></div>' +
 	// '</div>';
@@ -443,7 +442,7 @@ var iframeDialogF = function(options) {
 		// var contentHeight = this.contentDom.offsetHeight;
 		// if(contentHeight > wholeHeight && cDom)
 		// 	cDom.style.height = wholeHeight - (56 + 46) + 'px';
-		
+
 		var wholeHeight = this.templateDom.offsetHeight;
 		var cDom = this.templateDom.querySelector('.u-msg-content');
 		if (this.hasFooter) {
@@ -481,7 +480,7 @@ iframeDialogF.prototype.create = function() {
 	this.overlayDiv = makeModal(this.templateDom);
 
 
-		
+
 	if (this.hasCloseMenu) {
 		this.closeDiv = this.templateDom.querySelector('.u-msg-close');
 		on(this.closeDiv, 'click', function() {
@@ -494,7 +493,7 @@ iframeDialogF.prototype.create = function() {
 	if (this.hasFooter) {
 		var okBtn = this.templateDom.querySelector('.u-msg-ok');
 		var cancelBtn = this.templateDom.querySelector('.u-msg-cancel');
-		var closeBtn = 
+		var closeBtn =
 		new Button({
 			el: okBtn
 		});
@@ -512,7 +511,7 @@ iframeDialogF.prototype.create = function() {
 			}
 		})
 	}
-	
+
 	document.body.appendChild(this.templateDom);
 	this.isClosed = false;
 };
@@ -521,12 +520,12 @@ iframeDialogF.prototype.create = function() {
 
 iframeDialogF.prototype.close = function () {
 
-	
+
 	document.body.removeChild(this.templateDom);
 	document.body.removeChild(this.overlayDiv);
 	this.isClosed = true;
 
-	
+
 };
 
 

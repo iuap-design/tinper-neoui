@@ -71,6 +71,6 @@ radioObject.enable();
 
 相关内容：
 
-[单选框在kero中使用](http://design.yyuap.com//dist/pages/kero/ex_radio.html)    
+[单选框在kero中使用](http://design.yyuap.com/dist/pages/kero/ex_radio.html)    
 
-[单选框在grid中使用]()
+[单选框在grid中使用](http://design.yyuap.com/dist/pages/webIDE/index.html#/demos/grids/edit)

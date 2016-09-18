@@ -3,10 +3,11 @@
 checkbox提供了基础复选框、不同色彩复选框、图片复选框、个性复选框
 
 
-
 replaceExamp
 
+
 [试一试](http://design.yyuap.com/dist/pages/webIDE/index.html#/demos/ui/checkbox)
+
 
 
 # API
@@ -18,6 +19,7 @@ replaceExamp
 * 用法：
 
 获取方式：1、获取绑定checkbox的dom元素 ； 2、读取dom元素上的属性'u.Checkbox'
+
 
 ```
 
@@ -82,7 +84,6 @@ checkboxObject.enable();
 
 checkboxObject.toggle();
 
-```
 
 相关内容：
 

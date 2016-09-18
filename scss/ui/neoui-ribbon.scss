@@ -7,6 +7,9 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+.u-ribbon .bottom{
+    padding: 15px 15px 50px 50px;
+}
 .u-ribben-belt {
     position: absolute;
     top: -3px;
@@ -157,7 +160,9 @@
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
   }
-  &.u-ribbon-reverse {
+
+}
+.u-ribbon-reverse {
     right: -2px;
     left: auto;
     .u-ribbon-inner {
@@ -168,8 +173,8 @@
       -o-transform: rotate(45deg);
       transform: rotate(45deg);
     }
-  }
-  &.u-ribbon-bottom {
+}
+.u-ribbon-bottom {
     top: auto;
     bottom: -2px;
     .u-ribbon-inner {
@@ -186,9 +191,7 @@
       -o-transform: rotate(-45deg);
       transform: rotate(-45deg);
     }
-  }
 }
-
 .u-ribbon-corner {
   top: 0;
   left: 0;
