@@ -263,7 +263,7 @@ var Combo = BaseComponent.extend({
             
             if(flag == '+'){
                 var nameDiv= makeDOM('<div class="u-combo-name" key="' + val + '">'+ name + /*<a href="javascript:void(0)" class="remove">x</a>*/'</div>');
-                var parNameDiv=makeDOM('<div class="u-combo-name-par" style="position:absolute;width:' + this.fullWidth + 'px;"></div>');
+                var parNameDiv=makeDOM('<div class="u-combo-name-par" style="position:absolute;max-width:' + this.fullWidth + 'px;"></div>');
                 /*var _a = nameDiv.querySelector('a');
                 on(_a, 'click', function(){
                     var values = self.value.split(',');

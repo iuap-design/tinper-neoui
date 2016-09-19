@@ -15,10 +15,11 @@ replaceExamp
 ## \# checkbox对象
 
 * 类型：`Object`
-* 说明： 获取radio对象
+* 说明： 获取checkbox对象
 * 用法：
 
-获取方式：1、获取绑定radio的dom元素 ； 2、读取dom元素上的属性'u.Radio'
+获取方式：1、获取绑定checkbox的dom元素 ； 2、读取dom元素上的属性'u.Checkbox'
+
 
 ```
 
@@ -81,9 +82,8 @@ checkboxObject.enable();
 
 ```
 
-radioObject.toggle();
+checkboxObject.toggle();
 
-```
 
 相关内容：
 

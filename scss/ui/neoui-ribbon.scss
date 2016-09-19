@@ -1,13 +1,24 @@
 .u-ribbon {
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  width: 150px;
-  height: 150px;
-  text-align: center;
-  background-color: transparent;
+    position: relative;
+    padding: 50px 15px 15px 50px;
+    background-color: #f3f7fa;
+    -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
-
+.u-ribbon .bottom{
+    padding: 15px 15px 50px 50px;
+}
+.u-ribben-belt {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    background-color: transparent;
+}
 .u-ribbon-inner {
   position: absolute;
   top: 16px;
@@ -149,7 +160,9 @@
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
   }
-  &.u-ribbon-reverse {
+
+}
+.u-ribbon-reverse {
     right: -2px;
     left: auto;
     .u-ribbon-inner {
@@ -160,8 +173,8 @@
       -o-transform: rotate(45deg);
       transform: rotate(45deg);
     }
-  }
-  &.u-ribbon-bottom {
+}
+.u-ribbon-bottom {
     top: auto;
     bottom: -2px;
     .u-ribbon-inner {
@@ -178,9 +191,7 @@
       -o-transform: rotate(-45deg);
       transform: rotate(-45deg);
     }
-  }
 }
-
 .u-ribbon-corner {
   top: 0;
   left: 0;

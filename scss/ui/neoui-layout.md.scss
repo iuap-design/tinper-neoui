@@ -48,6 +48,7 @@
   z-index: 5;
   transition:all 300ms;
   box-sizing:border-box;
+  overflow: auto;
   &.u-mdlayout-page{
     background-color: #F2F2F2;
   }

@@ -7666,7 +7666,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	            if (flag == '+') {
 	                var nameDiv = (0, _dom.makeDOM)('<div class="u-combo-name" key="' + val + '">' + name + /*<a href="javascript:void(0)" class="remove">x</a>*/'</div>');
-	                var parNameDiv = (0, _dom.makeDOM)('<div class="u-combo-name-par" style="position:absolute;width:' + this.fullWidth + 'px;"></div>');
+	                var parNameDiv = (0, _dom.makeDOM)('<div class="u-combo-name-par" style="position:absolute;max-width:' + this.fullWidth + 'px;"></div>');
 	                /*var _a = nameDiv.querySelector('a');
 	                on(_a, 'click', function(){
 	                    var values = self.value.split(',');
@@ -14374,15 +14374,23 @@ $.fn.bootstrapWizard.defaults = {
 	            // this.top = this.element.offsetTop + inputHeight;
 	            this.top = this._input.offsetTop + inputHeight;
 
-	            this.abLeft = (0, _dom.getElementLeft)(this._input);
-	            this.abTop = (0, _dom.getElementLeft)(this._input);
+	            var abLeft = (0, _dom.getElementLeft)(this._input),
+	                abTop = (0, _dom.getElementTop)(this._input);
 
-	            if (this.abLeft + panelWidth > bodyWidth) {
-	                this.left = bodyWidth - panelWidth - this.abLeft;
+	            if (abLeft + panelWidth > bodyWidth) {
+	                if (abLeft - bodyWidth > 0) {
+	                    this.left = -panelWidth;
+	                } else {
+	                    this.left = bodyWidth - panelWidth - abLeft;
+	                }
 	            }
 
-	            if (this.abTop + panelHeight > bodyHeight) {
-	                this.top = bodyHeight - panelHeight - this.abTop;
+	            if (abTop + panelHeight > bodyHeight) {
+	                if (abTop - bodyHeight > 0) {
+	                    this.top = -panelHeight;
+	                } else {
+	                    this.top = bodyHeight - panelHeight - abTop;
+	                }
 	            }
 
 	            this._panel.style.left = this.left + 'px';

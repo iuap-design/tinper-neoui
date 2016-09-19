@@ -1133,15 +1133,23 @@ DateTimePicker.fn.show = function(evt){
             // this.top = this.element.offsetTop + inputHeight;
             this.top = this._input.offsetTop + inputHeight;
 
-            this.abLeft = getElementLeft(this._input);
-            this.abTop = getElementLeft(this._input);
+            var abLeft = getElementLeft(this._input),
+                abTop = getElementTop(this._input);
 
-            if(this.abLeft + panelWidth > bodyWidth){
-                this.left = bodyWidth - panelWidth - this.abLeft;
+            if(abLeft + panelWidth > bodyWidth){
+                if( abLeft - bodyWidth> 0){
+                    this.left =  - panelWidth ;
+                }else {
+                    this.left =bodyWidth  - panelWidth - abLeft;
+                }
             }
 
-            if((this.abTop + panelHeight) > bodyHeight){
-                this.top = bodyHeight - panelHeight - this.abTop;
+            if((abTop + panelHeight) > bodyHeight){
+                if( abTop - bodyHeight> 0){
+                    this.top =  - panelHeight ;
+                }else {
+                    this.top =bodyHeight  - panelHeight - abTop;
+                }
             }
 
 
