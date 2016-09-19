@@ -68,7 +68,7 @@ $pearl-xs-size: 24px;
   margin-bottom: $pearls-margin-bottom;
 }
 
-.u-step-pearl {
+.u-step {
   position: relative;
   padding: 0;
   margin: 0;
@@ -100,7 +100,7 @@ $pearl-xs-size: 24px;
 }
 
 
-.u-step-pearl-number, .u-step-pearl-icon {
+.u-step-number, .u-step-icon {
   position: relative;
   z-index: 1;
   display: inline-block;
@@ -115,15 +115,15 @@ $pearl-xs-size: 24px;
   border: $pearl-border-size solid $pearl-border-color;
 }
 
-.u-step-pearl-number {
+.u-step-number {
   font-size: $pearl-number-font-size;
 }
 
-.u-step-pearl-icon {
+.u-step-icon {
   font-size: $pearl-icon-font-size;
 }
 
-.u-step-pearl-title {
+.u-step-title {
   margin-top: $pearl-title-margin-top;
   display: block;
   font-size: $pearl-title-font-size;
@@ -136,13 +136,13 @@ $pearl-xs-size: 24px;
 
 // State Modifier
 // ========================================================================
-.u-step-pearl {
+.u-step {
   &.current {
     &:before,
     &:after {
       background-color: $pearl-current-line-bg;
     }
-    .u-step-pearl-number, .u-step-pearl-icon {
+    .u-step-number, .u-ste-icon {
       color: $pearl-current-color;
       background-color: $pearl-current-bg;
       border-color: $pearl-current-border-color;
@@ -303,7 +303,7 @@ $pearl-xs-size: 24px;
   position: relative;
   margin: 0;
 }
-.u-step-normal{//标准step样式
+.u-step {//标准step样式
   padding: 12px 20px;
   font-size: inherit;
   color: #a3afb7;
@@ -311,7 +311,7 @@ $pearl-xs-size: 24px;
   background-color: #f3f7f9;
   border-radius: 0;
 }
-.u-step-normal-icon {
+.u-step-icon {
   float: left;
   margin-right: .5em;
   font-size: 20px;
@@ -322,7 +322,7 @@ $pearl-xs-size: 24px;
   text-align: center;
   border-radius: 50%;
 }
-.u-step-normal-number{//标准u-step-number样式
+.u-step-number{//标准u-step-number样式
   position: absolute;
   top: 50%;
   left: 20px;
@@ -333,19 +333,19 @@ $pearl-xs-size: 24px;
   background: #e4eaec;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
-  ~ .u-step-normal-desc {
+  ~ .u-step-desc {
      min-height: 40px;
      margin-left: 50px;
   }
 }
 
-.u-step-normal-title {
+.u-step-title {
   margin-bottom: 0;
   font-size: 20px;
   color: #526069;
 }
 
-.u-step-normal-desc {
+.u-step-desc {
   text-align: left;
   p {
     margin-bottom: 0;
@@ -361,14 +361,14 @@ $pearl-xs-size: 24px;
   }
 }
 
-.u-step-normal {
+.u-step {
   &.current {
     color: #fff;
     background-color: #3f51b5;
-    .u-step-normal-title {
+    .u-step-title {
       color: #fff;
     }
-    .u-step-normal-number {
+    .u-step-number {
       color: #3f51b5;
       background-color: #fff;
     }
@@ -377,20 +377,20 @@ $pearl-xs-size: 24px;
     color: #ccd5db;
     pointer-events: none;
     cursor: auto;
-    .u-step-normal-title {
+    .u-step-title {
       color: #ccd5db;
     }
-    .u-step-normal-number {
+    .u-step-number {
       background-color: #ccd5db;
     }
   }
   &.error {
     color: #fff;
     background-color: #f96868;
-    .u-step-normal-title {
+    .u-step-title {
       color: #fff;
     }
-    .u-step-normal-number {
+    .u-step-number {
       color: #f96868;
       background-color: #fff;
     }
@@ -398,10 +398,10 @@ $pearl-xs-size: 24px;
   &.done {
     color: #fff;
     background-color: #46be8a;
-    .u-step-normal-title {
+    .u-step-title {
       color: #fff;
     }
-    .u-step-normal-number {
+    .u-step-number {
       color: #46be8a;
       background-color: #fff;
     }
@@ -409,14 +409,14 @@ $pearl-xs-size: 24px;
 }
 
 .u-steps-lg {
-  .u-step-normal {
+  .u-step {
     padding: 20px 20px;
     font-size: 16px;
   }
-  .u-step-normal-icon, .u-step-normal-title {
+  .u-step-icon, .u-step-title {
     font-size: 22px;
   }
-  .u-step-normal-number {
+  .u-step-number {
     width: 46px;
     height: 46px;
     font-size: 28px;
@@ -429,13 +429,13 @@ $pearl-xs-size: 24px;
 }
 
 .u-steps-sm {
-  .u-step-normal {
+  .u-step {
     font-size: 12px;
   }
-  .u-step-normal-icon, .u-step-normal-title {
+  .u-step-icon, .u-step-title {
     font-size: 18px;
   }
-  .u-step-normal-number {
+  .u-step-number {
     width: 30px;
     height: 30px;
     font-size: 24px;
@@ -448,18 +448,18 @@ $pearl-xs-size: 24px;
 }
 
 .u-steps-xs {
-  .u-step-normal {
+  .u-step {
     font-size: 10px;
   }
-  .u-step-normal-icon, .u-step-normal-title {
+  .u-step-icon, .u-step-normal-title {
     font-size: 16px;
   }
-  .u-step-normal-number {
+  .u-step-number {
     width: 24px;
     height: 24px;
     font-size: 20px;
     line-height: 24px;
-    ~ .u-step-normal-desc {
+    ~ .u-step-desc {
       min-height: 24px;
       margin-left: 34px;
     }
