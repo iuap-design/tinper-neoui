@@ -441,8 +441,9 @@ input.u-button[type="submit"] {
   border-radius: 0 500px 500px 0;
 }
 
+
 /*按钮组*/
-.u-btn-group {
+.u-button-group {
   margin-right: 15px;
   margin-bottom: 20px;
   -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
@@ -458,18 +459,24 @@ input.u-button[type="submit"] {
       }
       margin-left: 0;
     }
-    border-left:1px solid;
+
+    &:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+      border-radius: 0;
+    }
+    will-change: initial;
     box-shadow: none;
     position: relative;
     float: left;
-    padding: 6px 10px;
-    font-size: 14px;
-    line-height: 1.57142857;
-    border-radius: 0;
   }
 }
 
-.u-btn-group-vertical {
+ .u-button-group> .u-button:last-child:not(:first-child),
+ .u-button-group> .dropdown-toggle:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+.u-button-group-vertical {
   margin-right: 15px;
   margin-bottom: 20px;
   -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
@@ -494,62 +501,7 @@ input.u-button[type="submit"] {
   }
 }
 
-.u-btn-group-lg > .u-button {
-  padding: 10px 18px;
-  font-size: 18px;
-  line-height: 1.3333333;
-  border-radius: 4px;
-}
 
-.u-btn-group-sm > .u-button {
-  padding: 6px 13px;
-  font-size: 12px;
-  line-height: 1.5;
-  border-radius: 2px;
-}
-
-.u-btn-group-xs > .u-button {
-  padding: 1px 5px;
-  font-size: 12px;
-  line-height: 1.5;
-  border-radius: 2px;
-}
-
-.u-button-group .default:hover{
-    color: #333 !important;
-    background-color: #e6e6e6 !important;
-    border-color: #adadad !important;
-
-}
-
-.u-button-group .primary{
-    color: #fff;
-    background-color: #337ab7;
-    border-color: #2e6da4;
-}
-.u-button-group .u-button{
-    border-radius: 0;
-    border: 1px solid transparent !important;
-    height: 33px;
-}
-
-.u-button-group .default{
-    color: #333 !important;
-    background-color: #fff !important;
-    border-color: #ccc !important;
-
-}
-.u-button-group .u-button:first-child{
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-}
-.u-button-group .u-button:last-child{
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-}
-.u-button-group .u-button:not(:first-child){
-    margin-left: -1px;
-}
 .u-button-group.u-button-group-xg .u-button{
     padding: 10px 18px;
     font-size: 18px !important;
@@ -566,6 +518,4 @@ input.u-button[type="submit"] {
     font-size: 12px !important;
     height: 28px;
 }
-.vertical-align-bottom.u-button {
-  vertical-align: bottom;
-}
+

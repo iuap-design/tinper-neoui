@@ -6183,9 +6183,12 @@ $.fn.bootstrapWizard.defaults = {
 	                                                                                                                                                                                                                                                   * Module : Sparrow compMgr
 	                                                                                                                                                                                                                                                   * Author : Kvkens(yueming@yonyou.com)
 	                                                                                                                                                                                                                                                   * Date	  : 2016-07-28 18:41:06
+	                                                                                                                                                                                                                                                   * Update : 2016-09-13 09:26:00
 	                                                                                                                                                                                                                                                   */
 
 	var _dom = __webpack_require__(10);
+
+	var _util = __webpack_require__(6);
 
 	function _findRegisteredClass(name, optReplace) {
 	    for (var i = 0; i < CompMgr.registeredControls.length; i++) {
@@ -6301,7 +6304,11 @@ $.fn.bootstrapWizard.defaults = {
 	            var options = JSON.parse(element.getAttribute('u-meta'));
 	            if (options && options['type']) {
 	                //var comp = CompMgr._createComp({el:element,options:options,model:model});
-	                var comp = CompMgr.createDataAdapter({ el: element, options: options, model: model });
+	                var comp = CompMgr.createDataAdapter({
+	                    el: element,
+	                    options: options,
+	                    model: model
+	                });
 	                if (comp) {
 	                    element['adpt'] = comp;
 	                    element['u-meta'] = comp;
@@ -6402,7 +6409,7 @@ $.fn.bootstrapWizard.defaults = {
 	        this.registeredControls = tmpArray;
 
 	        function traverse(control) {
-	            if (u.inArray(control, tmpArray)) return;
+	            if ((0, _util.inArray)(control, tmpArray)) return;
 	            if (control.dependencies.length > 0) {
 	                for (var i = 0, len = control.dependencies.length; i < len; i++) {
 	                    var childControl = dictory[control.dependencies[i]];
@@ -7659,7 +7666,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	            if (flag == '+') {
 	                var nameDiv = (0, _dom.makeDOM)('<div class="u-combo-name" key="' + val + '">' + name + /*<a href="javascript:void(0)" class="remove">x</a>*/'</div>');
-	                var parNameDiv = (0, _dom.makeDOM)('<div class="u-combo-name-par" style="position:absolute;width:' + this.fullWidth + 'px;"></div>');
+	                var parNameDiv = (0, _dom.makeDOM)('<div class="u-combo-name-par" style="position:absolute;max-width:' + this.fullWidth + 'px;"></div>');
 	                /*var _a = nameDiv.querySelector('a');
 	                on(_a, 'click', function(){
 	                    var values = self.value.split(',');
