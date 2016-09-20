@@ -25,7 +25,13 @@ module.exports = {
 		for (var i = 0; i < filesArr.length; i++){
 			var filePath = filesArr[i]
 			var data = fs.readFileSync(filePath, 'utf8');
-			data = headerStr  + data;
+			var cssheaderStr = '';
+			if(filePath == './dist/css/u.css'){
+				cssheaderStr = '@import \'u.core.css\';\r\n';
+			}else if(filePath == './dist/css/u.min.css'){
+				cssheaderStr = '@import \'u.core.min.css\';';
+			}
+			data = headerStr + cssheaderStr + data;
 			fs.writeFileSync(filePath, data);
 		}
 	},
