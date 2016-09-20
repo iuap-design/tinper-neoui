@@ -208,6 +208,11 @@ gulp.task('neoui', ['neo'], function(){
     ]);    
 });
 
-gulp.task('dist', ['buildcss','buildjs', 'image','fontcss','fontfile']);
+gulp.task('dist', ['buildcss','buildjs', 'image','fontcss','fontfile'], function(){
+    version.init([
+        './dist/css/u.css',
+        './dist/css/u.min.css'
+    ]);  
+});
 
 
