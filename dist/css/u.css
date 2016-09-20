@@ -10650,12 +10650,12 @@ small {
   .u-steps.row {
     display: block; }
 
-.u-step-pearl {
+.u-step {
   position: relative;
   padding: 0;
   margin: 0;
   text-align: center; }
-  .u-step-pearl:before, .u-step-pearl:after {
+  .u-step:before, .u-step:after {
     position: absolute;
     top: 18px;
     z-index: 0;
@@ -10663,14 +10663,14 @@ small {
     height: 4px;
     content: "";
     background-color: rgb(238,238,238); }
-  .u-step-pearl:before {
+  .u-step:before {
     left: 0; }
-  .u-step-pearl:after {
+  .u-step:after {
     right: 0; }
-  .u-step-pearl:first-child:before, .u-step-pearl:last-child:after {
+  .u-step:first-child:before, .u-step:last-child:after {
     display: none !important; }
 
-.u-step-pearl-number, .u-step-pearl-icon {
+.u-step-number, .u-step-icon {
   position: relative;
   z-index: 1;
   display: inline-block;
@@ -10683,54 +10683,54 @@ small {
   border-radius: 50%;
   border: 2px solid rgb(189,189,189); }
 
-.u-step-pearl-number {
+.u-step-number {
   font-size: 18px; }
 
-.u-step-pearl-icon {
+.u-step-icon {
   font-size: 18px; }
 
-.u-step-pearl-title {
+.u-step-title {
   margin-top: 0.5em;
   display: block;
   font-size: 16px;
   color: rgb(97,97,97);
   margin-bottom: 0; }
 
-.u-step-pearl.current:before, .u-step-pearl.current:after {
+.u-step.current:before, .u-step.current:after {
   background-color: rgb(63,81,181); }
 
-.u-step-pearl.current .u-step-pearl-number, .u-step-pearl.current .u-step-pearl-icon {
+.u-step.current .u-step-number, .u-step.current .u-ste-icon {
   color: rgb(63,81,181);
   background-color: rgb(255,255,255);
   border-color: rgb(63,81,181);
   -webkit-transform: scale(1.3);
           transform: scale(1.3); }
 
-.u-step-pearl.disabled {
+.u-step.disabled {
   pointer-events: none;
   cursor: auto; }
-  .u-step-pearl.disabled:before, .u-step-pearl.disabled:after {
+  .u-step.disabled:before, .u-step.disabled:after {
     background-color: rgb(238,238,238); }
-  .u-step-pearl.disabled .u-step-pearl-number, .u-step-pearl.disabled .u-step-pearl-icon {
+  .u-step.disabled .u-step-pearl-number, .u-step.disabled .u-step-pearl-icon {
     color: rgb(255,255,255);
     background-color: rgb(189,189,189);
     border-color: rgb(189,189,189); }
 
-.u-step-pearl.error:before {
+.u-step.error:before {
   background-color: rgb(63,81,181); }
 
-.u-step-pearl.error:after {
+.u-step.error:after {
   background-color: rgb(238,238,238); }
 
-.u-step-pearl.error .u-step-pearl-number, .u-step-pearl.error .u-step-pearl-icon {
+.u-step.error .u-step-pearl-number, .u-step.error .u-step-pearl-icon {
   color: rgb(244,67,54);
   background-color: rgb(255,255,255);
   border-color: rgb(244,67,54); }
 
-.u-step-pearl.done:before, .u-step-pearl.done:after {
+.u-step.done:before, .u-step.done:after {
   background-color: rgb(63,81,181); }
 
-.u-step-pearl.done .u-step-pearl-number, .u-step-pearl.done .u-step-pearl-icon {
+.u-step.done .u-step-pearl-number, .u-step.done .u-step-pearl-icon {
   color: rgb(255,255,255);
   background-color: rgb(63,81,181);
   border-color: rgb(63,81,181); }
@@ -10799,7 +10799,7 @@ small {
   position: relative;
   margin: 0; }
 
-.u-step-normal {
+.u-step {
   padding: 12px 20px;
   font-size: inherit;
   color: #a3afb7;
@@ -10807,7 +10807,7 @@ small {
   background-color: #f3f7f9;
   border-radius: 0; }
 
-.u-step-normal-icon {
+.u-step-icon {
   float: left;
   margin-right: .5em;
   font-size: 20px; }
@@ -10817,7 +10817,7 @@ small {
   text-align: center;
   border-radius: 50%; }
 
-.u-step-normal-number {
+.u-step-number {
   position: absolute;
   top: 50%;
   left: 20px;
@@ -10828,18 +10828,18 @@ small {
   background: #e4eaec;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%); }
-  .u-step-normal-number ~ .u-step-normal-desc {
+  .u-step-number ~ .u-step-desc {
     min-height: 40px;
     margin-left: 50px; }
 
-.u-step-normal-title {
+.u-step-title {
   margin-bottom: 0;
   font-size: 20px;
   color: #526069; }
 
-.u-step-normal-desc {
+.u-step-desc {
   text-align: left; }
-  .u-step-normal-desc p {
+  .u-step-desc p {
     margin-bottom: 0; }
 
 .u-steps-vertical .u-step {
@@ -10849,85 +10849,85 @@ small {
     float: none;
     width: 100%; }
 
-.u-step-normal.current {
+.u-step.current {
   color: #fff;
   background-color: #3f51b5; }
-  .u-step-normal.current .u-step-normal-title {
+  .u-step.current .u-step-title {
     color: #fff; }
-  .u-step-normal.current .u-step-normal-number {
+  .u-step.current .u-step-number {
     color: #3f51b5;
     background-color: #fff; }
 
-.u-step-normal.disabled {
+.u-step.disabled {
   color: #ccd5db;
   pointer-events: none;
   cursor: auto; }
-  .u-step-normal.disabled .u-step-normal-title {
+  .u-step.disabled .u-step-title {
     color: #ccd5db; }
-  .u-step-normal.disabled .u-step-normal-number {
+  .u-step.disabled .u-step-number {
     background-color: #ccd5db; }
 
-.u-step-normal.error {
+.u-step.error {
   color: #fff;
   background-color: #f96868; }
-  .u-step-normal.error .u-step-normal-title {
+  .u-step.error .u-step-title {
     color: #fff; }
-  .u-step-normal.error .u-step-normal-number {
+  .u-step.error .u-step-number {
     color: #f96868;
     background-color: #fff; }
 
-.u-step-normal.done {
+.u-step.done {
   color: #fff;
   background-color: #46be8a; }
-  .u-step-normal.done .u-step-normal-title {
+  .u-step.done .u-step-title {
     color: #fff; }
-  .u-step-normal.done .u-step-normal-number {
+  .u-step.done .u-step-number {
     color: #46be8a;
     background-color: #fff; }
 
-.u-steps-lg .u-step-normal {
+.u-steps-lg .u-step {
   padding: 20px 20px;
   font-size: 16px; }
 
-.u-steps-lg .u-step-normal-icon, .u-steps-lg .u-step-normal-title {
+.u-steps-lg .u-step-icon, .u-steps-lg .u-step-title {
   font-size: 22px; }
 
-.u-steps-lg .u-step-normal-number {
+.u-steps-lg .u-step-number {
   width: 46px;
   height: 46px;
   font-size: 28px;
   line-height: 46px; }
-  .u-steps-lg .u-step-normal-number ~ .u-step-normal-desc {
+  .u-steps-lg .u-step-number ~ .u-step-normal-desc {
     min-height: 46px;
     margin-left: 56px; }
 
-.u-steps-sm .u-step-normal {
+.u-steps-sm .u-step {
   font-size: 12px; }
 
-.u-steps-sm .u-step-normal-icon, .u-steps-sm .u-step-normal-title {
+.u-steps-sm .u-step-icon, .u-steps-sm .u-step-title {
   font-size: 18px; }
 
-.u-steps-sm .u-step-normal-number {
+.u-steps-sm .u-step-number {
   width: 30px;
   height: 30px;
   font-size: 24px;
   line-height: 30px; }
-  .u-steps-sm .u-step-normal-number ~ .u-step-normal-desc {
+  .u-steps-sm .u-step-number ~ .u-step-normal-desc {
     min-height: 30px;
     margin-left: 40px; }
 
-.u-steps-xs .u-step-normal {
+.u-steps-xs .u-step {
   font-size: 10px; }
 
-.u-steps-xs .u-step-normal-icon, .u-steps-xs .u-step-normal-title {
+.u-steps-xs .u-step-icon, .u-steps-xs .u-step-normal-title {
   font-size: 16px; }
 
-.u-steps-xs .u-step-normal-number {
+.u-steps-xs .u-step-number {
   width: 24px;
   height: 24px;
   font-size: 20px;
   line-height: 24px; }
-  .u-steps-xs .u-step-normal-number ~ .u-step-normal-desc {
+  .u-steps-xs .u-step-number ~ .u-step-desc {
     min-height: 24px;
     margin-left: 34px; }
 
@@ -11475,7 +11475,7 @@ small {
   margin-top: 20px;
   margin-bottom: 20px; }
 
-.u-ribbon .bottom {
+.u-ribbon.bottom {
   padding: 15px 15px 50px 50px; }
 
 .u-ribben-belt {
