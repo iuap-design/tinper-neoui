@@ -7,7 +7,7 @@
 import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
 import {addClass,removeClass,hasClass,showPanelByEle,getZIndex,closest,makeDOM} from 'neoui-sparrow/js/dom';
 import {env} from 'neoui-sparrow/js/env';
-import {on,off,stopEvent} from 'neoui-sparrow/js/event';
+import {on,off,stopEvent,trigger} from 'neoui-sparrow/js/event';
 import {Text} from './neoui-textfield';
 import {URipple} from 'neoui-sparrow/js/util/ripple';
 import {compMgr} from 'neoui-sparrow/js/compMgr';
@@ -29,7 +29,7 @@ var Combo = BaseComponent.extend({
         var i, option, datas = [], self = this;
         //addClass(this.element, 'u-text')
         new Text(this.element);
-        var options = this.element.getElementsByTagName('option'); 
+        var options = this.element.getElementsByTagName('option');
         for (i = 0; i < options.length; i++) {
             option = options[i];
             datas.push({value: option.value, name: option.text});
@@ -37,7 +37,7 @@ var Combo = BaseComponent.extend({
 
         this._input = this.element.querySelector("input");
         this.setComboData(datas);
-        
+
 
 
         if(this.mutilSelect){
@@ -50,7 +50,7 @@ var Combo = BaseComponent.extend({
             setTimeout(function(){
                 self._input.setAttribute('readonly','readonly');
             },1000);
-            
+
         }else{
             on(this._input, 'blur', function(e){
                 var v = this.value;
@@ -62,7 +62,7 @@ var Combo = BaseComponent.extend({
                         v = self.comboDatas[i].value;
                         break;
                     }
-                    
+
                 }
                 self.setValue(v);
             })
@@ -135,7 +135,7 @@ var Combo = BaseComponent.extend({
     },
 
     show: function (evt) {
-        
+
         var self = this,width=this._input.offsetWidth;
         if(this.options.showFix){
             document.body.appendChild(this._ul);
@@ -166,9 +166,9 @@ var Combo = BaseComponent.extend({
             if((this.top + panelHeight) > bodyHeight){
                 this.top = bodyHeight - panelHeight;
             }
-            
+
             this._ul.style.left = this.left + 'px';
-            this._ul.style.top = this.top + 'px'; 
+            this._ul.style.top = this.top + 'px';
         }
 	    this._ul.style.width = width + 'px';
         addClass(this._ul, 'is-animating');
@@ -236,7 +236,7 @@ var Combo = BaseComponent.extend({
             addClass(rippleContainer, 'u-ripple-container');
 			var _rippleElement = document.createElement('span');
 			addClass(_rippleElement, 'u-ripple');
-			
+
 			rippleContainer.appendChild(_rippleElement);
             li.appendChild(rippleContainer);
             new URipple(li);
@@ -246,7 +246,7 @@ var Combo = BaseComponent.extend({
 
     selectItem: function (index) {
         var self = this;
-        
+
         if (this.mutilSelect){
             var val = this.comboDatas[index].value;
             var name = this.comboDatas[index].name;
@@ -254,13 +254,13 @@ var Combo = BaseComponent.extend({
             var l = val.length + 1;
             var flag;
             if (index != -1){ // 已经选中
-                this.value = this.value.substring(0,index) + this.value.substring(index + l)  
-                flag = '-' 
+                this.value = this.value.substring(0,index) + this.value.substring(index + l)
+                flag = '-'
             }else{
                 this.value = (!this.value) ? val + ',' : this.value + val + ',';
                 flag = '+'
             }
-            
+
             if(flag == '+'){
                 var nameDiv= makeDOM('<div class="u-combo-name" key="' + val + '">'+ name + /*<a href="javascript:void(0)" class="remove">x</a>*/'</div>');
                 var parNameDiv=makeDOM('<div class="u-combo-name-par" style="position:absolute;max-width:' + this.fullWidth + 'px;"></div>');
@@ -276,9 +276,12 @@ var Combo = BaseComponent.extend({
                 if(!this._combo_name_par){
                     this._input.parentNode.insertBefore(parNameDiv, this._input);
                     this._combo_name_par=parNameDiv;
+                    on(this._combo_name_par, 'click', function (e) {
+                        trigger(self._input, 'focus');
+                    })
                 }
                 this._combo_name_par.appendChild(nameDiv);
-                var nWidth = nameDiv.offsetWidth + 20; 
+                var nWidth = nameDiv.offsetWidth + 20;
                 this.nowWidth += nWidth;
                 if(this.nowWidth > this.fullWidth){
                     this.nowWidth -= nWidth;
@@ -296,7 +299,7 @@ var Combo = BaseComponent.extend({
                     }
                 }
             }
-            
+
 
             this._updateItemSelect();
 
@@ -308,7 +311,7 @@ var Combo = BaseComponent.extend({
             // this.trigger('select', {value: this.value, name: this._input.value});
         }
 
-        
+
     },
 
     _updateItemSelect: function() {
@@ -349,7 +352,7 @@ var Combo = BaseComponent.extend({
         var self = this;
         value = value + '';
     	value = value || '';
-    	
+
         var values = value.split(',');
         if (this.mutilSelect === true) {
             if(self._combo_name_par)

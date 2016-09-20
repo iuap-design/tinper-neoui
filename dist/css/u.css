@@ -2587,7 +2587,7 @@ textarea {
 .u-navbar-header:after,
 .u-navbar-collapse:after {
   content: " ";
-  
+
   display: table;
    }
 
@@ -2610,7 +2610,7 @@ textarea {
   *:first-line {
     background: transparent !important;
     color: #000 !important;
-    
+
     box-shadow: none !important;
     text-shadow: none !important; }
   a,
@@ -2620,7 +2620,7 @@ textarea {
     content: " (" attr(href) ")"; }
   abbr[title]:after {
     content: " (" attr(title) ")"; }
-  
+
   a[href^="#"]:after,
   a[href^="javascript:"]:after {
     content: ""; }
@@ -2628,7 +2628,7 @@ textarea {
   blockquote {
     border: 1px solid #999;
     page-break-inside: avoid; }
-  
+
   thead {
     display: table-header-group; }
   tr,
@@ -2676,7 +2676,7 @@ main {
 @font-face {
   font-family: "uf";
   src: url("../fonts/iconfont.eot?t=1472092777");
-  
+
   src: url("../fonts/iconfont.eot?t=1472092777#iefix") format("embedded-opentype"), url("../fonts/iconfont.woff?t=1472092777") format("woff"), url("../fonts/iconfont.ttf?t=1472092777") format("truetype"), url("../fonts/iconfont.svg?t=1472092777#uf") format("svg");
    }
 
@@ -4291,7 +4291,7 @@ main {
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: normal;
-  
+
   white-space: nowrap; }
 
 .text-break {
@@ -5751,9 +5751,9 @@ main {
 
 .ac_results iframe {
   display: none;
-  
+
   display: block;
-  
+
   position: absolute;
   top: 0;
   left: 0;
@@ -6804,7 +6804,7 @@ input.u-button[type="submit"] {
   letter-spacing: 0;
   text-decoration: none;
   cursor: pointer;
-  
+
   line-height: 28px;
   word-wrap: break-word;
   break-word: break-all;
@@ -7369,7 +7369,7 @@ input.u-button[type="submit"] {
   max-width: 200px;
   display: inline-block;
   color: rgb(102,102,102);
-  
+
   text-align: right;
   margin-right: 10px; }
 
@@ -7509,7 +7509,7 @@ textarea.u-form-control {
   position: absolute;
   display: none;
   color: #f15a4a;
-  
+
   margin-top: 4px;
   font-size: 12px;
   font-family: "Microsoft YaHei", "Helvetica", "Arial", sans-serif; }
@@ -7523,7 +7523,7 @@ textarea.u-form-control {
   position: absolute;
   color: green;
   display: none;
-  
+
   font-size: 18px;
   color: #72ca97; }
 
@@ -9335,12 +9335,12 @@ small {
   .u-loader-container .u-loader {
     color: #C2C3C5;
     font-size: 12px;
-    
+
     width: 0.8em;
     height: 0.8em;
     border-radius: 50%;
     position: relative;
-    
+
     -webkit-animation: loader 1.3s infinite linear;
     animation: loader 1.3s infinite linear;
     -webkit-transform: translate3d(-50%, -50%, 0);
@@ -9829,8 +9829,7 @@ small {
   height: 0;
   width: 0;
   visibility: hidden;
-  z-index: -1;
-  font-family: "Microsoft YaHei", "Helvetica", "Arial", sans-serif; }
+  z-index: -1; }
   .u-menu-container.is-visible, .u-menu-container.is-animating {
     z-index: 999;
     visibility: visible; }
@@ -10129,7 +10128,7 @@ small {
   border-radius: 0.2rem;
   border-radius: 3px \9;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) 0.35s;
-  
+
   word-wrap: break-word;
   break-word: break-all;
   border: 1px solid transparent;
@@ -13072,7 +13071,7 @@ small {
   border-top-right-radius: 3px;
   position: relative;
   padding: 0;
-  
+
   border-bottom: 1px solid #e0e0e0; }
 
 .u-widget-title {
@@ -14010,7 +14009,7 @@ small {
             user-select: none; }
   .u-date-panel .scroll-box {
     overflow: hidden;
-    
+
     height: 300px;
     position: relative; }
   .u-date-panel .scroll-shadow {
@@ -14394,7 +14393,7 @@ small {
             user-select: none; }
   .u-date-panel-mobile .scroll-box {
     overflow: hidden;
-    
+
     height: 28.125rem;
     position: relative; }
   .u-date-panel-mobile .scroll-shadow {
@@ -14486,11 +14485,11 @@ small {
   -ms-user-select: none;
   -ms-touch-action: none;
   user-select: none;
-  
+
    }
 
 .dw:focus {
-  
+
   outline: none; }
 
 .dw-rtl {

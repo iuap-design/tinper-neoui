@@ -12,7 +12,6 @@
   width: 0;
   visibility: hidden;
   z-index: -1;
-  font-family:$preferred_font;
   &.is-visible,
   &.is-animating {
     z-index: 999;
