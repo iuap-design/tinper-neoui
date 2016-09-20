@@ -198,7 +198,7 @@ var Text = BaseComponent.extend({
      * @public
      */
     change: function (value) {
-        this._input.value = value || '';
+        this._input.value = value===0?value: (value|| '');
         this._updateClasses();
     }
 

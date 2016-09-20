@@ -14429,6 +14429,7 @@ $.fn.bootstrapWizard.defaults = {
 	        document.body.removeChild(this.overlayDiv);
 	    } catch (e) {}
 	    this.trigger('select', { value: this.pickerDate });
+	    this.trigger('validate');
 	};
 
 	/**
@@ -14440,6 +14441,7 @@ $.fn.bootstrapWizard.defaults = {
 	    try {
 	        document.body.removeChild(this.overlayDiv);
 	    } catch (e) {}
+	    this.trigger('validate');
 	};
 
 	DateTimePicker.fn.setDate = function (value) {
