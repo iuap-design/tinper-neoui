@@ -58,230 +58,8 @@ $pearl-xs-icon-font-size: $pearl-xs-title-font-size;
 $pearl-xs-number-font-size: 12px;
 $pearl-xs-size: 24px;
 
-
-// Component: pearls
+// Component: steps
 // ========================================================================
-.pearls {
-  &.row {
-    display: block;
-  }
-
-  margin-bottom: $pearls-margin-bottom;
-}
-
-.pearl {
-  position: relative;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-
-  &:before,
-  &:after {
-    position: absolute;
-    top: ($pearl-size/2);
-    z-index: 0;
-    width: 50%;
-    height: $pearl-line-size;
-    content: "";
-    background-color: $pearl-line-bg;
-  }
-
-  &:before {
-    left: 0;
-  }
-
-  &:after {
-    right: 0;
-  }
-
-  &:first-child:before,
-  &:last-child:after {
-    display: none !important;
-  }
-}
-
-
-.pearl-number, .pearl-icon {
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  width: $pearl-size;
-  height: $pearl-size;
-  //line-height: ($pearl-size - 2*$pearl-border-size);
-  line-height: $pearl-size ;//修改样式版中步骤中数字偏上的情况
-  color: $pearl-color;
-  text-align: center;
-  background: $pearl-bg;
-  border-radius: 50%;
-  border: $pearl-border-size solid $pearl-border-color;
-}
-
-.pearl-number {
-  font-size: $pearl-number-font-size;
-}
-
-.pearl-icon {
-  font-size: $pearl-icon-font-size;
-}
-
-.pearl-title {
-  margin-top: $pearl-title-margin-top;
-  display: block;
-  font-size: $pearl-title-font-size;
-  color: $subtitle-color;
-  margin-bottom: 0;
-
-  //.text-truncate();
-}
-
-
-// State Modifier
-// ========================================================================
-.pearl {
-  &.current {
-    &:before,
-    &:after {
-      background-color: $pearl-current-line-bg;
-    }
-
-    .pearl-number, .pearl-icon {
-      color: $pearl-current-color;
-      background-color: $pearl-current-bg;
-      border-color: $pearl-current-border-color;
-      transform: scale($pearl-current-scale);
-    }
-  }
-
-  &.disabled {
-    pointer-events: none;
-    cursor: auto;
-
-    &:before,
-    &:after {
-      background-color: $pearl-disabled-line-bg;
-    }
-
-    .pearl-number, .pearl-icon {
-      color: $pearl-disabled-color;
-      background-color: $pearl-disabled-bg;
-      border-color: $pearl-disabled-border-color;
-    }
-  }
-
-  &.error {
-    &:before {
-      background-color: $pearl-error-line-bg;
-    }
-
-    &:after {
-      background-color: $pearl-line-bg;
-    }
-
-    .pearl-number, .pearl-icon {
-      color: $pearl-error-color;
-      background-color: $pearl-error-bg;
-      border-color: $pearl-error-border-color;
-    }
-  }
-
-  &.done {
-    &:before,
-    &:after {
-      background-color: $pearl-done-line-bg;
-    }
-
-    .pearl-number, .pearl-icon {
-      color: $pearl-done-color;
-      background-color: $pearl-done-bg;
-      border-color: $pearl-done-border-color;
-    }
-  }
-}
-
-// Size Modifier
-// ========================================================================
-
-.pearls-lg {
-  .pearl {
-    &:before,
-    &:after {
-      top: ($pearl-lg-size/2);
-    }
-
-    &-title {
-      font-size: $pearl-lg-title-font-size;
-    }
-
-    &-number, &-icon {
-      width: $pearl-lg-size;
-      height: $pearl-lg-size;
-      line-height: ($pearl-lg-size - 2*$pearl-border-size);
-    }
-
-    &-icon {
-      font-size: $pearl-lg-icon-font-size;
-    }
-
-    &-number {
-      font-size: $pearl-lg-number-font-size;
-    }
-  }
-}
-
-.pearls-sm {
-  .pearl {
-    &:before,
-    &:after {
-      top: ($pearl-sm-size/2);
-    }
-
-    &-title {
-      font-size: $pearl-sm-title-font-size;
-    }
-
-    &-number, &-icon {
-      width: $pearl-sm-size;
-      height: $pearl-sm-size;
-      line-height: ($pearl-sm-size - 2*$pearl-border-size);
-    }
-
-    &-number {
-      font-size: $pearl-sm-number-font-size;
-    }
-
-    &-icon {
-      font-size: $pearl-sm-icon-font-size;
-    }
-  }
-}
-
-.pearls-xs {
-  .pearl {
-    &:before,
-    &:after {
-      top: ($pearl-xs-size/2);
-      height: $pearl-line-xs-size;
-    }
-
-    &-title {
-      font-size: $pearl-xs-title-font-size;
-    }
-
-    &-number, &-icon {
-      width: $pearl-xs-size;
-      height: $pearl-xs-size;
-      line-height: ($pearl-xs-size - 2*$pearl-border-size);
-    }
-
-    &-number {
-      font-size: $pearl-xs-number-font-size;
-    }
-
-    &-icon {
-      font-size: $pearl-xs-icon-font-size;
-    }
-  }
-}
 .u-steps {
   margin-bottom: 22px;
   &.row {
@@ -455,4 +233,233 @@ $pearl-xs-size: 24px;
       margin-left: 34px;
     }
   }
+}
+
+
+
+// Component: pearls
+// ========================================================================
+.u-steps.pearls {
+  &.row {
+    display: block;
+  }
+
+  margin-bottom: $pearls-margin-bottom;
+
+  .u-step {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+
+    &:before,
+    &:after {
+      position: absolute;
+      top: ($pearl-size/2);
+      z-index: 0;
+      width: 50%;
+      height: $pearl-line-size;
+      content: "";
+      background-color: $pearl-line-bg;
+    }
+
+    &:before {
+      left: 0;
+    }
+
+    &:after {
+      right: 0;
+    }
+
+    &:first-child:before,
+    &:last-child:after {
+      display: none !important;
+    }
+  }
+
+
+  .u-step-number, .u-step-icon {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    width: $pearl-size;
+    height: $pearl-size;
+    //line-height: ($pearl-size - 2*$pearl-border-size);
+    line-height: $pearl-size ;//修改样式版中步骤中数字偏上的情况
+    color: $pearl-color;
+    text-align: center;
+    background: $pearl-bg;
+    border-radius: 50%;
+    border: $pearl-border-size solid $pearl-border-color;
+  }
+
+  .u-step-number {
+    font-size: $pearl-number-font-size;
+  }
+
+  .u-step-icon {
+    font-size: $pearl-icon-font-size;
+  }
+
+  .u-step-title {
+    margin-top: $pearl-title-margin-top;
+    display: block;
+    font-size: $pearl-title-font-size;
+    color: $subtitle-color;
+    margin-bottom: 0;
+
+    //.text-truncate();
+  }
+
+
+  // State Modifier
+  // ========================================================================
+  .u-step {
+    &.current {
+      &:before,
+      &:after {
+        background-color: $pearl-current-line-bg;
+      }
+
+      .u-step-number, .u-step-icon {
+        color: $pearl-current-color;
+        background-color: $pearl-current-bg;
+        border-color: $pearl-current-border-color;
+        transform: scale($pearl-current-scale);
+      }
+    }
+
+    &.disabled {
+      pointer-events: none;
+      cursor: auto;
+
+      &:before,
+      &:after {
+        background-color: $pearl-disabled-line-bg;
+      }
+
+      .u-step-number, .u-step-icon {
+        color: $pearl-disabled-color;
+        background-color: $pearl-disabled-bg;
+        border-color: $pearl-disabled-border-color;
+      }
+    }
+
+    &.error {
+      &:before {
+        background-color: $pearl-error-line-bg;
+      }
+
+      &:after {
+        background-color: $pearl-line-bg;
+      }
+
+      .u-step-number, .u-step-icon {
+        color: $pearl-error-color;
+        background-color: $pearl-error-bg;
+        border-color: $pearl-error-border-color;
+      }
+    }
+
+    &.done {
+      &:before,
+      &:after {
+        background-color: $pearl-done-line-bg;
+      }
+
+      .u-step-number, .u-step-icon {
+        color: $pearl-done-color;
+        background-color: $pearl-done-bg;
+        border-color: $pearl-done-border-color;
+      }
+    }
+  }
+
+  // Size Modifier
+  // ========================================================================
+
+  &.u-steps-lg {
+    .u-step {
+      &:before,
+      &:after {
+        top: ($pearl-lg-size/2);
+      }
+
+      &-title {
+        font-size: $pearl-lg-title-font-size;
+      }
+
+      &-number, &-icon {
+        width: $pearl-lg-size;
+        height: $pearl-lg-size;
+        line-height: ($pearl-lg-size - 2*$pearl-border-size);
+      }
+
+      &-icon {
+        font-size: $pearl-lg-icon-font-size;
+      }
+
+      &-number {
+        font-size: $pearl-lg-number-font-size;
+      }
+    }
+  }
+
+  &.u-steps-sm {
+    .u-step {
+      &:before,
+      &:after {
+        top: ($pearl-sm-size/2);
+      }
+
+      &-title {
+        font-size: $pearl-sm-title-font-size;
+      }
+
+      &-number, &-icon {
+        width: $pearl-sm-size;
+        height: $pearl-sm-size;
+        line-height: ($pearl-sm-size - 2*$pearl-border-size);
+      }
+
+      &-number {
+        font-size: $pearl-sm-number-font-size;
+      }
+
+      &-icon {
+        font-size: $pearl-sm-icon-font-size;
+      }
+    }
+  }
+
+
+
+  .u-steps-xs {
+    .u-step {
+      &:before,
+      &:after {
+        top: ($pearl-xs-size/2);
+        height: $pearl-line-xs-size;
+      }
+
+      &-title {
+        font-size: $pearl-xs-title-font-size;
+      }
+
+      &-number, &-icon {
+        width: $pearl-xs-size;
+        height: $pearl-xs-size;
+        line-height: ($pearl-xs-size - 2*$pearl-border-size);
+      }
+
+      &-number {
+        font-size: $pearl-xs-number-font-size;
+      }
+
+      &-icon {
+        font-size: $pearl-xs-icon-font-size;
+      }
+    }
+  }
+
 }
