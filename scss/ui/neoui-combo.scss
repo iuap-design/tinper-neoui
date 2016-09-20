@@ -7,7 +7,11 @@
   }
   .u-input-group{
     width:100%
+    &:hover{
+        background-color: #F7F7F7;
+    }
   }
+
 }
 
 .u-combo-ul{
@@ -21,7 +25,7 @@
   padding: 0;
   margin: 0;
   opacity: 0;
-  filter:alpha(opacity=0); 
+  filter:alpha(opacity=0);
   //clip: rect(0 0 0 0);
   //z-index: -1;
   display: block;
@@ -39,7 +43,7 @@
 
   &.is-visible{
     opacity:1;
-    filter:alpha(opacity=100); 
+    filter:alpha(opacity=100);
     transform: scale(1);
     display:block \9;
     //z-index: 999;
@@ -60,7 +64,7 @@
   padding: 0 16px;
   outline-color: rgb(189,189,189);
   position: relative;
-  
+
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 0;
@@ -72,7 +76,7 @@
   line-height: 28px;
   word-wrap: break-word;
   break-word: break-all;
-  
+
   //opacity: 0;
   transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;

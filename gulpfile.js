@@ -134,8 +134,23 @@ gulp.task('vcss', ['vsass'], function(){
  * [执行重构后dist/css目录输出]
  * 不产出map文件
  */
+
+gulp.task('buildcorecss',function(){
+    gulp.src('./scss/core.scss')
+        .pipe(sass())
+        .pipe(base64())
+        .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
+        .pipe(stripCssComments())
+        .pipe(rename('u.core.css'))
+        .pipe(gulp.dest('./dist/css'))
+        .pipe(minifycss())
+        .pipe(rename({
+            suffix:'.min'
+        }))
+        .pipe(gulp.dest('./dist/css'));
+});
 // 输出整体css文件dist/css/neoui.css
-gulp.task('buildcss', function(){
+gulp.task('buildcss', ['buildcorecss'], function(){
     gulp.src('./scss/neoui.scss')
         .pipe(sass())
         .pipe(base64())
@@ -193,6 +208,11 @@ gulp.task('neoui', ['neo'], function(){
     ]);    
 });
 
-gulp.task('dist', ['buildcss','buildjs', 'image','fontcss','fontfile']);
+gulp.task('dist', ['buildcss','buildjs', 'image','fontcss','fontfile'], function(){
+    version.init([
+        './dist/css/u.css',
+        './dist/css/u.min.css'
+    ]);  
+});
 
 

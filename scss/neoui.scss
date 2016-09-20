@@ -1,5 +1,3 @@
-// 核心文件引入
-@import "./core";
 
 // 插件引入
 @import "./ui/neoui-autocomplete.scss";
@@ -25,7 +23,6 @@
 @import "./ui/neoui-menu.scss";
 @import "./ui/neoui-message.scss";
 @import "./ui/neoui-nav.scss";
-// @import "./ui/neoui-navmenu.scss";
 @import "./ui/neoui-pagination.scss";
 @import "./ui/neoui-panel.scss";
 @import "./ui/neoui-pearls.scss";
@@ -42,3 +39,4 @@
 @import "./ui/neoui-datetimepicker.scss";
 @import "./ui/neoui-counter.scss";
 @import "./ui/neoui-navbar.scss";
+@import "./ui/neoui-navmenu.scss";
