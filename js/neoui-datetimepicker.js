@@ -1195,7 +1195,8 @@ DateTimePicker.fn.onOk = function(){
     }catch(e){
 
     }
-    this.trigger('select', {value:this.pickerDate})
+    this.trigger('select', {value:this.pickerDate});
+    this.trigger('validate');
 }
 
 /**
@@ -1209,6 +1210,7 @@ DateTimePicker.fn.onCancel = function(){
     }catch(e){
 
     }
+    this.trigger('validate');
 }
 
 
