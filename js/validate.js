@@ -1,9 +1,13 @@
-	u.Validate = u.BaseComponent.extend({
+u.Validate = u.BaseComponent.extend({
 
 	    init: function() {
 	        var self = this
 	        this.$element = this.element
-	        this.$form = this.form
+	        this.$form = this.form;
+	        this.referDom = this.$element;
+	        if(this.referDom.tagName!=='INPUT'){
+				this.referDom = this.$element.querySelector('input');
+			}
 	        this.options = u.extend({}, this.DEFAULTS, this.options, JSON.parse(this.element.getAttribute('uvalidate')));
 	        this.required = false
 	        this.timeout = null;
@@ -43,22 +47,23 @@
 	        if (this.hasSuccess && !this.successId) {
 	            this.successId = u.makeDOM('<span class="u-form-control-success uf uf-checkedsymbol" ></span>');
 
-	            if (this.$element.nextSibling) {
-	                this.$element.parentNode.insertBefore(this.successId, this.$element.nextSibling);
+	            if (this.referDom.nextSibling) {
+	                this.referDom.parentNode.insertBefore(this.successId, this.referDom.nextSibling);
 	            } else {
-	                this.$element.parentNode.appendChild(this.successId);
+	                this.referDom.parentNode.appendChild(this.successId);
 	            }
 
 	        }
-	        //不是默认的tip提示方式并且tipId没有定义时创建默认tipid	
+	        //不是默认的tip提示方式并且tipId没有定义时创建默认tipid
 	        if (this.notipFlag && !this.tipId) {
 	            this.tipId = u.makeDOM('<span class="u-form-control-info uf uf-exclamationsign "></span>');
-	            this.$element.parentNode.appendChild(this.tipId);
 
-	            if (this.$element.nextSibling) {
-	                this.$element.parentNode.insertBefore(this.tipId, this.$element.nextSibling);
+	            this.referDom.parentNode.appendChild(this.tipId);
+
+	            if (this.referDom.nextSibling) {
+	                this.referDom.parentNode.insertBefore(this.tipId, this.referDom.nextSibling);
 	            } else {
-	                this.$element.parentNode.appendChild(this.tipId);
+	                this.referDom.parentNode.appendChild(this.tipId);
 	            }
 	        }
 	        //提示框位置
@@ -283,18 +288,18 @@
 	    if (this.successId) {
 	        // u.addClass(this.element.parentNode,'u-has-success');
 	        var successDiv = this.successId;
-	        var successleft = this.$element.offsetLeft + this.$element.offsetWidth + 5;
-	        var successtop = this.$element.offsetTop + 10;
+	        var successleft = this.referDom.offsetLeft + this.$element.referDom + 5;
+	        var successtop = this.referDom.offsetTop + 10;
 	        if (typeof successDiv === 'string')
 	            successDiv = document.getElementById(successDiv);
 	        successDiv.style.display = 'inline-block';
 	        successDiv.style.top = successtop + 'px';
 	        successDiv.style.left = successleft + 'px';
-	        clearTimeout(this.timeout)
-	        this.timeout = setTimeout(function() {
+	        clearTimeout(this.successtimeout)
+	        this.successtimeout = setTimeout(function() {
 	            // self.tooltip.hide();
 	            successDiv.style.display = 'none';
-	        }, 3000)
+	        }, this.tipAliveTime)
 
 	    }
 	    return { passed: true }
@@ -375,7 +380,7 @@
 		}
 		var self = this
 		if (this.tipId) {
-			this.$element.style.borderColor='rgb(241,90,74)';
+			this.referDom.style.borderColor='rgb(241,90,74)';
 			var tipdiv=this.tipId;
 			if(typeof tipdiv==='string'){
 				tipdiv = document.getElementById(tipdiv);
@@ -383,12 +388,13 @@
 			tipdiv.innerHTML = msg;
 			//如果notipFlag为true说明，可能是平台创建的，需要添加left、top值
 			if(this.notipFlag){
-				var left=this.$element.offsetLeft;
-				var top=this.$element.offsetTop+this.$element.offsetHeight+4;
+
+				var left=this.referDom.offsetLeft;
+				var top=this.referDom.offsetTop+this.referDom.offsetHeight+4;
 				tipdiv.style.left=left+'px';
 				tipdiv.style.top=top+'px';
 			}
-			
+
 			tipdiv.style.display = 'block';
 			// u.addClass(tipdiv.parentNode,'u-has-error');
 			// $('#' + this.tipId).html(msg).show()
@@ -406,7 +412,7 @@
 				this.tooltip = new u.Tooltip(this.element,tipOptions)
 			this.tooltip.setTitle(msg);
 			this.tooltip.show();
-			
+
 		}
 		if(this.tipAliveTime !== -1) {
 			clearTimeout(this.timeout)
@@ -435,7 +441,7 @@
 	            tipdiv = document.getElementById(tipdiv);
 	        }
 	        tipdiv.style.display = 'none';
-	        this.$element.style.borderColor = '';
+	        this.referDom.style.borderColor = '';
 	        // u.removeClass(tipdiv.parentNode,'u-has-error');
 	    } else {
 	        if (this.tooltip)
