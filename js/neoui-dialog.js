@@ -29,7 +29,7 @@ var messageDialogTemplate = '<div class="u-msg-dialog">' +
 	'<div class="u-msg-content">' +
 	'<p>{msg}</p>' +
 	'</div>' +
-	'<div class="u-msg-footer only-one-btn"><button class="u-msg-button u-button primary raised">{btnText}</button></div>' +
+	'<div class="u-msg-footer only-one-btn"><button class="u-msg-button u-button u-button-primary raised">{btnText}</button></div>' +
 	'</div>';
 
 var messageDialog = function(options) {
@@ -89,7 +89,7 @@ var confirmDialogTemplate = '<div class="u-msg-dialog">' +
 	'<div class="u-msg-content">' +
 	'<p>{msg}</p>' +
 	'</div>' +
-	'<div class="u-msg-footer"><button class="u-msg-ok u-button primary raised">{okText}</button><button class="u-msg-cancel u-button">{cancelText}</button></div>' +
+	'<div class="u-msg-footer"><button class="u-msg-ok u-button u-button-primary raised">{okText}</button><button class="u-msg-cancel u-button">{cancelText}</button></div>' +
 	'</div>';
 
 var confirmDialog = function(options) {
@@ -465,7 +465,7 @@ iframeDialogF.prototype.create = function() {
 		var closeStr = '<div class="u-msg-close"> <span aria-hidden="true">&times;</span></div>';
 	}
 	if (this.hasFooter) {
-		var footerStr = '<div class="u-msg-footer"><button class="u-msg-ok u-button primary raised">确定</button><button class="u-msg-cancel u-button">取消</button></div>' +
+		var footerStr = '<div class="u-msg-footer"><button class="u-msg-ok u-button u-button-primary raised">确定</button><button class="u-msg-cancel u-button">取消</button></div>' +
 						'</div>';
 	}
 	var templateStr = this.template.replace('{close}', closeStr);
