@@ -7679,6 +7679,9 @@ $.fn.bootstrapWizard.defaults = {
 	                if (!this._combo_name_par) {
 	                    this._input.parentNode.insertBefore(parNameDiv, this._input);
 	                    this._combo_name_par = parNameDiv;
+	                    (0, _event.on)(this._combo_name_par, 'click', function (e) {
+	                        (0, _event.trigger)(self._input, 'focus');
+	                    });
 	                }
 	                this._combo_name_par.appendChild(nameDiv);
 	                var nWidth = nameDiv.offsetWidth + 20;
@@ -8738,7 +8741,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * @param options
 	 */
 
-	var messageDialogTemplate = '<div class="u-msg-dialog">' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content">' + '<p>{msg}</p>' + '</div>' + '<div class="u-msg-footer only-one-btn"><button class="u-msg-button u-button primary raised">{btnText}</button></div>' + '</div>';
+	var messageDialogTemplate = '<div class="u-msg-dialog">' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content">' + '<p>{msg}</p>' + '</div>' + '<div class="u-msg-footer only-one-btn"><button class="u-msg-button u-button u-button-primary raised">{btnText}</button></div>' + '</div>';
 
 	var messageDialog = function messageDialog(options) {
 		var title, msg, btnText, template;
@@ -8788,7 +8791,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-07-29 10:21:33
 	 */
-	var confirmDialogTemplate = '<div class="u-msg-dialog">' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content">' + '<p>{msg}</p>' + '</div>' + '<div class="u-msg-footer"><button class="u-msg-ok u-button primary raised">{okText}</button><button class="u-msg-cancel u-button">{cancelText}</button></div>' + '</div>';
+	var confirmDialogTemplate = '<div class="u-msg-dialog">' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content">' + '<p>{msg}</p>' + '</div>' + '<div class="u-msg-footer"><button class="u-msg-ok u-button u-button-primary raised">{okText}</button><button class="u-msg-cancel u-button">{cancelText}</button></div>' + '</div>';
 
 	var confirmDialog = function confirmDialog(options) {
 		var title, msg, okText, cancelText, template, onOk, onCancel;
@@ -9140,7 +9143,7 @@ $.fn.bootstrapWizard.defaults = {
 			var closeStr = '<div class="u-msg-close"> <span aria-hidden="true">&times;</span></div>';
 		}
 		if (this.hasFooter) {
-			var footerStr = '<div class="u-msg-footer"><button class="u-msg-ok u-button primary raised">确定</button><button class="u-msg-cancel u-button">取消</button></div>' + '</div>';
+			var footerStr = '<div class="u-msg-footer"><button class="u-msg-ok u-button u-button-primary raised">确定</button><button class="u-msg-cancel u-button">取消</button></div>' + '</div>';
 		}
 		var templateStr = this.template.replace('{close}', closeStr);
 		templateStr = templateStr.replace('{url}', this.url);
@@ -14429,6 +14432,7 @@ $.fn.bootstrapWizard.defaults = {
 	        document.body.removeChild(this.overlayDiv);
 	    } catch (e) {}
 	    this.trigger('select', { value: this.pickerDate });
+	    this.trigger('validate');
 	};
 
 	/**
@@ -14440,6 +14444,7 @@ $.fn.bootstrapWizard.defaults = {
 	    try {
 	        document.body.removeChild(this.overlayDiv);
 	    } catch (e) {}
+	    this.trigger('validate');
 	};
 
 	DateTimePicker.fn.setDate = function (value) {
