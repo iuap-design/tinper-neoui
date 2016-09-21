@@ -1681,6 +1681,7 @@ input.u-button[type="submit"] {
   line-height: 36px;
   text-align: center;
   cursor: pointer;
+  border-radius: 4px;
   color: rgb(180,180,180); }
   .u-form-control-feedback.sm {
     height: 28px;
@@ -7052,9 +7053,6 @@ small {
 .u-input-group .u-form-control:first-child {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0; }
-
-.u-input-group .u-form-control:not(:first-child):not(:last-child), .u-input-group-addon:not(:first-child):not(:last-child), .u-input-group-btn:not(:first-child):not(:last-child) {
-  border-radius: 0; }
 
 .u-input-group .u-form-control + .u-input-group-addon {
   margin-left: -1px; }

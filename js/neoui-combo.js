@@ -277,7 +277,7 @@ var Combo = BaseComponent.extend({
                     this._input.parentNode.insertBefore(parNameDiv, this._input);
                     this._combo_name_par=parNameDiv;
                     on(this._combo_name_par, 'click', function (e) {
-                        trigger(self._input, 'focus');
+                        trigger(self._input,'focus')
                     })
                 }
                 this._combo_name_par.appendChild(nameDiv);
@@ -306,7 +306,7 @@ var Combo = BaseComponent.extend({
             // this.trigger('select', {value: this.value, name: name});
         }else{
             this.value = this.comboDatas[index].value;
-            this._input.value = this.comboDatas[index].name;
+            this._input.value = this.comboDatas[index].value;
             this._updateItemSelect();
             // this.trigger('select', {value: this.value, name: this._input.value});
         }

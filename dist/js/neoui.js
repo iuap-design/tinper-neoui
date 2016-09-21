@@ -8027,7 +8027,7 @@ $.fn.bootstrapWizard.defaults = {
 	     * @public
 	     */
 	    change: function change(value) {
-	        this._input.value = value || '';
+	        this._input.value = value === 0 ? value : value || '';
 	        this._updateClasses();
 	    }
 
