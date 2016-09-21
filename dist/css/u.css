@@ -1,3 +1,11 @@
+/** 
+ * neoui v4.1.13
+ * UI Framework Used For Enterprise.
+ * author : yonyou FED
+ * homepage : https://github.com/iuap-design/neoui#readme
+ * bugs : https://github.com/iuap-design/neoui/issues
+ **/ 
+@import 'u.core.css';
 @charset "UTF-8";
 .ac_results {
   padding: 0px;
@@ -257,8 +265,7 @@
   border-radius: 3px;
   font-size: 14px; }
   .u-breadcrumb > li {
-    display: inline-block;
-    float: left; }
+    display: inline-block; }
     .u-breadcrumb > li + li:before {
       content: "/ ";
       padding: 0 5px;
@@ -4571,9 +4578,7 @@ small {
 
 
 .u-pagination {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  font-family: '微软雅黑';
   margin: 5px; }
   .u-pagination:after {
     clear: both;
