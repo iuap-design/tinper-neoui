@@ -5844,10 +5844,10 @@ small {
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg); }
 
-.u-ribbon-reverse {
+.u-ribbon-badge.u-ribbon-reverse {
   right: -2px;
   left: auto; }
-  .u-ribbon-reverse .u-ribbon-inner {
+  .u-ribbon-badge.u-ribbon-reverse .u-ribbon-inner {
     right: -40px;
     left: auto;
     -webkit-transform: rotate(45deg);
