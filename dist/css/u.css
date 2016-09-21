@@ -5853,15 +5853,15 @@ small {
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg); }
 
-.u-ribbon-bottom {
+.u-ribbon-badge.u-ribbon-bottom {
   top: auto;
   bottom: -2px; }
-  .u-ribbon-bottom .u-ribbon-inner {
+  .u-ribbon-badge.u-ribbon-bottom .u-ribbon-inner {
     top: auto;
     bottom: 16px;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg); }
-  .u-ribbon-bottom.u-ribbon-reverse .u-ribbon-inner {
+  .u-ribbon-badge.u-ribbon-bottom.u-ribbon-reverse .u-ribbon-inner {
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg); }
 
