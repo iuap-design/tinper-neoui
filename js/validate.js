@@ -288,7 +288,7 @@ u.Validate = u.BaseComponent.extend({
 	    if (this.successId) {
 	        // u.addClass(this.element.parentNode,'u-has-success');
 	        var successDiv = this.successId;
-	        var successleft = this.referDom.offsetLeft + this.$element.referDom + 5;
+	        var successleft = this.referDom.offsetLeft + this.referDom.offsetWidth + 5;
 	        var successtop = this.referDom.offsetTop + 10;
 	        if (typeof successDiv === 'string')
 	            successDiv = document.getElementById(successDiv);
