@@ -5716,7 +5716,7 @@ small {
 .u-ribbon.bottom {
   padding: 15px 15px 50px 50px; }
 
-.u-ribben-belt {
+.u-ribbon-belt {
   position: absolute;
   top: -3px;
   left: -3px;
@@ -6987,7 +6987,7 @@ small {
   border-collapse: separate; }
 
 .u-input-group .u-input-group-addon {
-  padding: 0 12px;
+  padding: 8px 12px;
   font-size: 14px;
   font-weight: 400;
   color: #555111;
@@ -7053,6 +7053,9 @@ small {
 .u-input-group .u-form-control:first-child {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0; }
+
+.u-input-group .u-form-control:not(:first-child):not(:last-child), .u-input-group-addon:not(:first-child):not(:last-child), .u-input-group-btn:not(:first-child):not(:last-child) {
+  border-radius: 0; }
 
 .u-input-group .u-form-control + .u-input-group-addon {
   margin-left: -1px; }

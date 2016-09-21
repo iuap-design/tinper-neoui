@@ -7708,7 +7708,7 @@ $.fn.bootstrapWizard.defaults = {
 	            // this.trigger('select', {value: this.value, name: name});
 	        } else {
 	            this.value = this.comboDatas[index].value;
-	            this._input.value = this.comboDatas[index].name;
+	            this._input.value = this.comboDatas[index].value;
 	            this._updateItemSelect();
 	            // this.trigger('select', {value: this.value, name: this._input.value});
 	        }
