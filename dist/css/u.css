@@ -4922,138 +4922,119 @@ small {
     display: block;
     margin-right: 0;
     margin-left: 0; }
-
-.u-step {
-  position: relative;
-  padding: 12px 20px;
-  margin: 0;
-  font-size: inherit;
-  color: #a3afb7;
-  vertical-align: top;
-  background-color: #f3f7f9;
-  border-radius: 0; }
-
-.u-step-icon {
-  float: left;
-  margin-right: .5em;
-  font-size: 20px; }
-
-.u-step-number {
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
-  line-height: 40px;
-  color: #fff;
-  text-align: center;
-  background: #e4eaec;
-  border-radius: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%); }
-  .u-step-number ~ .u-step-desc {
-    min-height: 40px;
-    margin-left: 50px; }
-
-.u-step-title {
-  margin-bottom: 0;
-  font-size: 20px;
-  color: #526069; }
-
-.u-step-desc {
-  text-align: left; }
-  .u-step-desc p {
-    margin-bottom: 0; }
-
-.u-steps-vertical .u-step {
-  display: block;
-  padding: 18px 20px; }
-  .u-steps-vertical .u-step[class*=col-] {
-    float: none;
-    width: 100%; }
-
-.u-step.current {
-  color: #fff;
-  background-color: #3f51b5; }
-  .u-step.current .u-step-title {
-    color: #fff; }
-  .u-step.current .u-step-number {
-    color: #3f51b5;
-    background-color: #fff; }
-
-.u-step.disabled {
-  color: #ccd5db;
-  pointer-events: none;
-  cursor: auto; }
-  .u-step.disabled .u-step-title {
-    color: #ccd5db; }
-  .u-step.disabled .u-step-number {
-    background-color: #ccd5db; }
-
-.u-step.error {
-  color: #fff;
-  background-color: #f96868; }
-  .u-step.error .u-step-title {
-    color: #fff; }
-  .u-step.error .u-step-number {
-    color: #f96868;
-    background-color: #fff; }
-
-.u-step.done {
-  color: #fff;
-  background-color: #46be8a; }
-  .u-step.done .u-step-title {
-    color: #fff; }
-  .u-step.done .u-step-number {
-    color: #46be8a;
-    background-color: #fff; }
-
-.u-steps-lg .u-step {
-  padding: 20px 20px;
-  font-size: 16px; }
-
-.u-steps-lg .u-step-icon, .u-steps-lg .u-step-title {
-  font-size: 22px; }
-
-.u-steps-lg .u-step-number {
-  width: 46px;
-  height: 46px;
-  font-size: 28px;
-  line-height: 46px; }
-  .u-steps-lg .u-step-number ~ .u-step-desc {
-    min-height: 46px;
-    margin-left: 56px; }
-
-.u-steps-sm .u-step {
-  font-size: 12px; }
-
-.u-steps-sm .u-step-icon, .u-steps-sm .u-step-title {
-  font-size: 18px; }
-
-.u-steps-sm .u-step-number {
-  width: 30px;
-  height: 30px;
-  font-size: 24px;
-  line-height: 30px; }
-  .u-steps-sm .u-step-number ~ .u-step-desc {
-    min-height: 30px;
-    margin-left: 40px; }
-
-.u-steps-xs .u-step {
-  font-size: 10px; }
-
-.u-steps-xs .u-step-icon, .u-steps-xs .u-step-title {
-  font-size: 16px; }
-
-.u-steps-xs .u-step-number {
-  width: 24px;
-  height: 24px;
-  font-size: 20px;
-  line-height: 24px; }
-  .u-steps-xs .u-step-number ~ .u-step-desc {
-    min-height: 24px;
-    margin-left: 34px; }
+  .u-steps .u-step {
+    position: relative;
+    padding: 12px 20px;
+    margin: 0;
+    font-size: inherit;
+    color: #a3afb7;
+    vertical-align: top;
+    background-color: #f3f7f9;
+    border-radius: 0; }
+  .u-steps .u-step-icon {
+    float: left;
+    margin-right: .5em;
+    font-size: 20px; }
+  .u-steps .u-step-number {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    line-height: 40px;
+    color: #fff;
+    text-align: center;
+    background: #e4eaec;
+    border-radius: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%); }
+    .u-steps .u-step-number ~ .u-step-desc {
+      min-height: 40px;
+      margin-left: 50px; }
+  .u-steps .u-step-title {
+    margin-bottom: 0;
+    font-size: 20px;
+    color: #526069; }
+  .u-steps .u-step-desc {
+    text-align: left; }
+    .u-steps .u-step-desc p {
+      margin-bottom: 0; }
+  .u-steps .u-steps-vertical .u-step {
+    display: block;
+    padding: 18px 20px; }
+    .u-steps .u-steps-vertical .u-step[class*=col-] {
+      float: none;
+      width: 100%; }
+  .u-steps .u-step.current {
+    color: #fff;
+    background-color: #3f51b5; }
+    .u-steps .u-step.current .u-step-title {
+      color: #fff; }
+    .u-steps .u-step.current .u-step-number {
+      color: #3f51b5;
+      background-color: #fff; }
+  .u-steps .u-step.disabled {
+    color: #ccd5db;
+    pointer-events: none;
+    cursor: auto; }
+    .u-steps .u-step.disabled .u-step-title {
+      color: #ccd5db; }
+    .u-steps .u-step.disabled .u-step-number {
+      background-color: #ccd5db; }
+  .u-steps .u-step.error {
+    color: #fff;
+    background-color: #f96868; }
+    .u-steps .u-step.error .u-step-title {
+      color: #fff; }
+    .u-steps .u-step.error .u-step-number {
+      color: #f96868;
+      background-color: #fff; }
+  .u-steps .u-step.done {
+    color: #fff;
+    background-color: #46be8a; }
+    .u-steps .u-step.done .u-step-title {
+      color: #fff; }
+    .u-steps .u-step.done .u-step-number {
+      color: #46be8a;
+      background-color: #fff; }
+  .u-steps .u-steps-lg .u-step {
+    padding: 20px 20px;
+    font-size: 16px; }
+  .u-steps .u-steps-lg .u-step-icon, .u-steps .u-steps-lg .u-step-title {
+    font-size: 22px; }
+  .u-steps .u-steps-lg .u-step-number {
+    width: 46px;
+    height: 46px;
+    font-size: 28px;
+    line-height: 46px; }
+    .u-steps .u-steps-lg .u-step-number ~ .u-step-desc {
+      min-height: 46px;
+      margin-left: 56px; }
+  .u-steps .u-steps-sm .u-step {
+    font-size: 12px; }
+  .u-steps .u-steps-sm .u-step-icon, .u-steps .u-steps-sm .u-step-title {
+    font-size: 18px; }
+  .u-steps .u-steps-sm .u-step-number {
+    width: 30px;
+    height: 30px;
+    font-size: 24px;
+    line-height: 30px; }
+    .u-steps .u-steps-sm .u-step-number ~ .u-step-desc {
+      min-height: 30px;
+      margin-left: 40px; }
+  .u-steps .u-steps-xs .u-step {
+    font-size: 10px; }
+  .u-steps .u-steps-xs .u-step-icon, .u-steps .u-steps-xs .u-step-title {
+    font-size: 16px; }
+  .u-steps .u-steps-xs .u-step-number {
+    width: 24px;
+    height: 24px;
+    font-size: 20px;
+    line-height: 24px; }
+    .u-steps .u-steps-xs .u-step-number ~ .u-step-desc {
+      min-height: 24px;
+      margin-left: 34px; }
 
 .u-steps.pearls {
   margin-bottom: 22px; }

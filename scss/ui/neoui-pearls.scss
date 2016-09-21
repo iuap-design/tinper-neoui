@@ -176,7 +176,7 @@ $pearl-xs-size: 24px;
     }
   }
 
-  .u-steps-lg {
+  &.u-steps-lg {
     .u-step {
       padding: 20px 20px;
       font-size: 16px;
@@ -196,7 +196,7 @@ $pearl-xs-size: 24px;
     }
   }
 
-  .u-steps-sm {
+  &.u-steps-sm {
     .u-step {
       font-size: 12px;
     }
@@ -215,7 +215,7 @@ $pearl-xs-size: 24px;
     }
   }
 
-  .u-steps-xs {
+  &.u-steps-xs {
     .u-step {
       font-size: 10px;
     }
@@ -241,7 +241,7 @@ $pearl-xs-size: 24px;
 
 // Component: pearls
 // ========================================================================
-.u-steps.pearls {
+.u-pearls {
   &.row {
     display: block;
   }
@@ -436,7 +436,7 @@ $pearl-xs-size: 24px;
 
 
 
-  .u-steps-xs {
+  &.u-steps-xs {
     .u-step {
       &:before,
       &:after {
