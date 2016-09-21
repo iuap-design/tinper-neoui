@@ -4540,6 +4540,9 @@ main {
 .width-full {
   width: 100% !important; }
 
+.width-auto {
+  width: auto; }
+
 .h-16 {
   height: 16px; }
 
