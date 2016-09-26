@@ -191,7 +191,7 @@ var Combo = BaseComponent.extend({
     hide: function () {
         removeClass(this._ul, 'is-visible');
         this._ul.style.zIndex = -1;
-        this.trigger('select', {value: this.value});
+        this.trigger('select', {value: this.value, name: this._input.value});
     },
 
     /**
@@ -262,7 +262,7 @@ var Combo = BaseComponent.extend({
             }
 
             if(flag == '+'){
-                var nameDiv= makeDOM('<div class="u-combo-name" key="' + val + '">'+ name + /*<a href="javascript:void(0)" class="remove">x</a>*/'</div>');
+                var nameDiv= makeDOM('<div class="u-combo-name" key="' + val + '" title="' + name + '">'+ name + /*<a href="javascript:void(0)" class="remove">x</a>*/'</div>');
                 var parNameDiv=makeDOM('<div class="u-combo-name-par" style="position:absolute;max-width:' + this.fullWidth + 'px;"></div>');
                 /*var _a = nameDiv.querySelector('a');
                 on(_a, 'click', function(){

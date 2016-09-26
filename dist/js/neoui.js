@@ -7665,7 +7665,7 @@ $.fn.bootstrapWizard.defaults = {
 	            }
 
 	            if (flag == '+') {
-	                var nameDiv = (0, _dom.makeDOM)('<div class="u-combo-name" key="' + val + '">' + name + /*<a href="javascript:void(0)" class="remove">x</a>*/'</div>');
+	                var nameDiv = (0, _dom.makeDOM)('<div class="u-combo-name" key="' + val + '" value="' + name + '">' + name + /*<a href="javascript:void(0)" class="remove">x</a>*/'</div>');
 	                var parNameDiv = (0, _dom.makeDOM)('<div class="u-combo-name-par" style="position:absolute;max-width:' + this.fullWidth + 'px;"></div>');
 	                /*var _a = nameDiv.querySelector('a');
 	                on(_a, 'click', function(){

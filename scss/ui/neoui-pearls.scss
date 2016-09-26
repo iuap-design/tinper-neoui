@@ -394,7 +394,7 @@ $pearl-xs-size: 24px;
       &-number, &-icon {
         width: $pearl-lg-size;
         height: $pearl-lg-size;
-        line-height: ($pearl-lg-size - 2*$pearl-border-size);
+        line-height: $pearl-lg-size;
       }
 
       &-icon {
@@ -421,7 +421,7 @@ $pearl-xs-size: 24px;
       &-number, &-icon {
         width: $pearl-sm-size;
         height: $pearl-sm-size;
-        line-height: ($pearl-sm-size - 2*$pearl-border-size);
+        line-height: $pearl-sm-size;
       }
 
       &-number {
@@ -451,7 +451,7 @@ $pearl-xs-size: 24px;
       &-number, &-icon {
         width: $pearl-xs-size;
         height: $pearl-xs-size;
-        line-height: ($pearl-xs-size - 2*$pearl-border-size);
+        line-height: $pearl-xs-size;
       }
 
       &-number {

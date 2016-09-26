@@ -462,13 +462,14 @@ DateTimePicker.fn._fillDate = function(type){
         }
 
 
-        if(tempDate.getFullYear() < this.beginYear || (tempDate.getFullYear() == this.beginYear && tempDate.getMonth() < this.beginMonth)){
+        if(tempDate.getFullYear() < this.beginYear || (tempDate.getFullYear() == this.beginYear && tempDate.getMonth() < this.beginMonth)|| (tempDate.getFullYear() == this.overYear && tempDate.getMonth() > this.overMonth) || tempDate.getFullYear() > this.overYear){
             addClass(cell,'u-disabled');
             removeClass(cell,'current');
         }
 
-        if(tempDate.getFullYear() == this.beginYear && tempDate.getMonth() == this.beginMonth
-            && tempDate.getDate() < this.beginDate){
+        if((tempDate.getFullYear() == this.beginYear && tempDate.getMonth() == this.beginMonth
+            && tempDate.getDate() < this.beginDate) || (tempDate.getFullYear() == this.overYear && tempDate.getMonth() == this.overMonth
+                && tempDate.getDate() > this.overDate)){
             addClass(cell,'u-disabled');
             removeClass(cell,'current');
         }
@@ -1250,6 +1251,16 @@ DateTimePicker.fn.setStartDate = function(startDate){
     }
 
 }
+
+DateTimePicker.fn.setEndDate = function(endDate){
+    if(endDate){
+        this.overDateObj = udate.getDateObj(endDate);
+        this.overYear = this.overDateObj.getFullYear();
+        this.overMonth = this.overDateObj.getMonth();
+        this.overDate = this.overDateObj.getDate();
+    }
+}
+
 DateTimePicker.fn.setEnable = function(enable){
     if (enable === true || enable === 'true') {
         this.enable = true;

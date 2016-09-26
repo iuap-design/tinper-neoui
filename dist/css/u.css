@@ -4998,54 +4998,54 @@ small {
     .u-steps .u-step.done .u-step-number {
       color: #46be8a;
       background-color: #fff; }
-  .u-steps .u-steps-lg .u-step {
+  .u-steps.u-steps-lg .u-step {
     padding: 20px 20px;
     font-size: 16px; }
-  .u-steps .u-steps-lg .u-step-icon, .u-steps .u-steps-lg .u-step-title {
+  .u-steps.u-steps-lg .u-step-icon, .u-steps.u-steps-lg .u-step-title {
     font-size: 22px; }
-  .u-steps .u-steps-lg .u-step-number {
+  .u-steps.u-steps-lg .u-step-number {
     width: 46px;
     height: 46px;
     font-size: 28px;
     line-height: 46px; }
-    .u-steps .u-steps-lg .u-step-number ~ .u-step-desc {
+    .u-steps.u-steps-lg .u-step-number ~ .u-step-desc {
       min-height: 46px;
       margin-left: 56px; }
-  .u-steps .u-steps-sm .u-step {
+  .u-steps.u-steps-sm .u-step {
     font-size: 12px; }
-  .u-steps .u-steps-sm .u-step-icon, .u-steps .u-steps-sm .u-step-title {
+  .u-steps.u-steps-sm .u-step-icon, .u-steps.u-steps-sm .u-step-title {
     font-size: 18px; }
-  .u-steps .u-steps-sm .u-step-number {
+  .u-steps.u-steps-sm .u-step-number {
     width: 30px;
     height: 30px;
     font-size: 24px;
     line-height: 30px; }
-    .u-steps .u-steps-sm .u-step-number ~ .u-step-desc {
+    .u-steps.u-steps-sm .u-step-number ~ .u-step-desc {
       min-height: 30px;
       margin-left: 40px; }
-  .u-steps .u-steps-xs .u-step {
+  .u-steps.u-steps-xs .u-step {
     font-size: 10px; }
-  .u-steps .u-steps-xs .u-step-icon, .u-steps .u-steps-xs .u-step-title {
+  .u-steps.u-steps-xs .u-step-icon, .u-steps.u-steps-xs .u-step-title {
     font-size: 16px; }
-  .u-steps .u-steps-xs .u-step-number {
+  .u-steps.u-steps-xs .u-step-number {
     width: 24px;
     height: 24px;
     font-size: 20px;
     line-height: 24px; }
-    .u-steps .u-steps-xs .u-step-number ~ .u-step-desc {
+    .u-steps.u-steps-xs .u-step-number ~ .u-step-desc {
       min-height: 24px;
       margin-left: 34px; }
 
-.u-steps.pearls {
+.u-pearls {
   margin-bottom: 22px; }
-  .u-steps.pearls.row {
+  .u-pearls.row {
     display: block; }
-  .u-steps.pearls .u-step {
+  .u-pearls .u-step {
     position: relative;
     padding: 0;
     margin: 0;
     text-align: center; }
-    .u-steps.pearls .u-step:before, .u-steps.pearls .u-step:after {
+    .u-pearls .u-step:before, .u-pearls .u-step:after {
       position: absolute;
       top: 18px;
       z-index: 0;
@@ -5053,13 +5053,13 @@ small {
       height: 4px;
       content: "";
       background-color: rgb(238,238,238); }
-    .u-steps.pearls .u-step:before {
+    .u-pearls .u-step:before {
       left: 0; }
-    .u-steps.pearls .u-step:after {
+    .u-pearls .u-step:after {
       right: 0; }
-    .u-steps.pearls .u-step:first-child:before, .u-steps.pearls .u-step:last-child:after {
+    .u-pearls .u-step:first-child:before, .u-pearls .u-step:last-child:after {
       display: none !important; }
-  .u-steps.pearls .u-step-number, .u-steps.pearls .u-step-icon {
+  .u-pearls .u-step-number, .u-pearls .u-step-icon {
     position: relative;
     z-index: 1;
     display: inline-block;
@@ -5071,83 +5071,83 @@ small {
     background: rgb(189,189,189);
     border-radius: 50%;
     border: 2px solid rgb(189,189,189); }
-  .u-steps.pearls .u-step-number {
+  .u-pearls .u-step-number {
     font-size: 18px; }
-  .u-steps.pearls .u-step-icon {
+  .u-pearls .u-step-icon {
     font-size: 18px; }
-  .u-steps.pearls .u-step-title {
+  .u-pearls .u-step-title {
     margin-top: 0.5em;
     display: block;
     font-size: 16px;
     color: rgb(97,97,97);
     margin-bottom: 0; }
-  .u-steps.pearls .u-step.current:before, .u-steps.pearls .u-step.current:after {
+  .u-pearls .u-step.current:before, .u-pearls .u-step.current:after {
     background-color: rgb(63,81,181); }
-  .u-steps.pearls .u-step.current .u-step-number, .u-steps.pearls .u-step.current .u-step-icon {
+  .u-pearls .u-step.current .u-step-number, .u-pearls .u-step.current .u-step-icon {
     color: rgb(63,81,181);
     background-color: rgb(255,255,255);
     border-color: rgb(63,81,181);
     -webkit-transform: scale(1.3);
             transform: scale(1.3); }
-  .u-steps.pearls .u-step.disabled {
+  .u-pearls .u-step.disabled {
     pointer-events: none;
     cursor: auto; }
-    .u-steps.pearls .u-step.disabled:before, .u-steps.pearls .u-step.disabled:after {
+    .u-pearls .u-step.disabled:before, .u-pearls .u-step.disabled:after {
       background-color: rgb(238,238,238); }
-    .u-steps.pearls .u-step.disabled .u-step-number, .u-steps.pearls .u-step.disabled .u-step-icon {
+    .u-pearls .u-step.disabled .u-step-number, .u-pearls .u-step.disabled .u-step-icon {
       color: rgb(255,255,255);
       background-color: rgb(189,189,189);
       border-color: rgb(189,189,189); }
-  .u-steps.pearls .u-step.error:before {
+  .u-pearls .u-step.error:before {
     background-color: rgb(63,81,181); }
-  .u-steps.pearls .u-step.error:after {
+  .u-pearls .u-step.error:after {
     background-color: rgb(238,238,238); }
-  .u-steps.pearls .u-step.error .u-step-number, .u-steps.pearls .u-step.error .u-step-icon {
+  .u-pearls .u-step.error .u-step-number, .u-pearls .u-step.error .u-step-icon {
     color: rgb(244,67,54);
     background-color: rgb(255,255,255);
     border-color: rgb(244,67,54); }
-  .u-steps.pearls .u-step.done:before, .u-steps.pearls .u-step.done:after {
+  .u-pearls .u-step.done:before, .u-pearls .u-step.done:after {
     background-color: rgb(63,81,181); }
-  .u-steps.pearls .u-step.done .u-step-number, .u-steps.pearls .u-step.done .u-step-icon {
+  .u-pearls .u-step.done .u-step-number, .u-pearls .u-step.done .u-step-icon {
     color: rgb(255,255,255);
     background-color: rgb(63,81,181);
     border-color: rgb(63,81,181); }
-  .u-steps.pearls.u-steps-lg .u-step:before, .u-steps.pearls.u-steps-lg .u-step:after {
+  .u-pearls.u-steps-lg .u-step:before, .u-pearls.u-steps-lg .u-step:after {
     top: 20px; }
-  .u-steps.pearls.u-steps-lg .u-step-title {
+  .u-pearls.u-steps-lg .u-step-title {
     font-size: 18px; }
-  .u-steps.pearls.u-steps-lg .u-step-number, .u-steps.pearls.u-steps-lg .u-step-icon {
+  .u-pearls.u-steps-lg .u-step-number, .u-pearls.u-steps-lg .u-step-icon {
     width: 40px;
     height: 40px;
-    line-height: 36px; }
-  .u-steps.pearls.u-steps-lg .u-step-icon {
+    line-height: 40px; }
+  .u-pearls.u-steps-lg .u-step-icon {
     font-size: 20px; }
-  .u-steps.pearls.u-steps-lg .u-step-number {
+  .u-pearls.u-steps-lg .u-step-number {
     font-size: 20px; }
-  .u-steps.pearls.u-steps-sm .u-step:before, .u-steps.pearls.u-steps-sm .u-step:after {
+  .u-pearls.u-steps-sm .u-step:before, .u-pearls.u-steps-sm .u-step:after {
     top: 16px; }
-  .u-steps.pearls.u-steps-sm .u-step-title {
+  .u-pearls.u-steps-sm .u-step-title {
     font-size: 14px; }
-  .u-steps.pearls.u-steps-sm .u-step-number, .u-steps.pearls.u-steps-sm .u-step-icon {
+  .u-pearls.u-steps-sm .u-step-number, .u-pearls.u-steps-sm .u-step-icon {
     width: 32px;
     height: 32px;
-    line-height: 28px; }
-  .u-steps.pearls.u-steps-sm .u-step-number {
+    line-height: 32px; }
+  .u-pearls.u-steps-sm .u-step-number {
     font-size: 16px; }
-  .u-steps.pearls.u-steps-sm .u-step-icon {
+  .u-pearls.u-steps-sm .u-step-icon {
     font-size: 14px; }
-  .u-steps.pearls .u-steps-xs .u-step:before, .u-steps.pearls .u-steps-xs .u-step:after {
+  .u-pearls.u-steps-xs .u-step:before, .u-pearls.u-steps-xs .u-step:after {
     top: 12px;
     height: 2px; }
-  .u-steps.pearls .u-steps-xs .u-step-title {
+  .u-pearls.u-steps-xs .u-step-title {
     font-size: 12px; }
-  .u-steps.pearls .u-steps-xs .u-step-number, .u-steps.pearls .u-steps-xs .u-step-icon {
+  .u-pearls.u-steps-xs .u-step-number, .u-pearls.u-steps-xs .u-step-icon {
     width: 24px;
     height: 24px;
-    line-height: 20px; }
-  .u-steps.pearls .u-steps-xs .u-step-number {
+    line-height: 24px; }
+  .u-pearls.u-steps-xs .u-step-number {
     font-size: 12px; }
-  .u-steps.pearls .u-steps-xs .u-step-icon {
+  .u-pearls.u-steps-xs .u-step-icon {
     font-size: 12px; }
 
 
