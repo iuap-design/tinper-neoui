@@ -180,7 +180,7 @@ var Time = BaseComponent.extend({
         addClass(this.panelDiv, 'is-visible');
 
         var callback = function (e) {
-            if (e !== evt && e.target !== this.input && !oThis.clickPanel(e.target) && self._inputFocus != true) {
+            if (e !== evt && e.target !== this.input && !oThis.clickPanel(e.target) && oThis._inputFocus != true) {
             	off(document,'click',callback);
                 // document.removeEventListener('click', callback);
                 this.hide();

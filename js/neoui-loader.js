@@ -35,8 +35,9 @@ var showLoader = function(options) {
 	}
 	parEle.appendChild(templateDom);
 };
-var hideLoader = function() {
-	var divs = document.querySelectorAll('.u-overlay,.u-loader-container');
+var hideLoader = function(options) {
+	var cssStr = options.cssStr || '.u-overlay,.u-loader-container';
+	var divs = document.querySelectorAll(cssStr);
 	for(var i = 0; i < divs.length; i++) {
 		divs[i].parentNode.removeChild(divs[i]);
 	}

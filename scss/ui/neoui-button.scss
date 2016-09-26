@@ -64,55 +64,56 @@ input.u-button[type="submit"] {
 }
 
 // Raised buttons
-.u-button.waves-effect{
+// 目前没有使用waves-effect先注释掉
+// .u-button.waves-effect{
 
-  border:1px $button-border-color solid;
-  font-size: 13px;
-  background: $button-primary-color;
-  background: $button-primary-color-IE8 \9;
-  // @include shadow-2dp();
+//   border:1px $button-border-color solid;
+//   font-size: 13px;
+//   background: $button-primary-color;
+//   background: $button-primary-color-IE8 \9;
+//   // @include shadow-2dp();
 
-  &:active {
-    @include shadow-4dp();
-    background-color: $button-active-color;
-  }
+//   &:active {
+//     @include shadow-4dp();
+//     background-color: $button-active-color;
+//   }
 
-  &:focus:not(:active) {
-    @include focus-shadow();
-    background-color: $button-active-color;
-  }
+//   &:focus:not(:active) {
+//     @include focus-shadow();
+//     background-color: $button-active-color;
+//   }
 
-  &.colored {
-    background: $button-primary-color-alt;
-    color: $button-secondary-color-alt;
+//   &.colored {
+//     background: $button-primary-color-alt;
+//     color: $button-secondary-color-alt;
 
-    &:hover {
-      background-color: $button-hover-color-alt;
-    }
+//     &:hover {
+//       background-color: $button-hover-color-alt;
+//     }
 
-    &:active {
-      background-color: $button-active-color-alt;
-    }
+//     &:active {
+//       background-color: $button-active-color-alt;
+//     }
 
-    &:focus:not(:active) {
-      background-color: $button-active-color-alt;
-    }
+//     &:focus:not(:active) {
+//       background-color: $button-active-color-alt;
+//     }
 
-    background: $button-ripple-color-alt;
-  }
+//     background: $button-ripple-color-alt;
+//   }
 
-  &.u-button-xg{
-    font-size : $font-size-xg;
-  }
+//   &.u-button-xg{
+//     font-size : $font-size-xg;
+//   }
 
-  &.u-button-lg{
-    font-size : $font-size-lg;
-  }
+//   &.u-button-lg{
+//     font-size : $font-size-lg;
+//   }
 
-  &.u-button-sm{
-    font-size : $font-size-sm;
-  }
-}
+//   &.u-button-sm{
+//     font-size : $font-size-sm;
+//   }
+// }
 
 //Floating bottons
 .u-button-floating {
@@ -215,7 +216,8 @@ input.u-button[type="submit"] {
   background-color: $button-primary-color-alt;
   border:1px  $button-primary-color-alt solid;
   &:hover{
-    background-color: $button-primary-color-alt;
+    background-color: $button-primary-hover-color-alt;
+     border-color: $button-primary-hover-color-alt;
   }
 }
 
@@ -225,7 +227,8 @@ input.u-button[type="submit"] {
   background-color: $button-fab-color-alt;
   border:1px  $button-fab-color-alt solid;
   &:hover{
-    background-color: $button-fab-color-alt;
+    background-color: $button-fab-hover-color-alt;
+    border-color: $button-fab-hover-color-alt;
   }
 }
 
@@ -286,7 +289,7 @@ input.u-button[type="submit"] {
 .u-button-success {
     color: #fff;
     background-color: #4caf50;
-    border-color: #4caf50;
+    border:1px  #4caf50 solid;
 }
 
 .u-button-success.focus, .u-button-success:focus, .u-button-success:hover {
@@ -312,7 +315,7 @@ input.u-button[type="submit"] {
 .u-button-info {
     color: #fff;
     background-color: #00bcd4;
-    border-color: #00bcd4;
+    border:1px  #00bcd4 solid;
 }
 
 .u-button-info.focus, .u-button-info:focus, .u-button-info:hover {
@@ -328,7 +331,7 @@ input.u-button[type="submit"] {
 .u-button-warning {
     color: #fff;
     background-color: #ff9800;
-    border-color: #ff9800;
+    border:1px  #ff9800 solid;
 }
 
 .u-button-warning.focus, .u-button-warning:focus, .u-button-warning:hover {
@@ -345,7 +348,7 @@ input.u-button[type="submit"] {
 .u-button-danger {
     color: #fff;
     background-color: #f44336;
-    border-color: #f44336;
+     border:1px  #f44336 solid;
 }
 
 .u-button-danger.focus, .u-button-danger:focus, .u-button-danger:hover {

@@ -295,7 +295,7 @@ const YearMonth = BaseComponent.extend({
         addClass(this.panelDiv, 'is-visible');
         var oThis = this;
         var callback = function (e) {
-            if (e !== evt && e.target !== oThis.input && !oThis.clickPanel(e.target)  && self._inputFocus != true) {
+            if (e !== evt && e.target !== oThis.input && !oThis.clickPanel(e.target)  && oThis._inputFocus != true) {
                 // document.removeEventListener('click', callback);
                 off(document,'click',callback);
             	oThis.hide();
