@@ -4202,9 +4202,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.u = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -4418,9 +4422,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.extend = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /**
@@ -4470,9 +4478,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	/**
 	 * Module : Sparrow extend enum
 	 * Author : Kvkens(yueming@yonyou.com)
@@ -4508,9 +4520,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.Autocomplete = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -5110,9 +5126,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.BaseComponent = undefined;
 
 	var _class = __webpack_require__(5);
@@ -5251,9 +5271,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	/**
 	 * Module : Sparrow class
 	 * Author : Kvkens(yueming@yonyou.com)
@@ -5440,9 +5464,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
@@ -5577,9 +5605,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.event = exports.stopEvent = exports.trigger = exports.off = exports.on = undefined;
 
 	var _env = __webpack_require__(8);
@@ -5969,9 +6001,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.env = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -6174,9 +6210,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.compMgr = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /**
@@ -6444,9 +6484,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.getElementTop = exports.getElementLeft = exports.showPanelByEle = exports.getScroll = exports.getOffset = exports.makeModal = exports.makeDOM = exports.getZIndex = exports.getStyle = exports.wrap = exports.css = exports.closest = exports.toggleClass = exports.hasClass = exports.removeClass = exports.addClass = undefined;
 
 	var _event = __webpack_require__(7);
@@ -6630,11 +6674,16 @@ $.fn.bootstrapWizard.defaults = {
 			offset.left += Node.scrollLeft || document.documentElement.scrollLeft;
 			return offset;
 		}
+<<<<<<< HEAD
 		if (Node.tagName != 'INPUT') {
 			offset.top += Node.scrollTop;
 			offset.left += Node.scrollLeft;
 		}
 
+=======
+		offset.top += Node.scrollTop;
+		offset.left += Node.scrollLeft;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 		if (Node.parentNode) return getScroll(Node.parentNode, offset);else return offset;
 	};
 	var showPanelByEle = function showPanelByEle(obj) {
@@ -6745,9 +6794,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.ajax = undefined;
 
 	var _env = __webpack_require__(8);
@@ -6871,9 +6924,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.Button = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -6933,9 +6990,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.URipple = exports.Ripple = undefined;
 
 	var _env = __webpack_require__(8);
@@ -7162,9 +7223,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.Checkbox = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -7400,9 +7465,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.Combo = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -7828,9 +7897,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.Text = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -8069,9 +8142,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.Combobox = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -8596,9 +8673,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.Table = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -8710,9 +8791,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.iframeDialog = exports.dialogWizard = exports.dialog = exports.dialogMode = exports.confirmDialog = exports.messageDialog = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -9217,9 +9302,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.MDLayout = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -9457,9 +9546,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.NavLayoutTab = exports.NavLayout = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -9963,9 +10056,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.hideLoader = exports.showLoader = undefined;
 
 	var _dom = __webpack_require__(10);
@@ -10022,9 +10119,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.removeWaiting = exports.showWaiting = exports.hideLoading = exports.showLoading = exports.Loading = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -10153,9 +10254,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.Menu = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -10659,9 +10764,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.showMessage = exports.showMessageDialog = undefined;
 
 	var _dom = __webpack_require__(10);
@@ -10743,9 +10852,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.Multilang = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /**
@@ -10913,9 +11026,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.NavMenu = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -11021,9 +11138,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.pagination = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /**
@@ -11100,7 +11221,11 @@ $.fn.bootstrapWizard.defaults = {
 			return '<li role="last"' + (currentPageProxy.isLast() ? 'class="disabled"' : '') + '><a >' + options.last + '</a></li>';
 		},
 		gap: function gap(pagin, options) {
+<<<<<<< HEAD
 			return '<li role="gap" class="disabled"><a href="#">' + options.gap + '</a></li>';
+=======
+			return '<li role="gap" class="disabled"><a >' + options.gap + '</a></li>';
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 		},
 		page: function page(pagin, options, pageProxy) {
 			return '<li role="page"' + (pageProxy.isCurrent() ? 'class="active"' : '') + '><a ' + (pageProxy.isNext() ? ' rel="next"' : '') + (pageProxy.isPrev() ? 'rel="prev"' : '') + '>' + pageProxy.number() + '</a></li>';
@@ -11427,9 +11552,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.Progress = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -11554,9 +11683,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.Radio = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -11794,9 +11927,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.refer = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -11986,9 +12123,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.slidePanel = undefined;
 
 	var _dom = __webpack_require__(10);
@@ -12063,9 +12204,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.Switch = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -12253,9 +12398,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.Tabs = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -12401,9 +12550,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.Tooltip = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -12699,9 +12852,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.doValidate = exports.validate = exports.Validate = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /**
@@ -13252,9 +13409,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	/**
 	 * Module : Sparrow i18n
 	 * Author : Kvkens(yueming@yonyou.com)
@@ -13274,9 +13435,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.DateTimePicker = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -14529,9 +14694,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.core = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /**
@@ -14716,9 +14885,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	/**
 	 * Module : Sparrow cookies
 	 * Author : Kvkens(yueming@yonyou.com)
@@ -14752,9 +14925,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.date = undefined;
 
 	var _core = __webpack_require__(39);
@@ -15011,9 +15188,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.Time = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -15253,9 +15434,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.ClockPicker = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -15719,9 +15904,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.Month = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -15967,9 +16156,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.Year = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -16214,9 +16407,13 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
+<<<<<<< HEAD
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+=======
+	exports.__esModule = true;
+>>>>>>> ea8e89ff0577bb62f1f5ec8514cc238cbffa0769
 	exports.YearMonth = undefined;
 
 	var _BaseComponent = __webpack_require__(4);

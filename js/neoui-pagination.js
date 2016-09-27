@@ -70,7 +70,7 @@ var View = {
 		return '<li role="last"' + (currentPageProxy.isLast() ? 'class="disabled"' : '') + '><a >' + options.last + '</a></li>';
 	},
 	gap: function(pagin, options) {
-		return '<li role="gap" class="disabled"><a href="#">' + options.gap + '</a></li>';
+		return '<li role="gap" class="disabled"><a >' + options.gap + '</a></li>';
 	},
 	page: function(pagin, options, pageProxy) {
 		return '<li role="page"' + (pageProxy.isCurrent() ? 'class="active"' : '') + '><a ' + (pageProxy.isNext() ? ' rel="next"' : '') + (pageProxy.isPrev() ? 'rel="prev"' : '') + '>' + pageProxy.number() + '</a></li>';
