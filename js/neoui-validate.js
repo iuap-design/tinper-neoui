@@ -245,6 +245,10 @@ Validate.fn.doValid = function(options) {
         var reg = new RegExp(this.regExp);
         if (typeof value == 'number')
             value = value + ""
+        else if (typeof value == 'boolean')
+            return {
+                passed:true
+            }
         var r = value.match(reg);
         if (r === null || r === false) {
             this.showMsg(this.errorMsg)
