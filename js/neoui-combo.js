@@ -289,7 +289,7 @@ var Combo = BaseComponent.extend({
                 this._combo_name_par.appendChild(nameDiv);
                 var nWidth = nameDiv.offsetWidth + 20;
                 this.nowWidth += nWidth;
-                if(this.nowWidth > this.fullWidth){
+                if(this.nowWidth > this.fullWidth && this.fullWidth > 0){
                     this.nowWidth -= nWidth;
                     this._combo_name_par.removeChild(nameDiv);
                     addClass(this._combo_name_par,'u-combo-overwidth');
@@ -312,7 +312,7 @@ var Combo = BaseComponent.extend({
             // this.trigger('select', {value: this.value, name: name});
         }else{
             this.value = this.comboDatas[index].value;
-            this._input.value = this.comboDatas[index].value;
+            this._input.value = this.comboDatas[index].name;
             this._updateItemSelect();
             // this.trigger('select', {value: this.value, name: this._input.value});
         }
@@ -370,6 +370,7 @@ var Combo = BaseComponent.extend({
             this.value = '';
         }
         var matched = false;
+        this.nowWidth = 0;
         this.comboDatas.forEach(function(item, index){
             if (this.mutilSelect === true){
                 if (values.indexOf(item.value) != -1){
