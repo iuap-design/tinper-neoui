@@ -4,6 +4,7 @@
 [![npm version](https://img.shields.io/npm/v/neoui.svg)](https://www.npmjs.com/package/neoui)
 [![Build Status](https://img.shields.io/travis/iuap-design/neoui/master.svg)](https://travis-ci.org/iuap-design/neoui)
 [![devDependency Status](https://img.shields.io/david/dev/iuap-design/neoui.svg)](https://david-dm.org/iuap-design/neoui#info=devDependencies)
+[![NPM downloads](http://img.shields.io/npm/dm/neoui.svg?style=flat)](https://npmjs.org/package/neoui)
 
 [neoui](http://design.yyuap.com/) 是基于 `UI` 设计语言 `iUAP Design` 实现的前端框架，开放自由、易学易用、样式丰富、美观大气，为开发者提供从产品界面设计到前端开发的完整生态。
 
