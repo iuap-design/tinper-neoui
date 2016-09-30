@@ -5,7 +5,7 @@
 [![Build Status](https://img.shields.io/travis/iuap-design/neoui/master.svg)](https://travis-ci.org/iuap-design/neoui)
 [![devDependency Status](https://img.shields.io/david/dev/iuap-design/neoui.svg)](https://david-dm.org/iuap-design/neoui#info=devDependencies)
 
-[neoui](http://design.yyuap.com/) 是基于 `UI` 设计语言 `iUAP Design` 实现的前端框架，开放自由、易学易用、美观大气，为开发者提供从产品界面设计到前端开发的完整生态。
+[neoui](http://design.yyuap.com/) 是基于 `UI` 设计语言 `iUAP Design` 实现的前端框架，开放自由、易学易用、样式丰富、美观大气，为开发者提供从产品界面设计到前端开发的完整生态。
 
 ## 核心能力
 
@@ -13,9 +13,13 @@
 
 neoui 包含丰富的 CSS 组件、JS 插件
 
-### 可扩展主题
+### 按需定制
 
-更有多个包含不同主题的 Web 组件，可快速构建界面出色、体验优秀的跨屏页面，大幅提升开发效率。
+可以轻松定制所需模块 减小文件尺寸 提升效率，节约资源
+
+### 响应式布局
+
+基于12栅格系统 全面兼容不同浏览器及设备 一次开发，多端兼容
 
 ### 完整生态
 
@@ -33,11 +37,10 @@ git clone git@github.com:iuap-design/neoui.git
 
 - 使用CDN
 ```
-http://design.yyuap.com/static/iuap-design/3.0.1/js/u-ui.js
-http://design.yyuap.com/static/iuap-design/3.0.1/js/u-polyfill.js
+http://design.yyuap.com/static/uui/latest/js/u.js
 
-http://design.yyuap.com/static/iuap-design/3.0.1/css/u.css
-http://design.yyuap.com/static/iuap-design/3.0.1/css/u-extend.css
+http://design.yyuap.com/static/uui/latest/css/u.css
+
 ```
 - 使用npm安装
 
@@ -47,12 +50,15 @@ npm install neoui
 
 - 使用bower下载
 
-暂未发布，敬请期待...
+```
+bower install neoui
+
+```
 
 
 ### 版本说明
 
-当前neoui框架的版本为3.0.1。
+当前neoui框架的版本为4.1.14。
 
 
 ### 目录及文件说明
@@ -63,8 +69,8 @@ dist
 │
 ├─css
 │      font-awesome.css
-│      u-extend.css
-│      u-extend.min.css
+│      u-core.css
+│      u-core.min.css
 │      u.css
 │      u.min.css
 │
@@ -77,10 +83,9 @@ dist
 │      FontAwesome.otf
 │
 └─js
-        u-polyfill.js
-        u-polyfill.min.js
-        u-ui.js
-        u-ui.min.js
+        neoui.js
+        neoui.min.js
+
 
 
 ```
@@ -105,7 +110,7 @@ dist
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="iUAP Design"/>
-  <link rel="stylesheet" href="http://design.yyuap.com/static/iuap-design/3.0.1/css/u.css">
+  <link rel="stylesheet" href="http://ddesign.yyuap.com/static/uui/latest/css/u.css">
 </head>
 <body>
   <h1> Hi, iUAP Design </h1>
@@ -117,9 +122,9 @@ dist
   <!--<![endif]-->
   <!--[if lte IE 8 ]>
   <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-  <script src="http://design.yyuap.com/static/iuap-design/3.0.1/js/u-polyfill.js"></script>
+  <script src="http://design.yyuap.com/static/uui/latest/js/u-polyfill.js"></script>
   <![endif]-->
-  <script src="http://design.yyuap.com/static/iuap-design/3.0.1/js/u-ui.js"></script>
+  <script src="http://design.yyuap.com/static/uui/latest/js/u-ui.js"></script>
 </body>
 </html>
 ```
@@ -150,11 +155,14 @@ CHANGELOG.md
 CONTRIBUTING.md
 dist/
 docs/
+example/
+fonts/
 gulpfile.babel.js
 js/
 package.json
 README.md
 scss/
+snippets/
 vendor/
 widget/
 ```
@@ -178,7 +186,7 @@ $ npm install
 接下来，执行 `gulp`：
 
 ```
-$ npm run dev
+$ npm run product
 ```
 
 ## 反馈
