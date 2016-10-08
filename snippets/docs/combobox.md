@@ -2,6 +2,8 @@
 
 combobox组合框是由一个文本输入控件和一个下拉菜单组成的，类似于select元素。用户可以从一个预先定义的列表里选择一个或者多个选项。
 
+* `.u-combo` - 单选下拉框
+* `.u-combo .mutil-select` - 多选下拉框
 
 replaceExamp
 
@@ -23,6 +25,7 @@ var comboObject = document.getElementById('domId')['u.Combo'];
 
 ```
 
+**注：** 如果获取的下拉对象为空，原因为下拉框没有初始化成功，可以先调用`u.compMgr.updateComp();`来初始化页面中的控件。然后再获取下拉对象。
 ## \# setComboData 设置数据源
 
 * 类型： `Function`
@@ -36,6 +39,19 @@ var comboObject = document.getElementById('domId')['u.Combo'];
 var dataArray = [{value:'01',name:'男'},{value:'02',name:'女'}];//value为：下拉框真实值，name为下拉显示值
 
 document.getElementById('domId')['u.Combo'].setComboData(dataArray);
+
+```
+
+## \# selectItem 选中某行
+* 类型： `Function`
+* 说明：设置选中下拉框的某条数据
+* 参数：
+	* `{Integer} index`：要选中的某行，从0开始
+* 用法：
+
+```
+
+document.getElementById('domId')['u.Combo'].selectItem(index);
 
 ```
 
