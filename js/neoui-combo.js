@@ -255,10 +255,15 @@ var Combo = BaseComponent.extend({
             var flag;
             if(this.fullWidth == 0){
                 this.fullWidth = this._input.offsetWidth;
-                if(this.fullWidth > 0)
-                    this._combo_name_par.style.maxWidth = this.fullWidth + 'px';
+                if(this.fullWidth > 0) {
+                    if(this._combo_name_par){
+                        this._combo_name_par.style.maxWidth = this.fullWidth + 'px';
+
+                    }
+                }
+
             }
-            
+
             if (index != -1){ // 已经选中
                 this.value = this.value.substring(0,index) + this.value.substring(index + l)
                 flag = '-'
