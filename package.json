@@ -1,6 +1,6 @@
 {
-  "name": "neoui",
-  "version": "4.1.14",
+  "name": "tinper-neoui",
+  "version": "0.0.1",
   "description": "UI Framework Used For Enterprise.",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iuap-design/neoui.git"
+    "url": "git+https://github.com/iuap-design/tinper-neoui.git"
   },
   "keywords": [
     "neoui",
@@ -26,9 +26,9 @@
   "author": "yonyou FED",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iuap-design/neoui/issues"
+    "url": "https://github.com/iuap-design/tinper-neoui/issues"
   },
-  "homepage": "https://github.com/iuap-design/neoui#readme",
+  "homepage": "https://github.com/iuap-design/tinper-neoui#readme",
   "devDependencies": {
     "babel-core": "^6.11.4",
     "babel-eslint": "^6.1.2",
