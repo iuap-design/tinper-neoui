@@ -4,12 +4,12 @@
  * Date	  : 2016-08-02 13:01:05
  */
 
-import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
-import {addClass} from 'neoui-sparrow/js/dom';
-import {env} from 'neoui-sparrow/js/env';
-import {on} from 'neoui-sparrow/js/event';
-import {Ripple} from 'neoui-sparrow/js/util/ripple';
-import {compMgr} from 'neoui-sparrow/js/compMgr';
+import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {addClass} from 'tinper-sparrow/js/dom';
+import {env} from 'tinper-sparrow/js/env';
+import {on} from 'tinper-sparrow/js/event';
+import {Ripple} from 'tinper-sparrow/js/util/ripple';
+import {compMgr} from 'tinper-sparrow/js/compMgr';
 
 var Button = BaseComponent.extend({
 	init: function() {

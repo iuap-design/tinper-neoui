@@ -1,13 +1,13 @@
-import {extend} from 'neoui-sparrow/js/extend';
-import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
-import {env} from 'neoui-sparrow/js/env';
-import {on,off,trigger,stopEvent} from 'neoui-sparrow/js/event';
-import {addClass,removeClass,hasClass,closest,makeDOM,makeModal,showPanelByEle,getElementLeft,getElementTop} from 'neoui-sparrow/js/dom';
-import {core} from 'neoui-sparrow/js/core';
-import {date as udate} from 'neoui-sparrow/js/util/dateUtils';
+import {extend} from 'tinper-sparrow/js/extend';
+import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {env} from 'tinper-sparrow/js/env';
+import {on,off,trigger,stopEvent} from 'tinper-sparrow/js/event';
+import {addClass,removeClass,hasClass,closest,makeDOM,makeModal,showPanelByEle,getElementLeft,getElementTop} from 'tinper-sparrow/js/dom';
+import {core} from 'tinper-sparrow/js/core';
+import {date as udate} from 'tinper-sparrow/js/util/dateUtils';
 import {Validate} from './neoui-validate';
-import {compMgr} from 'neoui-sparrow/js/compMgr';
-import {URipple} from 'neoui-sparrow/js/util/ripple';
+import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {URipple} from 'tinper-sparrow/js/util/ripple';
 
 var DateTimePicker = BaseComponent.extend({
 });

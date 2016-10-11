@@ -4,12 +4,12 @@
  * Date	  : 2016-08-03 08:45:49
  */
 
-import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
-import {extend} from 'neoui-sparrow/js/extend';
-import {addClass,wrap,css,hasClass,removeClass,closest} from 'neoui-sparrow/js/dom';
-import {each} from 'neoui-sparrow/js/util';
-import {on} from 'neoui-sparrow/js/event';
-import {compMgr} from 'neoui-sparrow/js/compMgr';
+import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {extend} from 'tinper-sparrow/js/extend';
+import {addClass,wrap,css,hasClass,removeClass,closest} from 'tinper-sparrow/js/dom';
+import {each} from 'tinper-sparrow/js/util';
+import {on} from 'tinper-sparrow/js/event';
+import {compMgr} from 'tinper-sparrow/js/compMgr';
 
 var pagination = BaseComponent.extend({
 

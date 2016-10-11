@@ -4,12 +4,12 @@
  * Date	  : 2016-08-02 15:56:32
  */
 
-import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
-import {addClass,hasClass,removeClass,toggleClass,closest} from 'neoui-sparrow/js/dom';
-import {on} from 'neoui-sparrow/js/event';
-import {Ripple,URipple} from 'neoui-sparrow/js/util/ripple';
-import {env} from 'neoui-sparrow/js/env';
-import {compMgr} from 'neoui-sparrow/js/compMgr';
+import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {addClass,hasClass,removeClass,toggleClass,closest} from 'tinper-sparrow/js/dom';
+import {on} from 'tinper-sparrow/js/event';
+import {Ripple,URipple} from 'tinper-sparrow/js/util/ripple';
+import {env} from 'tinper-sparrow/js/env';
+import {compMgr} from 'tinper-sparrow/js/compMgr';
 
 var NavLayout = BaseComponent.extend({
     _Constant: {

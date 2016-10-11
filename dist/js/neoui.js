@@ -4388,24 +4388,24 @@ $.fn.bootstrapWizard.defaults = {
 	};
 	//extend(ex,env);
 
-	//import {setCookie,getCookie} from 'neoui-sparrow/lib/cookies';
-	//import {createShellObject,execIgnoreError,getFunction,getJSObject,isDate,isNumber,isArray,isEmptyObject,inArray,isDomElement,each} from 'neoui-sparrow/lib/util';
-	//import {env} from 'neoui-sparrow/lib/env';
-	//import {on,off,trigger,stopEvent,event} from 'neoui-sparrow/lib/event';
-	//import {addClass,removeClass,hasClass,toggleClass,closest,css,wrap,getStyle,getZIndex,makeDOM,makeModal,getOffset,getScroll,showPanelByEle} from 'neoui-sparrow/lib/dom';
-	//import {Class} from 'neoui-sparrow/lib/class';
-	//import {core} from 'neoui-sparrow/lib/core';
-	//import {compMgr} from 'neoui-sparrow/lib/compMgr';
-	//import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
-	//import {ajax} from 'neoui-sparrow/lib/ajax';
-	//import {floatRender,integerRender,dateRender,dateTimeRender,timeRender,percentRender,dateToUTCString} from 'neoui-sparrow/lib/util/dataRender';
-	//import {NumberFormater,DateFormater} from 'neoui-sparrow/lib/util/formater';
-	//import {date} from 'neoui-sparrow/lib/util/dateUtils';
-	//import {AddressMasker,NumberMasker,CurrencyMasker,PercentMasker} from 'neoui-sparrow/lib/util/masker'
-	//import {hotkeys} from 'neoui-sparrow/lib/util/hotKeys';
-	//import {Ripple} from 'neoui-sparrow/lib/util/ripple';
-	//import {RSAUtils,BigInt,BarrettMu,twoDigit} from 'neoui-sparrow/lib/util/rsautils';
-	//import {trans} from 'neoui-sparrow/lib/util/i18n';
+	//import {setCookie,getCookie} from 'tinper-sparrow/lib/cookies';
+	//import {createShellObject,execIgnoreError,getFunction,getJSObject,isDate,isNumber,isArray,isEmptyObject,inArray,isDomElement,each} from 'tinper-sparrow/lib/util';
+	//import {env} from 'tinper-sparrow/lib/env';
+	//import {on,off,trigger,stopEvent,event} from 'tinper-sparrow/lib/event';
+	//import {addClass,removeClass,hasClass,toggleClass,closest,css,wrap,getStyle,getZIndex,makeDOM,makeModal,getOffset,getScroll,showPanelByEle} from 'tinper-sparrow/lib/dom';
+	//import {Class} from 'tinper-sparrow/lib/class';
+	//import {core} from 'tinper-sparrow/lib/core';
+	//import {compMgr} from 'tinper-sparrow/lib/compMgr';
+	//import {BaseComponent} from 'tinper-sparrow/lib/BaseComponent';
+	//import {ajax} from 'tinper-sparrow/lib/ajax';
+	//import {floatRender,integerRender,dateRender,dateTimeRender,timeRender,percentRender,dateToUTCString} from 'tinper-sparrow/lib/util/dataRender';
+	//import {NumberFormater,DateFormater} from 'tinper-sparrow/lib/util/formater';
+	//import {date} from 'tinper-sparrow/lib/util/dateUtils';
+	//import {AddressMasker,NumberMasker,CurrencyMasker,PercentMasker} from 'tinper-sparrow/lib/util/masker'
+	//import {hotkeys} from 'tinper-sparrow/lib/util/hotKeys';
+	//import {Ripple} from 'tinper-sparrow/lib/util/ripple';
+	//import {RSAUtils,BigInt,BarrettMu,twoDigit} from 'tinper-sparrow/lib/util/rsautils';
+	//import {trans} from 'tinper-sparrow/lib/util/i18n';
 
 	//Neoui import
 	(0, _extend.extend)(ex, window.u || {});
@@ -7665,7 +7665,11 @@ $.fn.bootstrapWizard.defaults = {
 	            var flag;
 	            if (this.fullWidth == 0) {
 	                this.fullWidth = this._input.offsetWidth;
-	                if (this.fullWidth > 0) this._combo_name_par.style.maxWidth = this.fullWidth + 'px';
+	                if (this.fullWidth > 0) {
+	                    if (this._combo_name_par) {
+	                        this._combo_name_par.style.maxWidth = this.fullWidth + 'px';
+	                    }
+	                }
 	            }
 
 	            if (index != -1) {
@@ -7699,7 +7703,7 @@ $.fn.bootstrapWizard.defaults = {
 	                this._combo_name_par.appendChild(nameDiv);
 	                var nWidth = nameDiv.offsetWidth + 20;
 	                this.nowWidth += nWidth;
-	                if (this.nowWidth > this.fullWidth) {
+	                if (this.nowWidth > this.fullWidth && this.fullWidth > 0) {
 	                    this.nowWidth -= nWidth;
 	                    this._combo_name_par.removeChild(nameDiv);
 	                    (0, _dom.addClass)(this._combo_name_par, 'u-combo-overwidth');
@@ -7721,7 +7725,7 @@ $.fn.bootstrapWizard.defaults = {
 	            // this.trigger('select', {value: this.value, name: name});
 	        } else {
 	            this.value = this.comboDatas[index].value;
-	            this._input.value = this.comboDatas[index].value;
+	            this._input.value = this.comboDatas[index].name;
 	            this._updateItemSelect();
 	            // this.trigger('select', {value: this.value, name: this._input.value});
 	        }
@@ -7775,6 +7779,7 @@ $.fn.bootstrapWizard.defaults = {
 	            this.value = '';
 	        }
 	        var matched = false;
+	        this.nowWidth = 0;
 	        this.comboDatas.forEach(function (item, index) {
 	            if (this.mutilSelect === true) {
 	                if (values.indexOf(item.value) != -1) {
@@ -10016,7 +10021,13 @@ $.fn.bootstrapWizard.defaults = {
 		parEle.appendChild(templateDom);
 	};
 	var hideLoader = function hideLoader(options) {
-		var cssStr = options.cssStr || '.u-overlay,.u-loader-container';
+		var cssStr;
+		if (options && options.cssStr) {
+			cssStr = options.cssStr;
+		} else {
+			cssStr = '.u-overlay,.u-loader-container';
+		}
+
 		var divs = document.querySelectorAll(cssStr);
 		for (var i = 0; i < divs.length; i++) {
 			divs[i].parentNode.removeChild(divs[i]);
@@ -12114,7 +12125,7 @@ $.fn.bootstrapWizard.defaults = {
 			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
 			/*var focusHelper = document.createElement('span');
 	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
-	  		thumb.appendChild(focusHelper);*/
+	  	thumb.appendChild(focusHelper);*/
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);
@@ -13535,11 +13546,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -13624,11 +13635,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -14589,7 +14600,8 @@ $.fn.bootstrapWizard.defaults = {
 			precision: 2,
 			curSymbol: '￥'
 		},
-		'percent': {}
+		'percent': {},
+		'phoneNumber': {}
 	};
 	/**
 	 * 获取环境信息

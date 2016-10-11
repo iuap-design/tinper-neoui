@@ -1,9 +1,9 @@
-import {extend} from 'neoui-sparrow/js/extend';
-import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
-import {env} from 'neoui-sparrow/js/env';
-import {on,off,trigger,stopEvent} from 'neoui-sparrow/js/event';
-import {addClass,removeClass,makeDOM,showPanelByEle,getZIndex} from 'neoui-sparrow/js/dom';
-import {compMgr} from 'neoui-sparrow/js/compMgr';
+import {extend} from 'tinper-sparrow/js/extend';
+import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {env} from 'tinper-sparrow/js/env';
+import {on,off,trigger,stopEvent} from 'tinper-sparrow/js/event';
+import {addClass,removeClass,makeDOM,showPanelByEle,getZIndex} from 'tinper-sparrow/js/dom';
+import {compMgr} from 'tinper-sparrow/js/compMgr';
 
 
 var Time = BaseComponent.extend({

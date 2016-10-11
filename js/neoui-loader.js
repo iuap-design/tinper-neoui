@@ -3,7 +3,7 @@
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-08-02 19:02:09
  */
-import {makeDOM, makeModal} from 'neoui-sparrow/js/dom';
+import {makeDOM, makeModal} from 'tinper-sparrow/js/dom';
 
 /*
  *加载loading

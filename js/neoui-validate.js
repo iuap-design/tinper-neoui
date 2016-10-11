@@ -3,14 +3,14 @@
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-08-06 14:03:15
  */
-import { BaseComponent } from 'neoui-sparrow/js/BaseComponent';
-import { extend } from 'neoui-sparrow/js/extend.js';
-import { makeDOM } from 'neoui-sparrow/js/dom';
-import { on } from 'neoui-sparrow/js/event';
-import { isNumber, inArray, each } from 'neoui-sparrow/js/util';
+import { BaseComponent } from 'tinper-sparrow/js/BaseComponent';
+import { extend } from 'tinper-sparrow/js/extend.js';
+import { makeDOM } from 'tinper-sparrow/js/dom';
+import { on } from 'tinper-sparrow/js/event';
+import { isNumber, inArray, each } from 'tinper-sparrow/js/util';
 import { Tooltip } from './neoui-tooltip';
-import { trans } from 'neoui-sparrow/js/util/i18n';
-import { compMgr } from 'neoui-sparrow/js/compMgr';
+import { trans } from 'tinper-sparrow/js/util/i18n';
+import { compMgr } from 'tinper-sparrow/js/compMgr';
 
 var Validate = BaseComponent.extend({
 

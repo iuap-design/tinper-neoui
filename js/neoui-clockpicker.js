@@ -4,14 +4,14 @@
  * Date	  : 2016-08-11 15:17:07
  */
 
-import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
-import {addClass, removeClass, hasClass, showPanelByEle, makeDOM, makeModal, getZIndex} from 'neoui-sparrow/js/dom';
-import {on, off} from 'neoui-sparrow/js/event';
-import {compMgr} from 'neoui-sparrow/js/compMgr'; 
-import {isMobile} from 'neoui-sparrow/js/env'; 
-import {extend} from 'neoui-sparrow/js/extend'; 
-import {core} from 'neoui-sparrow/js/core'; 
-import {date} from 'neoui-sparrow/js/util/dateUtils'; 
+import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {addClass, removeClass, hasClass, showPanelByEle, makeDOM, makeModal, getZIndex} from 'tinper-sparrow/js/dom';
+import {on, off} from 'tinper-sparrow/js/event';
+import {compMgr} from 'tinper-sparrow/js/compMgr'; 
+import {isMobile} from 'tinper-sparrow/js/env'; 
+import {extend} from 'tinper-sparrow/js/extend'; 
+import {core} from 'tinper-sparrow/js/core'; 
+import {date} from 'tinper-sparrow/js/util/dateUtils'; 
 
 const ClockPicker = BaseComponent.extend({
 	DEFAULTS : {
