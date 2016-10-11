@@ -1,10 +1,9 @@
-# neoui
+# tinper neoui
 
-[![Bower](https://img.shields.io/bower/v/neoui.svg)](https://github.com/iuap-design/neoui)
-[![npm version](https://img.shields.io/npm/v/neoui.svg)](https://www.npmjs.com/package/neoui)
+[![npm version](https://img.shields.io/npm/v/tinper-neoui.svg)](https://www.npmjs.com/package/tinper-neoui)
 [![Build Status](https://img.shields.io/travis/iuap-design/neoui/master.svg)](https://travis-ci.org/iuap-design/neoui)
-[![devDependency Status](https://img.shields.io/david/dev/iuap-design/neoui.svg)](https://david-dm.org/iuap-design/neoui#info=devDependencies)
-[![NPM downloads](http://img.shields.io/npm/dm/neoui.svg?style=flat)](https://npmjs.org/package/neoui)
+[![devDependency Status](https://img.shields.io/david/dev/iuap-design/tinper-neoui.svg)](https://david-dm.org/iuap-design/tinper-neoui#info=devDependencies)
+[![NPM downloads](http://img.shields.io/npm/dm/tinper-neoui.svg?style=flat)](https://npmjs.org/package/tinper-neoui)
 
 [neoui](http://design.yyuap.com/) 是基于 `UI` 设计语言 `iUAP Design` 实现的前端框架，开放自由、易学易用、样式丰富、美观大气，为开发者提供从产品界面设计到前端开发的完整生态。
 
@@ -33,7 +32,7 @@ neoui 包含丰富的 CSS 组件、JS 插件
 
 - 直接从github获取我们的源码
 ```
-git clone git@github.com:iuap-design/neoui.git
+git clone git@github.com:iuap-design/tinper-neoui.git
 ```
 
 - 使用CDN
@@ -41,25 +40,12 @@ git clone git@github.com:iuap-design/neoui.git
 http://design.yyuap.com/static/uui/latest/js/u.js
 
 http://design.yyuap.com/static/uui/latest/css/u.css
-
 ```
 - 使用npm安装
 
 ```
-npm install neoui
+npm install tinper-neoui
 ```
-
-- 使用bower下载
-
-```
-bower install neoui
-
-```
-
-
-### 版本说明
-
-当前neoui框架的版本为4.1.14。
 
 
 ### 目录及文件说明
@@ -137,7 +123,7 @@ dist
 
 ### 6.参与讨论和开发
 
-如在使用过程中遇到任何问题，可以在[这里](https://github.com/iuap-design/neoui/issues)提交issue反馈；
+如在使用过程中遇到任何问题，可以在[这里](https://github.com/iuap-design/tinper-neoui/issues)提交issue反馈；
 
 或者直接fork代码到你的github仓库，提交pull request给我们。
 
