@@ -5,25 +5,25 @@
  */
 
 //Sparrow import
-import {extend} from 'neoui-sparrow/js/extend';
-//import {setCookie,getCookie} from 'neoui-sparrow/lib/cookies';
-//import {createShellObject,execIgnoreError,getFunction,getJSObject,isDate,isNumber,isArray,isEmptyObject,inArray,isDomElement,each} from 'neoui-sparrow/lib/util';
-//import {env} from 'neoui-sparrow/lib/env';
-//import {on,off,trigger,stopEvent,event} from 'neoui-sparrow/lib/event';
-//import {addClass,removeClass,hasClass,toggleClass,closest,css,wrap,getStyle,getZIndex,makeDOM,makeModal,getOffset,getScroll,showPanelByEle} from 'neoui-sparrow/lib/dom';
-//import {Class} from 'neoui-sparrow/lib/class';
-//import {core} from 'neoui-sparrow/lib/core';
-//import {compMgr} from 'neoui-sparrow/lib/compMgr';
-//import {BaseComponent} from 'neoui-sparrow/lib/BaseComponent';
-//import {ajax} from 'neoui-sparrow/lib/ajax';
-//import {floatRender,integerRender,dateRender,dateTimeRender,timeRender,percentRender,dateToUTCString} from 'neoui-sparrow/lib/util/dataRender';
-//import {NumberFormater,DateFormater} from 'neoui-sparrow/lib/util/formater';
-//import {date} from 'neoui-sparrow/lib/util/dateUtils';
-//import {AddressMasker,NumberMasker,CurrencyMasker,PercentMasker} from 'neoui-sparrow/lib/util/masker'
-//import {hotkeys} from 'neoui-sparrow/lib/util/hotKeys';
-//import {Ripple} from 'neoui-sparrow/lib/util/ripple';
-//import {RSAUtils,BigInt,BarrettMu,twoDigit} from 'neoui-sparrow/lib/util/rsautils';
-//import {trans} from 'neoui-sparrow/lib/util/i18n';
+import {extend} from 'tinper-sparrow/js/extend';
+//import {setCookie,getCookie} from 'tinper-sparrow/lib/cookies';
+//import {createShellObject,execIgnoreError,getFunction,getJSObject,isDate,isNumber,isArray,isEmptyObject,inArray,isDomElement,each} from 'tinper-sparrow/lib/util';
+//import {env} from 'tinper-sparrow/lib/env';
+//import {on,off,trigger,stopEvent,event} from 'tinper-sparrow/lib/event';
+//import {addClass,removeClass,hasClass,toggleClass,closest,css,wrap,getStyle,getZIndex,makeDOM,makeModal,getOffset,getScroll,showPanelByEle} from 'tinper-sparrow/lib/dom';
+//import {Class} from 'tinper-sparrow/lib/class';
+//import {core} from 'tinper-sparrow/lib/core';
+//import {compMgr} from 'tinper-sparrow/lib/compMgr';
+//import {BaseComponent} from 'tinper-sparrow/lib/BaseComponent';
+//import {ajax} from 'tinper-sparrow/lib/ajax';
+//import {floatRender,integerRender,dateRender,dateTimeRender,timeRender,percentRender,dateToUTCString} from 'tinper-sparrow/lib/util/dataRender';
+//import {NumberFormater,DateFormater} from 'tinper-sparrow/lib/util/formater';
+//import {date} from 'tinper-sparrow/lib/util/dateUtils';
+//import {AddressMasker,NumberMasker,CurrencyMasker,PercentMasker} from 'tinper-sparrow/lib/util/masker'
+//import {hotkeys} from 'tinper-sparrow/lib/util/hotKeys';
+//import {Ripple} from 'tinper-sparrow/lib/util/ripple';
+//import {RSAUtils,BigInt,BarrettMu,twoDigit} from 'tinper-sparrow/lib/util/rsautils';
+//import {trans} from 'tinper-sparrow/lib/util/i18n';
 
 //Neoui import
 import {Autocomplete} from './neoui-autocomplete';

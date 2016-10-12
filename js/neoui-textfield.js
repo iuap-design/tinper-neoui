@@ -4,11 +4,11 @@
  * Date	  : 2016-08-02 14:22:46
  */
 
-import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
-import {addClass,removeClass,hasClass} from 'neoui-sparrow/js/dom';
-import {env} from 'neoui-sparrow/js/env';
-import {on,stopEvent} from 'neoui-sparrow/js/event';
-import {compMgr} from 'neoui-sparrow/js/compMgr';
+import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {addClass,removeClass,hasClass} from 'tinper-sparrow/js/dom';
+import {env} from 'tinper-sparrow/js/env';
+import {on,stopEvent} from 'tinper-sparrow/js/event';
+import {compMgr} from 'tinper-sparrow/js/compMgr';
 
 
 var Text = BaseComponent.extend({

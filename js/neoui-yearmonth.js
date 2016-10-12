@@ -4,13 +4,13 @@
  * Date   : 2016-08-11 15:17:07
  */
 
-import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
-import {on, off, stopEvent} from 'neoui-sparrow/js/event';
-import {addClass, makeDOM, showPanelByEle, getZIndex, removeClass} from 'neoui-sparrow/js/dom';
-import {extend} from 'neoui-sparrow/js/extend'; 
-import {isIE8} from 'neoui-sparrow/js/env'; 
-import {compMgr} from 'neoui-sparrow/js/compMgr';
-import {URipple} from 'neoui-sparrow/js/util/ripple';
+import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {on, off, stopEvent} from 'tinper-sparrow/js/event';
+import {addClass, makeDOM, showPanelByEle, getZIndex, removeClass} from 'tinper-sparrow/js/dom';
+import {extend} from 'tinper-sparrow/js/extend'; 
+import {isIE8} from 'tinper-sparrow/js/env'; 
+import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {URipple} from 'tinper-sparrow/js/util/ripple';
 
 const YearMonth = BaseComponent.extend({
 	DEFAULTS : {

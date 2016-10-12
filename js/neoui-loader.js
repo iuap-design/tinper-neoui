@@ -3,7 +3,7 @@
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-08-02 19:02:09
  */
-import {makeDOM, makeModal} from 'neoui-sparrow/js/dom';
+import {makeDOM, makeModal} from 'tinper-sparrow/js/dom';
 
 /*
  *加载loading
@@ -36,7 +36,13 @@ var showLoader = function(options) {
 	parEle.appendChild(templateDom);
 };
 var hideLoader = function(options) {
-	var cssStr = options.cssStr || '.u-overlay,.u-loader-container';
+	var cssStr;
+	if(options && options.cssStr){
+		cssStr =  options.cssStr ;
+	}else{
+		cssStr =  '.u-overlay,.u-loader-container';
+	}
+	
 	var divs = document.querySelectorAll(cssStr);
 	for(var i = 0; i < divs.length; i++) {
 		divs[i].parentNode.removeChild(divs[i]);

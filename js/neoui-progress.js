@@ -4,11 +4,11 @@
  * Date	  : 2016-08-03 10:46:37
  */
 
-import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
-import {addClass,hasClass} from 'neoui-sparrow/js/dom';
-import {env} from 'neoui-sparrow/js/env';
-import {on} from 'neoui-sparrow/js/event';
-import {compMgr} from 'neoui-sparrow/js/compMgr';
+import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {addClass,hasClass} from 'tinper-sparrow/js/dom';
+import {env} from 'tinper-sparrow/js/env';
+import {on} from 'tinper-sparrow/js/event';
+import {compMgr} from 'tinper-sparrow/js/compMgr';
 
 var Progress = BaseComponent.extend({
 	_Constant: {},

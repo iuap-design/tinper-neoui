@@ -4,13 +4,13 @@
  * Date	  : 2016-08-06 13:19:10
  */
 
-import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
-import {addClass,removeClass,hasClass,showPanelByEle,getZIndex,closest,makeDOM} from 'neoui-sparrow/js/dom';
-import {env} from 'neoui-sparrow/js/env';
-import {on,off,stopEvent,trigger} from 'neoui-sparrow/js/event';
+import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {addClass,removeClass,hasClass,showPanelByEle,getZIndex,closest,makeDOM} from 'tinper-sparrow/js/dom';
+import {env} from 'tinper-sparrow/js/env';
+import {on,off,stopEvent,trigger} from 'tinper-sparrow/js/event';
 import {Text} from './neoui-textfield';
-import {URipple} from 'neoui-sparrow/js/util/ripple';
-import {compMgr} from 'neoui-sparrow/js/compMgr';
+import {URipple} from 'tinper-sparrow/js/util/ripple';
+import {compMgr} from 'tinper-sparrow/js/compMgr';
 
 var Combo = BaseComponent.extend({
     init: function () {
@@ -253,6 +253,17 @@ var Combo = BaseComponent.extend({
             var index = (this.value + ',').indexOf(val + ',');
             var l = val.length + 1;
             var flag;
+            if(this.fullWidth == 0){
+                this.fullWidth = this._input.offsetWidth;
+                if(this.fullWidth > 0) {
+                    if(this._combo_name_par){
+                        this._combo_name_par.style.maxWidth = this.fullWidth + 'px';
+
+                    }
+                }
+
+            }
+
             if (index != -1){ // 已经选中
                 this.value = this.value.substring(0,index) + this.value.substring(index + l)
                 flag = '-'
@@ -283,7 +294,7 @@ var Combo = BaseComponent.extend({
                 this._combo_name_par.appendChild(nameDiv);
                 var nWidth = nameDiv.offsetWidth + 20;
                 this.nowWidth += nWidth;
-                if(this.nowWidth > this.fullWidth){
+                if(this.nowWidth > this.fullWidth && this.fullWidth > 0){
                     this.nowWidth -= nWidth;
                     this._combo_name_par.removeChild(nameDiv);
                     addClass(this._combo_name_par,'u-combo-overwidth');
@@ -306,7 +317,7 @@ var Combo = BaseComponent.extend({
             // this.trigger('select', {value: this.value, name: name});
         }else{
             this.value = this.comboDatas[index].value;
-            this._input.value = this.comboDatas[index].value;
+            this._input.value = this.comboDatas[index].name;
             this._updateItemSelect();
             // this.trigger('select', {value: this.value, name: this._input.value});
         }
@@ -364,6 +375,7 @@ var Combo = BaseComponent.extend({
             this.value = '';
         }
         var matched = false;
+        this.nowWidth = 0;
         this.comboDatas.forEach(function(item, index){
             if (this.mutilSelect === true){
                 if (values.indexOf(item.value) != -1){

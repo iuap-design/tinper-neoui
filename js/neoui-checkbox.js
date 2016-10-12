@@ -3,11 +3,11 @@
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-08-02 13:55:07
  */
-import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
-import {addClass,removeClass,hasClass} from 'neoui-sparrow/js/dom';
-import {on,stopEvent} from 'neoui-sparrow/js/event';
-import {URipple} from 'neoui-sparrow/js/util/ripple';
-import {compMgr} from 'neoui-sparrow/js/compMgr';
+import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {addClass,removeClass,hasClass} from 'tinper-sparrow/js/dom';
+import {on,stopEvent} from 'tinper-sparrow/js/event';
+import {URipple} from 'tinper-sparrow/js/util/ripple';
+import {compMgr} from 'tinper-sparrow/js/compMgr';
 
 var Checkbox = BaseComponent.extend({
     _Constant: {

@@ -4,10 +4,10 @@
  * Date	  : 2016-08-02 15:23:19
  */
 
-import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
-import {on} from 'neoui-sparrow/js/event';
+import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {on} from 'tinper-sparrow/js/event';
 import {Checkbox} from './neoui-checkbox';
-import {compMgr} from 'neoui-sparrow/js/compMgr';
+import {compMgr} from 'tinper-sparrow/js/compMgr';
 
 
 var Table = BaseComponent.extend({

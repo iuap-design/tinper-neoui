@@ -4,13 +4,13 @@
  * Date	  : 2016-08-02 15:42:33
  */
 
-import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
-import {addClass,removeClass,hasClass,getStyle,makeDOM} from 'neoui-sparrow/js/dom';
-import {on,stopEvent,trigger} from 'neoui-sparrow/js/event';
-import {extend} from 'neoui-sparrow/js/extend';
-import {env} from 'neoui-sparrow/js/env';
+import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {addClass,removeClass,hasClass,getStyle,makeDOM} from 'tinper-sparrow/js/dom';
+import {on,stopEvent,trigger} from 'tinper-sparrow/js/event';
+import {extend} from 'tinper-sparrow/js/extend';
+import {env} from 'tinper-sparrow/js/env';
 import {Button} from './neoui-button';
-import {compMgr} from 'neoui-sparrow/js/compMgr';
+import {compMgr} from 'tinper-sparrow/js/compMgr';
 
 
 var MDLayout = BaseComponent.extend({

@@ -4,12 +4,12 @@
  * Date	  : 2016-08-02 20:19:37
  */
 
-import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
-import {extend} from 'neoui-sparrow/js/extend';
-import {each,isArray} from 'neoui-sparrow/js/util';
-import {wrap,css,hasClass,removeClass} from 'neoui-sparrow/js/dom';
-import {on,trigger} from 'neoui-sparrow/js/event';
-import {compMgr} from 'neoui-sparrow/js/compMgr';
+import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {extend} from 'tinper-sparrow/js/extend';
+import {each,isArray} from 'tinper-sparrow/js/util';
+import {wrap,css,hasClass,removeClass} from 'tinper-sparrow/js/dom';
+import {on,trigger} from 'tinper-sparrow/js/event';
+import {compMgr} from 'tinper-sparrow/js/compMgr';
 
 
 var Multilang = BaseComponent.extend({

@@ -4,12 +4,12 @@
  * Date	  : 2016-08-03 08:45:49
  */
 
-import {BaseComponent} from 'neoui-sparrow/js/BaseComponent';
-import {extend} from 'neoui-sparrow/js/extend';
-import {addClass,wrap,css,hasClass,removeClass,closest} from 'neoui-sparrow/js/dom';
-import {each} from 'neoui-sparrow/js/util';
-import {on} from 'neoui-sparrow/js/event';
-import {compMgr} from 'neoui-sparrow/js/compMgr';
+import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {extend} from 'tinper-sparrow/js/extend';
+import {addClass,wrap,css,hasClass,removeClass,closest} from 'tinper-sparrow/js/dom';
+import {each} from 'tinper-sparrow/js/util';
+import {on} from 'tinper-sparrow/js/event';
+import {compMgr} from 'tinper-sparrow/js/compMgr';
 
 var pagination = BaseComponent.extend({
 
@@ -70,7 +70,7 @@ var View = {
 		return '<li role="last"' + (currentPageProxy.isLast() ? 'class="disabled"' : '') + '><a >' + options.last + '</a></li>';
 	},
 	gap: function(pagin, options) {
-		return '<li role="gap" class="disabled"><a href="#">' + options.gap + '</a></li>';
+		return '<li role="gap" class="disabled"><a >' + options.gap + '</a></li>';
 	},
 	page: function(pagin, options, pageProxy) {
 		return '<li role="page"' + (pageProxy.isCurrent() ? 'class="active"' : '') + '><a ' + (pageProxy.isNext() ? ' rel="next"' : '') + (pageProxy.isPrev() ? 'rel="prev"' : '') + '>' + pageProxy.number() + '</a></li>';
