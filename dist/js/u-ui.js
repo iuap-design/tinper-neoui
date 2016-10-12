@@ -8848,7 +8848,7 @@ u.Validate = u.BaseComponent.extend({
 	        var self = this
 	        this.$element = this.element
 	        this.$form = this.form;
-	        this.referDom = this.$element;
+	        this.referDom = this.$element;//参考dom，根据此dom定位错误信息的位置
 	        if(this.referDom.tagName!=='INPUT'){
 				this.referDom = this.$element.querySelector('input');
 			}
@@ -8886,6 +8886,8 @@ u.Validate = u.BaseComponent.extend({
 	        this.tipId = this.options['tipId'] ? this.options['tipId'] : null
 	            //校验成功提示信息的div
 	        this.successId = this.options['successId'] ? this.options['successId'] : null;
+
+	        this.validFun = typeof this.options['validFun'] =='function' ? this.options['validFun'] : null;
 
 	        // 要求显示成功提示，并没有成功提示dom的id时，则创建成功提示dom
 	        if (this.hasSuccess && !this.successId) {
@@ -9075,6 +9077,7 @@ u.Validate = u.BaseComponent.extend({
 	    } else if (this.isEmpty(value) && !this.required) {
 	        return { passed: true }
 	    }
+	   
 	    if (this.regExp) {
 	        var reg = new RegExp(this.regExp);
 	        if (typeof value == 'number')
@@ -9086,6 +9089,16 @@ u.Validate = u.BaseComponent.extend({
 	            return { passed: false, Msg: this.errorMsg }
 	        }
 	    }
+
+	     if (this.validFun) {
+	    	var validFunRs = this.validFun.call(self,value);
+	    	if (!validFunRs) {	    		   			
+	    		this.showMsg(this.errorMsg);	
+	    		 return { passed: false, Msg:this.errorMsg }
+	    	}
+	    }
+
+
 	    if (this.minLength) {
 	        if (value.lengthb() < this.minLength) {
 	            var Msg = "输入长度不能小于" + this.minLength + "位";
