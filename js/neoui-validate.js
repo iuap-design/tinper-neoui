@@ -68,7 +68,7 @@ var Validate = BaseComponent.extend({
             }
 
         }
-        //不是默认的tip提示方式并且tipId没有定义时创建默认tipid	
+        //不是默认的tip提示方式并且tipId没有定义时创建默认tipid
         if (this.notipFlag && !this.tipId) {
             this.tipId = makeDOM('<span class="u-form-control-info uf uf-exclamationsign "></span>');
             this.referDom.parentNode.appendChild(this.tipId);
@@ -113,7 +113,8 @@ Validate.NULLMSG = {
     "landline": trans('validate.landline', "请填写座机号码！"),
     "email": trans('validate.email', "请填写邮箱地址！"),
     "url": trans('validate.url', "请填写网址！"),
-    "datetime": trans('validate.datetime', "请填写日期！")
+    "datetime": trans('validate.datetime', "请填写日期！"),
+    "phoneNumber": trans('validate.phoneNumber', "请填写正确号码！")
 
 }
 
@@ -125,7 +126,8 @@ Validate.ERRORMSG = {
     "landline": trans('validate.error_landline', "座机号码格式不对！"),
     "email": trans('validate.error_email', "邮箱地址格式不对！"),
     "url": trans('validate.error_url', "网址格式不对！"),
-    "datetime": trans('validate.error_datetime', "日期格式不对！")
+    "datetime": trans('validate.error_datetime', "日期格式不对！"),
+    "phoneNumber": trans('validate.error_phoneNumber', "号码格式不对！")
 }
 
 Validate.REG = {
@@ -137,7 +139,8 @@ Validate.REG = {
     "landline": /^(0[0-9]{2,3}\-)?([2-9][0-9]{6,7})+(\-[0-9]{1,4})?$/,
     "email": /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
     "url": /^(\w+:\/\/)?\w+(\.\w+)+.*$/,
-    "datetime": /^(?:19|20)[0-9][0-9]-(?:(?:0[1-9])|(?:1[0-2]))-(?:(?:[0-2][1-9])|(?:[1-3][0-1])) (?:(?:[0-2][0-3])|(?:[0-1][0-9])):[0-5][0-9]:[0-5][0-9]$/
+    "datetime": /^(?:19|20)[0-9][0-9]-(?:(?:0[1-9])|(?:1[0-2]))-(?:(?:[0-2][1-9])|(?:[1-3][0-1])) (?:(?:[0-2][0-3])|(?:[0-1][0-9])):[0-5][0-9]:[0-5][0-9]$/,
+    "PhoneNumber": /^\d+$/
 }
 
 Validate.fn.create = function() {
