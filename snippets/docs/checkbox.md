@@ -77,13 +77,15 @@ checkboxObject.enable();
 ## \# toggle
 
 * 类型：`Function`
-* 说明： 调用checkbox对象的toggle方法，反选复选框可用
+* 说明： 调用checkbox对象的toggle方法，反选复选框
 * 用法：
 
 ```
 
 checkboxObject.toggle();
 
+
+```
 
 相关内容：
 

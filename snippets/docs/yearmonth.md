@@ -1,46 +1,48 @@
-# yearmonth插件
+# 年月
 
-只选择年与月
-
-# 插件依赖
-
-依赖于 http://design.yyuap.com/static/uui/latest/js/u.js
-
-除了js文件还需引入u.css。
-
-# 用法
-
-##引入文件
-在header中引入u.css
-```
-<link rel="stylesheet" type="text/css" href='http://design.yyuap.com/static/uui/latest/css/u.css'>
-```
-在文件尾部加入u.js
- 
-```
-<script type="text/javascript" src='http://design.yyuap.com/static/uui/latest/js/u.js'></script>
-
-```
-
-##代码
-
-定义样式为`u-yearmonth`的div父元素，包裹类`u-input`的input
-
-```
-<div class='u-yearmonth'>
-    <input class="u-input" type="text">
-</div>
-
-```
-
-js会根据`u-yearmonth`来定位dom，然后绑定事件。
-
-
-# 示例
+用户可以通过此插件进行年月的选择。
 
 replaceExamp
 
 
+[试一试](http://design.yyuap.com/dist/pages/webIDE/index.html#/demos/ui/yearmonth)
 
+# API
+
+## \# YearMonth 对象
+
+* 类型：`Object`
+* 说明： YearMonth表示一个年月对象
+* 用法：
+
+获取方式：1、获取绑定年月的dom元素 ； 2、读取dom元素上的属性'u.YearMonth'
+
+```
+
+var yearMonthObject = document.getElementById('domId')['u.YearMonth'];
+
+```
+
+**注：** 如果获取的年月对象为空，原因为年月没有初始化成功，可以先调用`u.compMgr.updateComp();`来初始化页面中的控件。然后再获取日期对象。
+
+
+## \# setValue 
+* 类型： `Function`
+* 说明：设置具体的年月
+* 参数：
+	* `{String} value` 具体格式："YYYY-MM"
+* 用法：
+
+```
+yearMonthObject.setValue('2016-02');
+
+```
+
+
+相关内容：
+
+[年月在kero中使用](http://design.yyuap.com/dist/pages/kero/ex_yearmonth.html)    
+
+[年月在grid中使用](http://design.yyuap.com/dist/pages/webIDE/index.html#/demos/grids/edit)
 
 
