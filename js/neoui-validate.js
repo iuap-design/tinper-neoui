@@ -448,7 +448,7 @@ Validate.fn.showMsg = function(msg) {
         if (this.options.tipTemplate)
             tipOptions.template = this.options.tipTemplate
         if (!this.tooltip)
-            this.tooltip = new Tooltip(this.element, tipOptions)
+            this.tooltip = new Tooltip(this.referDom, tipOptions)
         this.tooltip.setTitle(msg);
         this.tooltip.show();
 
