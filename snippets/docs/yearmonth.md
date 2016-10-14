@@ -23,7 +23,7 @@ var yearMonthObject = document.getElementById('domId')['u.YearMonth'];
 
 ```
 
-**注：** 如果获取的年月对象为空，原因为年月没有初始化成功，可以先调用`u.compMgr.updateComp();`来初始化页面中的控件。然后再获取日期对象。
+**注：** 如果获取的年月对象为空，原因为年月没有初始化成功，可以先调用`u.compMgr.updateComp();`来初始化页面中的控件。然后再获取年月对象。
 
 
 ## \# setValue 

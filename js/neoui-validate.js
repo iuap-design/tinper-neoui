@@ -20,7 +20,12 @@ var Validate = BaseComponent.extend({
         this.$form = this.form
         this.referDom = this.$element;
         if (this.referDom.tagName !== 'INPUT') {
+
             this.referDom = this.$element.querySelector('input');
+            // 如果referDom的父元素不是this.$element说明时单选框、复选框。则referDom还为$element
+            if (this.referDom.parentNode!==this.$element) {
+                this.referDom = this.$element
+            }
         }
         this.options = extend({}, this.DEFAULTS, this.options, JSON.parse(this.element.getAttribute('uvalidate')));
         this.required = false
