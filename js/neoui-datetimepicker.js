@@ -1188,6 +1188,11 @@ DateTimePicker.fn.show = function(evt){
  * 确定事件
  */
 DateTimePicker.fn.onOk = function(){
+    if(typeof this.options.beforeValueChangeFun == 'function'){
+        if(!this.options.beforeValueChangeFun.call(this,this.pickerDate)){
+            return;
+        }
+    }
     this.setDate(this.pickerDate);
     this.isShow = false;
     removeClass(this._panel, 'is-visible');
