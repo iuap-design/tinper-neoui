@@ -19,11 +19,10 @@ var Validate = BaseComponent.extend({
         this.$element = this.element
         this.$form = this.form
         this.referDom = this.$element;
-        if (this.referDom.tagName !== 'INPUT') {
-
+        if (this.referDom.tagName !== 'INPUT' && this.referDom.tagName !== "TEXTAREA") {
             this.referDom = this.$element.querySelector('input');
             // 如果referDom的父元素不是this.$element说明时单选框、复选框。则referDom还为$element
-            if (this.referDom.parentNode!==this.$element) {
+            if (!this.referDom || this.referDom.parentNode !== this.$element) {
                 this.referDom = this.$element
             }
         }
@@ -149,6 +148,9 @@ Validate.REG = {
 }
 
 Validate.fn.create = function() {
+    if($(this.element).attr('hasValidate')){
+        return;
+    }
     var self = this
     on(this.element, 'blur', function(e) {
         if (self.validMode == 'blur') {
@@ -215,6 +217,8 @@ Validate.fn.create = function() {
         }
 
     })
+
+    $(this.element).attr('hasValidate',true);
 }
 
 Validate.fn.updateOptions = function(options) {
