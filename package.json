@@ -10,7 +10,7 @@
     "neoui-dev": "webpack --progress --colors  --mode=product_normal && webpack --progress --colors  --mode=product_min",
     "es": "babel js -d lib",
     "product": "npm run neoui-dev && gulp dist",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && node changeSort.js"
   },
   "repository": {
     "type": "git",
