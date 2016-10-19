@@ -999,9 +999,9 @@ var dateTimePickerTemplateArr = ['<div class="u-date-panel">',
                                 '<div class="u-date-content"></div>',
                             '</div>',
                             '<div class="u-date-nav">',
-                                '<button class="u-button u-date-ok right primary">确定</button>',
-                                '<button class="u-button u-date-cancel right">取消</button>',
-                                '<button class="u-button u-date-clean">清空</button>',
+                                '<button type="button" class="u-button u-date-ok right primary">确定</button>',
+                                '<button type="button" class="u-button u-date-cancel right">取消</button>',
+                                '<button type="button" class="u-button u-date-clean">清空</button>',
                             '</div>',
                            '</div>'];
 
