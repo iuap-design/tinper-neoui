@@ -19,15 +19,14 @@
 }
 
 .u-msg-dialog{
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   background-color: #FFFFFF;
   padding: 0;
-  max-height: 70%;
   width: 55%;
   margin: auto;
-  //overflow-y: auto;
+  margin-bottom: 50px;
   border-radius: 2px;
   will-change: top, opacity;
   display: block;

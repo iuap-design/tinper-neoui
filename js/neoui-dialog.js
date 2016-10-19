@@ -165,6 +165,7 @@ var threeBtnDialog = function() {
  * @return {[type]} [description]
  */
 var disable_mouseWheel = function () {
+	return;
 	if (document.addEventListener) {
 	  document.addEventListener('DOMMouseScroll', scrollFunc, false);
 	}
@@ -245,7 +246,12 @@ var dialogMode = function(options) {
 	}.bind(this);
 
 	this.resizeFun();
-	on(window, 'resize', this.resizeFun);
+	if(this.height){
+		//设置高度的情况下不自动计算高度
+	}else{
+		on(window, 'resize', this.resizeFun);
+	}
+	
 }
 
 dialogMode.prototype.create = function() {
