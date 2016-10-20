@@ -8845,6 +8845,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * @return {[type]} [description]
 	 */
 	var disable_mouseWheel = function disable_mouseWheel() {
+		return;
 		if (document.addEventListener) {
 			document.addEventListener('DOMMouseScroll', scrollFunc, false);
 		}
@@ -8921,7 +8922,11 @@ $.fn.bootstrapWizard.defaults = {
 		}.bind(this);
 
 		this.resizeFun();
-		(0, _event.on)(window, 'resize', this.resizeFun);
+		if (this.height) {
+			//设置高度的情况下不自动计算高度
+		} else {
+			(0, _event.on)(window, 'resize', this.resizeFun);
+		}
 	};
 
 	dialogMode.prototype.create = function () {
@@ -12063,7 +12068,7 @@ $.fn.bootstrapWizard.defaults = {
 			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
 			/*var focusHelper = document.createElement('span');
 	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
-	  		thumb.appendChild(focusHelper);*/
+	  	thumb.appendChild(focusHelper);*/
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);
@@ -13486,11 +13491,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -13575,11 +13580,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -14219,7 +14224,7 @@ $.fn.bootstrapWizard.defaults = {
 	        '<span class="u-date-header-time"></span>',
 	     '</div>',
 	'</div>',*/
-	'<div class="u-date-content"></div>', '</div>', '<div class="u-date-nav">', '<button class="u-button u-date-ok right primary">确定</button>', '<button class="u-button u-date-cancel right">取消</button>', '<button class="u-button u-date-clean">清空</button>', '</div>', '</div>'];
+	'<div class="u-date-content"></div>', '</div>', '<div class="u-date-nav">', '<button type="button" class="u-button u-date-ok right primary">确定</button>', '<button type="button" class="u-button u-date-cancel right">取消</button>', '<button type="button" class="u-button u-date-clean">清空</button>', '</div>', '</div>'];
 
 	/******************************
 	 *  Public method

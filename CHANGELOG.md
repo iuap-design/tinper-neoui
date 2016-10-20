@@ -1,5 +1,17 @@
+<a name="3.1.2"></a>
+## [3.1.2](https://github.com/iuap-design/tinper-neoui/compare/v3.1.1...v3.1.2) (2016-10-20)
+
+
+### Bug Fixes
+* pro-IUAPDESIGN-106:友云采：模态框需要支持设置高度 ([534509d](https://github.com/iuap-design/tinper-neoui/commit/534509d))
+
+* pro-IUAPDESIGN-88:友云采：日期控件选择确定之后会刷新页面 ([d486f8b](https://github.com/iuap-design/tinper-neoui/commit/d486f8b))
+
+
+
+
 <a name="3.1.1"></a>
-## [3.1.1](https://github.com/iuap-design/tinper-neoui/compare/v4.1.10...v3.1.1) (2016-10-17)
+## [3.1.1](https://github.com/iuap-design/tinper-neoui/compare/97c9df4...v3.1.1) (2016-10-17)
 
 
 ### Bug Fixes
@@ -7,30 +19,10 @@
 
 
 
-
-<a name="4.1.10"></a>
-## [4.1.10](https://github.com/iuap-design/tinper-neoui/compare/v4.1.9...v4.1.10) (2016-09-10)
-
-
-
-<a name="4.1.9"></a>
-## [4.1.9](https://github.com/iuap-design/tinper-neoui/compare/v3.0.6...v4.1.9) (2016-09-08)
-
-
 ### Features
 
 * dialog mousewheel forbidden ([c8da2a6](https://github.com/iuap-design/tinper-neoui/commit/c8da2a6))
 * dialog mousewheel forbiddenwheel ([97c9df4](https://github.com/iuap-design/tinper-neoui/commit/97c9df4))
-
-
-
-<a name="3.0.6"></a>
-## [3.0.6](https://github.com/iuap-design/tinper-neoui/compare/v3.0.2...v3.0.6) (2016-07-04)
-
-
-
-<a name="3.0.2"></a>
-## 3.0.2 (2016-06-14)
 
 
 
