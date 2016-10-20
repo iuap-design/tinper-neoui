@@ -68,7 +68,7 @@ var messageDialog = function(options) {
 		cDom.style.height = '';
 		var wholeHeight = msgDom.offsetHeight;
 		var contentHeight = msgDom.scrollHeight;
-		if(contentHeight > wholeHeight && cDom)
+		// if(contentHeight > wholeHeight && cDom)
 			cDom.style.height = wholeHeight - (56 + 46) + 'px';
 
 	}.bind(this);
@@ -140,7 +140,7 @@ var confirmDialog = function(options) {
 		cDom.style.height = '';
 		var wholeHeight = msgDom.offsetHeight;
 		var contentHeight = msgDom.scrollHeight;
-		if(contentHeight > wholeHeight && cDom)
+		// if(contentHeight > wholeHeight && cDom)
 			cDom.style.height = wholeHeight - (56 + 46) + 'px';
 
 	}.bind(this);
@@ -240,17 +240,13 @@ var dialogMode = function(options) {
 		cDom.style.height = '';
 		var wholeHeight = this.templateDom.offsetHeight;
 		var contentHeight = this.contentDom.offsetHeight;
-		if(contentHeight > wholeHeight && cDom)
+		// if(contentHeight > wholeHeight && cDom)
 			cDom.style.height = wholeHeight - (56 + 46) + 'px';
 
 	}.bind(this);
 
 	this.resizeFun();
-	if(this.height){
-		//设置高度的情况下不自动计算高度
-	}else{
-		on(window, 'resize', this.resizeFun);
-	}
+	on(window, 'resize', this.resizeFun);
 	
 }
 
