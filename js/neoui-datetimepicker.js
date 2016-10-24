@@ -767,6 +767,22 @@ DateTimePicker.fn._fillTime = function(type){
         timetemplate += '          <div class="clockpicker-tick clockpicker-tick-35" >50</div>';
         timetemplate += '          <div class="clockpicker-tick clockpicker-tick-36" >55</div>';
         timetemplate += '      </div>';
+
+        timetemplate += '      <div class="clockpicker-dial clockpicker-seconds" style="visibility: hidden;">';
+        timetemplate += '          <div class="clockpicker-tick clockpicker-tick-25" >00</div>';
+        timetemplate += '          <div class="clockpicker-tick clockpicker-tick-26" >05</div>';
+        timetemplate += '          <div class="clockpicker-tick clockpicker-tick-27" >10</div>';
+        timetemplate += '          <div class="clockpicker-tick clockpicker-tick-28" >15</div>';
+        timetemplate += '          <div class="clockpicker-tick clockpicker-tick-29" >20</div>';
+        timetemplate += '          <div class="clockpicker-tick clockpicker-tick-30" >25</div>';
+        timetemplate += '          <div class="clockpicker-tick clockpicker-tick-31" >30</div>';
+        timetemplate += '          <div class="clockpicker-tick clockpicker-tick-32" >35</div>';
+        timetemplate += '          <div class="clockpicker-tick clockpicker-tick-33" >40</div>';
+        timetemplate += '          <div class="clockpicker-tick clockpicker-tick-34" >45</div>';
+        timetemplate += '          <div class="clockpicker-tick clockpicker-tick-35" >50</div>';
+        timetemplate += '          <div class="clockpicker-tick clockpicker-tick-36" >55</div>';
+        timetemplate += '      </div>';
+
         timetemplate += '  </div><span class="clockpicker-am-pm-block"></span></div>';
         timetemplate += '  </div>';
         cell = makeDOM(timetemplate);
@@ -778,8 +794,10 @@ DateTimePicker.fn._fillTime = function(type){
         this.fg = cell.querySelector('.clockpicker-canvas-fg');
         this.titleHourSpan = cell.querySelector('.clockpicker-span-hours');
         this.titleMinSpan = cell.querySelector('.clockpicker-span-minutes');
+        this.titleSecSpan = cell.querySelector('.clockpicker-span-seconds');
         this.hourDiv = cell.querySelector('.clockpicker-hours');
         this.minDiv = cell.querySelector('.clockpicker-minutes');
+        this.secDiv = cell.querySelector('.clockpicker-seconds');
         this.currentView = 'hours';
         this.hours = udate._formats['HH'](tempDate);
         this.min = udate._formats['mm'](tempDate);
@@ -817,6 +835,23 @@ DateTimePicker.fn._fillTime = function(type){
                 var time = udate._formats['HH'](this.pickerDate,language) + ':' + udate._formats['mm'](this.pickerDate,language) + ':' + udate._formats['ss'](this.pickerDate,language);
                 this._headerTime.innerHTML = time;
                 this.minDiv.style.visibility = 'hidden';
+                this.secDiv.style.visibility = 'visible';
+                this.currentView = 'sec';
+                this.setHand();
+            }
+        }.bind(this));
+
+        on(this.secDiv, 'click', function (e) {
+            var target = e.target;
+            if(hasClass(target,'clockpicker-tick')){
+                this.sec = target.innerHTML;
+                // this.min = this.min > 9 || this.min  == 00? '' + this.min:'0' + this.min;
+                // this.titleMinSpan.innerHTML = this.min;
+                self.pickerDate.setSeconds(this.sec);
+                var language = core.getLanguages();
+                var time = udate._formats['HH'](this.pickerDate,language) + ':' + udate._formats['mm'](this.pickerDate,language) + ':' + udate._formats['ss'](this.pickerDate,language);
+                this._headerTime.innerHTML = time;
+                this.secDiv.style.visibility = 'hidden';
                 this.hourDiv.style.visibility = 'visible';
                 this.currentView = 'hours';
                 this.setHand();
