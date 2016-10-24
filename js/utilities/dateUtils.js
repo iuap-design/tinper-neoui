@@ -221,7 +221,9 @@ u.date= {
                 }else{
                     _date = new Date(parseInt(value))
                     if (isNaN(_date)) {
-                        throw new TypeError('invalid Date parameter');
+                        // 输入值不正确时，默认为空，如果抛出异常会后面内容的解析
+                        // throw new TypeError('invalid Date parameter');
+                        _date="";
                     }else{
                         dateFlag = true;
                     }
