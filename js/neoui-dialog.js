@@ -68,7 +68,7 @@ var messageDialog = function(options) {
 		cDom.style.height = '';
 		var wholeHeight = msgDom.offsetHeight;
 		var contentHeight = msgDom.scrollHeight;
-		if(contentHeight > wholeHeight && cDom)
+		// if(contentHeight > wholeHeight && cDom)
 			cDom.style.height = wholeHeight - (56 + 46) + 'px';
 
 	}.bind(this);
@@ -140,7 +140,7 @@ var confirmDialog = function(options) {
 		cDom.style.height = '';
 		var wholeHeight = msgDom.offsetHeight;
 		var contentHeight = msgDom.scrollHeight;
-		if(contentHeight > wholeHeight && cDom)
+		// if(contentHeight > wholeHeight && cDom)
 			cDom.style.height = wholeHeight - (56 + 46) + 'px';
 
 	}.bind(this);
@@ -165,6 +165,7 @@ var threeBtnDialog = function() {
  * @return {[type]} [description]
  */
 var disable_mouseWheel = function () {
+	return;
 	if (document.addEventListener) {
 	  document.addEventListener('DOMMouseScroll', scrollFunc, false);
 	}
@@ -239,13 +240,14 @@ var dialogMode = function(options) {
 		cDom.style.height = '';
 		var wholeHeight = this.templateDom.offsetHeight;
 		var contentHeight = this.contentDom.offsetHeight;
-		if(contentHeight > wholeHeight && cDom)
+		// if(contentHeight > wholeHeight && cDom)
 			cDom.style.height = wholeHeight - (56 + 46) + 'px';
 
 	}.bind(this);
 
 	this.resizeFun();
 	on(window, 'resize', this.resizeFun);
+	
 }
 
 dialogMode.prototype.create = function() {

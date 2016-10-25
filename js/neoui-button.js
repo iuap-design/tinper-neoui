@@ -23,6 +23,12 @@ var Button = BaseComponent.extend({
 		on(this._rippleElement, 'mouseup', this.element.blur);
 		this.element.appendChild(rippleContainer);
 
+		// 增加disabled效果
+		var disableAttr = this.element.getAttribute('disabled');
+		if(disableAttr != null){
+			this.element.className += " disable";
+		}
+
 		on(this.element, 'mouseup', this.element.blur);
 		on(this.element, 'mouseleave', this.element.blur);
 		this.ripple = new Ripple(this.element);

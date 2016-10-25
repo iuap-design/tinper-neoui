@@ -1,5 +1,5 @@
 /** 
- * tinper-neoui v0.1.1
+ * tinper-neoui v3.1.2
  * UI Framework Used For Enterprise.
  * author : yonyou FED
  * homepage : https://github.com/iuap-design/tinper-neoui#readme
@@ -1335,8 +1335,8 @@ input.u-button[type="submit"] {
   right: 0;
   background-color: #FFFFFF;
   padding: 0;
-  max-height: 70%;
   width: 55%;
+  max-height: 70%;
   margin: auto;
   border-radius: 2px;
   will-change: top, opacity;
@@ -1376,6 +1376,8 @@ input.u-button[type="submit"] {
   .u-msg-dialog .u-msg-content h4 {
     margin: 0; }
   .u-msg-dialog .u-msg-footer {
+    position: absolute;
+    bottom: 0px;
     border-radius: 0 0 2px 2px;
     padding: 4px 20px;
     height: 56px;

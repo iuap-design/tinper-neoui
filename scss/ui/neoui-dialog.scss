@@ -24,10 +24,9 @@
   right: 0;
   background-color: #FFFFFF;
   padding: 0;
-  max-height: 70%;
   width: 55%;
+  max-height: 70%;
   margin: auto;
-  //overflow-y: auto;
   border-radius: 2px;
   will-change: top, opacity;
   display: block;
@@ -71,6 +70,8 @@
    margin: 0;
   }
   .u-msg-footer{
+  position:absolute;
+    bottom:0px;
     border-radius: 0 0 2px 2px;
     // background-color: #fafafa;
     padding: 4px 20px;
