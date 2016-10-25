@@ -14,6 +14,7 @@ import {compMgr} from 'tinper-sparrow/js/compMgr';
 
 var Combo = BaseComponent.extend({
     init: function () {
+        this.name = '';
         this.mutilSelect = this.options['mutilSelect'] || false;
         if (hasClass(this.element, 'mutil-select')){
             this.mutilSelect = true
@@ -273,8 +274,10 @@ var Combo = BaseComponent.extend({
             }
 
             if(flag == '+'){
-                var nameDiv= makeDOM('<div class="u-combo-name" key="' + val + '" title="' + name + '">'+ name + /*<a href="javascript:void(0)" class="remove">x</a>*/'</div>');
+                this.name += name + ',';
+                var nameDiv= makeDOM('<div class="u-combo-name" key="' + val + '">'+ name + /*<a href="javascript:void(0)" class="remove">x</a>*/'</div>');
                 var parNameDiv=makeDOM('<div class="u-combo-name-par" style="position:absolute;max-width:' + this.fullWidth + 'px;"></div>');
+                
                 /*var _a = nameDiv.querySelector('a');
                 on(_a, 'click', function(){
                     var values = self.value.split(',');
@@ -292,6 +295,7 @@ var Combo = BaseComponent.extend({
                     })
                 }
                 this._combo_name_par.appendChild(nameDiv);
+                this._combo_name_par.title = this.name;
                 var nWidth = nameDiv.offsetWidth + 20;
                 this.nowWidth += nWidth;
                 if(this.nowWidth > this.fullWidth && this.fullWidth > 0){
@@ -300,6 +304,7 @@ var Combo = BaseComponent.extend({
                     addClass(this._combo_name_par,'u-combo-overwidth');
                 }
             }else{
+                this.name = this.name.replace(name + ',' ,'');
                 if(this._combo_name_par){
                     var comboDiv = this._combo_name_par.querySelector('[key="'+val+'"]');
                     if(comboDiv){
