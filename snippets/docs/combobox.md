@@ -55,6 +55,44 @@ document.getElementById('domId')['u.Combo'].selectItem(index);
 
 ```
 
+## \# setValue 根据真实值选中某行
+* 类型： `Function`
+* 说明： 查找下拉框数据中与传入的参数相同的真实值，并选中对应的某条数据
+* 参数：
+	* `{String} value`： 要选中行的真实值
+* 用法：
+
+```
+
+document.getElementById('domId')['u.Combo'].setValue(value);
+
+```
+
+## \# setName 根据显示值选中某行
+* 类型： `Function`
+* 说明： 查找下拉框数据中与传入的参数相同的显示值，并选中对应的某条数据
+* 参数：
+	* `{String} name`： 要选中行的显示值
+* 用法：
+
+```
+
+document.getElementById('domId')['u.Combo'].setName(name);
+
+```
+
+
+## \# emptyValue 清空所选内容
+* 类型： `Function`
+* 说明： 清空下拉列表所选内容
+* 用法：
+
+```
+
+document.getElementById('domId')['u.Combo'].emptyValue();
+
+```
+
 相关内容：
 
 [下拉框在kero中使用](http://design.yyuap.com/dist/pages/kero/combobox_ex.html)    
