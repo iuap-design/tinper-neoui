@@ -540,6 +540,7 @@ DateTimePicker.fn._fillTime = function(type){
     date = udate._formats['DD'](tempDate,language);
     time = udate._formats['HH'](tempDate,language) + ':' + udate._formats['mm'](tempDate,language) + ':' + udate._formats['ss'](tempDate,language);
 
+
     template = ['<div class="u-date-content-page">',
         '<div class="u-date-content-title">',
             '<div class="u-date-content-title-year"></div>-',
@@ -560,6 +561,36 @@ DateTimePicker.fn._fillTime = function(type){
     this._headerDate.innerHTML = date;
     this._headerTime = timePage.querySelector('.u-date-content-title-time');
     this._headerTime.innerHTML = time;
+    var inputTemplate = "<div><input class='editTime' value='' maxlength='8' /></div>";
+
+    //this._headerTime.innerHTML = inputTemplate;
+
+    var editTime = timePage.querySelector('.editTime');
+
+    on(editTime, 'keydown', function (e) {
+        var code = e.keyCode;
+        var value = this.value;
+        if (!((code >= 48 && code <= 57)|| (code >= 96 && code <= 105)||code==37||code==102||code==39||code==8 ||code==46 || code == 110 || code == 190)) {
+            (0, _event.stopEvent)(e);
+        }
+            var length = value.length,
+            valueArray = [];
+            if(length && code != 8){
+                if(length == 2 || length == 5){
+                    value = value += ':';
+                }
+            }
+            if(length == 8){
+                valueArray = value.split(':');
+                self.pickerDate.setHours(valueArray[0]);
+                self.pickerDate.setMin(valueArray[1]);
+                self.pickerDate.setSec(valueArray[0]);
+            }
+            this.value = value;
+    });
+
+
+
     if(this.type == 'date'){
         this._headerTime.style.display = 'none';
     }
@@ -866,7 +897,13 @@ DateTimePicker.fn._fillTime = function(type){
     this.currentPanel = 'time';
     dateDiv.onselectstart=new Function("return false");
 
+    var value = timePage.querySelector('.u-date-content-title-time').innerHTML;
+    var inputTemplate = '<div><input value='+ value +' /></div>';
+
+
 };
+
+
 
 DateTimePicker.fn.setHand = function(){
     var dialRadius = 100,
@@ -1230,6 +1267,7 @@ DateTimePicker.fn.onOk = function(){
     }
     this.setDate(this.pickerDate);
     this.isShow = false;
+    this.timeOpen = false;
     removeClass(this._panel, 'is-visible');
     try{
         document.body.removeChild(this.overlayDiv);
@@ -1245,6 +1283,7 @@ DateTimePicker.fn.onOk = function(){
  */
 DateTimePicker.fn.onCancel = function(){
     this.isShow = false;
+    this.timeOpen = false;
     removeClass(this._panel, 'is-visible');
     try{
         document.body.removeChild(this.overlayDiv);

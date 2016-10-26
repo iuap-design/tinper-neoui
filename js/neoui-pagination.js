@@ -235,7 +235,7 @@ pagination.prototype.render = function() {
 		var jp, pz;
 		jp = me.$ul.querySelector(".page_j").value || options.currentPage;
 		pz = me.$ul.querySelector(".page_z").value || options.pageSize;
-
+        if(isNaN(jp))return;
 		//if (pz != options.pageSize){
 		//	me.$element.trigger('sizeChange', [pz, jp - 1])
 		//}else{
