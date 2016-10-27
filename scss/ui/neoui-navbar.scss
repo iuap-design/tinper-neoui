@@ -32,7 +32,7 @@
   border: 1px solid transparent;
 
   // // Prevent floats from breaking the navbar
-  @extend .clearfix;
+  // @extend .clearfix;
 
   @media (min-width: $grid-float-breakpoint) {
     border-radius: $navbar-border-radius;
@@ -50,7 +50,7 @@
     height: auto;
     cursor: pointer;
   }
-   
+
 }
 
 
@@ -60,7 +60,7 @@
 // styling of responsive aspects.
 
 .u-navbar-header {
-  @extend .clearfix;
+  // @extend .clearfix;
 
   @media (min-width: $grid-float-breakpoint) {
     float: left;
@@ -82,7 +82,7 @@
   padding-left:  $navbar-padding-horizontal;
   border-top: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
-  @extend .clearfix ;
+  // @extend .clearfix ;
   -webkit-overflow-scrolling: touch;
 
   &.in {
@@ -245,11 +245,11 @@
 
 .u-navbar-toolbar {
   float: left;
-  @include clearfix();
+  // @include clearfix();
 
   > li {
     float: left;
-    @include clearfix();
+    // @include clearfix();
 
     > .u-badge {
         padding: 0px;
