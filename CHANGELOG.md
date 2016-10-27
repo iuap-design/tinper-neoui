@@ -1,5 +1,5 @@
-<a name="3.1.2"></a>
-## [3.1.2](https://github.com/iuap-design/tinper-neoui/compare/v3.1.1...v3.1.2) (2016-10-20)
+<a name="3.1.3"></a>
+## [3.1.3](https://github.com/iuap-design/tinper-neoui/compare/v3.1.1...v3.1.3) (2016-10-25)
 
 
 ### Bug Fixes
@@ -7,6 +7,11 @@
 
 * pro-IUAPDESIGN-88:友云采：日期控件选择确定之后会刷新页面 ([d486f8b](https://github.com/iuap-design/tinper-neoui/commit/d486f8b))
 
+
+
+### Features
+
+* combo文档 ([9d914d4](https://github.com/iuap-design/tinper-neoui/commit/9d914d4))
 
 
 
