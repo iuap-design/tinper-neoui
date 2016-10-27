@@ -245,11 +245,11 @@
 
 .u-navbar-toolbar {
   float: left;
-  // @include clearfix();
+  @include clearfix();
 
   > li {
     float: left;
-    // @include clearfix();
+    @include clearfix();
 
     > .u-badge {
         padding: 0px;
