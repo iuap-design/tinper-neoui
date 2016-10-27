@@ -521,6 +521,8 @@ DateTimePicker.fn._fillTime = function(type){
     //     this._timeMobileScroll()
     //     return;
     // }
+    if(this.timeOpen)return;
+    this.timeOpen = true;
     var year,month,day,date,time,template,timePage,titleDiv,dateDiv,weekSpans,language,tempDate, i,cell,timetemplate;
     var self = this;
     type = type || 'current';
@@ -563,18 +565,19 @@ DateTimePicker.fn._fillTime = function(type){
     this._headerTime.innerHTML = time;
 
 
-
-    function EditTime (obj) {
+	this.editTimeShow = false;
+    function editTime (obj) {
         var inputTemplate = "<div><input class='editTime' value='' maxlength='8' /></div>";
         obj._headerTime.innerHTML = inputTemplate;
 
         var editTime = timePage.querySelector('.editTime');
         obj.editTimeShow = true;
+        editTime.focus();
         on(editTime, 'keydown', function (e) {
             var code = e.keyCode;
             var value = this.value;
             if (!((code >= 48 && code <= 57)|| (code >= 96 && code <= 105)||code==37||code==102||code==39||code==8 ||code==46 || code == 110 || code == 190)) {
-                (0, _event.stopEvent)(e);
+                stopEvent(e)
             }
                 var length = value.length;
                 if(length && code != 8){
@@ -586,14 +589,14 @@ DateTimePicker.fn._fillTime = function(type){
                 this.value = value;
         });
 
-        on(editTime, 'keydown', function (e) {
+        on(editTime, 'keyup', function (e) {
             var value = this.value,
             length = value.length,
             valueArray = [];
             if(length == 8){
                 valueArray = value.split(':');
                 obj.pickerDate.setHours(valueArray[0]);
-                obj.pickerDate.setMinutes(vatatlueArray[1]);
+                obj.pickerDate.setMinutes(valueArray[1]);
                 obj.pickerDate.setSeconds(valueArray[2]);
             }
         });
@@ -619,7 +622,7 @@ DateTimePicker.fn._fillTime = function(type){
 
     on(this._headerTime, 'click', function(e){
         if(self.currentView == 'hours' && !self.editTimeShow){
-            edittime(self);
+            editTime(self);
         }else{
             self.editTimeShow = false;
         }
