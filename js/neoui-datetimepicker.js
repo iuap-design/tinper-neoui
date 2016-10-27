@@ -561,33 +561,45 @@ DateTimePicker.fn._fillTime = function(type){
     this._headerDate.innerHTML = date;
     this._headerTime = timePage.querySelector('.u-date-content-title-time');
     this._headerTime.innerHTML = time;
-    var inputTemplate = "<div><input class='editTime' value='' maxlength='8' /></div>";
 
-    //this._headerTime.innerHTML = inputTemplate;
 
-    var editTime = timePage.querySelector('.editTime');
 
-    on(editTime, 'keydown', function (e) {
-        var code = e.keyCode;
-        var value = this.value;
-        if (!((code >= 48 && code <= 57)|| (code >= 96 && code <= 105)||code==37||code==102||code==39||code==8 ||code==46 || code == 110 || code == 190)) {
-            (0, _event.stopEvent)(e);
-        }
-            var length = value.length,
-            valueArray = [];
-            if(length && code != 8){
-                if(length == 2 || length == 5){
-                    value = value += ':';
-                }
+    function EditTime (obj) {
+        var inputTemplate = "<div><input class='editTime' value='' maxlength='8' /></div>";
+        obj._headerTime.innerHTML = inputTemplate;
+
+        var editTime = timePage.querySelector('.editTime');
+        obj.editTimeShow = true;
+        on(editTime, 'keydown', function (e) {
+            var code = e.keyCode;
+            var value = this.value;
+            if (!((code >= 48 && code <= 57)|| (code >= 96 && code <= 105)||code==37||code==102||code==39||code==8 ||code==46 || code == 110 || code == 190)) {
+                (0, _event.stopEvent)(e);
             }
+                var length = value.length;
+                if(length && code != 8){
+                    if(length == 2 || length == 5){
+                        value = value += ':';
+                    }
+                }
+
+                this.value = value;
+        });
+
+        on(editTime, 'keydown', function (e) {
+            var value = this.value,
+            length = value.length,
+            valueArray = [];
             if(length == 8){
                 valueArray = value.split(':');
-                self.pickerDate.setHours(valueArray[0]);
-                self.pickerDate.setMin(valueArray[1]);
-                self.pickerDate.setSec(valueArray[0]);
+                obj.pickerDate.setHours(valueArray[0]);
+                obj.pickerDate.setMinutes(vatatlueArray[1]);
+                obj.pickerDate.setSeconds(valueArray[2]);
             }
-            this.value = value;
-    });
+        });
+
+    }
+
 
 
 
@@ -606,7 +618,13 @@ DateTimePicker.fn._fillTime = function(type){
     });
 
     on(this._headerTime, 'click', function(e){
+        if(self.currentView == 'hours' && !self.editTimeShow){
+            edittime(self);
+        }else{
+            self.editTimeShow = false;
+        }
         self._fillTime();
+        self.timeOpen = true;
         stopEvent(e)
     });
 
