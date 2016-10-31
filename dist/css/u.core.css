@@ -2581,17 +2581,14 @@ textarea {
   visibility: hidden; }
 
 
-.clearfix:before, .u-navbar:before, .u-navbar-header:before, .u-navbar-collapse:before,
-.clearfix:after,
-.u-navbar:after,
-.u-navbar-header:after,
-.u-navbar-collapse:after {
+.clearfix:before,
+.clearfix:after {
   content: " ";
   
   display: table;
    }
 
-.clearfix:after, .u-navbar:after, .u-navbar-header:after, .u-navbar-collapse:after {
+.clearfix:after {
   clear: both; }
 
 
@@ -4421,11 +4418,11 @@ main {
 .font-size-80 {
   font-size: 80px !important; }
 
-.clearfix:before, .u-navbar:before, .u-navbar-header:before, .u-navbar-collapse:before, .clearfix:after, .u-navbar:after, .u-navbar-header:after, .u-navbar-collapse:after {
+.clearfix:before, .clearfix:after {
   content: " ";
   display: table; }
 
-.clearfix:after, .u-navbar:after, .u-navbar-header:after, .u-navbar-collapse:after {
+.clearfix:after {
   clear: both; }
 
 .center-block {

@@ -8,6 +8,7 @@ import {date as udate} from 'tinper-sparrow/js/util/dateUtils';
 import {Validate} from './neoui-validate';
 import {compMgr} from 'tinper-sparrow/js/compMgr';
 import {URipple} from 'tinper-sparrow/js/util/ripple';
+import {dateFormat} from 'tinper-sparrow/js/util'
 
 var DateTimePicker = BaseComponent.extend({
 });
@@ -365,7 +366,7 @@ DateTimePicker.fn._fillMonth = function(){
 };
 
 DateTimePicker.fn._getPickerStartDate = function(date){
-    var d = new Date(date);
+    var d = new Date(dateFormat(date));
     d.setDate(1);
     var day = d.getDay();
     d = udate.sub(d, 'd', day);
@@ -373,7 +374,7 @@ DateTimePicker.fn._getPickerStartDate = function(date){
 }
 
 DateTimePicker.fn._getPickerEndDate= function(date){
-    var d = new Date(date);
+    var d = new Date(dateFormat(date));
     d.setDate(1);
     d.setMonth(d.getMonth() + 1);
     d.setDate(0);
