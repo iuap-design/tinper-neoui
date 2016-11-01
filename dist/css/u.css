@@ -1277,10 +1277,10 @@ input.u-button[type="submit"] {
     border: 1px solid rgb(224,224,224); }
 
 .u-table-hover > tbody > tr:hover {
-  background-color: rgb(238,238,238); }
+  background-color: #f4f8fb; }
 
 .u-table-striped > tbody > tr:nth-of-type(odd) {
-  background-color: rgba(238,238,238,.3); }
+  background-color: #f4f8fb; }
 
 .u-table-hover tbody tr:hover {
   background-color: #E9F7FC; }
