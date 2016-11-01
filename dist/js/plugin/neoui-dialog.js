@@ -497,6 +497,24 @@
 		return this.replace(raRegExp, ARepText);
 	};
 
+	var dateFormat = function dateFormat(str) {
+		//如果不是string类型  原型返回
+		if (typeof str !== 'string') {
+			return str;
+		}
+		//判断 str 格式如果是 yy-mm-dd
+		if (str && str.indexOf('-') > -1) {
+			//获取当前是否是 ios版本
+			var ua = navigator.userAgent.toLowerCase();
+			if (/iphone|ipad|ipod/.test(ua)) {
+				//转换成 yy/mm/dd
+				str = str.replace(/-/g, "/");
+			}
+		}
+
+		return str;
+	};
+
 	exports.createShellObject = createShellObject;
 	exports.execIgnoreError = execIgnoreError;
 	exports.getFunction = getFunction;
@@ -508,6 +526,7 @@
 	exports.inArray = inArray;
 	exports.isDomElement = isDomElement;
 	exports.each = each;
+	exports.dateFormat = dateFormat;
 
 /***/ },
 /* 5 */
@@ -2227,11 +2246,8 @@
 	 * @return {[type]} [description]
 	 */
 	var disable_mouseWheel = function disable_mouseWheel() {
-		return;
-		if (document.addEventListener) {
-			document.addEventListener('DOMMouseScroll', scrollFunc, false);
-		}
-		window.onmousewheel = document.onmousewheel = scrollFunc;
+		document.body.style.paddingRight = '17px';
+		document.body.style.overflow = 'hidden';
 	};
 	/**
 	 * 事件禁用
@@ -2257,19 +2273,18 @@
 	 * @return {[type]} [description]
 	 */
 	var enable_mouseWheel = function enable_mouseWheel() {
-		if (document.removeEventListener) {
-			document.removeEventListener('DOMMouseScroll', scrollFunc, false);
-		}
-		window.onmousewheel = document.onmousewheel = null;
+		document.body.style.paddingRight = '';
+		document.body.style.overflow = '';
 	};
 
 	/**
 	 * dialog.js
 	 */
 
-	var dialogTemplate = '<div class="u-msg-dialog" id="{id}" style="{width}{height}">' + '{close}' + '</div>';
+	var dialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' + '<div class="u-msg-dialog" id="{id}" style="{width}{height}">' + '{close}' + '<div class="u-msg-dialog-content"></div>' + '</div></div>';
 
 	var dialogMode = function dialogMode(options) {
+		// 传入字符串的情况直接将字符串作为内容显示
 		if (typeof options === 'string') {
 			options = {
 				content: options
@@ -2295,26 +2310,29 @@
 		this.closeFun = options['closeFun'];
 		this.create();
 
-		this.resizeFun = function () {
-			var cDom = this.contentDom.querySelector('.u-msg-content');
-			cDom.style.height = '';
-			var wholeHeight = this.templateDom.offsetHeight;
-			var contentHeight = this.contentDom.offsetHeight;
-			// if(contentHeight > wholeHeight && cDom)
-			cDom.style.height = wholeHeight - (56 + 46) + 'px';
-		}.bind(this);
+		if (this.height) {
+			this.resizeFun = function () {
+				var cDom = msgDom.querySelector('.u-msg-content');
+				if (!cDom) return;
+				cDom.style.height = '';
+				var wholeHeight = msgDom.offsetHeight;
+				var contentHeight = msgDom.scrollHeight;
+				// if(contentHeight > wholeHeight && cDom)
+				cDom.style.height = wholeHeight - (56 + 46) + 'px';
+			}.bind(this);
 
-		this.resizeFun();
-		(0, _event.on)(window, 'resize', this.resizeFun);
+			this.resizeFun();
+			(0, _event.on)(window, 'resize', this.resizeFun);
+		}
 	};
 
 	dialogMode.prototype.create = function () {
-		var closeStr = '';
-		var oThis = this;
+		var closeStr = '',
+		    oThis = this;
 		if (this.hasCloseMenu) {
 			var closeStr = '<div class="u-msg-close"> <span aria-hidden="true">&times;</span></div>';
 		}
-		var templateStr = this.template.replace('{id}', this.id);
+		var templateStr = this.template.replace('{id}', this.id).replace('{id}', this.id);
 		templateStr = templateStr.replace('{close}', closeStr);
 		templateStr = templateStr.replace('{width}', this.width ? 'width:' + this.width + ';' : '');
 		templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
@@ -2334,15 +2352,7 @@
 		}
 		this.templateDom = (0, _dom.makeDOM)(templateStr);
 
-		/*this.contentDom = document.querySelector(this.content); //
-	 this.templateDom = makeDOM(templateStr);
-	 if(this.contentDom) { // msg第一种方式传入选择器，如果可以查找到对应dom节点，则创建整体dialog之后在msg位置添加dom元素
-	 	this.contentDomParent = this.contentDom.parentNode;
-	 	this.contentDom.style.display = 'block';
-	 } else { // 如果查找不到对应dom节点，则按照字符串处理，直接将msg拼到template之后创建dialog
-	 	this.contentDom = makeDOM('<div><div class="u-msg-content"><p>' + this.content + '</p></div></div>');
-	 }*/
-		this.templateDom.appendChild(this.contentDom);
+		this.templateDom.querySelector('.u-msg-dialog-content').appendChild(this.contentDom);
 		this.overlayDiv = (0, _dom.makeModal)(this.templateDom);
 		if (this.hasCloseMenu) {
 			this.closeDiv = this.templateDom.querySelector('.u-msg-close');

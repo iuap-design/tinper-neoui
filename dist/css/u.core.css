@@ -6667,7 +6667,7 @@ main {
 
 .clockpicker-tick-14 {
   left: 7.9375rem;
-  top: 1.10737rem; }
+  top: 1.10738rem; }
 
 .clockpicker-tick-15 {
   left: 9.76763rem;
@@ -6694,7 +6694,7 @@ main {
   top: 9.76763rem; }
 
 .clockpicker-tick-21 {
-  left: 1.10737rem;
+  left: 1.10738rem;
   top: 7.9375rem; }
 
 .clockpicker-tick-22 {
@@ -6702,12 +6702,12 @@ main {
   top: 5.4375rem; }
 
 .clockpicker-tick-23 {
-  left: 1.10737rem;
+  left: 1.10738rem;
   top: 2.9375rem; }
 
 .clockpicker-tick-24 {
   left: 2.9375rem;
-  top: 1.10737rem; }
+  top: 1.10738rem; }
 
 .clockpicker-tick-25 {
   left: 5.4375rem;
@@ -6716,7 +6716,7 @@ main {
 
 .clockpicker-tick-26 {
   left: 7.9375rem;
-  top: 1.10737rem;
+  top: 1.10738rem;
   font-size: 120%; }
 
 .clockpicker-tick-27 {
@@ -6750,7 +6750,7 @@ main {
   font-size: 120%; }
 
 .clockpicker-tick-33 {
-  left: 1.10737rem;
+  left: 1.10738rem;
   top: 7.9375rem;
   font-size: 120%; }
 
@@ -6760,13 +6760,13 @@ main {
   font-size: 120%; }
 
 .clockpicker-tick-35 {
-  left: 1.10737rem;
+  left: 1.10738rem;
   top: 2.9375rem;
   font-size: 120%; }
 
 .clockpicker-tick-36 {
   left: 2.9375rem;
-  top: 1.10737rem;
+  top: 1.10738rem;
   font-size: 120%; }
 
 .clockpicker-svg {
@@ -7153,7 +7153,7 @@ main {
     height: 60px;
     line-height: 60px; }
   .u-date-panel .u-disabled {
-    background: red; }
+    background: rgba(158, 158, 158, 0.2); }
   .u-date-panel .data-clockpicker-plate {
     left: 0px; }
   .u-date-panel .u-date-content-title div {
@@ -7537,7 +7537,7 @@ main {
     height: 5.625rem;
     line-height: 5.625rem; }
   .u-date-panel-mobile .u-disabled {
-    background: red; }
+    background: rgba(158, 158, 158, 0.2); }
   .u-date-panel-mobile .data-clockpicker-plate {
     left: 0rem; }
   .u-date-panel-mobile .u-date-content-title div {
