@@ -1300,6 +1300,12 @@ DateTimePicker.fn.onOk = function(){
     this.trigger('validate');
 }
 
+DateTimePicker.fn.hide = function(){
+    this.isShow = false;
+    this.timeOpen = false;
+    removeClass(this._panel, 'is-visible');
+}
+
 /**
  * 确定事件
  */
