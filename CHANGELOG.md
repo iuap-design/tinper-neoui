@@ -1,5 +1,5 @@
-<a name="3.1.5"></a>
-## [3.1.5](https://github.com/iuap-design/tinper-neoui/compare/v3.1.1...v3.1.5) (2016-11-01)
+<a name="3.1.6"></a>
+## [3.1.6](https://github.com/iuap-design/tinper-neoui/compare/v3.1.1...v3.1.6) (2016-11-03)
 
 
 ### Bug Fixes
@@ -10,6 +10,8 @@
 * navbar单一输出插件问题 ([af7ec21](https://github.com/iuap-design/tinper-neoui/commit/af7ec21))
 
 * neoui-navbar 样式 ([0fb57d8](https://github.com/iuap-design/tinper-neoui/commit/0fb57d8))
+
+* 日期组件增加hide方法 ([870985b](https://github.com/iuap-design/tinper-neoui/commit/870985b))
 
 * 选项多选选择较多时，卡片显示... 数据显示不完整，鼠标落上时 应显示tips,显示完整数据 ([bc4e89b](https://github.com/iuap-design/tinper-neoui/commit/bc4e89b))
 
