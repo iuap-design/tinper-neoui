@@ -1385,7 +1385,7 @@ DateTimePicker.fn.setMobileStartDate = function (startDate, type) {
                 break;
         }
     }
-    reutrn startDate;
+    return startDate;
 }
 
 
