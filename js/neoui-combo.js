@@ -378,6 +378,7 @@ var Combo = BaseComponent.extend({
         if(!value) {
             this._input.value = '';
             this.value = '';
+            this._updateItemSelect();
         }
         var matched = false;
         this.nowWidth = 0;
