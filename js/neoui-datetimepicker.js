@@ -462,7 +462,7 @@ DateTimePicker.fn._fillDate = function(type){
         tempDateYear = tempDate.getFullYear(),
         tempDateDate = tempDate.getDate();
         cell = makeDOM('<div class="u-date-cell" unselectable="on" onselectstart="return false;">'+ tempDateDate +'</div>');
-        if (tempDateYear == this.pickerDate.getFullYear() && tempDateMonth == (this.pickerDate.getMonth())
+        if (tempDateYear == this.pickerDate.getFullYear() && tempDateMonth == this.pickerDate.getMonth()
             && tempDateDate == this.pickerDate.getDate()){
             addClass(cell, 'current');
         }
