@@ -455,28 +455,32 @@ DateTimePicker.fn._fillDate = function(type){
     }
     dateDiv = datePage.querySelector('.u-date-content-panel');
     tempDate = this.startDate;
+    var tempDateMonth = tempDate.getMonth(),
+    tempDateYear = tempDate.getFullYear(),
+    tempDateDate = tempDate.getDate();
+
     while(tempDate <= this.endDate){
-        cell = makeDOM('<div class="u-date-cell" unselectable="on" onselectstart="return false;">'+ tempDate.getDate() +'</div>');
-        if (tempDate.getFullYear() == this.pickerDate.getFullYear() && tempDate.getMonth() == this.pickerDate.getMonth()
-            && tempDate.getDate() == this.pickerDate.getDate()){
+        cell = makeDOM('<div class="u-date-cell" unselectable="on" onselectstart="return false;">'+ tempDateDate +'</div>');
+        if (tempDateYear == this.pickerDate.getFullYear() && tempDateMonth == this.pickerDate.getMonth()
+            && tempDateDate == this.pickerDate.getDate()){
             addClass(cell, 'current');
         }
 
 
-        if(tempDate.getFullYear() < this.beginYear || (tempDate.getFullYear() == this.beginYear && tempDate.getMonth() < this.beginMonth)|| (tempDate.getFullYear() == this.overYear && tempDate.getMonth() > this.overMonth) || tempDate.getFullYear() > this.overYear){
+        if(tempDateYear < this.beginYear || (tempDateYear == this.beginYear && tempDateMonth < this.beginMonth)|| (tempDateYear == this.overYear && tempDateMonth > this.overMonth) || tempDateYear > this.overYear){
             addClass(cell,'u-disabled');
             removeClass(cell,'current');
         }
 
-        if((tempDate.getFullYear() == this.beginYear && tempDate.getMonth() == this.beginMonth
-            && tempDate.getDate() < this.beginDate) || (tempDate.getFullYear() == this.overYear && tempDate.getMonth() == this.overMonth
-                && tempDate.getDate() > this.overDate)){
+        if((tempDateYear == this.beginYear && tempDateMonth == this.beginMonth
+            && tempDateDate < this.beginDate) || (tempDateYear == this.overYear && tempDateMonth == this.overMonth
+                && tempDateDate > this.overDate)){
             addClass(cell,'u-disabled');
             removeClass(cell,'current');
         }
-        cell._value = tempDate.getDate();
-        cell._month = (tempDate.getMonth());
-        cell._year = tempDate.getFullYear();
+        cell._value = tempDateDate;
+        cell._month = tempDateMonth;
+        cell._year = tempDateYear;
         new URipple(cell);
         dateDiv.appendChild(cell);
         tempDate = udate.add(tempDate, 'd', 1);
