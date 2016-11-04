@@ -455,11 +455,12 @@ DateTimePicker.fn._fillDate = function(type){
     }
     dateDiv = datePage.querySelector('.u-date-content-panel');
     tempDate = this.startDate;
-    var tempDateMonth = tempDate.getMonth(),
-    tempDateYear = tempDate.getFullYear(),
-    tempDateDate = tempDate.getDate();
+
 
     while(tempDate <= this.endDate){
+        var tempDateMonth = tempDate.getMonth(),
+        tempDateYear = tempDate.getFullYear(),
+        tempDateDate = tempDate.getDate();
         cell = makeDOM('<div class="u-date-cell" unselectable="on" onselectstart="return false;">'+ tempDateDate +'</div>');
         if (tempDateYear == this.pickerDate.getFullYear() && tempDateMonth == (this.pickerDate.getMonth())
             && tempDateDate == this.pickerDate.getDate()){
@@ -1362,7 +1363,6 @@ DateTimePicker.fn.setStartDate = function(startDate, type){
             case 'YYYY-MM-DD':
             startDate = udate.add(startDate, 'd', 1);
                 break;
-            default:
         }
         this.beginDateObj = udate.getDateObj(startDate);
         this.beginYear = this.beginDateObj.getFullYear();
