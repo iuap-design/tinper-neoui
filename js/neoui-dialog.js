@@ -22,46 +22,54 @@ import {compMgr} from 'tinper-sparrow/js/compMgr';
  * @param options
  */
 
-var messageDialogTemplate = '<div class="u-msg-dialog">' +
-	'<div class="u-msg-title">' +
-	'<h4>{title}</h4>' +
-	'</div>' +
-	'<div class="u-msg-content">' +
-	'<p>{msg}</p>' +
-	'</div>' +
-	'<div class="u-msg-footer only-one-btn"><button class="u-msg-button u-button u-button-primary raised">{btnText}</button></div>' +
-	'</div>';
+var messageDialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' +
+'<div class="u-msg-dialog" style="{width}{height}{top}">' +
+'<div class="u-msg-dialog-content">' +
+'<div class="u-msg-title">' +
+'<h4>{title}</h4>' +
+'</div>' +
+'<div class="u-msg-content"></div>' +
+'{footer}' +
+'</div></div>';
 
-var messageDialog = function(options) {
-	var title, msg, btnText, template;
+
+
+var messageDialogF = function(options) {
+
 	if(typeof options === 'string') {
 		options = {
-			msg: options
+			content: options
 		};
 	}
-	msg = options['msg'] || "";
-	title = options['title'] || "提示";
-	btnText = options['btnText'] || "确定";
-	template = options['template'] || messageDialogTemplate;
+	var defaultOptions = {
+		id: '',
+		content: '',
+		template: messageDialogTemplate,
+		width: '',
+		height: '',
+		top: '',
+		hasFooter: true,
+		title: '提示',
+		btnText: '确定',
+		closeFun: function (){}
 
-	template = template.replace('{msg}', msg);
-	template = template.replace('{title}', title);
-	template = template.replace('{btnText}', btnText);
+	}
+	options = extend(defaultOptions, options);
+	this.id = options['id'];
+	this.hasFooter = options['hasFooter'];
+	this.content = options['content'];
+	this.title = options['title'];
+	this.template = options['template'];
+	this.width = options['width'];
+	this.height = options['height'];
+	this.top = options['top'];
+	this.bthText = options['btnText'];
+	this.lazyShow = options['lazyShow'];
+	this.closeFun = options['closeFun'];
+	this.create();
 
-	var msgDom = makeDOM(template);
-
-	var closeBtn = msgDom.querySelector('.u-msg-button');
-	new Button({
-		el: closeBtn
-	});
-	on(closeBtn, 'click', function() {
-		document.body.removeChild(msgDom);
-		document.body.removeChild(overlayDiv);
-		enable_mouseWheel();
-	})
-	var overlayDiv = makeModal(msgDom);
-	document.body.appendChild(msgDom);
-    disable_mouseWheel();
+	var msgDom = this.templateDom.querySelector('.u-msg-dialog');
+if(this.height){
 	this.resizeFun = function() {
 		var cDom = msgDom.querySelector('.u-msg-content');
 		if(!cDom) return;
@@ -70,86 +78,216 @@ var messageDialog = function(options) {
 		var contentHeight = msgDom.scrollHeight;
 		// if(contentHeight > wholeHeight && cDom)
 			cDom.style.height = wholeHeight - (56 + 46) + 'px';
-
 	}.bind(this);
 
 	this.resizeFun();
 	on(window, 'resize', this.resizeFun);
+}
 };
+
+messageDialogF.prototype.create = function () {
+	var self = this,
+		closeStr = '';
+	if (this.hasFooter) {
+		var footerStr = '<div class="u-msg-footer only-one-btn"><button class="u-msg-ok u-button u-button-primary raised">' + this.bthText + '</button></div>' +
+						'</div>';
+	}
+	var templateStr = this.template.replace('{id}', this.id).replace('{id}', this.id);
+	templateStr = templateStr.replace('{width}', this.width ? 'width:' + this.width + ';' : '');
+	templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
+	templateStr = templateStr.replace('{top}', this.top ? 'top:' + this.top + ';' : '');
+	templateStr = templateStr.replace('{title}', this.title);
+	templateStr = templateStr.replace('{footer}', footerStr);
+	var htmlReg = /^(\s*)?<[a-zA-Z]+/ig;
+	var selectReg = /^(\.|#)/;
+	if(htmlReg.test(this.content)){
+		this.contentDom= makeDOM(this.content);
+		this.contentDomParent = this.contentDom.parentNode;
+		this.contentDom.style.display = 'block';
+	}else if(selectReg.test(this.content)){
+		this.contentDom = document.querySelector(this.content);
+		this.contentDomParent = this.contentDom.parentNode;
+		this.contentDom.style.display = 'block';
+	}else{
+		this.contentDom = makeDOM('<p>' + this.content + '</p>');
+	}
+	this.templateDom = makeDOM(templateStr);
+
+
+	this.templateDom.querySelector('.u-msg-content').appendChild(this.contentDom);
+	this.overlayDiv = makeModal(this.templateDom);
+
+		this.okDiv = this.templateDom.querySelector('.u-msg-ok');
+		on(this.okDiv, 'click', function() {
+			self.close();
+		});
+
+	if(this.lazyShow) {
+		this.templateDom.style.display = 'none';
+		this.overlayDiv.style.display = 'none';
+	}
+	document.body.appendChild(this.templateDom);
+	disable_mouseWheel();
+	this.isClosed = false;
+};
+
+messageDialogF.prototype.close = function () {
+	this.closeFun && this.closeFun.call(this);
+	if(this.contentDom) {
+		this.contentDom.style.display = 'none';
+		this.contentDomParent && this.contentDomParent.appendChild(this.contentDom);
+	}
+	document.body.removeChild(this.templateDom);
+	document.body.removeChild(this.overlayDiv);
+	this.isClosed = true;
+		enable_mouseWheel();
+};
+
+var messageDialog = function (options) {
+	return new messageDialogF(options);
+}
 
 /**
  * Module : confirmDialog
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-07-29 10:21:33
  */
-var confirmDialogTemplate = '<div class="u-msg-dialog">' +
-	'<div class="u-msg-title">' +
-	'<h4>{title}</h4>' +
-	'</div>' +
-	'<div class="u-msg-content">' +
-	'<p>{msg}</p>' +
-	'</div>' +
-	'<div class="u-msg-footer"><button class="u-msg-ok u-button u-button-primary raised">{okText}</button><button class="u-msg-cancel u-button">{cancelText}</button></div>' +
-	'</div>';
+var confirmDialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' +
+'<div class="u-msg-dialog" style="{width}{height}{top}">' + '<div class="u-msg-dialog-content">' +
+'<div class="u-msg-title">' +
+'<h4>{title}</h4>' +
+'</div>' +
+'<div class="u-msg-content">' +
+'</div>' +
+'{footer}' +
+'</div></div>';
 
-var confirmDialog = function(options) {
-	var title, msg, okText, cancelText, template, onOk, onCancel;
-	msg = options['msg'] || "";
-	title = options['title'] || "确认";
-	okText = options['okText'] || "确定";
-	cancelText = options['cancelText'] || "取消";
-	onOk = options['onOk'] || function() {};
-	onCancel = options['onCancel'] || function() {};
-	template = options['template'] || confirmDialogTemplate;
 
-	template = template.replace('{msg}', msg);
-	template = template.replace('{title}', title);
-	template = template.replace('{okText}', okText);
-	template = template.replace('{cancelText}', cancelText);
 
-	var msgDom = makeDOM(template);
-	var okBtn = msgDom.querySelector('.u-msg-ok');
-	var cancelBtn = msgDom.querySelector('.u-msg-cancel');
-	new Button({
-		el: okBtn
-	});
-	new Button({
-		el: cancelBtn
-	});
-	on(okBtn, 'click', function() {
-		if(onOk() !== false) {
-			document.body.removeChild(msgDom);
-			document.body.removeChild(overlayDiv);
-			enable_mouseWheel();
-		}
-	})
-	on(cancelBtn, 'click', function() {
-		if(onCancel() !== false) {
-			document.body.removeChild(msgDom);
-			document.body.removeChild(overlayDiv);
-			enable_mouseWheel();
-		}
-	})
-	var overlayDiv = makeModal(msgDom);
-	document.body.appendChild(msgDom);
-	disable_mouseWheel();
+var confirmDialogF = function(options) {
+	if(typeof options === 'string') {
+		options = {
+			content: options
+		};
+	}
+	var defaultOptions = {
+		id: '',
+		content: '',
+		template: confirmDialogTemplate,
+		width: '',
+		height: '',
+		top: '',
+		hasFooter: true,
+		onOk: function () {},
+		onCancel: function () {}
+	}
 
-	this.resizeFun = function() {
-		var cDom = msgDom.querySelector('.u-msg-content');
-		if(!cDom) return;
-		cDom.style.height = '';
-		var wholeHeight = msgDom.offsetHeight;
-		var contentHeight = msgDom.scrollHeight;
-		// if(contentHeight > wholeHeight && cDom)
-			cDom.style.height = wholeHeight - (56 + 46) + 'px';
+	options = extend(defaultOptions, options);
+	this.id = options['id'];
+	this.hasFooter = options['hasFooter'];
+	this.content = options['content'];
+	this.template = options['template'];
+	this.width = options['width'];
+	this.height = options['height'];
+	this.height = options['top'];
+	this.title = options['title'];
+	this.lazyShow = options['lazyShow'];
+	this.onOk = options['onOk'];
+	this.onCancel = options['onCancel'];
+	this.create();
 
-	}.bind(this);
+	var msgDom = this.templateDom.querySelector('.u-msg-dialog');
 
-	this.resizeFun();
-	on(window, 'resize', this.resizeFun);
+	if(this.height){
+		this.resizeFun = function() {
+			var cDom = msgDom.querySelector('.u-msg-content');
+			if(!cDom) return;
+			cDom.style.height = '';
+			var wholeHeight = msgDom.offsetHeight;
+			var contentHeight = msgDom.scrollHeight;
+			// if(contentHeight > wholeHeight && cDom)
+				cDom.style.height = wholeHeight - (56 + 46) + 'px';
+
+		}.bind(this);
+
+		this.resizeFun();
+		on(window, 'resize', this.resizeFun);
+	}
 
 };
 
+confirmDialogF.prototype.create = function () {
+	var footerStr = '',oThis = this;
+	if (this.hasFooter) {
+	var footerStr = '<div class="u-msg-footer"><button class="u-msg-ok u-button u-button-primary raised">确定</button><button class="u-msg-cancel u-button">取消</button></div>' +
+					'</div>';
+				}
+		var templateStr = this.template.replace('{id}', this.id).replace('{id}', this.id);
+		templateStr = templateStr.replace('{title}',this.title);
+		templateStr = templateStr.replace('{width}', this.width ? 'width:' + this.width + ';' : '');
+		templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
+		templateStr = templateStr.replace('{top}', this.top ? 'top:' + this.top + ';' : '');
+		templateStr = templateStr.replace('{footer}',footerStr);
+		var htmlReg = /^(\s*)?<[a-zA-Z]+/ig;
+		var selectReg = /^(\.|#)/;
+		if(htmlReg.test(this.content)){
+			this.contentDom= makeDOM(this.content);
+			this.contentDomParent = this.contentDom.parentNode;
+			this.contentDom.style.display = 'block';
+		}else if(selectReg.test(this.content)){
+			this.contentDom = document.querySelector(this.content);
+			this.contentDomParent = this.contentDom.parentNode;
+			this.contentDom.style.display = 'block';
+		}else{
+			this.contentDom = makeDOM('<p>' + this.content + '</p>');
+		}
+		this.templateDom = makeDOM(templateStr);
+
+
+		this.templateDom.querySelector('.u-msg-content').appendChild(this.contentDom);
+		this.overlayDiv = makeModal(this.templateDom);
+
+		if(this.lazyShow) {
+			this.templateDom.style.display = 'none';
+			this.overlayDiv.style.display = 'none';
+		}
+
+		if (this.hasFooter) {
+				var okBtn = this.templateDom.querySelector('.u-msg-ok');
+				var cancelBtn = this.templateDom.querySelector('.u-msg-cancel');
+				var closeBtn =
+				new Button({
+					el: okBtn
+				});
+				new Button({
+					el: cancelBtn
+				});
+				on(okBtn, 'click', function() {
+					if(oThis.onOk() !== false) {
+						oThis.close();
+					}
+				})
+				on(cancelBtn, 'click', function() {
+					if(oThis.onCancel() !== false) {
+						oThis.close();
+					}
+				})
+			}
+
+		document.body.appendChild(this.templateDom);
+		disable_mouseWheel();
+		this.isClosed = false;
+};
+
+confirmDialogF.prototype.close = function () {
+	document.body.removeChild(this.templateDom);
+	document.body.removeChild(this.overlayDiv);
+	this.isClosed = true;
+};
+
+var confirmDialog = function (options) {
+	return new confirmDialogF(options);
+}
 /**
  * Created by dingrf on 2015-11-19.
  */
@@ -165,11 +303,8 @@ var threeBtnDialog = function() {
  * @return {[type]} [description]
  */
 var disable_mouseWheel = function () {
-	return;
-	if (document.addEventListener) {
-	  document.addEventListener('DOMMouseScroll', scrollFunc, false);
-	}
-	window.onmousewheel = document.onmousewheel = scrollFunc;
+	document.body.style.paddingRight = '17px';
+	document.body.style.overflow = 'hidden';
 };
 /**
  * 事件禁用
@@ -195,21 +330,24 @@ var scrollFunc = function (evt) {
  * @return {[type]} [description]
  */
 var enable_mouseWheel = function () {
-	if (document.removeEventListener) {
-	  document.removeEventListener('DOMMouseScroll', scrollFunc, false);
-	}
-	window.onmousewheel = document.onmousewheel = null;
+	document.body.style.paddingRight = '';
+	document.body.style.overflow = '';
 };
 
 /**
  * dialog.js
  */
 
-var dialogTemplate = '<div class="u-msg-dialog" id="{id}" style="{width}{height}">' +
-	'{close}' +
-	'</div>';
+
+
+var dialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' +
+	'<div class="u-msg-dialog" id="{id}" style="{width}{height}">' +
+		'{close}' +
+		'<div class="u-msg-dialog-content"></div>' +
+	'</div></div>';
 
 var dialogMode = function(options) {
+	// 传入字符串的情况直接将字符串作为内容显示
 	if(typeof options === 'string') {
 		options = {
 			content: options
@@ -235,28 +373,31 @@ var dialogMode = function(options) {
 	this.closeFun = options['closeFun'];
 	this.create();
 
-	this.resizeFun = function() {
-		var cDom = this.contentDom.querySelector('.u-msg-content');
-		cDom.style.height = '';
-		var wholeHeight = this.templateDom.offsetHeight;
-		var contentHeight = this.contentDom.offsetHeight;
-		// if(contentHeight > wholeHeight && cDom)
-			cDom.style.height = wholeHeight - (56 + 46) + 'px';
+	var msgDom = this.templateDom.querySelector('.u-msg-dialog');
 
-	}.bind(this);
+	if(this.height){
+		this.resizeFun = function() {
+			var cDom = msgDom.querySelector('.u-msg-content');
+			if(!cDom) return;
+			cDom.style.height = '';
+			var wholeHeight = msgDom.offsetHeight;
+			var contentHeight = msgDom.scrollHeight;
+			// if(contentHeight > wholeHeight && cDom)
+				cDom.style.height = wholeHeight - (56 + 46) + 'px';
 
-	this.resizeFun();
-	on(window, 'resize', this.resizeFun);
-	
+		}.bind(this);
+
+		this.resizeFun();
+		on(window, 'resize', this.resizeFun);
+	}
 }
 
 dialogMode.prototype.create = function() {
-	var closeStr = '';
-	var oThis = this;
+	var closeStr = '',oThis = this;
 	if(this.hasCloseMenu) {
 		var closeStr = '<div class="u-msg-close"> <span aria-hidden="true">&times;</span></div>';
 	}
-	var templateStr = this.template.replace('{id}', this.id);
+	var templateStr = this.template.replace('{id}', this.id).replace('{id}', this.id);
 	templateStr = templateStr.replace('{close}', closeStr);
 	templateStr = templateStr.replace('{width}', this.width ? 'width:' + this.width + ';' : '');
 	templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
@@ -276,15 +417,8 @@ dialogMode.prototype.create = function() {
 	}
 	this.templateDom = makeDOM(templateStr);
 
-	/*this.contentDom = document.querySelector(this.content); //
-	this.templateDom = makeDOM(templateStr);
-	if(this.contentDom) { // msg第一种方式传入选择器，如果可以查找到对应dom节点，则创建整体dialog之后在msg位置添加dom元素
-		this.contentDomParent = this.contentDom.parentNode;
-		this.contentDom.style.display = 'block';
-	} else { // 如果查找不到对应dom节点，则按照字符串处理，直接将msg拼到template之后创建dialog
-		this.contentDom = makeDOM('<div><div class="u-msg-content"><p>' + this.content + '</p></div></div>');
-	}*/
-	this.templateDom.appendChild(this.contentDom);
+
+	this.templateDom.querySelector('.u-msg-dialog-content').appendChild(this.contentDom);
 	this.overlayDiv = makeModal(this.templateDom);
 	if(this.hasCloseMenu) {
 		this.closeDiv = this.templateDom.querySelector('.u-msg-close');
@@ -327,6 +461,7 @@ dialogMode.prototype.close = function() {
 	this.isClosed = true;
 		enable_mouseWheel();
 }
+
 
 
 var dialog = function(options) {
@@ -542,4 +677,5 @@ export {messageDialog,
 		confirmDialog,
 		dialogMode,
 		dialog,
-		dialogWizard,iframeDialog};
+		dialogWizard,
+		iframeDialog};

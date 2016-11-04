@@ -1096,6 +1096,24 @@
 		return this.replace(raRegExp, ARepText);
 	};
 
+	var dateFormat = function dateFormat(str) {
+		//如果不是string类型  原型返回
+		if (typeof str !== 'string') {
+			return str;
+		}
+		//判断 str 格式如果是 yy-mm-dd
+		if (str && str.indexOf('-') > -1) {
+			//获取当前是否是 ios版本
+			var ua = navigator.userAgent.toLowerCase();
+			if (/iphone|ipad|ipod/.test(ua)) {
+				//转换成 yy/mm/dd
+				str = str.replace(/-/g, "/");
+			}
+		}
+
+		return str;
+	};
+
 	exports.createShellObject = createShellObject;
 	exports.execIgnoreError = execIgnoreError;
 	exports.getFunction = getFunction;
@@ -1107,6 +1125,7 @@
 	exports.inArray = inArray;
 	exports.isDomElement = isDomElement;
 	exports.each = each;
+	exports.dateFormat = dateFormat;
 
 /***/ },
 /* 5 */

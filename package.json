@@ -1,6 +1,6 @@
 {
   "name": "tinper-neoui",
-  "version": "3.1.4",
+  "version": "3.1.6",
   "description": "UI Framework Used For Enterprise.",
   "main": "index.js",
   "scripts": {
@@ -70,7 +70,7 @@
     "example": "examples"
   },
   "dependencies": {
-    "tinper-sparrow": "^3.1.4"
+    "tinper-sparrow": "^3.1.6"
   },
   "config": {
     "commitizen": {

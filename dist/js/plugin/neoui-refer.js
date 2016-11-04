@@ -497,6 +497,24 @@
 		return this.replace(raRegExp, ARepText);
 	};
 
+	var dateFormat = function dateFormat(str) {
+		//如果不是string类型  原型返回
+		if (typeof str !== 'string') {
+			return str;
+		}
+		//判断 str 格式如果是 yy-mm-dd
+		if (str && str.indexOf('-') > -1) {
+			//获取当前是否是 ios版本
+			var ua = navigator.userAgent.toLowerCase();
+			if (/iphone|ipad|ipod/.test(ua)) {
+				//转换成 yy/mm/dd
+				str = str.replace(/-/g, "/");
+			}
+		}
+
+		return str;
+	};
+
 	exports.createShellObject = createShellObject;
 	exports.execIgnoreError = execIgnoreError;
 	exports.getFunction = getFunction;
@@ -508,6 +526,7 @@
 	exports.inArray = inArray;
 	exports.isDomElement = isDomElement;
 	exports.each = each;
+	exports.dateFormat = dateFormat;
 
 /***/ },
 /* 5 */
@@ -2105,50 +2124,109 @@
 	 * @param options
 	 */
 
-	var messageDialogTemplate = '<div class="u-msg-dialog">' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content">' + '<p>{msg}</p>' + '</div>' + '<div class="u-msg-footer only-one-btn"><button class="u-msg-button u-button u-button-primary raised">{btnText}</button></div>' + '</div>';
+	var messageDialogTemplate = '<div class="u-msg-dialog" style="{width}{height}{top}">' + '{close}' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content">' + '</div>' + '{footer}';
 
 	var messageDialog = function messageDialog(options) {
-		var title, msg, btnText, template;
+
 		if (typeof options === 'string') {
 			options = {
-				msg: options
+				content: options
 			};
 		}
-		msg = options['msg'] || "";
-		title = options['title'] || "提示";
-		btnText = options['btnText'] || "确定";
-		template = options['template'] || messageDialogTemplate;
+		var defaultOptions = {
+			id: '',
+			content: '',
+			hasCloseMenu: true,
+			template: dialogTemplate,
+			width: '',
+			height: '',
+			title: '提示',
+			btnText: '确定'
+		};
+		options = (0, _extend.extend)(defaultOptions, options);
+		this.id = options['id'];
+		this.hasCloseMenu = options['hasCloseMenu'];
+		this.content = options['content'];
+		this.template = options['template'];
+		this.width = options['width'];
+		this.height = options['height'];
+		this.lazyShow = options['lazyShow'];
+		this.closeFun = options['closeFun'];
+		this.create();
 
-		template = template.replace('{msg}', msg);
-		template = template.replace('{title}', title);
-		template = template.replace('{btnText}', btnText);
+		var msgDom = this.templateDom;
+		if (this.height) {
+			this.resizeFun = function () {
+				var cDom = msgDom.querySelector('.u-msg-content');
+				if (!cDom) return;
+				cDom.style.height = '';
+				var wholeHeight = msgDom.offsetHeight;
+				var contentHeight = msgDom.scrollHeight;
+				// if(contentHeight > wholeHeight && cDom)
+				cDom.style.height = wholeHeight - (56 + 46) + 'px';
+			}.bind(this);
 
-		var msgDom = (0, _dom.makeDOM)(template);
+			this.resizeFun();
+			(0, _event.on)(window, 'resize', this.resizeFun);
+		}
+	};
 
-		var closeBtn = msgDom.querySelector('.u-msg-button');
-		new _neouiButton.Button({
-			el: closeBtn
-		});
-		(0, _event.on)(closeBtn, 'click', function () {
-			document.body.removeChild(msgDom);
-			document.body.removeChild(overlayDiv);
-			enable_mouseWheel();
-		});
-		var overlayDiv = (0, _dom.makeModal)(msgDom);
-		document.body.appendChild(msgDom);
+	messageDialog.prototype.create = function () {
+		var self = this,
+		    closeStr = '';
+		if (this.hasCloseMenu) {
+			closeStr = '<div class="u-msg-close"> <span aria-hidden="true">&times;</span></div>';
+		}
+		if (this.hasFooter) {
+			var footerStr = '<div class="u-msg-footer"><button class="u-msg-ok u-button u-button-primary raised">OK</button></div>' + '</div>';
+		}
+		var templateStr = this.template.replace('{id}', this.id).replace('{id}', this.id);
+		templateStr = templateStr.replace('{close}', closeStr);
+		templateStr = templateStr.replace('{width}', this.width ? 'width:' + this.width + ';' : '');
+		templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
+
+		var htmlReg = /^(\s*)?<[a-zA-Z]+/ig;
+		var selectReg = /^(\.|#)/;
+		if (htmlReg.test(this.content)) {
+			this.contentDom = (0, _dom.makeDOM)(this.content);
+			this.contentDomParent = this.contentDom.parentNode;
+			this.contentDom.style.display = 'block';
+		} else if (selectReg.test(this.content)) {
+			this.contentDom = document.querySelector(this.content);
+			this.contentDomParent = this.contentDom.parentNode;
+			this.contentDom.style.display = 'block';
+		} else {
+			this.contentDom = (0, _dom.makeDOM)('<div><div class="u-msg-content"><p>' + this.content + '</p></div></div>');
+		}
+		this.templateDom = (0, _dom.makeDOM)(templateStr);
+
+		this.templateDom.querySelector('.u-msg-dialog-content').appendChild(this.contentDom);
+		this.overlayDiv = (0, _dom.makeModal)(this.templateDom);
+		if (this.hasCloseMenu) {
+			this.closeDiv = this.templateDom.querySelector('.u-msg-close');
+			(0, _event.on)(this.closeDiv, 'click', function () {
+				self.close();
+			});
+		}
+		if (this.lazyShow) {
+			this.templateDom.style.display = 'none';
+			this.overlayDiv.style.display = 'none';
+		}
+		document.body.appendChild(this.templateDom);
 		disable_mouseWheel();
-		this.resizeFun = function () {
-			var cDom = msgDom.querySelector('.u-msg-content');
-			if (!cDom) return;
-			cDom.style.height = '';
-			var wholeHeight = msgDom.offsetHeight;
-			var contentHeight = msgDom.scrollHeight;
-			// if(contentHeight > wholeHeight && cDom)
-			cDom.style.height = wholeHeight - (56 + 46) + 'px';
-		}.bind(this);
+		this.isClosed = false;
+	};
 
-		this.resizeFun();
-		(0, _event.on)(window, 'resize', this.resizeFun);
+	messageDialog.prototype.close = function () {
+		this.closeFun && this.closeFun.call(this);
+		if (this.contentDom) {
+			this.contentDom.style.display = 'none';
+			this.contentDomParent && this.contentDomParent.appendChild(this.contentDom);
+		}
+		document.body.removeChild(this.templateDom);
+		document.body.removeChild(this.overlayDiv);
+		this.isClosed = true;
+		enable_mouseWheel();
 	};
 
 	/**
@@ -2214,6 +2292,51 @@
 		(0, _event.on)(window, 'resize', this.resizeFun);
 	};
 
+	confirmDialog.prototype.create = function () {
+		var closeStr = '',
+		    oThis = this;
+		if (this.hasCloseMenu) {
+			var closeStr = '<div class="u-msg-close"> <span aria-hidden="true">&times;</span></div>';
+		}
+		var templateStr = this.template.replace('{id}', this.id).replace('{id}', this.id);
+		templateStr = templateStr.replace('{close}', closeStr);
+		templateStr = templateStr.replace('{width}', this.width ? 'width:' + this.width + ';' : '');
+		templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
+
+		var htmlReg = /^(\s*)?<[a-zA-Z]+/ig;
+		var selectReg = /^(\.|#)/;
+		if (htmlReg.test(this.content)) {
+			this.contentDom = (0, _dom.makeDOM)(this.content);
+			this.contentDomParent = this.contentDom.parentNode;
+			this.contentDom.style.display = 'block';
+		} else if (selectReg.test(this.content)) {
+			this.contentDom = document.querySelector(this.content);
+			this.contentDomParent = this.contentDom.parentNode;
+			this.contentDom.style.display = 'block';
+		} else {
+			this.contentDom = (0, _dom.makeDOM)('<div><div class="u-msg-content"><p>' + this.content + '</p></div></div>');
+		}
+		this.templateDom = (0, _dom.makeDOM)(templateStr);
+
+		this.templateDom.querySelector('.u-msg-dialog-content').appendChild(this.contentDom);
+		this.overlayDiv = (0, _dom.makeModal)(this.templateDom);
+		if (this.hasCloseMenu) {
+			this.closeDiv = this.templateDom.querySelector('.u-msg-close');
+			(0, _event.on)(this.closeDiv, 'click', function () {
+				oThis.close();
+			});
+		}
+		if (this.lazyShow) {
+			this.templateDom.style.display = 'none';
+			this.overlayDiv.style.display = 'none';
+		}
+		document.body.appendChild(this.templateDom);
+		disable_mouseWheel();
+		this.isClosed = false;
+	};
+
+	confirmDialog.prototype.close = function () {};
+
 	/**
 	 * Created by dingrf on 2015-11-19.
 	 */
@@ -2227,11 +2350,8 @@
 	 * @return {[type]} [description]
 	 */
 	var disable_mouseWheel = function disable_mouseWheel() {
-		return;
-		if (document.addEventListener) {
-			document.addEventListener('DOMMouseScroll', scrollFunc, false);
-		}
-		window.onmousewheel = document.onmousewheel = scrollFunc;
+		document.body.style.paddingRight = '17px';
+		document.body.style.overflow = 'hidden';
 	};
 	/**
 	 * 事件禁用
@@ -2257,19 +2377,18 @@
 	 * @return {[type]} [description]
 	 */
 	var enable_mouseWheel = function enable_mouseWheel() {
-		if (document.removeEventListener) {
-			document.removeEventListener('DOMMouseScroll', scrollFunc, false);
-		}
-		window.onmousewheel = document.onmousewheel = null;
+		document.body.style.paddingRight = '';
+		document.body.style.overflow = '';
 	};
 
 	/**
 	 * dialog.js
 	 */
 
-	var dialogTemplate = '<div class="u-msg-dialog" id="{id}" style="{width}{height}">' + '{close}' + '</div>';
+	var dialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' + '<div class="u-msg-dialog" id="{id}" style="{width}{height}">' + '{close}' + '<div class="u-msg-dialog-content"></div>' + '</div></div>';
 
 	var dialogMode = function dialogMode(options) {
+		// 传入字符串的情况直接将字符串作为内容显示
 		if (typeof options === 'string') {
 			options = {
 				content: options
@@ -2295,26 +2414,31 @@
 		this.closeFun = options['closeFun'];
 		this.create();
 
-		this.resizeFun = function () {
-			var cDom = this.contentDom.querySelector('.u-msg-content');
-			cDom.style.height = '';
-			var wholeHeight = this.templateDom.offsetHeight;
-			var contentHeight = this.contentDom.offsetHeight;
-			// if(contentHeight > wholeHeight && cDom)
-			cDom.style.height = wholeHeight - (56 + 46) + 'px';
-		}.bind(this);
+		var msgDom = this.templateDom;
 
-		this.resizeFun();
-		(0, _event.on)(window, 'resize', this.resizeFun);
+		if (this.height) {
+			this.resizeFun = function () {
+				var cDom = msgDom.querySelector('.u-msg-content');
+				if (!cDom) return;
+				cDom.style.height = '';
+				var wholeHeight = msgDom.offsetHeight;
+				var contentHeight = msgDom.scrollHeight;
+				// if(contentHeight > wholeHeight && cDom)
+				cDom.style.height = wholeHeight - (56 + 46) + 'px';
+			}.bind(this);
+
+			this.resizeFun();
+			(0, _event.on)(window, 'resize', this.resizeFun);
+		}
 	};
 
 	dialogMode.prototype.create = function () {
-		var closeStr = '';
-		var oThis = this;
+		var closeStr = '',
+		    oThis = this;
 		if (this.hasCloseMenu) {
 			var closeStr = '<div class="u-msg-close"> <span aria-hidden="true">&times;</span></div>';
 		}
-		var templateStr = this.template.replace('{id}', this.id);
+		var templateStr = this.template.replace('{id}', this.id).replace('{id}', this.id);
 		templateStr = templateStr.replace('{close}', closeStr);
 		templateStr = templateStr.replace('{width}', this.width ? 'width:' + this.width + ';' : '');
 		templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
@@ -2334,15 +2458,7 @@
 		}
 		this.templateDom = (0, _dom.makeDOM)(templateStr);
 
-		/*this.contentDom = document.querySelector(this.content); //
-	 this.templateDom = makeDOM(templateStr);
-	 if(this.contentDom) { // msg第一种方式传入选择器，如果可以查找到对应dom节点，则创建整体dialog之后在msg位置添加dom元素
-	 	this.contentDomParent = this.contentDom.parentNode;
-	 	this.contentDom.style.display = 'block';
-	 } else { // 如果查找不到对应dom节点，则按照字符串处理，直接将msg拼到template之后创建dialog
-	 	this.contentDom = makeDOM('<div><div class="u-msg-content"><p>' + this.content + '</p></div></div>');
-	 }*/
-		this.templateDom.appendChild(this.contentDom);
+		this.templateDom.querySelector('.u-msg-dialog-content').appendChild(this.contentDom);
 		this.overlayDiv = (0, _dom.makeModal)(this.templateDom);
 		if (this.hasCloseMenu) {
 			this.closeDiv = this.templateDom.querySelector('.u-msg-close');

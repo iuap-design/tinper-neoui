@@ -631,9 +631,9 @@ $line-height-computed:    round((14px * $line-height-base));
 $table-bg:                transparent;
 $table-cell-padding:            8px;
 $table-border-color:            $border-color-base;
-$table-bg-hover:                $bg-color-base;
+$table-bg-hover:                #f4f8fb;
 $table-bg-active:               $table-bg-hover;
-$table-bg-accent:               unquote("rgba(#{$palette-grey-200},.3)") !default;
+$table-bg-accent:               #f4f8fb !default;
 
 
 

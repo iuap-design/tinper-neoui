@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css"  href="../../../vendor/uui/css/u.css">
+</head>
+<body>
+    <!--<button id="msgBtn" class="u-button"  u-meta='{"type":"button"}'>FLAT</button>-->
+    <div style="display: block;height: 500px;">sa</div>
+    <button id="msgDialogBtn" class="u-button raised accent">消息提示框</button>
+    <button id="msgDialogBtn2" class="u-button raised accent">消息确认框</button>
+
+	<button id="msgDialogBtn3" class="u-button raised accent">基本框</button>
+
+	<button id="msgDialogBtn4" class="u-button raised accent">超出高度</button>
+
+	<button id="msgDialogBtn5" class="u-button raised accent">设置宽度和高度</button>
+
+	<div style="display: block;height: 500px;">sa</div>
+	<div style="display: block;height: 500px;">sa1</div>
+	<div style="display: block;height: 500px;">sa2</div>
+	<div style="display: block;height: 500px;">sa3</div>
+	<div style="display: block;height: 500px;">sa4</div>
+	<div id="dialog_content1" style="display:none;">
+		<div class="u-msg-title">
+			<h4>单据名称</h4>
+		</div>
+		<div class="u-msg-content">
+
+			<p>单据内容区</p>
+
+		</div>
+		<div class="u-msg-footer">
+			<button class="u-msg-ok u-button">保存<span class="u-button-container"><span class="u-ripple"></span></span></button>
+			<button class="u-msg-cancel u-button">取消<span class="u-button-container"><span class="u-ripple"></span></span></button>
+		</div>
+	</div>
+
+	<div id="dialog_content2" style="display:none;">
+		<div class="u-msg-title">
+			<h4>单据名称</h4>
+		</div>
+		<div class="u-msg-content">
+
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+			<p>单据内容区</p>
+
+		</div>
+		<div class="u-msg-footer">
+			<button class="u-msg-ok u-button">保存<span class="u-button-container"><span class="u-ripple"></span></span></button>
+			<button class="u-msg-cancel u-button">取消<span class="u-button-container"><span class="u-ripple"></span></span></button>
+		</div>
+	</div>
+
+
+	<div id="dialog-gatherorderlist" style="display:none;">
+			<div class="u-msg-title u-border-bottom bg-cyan-A700">
+		        <h4 class="white dialog-title-h4">销售收款</h4>
+		    </div>
+		    <div class="u-msg-content">
+		    	<div class="u-container-fluid">
+					<table class="u-table tableth-font-size-15" style="width:100%;">
+						<thead>
+							<tr style="display: block;text-align:center;background: #00bcd5;font-size: 13px;">
+								<th style="width: 81px;text-align:center;color: white;">序号</th>
+								<th style="width: 149px;text-align:center;color: white;padding-left: 0px;">单据号</th>
+								<th style="width: 160px;text-align:center;color: white;padding-left: 0px;">业务日期</th>
+								<th style="width: 100px;text-align:center;color: white;padding-left: 0px;">金额合计</th>
+								<th style="width: 100px;text-align:center;color: white;padding-left: 0px;">制单店铺</th>
+								<th style="width: 72px;text-align:center;color: white;padding-left: 0px;">制单人</th>
+							<!--	<th>挂起</th>-->
+								<th style="width: 160px;text-align:center;color: white;padding-left: 0px;">制单时间</th>
+							</tr>
+						</thead>
+
+						<tbody id="table-body" style="display: block;height: 244px;overflow:auto;" data-bind="foreach:{data:saleGatherList.rows(),as:'row', afterAdd: events.afterAdd}" >
+							<tr style="font-size: 12px;text-align: center" data-bind="css: { 'is-selected' : row.selected() } ,attr:{'id': $index()} ,click:row.multiSelect">
+								<!--<tr data-bind="css: { 'is-selected' : row.selected() } ,attr:{'id': $index()} ,click:row.multiSelect">-->
+								<td style="width: 81px;text-align:center" data-bind="text: row.ref('rowno')"></td>
+								<td style="width: 149px;text-align:center" data-bind="text: row.ref('billcode')"></td>
+								<!--<td data-bind="html: details" style="cursor:pointer"></td>-->
+								<!--<td style="width: 149px;text-align:center" data-bind="text: row.ref('billcode')"></td>-->
+								<td style="width: 160px;text-align:center" data-bind="text: row.ref('busidate')"></td>
+								<td style="width: 100px;text-align:center" data-bind="text: row.ref('gathermoney')"></td>
+								<td style="width: 100px;text-align:center" data-bind="text: row.ref('storename')"></td>
+								<td style="width: 72px;text-align:center" data-bind="text: row.ref('creator')"></td>
+								<!--<td data-bind="text: row.ref('hangup')"></td>-->
+								<td style="width: 160px;text-align:center" data-bind="text: row.ref('creationtime')"></td>
+							</tr>
+						</tbody>
+
+					</table>
+				</div>
+		    </div>
+			<div class="u-msg-footer">
+
+		    </div>
+		</div>
+	<script src="../../../project/libs/jquery/jquery-1.11.2.js"></script>
+    <script src="../../../vendor/uui/js/u-polyfill.js"></script>
+    <script src="../../../vendor/uui/js/u.js"></script>
+
+<script>
+    u.compMgr.apply({
+        el:'body'
+    })
+
+    var msgBtn = document.body.querySelector("#msgDialogBtn");
+    u.on(msgBtn,'click', function(){
+//            u.showMessage("HELLO!!!");
+        u.messageDialog({msg:"HELLO!!!",title:"测试提示", btnText:"OK!"});
+    })
+    var msgBtn2 = document.body.querySelector("#msgDialogBtn2");
+    u.on(msgBtn2,'click', function(){
+//            u.showMessage("HELLO!!!");
+        u.confirmDialog({
+            msg: "是否保存单据？",
+            title: "测试确认",
+            onOk: function () {
+                alert('ok')
+            },
+            onCancel: function () {
+                alert('cancel')
+            }
+        });
+    })
+
+
+	var msgBtn3 = document.body.querySelector("#msgDialogBtn3");
+	u.on(msgBtn3,'click', function(){
+		//window.md = u.dialog({id:'testDialg',content:'#dialog_content',hasCloseMenu:true});
+		window.gatherorderlistDialog = u.dialog({id:'gatherorderlistDialog1',content:"#dialog_content1",hasCloseMenu:true});
+	});
+
+	var msgBtn4 = document.body.querySelector("#msgDialogBtn4");
+	u.on(msgBtn4,'click', function(){
+		//window.md = u.dialog({id:'testDialg',content:'#dialog_content',hasCloseMenu:true});
+		window.gatherorderlistDialog = u.dialog({id:'gatherorderlistDialog2',content:"#dialog_content2",hasCloseMenu:true});
+	});
+
+	var msgBtn5 = document.body.querySelector("#msgDialogBtn5");
+	u.on(msgBtn5,'click', function(){
+		//window.md = u.dialog({id:'testDialg',content:'#dialog_content',hasCloseMenu:true});
+		window.gatherorderlistDialog = u.dialog({id:'gatherorderlistDialog3',content:"#dialog_content2",hasCloseMenu:true,width:'300px',height:"350px"});
+	});
+
+	var okButton = document.body.querySelector(".u-msg-ok");
+	u.on(okButton,'click', function(){
+		alert('ok');
+	});
+
+	var cancelButton = document.body.querySelector(".u-msg-cancel");
+	u.on(cancelButton,'click', function(){
+		gatherorderlistDialog.close();
+	});
+
+
+	// u.on(document.body,'mousewheel',function(e){
+	// 	if($(e.target).closest('.u-msg-dialog').length > 0){
+	// 		return;
+	// 	}
+	// 	u.stopEvent(e);
+	// 	// debugger;
+
+	// })
+
+	/*var dv = document.body.querySelector('.u-msg-content');
+	u.on(dv,'mousewheel',function(e){
+		debugger;
+	})*/
+	// u.on(document.body,'scroll',function(e){
+	// 	debugger;
+	// });
+</script>
+
+</body>
+</html>

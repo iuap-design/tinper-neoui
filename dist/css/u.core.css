@@ -2508,10 +2508,10 @@ html {
 
 
 ::-moz-selection {
-  background: #b3d4fc;
+  background: #e9f7fc;
   text-shadow: none; }
 ::selection {
-  background: #b3d4fc;
+  background: #e9f7fc;
   text-shadow: none; }
 
 
@@ -7153,7 +7153,7 @@ main {
     height: 60px;
     line-height: 60px; }
   .u-date-panel .u-disabled {
-    background: red; }
+    background: rgba(158, 158, 158, 0.2); }
   .u-date-panel .data-clockpicker-plate {
     left: 0px; }
   .u-date-panel .u-date-content-title div {
@@ -7537,7 +7537,7 @@ main {
     height: 5.625rem;
     line-height: 5.625rem; }
   .u-date-panel-mobile .u-disabled {
-    background: red; }
+    background: rgba(158, 158, 158, 0.2); }
   .u-date-panel-mobile .data-clockpicker-plate {
     left: 0rem; }
   .u-date-panel-mobile .u-date-content-title div {
