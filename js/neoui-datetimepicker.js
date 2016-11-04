@@ -461,7 +461,7 @@ DateTimePicker.fn._fillDate = function(type){
 
     while(tempDate <= this.endDate){
         cell = makeDOM('<div class="u-date-cell" unselectable="on" onselectstart="return false;">'+ tempDateDate +'</div>');
-        if (tempDateYear == this.pickerDate.getFullYear() && tempDateMonth == this.pickerDate.getMonth()
+        if (tempDateYear == this.pickerDate.getFullYear() && tempDateMonth == (this.pickerDate.getMonth())
             && tempDateDate == this.pickerDate.getDate()){
             addClass(cell, 'current');
         }
@@ -1353,21 +1353,47 @@ DateTimePicker.fn.setFormat = function(format){
     this._input.value = udate.format(this.date,this.format);
 };
 
-DateTimePicker.fn.setStartDate = function(startDate){
+DateTimePicker.fn.setStartDate = function(startDate, type){
     if(startDate){
+        switch (type) {
+            case 'YYYY-MM':
+            startDate = udate.add(startDate, 'M', 1);
+                break;
+            case 'YYYY-MM-DD':
+            startDate = udate.add(startDate, 'd', 1);
+                break;
+            default:
+        }
         this.beginDateObj = udate.getDateObj(startDate);
         this.beginYear = this.beginDateObj.getFullYear();
-        this.beginMonth = this.beginDateObj.getMonth() + 1;
+        this.beginMonth = this.beginDateObj.getMonth();
         this.beginDate = this.beginDateObj.getDate();
+
     }
 
 }
+
+DateTimePicker.fn.setMobileStartDate = function (startDate, type) {
+
+    if(startDate){
+        switch (type) {
+            case 'YYYY-MM':
+                startDate = udate.add(startDate, 'M', 1);
+                break;
+            case 'YYYY-MM-DD':
+                startDate = udate.add(startDate, 'd', 1);
+                break;
+        }
+    }
+    reutrn startDate;
+}
+
 
 DateTimePicker.fn.setEndDate = function(endDate){
     if(endDate){
         this.overDateObj = udate.getDateObj(endDate);
         this.overYear = this.overDateObj.getFullYear();
-        this.overMonth = this.overDateObj.getMonth() + 1;
+        this.overMonth = this.overDateObj.getMonth();
         this.overDate = this.overDateObj.getDate();
     }
 }
