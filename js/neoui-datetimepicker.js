@@ -1356,15 +1356,16 @@ DateTimePicker.fn.setFormat = function(format){
 
 DateTimePicker.fn.setStartDate = function(startDate, type){
     if(startDate){
+        this.beginDateObj = udate.getDateObj(startDate);
         switch (type) {
             case 'YYYY-MM':
-            startDate = udate.add(startDate, 'M', 1);
+            this.beginDateObj = udate.add(this.beginDateObj, 'M', 1);
                 break;
             case 'YYYY-MM-DD':
-            startDate = udate.add(startDate, 'd', 1);
+            this.beginDateObj = udate.add(this.beginDateObj, 'd', 1);
                 break;
         }
-        this.beginDateObj = udate.getDateObj(startDate);
+
         this.beginYear = this.beginDateObj.getFullYear();
         this.beginMonth = this.beginDateObj.getMonth();
         this.beginDate = this.beginDateObj.getDate();

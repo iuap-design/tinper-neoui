@@ -43,7 +43,7 @@ var messageDialogF = function(options) {
 	}
 	var defaultOptions = {
 		id: '',
-		content: '',
+		msg: '',
 		template: messageDialogTemplate,
 		width: '',
 		height: '',
@@ -57,7 +57,7 @@ var messageDialogF = function(options) {
 	options = extend(defaultOptions, options);
 	this.id = options['id'];
 	this.hasFooter = options['hasFooter'];
-	this.content = options['content'];
+	this.content = options['msg'];
 	this.title = options['title'];
 	this.template = options['template'];
 	this.width = options['width'];
@@ -172,20 +172,22 @@ var confirmDialogF = function(options) {
 	}
 	var defaultOptions = {
 		id: '',
-		content: '',
+		msg: '',
 		template: confirmDialogTemplate,
 		width: '',
 		height: '',
 		top: '',
 		hasFooter: true,
 		onOk: function () {},
-		onCancel: function () {}
+		onCancel: function () {},
+		okText: '确定',
+		cancelText: '取消'
 	}
 
 	options = extend(defaultOptions, options);
 	this.id = options['id'];
 	this.hasFooter = options['hasFooter'];
-	this.content = options['content'];
+	this.content = options['msg'];
 	this.template = options['template'];
 	this.width = options['width'];
 	this.height = options['height'];
@@ -194,6 +196,8 @@ var confirmDialogF = function(options) {
 	this.lazyShow = options['lazyShow'];
 	this.onOk = options['onOk'];
 	this.onCancel = options['onCancel'];
+	this.okText = options['okText'];
+	this.cancelText = options['cancelText'];
 	this.create();
 
 	var msgDom = this.templateDom.querySelector('.u-msg-dialog');
@@ -219,7 +223,7 @@ var confirmDialogF = function(options) {
 confirmDialogF.prototype.create = function () {
 	var footerStr = '',oThis = this;
 	if (this.hasFooter) {
-	var footerStr = '<div class="u-msg-footer"><button class="u-msg-ok u-button u-button-primary raised">确定</button><button class="u-msg-cancel u-button">取消</button></div>' +
+	var footerStr = '<div class="u-msg-footer"><button class="u-msg-ok u-button u-button-primary raised">{okText}</button><button class="u-msg-cancel u-button">{cancelText}</button></div>' +
 					'</div>';
 				}
 		var templateStr = this.template.replace('{id}', this.id).replace('{id}', this.id);
@@ -228,6 +232,8 @@ confirmDialogF.prototype.create = function () {
 		templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
 		templateStr = templateStr.replace('{top}', this.top ? 'top:' + this.top + ';' : '');
 		templateStr = templateStr.replace('{footer}',footerStr);
+		templateStr = templateStr.replace('{okText}',this.okText);
+		templateStr = templateStr.replace('{cancelText}',this.cancelText);
 		var htmlReg = /^(\s*)?<[a-zA-Z]+/ig;
 		var selectReg = /^(\.|#)/;
 		if(htmlReg.test(this.content)){
