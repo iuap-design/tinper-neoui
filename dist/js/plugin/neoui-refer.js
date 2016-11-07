@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(37);
+	module.exports = __webpack_require__(40);
 
 
 /***/ },
@@ -2086,7 +2086,10 @@
 /* 21 */,
 /* 22 */,
 /* 23 */,
-/* 24 */
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2134,7 +2137,7 @@
 		}
 		var defaultOptions = {
 			id: '',
-			content: '',
+			msg: '',
 			template: messageDialogTemplate,
 			width: '',
 			height: '',
@@ -2148,7 +2151,7 @@
 		options = (0, _extend.extend)(defaultOptions, options);
 		this.id = options['id'];
 		this.hasFooter = options['hasFooter'];
-		this.content = options['content'];
+		this.content = options['msg'];
 		this.title = options['title'];
 		this.template = options['template'];
 		this.width = options['width'];
@@ -2251,20 +2254,22 @@
 		}
 		var defaultOptions = {
 			id: '',
-			content: '',
+			msg: '',
 			template: confirmDialogTemplate,
 			width: '',
 			height: '',
 			top: '',
 			hasFooter: true,
 			onOk: function onOk() {},
-			onCancel: function onCancel() {}
+			onCancel: function onCancel() {},
+			okText: '确定',
+			cancelText: '取消'
 		};
 
 		options = (0, _extend.extend)(defaultOptions, options);
 		this.id = options['id'];
 		this.hasFooter = options['hasFooter'];
-		this.content = options['content'];
+		this.content = options['msg'];
 		this.template = options['template'];
 		this.width = options['width'];
 		this.height = options['height'];
@@ -2273,6 +2278,8 @@
 		this.lazyShow = options['lazyShow'];
 		this.onOk = options['onOk'];
 		this.onCancel = options['onCancel'];
+		this.okText = options['okText'];
+		this.cancelText = options['cancelText'];
 		this.create();
 
 		var msgDom = this.templateDom.querySelector('.u-msg-dialog');
@@ -2297,7 +2304,7 @@
 		var footerStr = '',
 		    oThis = this;
 		if (this.hasFooter) {
-			var footerStr = '<div class="u-msg-footer"><button class="u-msg-ok u-button u-button-primary raised">确定</button><button class="u-msg-cancel u-button">取消</button></div>' + '</div>';
+			var footerStr = '<div class="u-msg-footer"><button class="u-msg-ok u-button u-button-primary raised">{okText}</button><button class="u-msg-cancel u-button">{cancelText}</button></div>' + '</div>';
 		}
 		var templateStr = this.template.replace('{id}', this.id).replace('{id}', this.id);
 		templateStr = templateStr.replace('{title}', this.title);
@@ -2305,6 +2312,8 @@
 		templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
 		templateStr = templateStr.replace('{top}', this.top ? 'top:' + this.top + ';' : '');
 		templateStr = templateStr.replace('{footer}', footerStr);
+		templateStr = templateStr.replace('{okText}', this.okText);
+		templateStr = templateStr.replace('{cancelText}', this.cancelText);
 		var htmlReg = /^(\s*)?<[a-zA-Z]+/ig;
 		var selectReg = /^(\.|#)/;
 		if (htmlReg.test(this.content)) {
@@ -2719,9 +2728,6 @@
 	exports.iframeDialog = iframeDialog;
 
 /***/ },
-/* 25 */,
-/* 26 */,
-/* 27 */,
 /* 28 */,
 /* 29 */,
 /* 30 */,
@@ -2731,7 +2737,10 @@
 /* 34 */,
 /* 35 */,
 /* 36 */,
-/* 37 */
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2749,7 +2758,7 @@
 
 	var _util = __webpack_require__(4);
 
-	var _neouiDialog = __webpack_require__(24);
+	var _neouiDialog = __webpack_require__(27);
 
 	/**
 	 * Module : neoui-refer
