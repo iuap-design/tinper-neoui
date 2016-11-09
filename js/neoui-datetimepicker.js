@@ -1372,7 +1372,7 @@ DateTimePicker.fn.setStartDate = function(startDate, type){
 
     }
 
-}
+};
 
 
 DateTimePicker.fn.setEndDate = function(endDate){
@@ -1382,7 +1382,7 @@ DateTimePicker.fn.setEndDate = function(endDate){
         this.overMonth = this.overDateObj.getMonth();
         this.overDate = this.overDateObj.getDate();
     }
-}
+};
 
 DateTimePicker.fn.setEnable = function(enable){
     if (enable === true || enable === 'true') {
@@ -1390,7 +1390,7 @@ DateTimePicker.fn.setEnable = function(enable){
     }else{
         this.enable = false;
     }
-}
+};
 
 
 compMgr.regComp({
