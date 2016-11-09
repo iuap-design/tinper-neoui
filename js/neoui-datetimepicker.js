@@ -1374,21 +1374,6 @@ DateTimePicker.fn.setStartDate = function(startDate, type){
 
 }
 
-DateTimePicker.fn.setMobileStartDate = function (startDate, type) {
-
-    if(startDate){
-        switch (type) {
-            case 'YYYY-MM':
-                startDate = udate.add(startDate, 'M', 1);
-                break;
-            case 'YYYY-MM-DD':
-                startDate = udate.add(startDate, 'd', 1);
-                break;
-        }
-    }
-    return startDate;
-}
-
 
 DateTimePicker.fn.setEndDate = function(endDate){
     if(endDate){
