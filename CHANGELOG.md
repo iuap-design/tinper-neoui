@@ -1,11 +1,13 @@
-<a name="3.1.6"></a>
-## [3.1.6](https://github.com/iuap-design/tinper-neoui/compare/v3.1.1...v3.1.6) (2016-11-03)
+<a name="3.1.7"></a>
+## [3.1.7](https://github.com/iuap-design/tinper-neoui/compare/v3.1.1...v3.1.7) (2016-11-10)
 
 
 ### Bug Fixes
 * pro-IUAPDESIGN-106:友云采：模态框需要支持设置高度 ([534509d](https://github.com/iuap-design/tinper-neoui/commit/534509d))
 
 * pro-IUAPDESIGN-88:友云采：日期控件选择确定之后会刷新页面 ([d486f8b](https://github.com/iuap-design/tinper-neoui/commit/d486f8b))
+
+* pro-UAP-云表单:子表 选项单选和多选 在前几行选过值后，新增后几行时，填写界面弹出的下拉 前面已经选过的值时默认选中的状态 蓝色 ([4647227](https://github.com/iuap-design/tinper-neoui/commit/4647227))
 
 * navbar单一输出插件问题 ([af7ec21](https://github.com/iuap-design/tinper-neoui/commit/af7ec21))
 
