@@ -217,9 +217,9 @@ var Combo = BaseComponent.extend({
         if(!(this.initialComboData && this.initialComboData.length)){
             this.initialComboData = this.comboDatas;
         }
-
-        this.value = '';
-        this._input.value = '';
+        // isAutoTip 可以输入的情况下不清空内容，后续要清空内容需要重点考虑。
+        // this.value = '';
+        // this._input.value = '';
 
         //若没有下拉的ul,新生成一个ul结构.
         if (!this._ul) {
