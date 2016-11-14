@@ -57,6 +57,7 @@ import {ClockPicker} from './neoui-clockpicker';
 import {Month} from './neoui-month';
 import {Year} from './neoui-year';
 import {YearMonth} from './neoui-yearmonth';
+import {MonthDate} from './neoui-monthdate';
 
 
 var ex = {
@@ -104,7 +105,8 @@ var ex = {
 	ClockPicker : ClockPicker,
 	Month : Month,
 	Year : Year,
-	YearMonth : YearMonth
+	YearMonth : YearMonth,
+	MonthDate : MonthDate
 
 	
 //	ajax: ajax,
