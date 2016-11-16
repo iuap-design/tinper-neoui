@@ -4155,8 +4155,36 @@ $.fn.bootstrapWizard.defaults = {
 })(jQuery);
 
 /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	var parentJsonpFunction = window["webpackJsonp"];
+/******/ 	window["webpackJsonp"] = function webpackJsonpCallback(chunkIds, moreModules) {
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, callbacks = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId])
+/******/ 				callbacks.push.apply(callbacks, installedChunks[chunkId]);
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			modules[moduleId] = moreModules[moduleId];
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(chunkIds, moreModules);
+/******/ 		while(callbacks.length)
+/******/ 			callbacks.shift().call(null, __webpack_require__);
+
+/******/ 	};
+
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
+
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// "0" means "already loaded"
+/******/ 	// Array means "loading", array contains callbacks
+/******/ 	var installedChunks = {
+/******/ 		0:0
+/******/ 	};
 
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -4182,6 +4210,29 @@ $.fn.bootstrapWizard.defaults = {
 /******/ 		return module.exports;
 /******/ 	}
 
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId, callback) {
+/******/ 		// "0" is the signal for "already loaded"
+/******/ 		if(installedChunks[chunkId] === 0)
+/******/ 			return callback.call(null, __webpack_require__);
+
+/******/ 		// an array means "currently loading".
+/******/ 		if(installedChunks[chunkId] !== undefined) {
+/******/ 			installedChunks[chunkId].push(callback);
+/******/ 		} else {
+/******/ 			// start chunk loading
+/******/ 			installedChunks[chunkId] = [callback];
+/******/ 			var head = document.getElementsByTagName('head')[0];
+/******/ 			var script = document.createElement('script');
+/******/ 			script.type = 'text/javascript';
+/******/ 			script.charset = 'utf-8';
+/******/ 			script.async = true;
+
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + ".neoui.js";
+/******/ 			head.appendChild(script);
+/******/ 		}
+/******/ 	};
 
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -4245,31 +4296,31 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _neouiRefer = __webpack_require__(31);
 
-	var _neouiSlidePanel = __webpack_require__(32);
+	var _neouiSlidePanel = __webpack_require__(43);
 
-	var _neouiSwitch = __webpack_require__(33);
+	var _neouiSwitch = __webpack_require__(44);
 
-	var _neouiTabs = __webpack_require__(34);
+	var _neouiTabs = __webpack_require__(45);
 
 	var _neouiTextfield = __webpack_require__(16);
 
-	var _neouiTooltip = __webpack_require__(35);
+	var _neouiTooltip = __webpack_require__(39);
 
-	var _neouiValidate = __webpack_require__(36);
+	var _neouiValidate = __webpack_require__(38);
 
-	var _neouiDatetimepicker = __webpack_require__(38);
+	var _neouiDatetimepicker = __webpack_require__(37);
 
-	var _neouiTime = __webpack_require__(42);
+	var _neouiTime = __webpack_require__(46);
 
-	var _neouiClockpicker = __webpack_require__(43);
+	var _neouiClockpicker = __webpack_require__(33);
 
-	var _neouiMonth = __webpack_require__(44);
+	var _neouiMonth = __webpack_require__(41);
 
-	var _neouiYear = __webpack_require__(45);
+	var _neouiYear = __webpack_require__(47);
 
-	var _neouiYearmonth = __webpack_require__(46);
+	var _neouiYearmonth = __webpack_require__(48);
 
-	var _neouiMonthdate = __webpack_require__(47);
+	var _neouiMonthdate = __webpack_require__(42);
 
 	//import {setCookie,getCookie} from 'tinper-sparrow/lib/cookies';
 	//import {createShellObject,execIgnoreError,getFunction,getJSObject,isDate,isNumber,isArray,isEmptyObject,inArray,isDomElement,each} from 'tinper-sparrow/lib/util';
@@ -12038,14 +12089,14 @@ $.fn.bootstrapWizard.defaults = {
 	    if (this.options['module']) {
 	        self.contentDiv.innerHTML = this.options['module'].template;
 	        this.options['module'].init(self);
+	    } else if (__webpack_require__(32)) {
+	        __webpack_require__.e/* require */(1, function(__webpack_require__) { /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(32)(this.options.pageUrl)]; (function (module) {
+	            self.contentDiv.innerHTML = module.template;
+	            module.init(self);
+	            self.loaded = true;
+	        }.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));
+	/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(49)(module)))});
 	    }
-	    //else if(require && require.amd){
-	    //    require([this.options.pageUrl], function(module) {
-	    //        self.contentDiv.innerHTML =  module.template;
-	    //        module.init(self);
-	    //        self.loaded = true;
-	    //    })
-	    //}
 	};
 
 	/**
@@ -12111,76 +12162,85 @@ $.fn.bootstrapWizard.defaults = {
 /* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	exports.__esModule = true;
-	exports.slidePanel = undefined;
-
-	var _dom = __webpack_require__(10);
-
-	var _ajax = __webpack_require__(11);
-
-	var _event = __webpack_require__(7);
-
-	var _env = __webpack_require__(8);
-
-	/**
-	 * Module : neoui-slidePanel
-	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-08-03 13:18:48
-	 */
-
-	var slidePanelTemplate = ['<div class="slidePanel slidePanel-right  slidePanel-show slidePanel-dragging" style="transform:translate3d(100%,0,0);">', '<div class="slidePanel-content site-sidebar-content"></div>', '<div class="slidePanel-handler"></div>', '</div>'];
-
-	var slidePanel = function slidePanel(options) {
-		var url = options['url'],
-		    width = options['width'] || '700px',
-		    callback = options['callback'] || function () {},
-		    slideDom = (0, _dom.makeDOM)(slidePanelTemplate.join('')),
-		    overlayDiv = makeModal(slideDom);
-		slideDom.style.width = width;
-		overlayDiv.style.opacity = 0;
-		document.body.appendChild(slideDom);
-		//overlayDiv.style.opacity = 0.5;
-		(0, _ajax.ajax)({
-			type: 'get',
-			url: url,
-			success: function success(data) {
-				var content = slideDom.querySelector('.slidePanel-content');
-				content.innerHTML = data;
-				callback();
-				setTimeout(function () {
-					slideDom.style.transform = 'translate3d(0,0,0)';
-					overlayDiv.style.opacity = 0.5;
-				}, 1);
-			}
-		});
-
-		(0, _event.on)(overlayDiv, 'click', function () {
-			(0, _event.on)(slideDom, 'transitionend', function () {
-				document.body.removeChild(slideDom);
-				document.body.removeChild(overlayDiv);
-			});
-			(0, _event.on)(slideDom, 'webkitTransitionEnd', function () {
-				document.body.removeChild(slideDom);
-				document.body.removeChild(overlayDiv);
-			});
-			slideDom.style.transform = 'translate3d(100%,0,0)';
-			overlayDiv.style.opacity = 0;
-			if (_env.env.isIE8) {
-				document.body.removeChild(slideDom);
-				document.body.removeChild(overlayDiv);
-			}
-		});
-
-		return {
-			close: function close() {
-				overlayDiv.click();
-			}
-		};
+	var map = {
+		"./neoui-autocomplete": 3,
+		"./neoui-autocomplete.js": 3,
+		"./neoui-button": 12,
+		"./neoui-button.js": 12,
+		"./neoui-checkbox": 14,
+		"./neoui-checkbox.js": 14,
+		"./neoui-clockpicker": 33,
+		"./neoui-clockpicker.js": 33,
+		"./neoui-combo": 15,
+		"./neoui-combo.js": 15,
+		"./neoui-combobox": 17,
+		"./neoui-combobox.js": 17,
+		"./neoui-data-table": 18,
+		"./neoui-data-table.js": 18,
+		"./neoui-datetimepicker": 37,
+		"./neoui-datetimepicker.js": 37,
+		"./neoui-dialog": 19,
+		"./neoui-dialog.js": 19,
+		"./neoui-layout.md": 20,
+		"./neoui-layout.md.js": 20,
+		"./neoui-layout.nav": 21,
+		"./neoui-layout.nav.js": 21,
+		"./neoui-loader": 22,
+		"./neoui-loader.js": 22,
+		"./neoui-loading": 23,
+		"./neoui-loading.js": 23,
+		"./neoui-menu": 24,
+		"./neoui-menu.js": 24,
+		"./neoui-message": 25,
+		"./neoui-message.js": 25,
+		"./neoui-month": 41,
+		"./neoui-month.js": 41,
+		"./neoui-monthdate": 42,
+		"./neoui-monthdate.js": 42,
+		"./neoui-multilang": 26,
+		"./neoui-multilang.js": 26,
+		"./neoui-navmenu": 27,
+		"./neoui-navmenu.js": 27,
+		"./neoui-pagination": 28,
+		"./neoui-pagination.js": 28,
+		"./neoui-progress": 29,
+		"./neoui-progress.js": 29,
+		"./neoui-radio": 30,
+		"./neoui-radio.js": 30,
+		"./neoui-refer": 31,
+		"./neoui-refer.js": 31,
+		"./neoui-slidePanel": 43,
+		"./neoui-slidePanel.js": 43,
+		"./neoui-switch": 44,
+		"./neoui-switch.js": 44,
+		"./neoui-tabs": 45,
+		"./neoui-tabs.js": 45,
+		"./neoui-textfield": 16,
+		"./neoui-textfield.js": 16,
+		"./neoui-time": 46,
+		"./neoui-time.js": 46,
+		"./neoui-tooltip": 39,
+		"./neoui-tooltip.js": 39,
+		"./neoui-validate": 38,
+		"./neoui-validate.js": 38,
+		"./neoui-year": 47,
+		"./neoui-year.js": 47,
+		"./neoui-yearmonth": 48,
+		"./neoui-yearmonth.js": 48
 	};
+	function webpackContext(req) {
+		return __webpack_require__(webpackContextResolve(req));
+	};
+	function webpackContextResolve(req) {
+		return map[req] || (function() { throw new Error("Cannot find module '" + req + "'.") }());
+	};
+	webpackContext.keys = function webpackContextKeys() {
+		return Object.keys(map);
+	};
+	webpackContext.resolve = webpackContextResolve;
+	module.exports = webpackContext;
+	webpackContext.id = 32;
 
-	exports.slidePanel = slidePanel;
 
 /***/ },
 /* 33 */
@@ -12189,7 +12249,7 @@ $.fn.bootstrapWizard.defaults = {
 	'use strict';
 
 	exports.__esModule = true;
-	exports.Switch = undefined;
+	exports.ClockPicker = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
 
@@ -12197,168 +12257,445 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _event = __webpack_require__(7);
 
-	var _ripple = __webpack_require__(13);
-
 	var _compMgr = __webpack_require__(9);
 
-	var Switch = _BaseComponent.BaseComponent.extend({
-		_Constant: {
-			TINY_TIMEOUT: 0.001
-		},
+	var _env = __webpack_require__(8);
 
-		_CssClasses: {
-			INPUT: 'u-switch-input',
-			TRACK: 'u-switch-track',
-			THUMB: 'u-switch-thumb',
-			FOCUS_HELPER: 'u-switch-focus-helper',
-			IS_FOCUSED: 'is-focused',
-			IS_DISABLED: 'is-disabled',
-			IS_CHECKED: 'is-checked'
-		},
+	var _extend = __webpack_require__(1);
 
+	var _core = __webpack_require__(34);
+
+	var _dateUtils = __webpack_require__(36);
+
+	/**
+	 * Module : neoui-clockpicker
+	 * Author : liuyk(liuyk@yonyou.com)
+	 * Date	  : 2016-08-11 15:17:07
+	 */
+
+	var ClockPicker = _BaseComponent.BaseComponent.extend({
+		DEFAULTS: {},
 		init: function init() {
-			this._inputElement = this.element.querySelector('.' + this._CssClasses.INPUT);
+			var self = this;
+			var element = this.element;
+			this.options = (0, _extend.extend)({}, this.DEFAULTS, this.options);
+			this.format = this.options['format'] || _core.core.getMaskerMeta('time').format;
+			this.panelDiv = null;
+			this.input = this.element.querySelector("input");
+			if (_env.isMobile) {
+				this.input.setAttribute('readonly', 'readonly');
+			}
+			(0, _dom.addClass)(this.element, 'u-text');
 
-			var track = document.createElement('div');
-			(0, _dom.addClass)(track, this._CssClasses.TRACK);
+			this.template = '<div class="u-clock-ul popover clockpicker-popover" style="padding:0px;">';
+			this.template += '<div class="popover-title"><button class="u-button u-date-clean u-clock-clean" >清空</button><span class="clockpicker-span-hours">02</span> : <span class="clockpicker-span-minutes text-primary">01</span><span class="clockpicker-span-am-pm"></span></div>';
+			this.template += '<div class="popover-content">';
+			this.template += '	<div class="clockpicker-plate">';
+			this.template += '		<div class="clockpicker-canvas">';
+			this.template += '			<svg class="clockpicker-svg">';
+			this.template += '				<g transform="translate(100,100)">';
+			this.template += '					<circle class="clockpicker-canvas-bg clockpicker-canvas-bg-trans" r="13" cx="8.362277061412277" cy="-79.56175162946187"></circle>';
+			this.template += '					<circle class="clockpicker-canvas-fg" r="3.5" cx="8.362277061412277" cy="-79.56175162946187"></circle>';
+			this.template += '					<line x1="0" y1="0" x2="8.362277061412277" y2="-79.56175162946187"></line>';
+			this.template += '					<circle class="clockpicker-canvas-bearing" cx="0" cy="0" r="2"></circle>';
+			this.template += '				</g>';
+			this.template += '			</svg>';
+			this.template += '		</div>';
+			this.template += '		<div class="clockpicker-dial clockpicker-hours" style="visibility: visible;">';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-1" >00</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-2" >1</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-3" >2</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-4" >3</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-5" >4</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-6" >5</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-7" >6</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-8" >7</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-9" >8</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-10" >9</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-11" >10</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-12" >11</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-13" >12</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-14" >13</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-15" >14</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-16" >15</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-17" >16</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-18" >17</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-19" >18</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-20" >19</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-21" >20</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-22" >21</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-23" >22</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-24" >23</div>';
+			this.template += '		</div>';
+			this.template += '		<div class="clockpicker-dial clockpicker-minutes" style="visibility: hidden;">';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-25" >00</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-26" >05</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-27" >10</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-28" >15</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-29" >20</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-30" >25</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-31" >30</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-32" >35</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-33" >40</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-34" >45</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-35" >50</div>';
+			this.template += '			<div class="clockpicker-tick clockpicker-tick-36" >55</div>';
+			this.template += '		</div>';
+			this.template += '	</div><span class="clockpicker-am-pm-block"></span></div>';
+			this.template += '	</div>';
+			(0, _event.on)(this.input, 'blur', function (e) {
+				self._inputFocus = false;
+				this.setValue(this.input.value);
+			}.bind(this));
 
-			var thumb = document.createElement('div');
-			(0, _dom.addClass)(thumb, this._CssClasses.THUMB);
-			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
-			/*var focusHelper = document.createElement('span');
-	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
-	  	thumb.appendChild(focusHelper);*/
+			var d = new Date();
+			this.defaultHour = d.getHours() > 9 ? '' + d.getHours() : '0' + d.getHours();
+			this.defaultMin = d.getMinutes() > 9 ? '' + d.getMinutes() : '0' + d.getMinutes();
+			this.defaultSec = d.getSeconds() > 9 ? '' + d.getSeconds() : '0' + d.getSeconds();
 
-			this.element.appendChild(track);
-			this.element.appendChild(thumb);
-
-			this.boundMouseUpHandler = this._onMouseUp.bind(this);
-
-			//if (this.element.classList.contains(this._CssClasses.RIPPLE_EFFECT)) {
-			//  addClass(this.element,this._CssClasses.RIPPLE_IGNORE_EVENTS);
-			this._rippleContainerElement = document.createElement('span');
-			//this._rippleContainerElement.classList.add(this._CssClasses.RIPPLE_CONTAINER);
-			//this._rippleContainerElement.classList.add(this._CssClasses.RIPPLE_EFFECT);
-			//this._rippleContainerElement.classList.add(this._CssClasses.RIPPLE_CENTER);
-			this._rippleContainerElement.addEventListener('mouseup', this.boundMouseUpHandler);
-
-			//var ripple = document.createElement('span');
-			//ripple.classList.add(this._CssClasses.RIPPLE);
-
-			//this._rippleContainerElement.appendChild(ripple);
-			this.element.appendChild(this._rippleContainerElement);
-			new _ripple.URipple(this._rippleContainerElement);
-			//}
-
-			this.boundChangeHandler = this._onChange.bind(this);
-			this.boundFocusHandler = this._onFocus.bind(this);
-			this.boundBlurHandler = this._onBlur.bind(this);
-
-			this._inputElement.addEventListener('change', this.boundChangeHandler);
-			this._inputElement.addEventListener('focus', this.boundFocusHandler);
-			this._inputElement.addEventListener('blur', this.boundBlurHandler);
-			this.element.addEventListener('mouseup', this.boundMouseUpHandler);
-
-			this._updateClasses();
-			(0, _dom.addClass)(this.element, 'is-upgraded');
+			this.hours = this.defaultHour;
+			this.min = this.defaultMin;
+			this.sec = this.defaultSec;
+			// 添加focus事件
+			this.focusEvent();
+			// 添加右侧图标click事件
+			this.clickEvent();
 		},
 
-		_onChange: function _onChange(event) {
-			this._updateClasses();
-			this.trigger('change', {
-				isChecked: this._inputElement.checked
+		_zoomIn: function _zoomIn(newPage) {
+
+			(0, _dom.addClass)(newPage, 'zoom-in');
+
+			var cleanup = function () {
+				(0, _event.off)(newPage, 'transitionend', cleanup);
+				(0, _event.off)(newPage, 'webkitTransitionEnd', cleanup);
+				// this.panelContentDiv.removeChild(this.contentPage);
+				this.contentPage = newPage;
+			}.bind(this);
+			if (this.contentPage) {
+				(0, _event.on)(newPage, 'transitionend', cleanup);
+				(0, _event.on)(newPage, 'webkitTransitionEnd', cleanup);
+			}
+			setTimeout(function () {
+				newPage.style.visibility = 'visible';
+				(0, _dom.removeClass)(newPage, 'zoom-in');
+			}, 150);
+		},
+
+		createPanel: function createPanel() {
+			if (this.panelDiv) return;
+			var oThis = this;
+			this.panelDiv = (0, _dom.makeDOM)(this.template);
+
+			this.hand = this.panelDiv.querySelector('line');
+			this.bg = this.panelDiv.querySelector('.clockpicker-canvas-bg');
+			this.fg = this.panelDiv.querySelector('.clockpicker-canvas-fg');
+			this.titleHourSpan = this.panelDiv.querySelector('.clockpicker-span-hours');
+			this.titleMinSpan = this.panelDiv.querySelector('.clockpicker-span-minutes');
+			this.hourDiv = this.panelDiv.querySelector('.clockpicker-hours');
+			this.minDiv = this.panelDiv.querySelector('.clockpicker-minutes');
+			this.btnClean = this.panelDiv.querySelector('.u-date-clean');
+			if (!_env.isMobile) this.btnClean.style.display = 'none';
+			this.currentView = 'hours';
+			(0, _event.on)(this.hourDiv, 'click', function (e) {
+				var target = e.target;
+				if ((0, _dom.hasClass)(target, 'clockpicker-tick')) {
+					this.hours = target.innerHTML;
+					this.hours = this.hours > 9 || this.hours == 0 ? '' + this.hours : '0' + this.hours;
+					this.titleHourSpan.innerHTML = this.hours;
+					this.hourDiv.style.visibility = 'hidden';
+					// this.minDiv.style.visibility = 'visible';
+					this._zoomIn(this.minDiv);
+					this.currentView = 'min';
+					this.setHand();
+				}
+			}.bind(this));
+
+			(0, _event.on)(this.minDiv, 'click', function (e) {
+				var target = e.target;
+				if ((0, _dom.hasClass)(target, 'clockpicker-tick')) {
+					this.min = target.innerHTML;
+					// this.min = this.min > 9 || this.min == 00? '' + this.min:'0' + this.min;
+					this.titleMinSpan.innerHTML = this.min;
+					this.minDiv.style.visibility = 'hidden';
+					this.hourDiv.style.visibility = 'visible';
+					this.currentView = 'hours';
+					var v = this.hours + ':' + this.min + ':' + this.sec;
+					this.setValue(v);
+					this.hide();
+				}
+			}.bind(this));
+
+			(0, _event.on)(this.btnClean, 'click', function (e) {
+				this.setValue("");
+				this.hide();
+			}.bind(this));
+		},
+
+		setHand: function setHand() {
+			var dialRadius = 100,
+			    innerRadius = 54,
+			    outerRadius = 80;
+			var view = this.currentView,
+			    value = this[view],
+			    isHours = view === 'hours',
+			    unit = Math.PI / (isHours ? 6 : 30),
+			    radian = value * unit,
+			    radius = isHours && value > 0 && value < 13 ? innerRadius : outerRadius,
+			    x = Math.sin(radian) * radius,
+			    y = -Math.cos(radian) * radius;
+			this.setHandFun(x, y);
+		},
+
+		setHandFun: function setHandFun(x, y, roundBy5, dragging) {
+			var dialRadius = 100,
+			    innerRadius = 54,
+			    outerRadius = 80;
+
+			var radian = Math.atan2(x, -y),
+			    isHours = this.currentView === 'hours',
+			    unit = Math.PI / (isHours ? 6 : 30),
+			    z = Math.sqrt(x * x + y * y),
+			    options = this.options,
+			    inner = isHours && z < (outerRadius + innerRadius) / 2,
+			    radius = inner ? innerRadius : outerRadius,
+			    value;
+
+			if (this.twelvehour) {
+				radius = outerRadius;
+			}
+
+			// Radian should in range [0, 2PI]
+			if (radian < 0) {
+				radian = Math.PI * 2 + radian;
+			}
+
+			// Get the round value
+			value = Math.round(radian / unit);
+
+			// Get the round radian
+			radian = value * unit;
+
+			// Correct the hours or minutes
+			if (options.twelvehour) {
+				if (isHours) {
+					if (value === 0) {
+						value = 12;
+					}
+				} else {
+					if (roundBy5) {
+						value *= 5;
+					}
+					if (value === 60) {
+						value = 0;
+					}
+				}
+			} else {
+				if (isHours) {
+					if (value === 12) {
+						value = 0;
+					}
+					value = inner ? value === 0 ? 12 : value : value === 0 ? 0 : value + 12;
+				} else {
+					if (roundBy5) {
+						value *= 5;
+					}
+					if (value === 60) {
+						value = 0;
+					}
+				}
+			}
+
+			// Set clock hand and others' position
+			var w = this.panelDiv.querySelector('.clockpicker-plate').offsetWidth;
+			var u = w / 200;
+			var cx = Math.sin(radian) * radius * u,
+			    cy = -Math.cos(radian) * radius * u;
+			var iu = 100 * u;
+			this.panelDiv.querySelector('g').setAttribute('transform', 'translate(' + iu + ',' + iu + ')');
+
+			this.hand.setAttribute('x2', cx);
+			this.hand.setAttribute('y2', cy);
+			this.bg.setAttribute('cx', cx);
+			this.bg.setAttribute('cy', cy);
+			this.fg.setAttribute('cx', cx);
+			this.fg.setAttribute('cy', cy);
+		},
+
+		setValue: function setValue(value) {
+			value = value ? value : '';
+
+			if (value == '') {
+				this.input.value = '';
+
+				this.trigger('valueChange', { value: '' });
+				return;
+			}
+
+			if (value && value.indexOf(':') > -1) {
+				var vA = value.split(":");
+				var hour = vA[0];
+				hour = hour % 24;
+				this.hours = hour > 9 ? '' + hour : '0' + hour;
+				var min = vA[1];
+				min = min % 60;
+				this.min = min > 9 ? '' + min : '0' + min;
+				var sec = vA[2] || 0;
+				sec = sec % 60;
+				this.sec = sec > 9 ? '' + sec : '0' + sec;
+
+				value = this.hours + ':' + this.min + ':' + this.sec;
+			} else {
+				this.hours = this.defaultHour;
+				this.min = this.defaultMin;
+				this.sec = this.defaultSec;
+			}
+			var _date = new Date();
+			_date.setHours(this.hours);
+			_date.setMinutes(this.min);
+			_date.setSeconds(this.sec);
+			var showValue = _dateUtils.date.format(_date, this.format);
+			this.input.value = showValue;
+
+			this.trigger('valueChange', { value: value });
+		},
+
+		focusEvent: function focusEvent() {
+			var self = this;
+			(0, _event.on)(this.input, 'focus', function (e) {
+				self._inputFocus = true;
+				self.show(e);
+				if (e.stopPropagation) {
+					e.stopPropagation();
+				} else {
+					e.cancelBubble = true;
+				}
 			});
 		},
 
-		_onFocus: function _onFocus(event) {
-			(0, _dom.addClass)(this.element, this._CssClasses.IS_FOCUSED);
+		//下拉图标的点击事件
+		clickEvent: function clickEvent() {
+			var self = this;
+			var caret = this.element.nextSibling;
+			(0, _event.on)(caret, 'click', function (e) {
+				self._inputFocus = true;
+				self.show(e);
+				if (e.stopPropagation) {
+					e.stopPropagation();
+				} else {
+					e.cancelBubble = true;
+				}
+			});
 		},
 
-		_onBlur: function _onBlur(event) {
-			(0, _dom.removeClass)(this.element, this._CssClasses.IS_FOCUSED);
-		},
+		show: function show(evt) {
 
-		_onMouseUp: function _onMouseUp(event) {
-			this._blur();
-		},
+			var inputValue = this.input.value;
+			this.setValue(inputValue);
 
-		_updateClasses: function _updateClasses() {
-			this.checkDisabled();
-			this.checkToggleState();
-		},
+			var self = this;
+			this.createPanel();
+			this.minDiv.style.visibility = 'hidden';
+			this.hourDiv.style.visibility = 'visible';
+			this.currentView = 'hours';
+			this.titleHourSpan.innerHTML = this.hours;
+			this.titleMinSpan.innerHTML = this.min;
 
-		_blur: function _blur() {
-			// TODO: figure out why there's a focus event being fired after our blur,
-			// so that we can avoid this hack.
-			window.setTimeout(function () {
-				this._inputElement.blur();
-			}.bind(this), /** @type {number} */this._Constant.TINY_TIMEOUT);
-		},
-
-		// Public methods.
-
-		checkDisabled: function checkDisabled() {
-			if (this._inputElement.disabled) {
-				(0, _dom.addClass)(this.element, this._CssClasses.IS_DISABLED);
+			/*因为元素可能变化位置，所以显示的时候需要重新计算*/
+			if (_env.isMobile) {
+				this.panelDiv.style.position = 'fixed';
+				this.panelDiv.style.top = '20%';
+				var screenW = document.body.clientWidth;
+				var l = (screenW - 226) / 2;
+				this.panelDiv.style.left = l + 'px';
+				this.overlayDiv = (0, _dom.makeModal)(this.panelDiv);
+				(0, _event.on)(this.overlayDiv, 'click', function () {
+					self.hide();
+				});
 			} else {
-				(0, _dom.removeClass)(this.element, this._CssClasses.IS_DISABLED);
+				if (this.options.showFix) {
+					document.body.appendChild(this.panelDiv);
+					this.panelDiv.style.position = 'fixed';
+					(0, _dom.showPanelByEle)({
+						ele: this.input,
+						panel: this.panelDiv,
+						position: "bottomLeft"
+					});
+				} else {
+
+					var bodyWidth = document.body.clientWidth,
+					    bodyHeight = document.body.clientHeight,
+					    panelWidth = this.panelDiv.offsetWidth,
+					    panelHeight = this.panelDiv.offsetHeight;
+
+					this.element.appendChild(this.panelDiv);
+					this.element.style.position = 'relative';
+					this.left = this.input.offsetLeft;
+					var inputHeight = this.input.offsetHeight;
+					this.top = this.input.offsetTop + inputHeight;
+
+					if (this.left + panelWidth > bodyWidth) {
+						this.left = bodyWidth - panelWidth;
+					}
+
+					if (this.top + panelHeight > bodyHeight) {
+						this.top = bodyHeight - panelHeight;
+					}
+
+					this.panelDiv.style.left = this.left + 'px';
+					this.panelDiv.style.top = this.top + 'px';
+				}
 			}
+
+			this.panelDiv.style.zIndex = (0, _dom.getZIndex)();
+			(0, _dom.addClass)(this.panelDiv, 'is-visible');
+
+			this.setHand();
+
+			var callback = function (e) {
+				if (e !== evt && e.target !== this.input && !self.clickPanel(e.target) && self._inputFocus != true) {
+					(0, _event.off)(document, 'click', callback);
+					this.hide();
+				}
+			}.bind(this);
+			(0, _event.on)(document, 'click', callback);
+
+			//tab事件
+			(0, _event.on)(self.input, 'keydown', function (e) {
+				var keyCode = e.keyCode;
+				if (keyCode == 9) {
+					self.hide();
+				}
+			});
 		},
 
-		checkToggleState: function checkToggleState() {
-			if (this._inputElement.checked) {
-				(0, _dom.addClass)(this.element, this._CssClasses.IS_CHECKED);
-			} else {
-				(0, _dom.removeClass)(this.element, this._CssClasses.IS_CHECKED);
+		clickPanel: function clickPanel(dom) {
+			while (dom) {
+				if (dom == this.panelDiv) {
+					return true;
+				} else {
+					dom = dom.parentNode;
+				}
 			}
+			return false;
 		},
 
-		isChecked: function isChecked() {
-			//return hasClass(this.element,this._CssClasses.IS_CHECKED);
-			return this._inputElement.checked;
-		},
-
-		toggle: function toggle() {
-			//return;
-			if (this.isChecked()) {
-				this.uncheck();
-			} else {
-				this.check();
+		hide: function hide() {
+			(0, _dom.removeClass)(this.panelDiv, 'is-visible');
+			this.panelDiv.style.zIndex = -1;
+			if (this.overlayDiv) {
+				try {
+					document.body.removeChild(this.overlayDiv);
+				} catch (e) {}
 			}
-		},
-
-		disable: function disable() {
-			this._inputElement.disabled = true;
-			this._updateClasses();
-		},
-
-		enable: function enable() {
-			this._inputElement.disabled = false;
-			this._updateClasses();
-		},
-
-		check: function check() {
-			this._inputElement.checked = true;
-			this._updateClasses();
-		},
-
-		uncheck: function uncheck() {
-			this._inputElement.checked = false;
-			this._updateClasses();
 		}
-
-	}); /**
-	     * Module : neoui-switch
-	     * Author : Kvkens(yueming@yonyou.com)
-	     * Date	  : 2016-08-03 13:39:55
-	     */
-
-	_compMgr.compMgr.regComp({
-		comp: Switch,
-		compAsString: 'u.Switch',
-		css: 'u-switch'
 	});
 
+	_compMgr.compMgr.regComp({
+		comp: ClockPicker,
+		compAsString: 'u.ClockPicker',
+		css: 'u-clockpicker'
+	});
 	if (document.readyState && document.readyState === 'complete') {
 		_compMgr.compMgr.updateComp();
 	} else {
@@ -12367,8 +12704,7 @@ $.fn.bootstrapWizard.defaults = {
 			_compMgr.compMgr.updateComp();
 		});
 	}
-
-	exports.Switch = Switch;
+	exports.ClockPicker = ClockPicker;
 
 /***/ },
 /* 34 */
@@ -12377,440 +12713,218 @@ $.fn.bootstrapWizard.defaults = {
 	'use strict';
 
 	exports.__esModule = true;
-	exports.Tabs = undefined;
+	exports.core = undefined;
 
-	var _BaseComponent = __webpack_require__(4);
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                                               * Module : Sparrow core context
+	                                                                                                                                                                                                                                                                               * Author : Kvkens(yueming@yonyou.com)
+	                                                                                                                                                                                                                                                                               * Date	  : 2016-07-28 13:52:19
+	                                                                                                                                                                                                                                                                               */
 
-	var _dom = __webpack_require__(10);
-
-	var _event = __webpack_require__(7);
-
-	var _ripple = __webpack_require__(13);
-
-	var _compMgr = __webpack_require__(9);
-
-	var Tabs = _BaseComponent.BaseComponent.extend({
-		_Constant: {},
-		_CssClasses: {
-			TAB_CLASS: 'u-tabs__tab',
-			PANEL_CLASS: 'u-tabs__panel',
-			ACTIVE_CLASS: 'is-active',
-			UPGRADED_CLASS: 'is-upgraded',
-
-			U_JS_RIPPLE_EFFECT: 'u-js-ripple-effect',
-			U_RIPPLE_CONTAINER: 'u-tabs__ripple-container',
-			U_RIPPLE: 'u-ripple',
-			U_JS_RIPPLE_EFFECT_IGNORE_EVENTS: 'u-js-ripple-effect--ignore-events'
-		},
-
-		/**
-	  * Handle clicks to a tabs component
-	  *
-	  * @private
-	  */
-		initTabs_: function initTabs_() {
-			(0, _dom.addClass)(this.element, this._CssClasses.U_JS_RIPPLE_EFFECT_IGNORE_EVENTS);
-
-			// Select element tabs, document panels
-			this.tabs_ = this.element.querySelectorAll('.' + this._CssClasses.TAB_CLASS);
-			this.panels_ = this.element.querySelectorAll('.' + this._CssClasses.PANEL_CLASS);
-
-			// Create new tabs for each tab element
-			for (var i = 0; i < this.tabs_.length; i++) {
-				new Tab(this.tabs_[i], this);
-			}
-			(0, _dom.addClass)(this.element, this._CssClasses.UPGRADED_CLASS);
-		},
-
-		/**
-	  * Reset tab state, dropping active classes
-	  *
-	  * @private
-	  */
-		resetTabState_: function resetTabState_() {
-			for (var k = 0; k < this.tabs_.length; k++) {
-				(0, _dom.removeClass)(this.tabs_[k], this._CssClasses.ACTIVE_CLASS);
-			}
-		},
-
-		/**
-	  * Reset panel state, droping active classes
-	  *
-	  * @private
-	  */
-		resetPanelState_: function resetPanelState_() {
-			for (var j = 0; j < this.panels_.length; j++) {
-				(0, _dom.removeClass)(this.panels_[j], this._CssClasses.ACTIVE_CLASS);
-			}
-		},
-		show: function show(itemId) {
-			var panel = this.element.querySelector('#' + itemId);
-			var tab = this.element.querySelector("[href='#" + itemId + "']");
-			this.resetTabState_();
-			this.resetPanelState_();
-			(0, _dom.addClass)(tab, this._CssClasses.ACTIVE_CLASS);
-			(0, _dom.addClass)(panel, this._CssClasses.ACTIVE_CLASS);
-		},
-
-		/**
-	  * Initialize element.
-	  */
-		init: function init() {
-			if (this.element) {
-				this.initTabs_();
-			}
-		}
-	});
-
-	/**
-	 * Constructor for an individual tab.
-	 *
-	 * @constructor
-	 * @param {Element} tab The HTML element for the tab.
-	 * @param {Tabs} ctx The Tabs object that owns the tab.
-	 */
-	/**
-	 * Module : neoui-tabs
-	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-08-03 14:12:27
-	 */
-
-	function Tab(tab, ctx) {
-		if (tab) {
-			var rippleContainer = document.createElement('span');
-			(0, _dom.addClass)(rippleContainer, ctx._CssClasses.U_RIPPLE_CONTAINER);
-			(0, _dom.addClass)(rippleContainer, ctx._CssClasses.U_JS_RIPPLE_EFFECT);
-			var ripple = document.createElement('span');
-			(0, _dom.addClass)(ripple, ctx._CssClasses.U_RIPPLE);
-			rippleContainer.appendChild(ripple);
-			tab.appendChild(rippleContainer);
-
-			tab.ripple = new _ripple.Ripple(tab);
-
-			tab.addEventListener('click', function (e) {
-				(0, _event.stopEvent)(e);
-				// e.preventDefault();
-				var href = tab.href.split('#')[1];
-				var panel = ctx.element.querySelector('#' + href);
-				ctx.resetTabState_();
-				ctx.resetPanelState_();
-				(0, _dom.addClass)(tab, ctx._CssClasses.ACTIVE_CLASS);
-				(0, _dom.addClass)(panel, ctx._CssClasses.ACTIVE_CLASS);
-			});
-		}
-	}
-
-	_compMgr.compMgr.regComp({
-		comp: Tabs,
-		compAsString: 'u.Tabs',
-		css: 'u-tabs'
-	});
-	if (document.readyState && document.readyState === 'complete') {
-		_compMgr.compMgr.updateComp();
-	} else {
-		(0, _event.on)(window, 'load', function () {
-			//扫描并生成控件
-			_compMgr.compMgr.updateComp();
-		});
-	}
-
-	exports.Tabs = Tabs;
-
-/***/ },
-/* 35 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports.Tooltip = undefined;
 
 	var _extend = __webpack_require__(1);
 
-	var _event = __webpack_require__(7);
+	var _util = __webpack_require__(6);
 
-	var _dom = __webpack_require__(10);
+	var _cookies = __webpack_require__(35);
 
-	var Tooltip = function Tooltip(element, options) {
-		this.init(element, options);
-		//this.show()
-	}; /**
-	    * Module : neoui-tooltip
-	    * Author : Kvkens(yueming@yonyou.com)
-	    * Date   : 2016-08-06 13:26:06
-	    */
+	var _enumerables = __webpack_require__(2);
 
+	var environment = {};
+	/**
+	 * client attributes
+	 */
+	var clientAttributes = {};
 
-	Tooltip.prototype = {
-		defaults: {
-			animation: true,
-			placement: 'top',
-			//selector: false,
-			template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow" ></div><div class="tooltip-inner"></div></div>',
-			trigger: 'hover focus',
-			title: '',
-			delay: 0,
-			html: false,
-			container: false,
-			viewport: {
-				selector: 'body',
-				padding: 0
-			},
-			showFix: false
+	var sessionAttributes = {};
+
+	var fn = {};
+	var maskerMeta = {
+		'float': {
+			precision: 2
 		},
-		init: function init(element, options) {
-			this.element = element;
-			this.options = (0, _extend.extend)({}, this.defaults, options);
-			this._viewport = this.options.viewport && document.querySelector(this.options.viewport.selector || this.options.viewport);
-
-			var triggers = this.options.trigger.split(' ');
-
-			for (var i = triggers.length; i--;) {
-				var trigger = triggers[i];
-				if (trigger == 'click') {
-					(0, _event.on)(this.element, 'click', this.toggle.bind(this));
-				} else if (trigger != 'manual') {
-					var eventIn = trigger == 'hover' ? 'mouseenter' : 'focusin';
-					var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout';
-					(0, _event.on)(this.element, eventIn, this.enter.bind(this));
-					(0, _event.on)(this.element, eventOut, this.leave.bind(this));
-				}
-			}
-			this.options.title = this.options.title || this.element.getAttribute('title');
-			this.element.removeAttribute('title');
-			if (this.options.delay && typeof this.options.delay == 'number') {
-				this.options.delay = {
-					show: this.options.delay,
-					hide: this.options.delay
-				};
-			};
-			//tip模板对应的dom
-			this.tipDom = (0, _dom.makeDOM)(this.options.template);
-			(0, _dom.addClass)(this.tipDom, this.options.placement);
-			if (this.options.colorLevel) {
-				(0, _dom.addClass)(this.tipDom, this.options.colorLevel);
-			}
-			this.arrrow = this.tipDom.querySelector('.tooltip-arrow');
-
-			// tip容器,默认为当前元素的parent
-			this.container = this.options.container ? document.querySelector(this.options.container) : this.element.parentNode;
+		'datetime': {
+			format: 'YYYY-MM-DD HH:mm:ss',
+			metaType: 'DateTimeFormatMeta',
+			speratorSymbol: '-'
 		},
-		enter: function enter() {
-			var self = this;
-			clearTimeout(this.timeout);
-			this.hoverState = 'in';
-			if (!this.options.delay || !this.options.delay.show) return this.show();
-
-			this.timeout = setTimeout(function () {
-				if (self.hoverState == 'in') self.show();
-			}, this.options.delay.show);
+		'time': {
+			format: 'HH:mm'
 		},
-		leave: function leave() {
-			var self = this;
-			clearTimeout(this.timeout);
-			self.hoverState = 'out';
-			if (!self.options.delay || !self.options.delay.hide) return self.hide();
-			self.timeout = setTimeout(function () {
-				if (self.hoverState == 'out') self.hide();
-			}, self.options.delay.hide);
+		'date': {
+			format: 'YYYY-MM-DD'
 		},
-		show: function show() {
-			var self = this;
-			this.tipDom.querySelector('.tooltip-inner').innerHTML = this.options.title;
-			this.tipDom.style.zIndex = (0, _dom.getZIndex)();
-
-			if (this.options.showFix) {
-				document.body.appendChild(this.tipDom);
-				this.tipDom.style.position = 'fixed';
-				(0, _dom.showPanelByEle)({
-					ele: this.element,
-					panel: this.tipDom,
-					position: "top"
-				});
-				// fix情况下滚动时隐藏
-				(0, _event.on)(document, 'scroll', function () {
-					self.hide();
-				});
-			} else {
-				this.container.appendChild(this.tipDom);
-				var inputLeft = this.element.offsetLeft;
-				var inputTop = this.element.offsetTop;
-				var inputWidth = this.element.offsetWidth;
-				var inputHeight = this.element.offsetHeight;
-				var topWidth = this.tipDom.offsetWidth;
-				var topHeight = this.tipDom.offsetHeight;
-				if (this.options.placement == 'top') {
-					this.left = this.element.offsetLeft + inputWidth / 2;
-					this.top = this.element.offsetTop - topHeight;
-				}
-				// 水平居中
-				this.tipDom.style.left = this.left - this.tipDom.clientWidth / 2 + 'px';
-				// this.tipDom.style.left = this.left + 'px';
-				this.tipDom.style.top = this.top + 'px';
-			}
-
-			(0, _dom.addClass)(this.tipDom, 'active');
-
-			// var placement = this.options.placement;
-			// var pos = this.getPosition()
-			// var actualWidth = this.tipDom.offsetWidth
-			// var actualHeight = this.tipDom.offsetHeight
-			// var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
-
-			// this.applyPlacement(calculatedOffset, placement)
+		'currency': {
+			precision: 2,
+			curSymbol: '￥'
 		},
-		hide: function hide() {
-			if (this.options.showFix) {
-				if (document.body.contains(this.tipDom)) {
-					(0, _dom.removeClass)(this.tipDom, 'active');
-					document.body.removeChild(this.tipDom);
-				}
-			} else {
-				if (this.container.contains(this.tipDom)) {
-					(0, _dom.removeClass)(this.tipDom, 'active');
-					this.container.removeChild(this.tipDom);
-				}
-			}
-		},
-		applyPlacement: function applyPlacement(offset, placement) {
-			var width = this.tipDom.offsetWidth;
-			var height = this.tipDom.offsetHeight;
-
-			// manually read margins because getBoundingClientRect includes difference
-			var marginTop = parseInt(this.tipDom.style.marginTop, 10);
-			var marginLeft = parseInt(this.tipDom.style.marginTop, 10);
-
-			// we must check for NaN for ie 8/9
-			if (isNaN(marginTop)) marginTop = 0;
-			if (isNaN(marginLeft)) marginLeft = 0;
-
-			offset.top = offset.top + marginTop;
-			offset.left = offset.left + marginLeft;
-
-			// $.fn.offset doesn't round pixel values
-			// so we use setOffset directly with our own function B-0
-			this.tipDom.style.left = offset.left + 'px';
-			this.tipDom.style.top = offset.top + 'px';
-
-			(0, _dom.addClass)(this.tipDom, 'active');
-
-			// check to see if placing tip in new offset caused the tip to resize itself
-			var actualWidth = this.tipDom.offsetWidth;
-			var actualHeight = this.tipDom.offsetHeight;
-
-			if (placement == 'top' && actualHeight != height) {
-				offset.top = offset.top + height - actualHeight;
-			}
-			var delta = this.getViewportAdjustedDelta(placement, offset, actualWidth, actualHeight);
-
-			if (delta.left) offset.left += delta.left;else offset.top += delta.top;
-
-			var isVertical = /top|bottom/.test(placement);
-			var arrowDelta = isVertical ? delta.left * 2 - width + actualWidth : delta.top * 2 - height + actualHeight;
-			var arrowOffsetPosition = isVertical ? 'offsetWidth' : 'offsetHeight';
-
-			//$tip.offset(offset)
-			this.tipDom.style.left = offset.left + 'px';
-			this.tipDom.style.top = offset.top - 4 + 'px';
-
-			// this.replaceArrow(arrowDelta, $tip[0][arrowOffsetPosition], isVertical)
-		},
-		getCalculatedOffset: function getCalculatedOffset(placement, pos, actualWidth, actualHeight) {
-			return placement == 'bottom' ? {
-				top: pos.top + pos.height,
-				left: pos.left + pos.width / 2 - actualWidth / 2
-			} : placement == 'top' ? {
-				top: pos.top - actualHeight,
-				left: pos.left + pos.width / 2 - actualWidth / 2
-			} : placement == 'left' ? {
-				top: pos.top + pos.height / 2 - actualHeight / 2,
-				left: pos.left - actualWidth
-			} :
-			/* placement == 'right' */
-			{
-				top: pos.top + pos.height / 2 - actualHeight / 2,
-				left: pos.left + pos.width
-			};
-		},
-		getPosition: function getPosition(el) {
-			el = el || this.element;
-			var isBody = el.tagName == 'BODY';
-			var elRect = el.getBoundingClientRect();
-			if (elRect.width == null) {
-				// width and height are missing in IE8, so compute them manually; see https://github.com/twbs/bootstrap/issues/14093
-				elRect = (0, _extend.extend)({}, elRect, {
-					width: elRect.right - elRect.left,
-					height: elRect.bottom - elRect.top
-				});
-			}
-			var elOffset = isBody ? {
-				top: 0,
-				left: 0
-			} : {
-				top: el.offsetTop,
-				left: el.offsetLeft
-			};
-			var scroll = {
-				scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : el.scrollTop
-			};
-			var outerDims = isBody ? {
-				width: window.innerWidth || document.body.clientWidth,
-				height: window.innerHeight || document.body.clientHeight
-			} : null;
-			//return extend({}, elRect, scroll, outerDims, elOffset)
-			return (0, _extend.extend)({}, elRect, scroll, outerDims);
-		},
-		getViewportAdjustedDelta: function getViewportAdjustedDelta(placement, pos, actualWidth, actualHeight) {
-			var delta = {
-				top: 0,
-				left: 0
-			};
-			if (!this._viewport) return delta;
-
-			var viewportPadding = this.options.viewport && this.options.viewport.padding || 0;
-			var viewportDimensions = this.getPosition(this._viewport);
-
-			if (/right|left/.test(placement)) {
-				var topEdgeOffset = pos.top - viewportPadding - viewportDimensions.scroll;
-				var bottomEdgeOffset = pos.top + viewportPadding - viewportDimensions.scroll + actualHeight;
-				if (topEdgeOffset < viewportDimensions.top) {
-					// top overflow
-					delta.top = viewportDimensions.top - topEdgeOffset;
-				} else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) {
-					// bottom overflow
-					delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset;
-				}
-			} else {
-				var leftEdgeOffset = pos.left - viewportPadding;
-				var rightEdgeOffset = pos.left + viewportPadding + actualWidth;
-				if (leftEdgeOffset < viewportDimensions.left) {
-					// left overflow
-					delta.left = viewportDimensions.left - leftEdgeOffset;
-				} else if (rightEdgeOffset > viewportDimensions.width) {
-					// right overflow
-					delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset;
-				}
-			}
-
-			return delta;
-		},
-		replaceArrow: function replaceArrow(delta, dimension, isHorizontal) {
-			if (isHorizontal) {
-				this.arrow.style.left = 50 * (1 - delta / dimension) + '%';
-				this.arrow.style.top = '';
-			} else {
-				this.arrow.style.top = 50 * (1 - delta / dimension) + '%';
-				this.arrow.style.left = '';
-			}
-		},
-		destory: function destory() {},
-		setTitle: function setTitle(title) {
-			this.options.title = title;
-		}
-
+		'percent': {},
+		'phoneNumber': {}
+	};
+	/**
+	 * 获取环境信息
+	 * @return {environment}
+	 */
+	fn.getEnvironment = function () {
+		return (0, _util.createShellObject)(environment);
 	};
 
-	exports.Tooltip = Tooltip;
+	/**
+	 * 获取客户端参数对象
+	 * @return {clientAttributes}
+	 */
+	fn.getClientAttributes = function () {
+		var exf = function exf() {};
+		return (0, _util.createShellObject)(clientAttributes);
+	};
+
+	fn.setContextPath = function (contextPath) {
+		return environment[IWEB_CONTEXT_PATH] = contextPath;
+	};
+	fn.getContextPath = function (contextPath) {
+		return environment[IWEB_CONTEXT_PATH];
+	};
+	/**
+	 * 设置客户端参数对象
+	 * @param {Object} k 对象名称
+	 * @param {Object} v 对象值(建议使用简单类型)
+	 */
+	fn.setClientAttribute = function (k, v) {
+		clientAttributes[k] = v;
+	};
+	/**
+	 * 获取会话级参数对象
+	 * @return {clientAttributes}
+	 */
+	fn.getSessionAttributes = function () {
+		var exf = function exf() {};
+		return (0, _util.createShellObject)(sessionAttributes);
+	};
+
+	/**
+	 * 设置会话级参数对象
+	 * @param {Object} k 对象名称
+	 * @param {Object} v 对象值(建议使用简单类型)
+	 */
+	fn.setSessionAttribute = function (k, v) {
+		sessionAttributes[k] = v;
+		(0, _cookies.setCookie)("ISES_" + k, v);
+	};
+
+	/**
+	 * 移除客户端参数
+	 * @param {Object} k 对象名称
+	 */
+	fn.removeClientAttribute = function (k) {
+		clientAttributes[k] = null;
+		execIgnoreError(function () {
+			delete clientAttributes[k];
+		});
+	};
+
+	/**
+	 * 获取地区信息编码
+	 */
+	fn.getLocale = function () {
+		return this.getEnvironment().locale;
+	};
+
+	/**
+	 * 获取多语信息
+	 */
+	fn.getLanguages = function () {
+		return this.getEnvironment().languages;
+	};
+	/**
+	 * 收集环境信息(包括客户端参数)
+	 * @return {Object}
+	 */
+	fn.collectEnvironment = function () {
+		var _env = this.getEnvironment();
+		var _ses = this.getSessionAttributes();
+
+		for (var i in clientAttributes) {
+			_ses[i] = clientAttributes[i];
+		}
+		_env.clientAttributes = _ses;
+		return _env;
+	};
+
+	/**
+	 * 设置数据格式信息
+	 * @param {String} type
+	 * @param {Object} meta
+	 */
+	fn.setMaskerMeta = function (type, meta) {
+		if (typeof type == 'function') {
+			getMetaFunc = type;
+		} else {
+			if (!maskerMeta[type]) maskerMeta[type] = meta;else {
+				if ((typeof meta === 'undefined' ? 'undefined' : _typeof(meta)) != 'object') maskerMeta[type] = meta;else for (var key in meta) {
+					maskerMeta[type][key] = meta[key];
+				}
+			}
+		}
+	};
+	fn.getMaskerMeta = function (type) {
+		if (typeof getMetaFunc == 'function') {
+			var meta = getMetaFunc.call(this);
+			return meta[type];
+		} else return (0, _extend.extend)({}, maskerMeta[type]);
+	};
+	environment.languages = (0, _cookies.getCookie)(_enumerables.U_LANGUAGES) ? (0, _cookies.getCookie)(_enumerables.U_LANGUAGES).split(',') : navigator.language ? navigator.language : 'zh-CN';
+	if (environment.languages == 'zh-cn') environment.languages = 'zh-CN';
+	if (environment.languages == 'en-us') environment.languages = 'en-US';
+
+	environment.theme = (0, _cookies.getCookie)(_enumerables.U_THEME);
+	environment.locale = (0, _cookies.getCookie)(_enumerables.U_LOCALE);
+	//environment.timezoneOffset = (new Date()).getTimezoneOffset()
+	environment.usercode = (0, _cookies.getCookie)(_enumerables.U_USERCODE);
+	//init session attribute
+	document.cookie.replace(/ISES_(\w*)=([^;]*);?/ig, function (a, b, c) {
+		sessionAttributes[b] = c;
+	});
+
+	var Core = function Core() {};
+	Core.prototype = fn;
+
+	var core = new Core();
+
+	exports.core = core;
+
+/***/ },
+/* 35 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	exports.__esModule = true;
+	/**
+	 * Module : Sparrow cookies
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-07-27 21:46:50
+	 */
+
+	var setCookie = function setCookie(sName, sValue, oExpires, sPath, sDomain, bSecure) {
+		var sCookie = sName + "=" + encodeURIComponent(sValue);
+		if (oExpires) sCookie += "; expires=" + oExpires.toGMTString();
+		if (sPath) sCookie += "; path=" + sPath;
+		if (sDomain) sCookie += "; domain=" + sDomain;
+		if (bSecure) sCookie += "; secure=" + bSecure;
+		document.cookie = sCookie;
+	};
+
+	var getCookie = function getCookie(sName) {
+		var sRE = "(?:; )?" + sName + "=([^;]*);?";
+		var oRE = new RegExp(sRE);
+
+		if (oRE.test(document.cookie)) {
+			return decodeURIComponent(RegExp["$1"]);
+		} else return null;
+	};
+
+	exports.setCookie = setCookie;
+	exports.getCookie = getCookie;
 
 /***/ },
 /* 36 */
@@ -12819,598 +12933,261 @@ $.fn.bootstrapWizard.defaults = {
 	'use strict';
 
 	exports.__esModule = true;
-	exports.doValidate = exports.validate = exports.Validate = undefined;
+	exports.date = undefined;
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-	                                                                                                                                                                                                                                                                               * Module : neoui-validate
-	                                                                                                                                                                                                                                                                               * Author : Kvkens(yueming@yonyou.com)
-	                                                                                                                                                                                                                                                                               * Date	  : 2016-08-06 14:03:15
-	                                                                                                                                                                                                                                                                               */
-
-
-	var _BaseComponent = __webpack_require__(4);
-
-	var _extend = __webpack_require__(1);
-
-	var _dom = __webpack_require__(10);
-
-	var _event = __webpack_require__(7);
+	var _core = __webpack_require__(34);
 
 	var _util = __webpack_require__(6);
 
-	var _neouiTooltip = __webpack_require__(35);
-
-	var _i18n = __webpack_require__(37);
-
-	var _compMgr = __webpack_require__(9);
-
-	var Validate = _BaseComponent.BaseComponent.extend({
-
-	    init: function init() {
-	        var self = this;
-	        this.$element = this.element;
-	        this.$form = this.form;
-	        this.referDom = this.$element;
-	        if (this.referDom.tagName !== 'INPUT' && this.referDom.tagName !== "TEXTAREA") {
-	            this.referDom = this.$element.querySelector('input');
-	            // 如果referDom的父元素不是this.$element说明时单选框、复选框。则referDom还为$element
-	            if (!this.referDom || this.referDom.parentNode !== this.$element) {
-	                this.referDom = this.$element;
-	            }
-	        }
-	        this.options = (0, _extend.extend)({}, this.DEFAULTS, this.options, JSON.parse(this.element.getAttribute('uvalidate')));
-	        this.required = false;
-	        this.timeout = null;
-	        this.tipAliveTime = this.options['tipAliveTime'] === undefined ? 3000 : this.options['tipAliveTime'];
-	        //所有属性优先级 ：  options参数  > attr属性  > 默认值
-	        this.required = this.options['required'] ? this.options['required'] : false;
-	        this.validType = this.options['validType'] ? this.options['validType'] : null;
-	        //校验模式  blur  submit
-	        this.validMode = this.options['validMode'] ? this.options['validMode'] : Validate.DEFAULTS.validMode;
-	        //空提示
-	        this.nullMsg = this.options['nullMsg'] ? this.options['nullMsg'] : Validate.NULLMSG[this.validType];
-	        //是否必填
-	        if (this.required && !this.nullMsg) this.nullMsg = Validate.NULLMSG['required'];
-	        //错误必填
-	        this.errorMsg = this.options['errorMsg'] ? this.options['errorMsg'] : Validate.ERRORMSG[this.validType];
-	        //正则校验
-	        this.regExp = this.options['reg'] ? this.options['reg'] : Validate.REG[this.validType];
-	        try {
-	            if (typeof this.regExp == 'string') this.regExp = eval(this.regExp);
-	        } catch (e) {}
-
-	        this.notipFlag = this.options['notipFlag']; // 错误信息提示方式是否为tip，默认为false
-	        this.hasSuccess = this.options['hasSuccess']; //是否含有正确提示
-
-	        this.showFix = this.options['showFix'];
-
-	        //提示div的id 为空时使用tooltop来提示
-	        this.tipId = this.options['tipId'] ? this.options['tipId'] : null;
-	        //校验成功提示信息的div
-	        this.successId = this.options['successId'] ? this.options['successId'] : null;
-
-	        // 要求显示成功提示，并没有成功提示dom的id时，则创建成功提示dom
-	        if (this.hasSuccess && !this.successId) {
-	            this.successId = (0, _dom.makeDOM)('<span class="u-form-control-success uf uf-checkedsymbol" ></span>');
-
-	            if (this.referDom.nextSibling) {
-	                this.referDom.parentNode.insertBefore(this.successId, this.referDom.nextSibling);
-	            } else {
-	                this.referDom.parentNode.appendChild(this.successId);
-	            }
-	        }
-	        //不是默认的tip提示方式并且tipId没有定义时创建默认tipid
-	        if (this.notipFlag && !this.tipId) {
-	            this.tipId = (0, _dom.makeDOM)('<span class="u-form-control-info uf uf-exclamationsign "></span>');
-	            this.referDom.parentNode.appendChild(this.tipId);
-
-	            if (this.referDom.nextSibling) {
-	                this.referDom.parentNode.insertBefore(this.tipId, this.referDom.nextSibling);
-	            } else {
-	                this.referDom.parentNode.appendChild(this.tipId);
-	            }
-	        }
-	        //提示框位置
-	        this.placement = this.options['placement'] ? this.options['placement'] : Validate.DEFAULTS.placement;
-	        //
-	        this.minLength = this.options['minLength'] > 0 ? this.options['minLength'] : null;
-	        this.maxLength = this.options['maxLength'] > 0 ? this.options['maxLength'] : null;
-	        this.min = this.options['min'] !== undefined ? this.options['min'] : null;
-	        this.max = this.options['max'] !== undefined ? this.options['max'] : null;
-	        this.minNotEq = this.options['minNotEq'] !== undefined ? this.options['minNotEq'] : null;
-	        this.maxNotEq = this.options['maxNotEq'] !== undefined ? this.options['maxNotEq'] : null;
-	        this.min = (0, _util.isNumber)(this.min) ? this.min : null;
-	        this.max = (0, _util.isNumber)(this.max) ? this.max : null;
-	        this.minNotEq = (0, _util.isNumber)(this.minNotEq) ? this.minNotEq : null;
-	        this.maxNotEq = (0, _util.isNumber)(this.maxNotEq) ? this.maxNotEq : null;
-	        this.create();
-	    }
-	});
-
-	Validate.fn = Validate.prototype;
-	//Validate.tipTemplate = '<div class="tooltip" role="tooltip"><div class="tooltip-arrow tooltip-arrow-c"></div><div class="tooltip-arrow"></div><div class="tooltip-inner" style="color:#ed7103;border:1px solid #ed7103;background-color:#fff7f0;"></div></div>'
-
-	Validate.DEFAULTS = {
-	    validMode: 'blur',
-	    placement: "top"
-	};
-
-	Validate.NULLMSG = {
-	    "required": (0, _i18n.trans)('validate.required', "不能为空！"),
-	    "integer": (0, _i18n.trans)('validate.integer', "请填写整数！"),
-	    "float": (0, _i18n.trans)('validate.float', "请填写数字！"),
-	    "zipCode": (0, _i18n.trans)('validate.zipCode', "请填写邮政编码！"),
-	    "phone": (0, _i18n.trans)('validate.phone', "请填写手机号码！"),
-	    "landline": (0, _i18n.trans)('validate.landline', "请填写座机号码！"),
-	    "email": (0, _i18n.trans)('validate.email', "请填写邮箱地址！"),
-	    "url": (0, _i18n.trans)('validate.url', "请填写网址！"),
-	    "datetime": (0, _i18n.trans)('validate.datetime', "请填写日期！"),
-	    "phoneNumber": (0, _i18n.trans)('validate.phoneNumber', "请填写正确号码！")
-
-	};
-
-	Validate.ERRORMSG = {
-	    "integer": (0, _i18n.trans)('validate.error_integer', "整数格式不对！"),
-	    "float": (0, _i18n.trans)('validate.error_float', "数字格式不对！"),
-	    "zipCode": (0, _i18n.trans)('validate.error_zipCode', "邮政编码格式不对！"),
-	    "phone": (0, _i18n.trans)('validate.error_phone', "手机号码格式不对！"),
-	    "landline": (0, _i18n.trans)('validate.error_landline', "座机号码格式不对！"),
-	    "email": (0, _i18n.trans)('validate.error_email', "邮箱地址格式不对！"),
-	    "url": (0, _i18n.trans)('validate.error_url', "网址格式不对！"),
-	    "datetime": (0, _i18n.trans)('validate.error_datetime', "日期格式不对！"),
-	    "phoneNumber": (0, _i18n.trans)('validate.error_phoneNumber', "号码格式不对！")
-	};
-
-	Validate.REG = {
-	    "integer": /^-?\d+$/,
-	    "float": /^-?\d+(\.\d+)?$/,
-	    "zipCode": /^[0-9]{6}$/,
-	    // "phone": /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/,
-	    "phone": /^1[3|4|5|7|8]\d{9}$/,
-	    "landline": /^(0[0-9]{2,3}\-)?([2-9][0-9]{6,7})+(\-[0-9]{1,4})?$/,
-	    "email": /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
-	    "url": /^(\w+:\/\/)?\w+(\.\w+)+.*$/,
-	    "datetime": /^(?:19|20)[0-9][0-9]-(?:(?:0[1-9])|(?:1[0-2]))-(?:(?:[0-2][1-9])|(?:[1-3][0-1])) (?:(?:[0-2][0-3])|(?:[0-1][0-9])):[0-5][0-9]:[0-5][0-9]$/,
-	    "PhoneNumber": /^\d+$/
-	};
-
-	Validate.fn.create = function () {
-	    if ($(this.element).attr('hasValidate')) {
-	        return;
-	    }
-	    var self = this;
-	    (0, _event.on)(this.element, 'blur', function (e) {
-	        if (self.validMode == 'blur') {
-	            self.passed = self.doValid();
-	        }
-	    });
-	    (0, _event.on)(this.element, 'focus', function (e) {
-	        //隐藏错误信息
-	        self.hideMsg();
-	    });
-	    (0, _event.on)(this.element, 'change', function (e) {
-	        //隐藏错误信息
-	        self.hideMsg();
-	    });
-	    (0, _event.on)(this.element, 'keydown', function (e) {
-	        var event = window.event || e;
-	        if (self["validType"] == "float") {
-	            var tmp = self.element.value;
-	            if (event.shiftKey) {
-	                event.returnValue = false;
-	                return false;
-	            } else if (event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 46) {
-	                // tab键 左箭头 右箭头 delete键
-	                return true;
-	            } else if (event.ctrlKey && (event.keyCode == 67 || event.keyCode == 86)) {
-	                //复制粘贴
-	                return true;
-	            } else if (!(event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode >= 96 && event.keyCode <= 105 || (0, _util.inArray)(event.keyCode, [8, 110, 190, 189, 109]) > -1)) {
-	                event.returnValue = false;
-	                return false;
-	            } else if ((!tmp || tmp.indexOf(".") > -1) && (event.keyCode == 190 || event.keyCode == 110)) {
-	                event.returnValue = false;
-	                return false;
-	            }
-
-	            if (tmp && (tmp + '').split('.')[0].length >= 25) {
-	                return false;
-	            }
-	        }
-	        if (self["validType"] == "integer") {
-	            var tmp = self.element.value;
-
-	            if (event.shiftKey) {
-	                event.returnValue = false;
-	                return false;
-	            } else if (event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 46) {
-	                // tab键 左箭头 右箭头 delete键
-	                return true;
-	            } else if (event.ctrlKey && (event.keyCode == 67 || event.keyCode == 86)) {
-	                //复制粘贴
-	                return true;
-	            } else if (!(event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode >= 96 && event.keyCode <= 105 || (0, _util.inArray)(event.keyCode, [8, 109, 189]) > -1)) {
-	                event.returnValue = false;
-	                return false;
-	            }
-
-	            if (tmp && (tmp + '').split('.')[0].length >= 25) {
-	                return false;
-	            }
-	        }
-	    });
-
-	    $(this.element).attr('hasValidate', true);
-	};
-
-	Validate.fn.updateOptions = function (options) {};
-
-	Validate.fn.doValid = function (options) {
-	    var self = this;
-	    var pValue;
-	    this.showMsgFlag = true;
-	    if (options) {
-	        pValue = options.pValue;
-	        this.showMsgFlag = options.showMsg;
-	    }
-	    this.needClean = false;
-	    //只读的也需要校验，所以注释
-	    // if (this.element && this.element.getAttribute("readonly")) return {passed:true}
-	    var value = null;
-	    if (typeof pValue != 'undefined') value = pValue;else if (this.element) value = this.element.value;
-
-	    if (this.isEmpty(value) && this.required) {
-	        this.showMsg(this.nullMsg);
-	        return {
-	            passed: false,
-	            Msg: this.nullMsg
-	        };
-	    } else if (this.isEmpty(value) && !this.required) {
-	        return {
-	            passed: true
-	        };
-	    }
-	    if (this.regExp) {
-	        var reg = new RegExp(this.regExp);
-	        if (typeof value == 'number') value = value + "";else if (typeof value == 'boolean') return {
-	            passed: true
-	        };
-	        var r = value.match(reg);
-	        if (r === null || r === false) {
-	            this.showMsg(this.errorMsg);
-	            this.needClean = true;
-	            return {
-	                passed: false,
-	                Msg: this.errorMsg
-	            };
-	        }
-	    }
-	    if (this.minLength) {
-	        if (value.lengthb() < this.minLength) {
-	            var Msg = "输入长度不能小于" + this.minLength + "位";
-	            this.showMsg(Msg);
-	            return {
-	                passed: false,
-	                Msg: Msg
-	            };
-	        }
-	    }
-	    if (this.maxLength) {
-	        if (value.lengthb() > this.maxLength) {
-	            var Msg = "输入长度不能大于" + this.maxLength + "位";
-	            this.showMsg(Msg);
-	            return {
-	                passed: false,
-	                Msg: Msg
-	            };
-	        }
-	    }
-	    if (this.max != undefined && this.max != null) {
-	        if (parseFloat(value) > this.max) {
-	            var Msg = "输入值不能大于" + this.max;
-	            this.showMsg(Msg);
-	            return {
-	                passed: false,
-	                Msg: Msg
-	            };
-	        }
-	    }
-	    if (this.min != undefined && this.min != null) {
-	        if (parseFloat(value) < this.min) {
-	            var Msg = "输入值不能小于" + this.min;
-	            this.showMsg(Msg);
-	            return {
-	                passed: false,
-	                Msg: Msg
-	            };
-	        }
-	    }
-	    if (this.maxNotEq != undefined && this.maxNotEq != null) {
-	        if (parseFloat(value) >= this.maxNotEq) {
-	            var Msg = "输入值不能大于或等于" + this.maxNotEq;
-	            this.showMsg(Msg);
-	            return {
-	                passed: false,
-	                Msg: Msg
-	            };
-	        }
-	    }
-	    if (this.minNotEq != undefined && this.minNotEq != null) {
-	        if (parseFloat(value) <= this.minNotEq) {
-	            var Msg = "输入值不能小于或等于" + this.minNotEq;
-	            this.showMsg(Msg);
-	            return {
-	                passed: false,
-	                Msg: Msg
-	            };
-	        }
-	    }
-	    //succes时，将成功信息显示
-	    if (this.successId) {
-	        // addClass(this.element.parentNode,'u-has-success');
-	        var successDiv = this.successId;
-	        var successleft = this.referDom.offsetLeft + this.referDom.offsetWidth + 5;
-	        var successtop = this.referDom.offsetTop + 10;
-	        if (typeof successDiv === 'string') successDiv = document.getElementById(successDiv);
-	        successDiv.style.display = 'inline-block';
-	        successDiv.style.top = successtop + 'px';
-	        successDiv.style.left = successleft + 'px';
-	        clearTimeout(this.successtimeout);
-	        this.successtimeout = setTimeout(function () {
-	            // self.tooltip.hide();
-	            successDiv.style.display = 'none';
-	        }, this.tipAliveTime);
-	    }
-	    return {
-	        passed: true
-	    };
-	};
-
-	Validate.fn.check = Validate.fn.doValid;
-
-	//	Validate.fn.getValue = function() {
-	//		var inputval
-	//		if (this.$element.is(":radio")) {
-	//			inputval = this.$form.find(":radio[name='" + this.$element.attr("name") + "']:checked").val();
-	//		} else if (this.$element.is(":checkbox")) {
-	//			inputval = "";
-	//			this.$form.find(":checkbox[name='" + obj.attr("name") + "']:checked").each(function() {
-	//				inputval += $(this).val() + ',';
-	//			})
-	//		} else if (this.$element.is('div')) {
-	//			inputval = this.$element[0].trueValue;
-	//		} else {
-	//			inputval = this.$element.val();
-	//		}
-	//		inputval = $.trim(inputval);
-	//		return this.isEmpty(inputval) ? "" : inputval;
-	//	}
-
-	Validate.fn.some = Array.prototype.some ? Array.prototype.some : function () {
-	    var flag;
-	    for (var i = 0; i < this.length; i++) {
-	        if (typeof arguments[0] == "function") {
-	            flag = arguments[0](this[i]);
-	            if (flag) break;
-	        }
-	    }
-	    return flag;
-	};
-
-	Validate.fn.getValue = function () {
-	    var inputval = '';
-	    //checkbox、radio为u-meta绑定时
-	    var bool = this.some.call(this.$element.querySelectorAll('[type="checkbox"],[type="radio"]'), function (ele) {
-	        return ele.type == "checkbox" || ele.type == "radio";
-	    });
-	    if (this.$element.childNodes.length > 0 && bool) {
-	        var eleArr = this.$element.querySelectorAll('[type="checkbox"],[type="radio"]');
-	        var ele = eleArr[0];
-	        if (ele.type == "checkbox") {
-	            this.$element.querySelectorAll(":checkbox[name='" + $(ele).attr("name") + "']:checked").each(function () {
-	                inputval += $(this).val() + ',';
-	            });
-	        } else if (ele.type == "radio") {
-	            inputval = this.$element.querySelectorAll(":radio[name='" + $(ele).attr("name") + "']:checked").value;
-	        }
-	    } else if (this.$element.is(":radio")) {
-	        //valid-type 绑定
-	        inputval = this.$element.parent().querySelectorAll(":radio[name='" + this.$element.attr("name") + "']:checked").val();
-	    } else if (this.$element.is(":checkbox")) {
-	        inputval = "";
-	        this.$element.parent().find(":checkbox[name='" + this.$element.attr("name") + "']:checked").each(function () {
-	            inputval += $(this).val() + ',';
-	        });
-	    } else if (this.$element.find('input').length > 0) {
-	        inputval = this.$element.find('input').val();
-	    } else {
-	        inputval = this.$element.val();
-	    }
-	    inputval = inputval.trim;
-	    return this.isEmpty(inputval) ? "" : inputval;
-	};
-
-	Validate.fn.isEmpty = function (val) {
-	    return val === "" || val === undefined || val === null; //|| val === $.trim(this.$element.attr("tip"));
-	};
-
-	Validate.fn.showMsg = function (msg) {
-
-	    if (this.showMsgFlag == false || this.showMsgFlag == 'false') {
-	        return;
-	    }
-	    var self = this;
-	    if (this.tipId) {
-	        this.referDom.style.borderColor = 'rgb(241,90,74)';
-	        var tipdiv = this.tipId;
-	        if (typeof tipdiv === 'string') {
-	            tipdiv = document.getElementById(tipdiv);
-	        }
-	        tipdiv.innerHTML = msg;
-	        //如果notipFlag为true说明，可能是平台创建的，需要添加left、top值
-	        if (this.notipFlag) {
-	            var left = this.referDom.offsetLeft;
-	            var top = this.referDom.offsetTop + this.referDom.offsetHeight + 4;
-	            tipdiv.style.left = left + 'px';
-	            tipdiv.style.top = top + 'px';
-	        }
-
-	        tipdiv.style.display = 'block';
-	        // addClass(tipdiv.parentNode,'u-has-error');
-	        // $('#' + this.tipId).html(msg).show()
-	    } else {
-	        var tipOptions = {
-	            "title": msg,
-	            "trigger": "manual",
-	            "selector": "validtip",
-	            "placement": this.placement,
-	            "showFix": this.showFix
-	        };
-
-	        if (this.options.tipTemplate) tipOptions.template = this.options.tipTemplate;
-
-	        //月凯修改
-	        // if (!this.tooltip)
-	        this.referDom = this.$element;
-	        if (this.referDom.tagName !== 'INPUT' && this.referDom.tagName !== "TEXTAREA") {
-	            this.referDom = this.$element.querySelector('input');
-	            // 如果referDom的父元素不是this.$element说明时单选框、复选框。则referDom还为$element
-	            if (!this.referDom || this.referDom.parentNode !== this.$element) {
-	                this.referDom = this.$element;
-	            }
-	        }
-	        this.tooltip = new _neouiTooltip.Tooltip(this.referDom, tipOptions);
-	        this.tooltip.setTitle(msg);
-	        this.tooltip.show();
-	    }
-	    if (this.tipAliveTime !== -1) {
-	        clearTimeout(this.timeout);
-	        this.timeout = setTimeout(function () {
-	            // self.tooltip.hide();
-	            self.hideMsg();
-	        }, this.tipAliveTime);
-	    }
-	};
-	Validate.fn.hideMsg = function () {
-	    //隐藏成功信息
-	    // if(this.successId||this.tipId){
-	    // 	document.getElementById(this.successId).style.display='none';
-	    // 	document.getElementById(this.tipId).style.display='none';
-	    // }
-
-	    // removeClass(this.element.parentNode,'u-has-error');
-	    // removeClass(this.element.parentNode,'u-has-success');
-
-	    if (this.tipId) {
-	        var tipdiv = this.tipId;
-	        if (typeof tipdiv === 'string') {
-	            tipdiv = document.getElementById(tipdiv);
-	        }
-	        tipdiv.style.display = 'none';
-	        this.referDom.style.borderColor = '';
-	        // removeClass(tipdiv.parentNode,'u-has-error');
-	    } else {
-	        if (this.tooltip) this.tooltip.hide();
-	    }
-	};
-
 	/**
-	 * 只有单一元素时使用
+	 * Module : Sparrow date util
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-06 13:37:20
 	 */
-	Validate.fn._needClean = function () {
-	    return true; //this.validates[0].needClean
+
+	var u = {};
+	u.date = {
+
+		/**
+	  * 多语言处理
+	  */
+		//TODO 后续放到多语文件中
+		_dateLocale: {
+			'zh-CN': {
+				months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
+				monthsShort: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
+				weekdays: '星期日_星期一_星期二_星期三_星期四_星期五_星期六'.split('_'),
+				weekdaysShort: '周日_周一_周二_周三_周四_周五_周六'.split('_'),
+				weekdaysMin: '日_一_二_三_四_五_六'.split('_')
+			},
+			'en-US': {
+				months: 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_'),
+				monthsShort: 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_'),
+				weekdays: 'Sunday_Monday_Tuesday_Wednesday_Thurday_Friday_Saturday'.split('_'),
+				weekdaysShort: 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
+				weekdaysMin: 'S_M_T_W_T_F_S'.split('_')
+			}
+		},
+
+		_formattingTokens: /(\[[^\[]*\])|(\\)?(Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Q|YYYY|YY|e|E|a|A|hh?|HH?|mm?|ss?|S{1,4}|x|X|zz?|ZZ?|.)/g,
+
+		leftZeroFill: function leftZeroFill(number, targetLength, forceSign) {
+			var output = '' + Math.abs(number),
+			    sign = number >= 0;
+			while (output.length < targetLength) {
+				output = '0' + output;
+			}
+			return (sign ? forceSign ? '+' : '' : '-') + output;
+		},
+
+		_formats: {
+			//year
+			YY: function YY(date) {
+				return u.date.leftZeroFill(date.getFullYear() % 100, 2);
+			},
+			YYYY: function YYYY(date) {
+				return date.getFullYear();
+			},
+			//month
+			M: function M(date) {
+				return date.getMonth() + 1;
+			},
+			MM: function MM(date) {
+				var m = u.date._formats.M(date);
+				return u.date.leftZeroFill(m, 2);
+			},
+			MMM: function MMM(date, language) {
+				var m = date.getMonth();
+				return u.date._dateLocale[language].monthsShort[m];
+			},
+			MMMM: function MMMM(date, language) {
+				var m = date.getMonth();
+				return u.date._dateLocale[language].months[m];
+			},
+			//date
+			D: function D(date) {
+				return date.getDate();
+			},
+			DD: function DD(date) {
+				var d = u.date._formats.D(date);
+				return u.date.leftZeroFill(d, 2);
+			},
+			// weekday
+			d: function d(date) {
+				return date.getDay();
+			},
+			dd: function dd(date, language) {
+				var d = u.date._formats.d(date);
+				return u.date._dateLocale[language].weekdaysMin[d];
+			},
+			ddd: function ddd(date, language) {
+				var d = u.date._formats.d(date);
+				return u.date._dateLocale[language].weekdaysShort[d];
+			},
+			dddd: function dddd(date, language) {
+				var d = u.date._formats.d(date);
+				return u.date._dateLocale[language].weekdays[d];
+			},
+			// am pm
+			a: function a(date) {
+				if (date.getHours() > 12) {
+					return 'pm';
+				} else {
+					return 'am';
+				}
+			},
+			//hour
+			h: function h(date) {
+				var h = date.getHours();
+				h = h > 12 ? h - 12 : h;
+				return h;
+			},
+			hh: function hh(date) {
+				var h = u.date._formats.h(date);
+				return u.date.leftZeroFill(h, 2);
+			},
+			H: function H(date) {
+				return date.getHours();
+			},
+			HH: function HH(date) {
+				return u.date.leftZeroFill(date.getHours(), 2);
+			},
+			// minutes
+			m: function m(date) {
+				return date.getMinutes();
+			},
+			mm: function mm(date) {
+				return u.date.leftZeroFill(date.getMinutes(), 2);
+			},
+			//seconds
+			s: function s(date) {
+				return date.getSeconds();
+			},
+			ss: function ss(date) {
+				return u.date.leftZeroFill(date.getSeconds(), 2);
+			}
+		},
+
+		/**
+	  * 日期格式化
+	  * @param date
+	  * @param formatString
+	  */
+		format: function format(date, formatString, language) {
+			if (!date) return date;
+			var array = formatString.match(u.date._formattingTokens),
+			    i,
+			    length,
+			    output = '';
+			var _date = u.date.getDateObj(date);
+			if (!_date) return date;
+			language = language || _core.core.getLanguages();
+			for (i = 0, length = array.length; i < length; i++) {
+				if (u.date._formats[array[i]]) {
+					output += u.date._formats[array[i]](_date, language);
+				} else {
+					output += array[i];
+				}
+			}
+			return output;
+		},
+
+		_addOrSubtract: function _addOrSubtract(date, period, value, isAdding) {
+			var times = date.getTime(),
+			    d = date.getDate(),
+			    m = date.getMonth(),
+			    _date = u.date.getDateObj(date);
+			if (period === 'ms') {
+				times = times + value * isAdding;
+				_date.setTime(times);
+			} else if (period == 's') {
+				times = times + value * 1000 * isAdding;
+				_date.setTime(times);
+			} else if (period == 'm') {
+				times = times + value * 60000 * isAdding;
+				_date.setTime(times);
+			} else if (period == 'h') {
+				times = times + value * 3600000 * isAdding;
+				_date.setTime(times);
+			} else if (period == 'd') {
+				d = d + value * isAdding;
+				_date.setDate(d);
+			} else if (period == 'w') {
+				d = d + value * 7 * isAdding;
+				_date.setDate(d);
+			} else if (period == 'M') {
+				m = m + value * isAdding;
+				_date.setMonth(m);
+			} else if (period == 'y') {
+				m = m + value * 12 * isAdding;
+				_date.setMonth(m);
+			}
+			return _date;
+		},
+
+		add: function add(date, period, value) {
+			return u.date._addOrSubtract(date, period, value, 1);
+		},
+		sub: function sub(date, period, value) {
+			return u.date._addOrSubtract(date, period, value, -1);
+		},
+		getDateObj: function getDateObj(value) {
+			if (!value || typeof value == 'undefined') return value;
+			var dateFlag = false;
+			var _date = new Date((0, _util.dateFormat)(value));
+			if (isNaN(_date)) {
+				// IE的话对"2016-2-13 12:13:22"进行处理
+				var index1, index2, index3, s1, s2, s3;
+				if (value.indexOf) {
+					index1 = value.indexOf('-');
+					index2 = value.indexOf(':');
+					index3 = value.indexOf(' ');
+					if (index1 > 0 || index2 > 0 || index3 > 0) {
+						_date = new Date();
+						if (index3 > 0) {
+							s3 = value.split(' ');
+							s1 = s3[0].split('-');
+							s2 = s3[1].split(':');
+						} else if (index1 > 0) {
+							s1 = value.split('-');
+						} else if (index2 > 0) {
+							s2 = value.split(':');
+						}
+						if (s1 && s1.length > 0) {
+							_date.setYear(s1[0]);
+							_date.setMonth(parseInt(s1[1] - 1));
+							_date.setDate(s1[2] ? s1[2] : 0);
+							dateFlag = true;
+						}
+						if (s2 && s2.length > 0) {
+							_date.setHours(s2[0] ? s2[0] : 0);
+							_date.setMinutes(s2[1] ? s2[1] : 0);
+							_date.setSeconds(s2[2] ? s2[2] : 0);
+							dateFlag = true;
+						}
+					} else {
+						_date = new Date(parseInt(value));
+						if (isNaN(_date)) {
+							throw new TypeError('invalid Date parameter');
+						} else {
+							dateFlag = true;
+						}
+					}
+				}
+			} else {
+				dateFlag = true;
+			}
+
+			if (dateFlag) return _date;else return null;
+		}
+
 	};
 
-	var validate = function validate(element) {
-	    var self = this,
-	        options,
-	        childEle;
-	    if (typeof element === 'string') {
-	        element = document.querySelector(element);
-	    }
-	    //element本身需要校验
-	    if (element.attributes["uvalidate"]) {
-	        options = element.attributes["uvalidate"] ? JSON.parse(element.attributes["uvalidate"].value) : {};
-	        options = (0, _extend.extend)({
-	            el: element
-	        }, options);
-	        element['Validate'] = new Validate(options);
-	    }
-
-	    //element是个父元素，校验子元素
-	    childEle = element.querySelectorAll('[uvalidate]');
-	    (0, _util.each)(childEle, function (i, child) {
-	        if (!child['Validate']) {
-	            //如果该元素上没有校验
-	            options = child.attributes["validate"] ? JSON.parse(child.attributes["validate"].value) : {};
-	            options = (0, _extend.extend)({
-	                el: child
-	            }, options);
-	            child['Validate'] = new Validate(options);
-	        }
-	    });
-	};
-
-	// 对某个dom容器内的元素进行校验
-	var doValidate = function doValidate(element) {
-	    var passed = true,
-	        childEle,
-	        result;
-	    if (typeof element === 'string') {
-	        element = document.querySelector(element);
-	    }
-	    childEle = element.querySelectorAll('input');
-	    (0, _util.each)(childEle, function (i, child) {
-	        if (child['Validate'] && child['Validate'].check) {
-	            result = child['Validate'].check({
-	                trueValue: true,
-	                showMsg: true
-	            });
-	            if ((typeof result === 'undefined' ? 'undefined' : _typeof(result)) === 'object') passed = result['passed'] && passed;else passed = result && passed;
-	        }
-	    });
-	    return passed;
-	};
-
-	_compMgr.compMgr.regComp({
-	    comp: Validate,
-	    compAsString: 'u.Validate',
-	    css: 'u-validate'
-	});
-	if (document.readyState && document.readyState === 'complete') {
-	    _compMgr.compMgr.updateComp();
-	} else {
-	    (0, _event.on)(window, 'load', function () {
-	        //扫描并生成控件
-	        _compMgr.compMgr.updateComp();
-	    });
-	}
-	exports.Validate = Validate;
-	exports.validate = validate;
-	exports.doValidate = doValidate;
+	var date = u.date;
+	exports.date = date;
 
 /***/ },
 /* 37 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	exports.__esModule = true;
-	/**
-	 * Module : Sparrow i18n
-	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-07-29 10:16:54
-	 */
-	//import {uuii18n} from '?';//缺失故修改为default值
-	var trans = function trans(key, dftValue) {
-	  //return  uuii18n ?  uuii18n.t('uui-trans:' + key) : dftValue;
-	  return dftValue;
-	};
-
-	exports.trans = trans;
-
-/***/ },
-/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13428,11 +13205,11 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _dom = __webpack_require__(10);
 
-	var _core = __webpack_require__(39);
+	var _core = __webpack_require__(34);
 
-	var _dateUtils = __webpack_require__(41);
+	var _dateUtils = __webpack_require__(36);
 
-	var _neouiValidate = __webpack_require__(36);
+	var _neouiValidate = __webpack_require__(38);
 
 	var _compMgr = __webpack_require__(9);
 
@@ -14775,190 +14552,877 @@ $.fn.bootstrapWizard.defaults = {
 	exports.DateTimePicker = DateTimePicker;
 
 /***/ },
+/* 38 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.doValidate = exports.validate = exports.Validate = undefined;
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                                               * Module : neoui-validate
+	                                                                                                                                                                                                                                                                               * Author : Kvkens(yueming@yonyou.com)
+	                                                                                                                                                                                                                                                                               * Date	  : 2016-08-06 14:03:15
+	                                                                                                                                                                                                                                                                               */
+
+
+	var _BaseComponent = __webpack_require__(4);
+
+	var _extend = __webpack_require__(1);
+
+	var _dom = __webpack_require__(10);
+
+	var _event = __webpack_require__(7);
+
+	var _util = __webpack_require__(6);
+
+	var _neouiTooltip = __webpack_require__(39);
+
+	var _i18n = __webpack_require__(40);
+
+	var _compMgr = __webpack_require__(9);
+
+	var Validate = _BaseComponent.BaseComponent.extend({
+
+	    init: function init() {
+	        var self = this;
+	        this.$element = this.element;
+	        this.$form = this.form;
+	        this.referDom = this.$element;
+	        if (this.referDom.tagName !== 'INPUT' && this.referDom.tagName !== "TEXTAREA") {
+	            this.referDom = this.$element.querySelector('input');
+	            // 如果referDom的父元素不是this.$element说明时单选框、复选框。则referDom还为$element
+	            if (!this.referDom || this.referDom.parentNode !== this.$element) {
+	                this.referDom = this.$element;
+	            }
+	        }
+	        this.options = (0, _extend.extend)({}, this.DEFAULTS, this.options, JSON.parse(this.element.getAttribute('uvalidate')));
+	        this.required = false;
+	        this.timeout = null;
+	        this.tipAliveTime = this.options['tipAliveTime'] === undefined ? 3000 : this.options['tipAliveTime'];
+	        //所有属性优先级 ：  options参数  > attr属性  > 默认值
+	        this.required = this.options['required'] ? this.options['required'] : false;
+	        this.validType = this.options['validType'] ? this.options['validType'] : null;
+	        //校验模式  blur  submit
+	        this.validMode = this.options['validMode'] ? this.options['validMode'] : Validate.DEFAULTS.validMode;
+	        //空提示
+	        this.nullMsg = this.options['nullMsg'] ? this.options['nullMsg'] : Validate.NULLMSG[this.validType];
+	        //是否必填
+	        if (this.required && !this.nullMsg) this.nullMsg = Validate.NULLMSG['required'];
+	        //错误必填
+	        this.errorMsg = this.options['errorMsg'] ? this.options['errorMsg'] : Validate.ERRORMSG[this.validType];
+	        //正则校验
+	        this.regExp = this.options['reg'] ? this.options['reg'] : Validate.REG[this.validType];
+	        try {
+	            if (typeof this.regExp == 'string') this.regExp = eval(this.regExp);
+	        } catch (e) {}
+
+	        this.notipFlag = this.options['notipFlag']; // 错误信息提示方式是否为tip，默认为false
+	        this.hasSuccess = this.options['hasSuccess']; //是否含有正确提示
+
+	        this.showFix = this.options['showFix'];
+
+	        //提示div的id 为空时使用tooltop来提示
+	        this.tipId = this.options['tipId'] ? this.options['tipId'] : null;
+	        //校验成功提示信息的div
+	        this.successId = this.options['successId'] ? this.options['successId'] : null;
+
+	        // 要求显示成功提示，并没有成功提示dom的id时，则创建成功提示dom
+	        if (this.hasSuccess && !this.successId) {
+	            this.successId = (0, _dom.makeDOM)('<span class="u-form-control-success uf uf-checkedsymbol" ></span>');
+
+	            if (this.referDom.nextSibling) {
+	                this.referDom.parentNode.insertBefore(this.successId, this.referDom.nextSibling);
+	            } else {
+	                this.referDom.parentNode.appendChild(this.successId);
+	            }
+	        }
+	        //不是默认的tip提示方式并且tipId没有定义时创建默认tipid
+	        if (this.notipFlag && !this.tipId) {
+	            this.tipId = (0, _dom.makeDOM)('<span class="u-form-control-info uf uf-exclamationsign "></span>');
+	            this.referDom.parentNode.appendChild(this.tipId);
+
+	            if (this.referDom.nextSibling) {
+	                this.referDom.parentNode.insertBefore(this.tipId, this.referDom.nextSibling);
+	            } else {
+	                this.referDom.parentNode.appendChild(this.tipId);
+	            }
+	        }
+	        //提示框位置
+	        this.placement = this.options['placement'] ? this.options['placement'] : Validate.DEFAULTS.placement;
+	        //
+	        this.minLength = this.options['minLength'] > 0 ? this.options['minLength'] : null;
+	        this.maxLength = this.options['maxLength'] > 0 ? this.options['maxLength'] : null;
+	        this.min = this.options['min'] !== undefined ? this.options['min'] : null;
+	        this.max = this.options['max'] !== undefined ? this.options['max'] : null;
+	        this.minNotEq = this.options['minNotEq'] !== undefined ? this.options['minNotEq'] : null;
+	        this.maxNotEq = this.options['maxNotEq'] !== undefined ? this.options['maxNotEq'] : null;
+	        this.min = (0, _util.isNumber)(this.min) ? this.min : null;
+	        this.max = (0, _util.isNumber)(this.max) ? this.max : null;
+	        this.minNotEq = (0, _util.isNumber)(this.minNotEq) ? this.minNotEq : null;
+	        this.maxNotEq = (0, _util.isNumber)(this.maxNotEq) ? this.maxNotEq : null;
+	        this.create();
+	    }
+	});
+
+	Validate.fn = Validate.prototype;
+	//Validate.tipTemplate = '<div class="tooltip" role="tooltip"><div class="tooltip-arrow tooltip-arrow-c"></div><div class="tooltip-arrow"></div><div class="tooltip-inner" style="color:#ed7103;border:1px solid #ed7103;background-color:#fff7f0;"></div></div>'
+
+	Validate.DEFAULTS = {
+	    validMode: 'blur',
+	    placement: "top"
+	};
+
+	Validate.NULLMSG = {
+	    "required": (0, _i18n.trans)('validate.required', "不能为空！"),
+	    "integer": (0, _i18n.trans)('validate.integer', "请填写整数！"),
+	    "float": (0, _i18n.trans)('validate.float', "请填写数字！"),
+	    "zipCode": (0, _i18n.trans)('validate.zipCode', "请填写邮政编码！"),
+	    "phone": (0, _i18n.trans)('validate.phone', "请填写手机号码！"),
+	    "landline": (0, _i18n.trans)('validate.landline', "请填写座机号码！"),
+	    "email": (0, _i18n.trans)('validate.email', "请填写邮箱地址！"),
+	    "url": (0, _i18n.trans)('validate.url', "请填写网址！"),
+	    "datetime": (0, _i18n.trans)('validate.datetime', "请填写日期！"),
+	    "phoneNumber": (0, _i18n.trans)('validate.phoneNumber', "请填写正确号码！")
+
+	};
+
+	Validate.ERRORMSG = {
+	    "integer": (0, _i18n.trans)('validate.error_integer', "整数格式不对！"),
+	    "float": (0, _i18n.trans)('validate.error_float', "数字格式不对！"),
+	    "zipCode": (0, _i18n.trans)('validate.error_zipCode', "邮政编码格式不对！"),
+	    "phone": (0, _i18n.trans)('validate.error_phone', "手机号码格式不对！"),
+	    "landline": (0, _i18n.trans)('validate.error_landline', "座机号码格式不对！"),
+	    "email": (0, _i18n.trans)('validate.error_email', "邮箱地址格式不对！"),
+	    "url": (0, _i18n.trans)('validate.error_url', "网址格式不对！"),
+	    "datetime": (0, _i18n.trans)('validate.error_datetime', "日期格式不对！"),
+	    "phoneNumber": (0, _i18n.trans)('validate.error_phoneNumber', "号码格式不对！")
+	};
+
+	Validate.REG = {
+	    "integer": /^-?\d+$/,
+	    "float": /^-?\d+(\.\d+)?$/,
+	    "zipCode": /^[0-9]{6}$/,
+	    // "phone": /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/,
+	    "phone": /^1[3|4|5|7|8]\d{9}$/,
+	    "landline": /^(0[0-9]{2,3}\-)?([2-9][0-9]{6,7})+(\-[0-9]{1,4})?$/,
+	    "email": /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
+	    "url": /^(\w+:\/\/)?\w+(\.\w+)+.*$/,
+	    "datetime": /^(?:19|20)[0-9][0-9]-(?:(?:0[1-9])|(?:1[0-2]))-(?:(?:[0-2][1-9])|(?:[1-3][0-1])) (?:(?:[0-2][0-3])|(?:[0-1][0-9])):[0-5][0-9]:[0-5][0-9]$/,
+	    "PhoneNumber": /^\d+$/
+	};
+
+	Validate.fn.create = function () {
+	    if ($(this.element).attr('hasValidate')) {
+	        return;
+	    }
+	    var self = this;
+	    (0, _event.on)(this.element, 'blur', function (e) {
+	        if (self.validMode == 'blur') {
+	            self.passed = self.doValid();
+	        }
+	    });
+	    (0, _event.on)(this.element, 'focus', function (e) {
+	        //隐藏错误信息
+	        self.hideMsg();
+	    });
+	    (0, _event.on)(this.element, 'change', function (e) {
+	        //隐藏错误信息
+	        self.hideMsg();
+	    });
+	    (0, _event.on)(this.element, 'keydown', function (e) {
+	        var event = window.event || e;
+	        if (self["validType"] == "float") {
+	            var tmp = self.element.value;
+	            if (event.shiftKey) {
+	                event.returnValue = false;
+	                return false;
+	            } else if (event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 46) {
+	                // tab键 左箭头 右箭头 delete键
+	                return true;
+	            } else if (event.ctrlKey && (event.keyCode == 67 || event.keyCode == 86)) {
+	                //复制粘贴
+	                return true;
+	            } else if (!(event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode >= 96 && event.keyCode <= 105 || (0, _util.inArray)(event.keyCode, [8, 110, 190, 189, 109]) > -1)) {
+	                event.returnValue = false;
+	                return false;
+	            } else if ((!tmp || tmp.indexOf(".") > -1) && (event.keyCode == 190 || event.keyCode == 110)) {
+	                event.returnValue = false;
+	                return false;
+	            }
+
+	            if (tmp && (tmp + '').split('.')[0].length >= 25) {
+	                return false;
+	            }
+	        }
+	        if (self["validType"] == "integer") {
+	            var tmp = self.element.value;
+
+	            if (event.shiftKey) {
+	                event.returnValue = false;
+	                return false;
+	            } else if (event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 46) {
+	                // tab键 左箭头 右箭头 delete键
+	                return true;
+	            } else if (event.ctrlKey && (event.keyCode == 67 || event.keyCode == 86)) {
+	                //复制粘贴
+	                return true;
+	            } else if (!(event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode >= 96 && event.keyCode <= 105 || (0, _util.inArray)(event.keyCode, [8, 109, 189]) > -1)) {
+	                event.returnValue = false;
+	                return false;
+	            }
+
+	            if (tmp && (tmp + '').split('.')[0].length >= 25) {
+	                return false;
+	            }
+	        }
+	    });
+
+	    $(this.element).attr('hasValidate', true);
+	};
+
+	Validate.fn.updateOptions = function (options) {};
+
+	Validate.fn.doValid = function (options) {
+	    var self = this;
+	    var pValue;
+	    this.showMsgFlag = true;
+	    if (options) {
+	        pValue = options.pValue;
+	        this.showMsgFlag = options.showMsg;
+	    }
+	    this.needClean = false;
+	    //只读的也需要校验，所以注释
+	    // if (this.element && this.element.getAttribute("readonly")) return {passed:true}
+	    var value = null;
+	    if (typeof pValue != 'undefined') value = pValue;else if (this.element) value = this.element.value;
+
+	    if (this.isEmpty(value) && this.required) {
+	        this.showMsg(this.nullMsg);
+	        return {
+	            passed: false,
+	            Msg: this.nullMsg
+	        };
+	    } else if (this.isEmpty(value) && !this.required) {
+	        return {
+	            passed: true
+	        };
+	    }
+	    if (this.regExp) {
+	        var reg = new RegExp(this.regExp);
+	        if (typeof value == 'number') value = value + "";else if (typeof value == 'boolean') return {
+	            passed: true
+	        };
+	        var r = value.match(reg);
+	        if (r === null || r === false) {
+	            this.showMsg(this.errorMsg);
+	            this.needClean = true;
+	            return {
+	                passed: false,
+	                Msg: this.errorMsg
+	            };
+	        }
+	    }
+	    if (this.minLength) {
+	        if (value.lengthb() < this.minLength) {
+	            var Msg = "输入长度不能小于" + this.minLength + "位";
+	            this.showMsg(Msg);
+	            return {
+	                passed: false,
+	                Msg: Msg
+	            };
+	        }
+	    }
+	    if (this.maxLength) {
+	        if (value.lengthb() > this.maxLength) {
+	            var Msg = "输入长度不能大于" + this.maxLength + "位";
+	            this.showMsg(Msg);
+	            return {
+	                passed: false,
+	                Msg: Msg
+	            };
+	        }
+	    }
+	    if (this.max != undefined && this.max != null) {
+	        if (parseFloat(value) > this.max) {
+	            var Msg = "输入值不能大于" + this.max;
+	            this.showMsg(Msg);
+	            return {
+	                passed: false,
+	                Msg: Msg
+	            };
+	        }
+	    }
+	    if (this.min != undefined && this.min != null) {
+	        if (parseFloat(value) < this.min) {
+	            var Msg = "输入值不能小于" + this.min;
+	            this.showMsg(Msg);
+	            return {
+	                passed: false,
+	                Msg: Msg
+	            };
+	        }
+	    }
+	    if (this.maxNotEq != undefined && this.maxNotEq != null) {
+	        if (parseFloat(value) >= this.maxNotEq) {
+	            var Msg = "输入值不能大于或等于" + this.maxNotEq;
+	            this.showMsg(Msg);
+	            return {
+	                passed: false,
+	                Msg: Msg
+	            };
+	        }
+	    }
+	    if (this.minNotEq != undefined && this.minNotEq != null) {
+	        if (parseFloat(value) <= this.minNotEq) {
+	            var Msg = "输入值不能小于或等于" + this.minNotEq;
+	            this.showMsg(Msg);
+	            return {
+	                passed: false,
+	                Msg: Msg
+	            };
+	        }
+	    }
+	    //succes时，将成功信息显示
+	    if (this.successId) {
+	        // addClass(this.element.parentNode,'u-has-success');
+	        var successDiv = this.successId;
+	        var successleft = this.referDom.offsetLeft + this.referDom.offsetWidth + 5;
+	        var successtop = this.referDom.offsetTop + 10;
+	        if (typeof successDiv === 'string') successDiv = document.getElementById(successDiv);
+	        successDiv.style.display = 'inline-block';
+	        successDiv.style.top = successtop + 'px';
+	        successDiv.style.left = successleft + 'px';
+	        clearTimeout(this.successtimeout);
+	        this.successtimeout = setTimeout(function () {
+	            // self.tooltip.hide();
+	            successDiv.style.display = 'none';
+	        }, this.tipAliveTime);
+	    }
+	    return {
+	        passed: true
+	    };
+	};
+
+	Validate.fn.check = Validate.fn.doValid;
+
+	//	Validate.fn.getValue = function() {
+	//		var inputval
+	//		if (this.$element.is(":radio")) {
+	//			inputval = this.$form.find(":radio[name='" + this.$element.attr("name") + "']:checked").val();
+	//		} else if (this.$element.is(":checkbox")) {
+	//			inputval = "";
+	//			this.$form.find(":checkbox[name='" + obj.attr("name") + "']:checked").each(function() {
+	//				inputval += $(this).val() + ',';
+	//			})
+	//		} else if (this.$element.is('div')) {
+	//			inputval = this.$element[0].trueValue;
+	//		} else {
+	//			inputval = this.$element.val();
+	//		}
+	//		inputval = $.trim(inputval);
+	//		return this.isEmpty(inputval) ? "" : inputval;
+	//	}
+
+	Validate.fn.some = Array.prototype.some ? Array.prototype.some : function () {
+	    var flag;
+	    for (var i = 0; i < this.length; i++) {
+	        if (typeof arguments[0] == "function") {
+	            flag = arguments[0](this[i]);
+	            if (flag) break;
+	        }
+	    }
+	    return flag;
+	};
+
+	Validate.fn.getValue = function () {
+	    var inputval = '';
+	    //checkbox、radio为u-meta绑定时
+	    var bool = this.some.call(this.$element.querySelectorAll('[type="checkbox"],[type="radio"]'), function (ele) {
+	        return ele.type == "checkbox" || ele.type == "radio";
+	    });
+	    if (this.$element.childNodes.length > 0 && bool) {
+	        var eleArr = this.$element.querySelectorAll('[type="checkbox"],[type="radio"]');
+	        var ele = eleArr[0];
+	        if (ele.type == "checkbox") {
+	            this.$element.querySelectorAll(":checkbox[name='" + $(ele).attr("name") + "']:checked").each(function () {
+	                inputval += $(this).val() + ',';
+	            });
+	        } else if (ele.type == "radio") {
+	            inputval = this.$element.querySelectorAll(":radio[name='" + $(ele).attr("name") + "']:checked").value;
+	        }
+	    } else if (this.$element.is(":radio")) {
+	        //valid-type 绑定
+	        inputval = this.$element.parent().querySelectorAll(":radio[name='" + this.$element.attr("name") + "']:checked").val();
+	    } else if (this.$element.is(":checkbox")) {
+	        inputval = "";
+	        this.$element.parent().find(":checkbox[name='" + this.$element.attr("name") + "']:checked").each(function () {
+	            inputval += $(this).val() + ',';
+	        });
+	    } else if (this.$element.find('input').length > 0) {
+	        inputval = this.$element.find('input').val();
+	    } else {
+	        inputval = this.$element.val();
+	    }
+	    inputval = inputval.trim;
+	    return this.isEmpty(inputval) ? "" : inputval;
+	};
+
+	Validate.fn.isEmpty = function (val) {
+	    return val === "" || val === undefined || val === null; //|| val === $.trim(this.$element.attr("tip"));
+	};
+
+	Validate.fn.showMsg = function (msg) {
+
+	    if (this.showMsgFlag == false || this.showMsgFlag == 'false') {
+	        return;
+	    }
+	    var self = this;
+	    if (this.tipId) {
+	        this.referDom.style.borderColor = 'rgb(241,90,74)';
+	        var tipdiv = this.tipId;
+	        if (typeof tipdiv === 'string') {
+	            tipdiv = document.getElementById(tipdiv);
+	        }
+	        tipdiv.innerHTML = msg;
+	        //如果notipFlag为true说明，可能是平台创建的，需要添加left、top值
+	        if (this.notipFlag) {
+	            var left = this.referDom.offsetLeft;
+	            var top = this.referDom.offsetTop + this.referDom.offsetHeight + 4;
+	            tipdiv.style.left = left + 'px';
+	            tipdiv.style.top = top + 'px';
+	        }
+
+	        tipdiv.style.display = 'block';
+	        // addClass(tipdiv.parentNode,'u-has-error');
+	        // $('#' + this.tipId).html(msg).show()
+	    } else {
+	        var tipOptions = {
+	            "title": msg,
+	            "trigger": "manual",
+	            "selector": "validtip",
+	            "placement": this.placement,
+	            "showFix": this.showFix
+	        };
+
+	        if (this.options.tipTemplate) tipOptions.template = this.options.tipTemplate;
+
+	        //月凯修改
+	        // if (!this.tooltip)
+	        this.referDom = this.$element;
+	        if (this.referDom.tagName !== 'INPUT' && this.referDom.tagName !== "TEXTAREA") {
+	            this.referDom = this.$element.querySelector('input');
+	            // 如果referDom的父元素不是this.$element说明时单选框、复选框。则referDom还为$element
+	            if (!this.referDom || this.referDom.parentNode !== this.$element) {
+	                this.referDom = this.$element;
+	            }
+	        }
+	        this.tooltip = new _neouiTooltip.Tooltip(this.referDom, tipOptions);
+	        this.tooltip.setTitle(msg);
+	        this.tooltip.show();
+	    }
+	    if (this.tipAliveTime !== -1) {
+	        clearTimeout(this.timeout);
+	        this.timeout = setTimeout(function () {
+	            // self.tooltip.hide();
+	            self.hideMsg();
+	        }, this.tipAliveTime);
+	    }
+	};
+	Validate.fn.hideMsg = function () {
+	    //隐藏成功信息
+	    // if(this.successId||this.tipId){
+	    // 	document.getElementById(this.successId).style.display='none';
+	    // 	document.getElementById(this.tipId).style.display='none';
+	    // }
+
+	    // removeClass(this.element.parentNode,'u-has-error');
+	    // removeClass(this.element.parentNode,'u-has-success');
+
+	    if (this.tipId) {
+	        var tipdiv = this.tipId;
+	        if (typeof tipdiv === 'string') {
+	            tipdiv = document.getElementById(tipdiv);
+	        }
+	        tipdiv.style.display = 'none';
+	        this.referDom.style.borderColor = '';
+	        // removeClass(tipdiv.parentNode,'u-has-error');
+	    } else {
+	        if (this.tooltip) this.tooltip.hide();
+	    }
+	};
+
+	/**
+	 * 只有单一元素时使用
+	 */
+	Validate.fn._needClean = function () {
+	    return true; //this.validates[0].needClean
+	};
+
+	var validate = function validate(element) {
+	    var self = this,
+	        options,
+	        childEle;
+	    if (typeof element === 'string') {
+	        element = document.querySelector(element);
+	    }
+	    //element本身需要校验
+	    if (element.attributes["uvalidate"]) {
+	        options = element.attributes["uvalidate"] ? JSON.parse(element.attributes["uvalidate"].value) : {};
+	        options = (0, _extend.extend)({
+	            el: element
+	        }, options);
+	        element['Validate'] = new Validate(options);
+	    }
+
+	    //element是个父元素，校验子元素
+	    childEle = element.querySelectorAll('[uvalidate]');
+	    (0, _util.each)(childEle, function (i, child) {
+	        if (!child['Validate']) {
+	            //如果该元素上没有校验
+	            options = child.attributes["validate"] ? JSON.parse(child.attributes["validate"].value) : {};
+	            options = (0, _extend.extend)({
+	                el: child
+	            }, options);
+	            child['Validate'] = new Validate(options);
+	        }
+	    });
+	};
+
+	// 对某个dom容器内的元素进行校验
+	var doValidate = function doValidate(element) {
+	    var passed = true,
+	        childEle,
+	        result;
+	    if (typeof element === 'string') {
+	        element = document.querySelector(element);
+	    }
+	    childEle = element.querySelectorAll('input');
+	    (0, _util.each)(childEle, function (i, child) {
+	        if (child['Validate'] && child['Validate'].check) {
+	            result = child['Validate'].check({
+	                trueValue: true,
+	                showMsg: true
+	            });
+	            if ((typeof result === 'undefined' ? 'undefined' : _typeof(result)) === 'object') passed = result['passed'] && passed;else passed = result && passed;
+	        }
+	    });
+	    return passed;
+	};
+
+	_compMgr.compMgr.regComp({
+	    comp: Validate,
+	    compAsString: 'u.Validate',
+	    css: 'u-validate'
+	});
+	if (document.readyState && document.readyState === 'complete') {
+	    _compMgr.compMgr.updateComp();
+	} else {
+	    (0, _event.on)(window, 'load', function () {
+	        //扫描并生成控件
+	        _compMgr.compMgr.updateComp();
+	    });
+	}
+	exports.Validate = Validate;
+	exports.validate = validate;
+	exports.doValidate = doValidate;
+
+/***/ },
 /* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
-	exports.core = undefined;
-
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-	                                                                                                                                                                                                                                                                               * Module : Sparrow core context
-	                                                                                                                                                                                                                                                                               * Author : Kvkens(yueming@yonyou.com)
-	                                                                                                                                                                                                                                                                               * Date	  : 2016-07-28 13:52:19
-	                                                                                                                                                                                                                                                                               */
-
+	exports.Tooltip = undefined;
 
 	var _extend = __webpack_require__(1);
 
-	var _util = __webpack_require__(6);
+	var _event = __webpack_require__(7);
 
-	var _cookies = __webpack_require__(40);
+	var _dom = __webpack_require__(10);
 
-	var _enumerables = __webpack_require__(2);
+	var Tooltip = function Tooltip(element, options) {
+		this.init(element, options);
+		//this.show()
+	}; /**
+	    * Module : neoui-tooltip
+	    * Author : Kvkens(yueming@yonyou.com)
+	    * Date   : 2016-08-06 13:26:06
+	    */
 
-	var environment = {};
-	/**
-	 * client attributes
-	 */
-	var clientAttributes = {};
 
-	var sessionAttributes = {};
-
-	var fn = {};
-	var maskerMeta = {
-		'float': {
-			precision: 2
+	Tooltip.prototype = {
+		defaults: {
+			animation: true,
+			placement: 'top',
+			//selector: false,
+			template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow" ></div><div class="tooltip-inner"></div></div>',
+			trigger: 'hover focus',
+			title: '',
+			delay: 0,
+			html: false,
+			container: false,
+			viewport: {
+				selector: 'body',
+				padding: 0
+			},
+			showFix: false
 		},
-		'datetime': {
-			format: 'YYYY-MM-DD HH:mm:ss',
-			metaType: 'DateTimeFormatMeta',
-			speratorSymbol: '-'
-		},
-		'time': {
-			format: 'HH:mm'
-		},
-		'date': {
-			format: 'YYYY-MM-DD'
-		},
-		'currency': {
-			precision: 2,
-			curSymbol: '￥'
-		},
-		'percent': {},
-		'phoneNumber': {}
-	};
-	/**
-	 * 获取环境信息
-	 * @return {environment}
-	 */
-	fn.getEnvironment = function () {
-		return (0, _util.createShellObject)(environment);
-	};
+		init: function init(element, options) {
+			this.element = element;
+			this.options = (0, _extend.extend)({}, this.defaults, options);
+			this._viewport = this.options.viewport && document.querySelector(this.options.viewport.selector || this.options.viewport);
 
-	/**
-	 * 获取客户端参数对象
-	 * @return {clientAttributes}
-	 */
-	fn.getClientAttributes = function () {
-		var exf = function exf() {};
-		return (0, _util.createShellObject)(clientAttributes);
-	};
+			var triggers = this.options.trigger.split(' ');
 
-	fn.setContextPath = function (contextPath) {
-		return environment[IWEB_CONTEXT_PATH] = contextPath;
-	};
-	fn.getContextPath = function (contextPath) {
-		return environment[IWEB_CONTEXT_PATH];
-	};
-	/**
-	 * 设置客户端参数对象
-	 * @param {Object} k 对象名称
-	 * @param {Object} v 对象值(建议使用简单类型)
-	 */
-	fn.setClientAttribute = function (k, v) {
-		clientAttributes[k] = v;
-	};
-	/**
-	 * 获取会话级参数对象
-	 * @return {clientAttributes}
-	 */
-	fn.getSessionAttributes = function () {
-		var exf = function exf() {};
-		return (0, _util.createShellObject)(sessionAttributes);
-	};
-
-	/**
-	 * 设置会话级参数对象
-	 * @param {Object} k 对象名称
-	 * @param {Object} v 对象值(建议使用简单类型)
-	 */
-	fn.setSessionAttribute = function (k, v) {
-		sessionAttributes[k] = v;
-		(0, _cookies.setCookie)("ISES_" + k, v);
-	};
-
-	/**
-	 * 移除客户端参数
-	 * @param {Object} k 对象名称
-	 */
-	fn.removeClientAttribute = function (k) {
-		clientAttributes[k] = null;
-		execIgnoreError(function () {
-			delete clientAttributes[k];
-		});
-	};
-
-	/**
-	 * 获取地区信息编码
-	 */
-	fn.getLocale = function () {
-		return this.getEnvironment().locale;
-	};
-
-	/**
-	 * 获取多语信息
-	 */
-	fn.getLanguages = function () {
-		return this.getEnvironment().languages;
-	};
-	/**
-	 * 收集环境信息(包括客户端参数)
-	 * @return {Object}
-	 */
-	fn.collectEnvironment = function () {
-		var _env = this.getEnvironment();
-		var _ses = this.getSessionAttributes();
-
-		for (var i in clientAttributes) {
-			_ses[i] = clientAttributes[i];
-		}
-		_env.clientAttributes = _ses;
-		return _env;
-	};
-
-	/**
-	 * 设置数据格式信息
-	 * @param {String} type
-	 * @param {Object} meta
-	 */
-	fn.setMaskerMeta = function (type, meta) {
-		if (typeof type == 'function') {
-			getMetaFunc = type;
-		} else {
-			if (!maskerMeta[type]) maskerMeta[type] = meta;else {
-				if ((typeof meta === 'undefined' ? 'undefined' : _typeof(meta)) != 'object') maskerMeta[type] = meta;else for (var key in meta) {
-					maskerMeta[type][key] = meta[key];
+			for (var i = triggers.length; i--;) {
+				var trigger = triggers[i];
+				if (trigger == 'click') {
+					(0, _event.on)(this.element, 'click', this.toggle.bind(this));
+				} else if (trigger != 'manual') {
+					var eventIn = trigger == 'hover' ? 'mouseenter' : 'focusin';
+					var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout';
+					(0, _event.on)(this.element, eventIn, this.enter.bind(this));
+					(0, _event.on)(this.element, eventOut, this.leave.bind(this));
 				}
 			}
+			this.options.title = this.options.title || this.element.getAttribute('title');
+			this.element.removeAttribute('title');
+			if (this.options.delay && typeof this.options.delay == 'number') {
+				this.options.delay = {
+					show: this.options.delay,
+					hide: this.options.delay
+				};
+			};
+			//tip模板对应的dom
+			this.tipDom = (0, _dom.makeDOM)(this.options.template);
+			(0, _dom.addClass)(this.tipDom, this.options.placement);
+			if (this.options.colorLevel) {
+				(0, _dom.addClass)(this.tipDom, this.options.colorLevel);
+			}
+			this.arrrow = this.tipDom.querySelector('.tooltip-arrow');
+
+			// tip容器,默认为当前元素的parent
+			this.container = this.options.container ? document.querySelector(this.options.container) : this.element.parentNode;
+		},
+		enter: function enter() {
+			var self = this;
+			clearTimeout(this.timeout);
+			this.hoverState = 'in';
+			if (!this.options.delay || !this.options.delay.show) return this.show();
+
+			this.timeout = setTimeout(function () {
+				if (self.hoverState == 'in') self.show();
+			}, this.options.delay.show);
+		},
+		leave: function leave() {
+			var self = this;
+			clearTimeout(this.timeout);
+			self.hoverState = 'out';
+			if (!self.options.delay || !self.options.delay.hide) return self.hide();
+			self.timeout = setTimeout(function () {
+				if (self.hoverState == 'out') self.hide();
+			}, self.options.delay.hide);
+		},
+		show: function show() {
+			var self = this;
+			this.tipDom.querySelector('.tooltip-inner').innerHTML = this.options.title;
+			this.tipDom.style.zIndex = (0, _dom.getZIndex)();
+
+			if (this.options.showFix) {
+				document.body.appendChild(this.tipDom);
+				this.tipDom.style.position = 'fixed';
+				(0, _dom.showPanelByEle)({
+					ele: this.element,
+					panel: this.tipDom,
+					position: "top"
+				});
+				// fix情况下滚动时隐藏
+				(0, _event.on)(document, 'scroll', function () {
+					self.hide();
+				});
+			} else {
+				this.container.appendChild(this.tipDom);
+				var inputLeft = this.element.offsetLeft;
+				var inputTop = this.element.offsetTop;
+				var inputWidth = this.element.offsetWidth;
+				var inputHeight = this.element.offsetHeight;
+				var topWidth = this.tipDom.offsetWidth;
+				var topHeight = this.tipDom.offsetHeight;
+				if (this.options.placement == 'top') {
+					this.left = this.element.offsetLeft + inputWidth / 2;
+					this.top = this.element.offsetTop - topHeight;
+				}
+				// 水平居中
+				this.tipDom.style.left = this.left - this.tipDom.clientWidth / 2 + 'px';
+				// this.tipDom.style.left = this.left + 'px';
+				this.tipDom.style.top = this.top + 'px';
+			}
+
+			(0, _dom.addClass)(this.tipDom, 'active');
+
+			// var placement = this.options.placement;
+			// var pos = this.getPosition()
+			// var actualWidth = this.tipDom.offsetWidth
+			// var actualHeight = this.tipDom.offsetHeight
+			// var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
+
+			// this.applyPlacement(calculatedOffset, placement)
+		},
+		hide: function hide() {
+			if (this.options.showFix) {
+				if (document.body.contains(this.tipDom)) {
+					(0, _dom.removeClass)(this.tipDom, 'active');
+					document.body.removeChild(this.tipDom);
+				}
+			} else {
+				if (this.container.contains(this.tipDom)) {
+					(0, _dom.removeClass)(this.tipDom, 'active');
+					this.container.removeChild(this.tipDom);
+				}
+			}
+		},
+		applyPlacement: function applyPlacement(offset, placement) {
+			var width = this.tipDom.offsetWidth;
+			var height = this.tipDom.offsetHeight;
+
+			// manually read margins because getBoundingClientRect includes difference
+			var marginTop = parseInt(this.tipDom.style.marginTop, 10);
+			var marginLeft = parseInt(this.tipDom.style.marginTop, 10);
+
+			// we must check for NaN for ie 8/9
+			if (isNaN(marginTop)) marginTop = 0;
+			if (isNaN(marginLeft)) marginLeft = 0;
+
+			offset.top = offset.top + marginTop;
+			offset.left = offset.left + marginLeft;
+
+			// $.fn.offset doesn't round pixel values
+			// so we use setOffset directly with our own function B-0
+			this.tipDom.style.left = offset.left + 'px';
+			this.tipDom.style.top = offset.top + 'px';
+
+			(0, _dom.addClass)(this.tipDom, 'active');
+
+			// check to see if placing tip in new offset caused the tip to resize itself
+			var actualWidth = this.tipDom.offsetWidth;
+			var actualHeight = this.tipDom.offsetHeight;
+
+			if (placement == 'top' && actualHeight != height) {
+				offset.top = offset.top + height - actualHeight;
+			}
+			var delta = this.getViewportAdjustedDelta(placement, offset, actualWidth, actualHeight);
+
+			if (delta.left) offset.left += delta.left;else offset.top += delta.top;
+
+			var isVertical = /top|bottom/.test(placement);
+			var arrowDelta = isVertical ? delta.left * 2 - width + actualWidth : delta.top * 2 - height + actualHeight;
+			var arrowOffsetPosition = isVertical ? 'offsetWidth' : 'offsetHeight';
+
+			//$tip.offset(offset)
+			this.tipDom.style.left = offset.left + 'px';
+			this.tipDom.style.top = offset.top - 4 + 'px';
+
+			// this.replaceArrow(arrowDelta, $tip[0][arrowOffsetPosition], isVertical)
+		},
+		getCalculatedOffset: function getCalculatedOffset(placement, pos, actualWidth, actualHeight) {
+			return placement == 'bottom' ? {
+				top: pos.top + pos.height,
+				left: pos.left + pos.width / 2 - actualWidth / 2
+			} : placement == 'top' ? {
+				top: pos.top - actualHeight,
+				left: pos.left + pos.width / 2 - actualWidth / 2
+			} : placement == 'left' ? {
+				top: pos.top + pos.height / 2 - actualHeight / 2,
+				left: pos.left - actualWidth
+			} :
+			/* placement == 'right' */
+			{
+				top: pos.top + pos.height / 2 - actualHeight / 2,
+				left: pos.left + pos.width
+			};
+		},
+		getPosition: function getPosition(el) {
+			el = el || this.element;
+			var isBody = el.tagName == 'BODY';
+			var elRect = el.getBoundingClientRect();
+			if (elRect.width == null) {
+				// width and height are missing in IE8, so compute them manually; see https://github.com/twbs/bootstrap/issues/14093
+				elRect = (0, _extend.extend)({}, elRect, {
+					width: elRect.right - elRect.left,
+					height: elRect.bottom - elRect.top
+				});
+			}
+			var elOffset = isBody ? {
+				top: 0,
+				left: 0
+			} : {
+				top: el.offsetTop,
+				left: el.offsetLeft
+			};
+			var scroll = {
+				scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : el.scrollTop
+			};
+			var outerDims = isBody ? {
+				width: window.innerWidth || document.body.clientWidth,
+				height: window.innerHeight || document.body.clientHeight
+			} : null;
+			//return extend({}, elRect, scroll, outerDims, elOffset)
+			return (0, _extend.extend)({}, elRect, scroll, outerDims);
+		},
+		getViewportAdjustedDelta: function getViewportAdjustedDelta(placement, pos, actualWidth, actualHeight) {
+			var delta = {
+				top: 0,
+				left: 0
+			};
+			if (!this._viewport) return delta;
+
+			var viewportPadding = this.options.viewport && this.options.viewport.padding || 0;
+			var viewportDimensions = this.getPosition(this._viewport);
+
+			if (/right|left/.test(placement)) {
+				var topEdgeOffset = pos.top - viewportPadding - viewportDimensions.scroll;
+				var bottomEdgeOffset = pos.top + viewportPadding - viewportDimensions.scroll + actualHeight;
+				if (topEdgeOffset < viewportDimensions.top) {
+					// top overflow
+					delta.top = viewportDimensions.top - topEdgeOffset;
+				} else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) {
+					// bottom overflow
+					delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset;
+				}
+			} else {
+				var leftEdgeOffset = pos.left - viewportPadding;
+				var rightEdgeOffset = pos.left + viewportPadding + actualWidth;
+				if (leftEdgeOffset < viewportDimensions.left) {
+					// left overflow
+					delta.left = viewportDimensions.left - leftEdgeOffset;
+				} else if (rightEdgeOffset > viewportDimensions.width) {
+					// right overflow
+					delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset;
+				}
+			}
+
+			return delta;
+		},
+		replaceArrow: function replaceArrow(delta, dimension, isHorizontal) {
+			if (isHorizontal) {
+				this.arrow.style.left = 50 * (1 - delta / dimension) + '%';
+				this.arrow.style.top = '';
+			} else {
+				this.arrow.style.top = 50 * (1 - delta / dimension) + '%';
+				this.arrow.style.left = '';
+			}
+		},
+		destory: function destory() {},
+		setTitle: function setTitle(title) {
+			this.options.title = title;
 		}
+
 	};
-	fn.getMaskerMeta = function (type) {
-		if (typeof getMetaFunc == 'function') {
-			var meta = getMetaFunc.call(this);
-			return meta[type];
-		} else return (0, _extend.extend)({}, maskerMeta[type]);
-	};
-	environment.languages = (0, _cookies.getCookie)(_enumerables.U_LANGUAGES) ? (0, _cookies.getCookie)(_enumerables.U_LANGUAGES).split(',') : navigator.language ? navigator.language : 'zh-CN';
-	if (environment.languages == 'zh-cn') environment.languages = 'zh-CN';
-	if (environment.languages == 'en-us') environment.languages = 'en-US';
 
-	environment.theme = (0, _cookies.getCookie)(_enumerables.U_THEME);
-	environment.locale = (0, _cookies.getCookie)(_enumerables.U_LOCALE);
-	//environment.timezoneOffset = (new Date()).getTimezoneOffset()
-	environment.usercode = (0, _cookies.getCookie)(_enumerables.U_USERCODE);
-	//init session attribute
-	document.cookie.replace(/ISES_(\w*)=([^;]*);?/ig, function (a, b, c) {
-		sessionAttributes[b] = c;
-	});
-
-	var Core = function Core() {};
-	Core.prototype = fn;
-
-	var core = new Core();
-
-	exports.core = core;
+	exports.Tooltip = Tooltip;
 
 /***/ },
 /* 40 */
@@ -14968,998 +15432,20 @@ $.fn.bootstrapWizard.defaults = {
 
 	exports.__esModule = true;
 	/**
-	 * Module : Sparrow cookies
+	 * Module : Sparrow i18n
 	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-07-27 21:46:50
+	 * Date	  : 2016-07-29 10:16:54
 	 */
-
-	var setCookie = function setCookie(sName, sValue, oExpires, sPath, sDomain, bSecure) {
-		var sCookie = sName + "=" + encodeURIComponent(sValue);
-		if (oExpires) sCookie += "; expires=" + oExpires.toGMTString();
-		if (sPath) sCookie += "; path=" + sPath;
-		if (sDomain) sCookie += "; domain=" + sDomain;
-		if (bSecure) sCookie += "; secure=" + bSecure;
-		document.cookie = sCookie;
+	//import {uuii18n} from '?';//缺失故修改为default值
+	var trans = function trans(key, dftValue) {
+	  //return  uuii18n ?  uuii18n.t('uui-trans:' + key) : dftValue;
+	  return dftValue;
 	};
 
-	var getCookie = function getCookie(sName) {
-		var sRE = "(?:; )?" + sName + "=([^;]*);?";
-		var oRE = new RegExp(sRE);
-
-		if (oRE.test(document.cookie)) {
-			return decodeURIComponent(RegExp["$1"]);
-		} else return null;
-	};
-
-	exports.setCookie = setCookie;
-	exports.getCookie = getCookie;
+	exports.trans = trans;
 
 /***/ },
 /* 41 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports.date = undefined;
-
-	var _core = __webpack_require__(39);
-
-	var _util = __webpack_require__(6);
-
-	/**
-	 * Module : Sparrow date util
-	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-08-06 13:37:20
-	 */
-
-	var u = {};
-	u.date = {
-
-		/**
-	  * 多语言处理
-	  */
-		//TODO 后续放到多语文件中
-		_dateLocale: {
-			'zh-CN': {
-				months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
-				monthsShort: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
-				weekdays: '星期日_星期一_星期二_星期三_星期四_星期五_星期六'.split('_'),
-				weekdaysShort: '周日_周一_周二_周三_周四_周五_周六'.split('_'),
-				weekdaysMin: '日_一_二_三_四_五_六'.split('_')
-			},
-			'en-US': {
-				months: 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_'),
-				monthsShort: 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_'),
-				weekdays: 'Sunday_Monday_Tuesday_Wednesday_Thurday_Friday_Saturday'.split('_'),
-				weekdaysShort: 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
-				weekdaysMin: 'S_M_T_W_T_F_S'.split('_')
-			}
-		},
-
-		_formattingTokens: /(\[[^\[]*\])|(\\)?(Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Q|YYYY|YY|e|E|a|A|hh?|HH?|mm?|ss?|S{1,4}|x|X|zz?|ZZ?|.)/g,
-
-		leftZeroFill: function leftZeroFill(number, targetLength, forceSign) {
-			var output = '' + Math.abs(number),
-			    sign = number >= 0;
-			while (output.length < targetLength) {
-				output = '0' + output;
-			}
-			return (sign ? forceSign ? '+' : '' : '-') + output;
-		},
-
-		_formats: {
-			//year
-			YY: function YY(date) {
-				return u.date.leftZeroFill(date.getFullYear() % 100, 2);
-			},
-			YYYY: function YYYY(date) {
-				return date.getFullYear();
-			},
-			//month
-			M: function M(date) {
-				return date.getMonth() + 1;
-			},
-			MM: function MM(date) {
-				var m = u.date._formats.M(date);
-				return u.date.leftZeroFill(m, 2);
-			},
-			MMM: function MMM(date, language) {
-				var m = date.getMonth();
-				return u.date._dateLocale[language].monthsShort[m];
-			},
-			MMMM: function MMMM(date, language) {
-				var m = date.getMonth();
-				return u.date._dateLocale[language].months[m];
-			},
-			//date
-			D: function D(date) {
-				return date.getDate();
-			},
-			DD: function DD(date) {
-				var d = u.date._formats.D(date);
-				return u.date.leftZeroFill(d, 2);
-			},
-			// weekday
-			d: function d(date) {
-				return date.getDay();
-			},
-			dd: function dd(date, language) {
-				var d = u.date._formats.d(date);
-				return u.date._dateLocale[language].weekdaysMin[d];
-			},
-			ddd: function ddd(date, language) {
-				var d = u.date._formats.d(date);
-				return u.date._dateLocale[language].weekdaysShort[d];
-			},
-			dddd: function dddd(date, language) {
-				var d = u.date._formats.d(date);
-				return u.date._dateLocale[language].weekdays[d];
-			},
-			// am pm
-			a: function a(date) {
-				if (date.getHours() > 12) {
-					return 'pm';
-				} else {
-					return 'am';
-				}
-			},
-			//hour
-			h: function h(date) {
-				var h = date.getHours();
-				h = h > 12 ? h - 12 : h;
-				return h;
-			},
-			hh: function hh(date) {
-				var h = u.date._formats.h(date);
-				return u.date.leftZeroFill(h, 2);
-			},
-			H: function H(date) {
-				return date.getHours();
-			},
-			HH: function HH(date) {
-				return u.date.leftZeroFill(date.getHours(), 2);
-			},
-			// minutes
-			m: function m(date) {
-				return date.getMinutes();
-			},
-			mm: function mm(date) {
-				return u.date.leftZeroFill(date.getMinutes(), 2);
-			},
-			//seconds
-			s: function s(date) {
-				return date.getSeconds();
-			},
-			ss: function ss(date) {
-				return u.date.leftZeroFill(date.getSeconds(), 2);
-			}
-		},
-
-		/**
-	  * 日期格式化
-	  * @param date
-	  * @param formatString
-	  */
-		format: function format(date, formatString, language) {
-			if (!date) return date;
-			var array = formatString.match(u.date._formattingTokens),
-			    i,
-			    length,
-			    output = '';
-			var _date = u.date.getDateObj(date);
-			if (!_date) return date;
-			language = language || _core.core.getLanguages();
-			for (i = 0, length = array.length; i < length; i++) {
-				if (u.date._formats[array[i]]) {
-					output += u.date._formats[array[i]](_date, language);
-				} else {
-					output += array[i];
-				}
-			}
-			return output;
-		},
-
-		_addOrSubtract: function _addOrSubtract(date, period, value, isAdding) {
-			var times = date.getTime(),
-			    d = date.getDate(),
-			    m = date.getMonth(),
-			    _date = u.date.getDateObj(date);
-			if (period === 'ms') {
-				times = times + value * isAdding;
-				_date.setTime(times);
-			} else if (period == 's') {
-				times = times + value * 1000 * isAdding;
-				_date.setTime(times);
-			} else if (period == 'm') {
-				times = times + value * 60000 * isAdding;
-				_date.setTime(times);
-			} else if (period == 'h') {
-				times = times + value * 3600000 * isAdding;
-				_date.setTime(times);
-			} else if (period == 'd') {
-				d = d + value * isAdding;
-				_date.setDate(d);
-			} else if (period == 'w') {
-				d = d + value * 7 * isAdding;
-				_date.setDate(d);
-			} else if (period == 'M') {
-				m = m + value * isAdding;
-				_date.setMonth(m);
-			} else if (period == 'y') {
-				m = m + value * 12 * isAdding;
-				_date.setMonth(m);
-			}
-			return _date;
-		},
-
-		add: function add(date, period, value) {
-			return u.date._addOrSubtract(date, period, value, 1);
-		},
-		sub: function sub(date, period, value) {
-			return u.date._addOrSubtract(date, period, value, -1);
-		},
-		getDateObj: function getDateObj(value) {
-			if (!value || typeof value == 'undefined') return value;
-			var dateFlag = false;
-			var _date = new Date((0, _util.dateFormat)(value));
-			if (isNaN(_date)) {
-				// IE的话对"2016-2-13 12:13:22"进行处理
-				var index1, index2, index3, s1, s2, s3;
-				if (value.indexOf) {
-					index1 = value.indexOf('-');
-					index2 = value.indexOf(':');
-					index3 = value.indexOf(' ');
-					if (index1 > 0 || index2 > 0 || index3 > 0) {
-						_date = new Date();
-						if (index3 > 0) {
-							s3 = value.split(' ');
-							s1 = s3[0].split('-');
-							s2 = s3[1].split(':');
-						} else if (index1 > 0) {
-							s1 = value.split('-');
-						} else if (index2 > 0) {
-							s2 = value.split(':');
-						}
-						if (s1 && s1.length > 0) {
-							_date.setYear(s1[0]);
-							_date.setMonth(parseInt(s1[1] - 1));
-							_date.setDate(s1[2] ? s1[2] : 0);
-							dateFlag = true;
-						}
-						if (s2 && s2.length > 0) {
-							_date.setHours(s2[0] ? s2[0] : 0);
-							_date.setMinutes(s2[1] ? s2[1] : 0);
-							_date.setSeconds(s2[2] ? s2[2] : 0);
-							dateFlag = true;
-						}
-					} else {
-						_date = new Date(parseInt(value));
-						if (isNaN(_date)) {
-							throw new TypeError('invalid Date parameter');
-						} else {
-							dateFlag = true;
-						}
-					}
-				}
-			} else {
-				dateFlag = true;
-			}
-
-			if (dateFlag) return _date;else return null;
-		}
-
-	};
-
-	var date = u.date;
-	exports.date = date;
-
-/***/ },
-/* 42 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports.Time = undefined;
-
-	var _extend = __webpack_require__(1);
-
-	var _BaseComponent = __webpack_require__(4);
-
-	var _env = __webpack_require__(8);
-
-	var _event = __webpack_require__(7);
-
-	var _dom = __webpack_require__(10);
-
-	var _compMgr = __webpack_require__(9);
-
-	var Time = _BaseComponent.BaseComponent.extend({
-		DEFAULTS: {},
-		init: function init() {
-			var self = this;
-			var element = this.element;
-			this.options = (0, _extend.extend)({}, this.DEFAULTS, this.options);
-			this.panelDiv = null;
-			this.input = this.element.querySelector("input");
-			(0, _dom.addClass)(this.element, 'u-text');
-
-			(0, _event.on)(this.input, 'blur', function (e) {
-				self._inputFocus = false;
-				this.setValue(this.input.value);
-			}.bind(this));
-
-			// 添加focus事件
-			this.focusEvent();
-			// 添加右侧图标click事件
-			this.clickEvent();
-		}
-	});
-
-	Time.fn = Time.prototype;
-
-	Time.fn.createPanel = function () {
-		if (this.panelDiv) return;
-		var oThis = this;
-		this.panelDiv = (0, _dom.makeDOM)('<div class="u-date-panel" style="padding:0px;"></div>');
-		this.panelContentDiv = (0, _dom.makeDOM)('<div class="u-time-content"></div>');
-		this.panelDiv.appendChild(this.panelContentDiv);
-		this.panelHourDiv = (0, _dom.makeDOM)('<div class="u-time-cell"></div>');
-		this.panelContentDiv.appendChild(this.panelHourDiv);
-		this.panelHourInput = (0, _dom.makeDOM)('<input class="u-time-input">');
-		this.panelHourDiv.appendChild(this.panelHourInput);
-		this.panelMinDiv = (0, _dom.makeDOM)('<div class="u-time-cell"></div>');
-		this.panelContentDiv.appendChild(this.panelMinDiv);
-		this.panelMinInput = (0, _dom.makeDOM)('<input class="u-time-input">');
-		this.panelMinDiv.appendChild(this.panelMinInput);
-		this.panelSecDiv = (0, _dom.makeDOM)('<div class="u-time-cell"></div>');
-		this.panelContentDiv.appendChild(this.panelSecDiv);
-		this.panelSecInput = (0, _dom.makeDOM)('<input class="u-time-input">');
-		this.panelSecDiv.appendChild(this.panelSecInput);
-		this.panelNavDiv = (0, _dom.makeDOM)('<div class="u-time-nav"></div>');
-		this.panelDiv.appendChild(this.panelNavDiv);
-		this.panelOKButton = (0, _dom.makeDOM)('<button class="u-button" style="float:right;">OK</button>');
-		this.panelNavDiv.appendChild(this.panelOKButton);
-		(0, _event.on)(this.panelOKButton, 'click', function () {
-			var v = oThis.panelHourInput.value + ':' + oThis.panelMinInput.value + ':' + oThis.panelSecInput.value;
-			oThis.setValue(v);
-			oThis.hide();
-		});
-		this.panelCancelButton = (0, _dom.makeDOM)('<button class="u-button" style="float:right;">Cancel</button>');
-		this.panelNavDiv.appendChild(this.panelCancelButton);
-		(0, _event.on)(this.panelCancelButton, 'click', function () {
-			oThis.hide();
-		});
-
-		var d = new Date();
-		this.panelHourInput.value = d.getHours() > 9 ? '' + d.getHours() : '0' + d.getHours();
-		this.panelMinInput.value = d.getMinutes() > 9 ? '' + d.getMinutes() : '0' + d.getMinutes();
-		this.panelSecInput.value = d.getSeconds() > 9 ? '' + d.getSeconds() : '0' + d.getSeconds();
-	};
-
-	Time.fn.setValue = function (value) {
-		var hour = '',
-		    min = '',
-		    sec = '';
-		value = value ? value : '';
-		if (value == this.input.value) return;
-		if (value && value.indexOf(':') > -1) {
-			var vA = value.split(":");
-			var hour = vA[0];
-			hour = hour % 24;
-			hour = hour > 9 ? '' + hour : '0' + hour;
-			var min = vA[1];
-			min = min % 60;
-			min = min > 9 ? '' + min : '0' + min;
-			var sec = vA[2];
-			sec = sec % 60;
-			sec = sec > 9 ? '' + sec : '0' + sec;
-
-			value = hour + ':' + min + ':' + sec;
-		}
-		this.input.value = value;
-		this.createPanel();
-
-		this.panelHourInput.value = hour;
-		this.panelMinInput.value = min;
-		this.panelSecInput.value = sec;
-		this.trigger('valueChange', { value: value });
-	};
-
-	Time.fn.focusEvent = function () {
-		var self = this;
-		(0, _event.on)(this.input, 'focus', function (e) {
-			self._inputFocus = true;
-			self.show(e);
-			(0, _event.stopEvent)(e);
-		});
-	};
-
-	//下拉图标的点击事件
-	Time.fn.clickEvent = function () {
-		var self = this;
-		var caret = this.element.nextSibling;
-		(0, _event.on)(caret, 'click', function (e) {
-			self.input.focus();
-			(0, _event.stopEvent)(e);
-		});
-	};
-
-	Time.fn.show = function (evt) {
-
-		var inputValue = this.input.value;
-		this.setValue(inputValue);
-
-		var oThis = this;
-		this.createPanel();
-
-		/*因为元素可能变化位置，所以显示的时候需要重新计算*/
-		this.width = this.element.offsetWidth;
-		if (this.width < 300) this.width = 300;
-
-		this.panelDiv.style.width = this.width + 'px';
-		this.panelDiv.style.maxWidth = this.width + 'px';
-		if (this.options.showFix) {
-			document.body.appendChild(this.panelDiv);
-			this.panelDiv.style.position = 'fixed';
-			(0, _dom.showPanelByEle)({
-				ele: this.input,
-				panel: this.panelDiv,
-				position: "bottomLeft"
-			});
-		} else {
-			// this.element.parentNode.appendChild(this.panelDiv);
-			// //调整left和top
-			// this.left = this.element.offsetLeft;
-			// var inputHeight = this.element.offsetHeight;
-			// this.top = this.element.offsetTop + inputHeight;
-			// this.panelDiv.style.left = this.left + 'px';
-			// this.panelDiv.style.top = this.top + 'px';
-
-			var bodyWidth = document.body.clientWidth,
-			    bodyHeight = document.body.clientHeight,
-			    panelWidth = this.panelDiv.offsetWidth,
-			    panelHeight = this.panelDiv.offsetHeight;
-
-			this.element.appendChild(this.panelDiv);
-			this.element.style.position = 'relative';
-			this.left = this.input.offsetLeft;
-			var inputHeight = this.input.offsetHeight;
-			this.top = this.input.offsetTop + inputHeight;
-
-			if (this.left + panelWidth > bodyWidth) {
-				this.left = bodyWidth - panelWidth;
-			}
-
-			if (this.top + panelHeight > bodyHeight) {
-				this.top = bodyHeight - panelHeight;
-			}
-
-			this.panelDiv.style.left = this.left + 'px';
-			this.panelDiv.style.top = this.top + 'px';
-		}
-
-		this.panelDiv.style.zIndex = (0, _dom.getZIndex)();
-		(0, _dom.addClass)(this.panelDiv, 'is-visible');
-
-		var callback = function (e) {
-			if (e !== evt && e.target !== this.input && !oThis.clickPanel(e.target) && oThis._inputFocus != true) {
-				(0, _event.off)(document, 'click', callback);
-				// document.removeEventListener('click', callback);
-				this.hide();
-			}
-		}.bind(this);
-		(0, _event.on)(document, 'click', callback);
-		// document.addEventListener('click', callback);
-	};
-
-	Time.fn.clickPanel = function (dom) {
-		while (dom) {
-			if (dom == this.panelDiv) {
-				return true;
-			} else {
-				dom = dom.parentNode;
-			}
-		}
-		return false;
-	};
-
-	Time.fn.hide = function () {
-		(0, _dom.removeClass)(this.panelDiv, 'is-visible');
-		this.panelDiv.style.zIndex = -1;
-	};
-
-	_compMgr.compMgr.regComp({
-		comp: Time,
-		compAsString: 'u.Time',
-		css: 'u-time'
-	});
-	if (_env.env.isIE8) {
-		_compMgr.compMgr.regComp({
-			comp: Time,
-			compAsString: 'u.ClockPicker',
-			css: 'u-clockpicker'
-		});
-	}
-
-	if (document.readyState && document.readyState === 'complete') {
-		_compMgr.compMgr.updateComp();
-	} else {
-		(0, _event.on)(window, 'load', function () {
-			//扫描并生成控件
-			_compMgr.compMgr.updateComp();
-		});
-	}
-
-	exports.Time = Time;
-
-/***/ },
-/* 43 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports.ClockPicker = undefined;
-
-	var _BaseComponent = __webpack_require__(4);
-
-	var _dom = __webpack_require__(10);
-
-	var _event = __webpack_require__(7);
-
-	var _compMgr = __webpack_require__(9);
-
-	var _env = __webpack_require__(8);
-
-	var _extend = __webpack_require__(1);
-
-	var _core = __webpack_require__(39);
-
-	var _dateUtils = __webpack_require__(41);
-
-	/**
-	 * Module : neoui-clockpicker
-	 * Author : liuyk(liuyk@yonyou.com)
-	 * Date	  : 2016-08-11 15:17:07
-	 */
-
-	var ClockPicker = _BaseComponent.BaseComponent.extend({
-		DEFAULTS: {},
-		init: function init() {
-			var self = this;
-			var element = this.element;
-			this.options = (0, _extend.extend)({}, this.DEFAULTS, this.options);
-			this.format = this.options['format'] || _core.core.getMaskerMeta('time').format;
-			this.panelDiv = null;
-			this.input = this.element.querySelector("input");
-			if (_env.isMobile) {
-				this.input.setAttribute('readonly', 'readonly');
-			}
-			(0, _dom.addClass)(this.element, 'u-text');
-
-			this.template = '<div class="u-clock-ul popover clockpicker-popover" style="padding:0px;">';
-			this.template += '<div class="popover-title"><button class="u-button u-date-clean u-clock-clean" >清空</button><span class="clockpicker-span-hours">02</span> : <span class="clockpicker-span-minutes text-primary">01</span><span class="clockpicker-span-am-pm"></span></div>';
-			this.template += '<div class="popover-content">';
-			this.template += '	<div class="clockpicker-plate">';
-			this.template += '		<div class="clockpicker-canvas">';
-			this.template += '			<svg class="clockpicker-svg">';
-			this.template += '				<g transform="translate(100,100)">';
-			this.template += '					<circle class="clockpicker-canvas-bg clockpicker-canvas-bg-trans" r="13" cx="8.362277061412277" cy="-79.56175162946187"></circle>';
-			this.template += '					<circle class="clockpicker-canvas-fg" r="3.5" cx="8.362277061412277" cy="-79.56175162946187"></circle>';
-			this.template += '					<line x1="0" y1="0" x2="8.362277061412277" y2="-79.56175162946187"></line>';
-			this.template += '					<circle class="clockpicker-canvas-bearing" cx="0" cy="0" r="2"></circle>';
-			this.template += '				</g>';
-			this.template += '			</svg>';
-			this.template += '		</div>';
-			this.template += '		<div class="clockpicker-dial clockpicker-hours" style="visibility: visible;">';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-1" >00</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-2" >1</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-3" >2</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-4" >3</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-5" >4</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-6" >5</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-7" >6</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-8" >7</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-9" >8</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-10" >9</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-11" >10</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-12" >11</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-13" >12</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-14" >13</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-15" >14</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-16" >15</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-17" >16</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-18" >17</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-19" >18</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-20" >19</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-21" >20</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-22" >21</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-23" >22</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-24" >23</div>';
-			this.template += '		</div>';
-			this.template += '		<div class="clockpicker-dial clockpicker-minutes" style="visibility: hidden;">';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-25" >00</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-26" >05</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-27" >10</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-28" >15</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-29" >20</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-30" >25</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-31" >30</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-32" >35</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-33" >40</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-34" >45</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-35" >50</div>';
-			this.template += '			<div class="clockpicker-tick clockpicker-tick-36" >55</div>';
-			this.template += '		</div>';
-			this.template += '	</div><span class="clockpicker-am-pm-block"></span></div>';
-			this.template += '	</div>';
-			(0, _event.on)(this.input, 'blur', function (e) {
-				self._inputFocus = false;
-				this.setValue(this.input.value);
-			}.bind(this));
-
-			var d = new Date();
-			this.defaultHour = d.getHours() > 9 ? '' + d.getHours() : '0' + d.getHours();
-			this.defaultMin = d.getMinutes() > 9 ? '' + d.getMinutes() : '0' + d.getMinutes();
-			this.defaultSec = d.getSeconds() > 9 ? '' + d.getSeconds() : '0' + d.getSeconds();
-
-			this.hours = this.defaultHour;
-			this.min = this.defaultMin;
-			this.sec = this.defaultSec;
-			// 添加focus事件
-			this.focusEvent();
-			// 添加右侧图标click事件
-			this.clickEvent();
-		},
-
-		_zoomIn: function _zoomIn(newPage) {
-
-			(0, _dom.addClass)(newPage, 'zoom-in');
-
-			var cleanup = function () {
-				(0, _event.off)(newPage, 'transitionend', cleanup);
-				(0, _event.off)(newPage, 'webkitTransitionEnd', cleanup);
-				// this.panelContentDiv.removeChild(this.contentPage);
-				this.contentPage = newPage;
-			}.bind(this);
-			if (this.contentPage) {
-				(0, _event.on)(newPage, 'transitionend', cleanup);
-				(0, _event.on)(newPage, 'webkitTransitionEnd', cleanup);
-			}
-			setTimeout(function () {
-				newPage.style.visibility = 'visible';
-				(0, _dom.removeClass)(newPage, 'zoom-in');
-			}, 150);
-		},
-
-		createPanel: function createPanel() {
-			if (this.panelDiv) return;
-			var oThis = this;
-			this.panelDiv = (0, _dom.makeDOM)(this.template);
-
-			this.hand = this.panelDiv.querySelector('line');
-			this.bg = this.panelDiv.querySelector('.clockpicker-canvas-bg');
-			this.fg = this.panelDiv.querySelector('.clockpicker-canvas-fg');
-			this.titleHourSpan = this.panelDiv.querySelector('.clockpicker-span-hours');
-			this.titleMinSpan = this.panelDiv.querySelector('.clockpicker-span-minutes');
-			this.hourDiv = this.panelDiv.querySelector('.clockpicker-hours');
-			this.minDiv = this.panelDiv.querySelector('.clockpicker-minutes');
-			this.btnClean = this.panelDiv.querySelector('.u-date-clean');
-			if (!_env.isMobile) this.btnClean.style.display = 'none';
-			this.currentView = 'hours';
-			(0, _event.on)(this.hourDiv, 'click', function (e) {
-				var target = e.target;
-				if ((0, _dom.hasClass)(target, 'clockpicker-tick')) {
-					this.hours = target.innerHTML;
-					this.hours = this.hours > 9 || this.hours == 0 ? '' + this.hours : '0' + this.hours;
-					this.titleHourSpan.innerHTML = this.hours;
-					this.hourDiv.style.visibility = 'hidden';
-					// this.minDiv.style.visibility = 'visible';
-					this._zoomIn(this.minDiv);
-					this.currentView = 'min';
-					this.setHand();
-				}
-			}.bind(this));
-
-			(0, _event.on)(this.minDiv, 'click', function (e) {
-				var target = e.target;
-				if ((0, _dom.hasClass)(target, 'clockpicker-tick')) {
-					this.min = target.innerHTML;
-					// this.min = this.min > 9 || this.min == 00? '' + this.min:'0' + this.min;
-					this.titleMinSpan.innerHTML = this.min;
-					this.minDiv.style.visibility = 'hidden';
-					this.hourDiv.style.visibility = 'visible';
-					this.currentView = 'hours';
-					var v = this.hours + ':' + this.min + ':' + this.sec;
-					this.setValue(v);
-					this.hide();
-				}
-			}.bind(this));
-
-			(0, _event.on)(this.btnClean, 'click', function (e) {
-				this.setValue("");
-				this.hide();
-			}.bind(this));
-		},
-
-		setHand: function setHand() {
-			var dialRadius = 100,
-			    innerRadius = 54,
-			    outerRadius = 80;
-			var view = this.currentView,
-			    value = this[view],
-			    isHours = view === 'hours',
-			    unit = Math.PI / (isHours ? 6 : 30),
-			    radian = value * unit,
-			    radius = isHours && value > 0 && value < 13 ? innerRadius : outerRadius,
-			    x = Math.sin(radian) * radius,
-			    y = -Math.cos(radian) * radius;
-			this.setHandFun(x, y);
-		},
-
-		setHandFun: function setHandFun(x, y, roundBy5, dragging) {
-			var dialRadius = 100,
-			    innerRadius = 54,
-			    outerRadius = 80;
-
-			var radian = Math.atan2(x, -y),
-			    isHours = this.currentView === 'hours',
-			    unit = Math.PI / (isHours ? 6 : 30),
-			    z = Math.sqrt(x * x + y * y),
-			    options = this.options,
-			    inner = isHours && z < (outerRadius + innerRadius) / 2,
-			    radius = inner ? innerRadius : outerRadius,
-			    value;
-
-			if (this.twelvehour) {
-				radius = outerRadius;
-			}
-
-			// Radian should in range [0, 2PI]
-			if (radian < 0) {
-				radian = Math.PI * 2 + radian;
-			}
-
-			// Get the round value
-			value = Math.round(radian / unit);
-
-			// Get the round radian
-			radian = value * unit;
-
-			// Correct the hours or minutes
-			if (options.twelvehour) {
-				if (isHours) {
-					if (value === 0) {
-						value = 12;
-					}
-				} else {
-					if (roundBy5) {
-						value *= 5;
-					}
-					if (value === 60) {
-						value = 0;
-					}
-				}
-			} else {
-				if (isHours) {
-					if (value === 12) {
-						value = 0;
-					}
-					value = inner ? value === 0 ? 12 : value : value === 0 ? 0 : value + 12;
-				} else {
-					if (roundBy5) {
-						value *= 5;
-					}
-					if (value === 60) {
-						value = 0;
-					}
-				}
-			}
-
-			// Set clock hand and others' position
-			var w = this.panelDiv.querySelector('.clockpicker-plate').offsetWidth;
-			var u = w / 200;
-			var cx = Math.sin(radian) * radius * u,
-			    cy = -Math.cos(radian) * radius * u;
-			var iu = 100 * u;
-			this.panelDiv.querySelector('g').setAttribute('transform', 'translate(' + iu + ',' + iu + ')');
-
-			this.hand.setAttribute('x2', cx);
-			this.hand.setAttribute('y2', cy);
-			this.bg.setAttribute('cx', cx);
-			this.bg.setAttribute('cy', cy);
-			this.fg.setAttribute('cx', cx);
-			this.fg.setAttribute('cy', cy);
-		},
-
-		setValue: function setValue(value) {
-			value = value ? value : '';
-
-			if (value == '') {
-				this.input.value = '';
-
-				this.trigger('valueChange', { value: '' });
-				return;
-			}
-
-			if (value && value.indexOf(':') > -1) {
-				var vA = value.split(":");
-				var hour = vA[0];
-				hour = hour % 24;
-				this.hours = hour > 9 ? '' + hour : '0' + hour;
-				var min = vA[1];
-				min = min % 60;
-				this.min = min > 9 ? '' + min : '0' + min;
-				var sec = vA[2] || 0;
-				sec = sec % 60;
-				this.sec = sec > 9 ? '' + sec : '0' + sec;
-
-				value = this.hours + ':' + this.min + ':' + this.sec;
-			} else {
-				this.hours = this.defaultHour;
-				this.min = this.defaultMin;
-				this.sec = this.defaultSec;
-			}
-			var _date = new Date();
-			_date.setHours(this.hours);
-			_date.setMinutes(this.min);
-			_date.setSeconds(this.sec);
-			var showValue = _dateUtils.date.format(_date, this.format);
-			this.input.value = showValue;
-
-			this.trigger('valueChange', { value: value });
-		},
-
-		focusEvent: function focusEvent() {
-			var self = this;
-			(0, _event.on)(this.input, 'focus', function (e) {
-				self._inputFocus = true;
-				self.show(e);
-				if (e.stopPropagation) {
-					e.stopPropagation();
-				} else {
-					e.cancelBubble = true;
-				}
-			});
-		},
-
-		//下拉图标的点击事件
-		clickEvent: function clickEvent() {
-			var self = this;
-			var caret = this.element.nextSibling;
-			(0, _event.on)(caret, 'click', function (e) {
-				self._inputFocus = true;
-				self.show(e);
-				if (e.stopPropagation) {
-					e.stopPropagation();
-				} else {
-					e.cancelBubble = true;
-				}
-			});
-		},
-
-		show: function show(evt) {
-
-			var inputValue = this.input.value;
-			this.setValue(inputValue);
-
-			var self = this;
-			this.createPanel();
-			this.minDiv.style.visibility = 'hidden';
-			this.hourDiv.style.visibility = 'visible';
-			this.currentView = 'hours';
-			this.titleHourSpan.innerHTML = this.hours;
-			this.titleMinSpan.innerHTML = this.min;
-
-			/*因为元素可能变化位置，所以显示的时候需要重新计算*/
-			if (_env.isMobile) {
-				this.panelDiv.style.position = 'fixed';
-				this.panelDiv.style.top = '20%';
-				var screenW = document.body.clientWidth;
-				var l = (screenW - 226) / 2;
-				this.panelDiv.style.left = l + 'px';
-				this.overlayDiv = (0, _dom.makeModal)(this.panelDiv);
-				(0, _event.on)(this.overlayDiv, 'click', function () {
-					self.hide();
-				});
-			} else {
-				if (this.options.showFix) {
-					document.body.appendChild(this.panelDiv);
-					this.panelDiv.style.position = 'fixed';
-					(0, _dom.showPanelByEle)({
-						ele: this.input,
-						panel: this.panelDiv,
-						position: "bottomLeft"
-					});
-				} else {
-
-					var bodyWidth = document.body.clientWidth,
-					    bodyHeight = document.body.clientHeight,
-					    panelWidth = this.panelDiv.offsetWidth,
-					    panelHeight = this.panelDiv.offsetHeight;
-
-					this.element.appendChild(this.panelDiv);
-					this.element.style.position = 'relative';
-					this.left = this.input.offsetLeft;
-					var inputHeight = this.input.offsetHeight;
-					this.top = this.input.offsetTop + inputHeight;
-
-					if (this.left + panelWidth > bodyWidth) {
-						this.left = bodyWidth - panelWidth;
-					}
-
-					if (this.top + panelHeight > bodyHeight) {
-						this.top = bodyHeight - panelHeight;
-					}
-
-					this.panelDiv.style.left = this.left + 'px';
-					this.panelDiv.style.top = this.top + 'px';
-				}
-			}
-
-			this.panelDiv.style.zIndex = (0, _dom.getZIndex)();
-			(0, _dom.addClass)(this.panelDiv, 'is-visible');
-
-			this.setHand();
-
-			var callback = function (e) {
-				if (e !== evt && e.target !== this.input && !self.clickPanel(e.target) && self._inputFocus != true) {
-					(0, _event.off)(document, 'click', callback);
-					this.hide();
-				}
-			}.bind(this);
-			(0, _event.on)(document, 'click', callback);
-
-			//tab事件
-			(0, _event.on)(self.input, 'keydown', function (e) {
-				var keyCode = e.keyCode;
-				if (keyCode == 9) {
-					self.hide();
-				}
-			});
-		},
-
-		clickPanel: function clickPanel(dom) {
-			while (dom) {
-				if (dom == this.panelDiv) {
-					return true;
-				} else {
-					dom = dom.parentNode;
-				}
-			}
-			return false;
-		},
-
-		hide: function hide() {
-			(0, _dom.removeClass)(this.panelDiv, 'is-visible');
-			this.panelDiv.style.zIndex = -1;
-			if (this.overlayDiv) {
-				try {
-					document.body.removeChild(this.overlayDiv);
-				} catch (e) {}
-			}
-		}
-	});
-
-	_compMgr.compMgr.regComp({
-		comp: ClockPicker,
-		compAsString: 'u.ClockPicker',
-		css: 'u-clockpicker'
-	});
-	if (document.readyState && document.readyState === 'complete') {
-		_compMgr.compMgr.updateComp();
-	} else {
-		(0, _event.on)(window, 'load', function () {
-			//扫描并生成控件
-			_compMgr.compMgr.updateComp();
-		});
-	}
-	exports.ClockPicker = ClockPicker;
-
-/***/ },
-/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16205,574 +15691,7 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Month = Month;
 
 /***/ },
-/* 45 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports.Year = undefined;
-
-	var _BaseComponent = __webpack_require__(4);
-
-	var _event = __webpack_require__(7);
-
-	var _dom = __webpack_require__(10);
-
-	var _extend = __webpack_require__(1);
-
-	var _compMgr = __webpack_require__(9);
-
-	var _ripple = __webpack_require__(13);
-
-	/**
-	 * Module : neoui-year
-	 * Author : liuyk(liuyk@yonyou.com)
-	 * Date	  : 2016-08-11 15:17:07
-	 */
-
-	var Year = _BaseComponent.BaseComponent.extend({
-		DEFAULTS: {},
-		init: function init() {
-			var self = this;
-			var element = this.element;
-			this.options = (0, _extend.extend)({}, this.DEFAULTS, this.options);
-			this.panelDiv = null;
-			this.input = this.element.querySelector("input");
-
-			var d = new Date();
-			this.year = d.getFullYear();
-			this.defaultYear = this.year;
-			this.startYear = this.year - this.year % 10 - 1;
-
-			(0, _event.on)(this.input, 'blur', function (e) {
-				self._inputFocus = false;
-				self.setValue(self.input.value);
-			});
-
-			// 添加focus事件
-			this.focusEvent();
-			// 添加右侧图标click事件
-			this.clickEvent();
-			// 添加keydown事件
-			this.keydownEvent();
-		},
-
-		createPanel: function createPanel() {
-			if (this.panelDiv) {
-				this._fillYear();
-				return;
-			}
-			var oThis = this;
-			this.panelDiv = (0, _dom.makeDOM)('<div class="u-date-panel" style="margin:0px;"></div>');
-			this.panelContentDiv = (0, _dom.makeDOM)('<div class="u-date-content"></div>');
-			this.panelDiv.appendChild(this.panelContentDiv);
-
-			this.preBtn = (0, _dom.makeDOM)('<button class="u-date-pre-button u-button mini">&lt;</button>');
-			this.nextBtn = (0, _dom.makeDOM)('<button class="u-date-next-button u-button mini">&gt;</button>');
-
-			(0, _event.on)(this.preBtn, 'click', function (e) {
-				oThis.startYear -= 10;
-				oThis._fillYear();
-			});
-			(0, _event.on)(this.nextBtn, 'click', function (e) {
-				oThis.startYear += 10;
-				oThis._fillYear();
-			});
-			this.panelContentDiv.appendChild(this.preBtn);
-			this.panelContentDiv.appendChild(this.nextBtn);
-			this._fillYear();
-		},
-
-		/**
-	  *填充年份选择面板
-	  * @private
-	  */
-		_fillYear: function _fillYear(type) {
-			var oldPanel, year, template, yearPage, titleDiv, yearDiv, i, cell;
-			oldPanel = this.panelContentDiv.querySelector('.u-date-content-page');
-			if (oldPanel) this.panelContentDiv.removeChild(oldPanel);
-			template = ['<div class="u-date-content-page">', '<div class="u-date-content-title"></div>', '<div class="u-date-content-panel"></div>', '</div>'].join("");
-			yearPage = (0, _dom.makeDOM)(template);
-			titleDiv = yearPage.querySelector('.u-date-content-title');
-			titleDiv.innerHTML = this.startYear + '-' + (this.startYear + 11);
-			yearDiv = yearPage.querySelector('.u-date-content-panel');
-			for (i = 0; i < 12; i++) {
-				cell = (0, _dom.makeDOM)('<div class="u-date-content-year-cell">' + (this.startYear + i) + '</div>');
-				new _ripple.URipple(cell);
-				if (this.startYear + i == this.year) {
-					(0, _dom.addClass)(cell, 'current');
-				}
-				cell._value = this.startYear + i;
-				yearDiv.appendChild(cell);
-			}
-			(0, _event.on)(yearDiv, 'click', function (e) {
-				var _y = e.target._value;
-				this.year = _y;
-				this.setValue(_y);
-				this.hide();
-				(0, _event.stopEvent)(e);
-			}.bind(this));
-
-			this.preBtn.style.display = 'block';
-			this.nextBtn.style.display = 'block';
-			this.panelContentDiv.appendChild(yearPage);
-
-			this.currentPanel = 'year';
-		},
-
-		setValue: function setValue(value) {
-			value = value ? value : '';
-			this.value = value;
-			if (value) {
-				this.year = value;
-			} else {
-				this.year = this.defaultYear;
-			}
-			this.startYear = this.year - this.year % 10 - 1;
-			this.input.value = value;
-			this.trigger('valueChange', { value: value });
-		},
-
-		focusEvent: function focusEvent() {
-			var self = this;
-			(0, _event.on)(this.input, 'focus', function (e) {
-				self._inputFocus = true;
-				self.show(e);
-				(0, _event.stopEvent)(e);
-			});
-		},
-		keydownEvent: function keydownEvent() {
-			var self = this;
-			(0, _event.on)(self.input, "keydown", function (e) {
-				var code = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
-				if (!(code >= 48 && code <= 57 || code == 37 || code == 39 || code == 8 || code == 46)) {
-					//阻止默认浏览器动作(W3C)
-					if (e && e.preventDefault) e.preventDefault();
-					//IE中阻止函数器默认动作的方式
-					else window.event.returnValue = false;
-					return false;
-				}
-			});
-		},
-		//下拉图标的点击事件
-		clickEvent: function clickEvent() {
-			var self = this;
-			var caret = this.element.nextSibling;
-			(0, _event.on)(caret, 'click', function (e) {
-				self.input.focus();
-				(0, _event.stopEvent)(e);
-			});
-		},
-
-		show: function show(evt) {
-			var oThis = this;
-			this.createPanel();
-
-			this.width = this.element.offsetWidth;
-			if (this.width < 300) this.width = 300;
-
-			this.panelDiv.style.width = 152 + 'px';
-			if (this.options.showFix) {
-				document.body.appendChild(this.panelDiv);
-				this.panelDiv.style.position = 'fixed';
-				(0, _dom.showPanelByEle)({
-					ele: this.input,
-					panel: this.panelDiv,
-					position: "bottomLeft"
-				});
-			} else {
-				var bodyWidth = document.body.clientWidth,
-				    bodyHeight = document.body.clientHeight,
-				    panelWidth = this.panelDiv.offsetWidth,
-				    panelHeight = this.panelDiv.offsetHeight;
-
-				this.element.appendChild(this.panelDiv);
-				this.element.style.position = 'relative';
-				this.left = this.input.offsetLeft;
-				var inputHeight = this.input.offsetHeight;
-				this.top = this.input.offsetTop + inputHeight;
-
-				if (this.left + panelWidth > bodyWidth) {
-					this.left = bodyWidth - panelWidth;
-				}
-
-				if (this.top + panelHeight > bodyHeight) {
-					this.top = bodyHeight - panelHeight;
-				}
-
-				this.panelDiv.style.left = this.left + 'px';
-				this.panelDiv.style.top = this.top + 'px';
-			}
-			this.panelDiv.style.zIndex = (0, _dom.getZIndex)();
-			(0, _dom.addClass)(this.panelDiv, 'is-visible');
-
-			var callback = function (e) {
-				if (e !== evt && e.target !== this.input && !oThis.clickPanel(e.target) && oThis._inputFocus != true) {
-					(0, _event.off)(document, 'click', callback);
-					// document.removeEventListener('click', callback);
-					this.hide();
-				}
-			}.bind(this);
-			(0, _event.on)(document, 'click', callback);
-			// document.addEventListener('click', callback);
-		},
-
-		clickPanel: function clickPanel(dom) {
-			while (dom) {
-				if (dom == this.panelDiv) {
-					return true;
-				} else {
-					dom = dom.parentNode;
-				}
-			}
-			return false;
-		},
-		hide: function hide() {
-			(0, _dom.removeClass)(this.panelDiv, 'is-visible');
-			this.panelDiv.style.zIndex = -1;
-		}
-	});
-
-	_compMgr.compMgr.regComp({
-		comp: Year,
-		compAsString: 'u.Year',
-		css: 'u-year'
-	});
-	if (document.readyState && document.readyState === 'complete') {
-		_compMgr.compMgr.updateComp();
-	} else {
-		(0, _event.on)(window, 'load', function () {
-			//扫描并生成控件
-			_compMgr.compMgr.updateComp();
-		});
-	}
-	exports.Year = Year;
-
-/***/ },
-/* 46 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports.YearMonth = undefined;
-
-	var _BaseComponent = __webpack_require__(4);
-
-	var _event = __webpack_require__(7);
-
-	var _dom = __webpack_require__(10);
-
-	var _extend = __webpack_require__(1);
-
-	var _env = __webpack_require__(8);
-
-	var _compMgr = __webpack_require__(9);
-
-	var _ripple = __webpack_require__(13);
-
-	var YearMonth = _BaseComponent.BaseComponent.extend({
-	    DEFAULTS: {},
-	    init: function init() {
-	        var self = this;
-	        var element = this.element;
-	        this.options = (0, _extend.extend)({}, this.DEFAULTS, this.options);
-	        this.panelDiv = null;
-	        this.input = this.element.querySelector("input");
-
-	        var d = new Date();
-	        this.year = d.getFullYear();
-	        this.startYear = this.year - this.year % 10 - 1;
-	        this.month = d.getMonth() + 1;
-
-	        (0, _event.on)(this.input, 'blur', function (e) {
-	            self._inputFocus = false;
-	            self.setValue(self.input.value);
-	        });
-
-	        // 添加focus事件
-	        this.focusEvent();
-	        // 添加右侧图标click事件
-	        this.clickEvent();
-	    },
-
-	    createPanel: function createPanel() {
-	        if (this.panelDiv) {
-	            this._fillYear();
-	            return;
-	        }
-	        var oThis = this;
-	        this.panelDiv = (0, _dom.makeDOM)('<div class="u-date-panel" style="margin:0px;"></div>');
-	        this.panelContentDiv = (0, _dom.makeDOM)('<div class="u-date-content"></div>');
-	        this.panelDiv.appendChild(this.panelContentDiv);
-
-	        // this.preBtn = makeDOM('<button class="u-date-pre-button u-button flat floating mini" style="display:none;">&lt;</button>');
-	        // this.nextBtn = makeDOM('<button class="u-date-next-button u-button flat floating mini" style="display:none;">&gt;</button>');
-	        this.preBtn = (0, _dom.makeDOM)('<button class="u-date-pre-button u-button mini">&lt;</button>');
-	        this.nextBtn = (0, _dom.makeDOM)('<button class="u-date-next-button u-button mini">&gt;</button>');
-
-	        (0, _event.on)(this.preBtn, 'click', function (e) {
-	            oThis.startYear -= 10;
-	            oThis._fillYear();
-	        });
-	        (0, _event.on)(this.nextBtn, 'click', function (e) {
-	            oThis.startYear += 10;
-	            oThis._fillYear();
-	        });
-	        this.panelContentDiv.appendChild(this.preBtn);
-	        this.panelContentDiv.appendChild(this.nextBtn);
-	        this._fillYear();
-	    },
-
-	    /**
-	     *填充年份选择面板
-	     * @private
-	     */
-	    _fillYear: function _fillYear(type) {
-	        var oldPanel, year, template, yearPage, titleDiv, yearDiv, i, cell;
-	        oldPanel = this.panelContentDiv.querySelector('.u-date-content-page');
-	        if (oldPanel) this.panelContentDiv.removeChild(oldPanel);
-	        template = ['<div class="u-date-content-page">', '<div class="u-date-content-title"></div>', '<div class="u-date-content-panel"></div>', '</div>'].join("");
-	        yearPage = (0, _dom.makeDOM)(template);
-	        titleDiv = yearPage.querySelector('.u-date-content-title');
-	        titleDiv.innerHTML = this.startYear + '-' + (this.startYear + 11);
-	        yearDiv = yearPage.querySelector('.u-date-content-panel');
-	        for (i = 0; i < 12; i++) {
-	            cell = (0, _dom.makeDOM)('<div class="u-date-content-year-cell">' + (this.startYear + i) + '</div>');
-	            new _ripple.URipple(cell);
-	            if (this.startYear + i == this.year) {
-	                (0, _dom.addClass)(cell, 'current');
-	            }
-	            cell._value = this.startYear + i;
-	            yearDiv.appendChild(cell);
-	        }
-	        var oThis = this;
-	        (0, _event.on)(yearDiv, 'click', function (e) {
-	            var _y = e.target._value;
-	            oThis.year = _y;
-	            oThis._fillMonth();
-	            (0, _event.stopEvent)(e);
-	        });
-
-	        this.preBtn.style.display = 'block';
-	        this.nextBtn.style.display = 'block';
-	        // this._zoomIn(yearPage);
-	        this.panelContentDiv.appendChild(yearPage);
-	        this.contentPage = yearPage;
-	        this.currentPanel = 'year';
-	    },
-
-	    /**
-	     * 填充月份选择面板
-	     * @private
-	     */
-	    _fillMonth: function _fillMonth() {
-	        var oldPanel, template, monthPage, _month, cells, i;
-	        oldPanel = this.panelContentDiv.querySelector('.u-date-content-page');
-	        if (oldPanel) this.panelContentDiv.removeChild(oldPanel);
-	        _month = this.month;
-	        template = ['<div class="u-date-content-page">', '<div class="u-date-content-title">' + _month + '月</div>', '<div class="u-date-content-panel">', '<div class="u-date-content-year-cell">1月</div>', '<div class="u-date-content-year-cell">2月</div>', '<div class="u-date-content-year-cell">3月</div>', '<div class="u-date-content-year-cell">4月</div>', '<div class="u-date-content-year-cell">5月</div>', '<div class="u-date-content-year-cell">6月</div>', '<div class="u-date-content-year-cell">7月</div>', '<div class="u-date-content-year-cell">8月</div>', '<div class="u-date-content-year-cell">9月</div>', '<div class="u-date-content-year-cell">10月</div>', '<div class="u-date-content-year-cell">11月</div>', '<div class="u-date-content-year-cell">12月</div>', '</div>', '</div>'].join("");
-
-	        monthPage = (0, _dom.makeDOM)(template);
-	        cells = monthPage.querySelectorAll('.u-date-content-year-cell');
-	        for (i = 0; i < cells.length; i++) {
-	            if (_month == i + 1) {
-	                (0, _dom.addClass)(cells[i], 'current');
-	            }
-	            cells[i]._value = i + 1;
-	            new _ripple.URipple(cells[i]);
-	        }
-	        var oThis = this;
-	        (0, _event.on)(monthPage, 'click', function (e) {
-	            var _m = e.target._value;
-	            oThis.month = _m;
-	            monthPage.querySelector('.u-date-content-title').innerHTML = _m + '月';
-	            oThis.setValue(oThis.year + '-' + oThis.month);
-	            oThis.hide();
-	        });
-
-	        this.preBtn.style.display = 'none';
-	        this.nextBtn.style.display = 'none';
-	        this._zoomIn(monthPage);
-	        this.currentPanel = 'month';
-	    },
-
-	    /**
-	     * 淡入动画效果
-	     * @private
-	     */
-	    _zoomIn: function _zoomIn(newPage) {
-	        if (!this.contentPage) {
-	            this.panelContentDiv.appendChild(newPage);
-	            this.contentPage = newPage;
-	            return;
-	        }
-	        (0, _dom.addClass)(newPage, 'zoom-in');
-	        this.panelContentDiv.appendChild(newPage);
-	        if (_env.isIE8) {
-	            this.contentPage = newPage;
-	        } else {
-	            var cleanup = function () {
-	                newPage.removeEventListener('transitionend', cleanup);
-	                newPage.removeEventListener('webkitTransitionEnd', cleanup);
-	                // this.panelContentDiv.removeChild(this.contentPage);
-	                this.contentPage = newPage;
-	            }.bind(this);
-	            if (this.contentPage) {
-	                newPage.addEventListener('transitionend', cleanup);
-	                newPage.addEventListener('webkitTransitionEnd', cleanup);
-	            }
-	            window.requestAnimationFrame(function () {
-	                (0, _dom.addClass)(this.contentPage, 'is-hidden');
-	                (0, _dom.removeClass)(newPage, 'zoom-in');
-	            }.bind(this));
-	        }
-	    },
-
-	    setValue: function setValue(value) {
-	        value = value ? value : '';
-	        if (value && value.indexOf('-') > -1) {
-	            var vA = value.split("-");
-	            this.year = vA[0];
-	            var month = vA[1];
-	            this.month = month % 12;
-	            if (this.month == 0) this.month = 12;
-
-	            value = this.year + '-' + this.month;
-	        }
-	        this.value = value;
-	        this.input.value = value;
-	        this.trigger('valueChange', { value: value });
-	    },
-
-	    focusEvent: function focusEvent() {
-	        var self = this;
-	        (0, _event.on)(this.input, 'focus', function (e) {
-	            self._inputFocus = true;
-	            self.show(e);
-	            (0, _event.stopEvent)(e);
-	        });
-	    },
-
-	    //下拉图标的点击事件
-	    clickEvent: function clickEvent() {
-	        var self = this;
-	        var caret = this.element.nextSibling;
-	        (0, _event.on)(caret, 'click', function (e) {
-	            self.input.focus();
-	            (0, _event.stopEvent)(e);
-	        });
-	    },
-
-	    show: function show(evt) {
-	        var oThis = this;
-	        if (this.value && this.value.indexOf('-') > -1) {
-	            var vA = this.value.split("-");
-	            this.year = vA[0];
-	            var month = vA[1];
-	            this.month = month % 12;
-	            if (this.month == 0) this.month = 12;
-	        }
-	        this.createPanel();
-	        /*因为元素可能变化位置，所以显示的时候需要重新计算*/
-	        this.width = this.element.offsetWidth;
-	        if (this.width < 300) this.width = 300;
-
-	        this.panelDiv.style.width = this.width + 'px';
-
-	        if (this.options.showFix) {
-	            document.body.appendChild(this.panelDiv);
-	            this.panelDiv.style.position = 'fixed';
-	            (0, _dom.showPanelByEle)({
-	                ele: this.input,
-	                panel: this.panelDiv,
-	                position: "bottomLeft"
-	            });
-	        } else {
-	            //    this.element.parentNode.appendChild(this.panelDiv);
-	            // //调整left和top
-	            //    this.left = this.element.offsetLeft;
-	            //    var inputHeight = this.element.offsetHeight;
-	            //    this.top = this.element.offsetTop + inputHeight;
-	            //    this.panelDiv.style.left = this.left + 'px';
-	            //    this.panelDiv.style.top = this.top + 'px';
-
-	            var bodyWidth = document.body.clientWidth,
-	                bodyHeight = document.body.clientHeight,
-	                panelWidth = this.panelDiv.offsetWidth,
-	                panelHeight = this.panelDiv.offsetHeight;
-
-	            this.element.appendChild(this.panelDiv);
-	            this.element.style.position = 'relative';
-	            this.left = this.input.offsetLeft;
-	            var inputHeight = this.input.offsetHeight;
-	            this.top = this.input.offsetTop + inputHeight;
-
-	            if (this.left + panelWidth > bodyWidth) {
-	                this.left = bodyWidth - panelWidth;
-	            }
-
-	            if (this.top + panelHeight > bodyHeight) {
-	                this.top = bodyHeight - panelHeight;
-	            }
-
-	            this.panelDiv.style.left = this.left + 'px';
-	            this.panelDiv.style.top = this.top + 'px';
-	        }
-
-	        this.panelDiv.style.zIndex = (0, _dom.getZIndex)();
-	        (0, _dom.addClass)(this.panelDiv, 'is-visible');
-	        var oThis = this;
-	        var callback = function callback(e) {
-	            if (e !== evt && e.target !== oThis.input && !oThis.clickPanel(e.target) && oThis._inputFocus != true) {
-	                // document.removeEventListener('click', callback);
-	                (0, _event.off)(document, 'click', callback);
-	                oThis.hide();
-	            }
-	        };
-	        (0, _event.on)(document, 'click', callback);
-	        // document.addEventListener('click', callback);
-	    },
-
-	    clickPanel: function clickPanel(dom) {
-	        while (dom) {
-	            if (dom == this.panelDiv) {
-	                return true;
-	            } else {
-	                dom = dom.parentNode;
-	            }
-	        }
-	        return false;
-	    },
-
-	    hide: function hide() {
-	        (0, _dom.removeClass)(this.panelDiv, 'is-visible');
-	        this.panelDiv.style.zIndex = -1;
-	    }
-	}); /**
-	     * Module : neoui-year
-	     * Author : liuyk(liuyk@yonyou.com)
-	     * Date   : 2016-08-11 15:17:07
-	     */
-
-	_compMgr.compMgr.regComp({
-	    comp: YearMonth,
-	    compAsString: 'u.YearMonth',
-	    css: 'u-yearmonth'
-	});
-	if (document.readyState && document.readyState === 'complete') {
-	    _compMgr.compMgr.updateComp();
-	} else {
-	    (0, _event.on)(window, 'load', function () {
-	        //扫描并生成控件
-	        _compMgr.compMgr.updateComp();
-	    });
-	}
-	exports.YearMonth = YearMonth;
-
-/***/ },
-/* 47 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16788,9 +15707,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _dom = __webpack_require__(10);
 
-	var _core = __webpack_require__(39);
+	var _core = __webpack_require__(34);
 
-	var _dateUtils = __webpack_require__(41);
+	var _dateUtils = __webpack_require__(36);
 
 	var _extend = __webpack_require__(1);
 
@@ -17133,6 +16052,1222 @@ $.fn.bootstrapWizard.defaults = {
 	    });
 	}
 	exports.MonthDate = MonthDate;
+
+/***/ },
+/* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.slidePanel = undefined;
+
+	var _dom = __webpack_require__(10);
+
+	var _ajax = __webpack_require__(11);
+
+	var _event = __webpack_require__(7);
+
+	var _env = __webpack_require__(8);
+
+	/**
+	 * Module : neoui-slidePanel
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-03 13:18:48
+	 */
+
+	var slidePanelTemplate = ['<div class="slidePanel slidePanel-right  slidePanel-show slidePanel-dragging" style="transform:translate3d(100%,0,0);">', '<div class="slidePanel-content site-sidebar-content"></div>', '<div class="slidePanel-handler"></div>', '</div>'];
+
+	var slidePanel = function slidePanel(options) {
+		var url = options['url'],
+		    width = options['width'] || '700px',
+		    callback = options['callback'] || function () {},
+		    slideDom = (0, _dom.makeDOM)(slidePanelTemplate.join('')),
+		    overlayDiv = makeModal(slideDom);
+		slideDom.style.width = width;
+		overlayDiv.style.opacity = 0;
+		document.body.appendChild(slideDom);
+		//overlayDiv.style.opacity = 0.5;
+		(0, _ajax.ajax)({
+			type: 'get',
+			url: url,
+			success: function success(data) {
+				var content = slideDom.querySelector('.slidePanel-content');
+				content.innerHTML = data;
+				callback();
+				setTimeout(function () {
+					slideDom.style.transform = 'translate3d(0,0,0)';
+					overlayDiv.style.opacity = 0.5;
+				}, 1);
+			}
+		});
+
+		(0, _event.on)(overlayDiv, 'click', function () {
+			(0, _event.on)(slideDom, 'transitionend', function () {
+				document.body.removeChild(slideDom);
+				document.body.removeChild(overlayDiv);
+			});
+			(0, _event.on)(slideDom, 'webkitTransitionEnd', function () {
+				document.body.removeChild(slideDom);
+				document.body.removeChild(overlayDiv);
+			});
+			slideDom.style.transform = 'translate3d(100%,0,0)';
+			overlayDiv.style.opacity = 0;
+			if (_env.env.isIE8) {
+				document.body.removeChild(slideDom);
+				document.body.removeChild(overlayDiv);
+			}
+		});
+
+		return {
+			close: function close() {
+				overlayDiv.click();
+			}
+		};
+	};
+
+	exports.slidePanel = slidePanel;
+
+/***/ },
+/* 44 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.Switch = undefined;
+
+	var _BaseComponent = __webpack_require__(4);
+
+	var _dom = __webpack_require__(10);
+
+	var _event = __webpack_require__(7);
+
+	var _ripple = __webpack_require__(13);
+
+	var _compMgr = __webpack_require__(9);
+
+	var Switch = _BaseComponent.BaseComponent.extend({
+		_Constant: {
+			TINY_TIMEOUT: 0.001
+		},
+
+		_CssClasses: {
+			INPUT: 'u-switch-input',
+			TRACK: 'u-switch-track',
+			THUMB: 'u-switch-thumb',
+			FOCUS_HELPER: 'u-switch-focus-helper',
+			IS_FOCUSED: 'is-focused',
+			IS_DISABLED: 'is-disabled',
+			IS_CHECKED: 'is-checked'
+		},
+
+		init: function init() {
+			this._inputElement = this.element.querySelector('.' + this._CssClasses.INPUT);
+
+			var track = document.createElement('div');
+			(0, _dom.addClass)(track, this._CssClasses.TRACK);
+
+			var thumb = document.createElement('div');
+			(0, _dom.addClass)(thumb, this._CssClasses.THUMB);
+			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
+			/*var focusHelper = document.createElement('span');
+	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
+	  	thumb.appendChild(focusHelper);*/
+
+			this.element.appendChild(track);
+			this.element.appendChild(thumb);
+
+			this.boundMouseUpHandler = this._onMouseUp.bind(this);
+
+			//if (this.element.classList.contains(this._CssClasses.RIPPLE_EFFECT)) {
+			//  addClass(this.element,this._CssClasses.RIPPLE_IGNORE_EVENTS);
+			this._rippleContainerElement = document.createElement('span');
+			//this._rippleContainerElement.classList.add(this._CssClasses.RIPPLE_CONTAINER);
+			//this._rippleContainerElement.classList.add(this._CssClasses.RIPPLE_EFFECT);
+			//this._rippleContainerElement.classList.add(this._CssClasses.RIPPLE_CENTER);
+			this._rippleContainerElement.addEventListener('mouseup', this.boundMouseUpHandler);
+
+			//var ripple = document.createElement('span');
+			//ripple.classList.add(this._CssClasses.RIPPLE);
+
+			//this._rippleContainerElement.appendChild(ripple);
+			this.element.appendChild(this._rippleContainerElement);
+			new _ripple.URipple(this._rippleContainerElement);
+			//}
+
+			this.boundChangeHandler = this._onChange.bind(this);
+			this.boundFocusHandler = this._onFocus.bind(this);
+			this.boundBlurHandler = this._onBlur.bind(this);
+
+			this._inputElement.addEventListener('change', this.boundChangeHandler);
+			this._inputElement.addEventListener('focus', this.boundFocusHandler);
+			this._inputElement.addEventListener('blur', this.boundBlurHandler);
+			this.element.addEventListener('mouseup', this.boundMouseUpHandler);
+
+			this._updateClasses();
+			(0, _dom.addClass)(this.element, 'is-upgraded');
+		},
+
+		_onChange: function _onChange(event) {
+			this._updateClasses();
+			this.trigger('change', {
+				isChecked: this._inputElement.checked
+			});
+		},
+
+		_onFocus: function _onFocus(event) {
+			(0, _dom.addClass)(this.element, this._CssClasses.IS_FOCUSED);
+		},
+
+		_onBlur: function _onBlur(event) {
+			(0, _dom.removeClass)(this.element, this._CssClasses.IS_FOCUSED);
+		},
+
+		_onMouseUp: function _onMouseUp(event) {
+			this._blur();
+		},
+
+		_updateClasses: function _updateClasses() {
+			this.checkDisabled();
+			this.checkToggleState();
+		},
+
+		_blur: function _blur() {
+			// TODO: figure out why there's a focus event being fired after our blur,
+			// so that we can avoid this hack.
+			window.setTimeout(function () {
+				this._inputElement.blur();
+			}.bind(this), /** @type {number} */this._Constant.TINY_TIMEOUT);
+		},
+
+		// Public methods.
+
+		checkDisabled: function checkDisabled() {
+			if (this._inputElement.disabled) {
+				(0, _dom.addClass)(this.element, this._CssClasses.IS_DISABLED);
+			} else {
+				(0, _dom.removeClass)(this.element, this._CssClasses.IS_DISABLED);
+			}
+		},
+
+		checkToggleState: function checkToggleState() {
+			if (this._inputElement.checked) {
+				(0, _dom.addClass)(this.element, this._CssClasses.IS_CHECKED);
+			} else {
+				(0, _dom.removeClass)(this.element, this._CssClasses.IS_CHECKED);
+			}
+		},
+
+		isChecked: function isChecked() {
+			//return hasClass(this.element,this._CssClasses.IS_CHECKED);
+			return this._inputElement.checked;
+		},
+
+		toggle: function toggle() {
+			//return;
+			if (this.isChecked()) {
+				this.uncheck();
+			} else {
+				this.check();
+			}
+		},
+
+		disable: function disable() {
+			this._inputElement.disabled = true;
+			this._updateClasses();
+		},
+
+		enable: function enable() {
+			this._inputElement.disabled = false;
+			this._updateClasses();
+		},
+
+		check: function check() {
+			this._inputElement.checked = true;
+			this._updateClasses();
+		},
+
+		uncheck: function uncheck() {
+			this._inputElement.checked = false;
+			this._updateClasses();
+		}
+
+	}); /**
+	     * Module : neoui-switch
+	     * Author : Kvkens(yueming@yonyou.com)
+	     * Date	  : 2016-08-03 13:39:55
+	     */
+
+	_compMgr.compMgr.regComp({
+		comp: Switch,
+		compAsString: 'u.Switch',
+		css: 'u-switch'
+	});
+
+	if (document.readyState && document.readyState === 'complete') {
+		_compMgr.compMgr.updateComp();
+	} else {
+		(0, _event.on)(window, 'load', function () {
+			//扫描并生成控件
+			_compMgr.compMgr.updateComp();
+		});
+	}
+
+	exports.Switch = Switch;
+
+/***/ },
+/* 45 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.Tabs = undefined;
+
+	var _BaseComponent = __webpack_require__(4);
+
+	var _dom = __webpack_require__(10);
+
+	var _event = __webpack_require__(7);
+
+	var _ripple = __webpack_require__(13);
+
+	var _compMgr = __webpack_require__(9);
+
+	var Tabs = _BaseComponent.BaseComponent.extend({
+		_Constant: {},
+		_CssClasses: {
+			TAB_CLASS: 'u-tabs__tab',
+			PANEL_CLASS: 'u-tabs__panel',
+			ACTIVE_CLASS: 'is-active',
+			UPGRADED_CLASS: 'is-upgraded',
+
+			U_JS_RIPPLE_EFFECT: 'u-js-ripple-effect',
+			U_RIPPLE_CONTAINER: 'u-tabs__ripple-container',
+			U_RIPPLE: 'u-ripple',
+			U_JS_RIPPLE_EFFECT_IGNORE_EVENTS: 'u-js-ripple-effect--ignore-events'
+		},
+
+		/**
+	  * Handle clicks to a tabs component
+	  *
+	  * @private
+	  */
+		initTabs_: function initTabs_() {
+			(0, _dom.addClass)(this.element, this._CssClasses.U_JS_RIPPLE_EFFECT_IGNORE_EVENTS);
+
+			// Select element tabs, document panels
+			this.tabs_ = this.element.querySelectorAll('.' + this._CssClasses.TAB_CLASS);
+			this.panels_ = this.element.querySelectorAll('.' + this._CssClasses.PANEL_CLASS);
+
+			// Create new tabs for each tab element
+			for (var i = 0; i < this.tabs_.length; i++) {
+				new Tab(this.tabs_[i], this);
+			}
+			(0, _dom.addClass)(this.element, this._CssClasses.UPGRADED_CLASS);
+		},
+
+		/**
+	  * Reset tab state, dropping active classes
+	  *
+	  * @private
+	  */
+		resetTabState_: function resetTabState_() {
+			for (var k = 0; k < this.tabs_.length; k++) {
+				(0, _dom.removeClass)(this.tabs_[k], this._CssClasses.ACTIVE_CLASS);
+			}
+		},
+
+		/**
+	  * Reset panel state, droping active classes
+	  *
+	  * @private
+	  */
+		resetPanelState_: function resetPanelState_() {
+			for (var j = 0; j < this.panels_.length; j++) {
+				(0, _dom.removeClass)(this.panels_[j], this._CssClasses.ACTIVE_CLASS);
+			}
+		},
+		show: function show(itemId) {
+			var panel = this.element.querySelector('#' + itemId);
+			var tab = this.element.querySelector("[href='#" + itemId + "']");
+			this.resetTabState_();
+			this.resetPanelState_();
+			(0, _dom.addClass)(tab, this._CssClasses.ACTIVE_CLASS);
+			(0, _dom.addClass)(panel, this._CssClasses.ACTIVE_CLASS);
+		},
+
+		/**
+	  * Initialize element.
+	  */
+		init: function init() {
+			if (this.element) {
+				this.initTabs_();
+			}
+		}
+	});
+
+	/**
+	 * Constructor for an individual tab.
+	 *
+	 * @constructor
+	 * @param {Element} tab The HTML element for the tab.
+	 * @param {Tabs} ctx The Tabs object that owns the tab.
+	 */
+	/**
+	 * Module : neoui-tabs
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-03 14:12:27
+	 */
+
+	function Tab(tab, ctx) {
+		if (tab) {
+			var rippleContainer = document.createElement('span');
+			(0, _dom.addClass)(rippleContainer, ctx._CssClasses.U_RIPPLE_CONTAINER);
+			(0, _dom.addClass)(rippleContainer, ctx._CssClasses.U_JS_RIPPLE_EFFECT);
+			var ripple = document.createElement('span');
+			(0, _dom.addClass)(ripple, ctx._CssClasses.U_RIPPLE);
+			rippleContainer.appendChild(ripple);
+			tab.appendChild(rippleContainer);
+
+			tab.ripple = new _ripple.Ripple(tab);
+
+			tab.addEventListener('click', function (e) {
+				(0, _event.stopEvent)(e);
+				// e.preventDefault();
+				var href = tab.href.split('#')[1];
+				var panel = ctx.element.querySelector('#' + href);
+				ctx.resetTabState_();
+				ctx.resetPanelState_();
+				(0, _dom.addClass)(tab, ctx._CssClasses.ACTIVE_CLASS);
+				(0, _dom.addClass)(panel, ctx._CssClasses.ACTIVE_CLASS);
+			});
+		}
+	}
+
+	_compMgr.compMgr.regComp({
+		comp: Tabs,
+		compAsString: 'u.Tabs',
+		css: 'u-tabs'
+	});
+	if (document.readyState && document.readyState === 'complete') {
+		_compMgr.compMgr.updateComp();
+	} else {
+		(0, _event.on)(window, 'load', function () {
+			//扫描并生成控件
+			_compMgr.compMgr.updateComp();
+		});
+	}
+
+	exports.Tabs = Tabs;
+
+/***/ },
+/* 46 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.Time = undefined;
+
+	var _extend = __webpack_require__(1);
+
+	var _BaseComponent = __webpack_require__(4);
+
+	var _env = __webpack_require__(8);
+
+	var _event = __webpack_require__(7);
+
+	var _dom = __webpack_require__(10);
+
+	var _compMgr = __webpack_require__(9);
+
+	var Time = _BaseComponent.BaseComponent.extend({
+		DEFAULTS: {},
+		init: function init() {
+			var self = this;
+			var element = this.element;
+			this.options = (0, _extend.extend)({}, this.DEFAULTS, this.options);
+			this.panelDiv = null;
+			this.input = this.element.querySelector("input");
+			(0, _dom.addClass)(this.element, 'u-text');
+
+			(0, _event.on)(this.input, 'blur', function (e) {
+				self._inputFocus = false;
+				this.setValue(this.input.value);
+			}.bind(this));
+
+			// 添加focus事件
+			this.focusEvent();
+			// 添加右侧图标click事件
+			this.clickEvent();
+		}
+	});
+
+	Time.fn = Time.prototype;
+
+	Time.fn.createPanel = function () {
+		if (this.panelDiv) return;
+		var oThis = this;
+		this.panelDiv = (0, _dom.makeDOM)('<div class="u-date-panel" style="padding:0px;"></div>');
+		this.panelContentDiv = (0, _dom.makeDOM)('<div class="u-time-content"></div>');
+		this.panelDiv.appendChild(this.panelContentDiv);
+		this.panelHourDiv = (0, _dom.makeDOM)('<div class="u-time-cell"></div>');
+		this.panelContentDiv.appendChild(this.panelHourDiv);
+		this.panelHourInput = (0, _dom.makeDOM)('<input class="u-time-input">');
+		this.panelHourDiv.appendChild(this.panelHourInput);
+		this.panelMinDiv = (0, _dom.makeDOM)('<div class="u-time-cell"></div>');
+		this.panelContentDiv.appendChild(this.panelMinDiv);
+		this.panelMinInput = (0, _dom.makeDOM)('<input class="u-time-input">');
+		this.panelMinDiv.appendChild(this.panelMinInput);
+		this.panelSecDiv = (0, _dom.makeDOM)('<div class="u-time-cell"></div>');
+		this.panelContentDiv.appendChild(this.panelSecDiv);
+		this.panelSecInput = (0, _dom.makeDOM)('<input class="u-time-input">');
+		this.panelSecDiv.appendChild(this.panelSecInput);
+		this.panelNavDiv = (0, _dom.makeDOM)('<div class="u-time-nav"></div>');
+		this.panelDiv.appendChild(this.panelNavDiv);
+		this.panelOKButton = (0, _dom.makeDOM)('<button class="u-button" style="float:right;">OK</button>');
+		this.panelNavDiv.appendChild(this.panelOKButton);
+		(0, _event.on)(this.panelOKButton, 'click', function () {
+			var v = oThis.panelHourInput.value + ':' + oThis.panelMinInput.value + ':' + oThis.panelSecInput.value;
+			oThis.setValue(v);
+			oThis.hide();
+		});
+		this.panelCancelButton = (0, _dom.makeDOM)('<button class="u-button" style="float:right;">Cancel</button>');
+		this.panelNavDiv.appendChild(this.panelCancelButton);
+		(0, _event.on)(this.panelCancelButton, 'click', function () {
+			oThis.hide();
+		});
+
+		var d = new Date();
+		this.panelHourInput.value = d.getHours() > 9 ? '' + d.getHours() : '0' + d.getHours();
+		this.panelMinInput.value = d.getMinutes() > 9 ? '' + d.getMinutes() : '0' + d.getMinutes();
+		this.panelSecInput.value = d.getSeconds() > 9 ? '' + d.getSeconds() : '0' + d.getSeconds();
+	};
+
+	Time.fn.setValue = function (value) {
+		var hour = '',
+		    min = '',
+		    sec = '';
+		value = value ? value : '';
+		if (value == this.input.value) return;
+		if (value && value.indexOf(':') > -1) {
+			var vA = value.split(":");
+			var hour = vA[0];
+			hour = hour % 24;
+			hour = hour > 9 ? '' + hour : '0' + hour;
+			var min = vA[1];
+			min = min % 60;
+			min = min > 9 ? '' + min : '0' + min;
+			var sec = vA[2];
+			sec = sec % 60;
+			sec = sec > 9 ? '' + sec : '0' + sec;
+
+			value = hour + ':' + min + ':' + sec;
+		}
+		this.input.value = value;
+		this.createPanel();
+
+		this.panelHourInput.value = hour;
+		this.panelMinInput.value = min;
+		this.panelSecInput.value = sec;
+		this.trigger('valueChange', { value: value });
+	};
+
+	Time.fn.focusEvent = function () {
+		var self = this;
+		(0, _event.on)(this.input, 'focus', function (e) {
+			self._inputFocus = true;
+			self.show(e);
+			(0, _event.stopEvent)(e);
+		});
+	};
+
+	//下拉图标的点击事件
+	Time.fn.clickEvent = function () {
+		var self = this;
+		var caret = this.element.nextSibling;
+		(0, _event.on)(caret, 'click', function (e) {
+			self.input.focus();
+			(0, _event.stopEvent)(e);
+		});
+	};
+
+	Time.fn.show = function (evt) {
+
+		var inputValue = this.input.value;
+		this.setValue(inputValue);
+
+		var oThis = this;
+		this.createPanel();
+
+		/*因为元素可能变化位置，所以显示的时候需要重新计算*/
+		this.width = this.element.offsetWidth;
+		if (this.width < 300) this.width = 300;
+
+		this.panelDiv.style.width = this.width + 'px';
+		this.panelDiv.style.maxWidth = this.width + 'px';
+		if (this.options.showFix) {
+			document.body.appendChild(this.panelDiv);
+			this.panelDiv.style.position = 'fixed';
+			(0, _dom.showPanelByEle)({
+				ele: this.input,
+				panel: this.panelDiv,
+				position: "bottomLeft"
+			});
+		} else {
+			// this.element.parentNode.appendChild(this.panelDiv);
+			// //调整left和top
+			// this.left = this.element.offsetLeft;
+			// var inputHeight = this.element.offsetHeight;
+			// this.top = this.element.offsetTop + inputHeight;
+			// this.panelDiv.style.left = this.left + 'px';
+			// this.panelDiv.style.top = this.top + 'px';
+
+			var bodyWidth = document.body.clientWidth,
+			    bodyHeight = document.body.clientHeight,
+			    panelWidth = this.panelDiv.offsetWidth,
+			    panelHeight = this.panelDiv.offsetHeight;
+
+			this.element.appendChild(this.panelDiv);
+			this.element.style.position = 'relative';
+			this.left = this.input.offsetLeft;
+			var inputHeight = this.input.offsetHeight;
+			this.top = this.input.offsetTop + inputHeight;
+
+			if (this.left + panelWidth > bodyWidth) {
+				this.left = bodyWidth - panelWidth;
+			}
+
+			if (this.top + panelHeight > bodyHeight) {
+				this.top = bodyHeight - panelHeight;
+			}
+
+			this.panelDiv.style.left = this.left + 'px';
+			this.panelDiv.style.top = this.top + 'px';
+		}
+
+		this.panelDiv.style.zIndex = (0, _dom.getZIndex)();
+		(0, _dom.addClass)(this.panelDiv, 'is-visible');
+
+		var callback = function (e) {
+			if (e !== evt && e.target !== this.input && !oThis.clickPanel(e.target) && oThis._inputFocus != true) {
+				(0, _event.off)(document, 'click', callback);
+				// document.removeEventListener('click', callback);
+				this.hide();
+			}
+		}.bind(this);
+		(0, _event.on)(document, 'click', callback);
+		// document.addEventListener('click', callback);
+	};
+
+	Time.fn.clickPanel = function (dom) {
+		while (dom) {
+			if (dom == this.panelDiv) {
+				return true;
+			} else {
+				dom = dom.parentNode;
+			}
+		}
+		return false;
+	};
+
+	Time.fn.hide = function () {
+		(0, _dom.removeClass)(this.panelDiv, 'is-visible');
+		this.panelDiv.style.zIndex = -1;
+	};
+
+	_compMgr.compMgr.regComp({
+		comp: Time,
+		compAsString: 'u.Time',
+		css: 'u-time'
+	});
+	if (_env.env.isIE8) {
+		_compMgr.compMgr.regComp({
+			comp: Time,
+			compAsString: 'u.ClockPicker',
+			css: 'u-clockpicker'
+		});
+	}
+
+	if (document.readyState && document.readyState === 'complete') {
+		_compMgr.compMgr.updateComp();
+	} else {
+		(0, _event.on)(window, 'load', function () {
+			//扫描并生成控件
+			_compMgr.compMgr.updateComp();
+		});
+	}
+
+	exports.Time = Time;
+
+/***/ },
+/* 47 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.Year = undefined;
+
+	var _BaseComponent = __webpack_require__(4);
+
+	var _event = __webpack_require__(7);
+
+	var _dom = __webpack_require__(10);
+
+	var _extend = __webpack_require__(1);
+
+	var _compMgr = __webpack_require__(9);
+
+	var _ripple = __webpack_require__(13);
+
+	/**
+	 * Module : neoui-year
+	 * Author : liuyk(liuyk@yonyou.com)
+	 * Date	  : 2016-08-11 15:17:07
+	 */
+
+	var Year = _BaseComponent.BaseComponent.extend({
+		DEFAULTS: {},
+		init: function init() {
+			var self = this;
+			var element = this.element;
+			this.options = (0, _extend.extend)({}, this.DEFAULTS, this.options);
+			this.panelDiv = null;
+			this.input = this.element.querySelector("input");
+
+			var d = new Date();
+			this.year = d.getFullYear();
+			this.defaultYear = this.year;
+			this.startYear = this.year - this.year % 10 - 1;
+
+			(0, _event.on)(this.input, 'blur', function (e) {
+				self._inputFocus = false;
+				self.setValue(self.input.value);
+			});
+
+			// 添加focus事件
+			this.focusEvent();
+			// 添加右侧图标click事件
+			this.clickEvent();
+			// 添加keydown事件
+			this.keydownEvent();
+		},
+
+		createPanel: function createPanel() {
+			if (this.panelDiv) {
+				this._fillYear();
+				return;
+			}
+			var oThis = this;
+			this.panelDiv = (0, _dom.makeDOM)('<div class="u-date-panel" style="margin:0px;"></div>');
+			this.panelContentDiv = (0, _dom.makeDOM)('<div class="u-date-content"></div>');
+			this.panelDiv.appendChild(this.panelContentDiv);
+
+			this.preBtn = (0, _dom.makeDOM)('<button class="u-date-pre-button u-button mini">&lt;</button>');
+			this.nextBtn = (0, _dom.makeDOM)('<button class="u-date-next-button u-button mini">&gt;</button>');
+
+			(0, _event.on)(this.preBtn, 'click', function (e) {
+				oThis.startYear -= 10;
+				oThis._fillYear();
+			});
+			(0, _event.on)(this.nextBtn, 'click', function (e) {
+				oThis.startYear += 10;
+				oThis._fillYear();
+			});
+			this.panelContentDiv.appendChild(this.preBtn);
+			this.panelContentDiv.appendChild(this.nextBtn);
+			this._fillYear();
+		},
+
+		/**
+	  *填充年份选择面板
+	  * @private
+	  */
+		_fillYear: function _fillYear(type) {
+			var oldPanel, year, template, yearPage, titleDiv, yearDiv, i, cell;
+			oldPanel = this.panelContentDiv.querySelector('.u-date-content-page');
+			if (oldPanel) this.panelContentDiv.removeChild(oldPanel);
+			template = ['<div class="u-date-content-page">', '<div class="u-date-content-title"></div>', '<div class="u-date-content-panel"></div>', '</div>'].join("");
+			yearPage = (0, _dom.makeDOM)(template);
+			titleDiv = yearPage.querySelector('.u-date-content-title');
+			titleDiv.innerHTML = this.startYear + '-' + (this.startYear + 11);
+			yearDiv = yearPage.querySelector('.u-date-content-panel');
+			for (i = 0; i < 12; i++) {
+				cell = (0, _dom.makeDOM)('<div class="u-date-content-year-cell">' + (this.startYear + i) + '</div>');
+				new _ripple.URipple(cell);
+				if (this.startYear + i == this.year) {
+					(0, _dom.addClass)(cell, 'current');
+				}
+				cell._value = this.startYear + i;
+				yearDiv.appendChild(cell);
+			}
+			(0, _event.on)(yearDiv, 'click', function (e) {
+				var _y = e.target._value;
+				this.year = _y;
+				this.setValue(_y);
+				this.hide();
+				(0, _event.stopEvent)(e);
+			}.bind(this));
+
+			this.preBtn.style.display = 'block';
+			this.nextBtn.style.display = 'block';
+			this.panelContentDiv.appendChild(yearPage);
+
+			this.currentPanel = 'year';
+		},
+
+		setValue: function setValue(value) {
+			value = value ? value : '';
+			this.value = value;
+			if (value) {
+				this.year = value;
+			} else {
+				this.year = this.defaultYear;
+			}
+			this.startYear = this.year - this.year % 10 - 1;
+			this.input.value = value;
+			this.trigger('valueChange', { value: value });
+		},
+
+		focusEvent: function focusEvent() {
+			var self = this;
+			(0, _event.on)(this.input, 'focus', function (e) {
+				self._inputFocus = true;
+				self.show(e);
+				(0, _event.stopEvent)(e);
+			});
+		},
+		keydownEvent: function keydownEvent() {
+			var self = this;
+			(0, _event.on)(self.input, "keydown", function (e) {
+				var code = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+				if (!(code >= 48 && code <= 57 || code == 37 || code == 39 || code == 8 || code == 46)) {
+					//阻止默认浏览器动作(W3C)
+					if (e && e.preventDefault) e.preventDefault();
+					//IE中阻止函数器默认动作的方式
+					else window.event.returnValue = false;
+					return false;
+				}
+			});
+		},
+		//下拉图标的点击事件
+		clickEvent: function clickEvent() {
+			var self = this;
+			var caret = this.element.nextSibling;
+			(0, _event.on)(caret, 'click', function (e) {
+				self.input.focus();
+				(0, _event.stopEvent)(e);
+			});
+		},
+
+		show: function show(evt) {
+			var oThis = this;
+			this.createPanel();
+
+			this.width = this.element.offsetWidth;
+			if (this.width < 300) this.width = 300;
+
+			this.panelDiv.style.width = 152 + 'px';
+			if (this.options.showFix) {
+				document.body.appendChild(this.panelDiv);
+				this.panelDiv.style.position = 'fixed';
+				(0, _dom.showPanelByEle)({
+					ele: this.input,
+					panel: this.panelDiv,
+					position: "bottomLeft"
+				});
+			} else {
+				var bodyWidth = document.body.clientWidth,
+				    bodyHeight = document.body.clientHeight,
+				    panelWidth = this.panelDiv.offsetWidth,
+				    panelHeight = this.panelDiv.offsetHeight;
+
+				this.element.appendChild(this.panelDiv);
+				this.element.style.position = 'relative';
+				this.left = this.input.offsetLeft;
+				var inputHeight = this.input.offsetHeight;
+				this.top = this.input.offsetTop + inputHeight;
+
+				if (this.left + panelWidth > bodyWidth) {
+					this.left = bodyWidth - panelWidth;
+				}
+
+				if (this.top + panelHeight > bodyHeight) {
+					this.top = bodyHeight - panelHeight;
+				}
+
+				this.panelDiv.style.left = this.left + 'px';
+				this.panelDiv.style.top = this.top + 'px';
+			}
+			this.panelDiv.style.zIndex = (0, _dom.getZIndex)();
+			(0, _dom.addClass)(this.panelDiv, 'is-visible');
+
+			var callback = function (e) {
+				if (e !== evt && e.target !== this.input && !oThis.clickPanel(e.target) && oThis._inputFocus != true) {
+					(0, _event.off)(document, 'click', callback);
+					// document.removeEventListener('click', callback);
+					this.hide();
+				}
+			}.bind(this);
+			(0, _event.on)(document, 'click', callback);
+			// document.addEventListener('click', callback);
+		},
+
+		clickPanel: function clickPanel(dom) {
+			while (dom) {
+				if (dom == this.panelDiv) {
+					return true;
+				} else {
+					dom = dom.parentNode;
+				}
+			}
+			return false;
+		},
+		hide: function hide() {
+			(0, _dom.removeClass)(this.panelDiv, 'is-visible');
+			this.panelDiv.style.zIndex = -1;
+		}
+	});
+
+	_compMgr.compMgr.regComp({
+		comp: Year,
+		compAsString: 'u.Year',
+		css: 'u-year'
+	});
+	if (document.readyState && document.readyState === 'complete') {
+		_compMgr.compMgr.updateComp();
+	} else {
+		(0, _event.on)(window, 'load', function () {
+			//扫描并生成控件
+			_compMgr.compMgr.updateComp();
+		});
+	}
+	exports.Year = Year;
+
+/***/ },
+/* 48 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.YearMonth = undefined;
+
+	var _BaseComponent = __webpack_require__(4);
+
+	var _event = __webpack_require__(7);
+
+	var _dom = __webpack_require__(10);
+
+	var _extend = __webpack_require__(1);
+
+	var _env = __webpack_require__(8);
+
+	var _compMgr = __webpack_require__(9);
+
+	var _ripple = __webpack_require__(13);
+
+	var YearMonth = _BaseComponent.BaseComponent.extend({
+	    DEFAULTS: {},
+	    init: function init() {
+	        var self = this;
+	        var element = this.element;
+	        this.options = (0, _extend.extend)({}, this.DEFAULTS, this.options);
+	        this.panelDiv = null;
+	        this.input = this.element.querySelector("input");
+
+	        var d = new Date();
+	        this.year = d.getFullYear();
+	        this.startYear = this.year - this.year % 10 - 1;
+	        this.month = d.getMonth() + 1;
+
+	        (0, _event.on)(this.input, 'blur', function (e) {
+	            self._inputFocus = false;
+	            self.setValue(self.input.value);
+	        });
+
+	        // 添加focus事件
+	        this.focusEvent();
+	        // 添加右侧图标click事件
+	        this.clickEvent();
+	    },
+
+	    createPanel: function createPanel() {
+	        if (this.panelDiv) {
+	            this._fillYear();
+	            return;
+	        }
+	        var oThis = this;
+	        this.panelDiv = (0, _dom.makeDOM)('<div class="u-date-panel" style="margin:0px;"></div>');
+	        this.panelContentDiv = (0, _dom.makeDOM)('<div class="u-date-content"></div>');
+	        this.panelDiv.appendChild(this.panelContentDiv);
+
+	        // this.preBtn = makeDOM('<button class="u-date-pre-button u-button flat floating mini" style="display:none;">&lt;</button>');
+	        // this.nextBtn = makeDOM('<button class="u-date-next-button u-button flat floating mini" style="display:none;">&gt;</button>');
+	        this.preBtn = (0, _dom.makeDOM)('<button class="u-date-pre-button u-button mini">&lt;</button>');
+	        this.nextBtn = (0, _dom.makeDOM)('<button class="u-date-next-button u-button mini">&gt;</button>');
+
+	        (0, _event.on)(this.preBtn, 'click', function (e) {
+	            oThis.startYear -= 10;
+	            oThis._fillYear();
+	        });
+	        (0, _event.on)(this.nextBtn, 'click', function (e) {
+	            oThis.startYear += 10;
+	            oThis._fillYear();
+	        });
+	        this.panelContentDiv.appendChild(this.preBtn);
+	        this.panelContentDiv.appendChild(this.nextBtn);
+	        this._fillYear();
+	    },
+
+	    /**
+	     *填充年份选择面板
+	     * @private
+	     */
+	    _fillYear: function _fillYear(type) {
+	        var oldPanel, year, template, yearPage, titleDiv, yearDiv, i, cell;
+	        oldPanel = this.panelContentDiv.querySelector('.u-date-content-page');
+	        if (oldPanel) this.panelContentDiv.removeChild(oldPanel);
+	        template = ['<div class="u-date-content-page">', '<div class="u-date-content-title"></div>', '<div class="u-date-content-panel"></div>', '</div>'].join("");
+	        yearPage = (0, _dom.makeDOM)(template);
+	        titleDiv = yearPage.querySelector('.u-date-content-title');
+	        titleDiv.innerHTML = this.startYear + '-' + (this.startYear + 11);
+	        yearDiv = yearPage.querySelector('.u-date-content-panel');
+	        for (i = 0; i < 12; i++) {
+	            cell = (0, _dom.makeDOM)('<div class="u-date-content-year-cell">' + (this.startYear + i) + '</div>');
+	            new _ripple.URipple(cell);
+	            if (this.startYear + i == this.year) {
+	                (0, _dom.addClass)(cell, 'current');
+	            }
+	            cell._value = this.startYear + i;
+	            yearDiv.appendChild(cell);
+	        }
+	        var oThis = this;
+	        (0, _event.on)(yearDiv, 'click', function (e) {
+	            var _y = e.target._value;
+	            oThis.year = _y;
+	            oThis._fillMonth();
+	            (0, _event.stopEvent)(e);
+	        });
+
+	        this.preBtn.style.display = 'block';
+	        this.nextBtn.style.display = 'block';
+	        // this._zoomIn(yearPage);
+	        this.panelContentDiv.appendChild(yearPage);
+	        this.contentPage = yearPage;
+	        this.currentPanel = 'year';
+	    },
+
+	    /**
+	     * 填充月份选择面板
+	     * @private
+	     */
+	    _fillMonth: function _fillMonth() {
+	        var oldPanel, template, monthPage, _month, cells, i;
+	        oldPanel = this.panelContentDiv.querySelector('.u-date-content-page');
+	        if (oldPanel) this.panelContentDiv.removeChild(oldPanel);
+	        _month = this.month;
+	        template = ['<div class="u-date-content-page">', '<div class="u-date-content-title">' + _month + '月</div>', '<div class="u-date-content-panel">', '<div class="u-date-content-year-cell">1月</div>', '<div class="u-date-content-year-cell">2月</div>', '<div class="u-date-content-year-cell">3月</div>', '<div class="u-date-content-year-cell">4月</div>', '<div class="u-date-content-year-cell">5月</div>', '<div class="u-date-content-year-cell">6月</div>', '<div class="u-date-content-year-cell">7月</div>', '<div class="u-date-content-year-cell">8月</div>', '<div class="u-date-content-year-cell">9月</div>', '<div class="u-date-content-year-cell">10月</div>', '<div class="u-date-content-year-cell">11月</div>', '<div class="u-date-content-year-cell">12月</div>', '</div>', '</div>'].join("");
+
+	        monthPage = (0, _dom.makeDOM)(template);
+	        cells = monthPage.querySelectorAll('.u-date-content-year-cell');
+	        for (i = 0; i < cells.length; i++) {
+	            if (_month == i + 1) {
+	                (0, _dom.addClass)(cells[i], 'current');
+	            }
+	            cells[i]._value = i + 1;
+	            new _ripple.URipple(cells[i]);
+	        }
+	        var oThis = this;
+	        (0, _event.on)(monthPage, 'click', function (e) {
+	            var _m = e.target._value;
+	            oThis.month = _m;
+	            monthPage.querySelector('.u-date-content-title').innerHTML = _m + '月';
+	            oThis.setValue(oThis.year + '-' + oThis.month);
+	            oThis.hide();
+	        });
+
+	        this.preBtn.style.display = 'none';
+	        this.nextBtn.style.display = 'none';
+	        this._zoomIn(monthPage);
+	        this.currentPanel = 'month';
+	    },
+
+	    /**
+	     * 淡入动画效果
+	     * @private
+	     */
+	    _zoomIn: function _zoomIn(newPage) {
+	        if (!this.contentPage) {
+	            this.panelContentDiv.appendChild(newPage);
+	            this.contentPage = newPage;
+	            return;
+	        }
+	        (0, _dom.addClass)(newPage, 'zoom-in');
+	        this.panelContentDiv.appendChild(newPage);
+	        if (_env.isIE8) {
+	            this.contentPage = newPage;
+	        } else {
+	            var cleanup = function () {
+	                newPage.removeEventListener('transitionend', cleanup);
+	                newPage.removeEventListener('webkitTransitionEnd', cleanup);
+	                // this.panelContentDiv.removeChild(this.contentPage);
+	                this.contentPage = newPage;
+	            }.bind(this);
+	            if (this.contentPage) {
+	                newPage.addEventListener('transitionend', cleanup);
+	                newPage.addEventListener('webkitTransitionEnd', cleanup);
+	            }
+	            window.requestAnimationFrame(function () {
+	                (0, _dom.addClass)(this.contentPage, 'is-hidden');
+	                (0, _dom.removeClass)(newPage, 'zoom-in');
+	            }.bind(this));
+	        }
+	    },
+
+	    setValue: function setValue(value) {
+	        value = value ? value : '';
+	        if (value && value.indexOf('-') > -1) {
+	            var vA = value.split("-");
+	            this.year = vA[0];
+	            var month = vA[1];
+	            this.month = month % 12;
+	            if (this.month == 0) this.month = 12;
+
+	            value = this.year + '-' + this.month;
+	        }
+	        this.value = value;
+	        this.input.value = value;
+	        this.trigger('valueChange', { value: value });
+	    },
+
+	    focusEvent: function focusEvent() {
+	        var self = this;
+	        (0, _event.on)(this.input, 'focus', function (e) {
+	            self._inputFocus = true;
+	            self.show(e);
+	            (0, _event.stopEvent)(e);
+	        });
+	    },
+
+	    //下拉图标的点击事件
+	    clickEvent: function clickEvent() {
+	        var self = this;
+	        var caret = this.element.nextSibling;
+	        (0, _event.on)(caret, 'click', function (e) {
+	            self.input.focus();
+	            (0, _event.stopEvent)(e);
+	        });
+	    },
+
+	    show: function show(evt) {
+	        var oThis = this;
+	        if (this.value && this.value.indexOf('-') > -1) {
+	            var vA = this.value.split("-");
+	            this.year = vA[0];
+	            var month = vA[1];
+	            this.month = month % 12;
+	            if (this.month == 0) this.month = 12;
+	        }
+	        this.createPanel();
+	        /*因为元素可能变化位置，所以显示的时候需要重新计算*/
+	        this.width = this.element.offsetWidth;
+	        if (this.width < 300) this.width = 300;
+
+	        this.panelDiv.style.width = this.width + 'px';
+
+	        if (this.options.showFix) {
+	            document.body.appendChild(this.panelDiv);
+	            this.panelDiv.style.position = 'fixed';
+	            (0, _dom.showPanelByEle)({
+	                ele: this.input,
+	                panel: this.panelDiv,
+	                position: "bottomLeft"
+	            });
+	        } else {
+	            //    this.element.parentNode.appendChild(this.panelDiv);
+	            // //调整left和top
+	            //    this.left = this.element.offsetLeft;
+	            //    var inputHeight = this.element.offsetHeight;
+	            //    this.top = this.element.offsetTop + inputHeight;
+	            //    this.panelDiv.style.left = this.left + 'px';
+	            //    this.panelDiv.style.top = this.top + 'px';
+
+	            var bodyWidth = document.body.clientWidth,
+	                bodyHeight = document.body.clientHeight,
+	                panelWidth = this.panelDiv.offsetWidth,
+	                panelHeight = this.panelDiv.offsetHeight;
+
+	            this.element.appendChild(this.panelDiv);
+	            this.element.style.position = 'relative';
+	            this.left = this.input.offsetLeft;
+	            var inputHeight = this.input.offsetHeight;
+	            this.top = this.input.offsetTop + inputHeight;
+
+	            if (this.left + panelWidth > bodyWidth) {
+	                this.left = bodyWidth - panelWidth;
+	            }
+
+	            if (this.top + panelHeight > bodyHeight) {
+	                this.top = bodyHeight - panelHeight;
+	            }
+
+	            this.panelDiv.style.left = this.left + 'px';
+	            this.panelDiv.style.top = this.top + 'px';
+	        }
+
+	        this.panelDiv.style.zIndex = (0, _dom.getZIndex)();
+	        (0, _dom.addClass)(this.panelDiv, 'is-visible');
+	        var oThis = this;
+	        var callback = function callback(e) {
+	            if (e !== evt && e.target !== oThis.input && !oThis.clickPanel(e.target) && oThis._inputFocus != true) {
+	                // document.removeEventListener('click', callback);
+	                (0, _event.off)(document, 'click', callback);
+	                oThis.hide();
+	            }
+	        };
+	        (0, _event.on)(document, 'click', callback);
+	        // document.addEventListener('click', callback);
+	    },
+
+	    clickPanel: function clickPanel(dom) {
+	        while (dom) {
+	            if (dom == this.panelDiv) {
+	                return true;
+	            } else {
+	                dom = dom.parentNode;
+	            }
+	        }
+	        return false;
+	    },
+
+	    hide: function hide() {
+	        (0, _dom.removeClass)(this.panelDiv, 'is-visible');
+	        this.panelDiv.style.zIndex = -1;
+	    }
+	}); /**
+	     * Module : neoui-year
+	     * Author : liuyk(liuyk@yonyou.com)
+	     * Date   : 2016-08-11 15:17:07
+	     */
+
+	_compMgr.compMgr.regComp({
+	    comp: YearMonth,
+	    compAsString: 'u.YearMonth',
+	    css: 'u-yearmonth'
+	});
+	if (document.readyState && document.readyState === 'complete') {
+	    _compMgr.compMgr.updateComp();
+	} else {
+	    (0, _event.on)(window, 'load', function () {
+	        //扫描并生成控件
+	        _compMgr.compMgr.updateComp();
+	    });
+	}
+	exports.YearMonth = YearMonth;
 
 /***/ }
 /******/ ]);
