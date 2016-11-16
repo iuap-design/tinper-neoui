@@ -126,13 +126,13 @@ Refer.fn.open = function () {
         self.contentDiv.innerHTML = this.options['module'].template;
         this.options['module'].init(self);
     }
-    //else if(require && require.amd){
-    //    require([this.options.pageUrl], function(module) {
-    //        self.contentDiv.innerHTML =  module.template;
-    //        module.init(self);
-    //        self.loaded = true;
-    //    })
-    //}
+    else if(require){
+       require([this.options.pageUrl], function(module) {
+           self.contentDiv.innerHTML =  module.template;
+           module.init(self);
+           self.loaded = true;
+       })
+    }
 }
 
 /**
