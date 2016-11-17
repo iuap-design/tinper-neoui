@@ -36,13 +36,21 @@ var showLoader = function(options) {
 	parEle.appendChild(templateDom);
 };
 var hideLoader = function(options) {
-	var cssStr;
+	var cssStr,hasback;
 	if(options && options.cssStr){
 		cssStr =  options.cssStr ;
 	}else{
-		cssStr =  '.u-overlay,.u-loader-container';
+		cssStr =  '.u-loader-container';
 	}
-	
+
+	hasback = options["hasback"];
+	if(hasback){
+		// 默认删除最高层的
+		var overlayDivs = document.querySelectorAll('.u-overlay');
+		var l = overlayDivs.length;
+		var div = overlayDivs[l-1];
+		div.parentNode.removeChild(div);
+	}
 	var divs = document.querySelectorAll(cssStr);
 	for(var i = 0; i < divs.length; i++) {
 		divs[i].parentNode.removeChild(divs[i]);
