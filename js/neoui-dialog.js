@@ -463,7 +463,12 @@ dialogMode.prototype.close = function() {
 		this.contentDomParent && this.contentDomParent.appendChild(this.contentDom);
 	}
 	document.body.removeChild(this.templateDom);
-	document.body.removeChild(this.overlayDiv);
+	try{
+		document.body.removeChild(this.overlayDiv);
+	}catch(e){
+
+	}
+	
 	this.isClosed = true;
 		enable_mouseWheel();
 }
