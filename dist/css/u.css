@@ -4601,7 +4601,7 @@ small {
   background-color: white;
   text-align: center;
   color: #666666;
-  padding: 6px 11px;
+  padding: 4px 11px;
   line-height: 1.57142857; }
 
 .u-pagination > li:first-child > a,
@@ -4746,7 +4746,7 @@ small {
   border: 0px solid #d7d7d7; }
 
 .pagination-lg > li > a {
-  padding: 9px 15px;
+  padding: 8px 15px;
   font-size: 16px;
   line-height: 1.33333; }
 
@@ -4764,7 +4764,7 @@ small {
   line-height: 1.33333; }
 
 .pagination-sm > li > a {
-  padding: 5px 9px;
+  padding: 2px 9px;
   font-size: 14px;
   line-height: 1.5; }
 
