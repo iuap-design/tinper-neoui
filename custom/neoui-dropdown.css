@@ -1,0 +1,63 @@
+.u-menu-item-head {
+  display: block;
+  padding: 3px 20px;
+  font-size: 12px;
+  line-height: 1.57142857;
+  color: #424242;
+  white-space: nowrap; }
+
+.u-menu > .u-menu-item-head {
+  padding: 8px 13px 6px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: default; }
+
+.u-menu > .u-menu-item-break {
+  margin: 6px 0;
+  height: 1px;
+  overflow: hidden;
+  background-color: #e0e0e0; }
+
+.u-menu > .disabled {
+  background-color: transparent;
+  text-decoration: none;
+  cursor: not-allowed;
+  color: #bdbdbd; }
+  .u-menu > .disabled:hover {
+    background-color: transparent;
+    text-decoration: none;
+    cursor: not-allowed;
+    color: #bdbdbd; }
+  .u-menu > .disabled > a:hover {
+    text-decoration: none;
+    cursor: not-allowed;
+    background-color: transparent;
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    color: #bdbdbd; }
+
+.u-menu-info > .active {
+  background: #00bcd4; }
+  .u-menu-info > .active > a {
+    color: #fff; }
+
+.u-menu-success > .active {
+  background: #66bb6a;
+  background: #66bb6a; }
+
+.u-menu-danger > .active {
+  background: #ef5350; }
+
+.u-menu-warning > .active {
+  background: #ffa726; }
+
+.u-btn-group > .u-button-left {
+  font-size: 13px; }
+
+.u-btn-group > .u-button-right {
+  position: relative; }
+  .u-btn-group > .u-button-right > i {
+    position: absolute;
+    left: 3px;
+    top: 10px; }

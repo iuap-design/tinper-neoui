@@ -128,6 +128,13 @@ gulp.task('vcss', ['vsass'], function(){
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./v1/lib/css'));
 });
+
+gulp.task('custom',function(){
+    return gulp.src('./scss/ui/*.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('./custom/'))
+})
+
 // gulp.task('dev', ['image', 'font', 'sass-ui', 'es-ui', 'polyfill', 'serve'])
 
 /**
@@ -199,20 +206,18 @@ gulp.task('neo',['buildcss', 'buildjs'],function(){
     version.init([
         './dist/js/neoui.js',
         './dist/js/neoui.min.js'
-    ]);    
+    ]);
 });
 gulp.task('neoui', ['neo'], function(){
     version.init([
         './dist/css/u.css',
         './dist/css/u.min.css'
-    ]);    
+    ]);
 });
 
-gulp.task('dist', ['buildcss','buildjs', 'image','fontcss','fontfile'], function(){
+gulp.task('dist', ['buildcss','buildjs', 'image','fontcss','fontfile','custom'], function(){
     version.init([
         './dist/css/u.css',
         './dist/css/u.min.css'
-    ]);  
+    ]);
 });
-
-
