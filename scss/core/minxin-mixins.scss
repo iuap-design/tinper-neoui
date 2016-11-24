@@ -392,9 +392,11 @@
   &.is-checked{
     .u-radio-outer-circle{
         border: 1px solid $color;
+        top:0px;
     }
     .u-radio-inner-circle{
         background: $color;
+        top:4px;
     }
   }
 
