@@ -61,6 +61,7 @@
 
   .u-radio.is-checked & {
     border: 1px solid $radio-color;
+    top:0px;
   }
 
   fieldset[disabled] .u-radio,
@@ -93,6 +94,7 @@
   .u-radio.is-checked & {
     transform: scale3d(1, 1, 1);
     display: block \9;
+    top:4px;
   }
 
   fieldset[disabled] .u-radio &,
