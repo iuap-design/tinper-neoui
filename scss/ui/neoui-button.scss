@@ -116,7 +116,7 @@ input.u-button[type="submit"] {
 // }
 
 //Floating bottons
-.u-button-floating {
+.u-button-floating,.u-button.floating  {
   border-radius: 50%;
   font-size: $button-fab-font-size;
   height: $button-fab-size;
@@ -211,7 +211,7 @@ input.u-button[type="submit"] {
   }
 }
 
-.u-button-primary{
+.u-button-primary, .u-button.primary{
   color: $button-secondary-color-alt;
   background-color: $button-primary-color-alt;
   border:1px  $button-primary-color-alt solid;
@@ -222,7 +222,7 @@ input.u-button[type="submit"] {
 }
 
 
-.u-button-accent {
+.u-button-accent, .u-button.accent {
   color: $button-fab-text-color-alt;
   background-color: $button-fab-color-alt;
   border:1px  $button-fab-color-alt solid;
