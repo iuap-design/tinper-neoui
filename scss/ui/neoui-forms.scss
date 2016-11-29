@@ -287,9 +287,19 @@ textarea.u-form-control{
             top: 3px;
         }
         & .u-checkbox-outline{
-            top: 3px;
+            top: 0px;
         }
     }
+
+    &  .u-radio.is-checked .u-radio-outer-circle {
+            top: 0px; 
+    }
+    
+
+    &  .u-radio.is-checked .u-radio-inner-circle  {
+            top: 4px;
+    }
+    
 }
 
 //.u-input-group-addon {

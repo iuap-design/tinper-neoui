@@ -2067,7 +2067,11 @@
 			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
 			/*var focusHelper = document.createElement('span');
 	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
+<<<<<<< HEAD
 	  		thumb.appendChild(focusHelper);*/
+=======
+	  	thumb.appendChild(focusHelper);*/
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);

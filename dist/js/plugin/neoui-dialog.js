@@ -2112,6 +2112,7 @@
 
 	var _compMgr = __webpack_require__(9);
 
+<<<<<<< HEAD
 	/**
 	 * messageDialog.js
 	 */
@@ -2120,13 +2121,29 @@
 	 * Module : neoui-dialog
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-08-02 15:29:55
+=======
+	/**
+	 * messageDialog.js
+	 */
+
+	/**
+	 * Module : neoui-dialog
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-02 15:29:55
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 
 	'use strict';
 
+<<<<<<< HEAD
 	/**
 	 * 消息提示框
 	 * @param options
+=======
+	/**
+	 * 消息提示框
+	 * @param options
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 
 	var messageDialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' + '<div class="u-msg-dialog" style="{width}{height}{top}">' + '<div class="u-msg-dialog-content">' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content"></div>' + '{footer}' + '</div></div>';
@@ -2242,10 +2259,17 @@
 		return new messageDialogF(options);
 	};
 
+<<<<<<< HEAD
 	/**
 	 * Module : confirmDialog
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-07-29 10:21:33
+=======
+	/**
+	 * Module : confirmDialog
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-07-29 10:21:33
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 	var confirmDialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' + '<div class="u-msg-dialog" style="{width}{height}{top}">' + '<div class="u-msg-dialog-content">' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content">' + '</div>' + '{footer}' + '</div></div>';
 
@@ -2375,6 +2399,7 @@
 	var confirmDialog = function confirmDialog(options) {
 		return new confirmDialogF(options);
 	};
+<<<<<<< HEAD
 	/**
 	 * Created by dingrf on 2015-11-19.
 	 */
@@ -2386,15 +2411,35 @@
 	/**
 	 * 禁用鼠标滚轮事件
 	 * @return {[type]} [description]
+=======
+	/**
+	 * Created by dingrf on 2015-11-19.
+	 */
+
+	/**
+	 * 三按钮确认框（是 否  取消）
+	 */
+	var threeBtnDialog = function threeBtnDialog() {};
+	/**
+	 * 禁用鼠标滚轮事件
+	 * @return {[type]} [description]
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 	var disable_mouseWheel = function disable_mouseWheel() {
 		document.body.style.paddingRight = '17px';
 		document.body.style.overflow = 'hidden';
 	};
+<<<<<<< HEAD
 	/**
 	 * 事件禁用
 	 * @param  {[type]} evt [description]
 	 * @return {[type]}     [description]
+=======
+	/**
+	 * 事件禁用
+	 * @param  {[type]} evt [description]
+	 * @return {[type]}     [description]
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 	var scrollFunc = function scrollFunc(evt) {
 		evt = evt || window.event;
@@ -2410,17 +2455,28 @@
 		return false;
 	};
 
+<<<<<<< HEAD
 	/**
 	 * 开启鼠标滚轮事件
 	 * @return {[type]} [description]
+=======
+	/**
+	 * 开启鼠标滚轮事件
+	 * @return {[type]} [description]
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 	var enable_mouseWheel = function enable_mouseWheel() {
 		document.body.style.paddingRight = '';
 		document.body.style.overflow = '';
 	};
 
+<<<<<<< HEAD
 	/**
 	 * dialog.js
+=======
+	/**
+	 * dialog.js
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 
 	var dialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' + '<div class="u-msg-dialog" id="{id}" style="{width}{height}">' + '{close}' + '<div class="u-msg-dialog-content"></div>' + '</div></div>';
@@ -2547,12 +2603,21 @@
 		return new dialogMode(options);
 	};
 
+<<<<<<< HEAD
 	/**
 	 * 对话框向导
 	 * @param options:  {dialogs: [{content:".J-goods-pro-add-1-dialog",hasCloseMenu:false},
 	                               {content:".J-goods-pro-add-2-dialog",hasCloseMenu:false},
 	                            ]
 	                    }
+=======
+	/**
+	 * 对话框向导
+	 * @param options:  {dialogs: [{content:".J-goods-pro-add-1-dialog",hasCloseMenu:false},
+	                               {content:".J-goods-pro-add-2-dialog",hasCloseMenu:false},
+	                            ]
+	                    }
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 	var dialogWizard = function dialogWizard(options) {
 		var dialogs = [],
@@ -2588,10 +2653,17 @@
 		return new wizard();
 	};
 
+<<<<<<< HEAD
 	/**
 	 * Module : iframeDialog
 	 * Author : wh(wanghaoo@yonyou.com)
 	 * Date	  : 2016-09-8 9:33
+=======
+	/**
+	 * Module : iframeDialog
+	 * Author : wh(wanghaoo@yonyou.com)
+	 * Date	  : 2016-09-8 9:33
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 	var iframeDialogTemplate = '<div class="u-msg-dialog u-iframe-dialog" style="{width}{height}{top}">' + '{close}' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content">' + '<iframe src="{url}" width = "99%" height ="100%"></iframe>' + '</div>' + '{footer}';
 

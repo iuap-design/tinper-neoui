@@ -2557,7 +2557,13 @@
 	    // }
 
 	    setTimeout(function () {
+<<<<<<< HEAD
 	        self._input.setAttribute('readonly', 'readonly');
+=======
+	        if (self._input) {
+	            self._input.setAttribute('readonly', 'readonly');
+	        }
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	    }, 1000);
 
 	    (0, _event.on)(this._input, 'focus', function (e) {
@@ -2754,11 +2760,19 @@
 	        self._fillYear();
 	        stopEvent(e)
 	    });
+<<<<<<< HEAD
 	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
 	      on(this._headerTime, 'click', function(e){
+=======
+	     on(this._headerMonth, 'click', function(e){
+	        self._fillMonth();
+	        stopEvent(e)
+	    });
+	     on(this._headerTime, 'click', function(e){
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -2843,11 +2857,19 @@
 	        self._fillYear();
 	        stopEvent(e)
 	    });
+<<<<<<< HEAD
 	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
 	      on(this._headerTime, 'click', function(e){
+=======
+	     on(this._headerMonth, 'click', function(e){
+	        self._fillMonth();
+	        stopEvent(e)
+	    });
+	     on(this._headerTime, 'click', function(e){
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -4109,7 +4131,13 @@
 	    //只读的也需要校验，所以注释
 	    // if (this.element && this.element.getAttribute("readonly")) return {passed:true}
 	    var value = null;
+<<<<<<< HEAD
 	    if (typeof pValue != 'undefined') value = pValue;else if (this.element) value = this.element.value;
+=======
+	    if (typeof pValue != 'undefined') value = pValue;else if (this.element)
+	        // value = this.element.value
+	        value = this.element.value ? this.element.value : this.referDom.value;
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 
 	    if (this.isEmpty(value) && this.required) {
 	        this.showMsg(this.nullMsg);

@@ -2054,10 +2054,17 @@
 
 	var _ripple = __webpack_require__(13);
 
+<<<<<<< HEAD
 	/**
 	 * Module : neoui-month
 	 * Author : liuyk(liuyk@yonyou.com)
 	 * Date	  : 2016-08-11 15:17:07
+=======
+	/**
+	 * Module : neoui-month
+	 * Author : liuyk(liuyk@yonyou.com)
+	 * Date	  : 2016-08-11 15:17:07
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 	var Month = _BaseComponent.BaseComponent.extend({
 		DEFAULTS: {},
@@ -2111,9 +2118,15 @@
 			this._fillMonth();
 		},
 
+<<<<<<< HEAD
 		/**
 	  * 填充月份选择面板
 	  * @private
+=======
+		/**
+	  * 填充月份选择面板
+	  * @private
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	  */
 		_fillMonth: function _fillMonth() {
 			var oldPanel, template, monthPage, _month, cells, i;

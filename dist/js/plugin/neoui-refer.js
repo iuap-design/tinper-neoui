@@ -3112,10 +3112,17 @@
 
 	var _dateUtils = __webpack_require__(18);
 
+<<<<<<< HEAD
 	/**
 	 * Module : neoui-clockpicker
 	 * Author : liuyk(liuyk@yonyou.com)
 	 * Date	  : 2016-08-11 15:17:07
+=======
+	/**
+	 * Module : neoui-clockpicker
+	 * Author : liuyk(liuyk@yonyou.com)
+	 * Date	  : 2016-08-11 15:17:07
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 
 	var ClockPicker = _BaseComponent.BaseComponent.extend({
@@ -5254,10 +5261,17 @@
 
 	var _compMgr = __webpack_require__(9);
 
+<<<<<<< HEAD
 	/**
 	 * Module : neoui-datatable
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-08-02 15:23:19
+=======
+	/**
+	 * Module : neoui-datatable
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-02 15:23:19
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 
 	var Table = _BaseComponent.BaseComponent.extend({
@@ -5407,7 +5421,13 @@
 	    // }
 
 	    setTimeout(function () {
+<<<<<<< HEAD
 	        self._input.setAttribute('readonly', 'readonly');
+=======
+	        if (self._input) {
+	            self._input.setAttribute('readonly', 'readonly');
+	        }
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	    }, 1000);
 
 	    (0, _event.on)(this._input, 'focus', function (e) {
@@ -5604,11 +5624,19 @@
 	        self._fillYear();
 	        stopEvent(e)
 	    });
+<<<<<<< HEAD
 	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
 	      on(this._headerTime, 'click', function(e){
+=======
+	     on(this._headerMonth, 'click', function(e){
+	        self._fillMonth();
+	        stopEvent(e)
+	    });
+	     on(this._headerTime, 'click', function(e){
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -5693,11 +5721,19 @@
 	        self._fillYear();
 	        stopEvent(e)
 	    });
+<<<<<<< HEAD
 	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
 	      on(this._headerTime, 'click', function(e){
+=======
+	     on(this._headerMonth, 'click', function(e){
+	        self._fillMonth();
+	        stopEvent(e)
+	    });
+	     on(this._headerTime, 'click', function(e){
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -6959,7 +6995,13 @@
 	    //只读的也需要校验，所以注释
 	    // if (this.element && this.element.getAttribute("readonly")) return {passed:true}
 	    var value = null;
+<<<<<<< HEAD
 	    if (typeof pValue != 'undefined') value = pValue;else if (this.element) value = this.element.value;
+=======
+	    if (typeof pValue != 'undefined') value = pValue;else if (this.element)
+	        // value = this.element.value
+	        value = this.element.value ? this.element.value : this.referDom.value;
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 
 	    if (this.isEmpty(value) && this.required) {
 	        this.showMsg(this.nullMsg);
@@ -7628,6 +7670,7 @@
 
 	var _compMgr = __webpack_require__(9);
 
+<<<<<<< HEAD
 	/**
 	 * messageDialog.js
 	 */
@@ -7636,13 +7679,29 @@
 	 * Module : neoui-dialog
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-08-02 15:29:55
+=======
+	/**
+	 * messageDialog.js
+	 */
+
+	/**
+	 * Module : neoui-dialog
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-02 15:29:55
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 
 	'use strict';
 
+<<<<<<< HEAD
 	/**
 	 * 消息提示框
 	 * @param options
+=======
+	/**
+	 * 消息提示框
+	 * @param options
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 
 	var messageDialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' + '<div class="u-msg-dialog" style="{width}{height}{top}">' + '<div class="u-msg-dialog-content">' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content"></div>' + '{footer}' + '</div></div>';
@@ -7758,10 +7817,17 @@
 		return new messageDialogF(options);
 	};
 
+<<<<<<< HEAD
 	/**
 	 * Module : confirmDialog
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-07-29 10:21:33
+=======
+	/**
+	 * Module : confirmDialog
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-07-29 10:21:33
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 	var confirmDialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' + '<div class="u-msg-dialog" style="{width}{height}{top}">' + '<div class="u-msg-dialog-content">' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content">' + '</div>' + '{footer}' + '</div></div>';
 
@@ -7891,6 +7957,7 @@
 	var confirmDialog = function confirmDialog(options) {
 		return new confirmDialogF(options);
 	};
+<<<<<<< HEAD
 	/**
 	 * Created by dingrf on 2015-11-19.
 	 */
@@ -7902,15 +7969,35 @@
 	/**
 	 * 禁用鼠标滚轮事件
 	 * @return {[type]} [description]
+=======
+	/**
+	 * Created by dingrf on 2015-11-19.
+	 */
+
+	/**
+	 * 三按钮确认框（是 否  取消）
+	 */
+	var threeBtnDialog = function threeBtnDialog() {};
+	/**
+	 * 禁用鼠标滚轮事件
+	 * @return {[type]} [description]
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 	var disable_mouseWheel = function disable_mouseWheel() {
 		document.body.style.paddingRight = '17px';
 		document.body.style.overflow = 'hidden';
 	};
+<<<<<<< HEAD
 	/**
 	 * 事件禁用
 	 * @param  {[type]} evt [description]
 	 * @return {[type]}     [description]
+=======
+	/**
+	 * 事件禁用
+	 * @param  {[type]} evt [description]
+	 * @return {[type]}     [description]
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 	var scrollFunc = function scrollFunc(evt) {
 		evt = evt || window.event;
@@ -7926,17 +8013,28 @@
 		return false;
 	};
 
+<<<<<<< HEAD
 	/**
 	 * 开启鼠标滚轮事件
 	 * @return {[type]} [description]
+=======
+	/**
+	 * 开启鼠标滚轮事件
+	 * @return {[type]} [description]
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 	var enable_mouseWheel = function enable_mouseWheel() {
 		document.body.style.paddingRight = '';
 		document.body.style.overflow = '';
 	};
 
+<<<<<<< HEAD
 	/**
 	 * dialog.js
+=======
+	/**
+	 * dialog.js
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 
 	var dialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' + '<div class="u-msg-dialog" id="{id}" style="{width}{height}">' + '{close}' + '<div class="u-msg-dialog-content"></div>' + '</div></div>';
@@ -8063,12 +8161,21 @@
 		return new dialogMode(options);
 	};
 
+<<<<<<< HEAD
 	/**
 	 * 对话框向导
 	 * @param options:  {dialogs: [{content:".J-goods-pro-add-1-dialog",hasCloseMenu:false},
 	                               {content:".J-goods-pro-add-2-dialog",hasCloseMenu:false},
 	                            ]
 	                    }
+=======
+	/**
+	 * 对话框向导
+	 * @param options:  {dialogs: [{content:".J-goods-pro-add-1-dialog",hasCloseMenu:false},
+	                               {content:".J-goods-pro-add-2-dialog",hasCloseMenu:false},
+	                            ]
+	                    }
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 	var dialogWizard = function dialogWizard(options) {
 		var dialogs = [],
@@ -8104,10 +8211,17 @@
 		return new wizard();
 	};
 
+<<<<<<< HEAD
 	/**
 	 * Module : iframeDialog
 	 * Author : wh(wanghaoo@yonyou.com)
 	 * Date	  : 2016-09-8 9:33
+=======
+	/**
+	 * Module : iframeDialog
+	 * Author : wh(wanghaoo@yonyou.com)
+	 * Date	  : 2016-09-8 9:33
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 	var iframeDialogTemplate = '<div class="u-msg-dialog u-iframe-dialog" style="{width}{height}{top}">' + '{close}' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content">' + '<iframe src="{url}" width = "99%" height ="100%"></iframe>' + '</div>' + '{footer}';
 
@@ -9007,7 +9121,11 @@
 	 */
 	var loadTemplate = "<div class='u-loader-container'><div class='u-loader'>{centerContent}</div>{loadDesc}</div>"; //{centerContent}为加载条中间内容
 	/**
+<<<<<<< HEAD
 	 * @param  {Object} options 
+=======
+	 * @param  {Object} options
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 * @return {[type]}
 	 */
 	/**
@@ -9039,6 +9157,10 @@
 	};
 	var hideLoader = function hideLoader(options) {
 		var cssStr, hasback;
+<<<<<<< HEAD
+=======
+		options = options || {};
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 		if (options && options.cssStr) {
 			cssStr = options.cssStr;
 		} else {
@@ -9798,10 +9920,17 @@
 
 	var _ripple = __webpack_require__(13);
 
+<<<<<<< HEAD
 	/**
 	 * Module : neoui-month
 	 * Author : liuyk(liuyk@yonyou.com)
 	 * Date	  : 2016-08-11 15:17:07
+=======
+	/**
+	 * Module : neoui-month
+	 * Author : liuyk(liuyk@yonyou.com)
+	 * Date	  : 2016-08-11 15:17:07
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 	var Month = _BaseComponent.BaseComponent.extend({
 		DEFAULTS: {},
@@ -9855,9 +9984,15 @@
 			this._fillMonth();
 		},
 
+<<<<<<< HEAD
 		/**
 	  * 填充月份选择面板
 	  * @private
+=======
+		/**
+	  * 填充月份选择面板
+	  * @private
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	  */
 		_fillMonth: function _fillMonth() {
 			var oldPanel, template, monthPage, _month, cells, i;
@@ -11909,10 +12044,17 @@
 	};
 	//extend(ex,env);
 
+<<<<<<< HEAD
 	/**
 	 * Module : Neoui webpack entry index
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-08-10 16:19:39
+=======
+	/**
+	 * Module : Neoui webpack entry index
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-10 16:19:39
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 
 	//Sparrow import
@@ -12040,7 +12182,11 @@
 			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
 			/*var focusHelper = document.createElement('span');
 	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
+<<<<<<< HEAD
 	  		thumb.appendChild(focusHelper);*/
+=======
+	  	thumb.appendChild(focusHelper);*/
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);
@@ -12590,10 +12736,17 @@
 
 	var _ripple = __webpack_require__(13);
 
+<<<<<<< HEAD
 	/**
 	 * Module : neoui-year
 	 * Author : liuyk(liuyk@yonyou.com)
 	 * Date	  : 2016-08-11 15:17:07
+=======
+	/**
+	 * Module : neoui-year
+	 * Author : liuyk(liuyk@yonyou.com)
+	 * Date	  : 2016-08-11 15:17:07
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 
 	var Year = _BaseComponent.BaseComponent.extend({
@@ -12649,9 +12802,15 @@
 			this._fillYear();
 		},
 
+<<<<<<< HEAD
 		/**
 	  *填充年份选择面板
 	  * @private
+=======
+		/**
+	  *填充年份选择面板
+	  * @private
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	  */
 		_fillYear: function _fillYear(type) {
 			var oldPanel, year, template, yearPage, titleDiv, yearDiv, i, cell;
@@ -12890,9 +13049,15 @@
 	        this._fillYear();
 	    },
 
+<<<<<<< HEAD
 	    /**
 	     *填充年份选择面板
 	     * @private
+=======
+	    /**
+	     *填充年份选择面板
+	     * @private
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	     */
 	    _fillYear: function _fillYear(type) {
 	        var oldPanel, year, template, yearPage, titleDiv, yearDiv, i, cell;
@@ -12928,9 +13093,15 @@
 	        this.currentPanel = 'year';
 	    },
 
+<<<<<<< HEAD
 	    /**
 	     * 填充月份选择面板
 	     * @private
+=======
+	    /**
+	     * 填充月份选择面板
+	     * @private
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	     */
 	    _fillMonth: function _fillMonth() {
 	        var oldPanel, template, monthPage, _month, cells, i;
@@ -12951,7 +13122,13 @@
 	        var oThis = this;
 	        (0, _event.on)(monthPage, 'click', function (e) {
 	            var _m = e.target._value;
+<<<<<<< HEAD
 	            oThis.month = _m;
+=======
+	            if (_m) {
+	                oThis.month = _m;
+	            }
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	            monthPage.querySelector('.u-date-content-title').innerHTML = _m + '月';
 	            oThis.setValue(oThis.year + '-' + oThis.month);
 	            oThis.hide();
@@ -12963,9 +13140,15 @@
 	        this.currentPanel = 'month';
 	    },
 
+<<<<<<< HEAD
 	    /**
 	     * 淡入动画效果
 	     * @private
+=======
+	    /**
+	     * 淡入动画效果
+	     * @private
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	     */
 	    _zoomIn: function _zoomIn(newPage) {
 	        if (!this.contentPage) {
@@ -13115,10 +13298,17 @@
 	        (0, _dom.removeClass)(this.panelDiv, 'is-visible');
 	        this.panelDiv.style.zIndex = -1;
 	    }
+<<<<<<< HEAD
 	}); /**
 	     * Module : neoui-year
 	     * Author : liuyk(liuyk@yonyou.com)
 	     * Date   : 2016-08-11 15:17:07
+=======
+	}); /**
+	     * Module : neoui-year
+	     * Author : liuyk(liuyk@yonyou.com)
+	     * Date   : 2016-08-11 15:17:07
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	     */
 
 	_compMgr.compMgr.regComp({

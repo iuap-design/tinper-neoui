@@ -2043,10 +2043,17 @@
 
 	var _ripple = __webpack_require__(13);
 
+<<<<<<< HEAD
 	/**
 	 * Module : neoui-year
 	 * Author : liuyk(liuyk@yonyou.com)
 	 * Date	  : 2016-08-11 15:17:07
+=======
+	/**
+	 * Module : neoui-year
+	 * Author : liuyk(liuyk@yonyou.com)
+	 * Date	  : 2016-08-11 15:17:07
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 
 	var Year = _BaseComponent.BaseComponent.extend({
@@ -2102,9 +2109,15 @@
 			this._fillYear();
 		},
 
+<<<<<<< HEAD
 		/**
 	  *填充年份选择面板
 	  * @private
+=======
+		/**
+	  *填充年份选择面板
+	  * @private
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	  */
 		_fillYear: function _fillYear(type) {
 			var oldPanel, year, template, yearPage, titleDiv, yearDiv, i, cell;

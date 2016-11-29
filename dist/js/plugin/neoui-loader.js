@@ -1053,7 +1053,11 @@
 	 */
 	var loadTemplate = "<div class='u-loader-container'><div class='u-loader'>{centerContent}</div>{loadDesc}</div>"; //{centerContent}为加载条中间内容
 	/**
+<<<<<<< HEAD
 	 * @param  {Object} options 
+=======
+	 * @param  {Object} options
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 * @return {[type]}
 	 */
 	/**
@@ -1085,6 +1089,10 @@
 	};
 	var hideLoader = function hideLoader(options) {
 		var cssStr, hasback;
+<<<<<<< HEAD
+=======
+		options = options || {};
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 		if (options && options.cssStr) {
 			cssStr = options.cssStr;
 		} else {

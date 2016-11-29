@@ -231,6 +231,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     vertical-align: middle;
+    line-height: 1;
 }
 .u-input-group .u-form-control {
 
@@ -300,11 +301,13 @@
     margin-left: -1px;
 }
 .u-input-group .u-input-group-addon .u-checkbox{
-    height: 23px;
+    // height: 23px;
     padding-left: 16px;
+    height:14px;
 }
 .u-input-group .u-input-group-addon .u-radio{
-    height: 34px;
+    // height: 34px;
+    height:14px;
     padding-left: 16px;
     vertical-align: middle;
 }

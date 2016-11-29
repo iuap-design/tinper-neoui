@@ -1811,10 +1811,17 @@
 
 	var _dateUtils = __webpack_require__(18);
 
+<<<<<<< HEAD
 	/**
 	 * Module : neoui-clockpicker
 	 * Author : liuyk(liuyk@yonyou.com)
 	 * Date	  : 2016-08-11 15:17:07
+=======
+	/**
+	 * Module : neoui-clockpicker
+	 * Author : liuyk(liuyk@yonyou.com)
+	 * Date	  : 2016-08-11 15:17:07
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 
 	var ClockPicker = _BaseComponent.BaseComponent.extend({

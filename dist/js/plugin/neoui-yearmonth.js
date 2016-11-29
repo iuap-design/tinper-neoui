@@ -2098,9 +2098,15 @@
 	        this._fillYear();
 	    },
 
+<<<<<<< HEAD
 	    /**
 	     *填充年份选择面板
 	     * @private
+=======
+	    /**
+	     *填充年份选择面板
+	     * @private
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	     */
 	    _fillYear: function _fillYear(type) {
 	        var oldPanel, year, template, yearPage, titleDiv, yearDiv, i, cell;
@@ -2136,9 +2142,15 @@
 	        this.currentPanel = 'year';
 	    },
 
+<<<<<<< HEAD
 	    /**
 	     * 填充月份选择面板
 	     * @private
+=======
+	    /**
+	     * 填充月份选择面板
+	     * @private
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	     */
 	    _fillMonth: function _fillMonth() {
 	        var oldPanel, template, monthPage, _month, cells, i;
@@ -2159,7 +2171,13 @@
 	        var oThis = this;
 	        (0, _event.on)(monthPage, 'click', function (e) {
 	            var _m = e.target._value;
+<<<<<<< HEAD
 	            oThis.month = _m;
+=======
+	            if (_m) {
+	                oThis.month = _m;
+	            }
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	            monthPage.querySelector('.u-date-content-title').innerHTML = _m + '月';
 	            oThis.setValue(oThis.year + '-' + oThis.month);
 	            oThis.hide();
@@ -2171,9 +2189,15 @@
 	        this.currentPanel = 'month';
 	    },
 
+<<<<<<< HEAD
 	    /**
 	     * 淡入动画效果
 	     * @private
+=======
+	    /**
+	     * 淡入动画效果
+	     * @private
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	     */
 	    _zoomIn: function _zoomIn(newPage) {
 	        if (!this.contentPage) {
@@ -2323,10 +2347,17 @@
 	        (0, _dom.removeClass)(this.panelDiv, 'is-visible');
 	        this.panelDiv.style.zIndex = -1;
 	    }
+<<<<<<< HEAD
 	}); /**
 	     * Module : neoui-year
 	     * Author : liuyk(liuyk@yonyou.com)
 	     * Date   : 2016-08-11 15:17:07
+=======
+	}); /**
+	     * Module : neoui-year
+	     * Author : liuyk(liuyk@yonyou.com)
+	     * Date   : 2016-08-11 15:17:07
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	     */
 
 	_compMgr.compMgr.regComp({

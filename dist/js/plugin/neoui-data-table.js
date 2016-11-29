@@ -2273,10 +2273,17 @@
 
 	var _compMgr = __webpack_require__(9);
 
+<<<<<<< HEAD
 	/**
 	 * Module : neoui-datatable
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-08-02 15:23:19
+=======
+	/**
+	 * Module : neoui-datatable
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-02 15:23:19
+>>>>>>> 003a162f91a97fd16a0c6e2744b61a845c25efd9
 	 */
 
 	var Table = _BaseComponent.BaseComponent.extend({

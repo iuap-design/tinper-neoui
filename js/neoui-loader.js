@@ -10,7 +10,7 @@ import {makeDOM, makeModal} from 'tinper-sparrow/js/dom';
  */
 var loadTemplate = "<div class='u-loader-container'><div class='u-loader'>{centerContent}</div>{loadDesc}</div>"; //{centerContent}为加载条中间内容
 /**
- * @param  {Object} options 
+ * @param  {Object} options
  * @return {[type]}
  */
 var showLoader = function(options) {
@@ -37,6 +37,7 @@ var showLoader = function(options) {
 };
 var hideLoader = function(options) {
 	var cssStr,hasback;
+	options = options || {};
 	if(options && options.cssStr){
 		cssStr =  options.cssStr ;
 	}else{
