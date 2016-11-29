@@ -240,7 +240,8 @@ Validate.fn.doValid = function(options) {
     if (typeof pValue != 'undefined')
         value = pValue
     else if (this.element)
-        value = this.element.value
+        // value = this.element.value
+         value = this.element.value?this.element.value:this.referDom.value
 
     if (this.isEmpty(value) && this.required) {
         this.showMsg(this.nullMsg)

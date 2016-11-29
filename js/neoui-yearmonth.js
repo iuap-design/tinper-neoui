@@ -149,7 +149,9 @@ const YearMonth = BaseComponent.extend({
         var oThis = this;
         on(monthPage, 'click', function(e){
             var _m = e.target._value;
-            oThis.month = _m;
+            if (_m) {
+                oThis.month = _m;
+            }
             monthPage.querySelector('.u-date-content-title').innerHTML = _m + '月';
             oThis.setValue(oThis.year + '-' + oThis.month);
             oThis.hide();
