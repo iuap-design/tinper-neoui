@@ -402,6 +402,10 @@ $date-bg-color: rgb(27,174,222) !default;
         padding-bottom:0px;
         padding-left:0.5* 16px;
         padding-right:0.5* 16px;
+        &.u-date-ok,&.u-date-cancel,&.u-date-clean {
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
     }
 
     .u-date-clean{
