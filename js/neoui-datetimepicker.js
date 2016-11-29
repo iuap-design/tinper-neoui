@@ -1161,6 +1161,12 @@ DateTimePicker.fn.show = function(evt){
         });
         on(this.btnClean, 'click', function(e){
             self.pickerDate = null;
+            self.beginYear = 0;
+            self.beginMonth = 0;
+            self.beginDate = 0;
+            self.overYear = 0;
+            self.overMonth = 0;
+            self.overDate = 0;
             self.onOk();
             stopEvent(e)
         });
