@@ -172,9 +172,9 @@ var Combo = BaseComponent.extend({
             this._ul.style.top = this.top + 'px';
         }
 	    this._ul.style.width = width + 'px';
-        addClass(this._ul, 'is-animating');
+        $(this._ul).addClass('is-animating');
         this._ul.style.zIndex = getZIndex();
-        addClass(this._ul, 'is-visible');
+        $(this._ul).addClass('is-visible');
 
         var callback = function (e) {
             if(e === evt || e.target === this._input || self._inputFocus == true) return;
