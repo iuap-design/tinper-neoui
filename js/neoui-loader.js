@@ -3,7 +3,7 @@
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-08-02 19:02:09
  */
-import {makeDOM, makeModal} from 'tinper-sparrow/js/dom';
+import {makeDOM, makeModal,addClass} from 'tinper-sparrow/js/dom';
 
 /*
  *加载loading
@@ -30,6 +30,7 @@ var showLoader = function(options) {
 	if(hasback) {
 		var overlayDiv = makeModal(templateDom, parEle);
 	}
+	addClass(overlayDiv, 'u-loader-back');
 	if(parEle == document.body) {
 		templateDom.style.position = 'fixed';
 	}
@@ -44,14 +45,15 @@ var hideLoader = function(options) {
 		cssStr =  '.u-loader-container';
 	}
 
-	hasback = options["hasback"];
-	if(hasback){
+	// hasback = options["hasback"];
+	// if(hasback){
 		// 默认删除最高层的
-		var overlayDivs = document.querySelectorAll('.u-overlay');
-		var l = overlayDivs.length;
-		var div = overlayDivs[l-1];
-		div.parentNode.removeChild(div);
-	}
+	// 清除遮罩层时，不需判断是否有hasback属性，为了兼容之前的用法
+	var overlayDivs = document.querySelectorAll('.u-overlay.u-loader-back');
+	var l = overlayDivs.length;
+	var div = overlayDivs[l-1];
+	div.parentNode.removeChild(div);
+	// }
 	var divs = document.querySelectorAll(cssStr);
 	for(var i = 0; i < divs.length; i++) {
 		divs[i].parentNode.removeChild(divs[i]);

@@ -1129,6 +1129,14 @@ DateTimePicker.fn.show = function(evt){
         // if (this.type === 'date' && !env.isMobile){
         //    this._dateNav.style.display = 'none';
         // }
+        // 如果是日期类型，取消显示确认和取消按钮
+        if (this.type === 'date' && !env.isMobile) {
+            this._dateOk = this._panel.querySelector('.u-date-ok');
+            this._dateCancel = this._panel.querySelector('.u-date-cancel');
+            this._dateOk.style.display = 'none';
+            this._dateCancel.style.display = 'none';
+        }
+
         this._dateContent = this._panel.querySelector('.u-date-content');
         if(this.type == 'datetime'){
             /*if(env.isMobile){
