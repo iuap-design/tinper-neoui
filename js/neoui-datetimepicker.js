@@ -63,7 +63,7 @@ DateTimePicker.fn.init = function(){
             //     self.show(e);
             // }
             self._input.focus();
-            stopEvent(e);
+            //stopEvent(e);
         });
     }
 
