@@ -289,6 +289,7 @@ confirmDialogF.prototype.close = function () {
 	document.body.removeChild(this.templateDom);
 	document.body.removeChild(this.overlayDiv);
 	this.isClosed = true;
+	enable_mouseWheel();
 };
 
 var confirmDialog = function (options) {
@@ -468,7 +469,7 @@ dialogMode.prototype.close = function() {
 	}catch(e){
 
 	}
-	
+
 	this.isClosed = true;
 		enable_mouseWheel();
 }
