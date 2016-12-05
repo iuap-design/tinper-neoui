@@ -191,10 +191,13 @@ const YearMonth = BaseComponent.extend({
                 newPage.addEventListener('webkitTransitionEnd', cleanup);
             }
 			//ie9 requestAnimationFrame兼容问题
-				requestAnimationFrame(function() {
-	                    addClass(this.contentPage, 'is-hidden');
-	                    removeClass(newPage, 'zoom-in');
-	            }.bind(this));
+		if(requestAnimationFrame){
+			requestAnimationFrame(function() {
+					addClass(this.contentPage, 'is-hidden');
+					removeClass(newPage, 'zoom-in');
+			}.bind(this));
+		}
+			
     },
 
 
