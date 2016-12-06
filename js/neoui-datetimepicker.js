@@ -1308,7 +1308,18 @@ DateTimePicker.fn.onOk = function(){
             return;
         }
     }
-    this.setDate(this.pickerDate);
+    var flag = true;
+    if (this.beginDateObj) {
+        if (this.beginDateObj < this.startDate) 
+            flag = false;
+    }
+    if (this.overDateObj) {
+        if (this.overDateObj > this.endDate) 
+            flag = false;
+    }
+    if(flag){
+        this.setDate(this.pickerDate);
+    }
     this.isShow = false;
     this.timeOpen = false;
     removeClass(this._panel, 'is-visible');
