@@ -174,19 +174,19 @@ var Menu = BaseComponent.extend({
 				// Position below the "for" element, aligned to its right.
 				this._container.style.left = this.for_element.offsetLeft+this.for_element.offsetWidth-this.element.offsetWidth + 'px';
 				// this._container.style.right = (forRect.right - rect.right) + 'px';
-				this._container.style.top = this.for_element.offsetTop + this.for_element.offsetHeight + 'px';
+				this._container.style.top = this.for_element.offsetTop + this.for_element.offsetHeight +2+ 'px';
 			} else if(hasClass(this.element, 'u-menu-top-left')) {
 				// Position above the "for" element, aligned to its left.
 				this._container.style.left = this.for_element.offsetLeft + 'px';
-				this._container.style.bottom = (forRect.bottom - rect.top) + 'px';
+				this._container.style.bottom = (forRect.bottom - rect.top) + 4+'px';
 			} else if(hasClass(this.element, 'u-menu-top-right')) {
 				// Position above the "for" element, aligned to its right.
 				this._container.style.right = (forRect.right - rect.right) + 'px';
-				this._container.style.bottom = (forRect.bottom - rect.top) + 'px';
+				this._container.style.bottom = (forRect.bottom - rect.top) + 4+'px';
 			} else {
 				// Default: position below the "for" element, aligned to its left.
 				this._container.style.left = this.for_element.offsetLeft + 'px';
-				this._container.style.top = this.for_element.offsetTop + this.for_element.offsetHeight + 'px';
+				this._container.style.top = this.for_element.offsetTop + this.for_element.offsetHeight +2+ 'px';
 			}
 		}
 
@@ -357,6 +357,13 @@ var Menu = BaseComponent.extend({
 			}
 
 			// Apply the inner element's size to the container and outline.
+			var choseBtnBottomRight=$(this.element.parentElement.previousElementSibling).next().find(".u-menu-bottom-right").hasClass("u-menu-bottom-right");
+			var choseBtnBottomTop=$(this.element.parentElement.previousElementSibling).next().find(".u-menu-top-right").hasClass("u-menu-top-right");
+
+			if(choseBtnBottomRight||choseBtnBottomTop){
+				$(this.element.parentElement.previousElementSibling).next().find(".u-menu-outline").css("left","-1px");
+
+			}
 			this._container.style.width = width + 'px';
 			this._container.style.height = height + 'px';
 			this._outline.style.width = width + 'px';
@@ -386,12 +393,12 @@ var Menu = BaseComponent.extend({
 			if(window.requestAnimationFrame) {
 				window.requestAnimationFrame(function() {
 					addClass(this.element, 'is-animating');
-					this.element.style.clip = 'rect(0 ' + width + 'px ' + height + 'px 0)';
+					this.element.style.clip = 'rect(0 ' + (width+1) + 'px ' + height + 'px 0)';
 					addClass(this._container, 'is-visible');
 				}.bind(this));
 			} else {
 				addClass(this.element, 'is-animating');
-				this.element.style.clip = 'rect(0 ' + width + 'px ' + height + 'px 0)';
+				this.element.style.clip = 'rect(0 ' + (width+1) + 'px ' + height + 'px 0)';
 				addClass(this._container, 'is-visible');
 			}
 
