@@ -63,10 +63,10 @@
   position: absolute;
   list-style: none;
   top: 0;
-  left: 0;
+  left: 1px;
   height: auto;
   width: auto;
-  min-width: 87px;
+  min-width: 99px;
   padding: 8px 0;
   margin: 0;
   opacity: 0;
@@ -236,13 +236,16 @@
     display: inline-block;
     vertical-align: middle;
     .u-button-group {
-        float: left;
+      /*float: left;*/
+      position: absolute;
     }
     .u-button {
     float: left;
     }
 }
-
+.u-menu-info2 .u-menu-item:hover {
+  background-color: rgb(212,218,219);
+}
 .u-menu-wrap{
   position: relative;
 }
@@ -288,3 +291,9 @@
 .u-menu-dark {
   @include menu-styles-variant($menu-dark-bg,$menu-dark-bg-hover);
 }
+.u-split-right{
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: #fff;
+}
+

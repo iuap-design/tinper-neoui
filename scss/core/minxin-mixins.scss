@@ -182,7 +182,7 @@
   @include typo-preferred-font($usePreferred);
   font-size: 13/16 * $unit;
   font-weight: 500;
-  text-transform: uppercase;
+ /* text-transform: uppercase;*/
   line-height: 1;
   letter-spacing: 0;
 
