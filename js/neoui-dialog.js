@@ -439,6 +439,7 @@ dialogMode.prototype.create = function() {
 		this.overlayDiv.style.display = 'none';
 	}
 	document.body.appendChild(this.templateDom);
+	adapterDialog(this, 'show');
 	disable_mouseWheel();
 	this.isClosed = false;
 };
@@ -456,6 +457,7 @@ var adapterDialog = function (dialogObj, type) {
 		}else if (type == 'hide'){
 			if(index == len-1){
 				dialogArray.pop();
+				dialogArray.length !== 0 && dialogArray[dialogArray.length-1].show && dialogArray[dialogArray.length-1].show();
 			}
 		}
 	}
@@ -494,6 +496,7 @@ dialogMode.prototype.close = function() {
 	}
 
 	this.isClosed = true;
+		adapterDialog(this, 'hide');
 		enable_mouseWheel();
 }
 
