@@ -509,9 +509,8 @@
 			if (/iphone|ipad|ipod/.test(ua)) {
 				//转换成 yy/mm/dd
 				str = str.replace(/-/g, "/");
-				str = str.replace(/(^\s+)|(\s+$)/g, "");
 				if (str.length <= 8) {
-					str = str += "/01";
+					str = str + '/28';
 				}
 			}
 		}
@@ -1633,7 +1632,7 @@
 	 */
 	var makeModal = function makeModal(element, parEle) {
 		var overlayDiv = document.createElement('div');
-		$(overlayDiv).addClass('u-overlay');
+		addClass(overlayDiv, 'u-overlay');
 		overlayDiv.style.zIndex = getZIndex();
 		// 如果有父元素则插入到父元素上，没有则添加到body上
 		if (parEle && parEle != document.body) {
@@ -2722,6 +2721,7 @@
 			} else {
 				dateFlag = true;
 			}
+
 			if (dateFlag) return _date;else return null;
 		}
 

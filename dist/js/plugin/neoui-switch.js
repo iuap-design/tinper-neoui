@@ -512,9 +512,8 @@
 			if (/iphone|ipad|ipod/.test(ua)) {
 				//转换成 yy/mm/dd
 				str = str.replace(/-/g, "/");
-				str = str.replace(/(^\s+)|(\s+$)/g, "");
 				if (str.length <= 8) {
-					str = str += "/01";
+					str = str + '/28';
 				}
 			}
 		}
@@ -1642,7 +1641,7 @@
 	 */
 	var makeModal = function makeModal(element, parEle) {
 		var overlayDiv = document.createElement('div');
-		$(overlayDiv).addClass('u-overlay');
+		addClass(overlayDiv, 'u-overlay');
 		overlayDiv.style.zIndex = getZIndex();
 		// 如果有父元素则插入到父元素上，没有则添加到body上
 		if (parEle && parEle != document.body) {
@@ -2068,7 +2067,7 @@
 			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
 			/*var focusHelper = document.createElement('span');
 	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
-	  		thumb.appendChild(focusHelper);*/
+	  	thumb.appendChild(focusHelper);*/
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);

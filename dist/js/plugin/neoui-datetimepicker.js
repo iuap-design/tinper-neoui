@@ -509,9 +509,8 @@
 			if (/iphone|ipad|ipod/.test(ua)) {
 				//转换成 yy/mm/dd
 				str = str.replace(/-/g, "/");
-				str = str.replace(/(^\s+)|(\s+$)/g, "");
 				if (str.length <= 8) {
-					str = str += "/01";
+					str = str + '/28';
 				}
 			}
 		}
@@ -1633,7 +1632,7 @@
 	 */
 	var makeModal = function makeModal(element, parEle) {
 		var overlayDiv = document.createElement('div');
-		$(overlayDiv).addClass('u-overlay');
+		addClass(overlayDiv, 'u-overlay');
 		overlayDiv.style.zIndex = getZIndex();
 		// 如果有父元素则插入到父元素上，没有则添加到body上
 		if (parEle && parEle != document.body) {
@@ -2487,6 +2486,7 @@
 			} else {
 				dateFlag = true;
 			}
+
 			if (dateFlag) return _date;else return null;
 		}
 
@@ -2756,11 +2756,11 @@
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -2773,9 +2773,17 @@
 	        if (this.startYear + i == _year) {
 	            (0, _dom.addClass)(cell, 'current');
 	        }
-	        if (this.startYear + i < this.beginYear) {
-	            (0, _dom.addClass)(cell, 'u-disabled');
+	        if (this.beginYear) {
+	            if (this.startYear + i < this.beginYear) {
+	                (0, _dom.addClass)(cell, 'u-disabled');
+	            }
 	        }
+	        if (this.overYear) {
+	            if (this.startYear + i > this.overYear) {
+	                (0, _dom.addClass)(cell, 'u-disabled');
+	            }
+	        }
+
 	        cell._value = this.startYear + i;
 	        yearDiv.appendChild(cell);
 	    }
@@ -2845,11 +2853,11 @@
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -2859,12 +2867,23 @@
 	        if (_month - 1 == i) {
 	            (0, _dom.addClass)(cells[i], 'current');
 	        }
-	        if (this.pickerDate.getFullYear() == this.beginYear && i < this.beginMonth) {
-	            (0, _dom.addClass)(cells[i], 'u-disabled');
+	        if (this.beginYear && this.beginMonth) {
+	            if (this.pickerDate.getFullYear() == this.beginYear && i < this.beginMonth) {
+	                (0, _dom.addClass)(cells[i], 'u-disabled');
+	            }
+	            if (this.pickerDate.getFullYear() < this.beginYear) {
+	                (0, _dom.addClass)(cells[i], 'u-disabled');
+	            }
 	        }
-	        if (this.pickerDate.getFullYear() < this.beginYear) {
-	            (0, _dom.addClass)(cells[i], 'u-disabled');
+	        if (this.overYear && this.overMonth) {
+	            if (this.pickerDate.getFullYear() == this.overYear && i > this.overMonth) {
+	                (0, _dom.addClass)(cells[i], 'u-disabled');
+	            }
+	            if (this.pickerDate.getFullYear() > this.overYear) {
+	                (0, _dom.addClass)(cells[i], 'u-disabled');
+	            }
 	        }
+
 	        cells[i]._value = i;
 	        new _ripple.URipple(cells[i]);
 	    }
@@ -2928,8 +2947,12 @@
 	        tempDate = this.pickerDate;
 	    } else if (type === 'preivous') {
 	        tempDate = _dateUtils.date.sub(this.startDate, 'd', 1);
+	        // 默认显示每个月的1号
+	        tempDate = _dateUtils.date.getDateObj(tempDate.setDate(1));
 	    } else {
 	        tempDate = _dateUtils.date.add(this.endDate, 'd', 1);
+	        // 默认显示每个月的1号
+	        tempDate = _dateUtils.date.getDateObj(tempDate.setDate(1));
 	    }
 	    this.startDate = this._getPickerStartDate(tempDate);
 	    this.endDate = this._getPickerEndDate(tempDate);
@@ -2985,15 +3008,19 @@
 	            (0, _dom.addClass)(cell, 'current');
 	        }
 
-	        if (tempDateYear < this.beginYear || tempDateYear == this.beginYear && tempDateMonth < this.beginMonth || tempDateYear == this.overYear && tempDateMonth > this.overMonth || tempDateYear > this.overYear) {
-	            (0, _dom.addClass)(cell, 'u-disabled');
-	            (0, _dom.removeClass)(cell, 'current');
+	        if (this.beginYear && this.beginMonth && this.beginDate) {
+	            if (tempDateYear < this.beginYear || tempDateYear == this.beginYear && tempDateMonth < this.beginMonth || tempDateYear == this.beginYear && tempDateMonth == this.beginMonth && tempDateDate < this.beginDate) {
+	                (0, _dom.addClass)(cell, 'u-disabled');
+	                (0, _dom.removeClass)(cell, 'current');
+	            }
+	        }
+	        if (this.overYear && this.overMonth && this.overDate) {
+	            if (tempDateYear > this.overYear || tempDateYear == this.overYear && tempDateMonth > this.overMonth || tempDateYear == this.overYear && tempDateMonth == this.overMonth && tempDateDate > this.overDate) {
+	                (0, _dom.addClass)(cell, 'u-disabled');
+	                (0, _dom.removeClass)(cell, 'current');
+	            }
 	        }
 
-	        if (tempDateYear == this.beginYear && tempDateMonth == this.beginMonth && tempDateDate < this.beginDate || tempDateYear == this.overYear && tempDateMonth == this.overMonth && tempDateDate > this.overDate) {
-	            (0, _dom.addClass)(cell, 'u-disabled');
-	            (0, _dom.removeClass)(cell, 'current');
-	        }
 	        cell._value = tempDateDate;
 	        cell._month = tempDateMonth;
 	        cell._year = tempDateYear;
@@ -3039,8 +3066,9 @@
 	    //     this._timeMobileScroll()
 	    //     return;
 	    // }
-	    if (this.timeOpen) return;
-	    this.timeOpen = true;
+	    //去除判断防止再次点击时间时，面板弹不出来
+	    // if(this.timeOpen)return;
+	    // this.timeOpen = true;
 	    var year, month, day, date, time, template, timePage, titleDiv, dateDiv, weekSpans, language, tempDate, i, cell, timetemplate;
 	    var self = this;
 	    type = type || 'current';
@@ -3643,12 +3671,6 @@
 	        });
 	        (0, _event.on)(this.btnClean, 'click', function (e) {
 	            self.pickerDate = null;
-	            self.beginYear = 0;
-	            self.beginMonth = 0;
-	            self.beginDate = 0;
-	            self.overYear = 0;
-	            self.overMonth = 0;
-	            self.overDate = 0;
 	            self.onOk();
 	            (0, _event.stopEvent)(e);
 	        });
@@ -3773,7 +3795,16 @@
 	            return;
 	        }
 	    }
-	    this.setDate(this.pickerDate);
+	    var flag = true;
+	    if (this.beginDateObj) {
+	        if (this.beginDateObj < this.startDate) flag = false;
+	    }
+	    if (this.overDateObj) {
+	        if (this.overDateObj > this.endDate) flag = false;
+	    }
+	    if (flag) {
+	        this.setDate(this.pickerDate);
+	    }
 	    this.isShow = false;
 	    this.timeOpen = false;
 	    (0, _dom.removeClass)(this._panel, 'is-visible');
@@ -3845,6 +3876,11 @@
 	        this.beginYear = this.beginDateObj.getFullYear();
 	        this.beginMonth = this.beginDateObj.getMonth();
 	        this.beginDate = this.beginDateObj.getDate();
+	    } else {
+	        this.beginDateObj = null;
+	        this.beginYear = null;
+	        this.beginMonth = null;
+	        this.beginDate = null;
 	    }
 	};
 
@@ -3854,6 +3890,11 @@
 	        this.overYear = this.overDateObj.getFullYear();
 	        this.overMonth = this.overDateObj.getMonth();
 	        this.overDate = this.overDateObj.getDate();
+	    } else {
+	        this.overDateObj = null;
+	        this.overYear = null;
+	        this.overMonth = null;
+	        this.overDate = null;
 	    }
 	};
 

@@ -509,9 +509,8 @@
 			if (/iphone|ipad|ipod/.test(ua)) {
 				//转换成 yy/mm/dd
 				str = str.replace(/-/g, "/");
-				str = str.replace(/(^\s+)|(\s+$)/g, "");
 				if (str.length <= 8) {
-					str = str += "/01";
+					str = str + '/28';
 				}
 			}
 		}
@@ -1633,7 +1632,7 @@
 	 */
 	var makeModal = function makeModal(element, parEle) {
 		var overlayDiv = document.createElement('div');
-		$(overlayDiv).addClass('u-overlay');
+		addClass(overlayDiv, 'u-overlay');
 		overlayDiv.style.zIndex = getZIndex();
 		// 如果有父元素则插入到父元素上，没有则添加到body上
 		if (parEle && parEle != document.body) {
@@ -2512,6 +2511,7 @@
 			this.overlayDiv.style.display = 'none';
 		}
 		document.body.appendChild(this.templateDom);
+		adapterDialog(this, 'show');
 		disable_mouseWheel();
 		this.isClosed = false;
 	};
@@ -2529,6 +2529,7 @@
 			} else if (type == 'hide') {
 				if (index == len - 1) {
 					dialogArray.pop();
+					dialogArray.length !== 0 && dialogArray[dialogArray.length - 1].show && dialogArray[dialogArray.length - 1].show();
 				}
 			}
 		}
@@ -2563,6 +2564,7 @@
 		} catch (e) {}
 
 		this.isClosed = true;
+		adapterDialog(this, 'hide');
 		enable_mouseWheel();
 	};
 

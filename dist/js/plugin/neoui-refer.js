@@ -1159,9 +1159,8 @@
 			if (/iphone|ipad|ipod/.test(ua)) {
 				//转换成 yy/mm/dd
 				str = str.replace(/-/g, "/");
-				str = str.replace(/(^\s+)|(\s+$)/g, "");
 				if (str.length <= 8) {
-					str = str += "/01";
+					str = str + '/28';
 				}
 			}
 		}
@@ -2283,7 +2282,7 @@
 	 */
 	var makeModal = function makeModal(element, parEle) {
 		var overlayDiv = document.createElement('div');
-		$(overlayDiv).addClass('u-overlay');
+		addClass(overlayDiv, 'u-overlay');
 		overlayDiv.style.zIndex = getZIndex();
 		// 如果有父元素则插入到父元素上，没有则添加到body上
 		if (parEle && parEle != document.body) {
@@ -4023,6 +4022,7 @@
 			} else {
 				dateFlag = true;
 			}
+
 			if (dateFlag) return _date;else return null;
 		}
 
@@ -5606,11 +5606,11 @@
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -5623,9 +5623,17 @@
 	        if (this.startYear + i == _year) {
 	            (0, _dom.addClass)(cell, 'current');
 	        }
-	        if (this.startYear + i < this.beginYear) {
-	            (0, _dom.addClass)(cell, 'u-disabled');
+	        if (this.beginYear) {
+	            if (this.startYear + i < this.beginYear) {
+	                (0, _dom.addClass)(cell, 'u-disabled');
+	            }
 	        }
+	        if (this.overYear) {
+	            if (this.startYear + i > this.overYear) {
+	                (0, _dom.addClass)(cell, 'u-disabled');
+	            }
+	        }
+
 	        cell._value = this.startYear + i;
 	        yearDiv.appendChild(cell);
 	    }
@@ -5695,11 +5703,11 @@
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -5709,12 +5717,23 @@
 	        if (_month - 1 == i) {
 	            (0, _dom.addClass)(cells[i], 'current');
 	        }
-	        if (this.pickerDate.getFullYear() == this.beginYear && i < this.beginMonth) {
-	            (0, _dom.addClass)(cells[i], 'u-disabled');
+	        if (this.beginYear && this.beginMonth) {
+	            if (this.pickerDate.getFullYear() == this.beginYear && i < this.beginMonth) {
+	                (0, _dom.addClass)(cells[i], 'u-disabled');
+	            }
+	            if (this.pickerDate.getFullYear() < this.beginYear) {
+	                (0, _dom.addClass)(cells[i], 'u-disabled');
+	            }
 	        }
-	        if (this.pickerDate.getFullYear() < this.beginYear) {
-	            (0, _dom.addClass)(cells[i], 'u-disabled');
+	        if (this.overYear && this.overMonth) {
+	            if (this.pickerDate.getFullYear() == this.overYear && i > this.overMonth) {
+	                (0, _dom.addClass)(cells[i], 'u-disabled');
+	            }
+	            if (this.pickerDate.getFullYear() > this.overYear) {
+	                (0, _dom.addClass)(cells[i], 'u-disabled');
+	            }
 	        }
+
 	        cells[i]._value = i;
 	        new _ripple.URipple(cells[i]);
 	    }
@@ -5778,8 +5797,12 @@
 	        tempDate = this.pickerDate;
 	    } else if (type === 'preivous') {
 	        tempDate = _dateUtils.date.sub(this.startDate, 'd', 1);
+	        // 默认显示每个月的1号
+	        tempDate = _dateUtils.date.getDateObj(tempDate.setDate(1));
 	    } else {
 	        tempDate = _dateUtils.date.add(this.endDate, 'd', 1);
+	        // 默认显示每个月的1号
+	        tempDate = _dateUtils.date.getDateObj(tempDate.setDate(1));
 	    }
 	    this.startDate = this._getPickerStartDate(tempDate);
 	    this.endDate = this._getPickerEndDate(tempDate);
@@ -5835,15 +5858,19 @@
 	            (0, _dom.addClass)(cell, 'current');
 	        }
 
-	        if (tempDateYear < this.beginYear || tempDateYear == this.beginYear && tempDateMonth < this.beginMonth || tempDateYear == this.overYear && tempDateMonth > this.overMonth || tempDateYear > this.overYear) {
-	            (0, _dom.addClass)(cell, 'u-disabled');
-	            (0, _dom.removeClass)(cell, 'current');
+	        if (this.beginYear && this.beginMonth && this.beginDate) {
+	            if (tempDateYear < this.beginYear || tempDateYear == this.beginYear && tempDateMonth < this.beginMonth || tempDateYear == this.beginYear && tempDateMonth == this.beginMonth && tempDateDate < this.beginDate) {
+	                (0, _dom.addClass)(cell, 'u-disabled');
+	                (0, _dom.removeClass)(cell, 'current');
+	            }
+	        }
+	        if (this.overYear && this.overMonth && this.overDate) {
+	            if (tempDateYear > this.overYear || tempDateYear == this.overYear && tempDateMonth > this.overMonth || tempDateYear == this.overYear && tempDateMonth == this.overMonth && tempDateDate > this.overDate) {
+	                (0, _dom.addClass)(cell, 'u-disabled');
+	                (0, _dom.removeClass)(cell, 'current');
+	            }
 	        }
 
-	        if (tempDateYear == this.beginYear && tempDateMonth == this.beginMonth && tempDateDate < this.beginDate || tempDateYear == this.overYear && tempDateMonth == this.overMonth && tempDateDate > this.overDate) {
-	            (0, _dom.addClass)(cell, 'u-disabled');
-	            (0, _dom.removeClass)(cell, 'current');
-	        }
 	        cell._value = tempDateDate;
 	        cell._month = tempDateMonth;
 	        cell._year = tempDateYear;
@@ -5889,8 +5916,9 @@
 	    //     this._timeMobileScroll()
 	    //     return;
 	    // }
-	    if (this.timeOpen) return;
-	    this.timeOpen = true;
+	    //去除判断防止再次点击时间时，面板弹不出来
+	    // if(this.timeOpen)return;
+	    // this.timeOpen = true;
 	    var year, month, day, date, time, template, timePage, titleDiv, dateDiv, weekSpans, language, tempDate, i, cell, timetemplate;
 	    var self = this;
 	    type = type || 'current';
@@ -6493,12 +6521,6 @@
 	        });
 	        (0, _event.on)(this.btnClean, 'click', function (e) {
 	            self.pickerDate = null;
-	            self.beginYear = 0;
-	            self.beginMonth = 0;
-	            self.beginDate = 0;
-	            self.overYear = 0;
-	            self.overMonth = 0;
-	            self.overDate = 0;
 	            self.onOk();
 	            (0, _event.stopEvent)(e);
 	        });
@@ -6623,7 +6645,16 @@
 	            return;
 	        }
 	    }
-	    this.setDate(this.pickerDate);
+	    var flag = true;
+	    if (this.beginDateObj) {
+	        if (this.beginDateObj < this.startDate) flag = false;
+	    }
+	    if (this.overDateObj) {
+	        if (this.overDateObj > this.endDate) flag = false;
+	    }
+	    if (flag) {
+	        this.setDate(this.pickerDate);
+	    }
 	    this.isShow = false;
 	    this.timeOpen = false;
 	    (0, _dom.removeClass)(this._panel, 'is-visible');
@@ -6695,6 +6726,11 @@
 	        this.beginYear = this.beginDateObj.getFullYear();
 	        this.beginMonth = this.beginDateObj.getMonth();
 	        this.beginDate = this.beginDateObj.getDate();
+	    } else {
+	        this.beginDateObj = null;
+	        this.beginYear = null;
+	        this.beginMonth = null;
+	        this.beginDate = null;
 	    }
 	};
 
@@ -6704,6 +6740,11 @@
 	        this.overYear = this.overDateObj.getFullYear();
 	        this.overMonth = this.overDateObj.getMonth();
 	        this.overDate = this.overDateObj.getDate();
+	    } else {
+	        this.overDateObj = null;
+	        this.overYear = null;
+	        this.overMonth = null;
+	        this.overDate = null;
 	    }
 	};
 
@@ -8047,6 +8088,7 @@
 			this.overlayDiv.style.display = 'none';
 		}
 		document.body.appendChild(this.templateDom);
+		adapterDialog(this, 'show');
 		disable_mouseWheel();
 		this.isClosed = false;
 	};
@@ -8064,6 +8106,7 @@
 			} else if (type == 'hide') {
 				if (index == len - 1) {
 					dialogArray.pop();
+					dialogArray.length !== 0 && dialogArray[dialogArray.length - 1].show && dialogArray[dialogArray.length - 1].show();
 				}
 			}
 		}
@@ -8098,6 +8141,7 @@
 		} catch (e) {}
 
 		this.isClosed = true;
+		adapterDialog(this, 'hide');
 		enable_mouseWheel();
 	};
 
@@ -9424,19 +9468,19 @@
 					// Position below the "for" element, aligned to its right.
 					this._container.style.left = this.for_element.offsetLeft + this.for_element.offsetWidth - this.element.offsetWidth + 'px';
 					// this._container.style.right = (forRect.right - rect.right) + 'px';
-					this._container.style.top = this.for_element.offsetTop + this.for_element.offsetHeight + 'px';
+					this._container.style.top = this.for_element.offsetTop + this.for_element.offsetHeight + 2 + 'px';
 				} else if ((0, _dom.hasClass)(this.element, 'u-menu-top-left')) {
 					// Position above the "for" element, aligned to its left.
 					this._container.style.left = this.for_element.offsetLeft + 'px';
-					this._container.style.bottom = forRect.bottom - rect.top + 'px';
+					this._container.style.bottom = forRect.bottom - rect.top + 4 + 'px';
 				} else if ((0, _dom.hasClass)(this.element, 'u-menu-top-right')) {
 					// Position above the "for" element, aligned to its right.
 					this._container.style.right = forRect.right - rect.right + 'px';
-					this._container.style.bottom = forRect.bottom - rect.top + 'px';
+					this._container.style.bottom = forRect.bottom - rect.top + 4 + 'px';
 				} else {
 					// Default: position below the "for" element, aligned to its left.
 					this._container.style.left = this.for_element.offsetLeft + 'px';
-					this._container.style.top = this.for_element.offsetTop + this.for_element.offsetHeight + 'px';
+					this._container.style.top = this.for_element.offsetTop + this.for_element.offsetHeight + 2 + 'px';
 				}
 			}
 
@@ -9602,6 +9646,12 @@
 				}
 
 				// Apply the inner element's size to the container and outline.
+				var choseBtnBottomRight = $(this.element.parentElement.previousElementSibling).next().find(".u-menu-bottom-right").hasClass("u-menu-bottom-right");
+				var choseBtnBottomTop = $(this.element.parentElement.previousElementSibling).next().find(".u-menu-top-right").hasClass("u-menu-top-right");
+
+				if (choseBtnBottomRight || choseBtnBottomTop) {
+					$(this.element.parentElement.previousElementSibling).next().find(".u-menu-outline").css("left", "-1px");
+				}
 				this._container.style.width = width + 'px';
 				this._container.style.height = height + 'px';
 				this._outline.style.width = width + 'px';
@@ -9630,12 +9680,12 @@
 				if (window.requestAnimationFrame) {
 					window.requestAnimationFrame(function () {
 						(0, _dom.addClass)(this.element, 'is-animating');
-						this.element.style.clip = 'rect(0 ' + width + 'px ' + height + 'px 0)';
+						this.element.style.clip = 'rect(0 ' + (width + 1) + 'px ' + height + 'px 0)';
 						(0, _dom.addClass)(this._container, 'is-visible');
 					}.bind(this));
 				} else {
 					(0, _dom.addClass)(this.element, 'is-animating');
-					this.element.style.clip = 'rect(0 ' + width + 'px ' + height + 'px 0)';
+					this.element.style.clip = 'rect(0 ' + (width + 1) + 'px ' + height + 'px 0)';
 					(0, _dom.addClass)(this._container, 'is-visible');
 				}
 
@@ -12085,7 +12135,7 @@
 			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
 			/*var focusHelper = document.createElement('span');
 	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
-	  		thumb.appendChild(focusHelper);*/
+	  	thumb.appendChild(focusHelper);*/
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);
