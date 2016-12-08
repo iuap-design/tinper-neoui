@@ -401,8 +401,12 @@ DateTimePicker.fn._fillDate = function(type){
         tempDate = this.pickerDate;
     } else if (type === 'preivous') {
         tempDate = udate.sub(this.startDate,'d', 1);
+        // 默认显示每个月的1号
+        tempDate = udate.getDateObj(tempDate.setDate(1));
     } else {
         tempDate = udate.add(this.endDate,'d', 1);
+        // 默认显示每个月的1号
+        tempDate = udate.getDateObj(tempDate.setDate(1));
     }
     this.startDate = this._getPickerStartDate(tempDate);
     this.endDate = this._getPickerEndDate(tempDate);
@@ -529,8 +533,9 @@ DateTimePicker.fn._fillTime = function(type){
     //     this._timeMobileScroll()
     //     return;
     // }
-    if(this.timeOpen)return;
-    this.timeOpen = true;
+    //去除判断防止再次点击时间时，面板弹不出来
+    // if(this.timeOpen)return;
+    // this.timeOpen = true;
     var year,month,day,date,time,template,timePage,titleDiv,dateDiv,weekSpans,language,tempDate, i,cell,timetemplate;
     var self = this;
     type = type || 'current';
