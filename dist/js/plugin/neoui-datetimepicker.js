@@ -509,8 +509,9 @@
 			if (/iphone|ipad|ipod/.test(ua)) {
 				//转换成 yy/mm/dd
 				str = str.replace(/-/g, "/");
+				str = str.replace(/(^\s+)|(\s+$)/g, "");
 				if (str.length <= 8) {
-					str = str + '/28';
+					str = str += "/01";
 				}
 			}
 		}
@@ -1632,7 +1633,7 @@
 	 */
 	var makeModal = function makeModal(element, parEle) {
 		var overlayDiv = document.createElement('div');
-		addClass(overlayDiv, 'u-overlay');
+		$(overlayDiv).addClass('u-overlay');
 		overlayDiv.style.zIndex = getZIndex();
 		// 如果有父元素则插入到父元素上，没有则添加到body上
 		if (parEle && parEle != document.body) {
@@ -2486,7 +2487,6 @@
 			} else {
 				dateFlag = true;
 			}
-
 			if (dateFlag) return _date;else return null;
 		}
 
@@ -2583,7 +2583,7 @@
 	            //     self.show(e);
 	            // }
 	            self._input.focus();
-	            (0, _event.stopEvent)(e);
+	            //stopEvent(e);
 	        });
 	    }
 
@@ -2756,11 +2756,11 @@
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	     on(this._headerMonth, 'click', function(e){
+	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	     on(this._headerTime, 'click', function(e){
+	      on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -2845,11 +2845,11 @@
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	     on(this._headerMonth, 'click', function(e){
+	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	     on(this._headerTime, 'click', function(e){
+	      on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -3601,6 +3601,14 @@
 	        // if (this.type === 'date' && !env.isMobile){
 	        //    this._dateNav.style.display = 'none';
 	        // }
+	        // 如果是日期类型，取消显示确认和取消按钮
+	        if (this.type === 'date' && !_env.env.isMobile) {
+	            this._dateOk = this._panel.querySelector('.u-date-ok');
+	            this._dateCancel = this._panel.querySelector('.u-date-cancel');
+	            this._dateOk.style.display = 'none';
+	            this._dateCancel.style.display = 'none';
+	        }
+
 	        this._dateContent = this._panel.querySelector('.u-date-content');
 	        if (this.type == 'datetime') {
 	            /*if(env.isMobile){
@@ -3635,6 +3643,12 @@
 	        });
 	        (0, _event.on)(this.btnClean, 'click', function (e) {
 	            self.pickerDate = null;
+	            self.beginYear = 0;
+	            self.beginMonth = 0;
+	            self.beginDate = 0;
+	            self.overYear = 0;
+	            self.overMonth = 0;
+	            self.overDate = 0;
 	            self.onOk();
 	            (0, _event.stopEvent)(e);
 	        });
@@ -3817,13 +3831,15 @@
 	DateTimePicker.fn.setStartDate = function (startDate, type) {
 	    if (startDate) {
 	        this.beginDateObj = _dateUtils.date.getDateObj(startDate);
-	        switch (type) {
-	            case 'YYYY-MM':
-	                this.beginDateObj = _dateUtils.date.add(this.beginDateObj, 'M', 1);
-	                break;
-	            case 'YYYY-MM-DD':
-	                this.beginDateObj = _dateUtils.date.add(this.beginDateObj, 'd', 1);
-	                break;
+	        if (type) {
+	            switch (type) {
+	                case 'YYYY-MM':
+	                    this.beginDateObj = _dateUtils.date.add(this.beginDateObj, 'M', 1);
+	                    break;
+	                case 'YYYY-MM-DD':
+	                    this.beginDateObj = _dateUtils.date.add(this.beginDateObj, 'd', 1);
+	                    break;
+	            }
 	        }
 
 	        this.beginYear = this.beginDateObj.getFullYear();

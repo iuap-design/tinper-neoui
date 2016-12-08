@@ -1159,8 +1159,9 @@
 			if (/iphone|ipad|ipod/.test(ua)) {
 				//转换成 yy/mm/dd
 				str = str.replace(/-/g, "/");
+				str = str.replace(/(^\s+)|(\s+$)/g, "");
 				if (str.length <= 8) {
-					str = str + '/28';
+					str = str += "/01";
 				}
 			}
 		}
@@ -2282,7 +2283,7 @@
 	 */
 	var makeModal = function makeModal(element, parEle) {
 		var overlayDiv = document.createElement('div');
-		addClass(overlayDiv, 'u-overlay');
+		$(overlayDiv).addClass('u-overlay');
 		overlayDiv.style.zIndex = getZIndex();
 		// 如果有父元素则插入到父元素上，没有则添加到body上
 		if (parEle && parEle != document.body) {
@@ -4022,7 +4023,6 @@
 			} else {
 				dateFlag = true;
 			}
-
 			if (dateFlag) return _date;else return null;
 		}
 
@@ -4213,9 +4213,9 @@
 	            this._ul.style.top = this.top + 'px';
 	        }
 	        this._ul.style.width = width + 'px';
-	        (0, _dom.addClass)(this._ul, 'is-animating');
+	        $(this._ul).addClass('is-animating');
 	        this._ul.style.zIndex = (0, _dom.getZIndex)();
-	        (0, _dom.addClass)(this._ul, 'is-visible');
+	        $(this._ul).addClass('is-visible');
 
 	        var callback = function (e) {
 	            if (e === evt || e.target === this._input || self._inputFocus == true) return;
@@ -5433,7 +5433,7 @@
 	            //     self.show(e);
 	            // }
 	            self._input.focus();
-	            (0, _event.stopEvent)(e);
+	            //stopEvent(e);
 	        });
 	    }
 
@@ -5606,11 +5606,11 @@
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	     on(this._headerMonth, 'click', function(e){
+	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	     on(this._headerTime, 'click', function(e){
+	      on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -5695,11 +5695,11 @@
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	     on(this._headerMonth, 'click', function(e){
+	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	     on(this._headerTime, 'click', function(e){
+	      on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -6451,6 +6451,14 @@
 	        // if (this.type === 'date' && !env.isMobile){
 	        //    this._dateNav.style.display = 'none';
 	        // }
+	        // 如果是日期类型，取消显示确认和取消按钮
+	        if (this.type === 'date' && !_env.env.isMobile) {
+	            this._dateOk = this._panel.querySelector('.u-date-ok');
+	            this._dateCancel = this._panel.querySelector('.u-date-cancel');
+	            this._dateOk.style.display = 'none';
+	            this._dateCancel.style.display = 'none';
+	        }
+
 	        this._dateContent = this._panel.querySelector('.u-date-content');
 	        if (this.type == 'datetime') {
 	            /*if(env.isMobile){
@@ -6485,6 +6493,12 @@
 	        });
 	        (0, _event.on)(this.btnClean, 'click', function (e) {
 	            self.pickerDate = null;
+	            self.beginYear = 0;
+	            self.beginMonth = 0;
+	            self.beginDate = 0;
+	            self.overYear = 0;
+	            self.overMonth = 0;
+	            self.overDate = 0;
 	            self.onOk();
 	            (0, _event.stopEvent)(e);
 	        });
@@ -6667,13 +6681,15 @@
 	DateTimePicker.fn.setStartDate = function (startDate, type) {
 	    if (startDate) {
 	        this.beginDateObj = _dateUtils.date.getDateObj(startDate);
-	        switch (type) {
-	            case 'YYYY-MM':
-	                this.beginDateObj = _dateUtils.date.add(this.beginDateObj, 'M', 1);
-	                break;
-	            case 'YYYY-MM-DD':
-	                this.beginDateObj = _dateUtils.date.add(this.beginDateObj, 'd', 1);
-	                break;
+	        if (type) {
+	            switch (type) {
+	                case 'YYYY-MM':
+	                    this.beginDateObj = _dateUtils.date.add(this.beginDateObj, 'M', 1);
+	                    break;
+	                case 'YYYY-MM-DD':
+	                    this.beginDateObj = _dateUtils.date.add(this.beginDateObj, 'd', 1);
+	                    break;
+	            }
 	        }
 
 	        this.beginYear = this.beginDateObj.getFullYear();
@@ -7633,13 +7649,14 @@
 	var _compMgr = __webpack_require__(9);
 
 	/**
-	 * messageDialog.js
-	 */
-
-	/**
 	 * Module : neoui-dialog
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-08-02 15:29:55
+	 */
+
+	window.dialogAry = [];
+	/**
+	 * messageDialog.js
 	 */
 
 	'use strict';
@@ -7890,6 +7907,7 @@
 		document.body.removeChild(this.templateDom);
 		document.body.removeChild(this.overlayDiv);
 		this.isClosed = true;
+		enable_mouseWheel();
 	};
 
 	var confirmDialog = function confirmDialog(options) {
@@ -8033,18 +8051,38 @@
 		this.isClosed = false;
 	};
 
+	var adapterDialog = function adapterDialog(dialogObj, type) {
+		var dialogArray = window.dialogAry;
+		if (dialogArray) {
+			var len = dialogArray.length;
+			var index = dialogArray.indexOf(dialogObj);
+			if (type == "show") {
+				if (index <= -1) {
+					dialogArray.push(dialogObj);
+					dialogArray.length !== 1 && dialogArray[dialogArray.length - 2].hide && dialogArray[dialogArray.length - 2].hide();
+				}
+			} else if (type == 'hide') {
+				if (index == len - 1) {
+					dialogArray.pop();
+				}
+			}
+		}
+	};
+
 	dialogMode.prototype.show = function () {
 		if (this.isClosed) {
 			this.create();
 		}
 		this.templateDom.style.display = 'block';
 		this.overlayDiv.style.display = 'block';
+		adapterDialog(this, 'show');
 		disable_mouseWheel();
 	};
 
 	dialogMode.prototype.hide = function () {
 		this.templateDom.style.display = 'none';
 		this.overlayDiv.style.display = 'none';
+		adapterDialog(this, 'hide');
 		enable_mouseWheel();
 	};
 
@@ -9036,6 +9074,7 @@
 		if (hasback) {
 			var overlayDiv = (0, _dom.makeModal)(templateDom, parEle);
 		}
+		(0, _dom.addClass)(overlayDiv, 'u-loader-back');
 		if (parEle == document.body) {
 			templateDom.style.position = 'fixed';
 		}
@@ -9050,14 +9089,15 @@
 			cssStr = '.u-loader-container';
 		}
 
-		hasback = options["hasback"];
-		if (hasback) {
-			// 默认删除最高层的
-			var overlayDivs = document.querySelectorAll('.u-overlay');
-			var l = overlayDivs.length;
-			var div = overlayDivs[l - 1];
-			div.parentNode.removeChild(div);
-		}
+		// hasback = options["hasback"];
+		// if(hasback){
+		// 默认删除最高层的
+		// 清除遮罩层时，不需判断是否有hasback属性，为了兼容之前的用法
+		var overlayDivs = document.querySelectorAll('.u-overlay.u-loader-back');
+		var l = overlayDivs.length;
+		var div = overlayDivs[l - 1];
+		div.parentNode.removeChild(div);
+		// }
 		var divs = document.querySelectorAll(cssStr);
 		for (var i = 0; i < divs.length; i++) {
 			divs[i].parentNode.removeChild(divs[i]);
@@ -12045,7 +12085,7 @@
 			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
 			/*var focusHelper = document.createElement('span');
 	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
-	  	thumb.appendChild(focusHelper);*/
+	  		thumb.appendChild(focusHelper);*/
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);
@@ -12842,6 +12882,14 @@
 
 	var _ripple = __webpack_require__(13);
 
+	var _ployfill = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/ployfill\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+	/**
+	 * Module : neoui-year
+	 * Author : liuyk(liuyk@yonyou.com)
+	 * Date   : 2016-08-11 15:17:07
+	 */
+
 	var YearMonth = _BaseComponent.BaseComponent.extend({
 	    DEFAULTS: {},
 	    init: function init() {
@@ -12995,10 +13043,13 @@
 	                newPage.addEventListener('transitionend', cleanup);
 	                newPage.addEventListener('webkitTransitionEnd', cleanup);
 	            }
-	            window.requestAnimationFrame(function () {
-	                (0, _dom.addClass)(this.contentPage, 'is-hidden');
-	                (0, _dom.removeClass)(newPage, 'zoom-in');
-	            }.bind(this));
+	            //ie9 requestAnimationFrame兼容问题
+	            if (_ployfill.requestAnimationFrame) {
+	                (0, _ployfill.requestAnimationFrame)(function () {
+	                    (0, _dom.addClass)(this.contentPage, 'is-hidden');
+	                    (0, _dom.removeClass)(newPage, 'zoom-in');
+	                }.bind(this));
+	            }
 	        }
 	    },
 
@@ -13122,11 +13173,7 @@
 	        (0, _dom.removeClass)(this.panelDiv, 'is-visible');
 	        this.panelDiv.style.zIndex = -1;
 	    }
-	}); /**
-	     * Module : neoui-year
-	     * Author : liuyk(liuyk@yonyou.com)
-	     * Date   : 2016-08-11 15:17:07
-	     */
+	});
 
 	_compMgr.compMgr.regComp({
 	    comp: YearMonth,

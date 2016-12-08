@@ -886,7 +886,7 @@
 	 */
 	var makeModal = function makeModal(element, parEle) {
 		var overlayDiv = document.createElement('div');
-		addClass(overlayDiv, 'u-overlay');
+		$(overlayDiv).addClass('u-overlay');
 		overlayDiv.style.zIndex = getZIndex();
 		// 如果有父元素则插入到父元素上，没有则添加到body上
 		if (parEle && parEle != document.body) {
@@ -1078,6 +1078,7 @@
 		if (hasback) {
 			var overlayDiv = (0, _dom.makeModal)(templateDom, parEle);
 		}
+		(0, _dom.addClass)(overlayDiv, 'u-loader-back');
 		if (parEle == document.body) {
 			templateDom.style.position = 'fixed';
 		}
@@ -1092,14 +1093,15 @@
 			cssStr = '.u-loader-container';
 		}
 
-		hasback = options["hasback"];
-		if (hasback) {
-			// 默认删除最高层的
-			var overlayDivs = document.querySelectorAll('.u-overlay');
-			var l = overlayDivs.length;
-			var div = overlayDivs[l - 1];
-			div.parentNode.removeChild(div);
-		}
+		// hasback = options["hasback"];
+		// if(hasback){
+		// 默认删除最高层的
+		// 清除遮罩层时，不需判断是否有hasback属性，为了兼容之前的用法
+		var overlayDivs = document.querySelectorAll('.u-overlay.u-loader-back');
+		var l = overlayDivs.length;
+		var div = overlayDivs[l - 1];
+		div.parentNode.removeChild(div);
+		// }
 		var divs = document.querySelectorAll(cssStr);
 		for (var i = 0; i < divs.length; i++) {
 			divs[i].parentNode.removeChild(divs[i]);

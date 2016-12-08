@@ -512,8 +512,9 @@
 			if (/iphone|ipad|ipod/.test(ua)) {
 				//转换成 yy/mm/dd
 				str = str.replace(/-/g, "/");
+				str = str.replace(/(^\s+)|(\s+$)/g, "");
 				if (str.length <= 8) {
-					str = str + '/28';
+					str = str += "/01";
 				}
 			}
 		}
@@ -1641,7 +1642,7 @@
 	 */
 	var makeModal = function makeModal(element, parEle) {
 		var overlayDiv = document.createElement('div');
-		addClass(overlayDiv, 'u-overlay');
+		$(overlayDiv).addClass('u-overlay');
 		overlayDiv.style.zIndex = getZIndex();
 		// 如果有父元素则插入到父元素上，没有则添加到body上
 		if (parEle && parEle != document.body) {
@@ -2045,6 +2046,14 @@
 
 	var _ripple = __webpack_require__(13);
 
+	var _ployfill = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/ployfill\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+	/**
+	 * Module : neoui-year
+	 * Author : liuyk(liuyk@yonyou.com)
+	 * Date   : 2016-08-11 15:17:07
+	 */
+
 	var YearMonth = _BaseComponent.BaseComponent.extend({
 	    DEFAULTS: {},
 	    init: function init() {
@@ -2198,10 +2207,13 @@
 	                newPage.addEventListener('transitionend', cleanup);
 	                newPage.addEventListener('webkitTransitionEnd', cleanup);
 	            }
-	            window.requestAnimationFrame(function () {
-	                (0, _dom.addClass)(this.contentPage, 'is-hidden');
-	                (0, _dom.removeClass)(newPage, 'zoom-in');
-	            }.bind(this));
+	            //ie9 requestAnimationFrame兼容问题
+	            if (_ployfill.requestAnimationFrame) {
+	                (0, _ployfill.requestAnimationFrame)(function () {
+	                    (0, _dom.addClass)(this.contentPage, 'is-hidden');
+	                    (0, _dom.removeClass)(newPage, 'zoom-in');
+	                }.bind(this));
+	            }
 	        }
 	    },
 
@@ -2325,11 +2337,7 @@
 	        (0, _dom.removeClass)(this.panelDiv, 'is-visible');
 	        this.panelDiv.style.zIndex = -1;
 	    }
-	}); /**
-	     * Module : neoui-year
-	     * Author : liuyk(liuyk@yonyou.com)
-	     * Date   : 2016-08-11 15:17:07
-	     */
+	});
 
 	_compMgr.compMgr.regComp({
 	    comp: YearMonth,

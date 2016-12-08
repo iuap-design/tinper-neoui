@@ -509,8 +509,9 @@
 			if (/iphone|ipad|ipod/.test(ua)) {
 				//转换成 yy/mm/dd
 				str = str.replace(/-/g, "/");
+				str = str.replace(/(^\s+)|(\s+$)/g, "");
 				if (str.length <= 8) {
-					str = str + '/28';
+					str = str += "/01";
 				}
 			}
 		}
@@ -1632,7 +1633,7 @@
 	 */
 	var makeModal = function makeModal(element, parEle) {
 		var overlayDiv = document.createElement('div');
-		addClass(overlayDiv, 'u-overlay');
+		$(overlayDiv).addClass('u-overlay');
 		overlayDiv.style.zIndex = getZIndex();
 		// 如果有父元素则插入到父元素上，没有则添加到body上
 		if (parEle && parEle != document.body) {
@@ -2113,13 +2114,14 @@
 	var _compMgr = __webpack_require__(9);
 
 	/**
-	 * messageDialog.js
-	 */
-
-	/**
 	 * Module : neoui-dialog
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-08-02 15:29:55
+	 */
+
+	window.dialogAry = [];
+	/**
+	 * messageDialog.js
 	 */
 
 	'use strict';
@@ -2370,6 +2372,7 @@
 		document.body.removeChild(this.templateDom);
 		document.body.removeChild(this.overlayDiv);
 		this.isClosed = true;
+		enable_mouseWheel();
 	};
 
 	var confirmDialog = function confirmDialog(options) {
@@ -2513,18 +2516,38 @@
 		this.isClosed = false;
 	};
 
+	var adapterDialog = function adapterDialog(dialogObj, type) {
+		var dialogArray = window.dialogAry;
+		if (dialogArray) {
+			var len = dialogArray.length;
+			var index = dialogArray.indexOf(dialogObj);
+			if (type == "show") {
+				if (index <= -1) {
+					dialogArray.push(dialogObj);
+					dialogArray.length !== 1 && dialogArray[dialogArray.length - 2].hide && dialogArray[dialogArray.length - 2].hide();
+				}
+			} else if (type == 'hide') {
+				if (index == len - 1) {
+					dialogArray.pop();
+				}
+			}
+		}
+	};
+
 	dialogMode.prototype.show = function () {
 		if (this.isClosed) {
 			this.create();
 		}
 		this.templateDom.style.display = 'block';
 		this.overlayDiv.style.display = 'block';
+		adapterDialog(this, 'show');
 		disable_mouseWheel();
 	};
 
 	dialogMode.prototype.hide = function () {
 		this.templateDom.style.display = 'none';
 		this.overlayDiv.style.display = 'none';
+		adapterDialog(this, 'hide');
 		enable_mouseWheel();
 	};
 

@@ -11,6 +11,7 @@ import {extend} from 'tinper-sparrow/js/extend';
 import {Button} from './neoui-button';
 import {compMgr} from 'tinper-sparrow/js/compMgr';
 
+window.dialogAry = [];
 /**
  * messageDialog.js
  */
@@ -289,6 +290,7 @@ confirmDialogF.prototype.close = function () {
 	document.body.removeChild(this.templateDom);
 	document.body.removeChild(this.overlayDiv);
 	this.isClosed = true;
+	enable_mouseWheel();
 };
 
 var confirmDialog = function (options) {
@@ -437,8 +439,28 @@ dialogMode.prototype.create = function() {
 		this.overlayDiv.style.display = 'none';
 	}
 	document.body.appendChild(this.templateDom);
+	adapterDialog(this, 'show');
 	disable_mouseWheel();
 	this.isClosed = false;
+};
+
+var adapterDialog = function (dialogObj, type) {
+	var dialogArray = window.dialogAry;
+	if(dialogArray){
+		var len = dialogArray.length;
+		var index = dialogArray.indexOf(dialogObj);
+		if(type == "show"){
+			if(index <= -1){
+				dialogArray.push(dialogObj);
+				dialogArray.length !== 1 && dialogArray[dialogArray.length-2].hide && dialogArray[dialogArray.length-2].hide();
+			}
+		}else if (type == 'hide'){
+			if(index == len-1){
+				dialogArray.pop();
+				dialogArray.length !== 0 && dialogArray[dialogArray.length-1].show && dialogArray[dialogArray.length-1].show();
+			}
+		}
+	}
 };
 
 dialogMode.prototype.show = function() {
@@ -447,12 +469,16 @@ dialogMode.prototype.show = function() {
 	}
 	this.templateDom.style.display = 'block';
 	this.overlayDiv.style.display = 'block';
+	adapterDialog(this, 'show');
 	disable_mouseWheel();
 }
+
+
 
 dialogMode.prototype.hide = function() {
 	this.templateDom.style.display = 'none';
 	this.overlayDiv.style.display = 'none';
+	adapterDialog(this, 'hide');
 	enable_mouseWheel();
 }
 
@@ -468,8 +494,9 @@ dialogMode.prototype.close = function() {
 	}catch(e){
 
 	}
-	
+
 	this.isClosed = true;
+		adapterDialog(this, 'hide');
 		enable_mouseWheel();
 }
 

@@ -7,31 +7,32 @@
 import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
 import {on, off, stopEvent} from 'tinper-sparrow/js/event';
 import {addClass, makeDOM, showPanelByEle, getZIndex, removeClass} from 'tinper-sparrow/js/dom';
-import {extend} from 'tinper-sparrow/js/extend'; 
-import {isIE8} from 'tinper-sparrow/js/env'; 
+import {extend} from 'tinper-sparrow/js/extend';
+import {isIE8} from 'tinper-sparrow/js/env';
 import {compMgr} from 'tinper-sparrow/js/compMgr';
 import {URipple} from 'tinper-sparrow/js/util/ripple';
+import {requestAnimationFrame} from 'tinper-sparrow/js/ployfill';
 
 const YearMonth = BaseComponent.extend({
 	DEFAULTS : {
 	},
 	init: function(){
-		var self = this;			 
+		var self = this;
 		var element = this.element;
 		this.options = extend({}, this.DEFAULTS, this.options);
 		this.panelDiv = null;
 		this.input = this.element.querySelector("input");
-		
+
 		var d = new Date();
 		this.year = d.getFullYear();
 		this.startYear = this.year - this.year % 10 - 1;
 		this.month = d.getMonth() + 1;
-		
+
 		on(this.input, 'blur',function(e){
             self._inputFocus = false;
         	self.setValue(self.input.value);
         });
-        
+
 		// 添加focus事件
 		this.focusEvent();
 		// 添加右侧图标click事件
@@ -47,12 +48,12 @@ const YearMonth = BaseComponent.extend({
     	this.panelDiv = makeDOM('<div class="u-date-panel" style="margin:0px;"></div>');
     	this.panelContentDiv = makeDOM('<div class="u-date-content"></div>');
     	this.panelDiv.appendChild(this.panelContentDiv);
-    	
+
     	// this.preBtn = makeDOM('<button class="u-date-pre-button u-button flat floating mini" style="display:none;">&lt;</button>');
         // this.nextBtn = makeDOM('<button class="u-date-next-button u-button flat floating mini" style="display:none;">&gt;</button>');
     	this.preBtn = makeDOM('<button class="u-date-pre-button u-button mini">&lt;</button>');
         this.nextBtn = makeDOM('<button class="u-date-next-button u-button mini">&gt;</button>');
-        
+
     	on(this.preBtn, 'click', function(e){
             oThis.startYear -= 10;
             oThis._fillYear();
@@ -64,7 +65,7 @@ const YearMonth = BaseComponent.extend({
         this.panelContentDiv.appendChild(this.preBtn);
         this.panelContentDiv.appendChild(this.nextBtn);
         this._fillYear();
-    	
+
     },
 
     /**
@@ -100,7 +101,7 @@ const YearMonth = BaseComponent.extend({
             oThis._fillMonth();
             stopEvent(e);
         });
-    	
+
     	this.preBtn.style.display = 'block';
     	this.nextBtn.style.display = 'block';
     	// this._zoomIn(yearPage);
@@ -156,7 +157,7 @@ const YearMonth = BaseComponent.extend({
             oThis.setValue(oThis.year + '-' + oThis.month);
             oThis.hide();
         });
-        
+
         this.preBtn.style.display = 'none';
     	this.nextBtn.style.display = 'none';
     	this._zoomIn(monthPage);
@@ -189,12 +190,15 @@ const YearMonth = BaseComponent.extend({
                 newPage.addEventListener('transitionend', cleanup);
                 newPage.addEventListener('webkitTransitionEnd', cleanup);
             }
-            window.requestAnimationFrame(function() {
-                    addClass(this.contentPage, 'is-hidden');
-                    removeClass(newPage, 'zoom-in');
-            }.bind(this));
+			//ie9 requestAnimationFrame兼容问题
+    		if(requestAnimationFrame){
+    			requestAnimationFrame(function() {
+    					addClass(this.contentPage, 'is-hidden');
+    					removeClass(newPage, 'zoom-in');
+    			}.bind(this));
+    		}
         }
-        
+			
     },
 
 
@@ -207,7 +211,7 @@ const YearMonth = BaseComponent.extend({
     		this.month = month % 12;
     		if(this.month == 0)
     			this.month = 12;
-    	
+
     		value = this.year + '-' + this.month;
     	}
     	this.value = value;
@@ -226,7 +230,7 @@ const YearMonth = BaseComponent.extend({
 
     //下拉图标的点击事件
     clickEvent: function() {
-    	var self = this;		
+    	var self = this;
     	var caret = this.element.nextSibling
     	on(caret,'click',function(e) {
     		self.input.focus();
@@ -250,7 +254,7 @@ const YearMonth = BaseComponent.extend({
     	this.width = this.element.offsetWidth;
     	if(this.width < 300)
     		this.width = 300;
-        
+
     	this.panelDiv.style.width = this.width + 'px';
 
         if(this.options.showFix){
@@ -269,12 +273,12 @@ const YearMonth = BaseComponent.extend({
          //    this.top = this.element.offsetTop + inputHeight;
          //    this.panelDiv.style.left = this.left + 'px';
          //    this.panelDiv.style.top = this.top + 'px';
-         
+
                 var bodyWidth = document.body.clientWidth,bodyHeight = document.body.clientHeight,
                 panelWidth = this.panelDiv.offsetWidth,panelHeight = this.panelDiv.offsetHeight;
 
                 this.element.appendChild(this.panelDiv);
-                this.element.style.position = 'relative'; 
+                this.element.style.position = 'relative';
                 this.left = this.input.offsetLeft;
                 var inputHeight = this.input.offsetHeight;
                 this.top = this.input.offsetTop + inputHeight;
@@ -286,13 +290,13 @@ const YearMonth = BaseComponent.extend({
                 if((this.top + panelHeight) > bodyHeight){
                     this.top = bodyHeight - panelHeight;
                 }
-            
+
 
                 this.panelDiv.style.left = this.left + 'px';
                 this.panelDiv.style.top = this.top + 'px';
         }
 
-        
+
     	this.panelDiv.style.zIndex = getZIndex();
         addClass(this.panelDiv, 'is-visible');
         var oThis = this;

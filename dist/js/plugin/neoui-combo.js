@@ -509,8 +509,9 @@
 			if (/iphone|ipad|ipod/.test(ua)) {
 				//转换成 yy/mm/dd
 				str = str.replace(/-/g, "/");
+				str = str.replace(/(^\s+)|(\s+$)/g, "");
 				if (str.length <= 8) {
-					str = str + '/28';
+					str = str += "/01";
 				}
 			}
 		}
@@ -1632,7 +1633,7 @@
 	 */
 	var makeModal = function makeModal(element, parEle) {
 		var overlayDiv = document.createElement('div');
-		addClass(overlayDiv, 'u-overlay');
+		$(overlayDiv).addClass('u-overlay');
 		overlayDiv.style.zIndex = getZIndex();
 		// 如果有父元素则插入到父元素上，没有则添加到body上
 		if (parEle && parEle != document.body) {
@@ -2200,9 +2201,9 @@
 	            this._ul.style.top = this.top + 'px';
 	        }
 	        this._ul.style.width = width + 'px';
-	        (0, _dom.addClass)(this._ul, 'is-animating');
+	        $(this._ul).addClass('is-animating');
 	        this._ul.style.zIndex = (0, _dom.getZIndex)();
-	        (0, _dom.addClass)(this._ul, 'is-visible');
+	        $(this._ul).addClass('is-visible');
 
 	        var callback = function (e) {
 	            if (e === evt || e.target === this._input || self._inputFocus == true) return;
