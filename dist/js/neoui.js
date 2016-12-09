@@ -13507,11 +13507,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	     on(this._headerMonth, 'click', function(e){
+	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	     on(this._headerTime, 'click', function(e){
+	      on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -13604,11 +13604,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	     on(this._headerMonth, 'click', function(e){
+	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	     on(this._headerTime, 'click', function(e){
+	      on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -13618,7 +13618,7 @@ $.fn.bootstrapWizard.defaults = {
 	        if (_month - 1 == i) {
 	            (0, _dom.addClass)(cells[i], 'current');
 	        }
-	        if (this.beginYear && this.beginMonth) {
+	        if (this.beginYear) {
 	            if (this.pickerDate.getFullYear() == this.beginYear && i < this.beginMonth) {
 	                (0, _dom.addClass)(cells[i], 'u-disabled');
 	            }
@@ -13626,7 +13626,7 @@ $.fn.bootstrapWizard.defaults = {
 	                (0, _dom.addClass)(cells[i], 'u-disabled');
 	            }
 	        }
-	        if (this.overYear && this.overMonth) {
+	        if (this.overYear) {
 	            if (this.pickerDate.getFullYear() == this.overYear && i > this.overMonth) {
 	                (0, _dom.addClass)(cells[i], 'u-disabled');
 	            }
@@ -13759,13 +13759,13 @@ $.fn.bootstrapWizard.defaults = {
 	            (0, _dom.addClass)(cell, 'current');
 	        }
 
-	        if (this.beginYear && this.beginMonth && this.beginDate) {
+	        if (this.beginYear) {
 	            if (tempDateYear < this.beginYear || tempDateYear == this.beginYear && tempDateMonth < this.beginMonth || tempDateYear == this.beginYear && tempDateMonth == this.beginMonth && tempDateDate < this.beginDate) {
 	                (0, _dom.addClass)(cell, 'u-disabled');
 	                (0, _dom.removeClass)(cell, 'current');
 	            }
 	        }
-	        if (this.overYear && this.overMonth && this.overDate) {
+	        if (this.overYear) {
 	            if (tempDateYear > this.overYear || tempDateYear == this.overYear && tempDateMonth > this.overMonth || tempDateYear == this.overYear && tempDateMonth == this.overMonth && tempDateDate > this.overDate) {
 	                (0, _dom.addClass)(cell, 'u-disabled');
 	                (0, _dom.removeClass)(cell, 'current');
@@ -13786,6 +13786,13 @@ $.fn.bootstrapWizard.defaults = {
 	        this.pickerDate.setFullYear(e.target._year);
 	        this.pickerDate.setMonth(e.target._month);
 	        this.pickerDate.setDate(_d);
+	        if (this.pickerDate && this.options.format == 'YYYY-MM-DD') {
+	            this.pickerDate.setHours(0);
+	            this.pickerDate.setMinutes(0);
+	            this.pickerDate.setSeconds(0);
+	            this.pickerDate.setMilliseconds(0);
+	        }
+
 	        var _cell = e.target.parentNode.querySelector('.u-date-cell.current');
 	        if (_cell) {
 	            (0, _dom.removeClass)(_cell, 'current');
@@ -14548,10 +14555,10 @@ $.fn.bootstrapWizard.defaults = {
 	    }
 	    var flag = true;
 	    if (this.beginDateObj) {
-	        if (this.beginDateObj < this.startDate) flag = false;
+	        if (this.pickerDate && this.pickerDate.getTime() < this.beginDateObj.getTime()) flag = false;
 	    }
 	    if (this.overDateObj) {
-	        if (this.overDateObj > this.endDate) flag = false;
+	        if (this.pickerDate && this.pickerDate.getTime() > this.overDateObj.getTime()) flag = false;
 	    }
 	    if (flag) {
 	        this.setDate(this.pickerDate);
@@ -14562,8 +14569,10 @@ $.fn.bootstrapWizard.defaults = {
 	    try {
 	        document.body.removeChild(this.overlayDiv);
 	    } catch (e) {}
-	    this.trigger('select', { value: this.pickerDate });
-	    this.trigger('validate');
+	    if (flag) {
+	        this.trigger('select', { value: this.pickerDate });
+	        this.trigger('validate');
+	    }
 	};
 
 	DateTimePicker.fn.hide = function () {
@@ -14594,8 +14603,29 @@ $.fn.bootstrapWizard.defaults = {
 
 	    var _date = _dateUtils.date.getDateObj(value);
 	    if (_date) {
+	        if (_date && this.options.format == 'YYYY-MM-DD') {
+	            _date.setHours(0);
+	            _date.setMinutes(0);
+	            _date.setSeconds(0);
+	            _date.setMilliseconds(0);
+	        }
 	        if (this.beginDateObj) {
-	            if (_date < this.beginDateObj) return;
+	            if (this.beginDateObj && this.options.format == 'YYYY-MM-DD') {
+	                this.beginDateObj.setHours(0);
+	                this.beginDateObj.setMinutes(0);
+	                this.beginDateObj.setSeconds(0);
+	                this.beginDateObj.setMilliseconds(0);
+	            }
+	            if (_date.getTime() < this.beginDateObj.getTime()) return;
+	        }
+	        if (this.overDateObj) {
+	            if (this.overDateObj && this.options.format == 'YYYY-MM-DD') {
+	                this.overDateObj.setHours(0);
+	                this.overDateObj.setMinutes(0);
+	                this.overDateObj.setSeconds(0);
+	                this.overDateObj.setMilliseconds(0);
+	            }
+	            if (_date.getTime() > this.overDateObj.getTime()) return;
 	        }
 	        this.date = _date;
 	        this._input.value = _dateUtils.date.format(this.date, this.format);
@@ -14613,16 +14643,22 @@ $.fn.bootstrapWizard.defaults = {
 	DateTimePicker.fn.setStartDate = function (startDate, type) {
 	    if (startDate) {
 	        this.beginDateObj = _dateUtils.date.getDateObj(startDate);
-	        if (type) {
+	        if (this.beginDateObj && this.options.format == 'YYYY-MM-DD') {
+	            this.beginDateObj.setHours(0);
+	            this.beginDateObj.setMinutes(0);
+	            this.beginDateObj.setSeconds(0);
+	            this.beginDateObj.setMilliseconds(0);
+	        }
+	        /*if(type){
 	            switch (type) {
 	                case 'YYYY-MM':
-	                    this.beginDateObj = _dateUtils.date.add(this.beginDateObj, 'M', 1);
+	                this.beginDateObj = udate.add(this.beginDateObj, 'M', 1);
 	                    break;
 	                case 'YYYY-MM-DD':
-	                    this.beginDateObj = _dateUtils.date.add(this.beginDateObj, 'd', 1);
+	                this.beginDateObj = udate.add(this.beginDateObj, 'd', 1);
 	                    break;
 	            }
-	        }
+	        }*/
 
 	        this.beginYear = this.beginDateObj.getFullYear();
 	        this.beginMonth = this.beginDateObj.getMonth();
@@ -14638,6 +14674,12 @@ $.fn.bootstrapWizard.defaults = {
 	DateTimePicker.fn.setEndDate = function (endDate) {
 	    if (endDate) {
 	        this.overDateObj = _dateUtils.date.getDateObj(endDate);
+	        if (this.overDateObj && this.options.format == 'YYYY-MM-DD') {
+	            this.overDateObj.setHours(0);
+	            this.overDateObj.setMinutes(0);
+	            this.overDateObj.setSeconds(0);
+	            this.overDateObj.setMilliseconds(0);
+	        }
 	        this.overYear = this.overDateObj.getFullYear();
 	        this.overMonth = this.overDateObj.getMonth();
 	        this.overDate = this.overDateObj.getDate();
@@ -15376,14 +15418,41 @@ $.fn.bootstrapWizard.defaults = {
 				var inputHeight = this.element.offsetHeight;
 				var topWidth = this.tipDom.offsetWidth;
 				var topHeight = this.tipDom.offsetHeight;
+				var tipDomleft, tipDomTop;
+
 				if (this.options.placement == 'top') {
+					// 上部提示
+
 					this.left = this.element.offsetLeft + inputWidth / 2;
 					this.top = this.element.offsetTop - topHeight;
+					// 水平居中
+					tipDomleft = this.left - this.tipDom.clientWidth / 2 + 'px';
+					tipDomTop = this.top + 'px';
+				} else if (this.options.placement == 'bottom') {
+					// 下边提示
+					this.left = this.element.offsetLeft + inputWidth / 2;
+					this.top = this.element.offsetTop + topHeight;
+					// 水平居中
+					tipDomleft = this.left - this.tipDom.clientWidth / 2 + 'px';
+					tipDomTop = this.top + 'px';
+				} else if (this.options.placement == 'left') {
+					// 左边提示
+					this.left = this.element.offsetLeft;
+					this.top = this.element.offsetTop + topHeight / 2;
+					tipDomleft = this.left - this.tipDom.clientWidth + 'px';
+
+					tipDomTop = this.top - this.tipDom.clientHeight / 2 + 'px';
+				} else {
+					// 右边提示
+
+					this.left = this.element.offsetLeft + inputWidth;
+					this.top = this.element.offsetTop + topHeight / 2;
+					tipDomleft = this.left + 'px';
+					tipDomTop = this.top - this.tipDom.clientHeight / 2 + 'px';
 				}
-				// 水平居中
-				this.tipDom.style.left = this.left - this.tipDom.clientWidth / 2 + 'px';
-				// this.tipDom.style.left = this.left + 'px';
-				this.tipDom.style.top = this.top + 'px';
+
+				this.tipDom.style.left = tipDomleft;
+				this.tipDom.style.top = tipDomTop;
 			}
 
 			(0, _dom.addClass)(this.tipDom, 'active');
@@ -16298,7 +16367,7 @@ $.fn.bootstrapWizard.defaults = {
 			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
 			/*var focusHelper = document.createElement('span');
 	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
-	  	thumb.appendChild(focusHelper);*/
+	  		thumb.appendChild(focusHelper);*/
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);

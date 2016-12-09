@@ -441,12 +441,14 @@ const ClockPicker = BaseComponent.extend({
         }
 	}
 });
+if(!env.isIE8){
+	compMgr.regComp({
+		comp: ClockPicker,
+		compAsString: 'u.ClockPicker',
+		css: 'u-clockpicker'
+	});
+}
 
-compMgr.regComp({
-	comp: ClockPicker,
-	compAsString: 'u.ClockPicker',
-	css: 'u-clockpicker'
-});
 if(document.readyState && document.readyState === 'complete') {
 	compMgr.updateComp();
 } else {
