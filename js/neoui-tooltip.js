@@ -110,14 +110,41 @@ Tooltip.prototype = {
 			var inputHeight = this.element.offsetHeight;
 			var topWidth = this.tipDom.offsetWidth;
 			var topHeight = this.tipDom.offsetHeight;
+			var tipDomleft,tipDomTop;
+
 			if(this.options.placement == 'top') {
+				// 上部提示
+
 				this.left = this.element.offsetLeft + inputWidth / 2;
 				this.top = this.element.offsetTop - topHeight;
+				// 水平居中
+				tipDomleft = this.left - this.tipDom.clientWidth / 2 + 'px';
+				tipDomTop = this.top + 'px';
+			}else if (this.options.placement == 'bottom') {
+				// 下边提示
+				this.left = this.element.offsetLeft + inputWidth / 2;
+				this.top = this.element.offsetTop + topHeight;
+				// 水平居中
+				tipDomleft = this.left - this.tipDom.clientWidth / 2 + 'px';
+				tipDomTop = this.top + 'px';
+			}else if (this.options.placement == 'left') {
+				// 左边提示
+				this.left = this.element.offsetLeft ;
+				this.top = this.element.offsetTop + topHeight/2;
+				tipDomleft = this.left - this.tipDom.clientWidth + 'px';
+
+				tipDomTop = this.top - this.tipDom.clientHeight/2 +'px';
+			}else {
+				// 右边提示
+				
+				this.left = this.element.offsetLeft + inputWidth;
+				this.top = this.element.offsetTop + topHeight/2;
+				tipDomleft = this.left + 'px';
+				tipDomTop = this.top - this.tipDom.clientHeight/2 +'px';
 			}
-			// 水平居中
-			this.tipDom.style.left = this.left - this.tipDom.clientWidth / 2 + 'px';
-			// this.tipDom.style.left = this.left + 'px';
-			this.tipDom.style.top = this.top + 'px';
+			
+			this.tipDom.style.left = tipDomleft;
+			this.tipDom.style.top = tipDomTop;
 		}
 
 		addClass(this.tipDom, 'active');
