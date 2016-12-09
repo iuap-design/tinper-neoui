@@ -1398,11 +1398,29 @@ DateTimePicker.fn.setDate = function(value){
 
     var _date = udate.getDateObj(value);
     if(_date){
+        if(_date && this.options.format == 'YYYY-MM-DD'){
+            _date.setHours(0);
+            _date.setMinutes(0);
+            _date.setSeconds(0);
+            _date.setMilliseconds(0);
+        }
         if(this.beginDateObj){
+            if(this.beginDateObj && this.options.format == 'YYYY-MM-DD'){
+                this.beginDateObj.setHours(0);
+                this.beginDateObj.setMinutes(0);
+                this.beginDateObj.setSeconds(0);
+                this.beginDateObj.setMilliseconds(0);
+            }
             if(_date.getTime() < this.beginDateObj.getTime())
                 return;
         }
         if(this.overDateObj){
+            if(this.overDateObj && this.options.format == 'YYYY-MM-DD'){
+                this.overDateObj.setHours(0);
+                this.overDateObj.setMinutes(0);
+                this.overDateObj.setSeconds(0);
+                this.overDateObj.setMilliseconds(0);
+            }
             if(_date.getTime() > this.overDateObj.getTime())
                 return;
         }
