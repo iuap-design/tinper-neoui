@@ -252,9 +252,17 @@ DateTimePicker.fn._fillYear = function(type){
         if (this.startYear + i == _year){
             addClass(cell, 'current');
         }
-        if (this.startYear + i < this.beginYear ){
-            addClass(cell, 'u-disabled');
+        if(this.beginYear){
+            if (this.startYear + i < this.beginYear ){
+                addClass(cell, 'u-disabled');
+            }
         }
+        if(this.overYear){
+            if (this.startYear + i > this.overYear ){
+                addClass(cell, 'u-disabled');
+            }
+        }
+        
         cell._value = this.startYear + i;
         yearDiv.appendChild(cell);
     }
@@ -346,12 +354,23 @@ DateTimePicker.fn._fillMonth = function(){
         if (_month - 1 == i){
             addClass(cells[i],'current');
         }
-        if(this.pickerDate.getFullYear() == this.beginYear && i < this.beginMonth){
-            addClass(cells[i],'u-disabled');
+        if(this.beginYear){
+            if(this.pickerDate.getFullYear() == this.beginYear && i < this.beginMonth){
+                addClass(cells[i],'u-disabled');
+            }
+            if(this.pickerDate.getFullYear() < this.beginYear){
+                addClass(cells[i],'u-disabled');
+            }
         }
-        if(this.pickerDate.getFullYear() < this.beginYear){
-            addClass(cells[i],'u-disabled');
+        if(this.overYear){
+            if(this.pickerDate.getFullYear() == this.overYear && i > this.overMonth){
+                addClass(cells[i],'u-disabled');
+            }
+            if(this.pickerDate.getFullYear() > this.overYear){
+                addClass(cells[i],'u-disabled');
+            }
         }
+        
         cells[i]._value = i;
         new URipple(cells[i]);
     }
@@ -401,8 +420,12 @@ DateTimePicker.fn._fillDate = function(type){
         tempDate = this.pickerDate;
     } else if (type === 'preivous') {
         tempDate = udate.sub(this.startDate,'d', 1);
+        // 默认显示每个月的1号
+        tempDate = udate.getDateObj(tempDate.setDate(1));
     } else {
         tempDate = udate.add(this.endDate,'d', 1);
+        // 默认显示每个月的1号
+        tempDate = udate.getDateObj(tempDate.setDate(1));
     }
     this.startDate = this._getPickerStartDate(tempDate);
     this.endDate = this._getPickerEndDate(tempDate);
@@ -469,18 +492,25 @@ DateTimePicker.fn._fillDate = function(type){
             addClass(cell, 'current');
         }
 
+        if(this.beginYear){
+            if(tempDateYear < this.beginYear || (tempDateYear == this.beginYear && tempDateMonth < this.beginMonth)
+                || (tempDateYear == this.beginYear && tempDateMonth == this.beginMonth
+            && tempDateDate < this.beginDate)){
+                addClass(cell,'u-disabled');
+                removeClass(cell,'current');
+            }
 
-        if(tempDateYear < this.beginYear || (tempDateYear == this.beginYear && tempDateMonth < this.beginMonth)|| (tempDateYear == this.overYear && tempDateMonth > this.overMonth) || tempDateYear > this.overYear){
-            addClass(cell,'u-disabled');
-            removeClass(cell,'current');
+
         }
-
-        if((tempDateYear == this.beginYear && tempDateMonth == this.beginMonth
-            && tempDateDate < this.beginDate) || (tempDateYear == this.overYear && tempDateMonth == this.overMonth
+        if(this.overYear){
+            if(tempDateYear > this.overYear || (tempDateYear == this.overYear && tempDateMonth > this.overMonth) 
+                || (tempDateYear == this.overYear && tempDateMonth == this.overMonth
                 && tempDateDate > this.overDate)){
-            addClass(cell,'u-disabled');
-            removeClass(cell,'current');
+                addClass(cell,'u-disabled');
+                removeClass(cell,'current');
+            }
         }
+        
         cell._value = tempDateDate;
         cell._month = tempDateMonth;
         cell._year = tempDateYear;
@@ -495,6 +525,13 @@ DateTimePicker.fn._fillDate = function(type){
         this.pickerDate.setFullYear(e.target._year);
         this.pickerDate.setMonth(e.target._month);
         this.pickerDate.setDate(_d);
+        if(this.pickerDate && this.options.format == 'YYYY-MM-DD'){
+            this.pickerDate.setHours(0);
+            this.pickerDate.setMinutes(0);
+            this.pickerDate.setSeconds(0);
+            this.pickerDate.setMilliseconds(0);
+        }
+        
         var _cell = e.target.parentNode.querySelector('.u-date-cell.current');
         if (_cell) {
             removeClass(_cell, 'current');
@@ -529,8 +566,9 @@ DateTimePicker.fn._fillTime = function(type){
     //     this._timeMobileScroll()
     //     return;
     // }
-    if(this.timeOpen)return;
-    this.timeOpen = true;
+    //去除判断防止再次点击时间时，面板弹不出来
+    // if(this.timeOpen)return;
+    // this.timeOpen = true;
     var year,month,day,date,time,template,timePage,titleDiv,dateDiv,weekSpans,language,tempDate, i,cell,timetemplate;
     var self = this;
     type = type || 'current';
@@ -1171,12 +1209,6 @@ DateTimePicker.fn.show = function(evt){
         });
         on(this.btnClean, 'click', function(e){
             self.pickerDate = null;
-            self.beginYear = 0;
-            self.beginMonth = 0;
-            self.beginDate = 0;
-            self.overYear = 0;
-            self.overMonth = 0;
-            self.overDate = 0;
             self.onOk();
             stopEvent(e)
         });
@@ -1308,7 +1340,18 @@ DateTimePicker.fn.onOk = function(){
             return;
         }
     }
-    this.setDate(this.pickerDate);
+    var flag = true;
+    if (this.beginDateObj) {
+        if (this.pickerDate && this.pickerDate.getTime() < this.beginDateObj.getTime()) 
+            flag = false;
+    }
+    if (this.overDateObj) {
+        if (this.pickerDate && this.pickerDate.getTime() > this.overDateObj.getTime()) 
+            flag = false;
+    }
+    if(flag){
+        this.setDate(this.pickerDate);
+    }
     this.isShow = false;
     this.timeOpen = false;
     removeClass(this._panel, 'is-visible');
@@ -1317,8 +1360,11 @@ DateTimePicker.fn.onOk = function(){
     }catch(e){
 
     }
-    this.trigger('select', {value:this.pickerDate});
-    this.trigger('validate');
+    if(flag){
+        this.trigger('select', {value:this.pickerDate});
+        this.trigger('validate');
+    }
+    
 }
 
 DateTimePicker.fn.hide = function(){
@@ -1352,8 +1398,30 @@ DateTimePicker.fn.setDate = function(value){
 
     var _date = udate.getDateObj(value);
     if(_date){
+        if(_date && this.options.format == 'YYYY-MM-DD'){
+            _date.setHours(0);
+            _date.setMinutes(0);
+            _date.setSeconds(0);
+            _date.setMilliseconds(0);
+        }
         if(this.beginDateObj){
-            if(_date < this.beginDateObj)
+            if(this.beginDateObj && this.options.format == 'YYYY-MM-DD'){
+                this.beginDateObj.setHours(0);
+                this.beginDateObj.setMinutes(0);
+                this.beginDateObj.setSeconds(0);
+                this.beginDateObj.setMilliseconds(0);
+            }
+            if(_date.getTime() < this.beginDateObj.getTime())
+                return;
+        }
+        if(this.overDateObj){
+            if(this.overDateObj && this.options.format == 'YYYY-MM-DD'){
+                this.overDateObj.setHours(0);
+                this.overDateObj.setMinutes(0);
+                this.overDateObj.setSeconds(0);
+                this.overDateObj.setMilliseconds(0);
+            }
+            if(_date.getTime() > this.overDateObj.getTime())
                 return;
         }
         this.date = _date;
@@ -1373,7 +1441,13 @@ DateTimePicker.fn.setFormat = function(format){
 DateTimePicker.fn.setStartDate = function(startDate, type){
     if(startDate){
         this.beginDateObj = udate.getDateObj(startDate);
-        if(type){
+        if(this.beginDateObj && this.options.format == 'YYYY-MM-DD'){
+            this.beginDateObj.setHours(0);
+            this.beginDateObj.setMinutes(0);
+            this.beginDateObj.setSeconds(0);
+            this.beginDateObj.setMilliseconds(0);
+        }
+        /*if(type){
             switch (type) {
                 case 'YYYY-MM':
                 this.beginDateObj = udate.add(this.beginDateObj, 'M', 1);
@@ -1382,12 +1456,17 @@ DateTimePicker.fn.setStartDate = function(startDate, type){
                 this.beginDateObj = udate.add(this.beginDateObj, 'd', 1);
                     break;
             }
-        }
+        }*/
 
         this.beginYear = this.beginDateObj.getFullYear();
         this.beginMonth = this.beginDateObj.getMonth();
         this.beginDate = this.beginDateObj.getDate();
 
+    }else{
+        this.beginDateObj = null;
+        this.beginYear = null;
+        this.beginMonth = null;
+        this.beginDate = null;
     }
 
 };
@@ -1396,9 +1475,20 @@ DateTimePicker.fn.setStartDate = function(startDate, type){
 DateTimePicker.fn.setEndDate = function(endDate){
     if(endDate){
         this.overDateObj = udate.getDateObj(endDate);
+        if(this.overDateObj && this.options.format == 'YYYY-MM-DD'){
+            this.overDateObj.setHours(0);
+            this.overDateObj.setMinutes(0);
+            this.overDateObj.setSeconds(0);
+            this.overDateObj.setMilliseconds(0);
+        }
         this.overYear = this.overDateObj.getFullYear();
         this.overMonth = this.overDateObj.getMonth();
         this.overDate = this.overDateObj.getDate();
+    }else{
+        this.overDateObj = null;
+        this.overYear = null;
+        this.overMonth = null;
+        this.overDate = null;
     }
 };
 
