@@ -183,6 +183,7 @@ var Combo = BaseComponent.extend({
             // document.removeEventListener('click', callback);
             this.hide();
         }.bind(this);
+        this.callback = callback;
         on(document,'click',callback);
         on(document.body,'touchend',callback)
         // document.addEventListener('click', callback);
@@ -190,6 +191,7 @@ var Combo = BaseComponent.extend({
     },
 
     hide: function () {
+        off(document,'click', this.callback);
         removeClass(this._ul, 'is-visible');
         this._ul.style.zIndex = -1;
         this.trigger('select', {value: this.value, name: this._input.value});
