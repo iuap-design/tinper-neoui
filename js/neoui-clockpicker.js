@@ -8,7 +8,7 @@ import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
 import {addClass, removeClass, hasClass, showPanelByEle, makeDOM, makeModal, getZIndex} from 'tinper-sparrow/js/dom';
 import {on, off} from 'tinper-sparrow/js/event';
 import {compMgr} from 'tinper-sparrow/js/compMgr'; 
-import {isMobile} from 'tinper-sparrow/js/env'; 
+import {isMobile, env} from 'tinper-sparrow/js/env'; 
 import {extend} from 'tinper-sparrow/js/extend'; 
 import {core} from 'tinper-sparrow/js/core'; 
 import {date} from 'tinper-sparrow/js/util/dateUtils'; 
