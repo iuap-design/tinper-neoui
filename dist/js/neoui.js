@@ -7661,12 +7661,14 @@ $.fn.bootstrapWizard.defaults = {
 	            // document.removeEventListener('click', callback);
 	            this.hide();
 	        }.bind(this);
+	        this.callback = callback;
 	        (0, _event.on)(document, 'click', callback);
 	        (0, _event.on)(document.body, 'touchend', callback);
 	        // document.addEventListener('click', callback);
 	    },
 
 	    hide: function hide() {
+	        (0, _event.off)(document, 'click', this.callback);
 	        (0, _dom.removeClass)(this._ul, 'is-visible');
 	        this._ul.style.zIndex = -1;
 	        this.trigger('select', { value: this.value, name: this._input.value });
@@ -12753,12 +12755,14 @@ $.fn.bootstrapWizard.defaults = {
 			}
 		}
 	});
+	if (!_env.env.isIE8) {
+		_compMgr.compMgr.regComp({
+			comp: ClockPicker,
+			compAsString: 'u.ClockPicker',
+			css: 'u-clockpicker'
+		});
+	}
 
-	_compMgr.compMgr.regComp({
-		comp: ClockPicker,
-		compAsString: 'u.ClockPicker',
-		css: 'u-clockpicker'
-	});
 	if (document.readyState && document.readyState === 'complete') {
 		_compMgr.compMgr.updateComp();
 	} else {
@@ -13507,11 +13511,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -13604,11 +13608,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -13693,6 +13697,7 @@ $.fn.bootstrapWizard.defaults = {
 	        i,
 	        cell,
 	        self = this;
+	    self.timeOpen = false;
 	    type = type || 'current';
 	    if ('current' === type) {
 	        tempDate = this.pickerDate;
@@ -13824,9 +13829,8 @@ $.fn.bootstrapWizard.defaults = {
 	    //     this._timeMobileScroll()
 	    //     return;
 	    // }
-	    //去除判断防止再次点击时间时，面板弹不出来
-	    // if(this.timeOpen)return;
-	    // this.timeOpen = true;
+	    if (this.timeOpen) return;
+	    this.timeOpen = true;
 	    var year, month, day, date, time, template, timePage, titleDiv, dateDiv, weekSpans, language, tempDate, i, cell, timetemplate;
 	    var self = this;
 	    type = type || 'current';
@@ -13887,7 +13891,7 @@ $.fn.bootstrapWizard.defaults = {
 	            var value = this.value,
 	                length = value.length,
 	                valueArray = [];
-	            if (length == 8) {
+	            if (length == 8 && value[0] <= 2 && value[0] >= 0 && value[1] <= 3 && value[1] >= 0 && value[3] <= 5 && value[3] >= 0 && value[6] <= 5 && value[6] >= 0) {
 	                valueArray = value.split(':');
 	                obj.pickerDate.setHours(valueArray[0]);
 	                obj.pickerDate.setMinutes(valueArray[1]);
@@ -15620,20 +15624,73 @@ $.fn.bootstrapWizard.defaults = {
 
 /***/ },
 /* 40 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	exports.__esModule = true;
-	/**
-	 * Module : Sparrow i18n
-	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-07-29 10:16:54
-	 */
+	exports.trans = undefined;
+
+	var _cookies = __webpack_require__(35);
+
+	// 从datatable/src/compatiable/u/JsExtension.js抽取
+	window.getCurrentJsPath = function () {
+		var doc = document,
+		    a = {},
+		    expose = +new Date(),
+		    rExtractUri = /((?:http|https|file):\/\/.*?\/[^:]+)(?::\d+)?:\d+/,
+		    isLtIE8 = ('' + doc.querySelector).indexOf('[native code]') === -1;
+		// FF,Chrome
+		if (doc.currentScript) {
+			return doc.currentScript.src;
+		}
+
+		var stack;
+		try {
+			a.b();
+		} catch (e) {
+			stack = e.fileName || e.sourceURL || e.stack || e.stacktrace;
+		}
+		// IE10
+		if (stack) {
+			var absPath = rExtractUri.exec(stack)[1];
+			if (absPath) {
+				return absPath;
+			}
+		}
+
+		// IE5-9
+		for (var scripts = doc.scripts, i = scripts.length - 1, script; script = scripts[i--];) {
+			if (script.className !== expose && script.readyState === 'interactive') {
+				script.className = expose;
+				// if less than ie 8, must get abs path by getAttribute(src, 4)
+				return isLtIE8 ? script.getAttribute('src', 4) : script.src;
+			}
+		}
+	}; /**
+	    * Module : Sparrow i18n
+	    * Author : Kvkens(yueming@yonyou.com)
+	    * Date	  : 2016-07-29 10:16:54
+	    */
 	//import {uuii18n} from '?';//缺失故修改为default值
+
+
+	if (window.i18n) {
+		var scriptPath = getCurrentJsPath(),
+		    _temp = scriptPath.substr(0, scriptPath.lastIndexOf('/')),
+		    __FOLDER__ = _temp.substr(0, _temp.lastIndexOf('/'));
+		i18n.init({
+			postAsync: false,
+			getAsync: false,
+			fallbackLng: false,
+			ns: { namespaces: ['uui-trans'] },
+			lng: (0, _cookies.getCookie)('i_languages'),
+			resGetPath: __FOLDER__ + '/locales/__lng__/__ns__.json'
+		});
+	}
+
 	var trans = function trans(key, dftValue) {
-	  //return  uuii18n ?  uuii18n.t('uui-trans:' + key) : dftValue;
-	  return dftValue;
+		return window.i18n ? i18n.t('uui-trans:' + key) : dftValue;
 	};
 
 	exports.trans = trans;
@@ -16367,7 +16424,7 @@ $.fn.bootstrapWizard.defaults = {
 			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
 			/*var focusHelper = document.createElement('span');
 	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
-	  		thumb.appendChild(focusHelper);*/
+	  	thumb.appendChild(focusHelper);*/
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);
