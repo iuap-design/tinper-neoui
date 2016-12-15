@@ -526,11 +526,8 @@ DateTimePicker.fn._fillDate = function(type){
         this.pickerDate.setFullYear(e.target._year);
         this.pickerDate.setMonth(e.target._month);
         this.pickerDate.setDate(_d);
-        if(this.pickerDate && this.options.format == 'YYYY-MM-DD'){
-            this.pickerDate.setHours(0);
-            this.pickerDate.setMinutes(0);
-            this.pickerDate.setSeconds(0);
-            this.pickerDate.setMilliseconds(0);
+        if(this.pickerDate){
+            this.resetDataObj(pickerDate);
         }
 
         var _cell = e.target.parentNode.querySelector('.u-date-cell.current');
@@ -1398,28 +1395,19 @@ DateTimePicker.fn.setDate = function(value){
 
     var _date = udate.getDateObj(value);
     if(_date){
-        if(_date && this.options.format == 'YYYY-MM-DD'){
-            _date.setHours(0);
-            _date.setMinutes(0);
-            _date.setSeconds(0);
-            _date.setMilliseconds(0);
+        if(_date){
+            this.resetDataObj(_date);
         }
         if(this.beginDateObj){
-            if(this.beginDateObj && this.options.format == 'YYYY-MM-DD'){
-                this.beginDateObj.setHours(0);
-                this.beginDateObj.setMinutes(0);
-                this.beginDateObj.setSeconds(0);
-                this.beginDateObj.setMilliseconds(0);
+            if(this.beginDateObj){
+                this.resetDataObj(this.beginDateObj);
             }
             if(_date.getTime() < this.beginDateObj.getTime())
                 return;
         }
         if(this.overDateObj){
-            if(this.overDateObj && this.options.format == 'YYYY-MM-DD'){
-                this.overDateObj.setHours(0);
-                this.overDateObj.setMinutes(0);
-                this.overDateObj.setSeconds(0);
-                this.overDateObj.setMilliseconds(0);
+            if(this.overDateObj){
+                this.resetDataObj(this.overDateObj);
             }
             if(_date.getTime() > this.overDateObj.getTime())
                 return;
@@ -1441,11 +1429,8 @@ DateTimePicker.fn.setFormat = function(format){
 DateTimePicker.fn.setStartDate = function(startDate, type){
     if(startDate){
         this.beginDateObj = udate.getDateObj(startDate);
-        if(this.beginDateObj && this.options.format == 'YYYY-MM-DD'){
-            this.beginDateObj.setHours(0);
-            this.beginDateObj.setMinutes(0);
-            this.beginDateObj.setSeconds(0);
-            this.beginDateObj.setMilliseconds(0);
+        if(this.beginDateObj){
+            this.resetDataObj(this.beginDateObj)
         }
         /*if(type){
             switch (type) {
@@ -1475,11 +1460,8 @@ DateTimePicker.fn.setStartDate = function(startDate, type){
 DateTimePicker.fn.setEndDate = function(endDate){
     if(endDate){
         this.overDateObj = udate.getDateObj(endDate);
-        if(this.overDateObj && this.options.format == 'YYYY-MM-DD'){
-            this.overDateObj.setHours(0);
-            this.overDateObj.setMinutes(0);
-            this.overDateObj.setSeconds(0);
-            this.overDateObj.setMilliseconds(0);
+        if(this.overDateObj){
+            this.resetDataObj(this.overDateObj)
         }
         this.overYear = this.overDateObj.getFullYear();
         this.overMonth = this.overDateObj.getMonth();
@@ -1497,6 +1479,19 @@ DateTimePicker.fn.setEnable = function(enable){
         this.enable = true;
     }else{
         this.enable = false;
+    }
+};
+
+DateTimePicker.fn.resetDataObj = function(dataObj){
+    if(this.options.format.indexOf('h') < 0 && this.options.format.indexOf('H') < 0){
+        dataObj.setHours(0);
+    }
+    if(this.options.format.indexOf('m') < 0){
+        dataObj.setMinutes(0);
+    }
+    if(this.options.format.indexOf('s') < 0){
+        dataObj.setSeconds(0);
+        dataObj.setMilliseconds(0);
     }
 };
 
