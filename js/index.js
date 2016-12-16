@@ -30,6 +30,7 @@ import {Autocomplete} from './neoui-autocomplete';
 import {Button} from './neoui-button';
 import {Checkbox} from './neoui-checkbox';
 import {Combo} from './neoui-combo';
+import {showCollapse} from './neoui-collapse';
 import {Combobox} from './neoui-combobox';
 import {Table} from './neoui-data-table';
 import {messageDialog,confirmDialog,dialogMode,dialog,dialogWizard,iframeDialog} from './neoui-dialog';
@@ -65,6 +66,7 @@ var ex = {
 	Button : Button,
 	Checkbox : Checkbox,
 	Combo : Combo,
+	showCollapse : showCollapse,
 	Combobox : Combobox,
 	Table : Table,
 	messageDialog : messageDialog,
