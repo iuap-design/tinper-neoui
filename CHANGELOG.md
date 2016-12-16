@@ -1,3 +1,27 @@
+<a name="3.1.17"></a>
+## [3.1.17](https://github.com/iuap-design/tinper-neoui/compare/v3.1.16...v3.1.17) (2016-12-14)
+
+
+### Bug Fixes
+* IE8下不显示ripple组件 ([b66d88d](https://github.com/iuap-design/tinper-neoui/commit/b66d88d))
+
+* tooltip不同位置显示效果 ([55c9754](https://github.com/iuap-design/tinper-neoui/commit/55c9754))
+
+* 修正confirmdialog弹出框关闭后滚轮事件 ([d17948a](https://github.com/iuap-design/tinper-neoui/commit/d17948a))
+
+* 日期icon点击不消除其他日历bug ([7e954bc](https://github.com/iuap-design/tinper-neoui/commit/7e954bc))
+
+* 日期icon点击不消除其他日历bug ([1a9b7e0](https://github.com/iuap-design/tinper-neoui/commit/1a9b7e0))
+
+* 日期点击前一个月后一个月当前时间；多次点击表盘不可用的问题 ([eb19ba2](https://github.com/iuap-design/tinper-neoui/commit/eb19ba2))
+
+* 日期类型为date类型和loader与dialog混用冲突 ([052ffe3](https://github.com/iuap-design/tinper-neoui/commit/052ffe3))
+
+* 日期组件点击确定的时候控制时间范围 ([9769c22](https://github.com/iuap-design/tinper-neoui/commit/9769c22))
+
+
+
+
 <a name="3.1.15"></a>
 ## [3.1.15](https://github.com/iuap-design/tinper-neoui/compare/v3.1.14...v3.1.15) (2016-11-29)
 
