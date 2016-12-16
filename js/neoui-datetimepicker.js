@@ -527,7 +527,7 @@ DateTimePicker.fn._fillDate = function(type){
         this.pickerDate.setMonth(e.target._month);
         this.pickerDate.setDate(_d);
         if(this.pickerDate){
-            this.resetDataObj(pickerDate);
+            this.resetDataObj(this.pickerDate);
         }
 
         var _cell = e.target.parentNode.querySelector('.u-date-cell.current');
