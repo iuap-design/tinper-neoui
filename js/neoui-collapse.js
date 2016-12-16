@@ -83,8 +83,8 @@ var showCollapse = BaseComponent.extend({
     /* COLLAPSIBLE DATA-API
      * ==================== */
     init: function () {
-		        $('body ').unbind('click');
-                $('body').on('click', '[u-data-toggle=collapse]', function (e) {
+		        off('body [u-data-toggle=collapse]', 'click');
+                on('body [u-data-toggle=collapse]',  function (e) {
 	            var $this = $(this);
                
                 var href;
