@@ -217,12 +217,27 @@ pagination.prototype.render = function() {
 			htmlTmp += '<div class="pagination-state">' + options.totalText + '&nbsp;' + options.totalCount + '&nbsp;条</div>';
 		}
 		if(options.showColumn){
-			htmlTmp += '<div class="pagination-state">显示<select  class="page_z">' + pageOption + '</select>条</div>';
+			if( hasClass(this.$ul, 'pagination-sm') ){
+					htmlTmp += '<div class="pagination-state">显示<select  class="page_z page_z_sm">' + pageOption + '</select>条</div>';					
+				}else if( hasClass(this.$ul, 'pagination-lg')){
+					htmlTmp += '<div class="pagination-state">显示<select  class="page_z page_z_lg">' + pageOption + '</select>条</div>';
+					
+				}else{
+					htmlTmp += '<div class="pagination-state">显示<select  class="page_z">' + pageOption + '</select>条</div>';					
+				}
 		}
 		if(options.showJump){
-			htmlTmp += '<div class="pagination-state">到<input class="page_j" value=' + options.currentPage + '>页<input class="pagination-jump" type="button" value="确定"/></div>';
+			if( hasClass(this.$ul, 'pagination-sm')){
+					htmlTmp += '<div class="pagination-state">到<input class="page_j page_j_sm" value=' + options.currentPage + '>页<input class="pagination-jump-sm" type="button" value="确定"/></div>';
+						
+				}else if( hasClass(this.$ul, 'pagination-lg')){
+					htmlTmp += '<div class="pagination-state">到<input class="page_j page_j_lg" value=' + options.currentPage + '>页<input class="pagination-jump-lg" type="button" value="确定"/></div>';
+					
+				}else{
+					htmlTmp += '<div class="pagination-state">到<input class="page_j" value=' + options.currentPage + '>页<input class="pagination-jump" type="button" value="确定"/></div>';
+						
+				}
 		}
-
 		htmlArr.push(htmlTmp);
 	}
 
