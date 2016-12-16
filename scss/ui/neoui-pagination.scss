@@ -61,6 +61,23 @@
     margin-left: 10px;
 }
 
+.pagination-state  > .page_z_sm{
+	width:50px;
+	height:26px!important;
+}
+.pagination-state  > .page_j_sm{
+	width:40px;
+	height:26px!important;
+	line-height:26px!important;
+}
+.pagination-state  > .page_z_lg{
+	width:50px;
+	height:37px!important;
+}
+.pagination-state  > .page_j_lg{
+	width:40px;
+	height:37px!important;
+}
 .pagination-state > .page_j{
     margin: 0 4px;
     width: 40px;
@@ -93,10 +110,36 @@
     color: #333333;
     height: 35px;
 }
-
 .pagination-state > .pagination-jump:hover {
     background-color: #eee;
 }
+.pagination-state > .pagination-jump-sm {
+  width: 50px;
+  height: 26px; 
+  line-height:21px;
+  border: 1px solid #ddd;
+  background-color: white;
+  font-size: 14px;
+  font-family: '微软雅黑';
+  cursor: pointer;
+  color: #333333;
+  }
+  .pagination-state > .pagination-jump-sm:hover {
+  background-color: #eee; }
+
+.pagination-state > .pagination-jump-lg {
+   width: 50px; 
+   height: 37px;
+   line-height: 29px;
+   border: 1px solid #ddd;
+   background-color: white;
+   font-size: 14px;
+   font-family: '微软雅黑';
+   cursor: pointer;
+   color: #333333;
+   }
+  .pagination-state > .pagination-jump-lg:hover {
+  background-color: #eee; }
 
 .u-pagination > li > a:hover,
 .u-pagination > li > span:hover,
