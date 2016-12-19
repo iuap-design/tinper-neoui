@@ -228,10 +228,10 @@ pagination.prototype.render = function() {
 		}
 		if(options.showJump){
 			if( hasClass(this.$ul, 'pagination-sm')){
-					htmlTmp += '<div class="pagination-state">到<input class="page_j page_j_sm" value=' + options.currentPage + '>页<input class="pagination-jump-sm" type="button" value="确定"/></div>';
+					htmlTmp += '<div class="pagination-state">到<input class="page_j page_j_sm" value=' + options.currentPage + '>页<input class="pagination-jump pagination-jump-sm" type="button" value="确定"/></div>';
 						
 				}else if( hasClass(this.$ul, 'pagination-lg')){
-					htmlTmp += '<div class="pagination-state">到<input class="page_j page_j_lg" value=' + options.currentPage + '>页<input class="pagination-jump-lg" type="button" value="确定"/></div>';
+					htmlTmp += '<div class="pagination-state">到<input class="page_j page_j_lg" value=' + options.currentPage + '>页<input class="pagination-jump pagination-jump-lg" type="button" value="确定"/></div>';
 					
 				}else{
 					htmlTmp += '<div class="pagination-state">到<input class="page_j" value=' + options.currentPage + '>页<input class="pagination-jump" type="button" value="确定"/></div>';
