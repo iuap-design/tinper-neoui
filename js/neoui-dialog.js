@@ -53,7 +53,7 @@ var messageDialogF = function(options) {
 		// title: '提示',
 		// btnText: '确定',
 		title: trans('dialog.title', '提示'),
-		btnText: trans('dialog.btnText', '确定'),
+		btnText: trans('dialog.okText', '确定'),
 		closeFun: function (){}
 
 	}
