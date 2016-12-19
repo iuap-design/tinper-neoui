@@ -25,7 +25,7 @@ var Button = BaseComponent.extend({
 
 		// 增加disabled效果
 		var disableAttr = this.element.getAttribute('disabled');
-		if(disableAttr != null){
+		if(disableAttr != null && disableAttr != ''){
 			this.element.className += " disable";
 		}
 

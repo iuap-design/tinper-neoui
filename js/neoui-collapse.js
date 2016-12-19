@@ -8,7 +8,7 @@
 import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
 import {addClass,removeClass,makeDOM} from 'tinper-sparrow/js/dom';
 import {extend} from 'tinper-sparrow/js/extend';
-import {on} from 'tinper-sparrow/js/event';
+import {on, off} from 'tinper-sparrow/js/event';
 import {compMgr} from 'tinper-sparrow/js/compMgr';
 
         /* COLLAPSIBLE PLUGIN DEFINITION
@@ -83,28 +83,28 @@ var showCollapse = BaseComponent.extend({
     /* COLLAPSIBLE DATA-API
      * ==================== */
     init: function () {
-		        off('body [u-data-toggle=collapse]', 'click');
-                on('body [u-data-toggle=collapse]',  function (e) {
-	            var $this = $(this);
-               
-                var href;
-	            var target = (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') ||$this.attr('u-data-toggle') || e.preventDefault(); //strip for ie7
+        off(this.element, 'click');
+        on(this.element, 'click', function (e) {
+            var $this = $(this);
+           
+            var href;
+            var target = (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') ||$this.attr('u-data-toggle') || e.preventDefault(); //strip for ie7
 
-                var option = $(target).data('collapse') ? 'toggle' : $this.data();
-                var $this_down = $(target);
-                
-                var data = $this_down.data('collapse'),
-                    options = typeof option == 'object' && option;
+            var option = $(target).data('collapse') ? 'toggle' : $this.data();
+            var $this_down = $(target);
+            
+            var data = $this_down.data('collapse'),
+                options = typeof option == 'object' && option;
 
-                if (!data) {
-                    $this_down.data('collapse', data = new Collapse( target, options));
-                }
-                if (typeof option == 'string') {
-                    data[option]();
-                }
-	           });
-
+            if (!data) {
+                $this_down.data('collapse', data = new Collapse( target, options));
             }
+            if (typeof option == 'string') {
+                data[option]();
+            }
+        });
+
+    }
 
 })
 
