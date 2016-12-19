@@ -10,7 +10,7 @@ import {on,stopEvent,trigger} from 'tinper-sparrow/js/event';
 import {extend} from 'tinper-sparrow/js/extend';
 import {Button} from './neoui-button';
 import {compMgr} from 'tinper-sparrow/js/compMgr';
-
+import {trans} from 'tinper-sparrow/js/util/i18n';
 
 /**
  * messageDialog.js
@@ -50,8 +50,10 @@ var messageDialogF = function(options) {
 		height: '',
 		top: '',
 		hasFooter: true,
-		title: '提示',
-		btnText: '确定',
+		// title: '提示',
+		// btnText: '确定',
+		title: trans('dialog.title', '提示1'),
+		btnText: trans('dialog.btnText', '确定1'),
 		closeFun: function (){}
 
 	}
