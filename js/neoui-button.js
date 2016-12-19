@@ -13,19 +13,24 @@ import {compMgr} from 'tinper-sparrow/js/compMgr';
 
 var Button = BaseComponent.extend({
 	init: function() {
-		var rippleContainer = document.createElement('span');
-		addClass(rippleContainer, 'u-button-container');
-		this._rippleElement = document.createElement('span');
-		addClass(this._rippleElement, 'u-ripple');
-		if(env.isIE8)
-			addClass(this._rippleElement, 'oldIE');
-		rippleContainer.appendChild(this._rippleElement);
-		on(this._rippleElement, 'mouseup', this.element.blur);
-		this.element.appendChild(rippleContainer);
+		try{
+			var rippleContainer = document.createElement('span');
+			addClass(rippleContainer, 'u-button-container');
+			this._rippleElement = document.createElement('span');
+			addClass(this._rippleElement, 'u-ripple');
+			if(env.isIE8)
+				addClass(this._rippleElement, 'oldIE');
+			rippleContainer.appendChild(this._rippleElement);
+			on(this._rippleElement, 'mouseup', this.element.blur);
+			this.element.appendChild(rippleContainer);
+		}catch(e){
+			
+		}
+		
 
 		// 增加disabled效果
 		var disableAttr = this.element.getAttribute('disabled');
-		if(disableAttr != null){
+		if(disableAttr != null && disableAttr != ''){
 			this.element.className += " disable";
 		}
 

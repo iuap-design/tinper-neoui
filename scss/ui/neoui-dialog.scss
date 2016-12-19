@@ -126,6 +126,9 @@
      -moz-opacity:0.2;
      -khtml-opacity:0.2;
      opacity: .2;
+
+     filter:alpha(opacity=100) /9;
+     background: #fff;
      color: #000;
 
 
