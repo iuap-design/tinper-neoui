@@ -52,8 +52,8 @@ var messageDialogF = function(options) {
 		hasFooter: true,
 		// title: '提示',
 		// btnText: '确定',
-		title: trans('dialog.title', '提示1'),
-		btnText: trans('dialog.btnText', '确定1'),
+		title: trans('dialog.title', '提示'),
+		btnText: trans('dialog.btnText', '确定'),
 		closeFun: function (){}
 
 	}
@@ -183,8 +183,8 @@ var confirmDialogF = function(options) {
 		hasFooter: true,
 		onOk: function () {},
 		onCancel: function () {},
-		okText: '确定',
-		cancelText: '取消'
+		okText: trans('dialog.okText', '确定'),
+		cancelText: trans('dialog.cancelText', '取消')
 	}
 
 	options = extend(defaultOptions, options);
