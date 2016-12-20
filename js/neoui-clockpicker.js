@@ -270,12 +270,14 @@ const ClockPicker = BaseComponent.extend({
 
  	setValue: function(value) {
 		value = value? value: '';
-
+		var oldShowValue ;
 		if(value == ''){
-			this.input.value =  '';
-
-			this.trigger('valueChange', {value:''})
+			if( this.input.value != '') {
+				this.input.value = '';
+				this.trigger('valueChange', { value: '' });
+			}
 			return;
+
 		}
 
 
@@ -302,9 +304,11 @@ const ClockPicker = BaseComponent.extend({
 		_date.setMinutes(this.min);
 		_date.setSeconds(this.sec);
 		var showValue = date.format(_date,this.format);
-		this.input.value =  showValue;
-
-		this.trigger('valueChange', {value:value})
+		oldShowValue = this.input.value;
+		this.input.value = showValue;
+		if (oldShowValue != showValue) {
+			this.trigger('valueChange', { value: value });
+		}
 	},
 
 	focusEvent: function() {
