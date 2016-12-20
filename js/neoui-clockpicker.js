@@ -7,17 +7,18 @@
 import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
 import {addClass, removeClass, hasClass, showPanelByEle, makeDOM, makeModal, getZIndex} from 'tinper-sparrow/js/dom';
 import {on, off} from 'tinper-sparrow/js/event';
-import {compMgr} from 'tinper-sparrow/js/compMgr'; 
-import {isMobile, env} from 'tinper-sparrow/js/env'; 
-import {extend} from 'tinper-sparrow/js/extend'; 
-import {core} from 'tinper-sparrow/js/core'; 
-import {date} from 'tinper-sparrow/js/util/dateUtils'; 
+import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {isMobile, env} from 'tinper-sparrow/js/env';
+import {extend} from 'tinper-sparrow/js/extend';
+import {core} from 'tinper-sparrow/js/core';
+import {date} from 'tinper-sparrow/js/util/dateUtils';
+import {trans} from 'tinper-sparrow/js/util/i18n'
 
 const ClockPicker = BaseComponent.extend({
 	DEFAULTS : {
 	},
 	init: function(){
-		var self = this;			 
+		var self = this;
 		var element = this.element;
 		this.options = extend({}, this.DEFAULTS, this.options);
 		this.format = this.options['format'] || core.getMaskerMeta('time').format;
@@ -27,9 +28,11 @@ const ClockPicker = BaseComponent.extend({
 			this.input.setAttribute('readonly', 'readonly')
 		}
 		addClass(this.element,'u-text');
-		
+
 		this.template = '<div class="u-clock-ul popover clockpicker-popover" style="padding:0px;">';
-		this.template += '<div class="popover-title"><button class="u-button u-date-clean u-clock-clean" >清空</button><span class="clockpicker-span-hours">02</span> : <span class="clockpicker-span-minutes text-primary">01</span><span class="clockpicker-span-am-pm"></span></div>';
+		this.template += '<div class="popover-title"><button class="u-button u-date-clean u-clock-clean" >';
+		this.template += trans('public.clear', "清空");
+		this.template += '</button><span class="clockpicker-span-hours">02</span> : <span class="clockpicker-span-minutes text-primary">01</span><span class="clockpicker-span-am-pm"></span></div>';
 		this.template += '<div class="popover-content">';
 		this.template += '	<div class="clockpicker-plate">';
 		this.template += '		<div class="clockpicker-canvas">';
@@ -88,12 +91,12 @@ const ClockPicker = BaseComponent.extend({
         	self._inputFocus = false;
         	this.setValue(this.input.value);
         }.bind(this));
-		
+
 		var d = new Date();
 		this.defaultHour = d.getHours() > 9? '' + d.getHours():'0' + d.getHours();
-		this.defaultMin = d.getMinutes() > 9? '' + d.getMinutes():'0' + d.getMinutes();	
+		this.defaultMin = d.getMinutes() > 9? '' + d.getMinutes():'0' + d.getMinutes();
 		this.defaultSec = d.getSeconds() > 9? '' + d.getSeconds():'0' + d.getSeconds();
-		
+
 		this.hours = this.defaultHour;
 		this.min = this.defaultMin;
 		this.sec = this.defaultSec;
@@ -128,7 +131,7 @@ const ClockPicker = BaseComponent.extend({
 			return;
 		var oThis = this;
 		this.panelDiv = makeDOM(this.template);
-		
+
 		this.hand = this.panelDiv.querySelector('line');
 		this.bg = this.panelDiv.querySelector('.clockpicker-canvas-bg');
 		this.fg = this.panelDiv.querySelector('.clockpicker-canvas-fg');
@@ -153,7 +156,7 @@ const ClockPicker = BaseComponent.extend({
 				this.setHand();
 			}
 		}.bind(this));
-		
+
 		on(this.minDiv,'click',function(e){
 			var target = e.target;
 			if(hasClass(target,'clockpicker-tick')){
@@ -194,7 +197,7 @@ const ClockPicker = BaseComponent.extend({
 		var dialRadius = 100,
 		innerRadius = 54,
 		outerRadius = 80;
-		
+
 		var radian = Math.atan2(x, - y),
 			isHours = this.currentView === 'hours',
 			unit = Math.PI / (isHours ? 6 : 30),
@@ -203,7 +206,7 @@ const ClockPicker = BaseComponent.extend({
 			inner = isHours && z < (outerRadius + innerRadius) / 2,
 			radius = inner ? innerRadius : outerRadius,
 			value;
-			
+
 			if (this.twelvehour) {
 				radius = outerRadius;
 			}
@@ -248,7 +251,7 @@ const ClockPicker = BaseComponent.extend({
 				}
 			}
 		}
-		
+
 		// Set clock hand and others' position
 		var w = this.panelDiv.querySelector('.clockpicker-plate').offsetWidth;
 		var u = w / 200;
@@ -270,7 +273,7 @@ const ClockPicker = BaseComponent.extend({
 
 		if(value == ''){
 			this.input.value =  '';
-		
+
 			this.trigger('valueChange', {value:''})
 			return;
 		}
@@ -287,7 +290,7 @@ const ClockPicker = BaseComponent.extend({
 			var sec = vA[2] || 0;
 			sec = sec % 60;
 			this.sec = sec > 9 ?'' + sec : '0' + sec;
-			
+
 			value = this.hours + ':' + this.min + ':' + this.sec;
 		}else{
 			this.hours = this.defaultHour;
@@ -300,7 +303,7 @@ const ClockPicker = BaseComponent.extend({
 		_date.setSeconds(this.sec);
 		var showValue = date.format(_date,this.format);
 		this.input.value =  showValue;
-		
+
 		this.trigger('valueChange', {value:value})
 	},
 
@@ -320,7 +323,7 @@ const ClockPicker = BaseComponent.extend({
 
 	//下拉图标的点击事件
 	clickEvent: function() {
-		var self = this;		
+		var self = this;
 		var caret = this.element.nextSibling
 		on(caret,'click',function(e) {
 			self._inputFocus = true;
@@ -339,7 +342,7 @@ const ClockPicker = BaseComponent.extend({
 
 		var inputValue = this.input.value;
 		this.setValue(inputValue);
-		
+
 		var self = this;
 		this.createPanel();
 		this.minDiv.style.visibility = 'hidden';
@@ -347,7 +350,7 @@ const ClockPicker = BaseComponent.extend({
 		this.currentView = 'hours';
 		this.titleHourSpan.innerHTML = this.hours;
 		this.titleMinSpan.innerHTML = this.min;
-		
+
 		/*因为元素可能变化位置，所以显示的时候需要重新计算*/
 		if(isMobile){
 			this.panelDiv.style.position = 'fixed';
@@ -374,7 +377,7 @@ const ClockPicker = BaseComponent.extend({
                 panelWidth = this.panelDiv.offsetWidth,panelHeight = this.panelDiv.offsetHeight;
 
 	            this.element.appendChild(this.panelDiv);
-	            this.element.style.position = 'relative'; 
+	            this.element.style.position = 'relative';
            		this.left = this.input.offsetLeft;
             	var inputHeight = this.input.offsetHeight;
             	this.top = this.input.offsetTop + inputHeight;
@@ -386,7 +389,7 @@ const ClockPicker = BaseComponent.extend({
 	            if((this.top + panelHeight) > bodyHeight){
 	                this.top = bodyHeight - panelHeight;
 	            }
-            
+
 
 	            this.panelDiv.style.left = this.left + 'px';
 	            this.panelDiv.style.top = this.top + 'px';
@@ -395,9 +398,9 @@ const ClockPicker = BaseComponent.extend({
 
 		this.panelDiv.style.zIndex = getZIndex();
         addClass(this.panelDiv, 'is-visible');
-        
+
    		this.setHand();
-        
+
         var callback = function (e) {
             if (e !== evt && e.target !== this.input && !self.clickPanel(e.target) && self._inputFocus != true) {
             	off(document,'click', callback);
@@ -433,11 +436,11 @@ const ClockPicker = BaseComponent.extend({
         this.panelDiv.style.zIndex = -1;
         if(this.overlayDiv){
         	try{
-        		document.body.removeChild(this.overlayDiv);	
+        		document.body.removeChild(this.overlayDiv);
         	}catch(e){
-        		
+
         	}
-        	
+
         }
 	}
 });
