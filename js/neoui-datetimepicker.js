@@ -1490,12 +1490,13 @@ DateTimePicker.fn.resetDataObj = function(dataObj){
     }
 };
 
-
-compMgr.regComp({
-    comp: DateTimePicker,
-    compAsString: 'u.DateTimePicker',
-    css: 'u-datepicker'
-});
+if(!env.isMobile){
+   compMgr.regComp({
+        comp: DateTimePicker,
+        compAsString: 'u.DateTimePicker',
+        css: 'u-datepicker'
+    }); 
+}
 
 if(document.readyState && document.readyState === 'complete') {
     compMgr.updateComp();
