@@ -68,6 +68,7 @@ Multilang.fn.multinfo = function(sort) {
 		target_div.insertAdjacentHTML("beforeEnd", "<div class='multilang_menu '>" + tmplabel + "</div>")
 		var tmpIconv = target_div.querySelector(".lang_icon"),
 			target_menu = target_div.querySelector(".multilang_menu"),
+			target_labels = target_menu.querySelectorAll('label'),
 			tmpvaluebox = target_div.querySelector(".lang_value");
 		on(tmpIconv, "click", function() {
 			var target_icon = this;
@@ -101,20 +102,24 @@ Multilang.fn.multinfo = function(sort) {
 			}
 
 		})
-		on(target_menu, "click", "label", function() {
-			var target_label = this,
-				tmpfield = target_label.getAttribute("attr"),
-				tmptext = target_label.querySelector(".m_context").innerHTML,
-				tmpicon = target_label.querySelector(".m_icon").cloneNode(true);
 
-			tmpvaluebox.setAttribute("class", "ready_change lang_value " + tmpfield)
-			tmpvaluebox.value = tmptext
-			tmpvaluebox.focus();
-			var tmpicom = target_div.querySelector(".lang_icon"),
-				oldicon = target_div.querySelector(".m_icon")
-			removeClass(tmpicom, "uf-caretdown")
-			tmpicom.replaceChild(tmpicon, oldicon)
+		target_labels.forEach(function(ele){
+			on(ele, "click", function() {
+				var target_label = this,
+					tmpfield = target_label.getAttribute("attr"),
+					tmptext = target_label.querySelector(".m_context").innerHTML,
+					tmpicon = target_label.querySelector(".m_icon").cloneNode(true);
+
+				tmpvaluebox.setAttribute("class", "ready_change lang_value " + tmpfield)
+				tmpvaluebox.value = tmptext
+				tmpvaluebox.focus();
+				var tmpicom = target_div.querySelector(".lang_icon"),
+					oldicon = target_div.querySelector(".m_icon")
+				removeClass(tmpicom, "uf-caretdown")
+				tmpicom.replaceChild(tmpicon, oldicon)
+			})
 		})
+
 
 	} else {
 		console.error('Not object')
