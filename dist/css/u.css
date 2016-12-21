@@ -7574,7 +7574,7 @@ small {
   position: relative; }
 
 .u-date-panel > .u-time-nav > .u-button {
-  position: initial;
+  position: inherit;
   padding-bottom: 13px; }
 
 
