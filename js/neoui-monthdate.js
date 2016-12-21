@@ -10,21 +10,22 @@ import {on, off, stopEvent} from 'tinper-sparrow/js/event';
 import {addClass,hasClass, makeDOM, showPanelByEle, getZIndex, removeClass} from 'tinper-sparrow/js/dom';
 import {core} from 'tinper-sparrow/js/core';
 import {date as udate} from 'tinper-sparrow/js/util/dateUtils';
-import {extend} from 'tinper-sparrow/js/extend'; 
-import {isIE8} from 'tinper-sparrow/js/env'; 
+import {extend} from 'tinper-sparrow/js/extend';
+import {isIE8} from 'tinper-sparrow/js/env';
 import {compMgr} from 'tinper-sparrow/js/compMgr';
 import {URipple} from 'tinper-sparrow/js/util/ripple';
+import {trans} from 'tinper-sparrow/js/util/i18n';
 
 const MonthDate = BaseComponent.extend({
 	DEFAULTS : {
 	},
 	init: function(){
-		var self = this;			 
+		var self = this;
 		var element = this.element;
 		this.options = extend({}, this.DEFAULTS, this.options);
 		this.panelDiv = null;
 		this.input = this.element.querySelector("input");
-		
+
 		var d = new Date();
 		this.year = d.getFullYear();
 		this.month = d.getMonth() + 1;
@@ -34,7 +35,7 @@ const MonthDate = BaseComponent.extend({
             self._inputFocus = false;
         	self.setValue(self.input.value);
         });
-        
+
 		// 添加focus事件
 		this.focusEvent();
 		// 添加右侧图标click事件
@@ -51,15 +52,15 @@ const MonthDate = BaseComponent.extend({
     	this.panelContentDiv = makeDOM('<div class="u-date-content"></div>');
     	this.panelDiv.appendChild(this.panelContentDiv);
         this._fillMonth();
-    	
+
     },
 
     // 判断是否为闰年,如果闰年返回29天，否则为28天
     _isLeapYear: function () {
         if (((this.year % 4)==0) && ((this.year % 100)!=0) || ((this.year % 400)==0)) {
             return 29;
-        } else { 
-            return 28; 
+        } else {
+            return 28;
         }
     },
 
@@ -81,22 +82,25 @@ const MonthDate = BaseComponent.extend({
     _fillMonth: function(){
         var oldPanel,template,monthPage,_month,cells,i;
         _month = this.month;
+		var _defaultMonth = _month + '月';
+		var monthIndex = udate._jsonLocale.defaultMonth.indexOf(_defaultMonth);
         template = ['<div class="u-date-content-page">',
-            '<div class="u-date-content-title">'+_month+'月</div>',
-            '<div class="u-date-content-panel">',
-                '<div class="u-date-content-year-cell">1月</div>',
-                '<div class="u-date-content-year-cell">2月</div>',
-                '<div class="u-date-content-year-cell">3月</div>',
-                '<div class="u-date-content-year-cell">4月</div>',
-                '<div class="u-date-content-year-cell">5月</div>',
-                '<div class="u-date-content-year-cell">6月</div>',
-                '<div class="u-date-content-year-cell">7月</div>',
-                '<div class="u-date-content-year-cell">8月</div>',
-                '<div class="u-date-content-year-cell">9月</div>',
-                '<div class="u-date-content-year-cell">10月</div>',
-                '<div class="u-date-content-year-cell">11月</div>',
-                '<div class="u-date-content-year-cell">12月</div>',
-            '</div>',
+			'<div class="u-date-content-title">'+ udate._jsonLocale.monthsShort[monthIndex] + '</div>',
+
+			'<div class="u-date-content-panel">',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[0] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[1] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[2] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[3] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[4] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[5] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[6] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[7] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[8] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[9] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[10] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[11] +'</div>',
+			'</div>',
             '</div>'].join("");
 
         monthPage = makeDOM(template);
@@ -115,11 +119,11 @@ const MonthDate = BaseComponent.extend({
                 oThis.month = _m;
                 monthPage.querySelector('.u-date-content-title').innerHTML = _m + '月';
             }
-            
+
             oThis._fillDate();
             stopEvent(e);
         });
-        
+
 
     	this._zoomIn(monthPage);
         this.currentPanel = 'month';
@@ -132,18 +136,18 @@ const MonthDate = BaseComponent.extend({
      * @private
      */
    _fillDate : function(type){
-        
+
         var year,month,oldPanel,day,date,time,template,datePage,titleDiv,dateDiv,weekSpans,language,tempDate, i,cell,self = this;
         type = type || 'current';
         var oThis = this;
-        
+
         oldPanel = this.panelContentDiv.querySelector('.u-date-content-page');
         if(oldPanel)
         this.panelContentDiv.removeChild(oldPanel);
         language = core.getLanguages();
         template = ['<div class="u-date-content-page">',
             '<div class="u-date-content-title">',
-                this.date+'日',
+                this.date+trans('public.day','日'),
             '</div>',
             '<div class="u-date-week"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>',
             '<div class="u-date-content-panel"></div>',
@@ -152,7 +156,7 @@ const MonthDate = BaseComponent.extend({
         weekSpans = datePage.querySelectorAll('.u-date-week span');
 
         for(var i=0; i< 7; i++){
-            weekSpans[i].innerHTML = udate._dateLocale[language].weekdaysMin[i];
+            weekSpans[i].innerHTML = udate._jsonLocale.weekdaysMin[i];
         }
         dateDiv = datePage.querySelector('.u-date-content-panel');
         // tempDate = this.startDate;
@@ -192,12 +196,12 @@ const MonthDate = BaseComponent.extend({
             addClass(e.target, 'current');
             if(env.isIE8 || env.isIE9)
                 e.target.style.backgroundColor = '#3f51b5';
-            
+
             var currentdateDiv = oThis.panelContentDiv.querySelector('.u-date-content-title');
             currentdateDiv.innerHTML = _d+'日';
             oThis.setValue(e.target._month + '-' + _d);
             oThis.hide();
-            
+
         }.bind(this));
         this._zoomIn(datePage);
         this.currentPanel = 'date';
@@ -232,7 +236,7 @@ const MonthDate = BaseComponent.extend({
                     removeClass(newPage, 'zoom-in');
             }.bind(this));
         }
-        
+
     },
 
 
@@ -263,7 +267,7 @@ const MonthDate = BaseComponent.extend({
 
     //下拉图标的点击事件
     clickEvent: function() {
-    	var self = this;		
+    	var self = this;
     	var caret = this.element.nextSibling
     	on(caret,'click',function(e) {
     		self.input.focus();
@@ -295,12 +299,12 @@ const MonthDate = BaseComponent.extend({
                 position:"bottomLeft"
             });
         }else{
-      
+
             var bodyWidth = document.body.clientWidth,bodyHeight = document.body.clientHeight,
             panelWidth = this.panelDiv.offsetWidth,panelHeight = this.panelDiv.offsetHeight;
 
             this.element.appendChild(this.panelDiv);
-            this.element.style.position = 'relative'; 
+            this.element.style.position = 'relative';
             this.left = this.input.offsetLeft;
             var inputHeight = this.input.offsetHeight;
             this.top = this.input.offsetTop + inputHeight;
@@ -312,13 +316,13 @@ const MonthDate = BaseComponent.extend({
             if((this.top + panelHeight) > bodyHeight){
                 this.top = bodyHeight - panelHeight;
             }
-        
+
 
             this.panelDiv.style.left = this.left + 'px';
             this.panelDiv.style.top = this.top + 'px';
         }
 
-        
+
     	this.panelDiv.style.zIndex = getZIndex();
         addClass(this.panelDiv, 'is-visible');
         var oThis = this;

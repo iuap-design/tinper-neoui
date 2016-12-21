@@ -12,6 +12,8 @@ import {isIE8} from 'tinper-sparrow/js/env';
 import {compMgr} from 'tinper-sparrow/js/compMgr';
 import {URipple} from 'tinper-sparrow/js/util/ripple';
 import {requestAnimationFrame} from 'tinper-sparrow/js/ployfill';
+import {trans} from 'tinper-sparrow/js/util/i18n';
+import {date as udate} from 'tinper-sparrow/js/util/dateUtils';
 
 const YearMonth = BaseComponent.extend({
 	DEFAULTS : {
@@ -120,21 +122,24 @@ const YearMonth = BaseComponent.extend({
         if(oldPanel)
         	this.panelContentDiv.removeChild(oldPanel);
         _month = this.month;
+		var _defaultMonth = _month + '月';
+		var monthIndex = udate._jsonLocale.defaultMonth.indexOf(_defaultMonth);
         template = ['<div class="u-date-content-page">',
-            '<div class="u-date-content-title">'+_month+'月</div>',
+            '<div class="u-date-content-title">'+ udate._jsonLocale.monthsShort[monthIndex] + '</div>',
+
             '<div class="u-date-content-panel">',
-                '<div class="u-date-content-year-cell">1月</div>',
-                '<div class="u-date-content-year-cell">2月</div>',
-                '<div class="u-date-content-year-cell">3月</div>',
-                '<div class="u-date-content-year-cell">4月</div>',
-                '<div class="u-date-content-year-cell">5月</div>',
-                '<div class="u-date-content-year-cell">6月</div>',
-                '<div class="u-date-content-year-cell">7月</div>',
-                '<div class="u-date-content-year-cell">8月</div>',
-                '<div class="u-date-content-year-cell">9月</div>',
-                '<div class="u-date-content-year-cell">10月</div>',
-                '<div class="u-date-content-year-cell">11月</div>',
-                '<div class="u-date-content-year-cell">12月</div>',
+                '<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[0] +'</div>',
+                '<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[1] +'</div>',
+                '<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[2] +'</div>',
+                '<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[3] +'</div>',
+                '<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[4] +'</div>',
+                '<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[5] +'</div>',
+                '<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[6] +'</div>',
+                '<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[7] +'</div>',
+                '<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[8] +'</div>',
+                '<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[9] +'</div>',
+                '<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[10] +'</div>',
+                '<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[11] +'</div>',
             '</div>',
             '</div>'].join("");
 
@@ -198,7 +203,7 @@ const YearMonth = BaseComponent.extend({
     			}.bind(this));
     		}
         }
-			
+
     },
 
 

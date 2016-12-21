@@ -9,11 +9,11 @@ $snackbar-vertical-offset: 0.5 * $unit !default;
 
 .u-message {
   position: fixed;
-  right: $snackbar-horizontal-offset;
-  right: 38px \9;
-  bottom: 0;
-  left: $snackbar-horizontal-offset;
-  left: 38px \9;
+  //right: $snackbar-horizontal-offset;
+  //right: 38px \9;
+  //bottom: 0;
+  //left: $snackbar-horizontal-offset;
+  //left: 38px \9;
   z-index: $z-index-higher;
   display: flex;
   align-items: center;
@@ -25,9 +25,9 @@ $snackbar-vertical-offset: 0.5 * $unit !default;
   margin-top: 22px \9;
   color:$snackbar-color ;
   background-color: $snackbar-background-color;
-  border-radius: $snackbar-border-radius;
-  border-radius: 3px \9;
-  transition: all $animation-duration $animation-curve-default $animation-duration;
+  //border-radius: $snackbar-border-radius;
+ // border-radius: 3px \9;
+  //transition: all $animation-duration $animation-curve-default $animation-duration;
   /*overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;*/
@@ -35,6 +35,50 @@ $snackbar-vertical-offset: 0.5 * $unit !default;
   break-word: break-all;
   border: 1px solid transparent;
   z-index: 99999;
+  &.u-mes-bottom{
+    right:$snackbar-horizontal-offset;;
+    right: 38px \9;
+    left: $snackbar-horizontal-offset;;
+    left: 38px \9;
+    bottom:10px;
+  }
+  &.u-mes-top{
+    right: $snackbar-horizontal-offset;;
+    right: 38px \9;
+    left: $snackbar-horizontal-offset;;
+    left: 38px \9;
+    top:10px;
+  }
+  &.u-mes-center{
+    right: $snackbar-horizontal-offset;;
+    right: 38px \9;
+    left: $snackbar-horizontal-offset;;
+    left: 38px \9;
+    bottom:50%;
+    transform:translateY(50%);
+  }
+  &.u-mes-topleft{
+    top:10px;
+    left: $snackbar-horizontal-offset;;
+    left: 38px \9;
+  }
+  &.u-mes-topright{
+    top:10px;
+    right:2.4rem;
+    right: 38px \9;
+
+  }
+  &.u-mes-bottomleft{
+    bottom: 10px;
+    left: $snackbar-horizontal-offset;;
+    left: 38px \9;
+  }
+  &.u-mes-bottomright{
+    bottom:10px;
+    right: $snackbar-horizontal-offset;;
+    right: 38px \9;
+
+  }    
   &.u-meserror {
     background-color: #fff6f7;
     // border: #f8aea9 1px solid;
@@ -126,12 +170,12 @@ $snackbar-vertical-offset: 0.5 * $unit !default;
   &.cancel .button {
     color: $snackbar-color-cancel;
   }
-  &:not(.active) {
-    transform: translateY(100%);
-  }
-  &.active {
-    transform: translateY(0%);
-  }
+ // &:not(.active) {
+ //   transform: translateY(100%);
+ // }
+ // &.active {
+ //   transform: translateY(0%);
+ // }
   & .icon {
 	  margin-right: $snackbar-vertical-offset;
 	}

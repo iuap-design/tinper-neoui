@@ -10,8 +10,8 @@ import {on,stopEvent,trigger} from 'tinper-sparrow/js/event';
 import {extend} from 'tinper-sparrow/js/extend';
 import {Button} from './neoui-button';
 import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {trans} from 'tinper-sparrow/js/util/i18n';
 
-window.dialogAry = [];
 /**
  * messageDialog.js
  */
@@ -50,8 +50,10 @@ var messageDialogF = function(options) {
 		height: '',
 		top: '',
 		hasFooter: true,
-		title: '提示',
-		btnText: '确定',
+		// title: '提示',
+		// btnText: '确定',
+		title: trans('dialog.title', '提示'),
+		btnText: trans('dialog.okText', '确定'),
 		closeFun: function (){}
 
 	}
@@ -156,7 +158,7 @@ var messageDialog = function (options) {
 var confirmDialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' +
 '<div class="u-msg-dialog" style="{width}{height}{top}">' + '<div class="u-msg-dialog-content">' +
 '<div class="u-msg-title">' +
-'<h4>{title}</h4>' +
+/*'<h4>{title}</h4>' +*/
 '</div>' +
 '<div class="u-msg-content">' +
 '</div>' +
@@ -181,8 +183,8 @@ var confirmDialogF = function(options) {
 		hasFooter: true,
 		onOk: function () {},
 		onCancel: function () {},
-		okText: '确定',
-		cancelText: '取消'
+		okText: trans('dialog.okText', '确定'),
+		cancelText: trans('dialog.cancelText', '取消')
 	}
 
 	options = extend(defaultOptions, options);
@@ -193,7 +195,8 @@ var confirmDialogF = function(options) {
 	this.width = options['width'];
 	this.height = options['height'];
 	this.height = options['top'];
-	this.title = options['title'];
+	/*this.title = options['title'];*/
+	this.titleIcon = options['titleIcon'];
 	this.lazyShow = options['lazyShow'];
 	this.onOk = options['onOk'];
 	this.onCancel = options['onCancel'];
@@ -228,7 +231,7 @@ confirmDialogF.prototype.create = function () {
 					'</div>';
 				}
 		var templateStr = this.template.replace('{id}', this.id).replace('{id}', this.id);
-		templateStr = templateStr.replace('{title}',this.title);
+		//templateStr = templateStr.replace('{title}',this.title);
 		templateStr = templateStr.replace('{width}', this.width ? 'width:' + this.width + ';' : '');
 		templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
 		templateStr = templateStr.replace('{top}', this.top ? 'top:' + this.top + ';' : '');
@@ -248,9 +251,11 @@ confirmDialogF.prototype.create = function () {
 		}else{
 			this.contentDom = makeDOM('<p>' + this.content + '</p>');
 		}
+	    /*头部只用图标 <a><i class="uf uf-"></i></a>*/
+	    this.titleIconDom = makeDOM('<a><i class="' + this.titleIcon + '"></i></a>');
 		this.templateDom = makeDOM(templateStr);
 
-
+        this.templateDom.querySelector('.u-msg-title').appendChild(this.titleIconDom);
 		this.templateDom.querySelector('.u-msg-content').appendChild(this.contentDom);
 		this.overlayDiv = makeModal(this.templateDom);
 
@@ -290,7 +295,6 @@ confirmDialogF.prototype.close = function () {
 	document.body.removeChild(this.templateDom);
 	document.body.removeChild(this.overlayDiv);
 	this.isClosed = true;
-	enable_mouseWheel();
 };
 
 var confirmDialog = function (options) {
@@ -439,28 +443,8 @@ dialogMode.prototype.create = function() {
 		this.overlayDiv.style.display = 'none';
 	}
 	document.body.appendChild(this.templateDom);
-	adapterDialog(this, 'show');
 	disable_mouseWheel();
 	this.isClosed = false;
-};
-
-var adapterDialog = function (dialogObj, type) {
-	var dialogArray = window.dialogAry;
-	if(dialogArray){
-		var len = dialogArray.length;
-		var index = dialogArray.indexOf(dialogObj);
-		if(type == "show"){
-			if(index <= -1){
-				dialogArray.push(dialogObj);
-				dialogArray.length !== 1 && dialogArray[dialogArray.length-2].hide && dialogArray[dialogArray.length-2].hide();
-			}
-		}else if (type == 'hide'){
-			if(index == len-1){
-				dialogArray.pop();
-				dialogArray.length !== 0 && dialogArray[dialogArray.length-1].show && dialogArray[dialogArray.length-1].show();
-			}
-		}
-	}
 };
 
 dialogMode.prototype.show = function() {
@@ -469,16 +453,12 @@ dialogMode.prototype.show = function() {
 	}
 	this.templateDom.style.display = 'block';
 	this.overlayDiv.style.display = 'block';
-	adapterDialog(this, 'show');
 	disable_mouseWheel();
 }
-
-
 
 dialogMode.prototype.hide = function() {
 	this.templateDom.style.display = 'none';
 	this.overlayDiv.style.display = 'none';
-	adapterDialog(this, 'hide');
 	enable_mouseWheel();
 }
 
@@ -494,9 +474,8 @@ dialogMode.prototype.close = function() {
 	}catch(e){
 
 	}
-
+	
 	this.isClosed = true;
-		adapterDialog(this, 'hide');
 		enable_mouseWheel();
 }
 

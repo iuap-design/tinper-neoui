@@ -30,6 +30,7 @@ import {Autocomplete} from './neoui-autocomplete';
 import {Button} from './neoui-button';
 import {Checkbox} from './neoui-checkbox';
 import {Combo} from './neoui-combo';
+import {showCollapse} from './neoui-collapse';
 import {Combobox} from './neoui-combobox';
 import {Table} from './neoui-data-table';
 import {messageDialog,confirmDialog,dialogMode,dialog,dialogWizard,iframeDialog} from './neoui-dialog';
@@ -52,6 +53,7 @@ import {Text} from './neoui-textfield';
 import {Tooltip} from './neoui-tooltip';
 import {Validate,validate,doValidate} from './neoui-validate';
 import {DateTimePicker} from './neoui-datetimepicker';
+import {MobDateTimePicker} from './neoui-mobdatetimepicker';
 import {Time} from './neoui-time';
 import {ClockPicker} from './neoui-clockpicker';
 import {Month} from './neoui-month';
@@ -65,6 +67,7 @@ var ex = {
 	Button : Button,
 	Checkbox : Checkbox,
 	Combo : Combo,
+	showCollapse : showCollapse,
 	Combobox : Combobox,
 	Table : Table,
 	messageDialog : messageDialog,
@@ -101,6 +104,7 @@ var ex = {
 	validate : validate,
 	doValidate :doValidate,
 	DateTimePicker: DateTimePicker,
+	MobDateTimePicker:MobDateTimePicker,
 	Time: Time,
 	ClockPicker : ClockPicker,
 	Month : Month,

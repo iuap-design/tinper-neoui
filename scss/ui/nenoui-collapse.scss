@@ -1,0 +1,16 @@
+
+.collapse.in {
+     height: auto; 
+}
+
+.collapse {
+    -webkit-transition: height 0.35s ease;
+    -moz-transition: height 0.35s ease;
+    -ms-transition: height 0.35s ease;
+    -o-transition: height 0.35s ease;
+    transition: height 0.35s ease;
+    position: relative;
+    overflow: hidden;
+    height: 0;
+
+}

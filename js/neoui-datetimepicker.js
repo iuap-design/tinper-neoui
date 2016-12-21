@@ -9,6 +9,7 @@ import {Validate} from './neoui-validate';
 import {compMgr} from 'tinper-sparrow/js/compMgr';
 import {URipple} from 'tinper-sparrow/js/util/ripple';
 import {dateFormat} from 'tinper-sparrow/js/util'
+import {trans} from 'tinper-sparrow/js/util/i18n'
 
 var DateTimePicker = BaseComponent.extend({
 });
@@ -262,7 +263,7 @@ DateTimePicker.fn._fillYear = function(type){
                 addClass(cell, 'u-disabled');
             }
         }
-        
+
         cell._value = this.startYear + i;
         yearDiv.appendChild(cell);
     }
@@ -370,7 +371,7 @@ DateTimePicker.fn._fillMonth = function(){
                 addClass(cells[i],'u-disabled');
             }
         }
-        
+
         cells[i]._value = i;
         new URipple(cells[i]);
     }
@@ -415,6 +416,7 @@ DateTimePicker.fn._fillDate = function(type){
     //     return
     // }
     var year,month,day,date,time,template,datePage,titleDiv,dateDiv,weekSpans,language,tempDate, i,cell,self = this;
+    self.timeOpen = false;
     type = type || 'current';
     if ('current' === type) {
         tempDate = this.pickerDate;
@@ -476,7 +478,7 @@ DateTimePicker.fn._fillDate = function(type){
     weekSpans = datePage.querySelectorAll('.u-date-week span');
 
     for(var i=0; i< 7; i++){
-        weekSpans[i].innerHTML = udate._dateLocale[language].weekdaysMin[i];
+        weekSpans[i].innerHTML = udate._jsonLocale.weekdaysMin[i];
     }
     dateDiv = datePage.querySelector('.u-date-content-panel');
     tempDate = this.startDate;
@@ -503,14 +505,14 @@ DateTimePicker.fn._fillDate = function(type){
 
         }
         if(this.overYear){
-            if(tempDateYear > this.overYear || (tempDateYear == this.overYear && tempDateMonth > this.overMonth) 
+            if(tempDateYear > this.overYear || (tempDateYear == this.overYear && tempDateMonth > this.overMonth)
                 || (tempDateYear == this.overYear && tempDateMonth == this.overMonth
                 && tempDateDate > this.overDate)){
                 addClass(cell,'u-disabled');
                 removeClass(cell,'current');
             }
         }
-        
+
         cell._value = tempDateDate;
         cell._month = tempDateMonth;
         cell._year = tempDateYear;
@@ -525,13 +527,10 @@ DateTimePicker.fn._fillDate = function(type){
         this.pickerDate.setFullYear(e.target._year);
         this.pickerDate.setMonth(e.target._month);
         this.pickerDate.setDate(_d);
-        if(this.pickerDate && this.options.format == 'YYYY-MM-DD'){
-            this.pickerDate.setHours(0);
-            this.pickerDate.setMinutes(0);
-            this.pickerDate.setSeconds(0);
-            this.pickerDate.setMilliseconds(0);
+        if(this.pickerDate){
+            this.resetDataObj(this.pickerDate);
         }
-        
+
         var _cell = e.target.parentNode.querySelector('.u-date-cell.current');
         if (_cell) {
             removeClass(_cell, 'current');
@@ -566,9 +565,8 @@ DateTimePicker.fn._fillTime = function(type){
     //     this._timeMobileScroll()
     //     return;
     // }
-    //去除判断防止再次点击时间时，面板弹不出来
-    // if(this.timeOpen)return;
-    // this.timeOpen = true;
+    if(this.timeOpen)return;
+    this.timeOpen = true;
     var year,month,day,date,time,template,timePage,titleDiv,dateDiv,weekSpans,language,tempDate, i,cell,timetemplate;
     var self = this;
     type = type || 'current';
@@ -639,7 +637,7 @@ DateTimePicker.fn._fillTime = function(type){
             var value = this.value,
             length = value.length,
             valueArray = [];
-            if(length == 8){
+            if (length == 8 && (value[0]<=2 && value[0]>=0) && (value[1]<=3 && value[1]>=0) && (value[3]<=5 && value[3]>=0) && (value[6]<=5 && value[6]>=0)) {
                 valueArray = value.split(':');
                 obj.pickerDate.setHours(valueArray[0]);
                 obj.pickerDate.setMinutes(valueArray[1]);
@@ -1123,24 +1121,18 @@ DateTimePicker.fn._response = function() {
 
 var dateTimePickerTemplateArr = ['<div class="u-date-panel">',
                             '<div class="u-date-body">',
-                                /*'<div class="u-date-header">',
-                                    '<span class="u-date-header-year"></span>',
-                                     '<div class="u-date-header-h3">',
-                                        '<span class="u-date-header-week"></span>',
-                                        '<span>,</span>',
-                                        '<span class="u-date-header-month"></span>',
-                                        '<span> </span>',
-                                        '<span class="u-date-header-date"></span>',
-                                        '<span> </span>',
-                                        '<span class="u-date-header-time"></span>',
-                                     '</div>',
-                                '</div>',*/
                                 '<div class="u-date-content"></div>',
                             '</div>',
                             '<div class="u-date-nav">',
-                                '<button type="button" class="u-button u-date-ok right primary">确定</button>',
-                                '<button type="button" class="u-button u-date-cancel right">取消</button>',
-                                '<button type="button" class="u-button u-date-clean">清空</button>',
+                                '<button type="button" class="u-button u-date-ok right primary">',
+                                trans('public.confirm','确定'),
+                                '</button>',
+                                '<button type="button" class="u-button u-date-cancel right">',
+                                trans('public.cancel','取消'),
+                                '</button>',
+                                '<button type="button" class="u-button u-date-clean">',
+                                trans('public.clear','清空'),
+                                '</button>',
                             '</div>',
                            '</div>'];
 
@@ -1342,11 +1334,11 @@ DateTimePicker.fn.onOk = function(){
     }
     var flag = true;
     if (this.beginDateObj) {
-        if (this.pickerDate && this.pickerDate.getTime() < this.beginDateObj.getTime()) 
+        if (this.pickerDate && this.pickerDate.getTime() < this.beginDateObj.getTime())
             flag = false;
     }
     if (this.overDateObj) {
-        if (this.pickerDate && this.pickerDate.getTime() > this.overDateObj.getTime()) 
+        if (this.pickerDate && this.pickerDate.getTime() > this.overDateObj.getTime())
             flag = false;
     }
     if(flag){
@@ -1364,7 +1356,7 @@ DateTimePicker.fn.onOk = function(){
         this.trigger('select', {value:this.pickerDate});
         this.trigger('validate');
     }
-    
+
 }
 
 DateTimePicker.fn.hide = function(){
@@ -1398,28 +1390,19 @@ DateTimePicker.fn.setDate = function(value){
 
     var _date = udate.getDateObj(value);
     if(_date){
-        if(_date && this.options.format == 'YYYY-MM-DD'){
-            _date.setHours(0);
-            _date.setMinutes(0);
-            _date.setSeconds(0);
-            _date.setMilliseconds(0);
+        if(_date){
+            this.resetDataObj(_date);
         }
         if(this.beginDateObj){
-            if(this.beginDateObj && this.options.format == 'YYYY-MM-DD'){
-                this.beginDateObj.setHours(0);
-                this.beginDateObj.setMinutes(0);
-                this.beginDateObj.setSeconds(0);
-                this.beginDateObj.setMilliseconds(0);
+            if(this.beginDateObj){
+                this.resetDataObj(this.beginDateObj);
             }
             if(_date.getTime() < this.beginDateObj.getTime())
                 return;
         }
         if(this.overDateObj){
-            if(this.overDateObj && this.options.format == 'YYYY-MM-DD'){
-                this.overDateObj.setHours(0);
-                this.overDateObj.setMinutes(0);
-                this.overDateObj.setSeconds(0);
-                this.overDateObj.setMilliseconds(0);
+            if(this.overDateObj){
+                this.resetDataObj(this.overDateObj);
             }
             if(_date.getTime() > this.overDateObj.getTime())
                 return;
@@ -1441,11 +1424,8 @@ DateTimePicker.fn.setFormat = function(format){
 DateTimePicker.fn.setStartDate = function(startDate, type){
     if(startDate){
         this.beginDateObj = udate.getDateObj(startDate);
-        if(this.beginDateObj && this.options.format == 'YYYY-MM-DD'){
-            this.beginDateObj.setHours(0);
-            this.beginDateObj.setMinutes(0);
-            this.beginDateObj.setSeconds(0);
-            this.beginDateObj.setMilliseconds(0);
+        if(this.beginDateObj){
+            this.resetDataObj(this.beginDateObj)
         }
         /*if(type){
             switch (type) {
@@ -1475,11 +1455,8 @@ DateTimePicker.fn.setStartDate = function(startDate, type){
 DateTimePicker.fn.setEndDate = function(endDate){
     if(endDate){
         this.overDateObj = udate.getDateObj(endDate);
-        if(this.overDateObj && this.options.format == 'YYYY-MM-DD'){
-            this.overDateObj.setHours(0);
-            this.overDateObj.setMinutes(0);
-            this.overDateObj.setSeconds(0);
-            this.overDateObj.setMilliseconds(0);
+        if(this.overDateObj){
+            this.resetDataObj(this.overDateObj)
         }
         this.overYear = this.overDateObj.getFullYear();
         this.overMonth = this.overDateObj.getMonth();
@@ -1500,12 +1477,26 @@ DateTimePicker.fn.setEnable = function(enable){
     }
 };
 
+DateTimePicker.fn.resetDataObj = function(dataObj){
+    if(this.format.indexOf('h') < 0 && this.format.indexOf('H') < 0){
+        dataObj.setHours(0);
+    }
+    if(this.format.indexOf('m') < 0){
+        dataObj.setMinutes(0);
+    }
+    if(this.format.indexOf('s') < 0){
+        dataObj.setSeconds(0);
+        dataObj.setMilliseconds(0);
+    }
+};
 
-compMgr.regComp({
-    comp: DateTimePicker,
-    compAsString: 'u.DateTimePicker',
-    css: 'u-datepicker'
-});
+if(!env.isMobile){
+   compMgr.regComp({
+        comp: DateTimePicker,
+        compAsString: 'u.DateTimePicker',
+        css: 'u-datepicker'
+    }); 
+}
 
 if(document.readyState && document.readyState === 'complete') {
     compMgr.updateComp();

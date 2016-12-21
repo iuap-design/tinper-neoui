@@ -37,6 +37,8 @@ var Validate = BaseComponent.extend({
         this.validMode = this.options['validMode'] ? this.options['validMode'] : Validate.DEFAULTS.validMode
             //空提示
         this.nullMsg = this.options['nullMsg'] ? this.options['nullMsg'] : Validate.NULLMSG[this.validType]
+        // input输入提示
+        this.inputMsg = Validate.INPUTMSG;
             //是否必填
         if (this.required && !this.nullMsg)
             this.nullMsg = Validate.NULLMSG['required']
@@ -132,6 +134,17 @@ Validate.ERRORMSG = {
     "url": trans('validate.error_url', "网址格式不对！"),
     "datetime": trans('validate.error_datetime', "日期格式不对！"),
     "phoneNumber": trans('validate.error_phoneNumber', "号码格式不对！")
+}
+
+Validate.INPUTMSG = {
+    "minLength": trans('validate.input_minlength',"输入长度不能小于"),
+    "maxLength": trans('validate.input_maxlength',"输入长度不能大于"),
+    "unit": trans('validate.input_unit',"位"),
+    "maxValue": trans('validate.input_maxvalue',"输入值不能大于"),
+    "minValue": trans('validate.input_minvalue',"输入值不能小于"),
+    "equalMax": trans('validate.input_equalMax',"输入值不能大于或等于"),
+    "equalMin": trans('validate.input_equalMin',"输入值不能小于或等于")
+
 }
 
 Validate.REG = {
@@ -274,7 +287,7 @@ Validate.fn.doValid = function(options) {
     }
     if (this.minLength) {
         if (value.lengthb() < this.minLength) {
-            var Msg = "输入长度不能小于" + this.minLength + "位";
+            var Msg = this.inputMsg.minLength + this.minLength + this.inputMsg.unit;
             this.showMsg(Msg)
             return {
                 passed: false,
@@ -284,7 +297,7 @@ Validate.fn.doValid = function(options) {
     }
     if (this.maxLength) {
         if (value.lengthb() > this.maxLength) {
-            var Msg = "输入长度不能大于" + this.maxLength + "位";
+            var Msg = this.inputMsg.maxLength + this.maxLength + this.inputMsg.unit;
             this.showMsg(Msg)
             return {
                 passed: false,
@@ -294,7 +307,7 @@ Validate.fn.doValid = function(options) {
     }
     if (this.max != undefined && this.max != null) {
         if (parseFloat(value) > this.max) {
-            var Msg = "输入值不能大于" + this.max;
+            var Msg = this.inputMsg.maxValue + this.max;
             this.showMsg(Msg)
             return {
                 passed: false,
@@ -304,7 +317,7 @@ Validate.fn.doValid = function(options) {
     }
     if (this.min != undefined && this.min != null) {
         if (parseFloat(value) < this.min) {
-            var Msg = "输入值不能小于" + this.min;
+            var Msg = this.inputMsg.minValue + this.min;
             this.showMsg(Msg)
             return {
                 passed: false,
@@ -314,7 +327,7 @@ Validate.fn.doValid = function(options) {
     }
     if (this.maxNotEq != undefined && this.maxNotEq != null) {
         if (parseFloat(value) >= this.maxNotEq) {
-            var Msg = "输入值不能大于或等于" + this.maxNotEq;
+            var Msg = this.inputMsg.equalMax + this.maxNotEq;
             this.showMsg(Msg)
             return {
                 passed: false,
@@ -324,7 +337,7 @@ Validate.fn.doValid = function(options) {
     }
     if (this.minNotEq != undefined && this.minNotEq != null) {
         if (parseFloat(value) <= this.minNotEq) {
-            var Msg = "输入值不能小于或等于" + this.minNotEq;
+            var Msg = this.inputMsg.equalMin + this.minNotEq;
             this.showMsg(Msg)
             return {
                 passed: false,

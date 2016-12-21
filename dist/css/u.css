@@ -1,5 +1,5 @@
 /** 
- * tinper-neoui v3.1.16
+ * tinper-neoui v3.1.17
  * UI Framework Used For Enterprise.
  * author : yonyou FED
  * homepage : https://github.com/iuap-design/tinper-neoui#readme
@@ -1422,6 +1422,8 @@ input.u-button[type="submit"] {
     -moz-opacity: 0.2;
     -khtml-opacity: 0.2;
     opacity: .2;
+    filter: alpha(opacity=100)/9;
+    background: #fff;
     color: #000; }
   .u-msg-dialog .u-msg-close:hover {
     opacity: .5; }
@@ -4387,11 +4389,6 @@ small {
 
 .u-message {
   position: fixed;
-  right: 2.4rem;
-  right: 38px \9;
-  bottom: 0;
-  left: 2.4rem;
-  left: 38px \9;
   z-index: 200;
   display: -webkit-flex;
   display: flex;
@@ -4403,14 +4400,47 @@ small {
   margin-top: 22px \9;
   color: rgb(255,255,255);
   background-color: rgb(63,81,181);
-  border-radius: 0.2rem;
-  border-radius: 3px \9;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) 0.35s;
   
   word-wrap: break-word;
   break-word: break-all;
   border: 1px solid transparent;
   z-index: 99999; }
+  .u-message.u-mes-bottom {
+    right: 2.4rem;
+    right: 38px \9;
+    left: 2.4rem;
+    left: 38px \9;
+    bottom: 10px; }
+  .u-message.u-mes-top {
+    right: 2.4rem;
+    right: 38px \9;
+    left: 2.4rem;
+    left: 38px \9;
+    top: 10px; }
+  .u-message.u-mes-center {
+    right: 2.4rem;
+    right: 38px \9;
+    left: 2.4rem;
+    left: 38px \9;
+    bottom: 50%;
+    -webkit-transform: translateY(50%);
+            transform: translateY(50%); }
+  .u-message.u-mes-topleft {
+    top: 10px;
+    left: 2.4rem;
+    left: 38px \9; }
+  .u-message.u-mes-topright {
+    top: 10px;
+    right: 2.4rem;
+    right: 38px \9; }
+  .u-message.u-mes-bottomleft {
+    bottom: 10px;
+    left: 2.4rem;
+    left: 38px \9; }
+  .u-message.u-mes-bottomright {
+    bottom: 10px;
+    right: 2.4rem;
+    right: 38px \9; }
   .u-message.u-meserror {
     background-color: #fff6f7;
     color: #f15a4a;
@@ -4469,12 +4499,6 @@ small {
     color: rgb(230,238,156); }
   .u-message.cancel .button {
     color: rgb(244,67,54); }
-  .u-message:not(.active) {
-    -webkit-transform: translateY(100%);
-            transform: translateY(100%); }
-  .u-message.active {
-    -webkit-transform: translateY(0%);
-            transform: translateY(0%); }
   .u-message .icon {
     margin-right: 0.5rem; }
   .u-message .label {
@@ -4633,6 +4657,23 @@ small {
   color: #666666;
   margin-left: 10px; }
 
+.pagination-state > .page_z_sm {
+  width: 50px;
+  height: 26px !important; }
+
+.pagination-state > .page_j_sm {
+  width: 40px;
+  height: 26px !important;
+  line-height: 26px !important; }
+
+.pagination-state > .page_z_lg {
+  width: 50px;
+  height: 37px !important; }
+
+.pagination-state > .page_j_lg {
+  width: 40px;
+  height: 37px !important; }
+
 .pagination-state > .page_j {
   margin: 0 4px;
   width: 40px;
@@ -4664,6 +4705,34 @@ small {
   height: 35px; }
 
 .pagination-state > .pagination-jump:hover {
+  background-color: #eee; }
+
+.pagination-state > .pagination-jump-sm {
+  width: 50px;
+  height: 26px;
+  line-height: 21px;
+  border: 1px solid #ddd;
+  background-color: white;
+  font-size: 14px;
+  font-family: '微软雅黑';
+  cursor: pointer;
+  color: #333333; }
+
+.pagination-state > .pagination-jump-sm:hover {
+  background-color: #eee; }
+
+.pagination-state > .pagination-jump-lg {
+  width: 50px;
+  height: 37px;
+  line-height: 29px;
+  border: 1px solid #ddd;
+  background-color: white;
+  font-size: 14px;
+  font-family: '微软雅黑';
+  cursor: pointer;
+  color: #333333; }
+
+.pagination-state > .pagination-jump-lg:hover {
   background-color: #eee; }
 
 .u-pagination > li > a:hover,

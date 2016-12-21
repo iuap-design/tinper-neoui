@@ -10,6 +10,7 @@ import {addClass,wrap,css,hasClass,removeClass,closest} from 'tinper-sparrow/js/
 import {each} from 'tinper-sparrow/js/util';
 import {on} from 'tinper-sparrow/js/event';
 import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {trans} from 'tinper-sparrow/js/util/i18n'
 
 var pagination = BaseComponent.extend({
 
@@ -100,7 +101,12 @@ pagination.prototype.DEFAULTS = {
 	last: '&raquo;',
 	gap: '···',
 	//totalText: '合计:',
-	totalText: '共',
+	totalText: trans('pagination.totalText','共'),
+	listText:trans('pagination.listText','条'),
+	showText:trans('pagination.showText','显示'),
+	pageText:trans('pagination.pageText','页'),
+	toText:trans('pagination.toText','到'),
+	okText: trans('public.ok','确定'),
 	truncate: false,
 	showState: true,
 	showTotal: true,//初始默认显示总条数 “共xxx条”
@@ -214,15 +220,31 @@ pagination.prototype.render = function() {
 		var htmlTmp = '';
 		//分别得到分页条后“共xxx条”、“显示xx条”、“到xx页 确定”三个html片段
 		if(options.showTotal){
-			htmlTmp += '<div class="pagination-state">' + options.totalText + '&nbsp;' + options.totalCount + '&nbsp;条</div>';
+			htmlTmp += '<div class="pagination-state">' + options.totalText + '&nbsp;' + options.totalCount + '&nbsp;'+options.listText +'</div>';
 		}
 		if(options.showColumn){
-			htmlTmp += '<div class="pagination-state">显示<select  class="page_z">' + pageOption + '</select>条</div>';
+
+			if( hasClass(this.$ul, 'pagination-sm') ){
+					htmlTmp += '<div class="pagination-state">' + options.showText + '<select  class="page_z page_z_sm">' + pageOption + '</select>'+options.listText +'</div>';
+				}else if( hasClass(this.$ul, 'pagination-lg')){
+					htmlTmp += '<div class="pagination-state">' + options.showText + '<select  class="page_z page_z_lg">' + pageOption + '</select>'+options.listText +'</div>';
+
+				}else{
+					htmlTmp += '<div class="pagination-state">' + options.showText + '<select  class="page_z">' + pageOption + '</select>'+options.listText +'</div>';
+				}
 		}
 		if(options.showJump){
-			htmlTmp += '<div class="pagination-state">到<input class="page_j" value=' + options.currentPage + '>页<input class="pagination-jump" type="button" value="确定"/></div>';
-		}
+			if( hasClass(this.$ul, 'pagination-sm')){
+					htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j page_j_sm" value=' + options.currentPage + '>' + options.pageText + '<input class="pagination-jump pagination-jump-sm" type="button" value="'+ options.okText +'"/></div>';
 
+				}else if( hasClass(this.$ul, 'pagination-lg')){
+					htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j page_j_lg" value=' + options.currentPage + '>' + options.pageText + '<input class="pagination-jump pagination-jump-lg" type="button" value="'+ options.okText +'"/></div>';
+
+				}else{
+					htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j" value=' + options.currentPage + '>' + options.pageText + '<input class="pagination-jump" type="button" value="'+ options.okText +'"/></div>';
+
+				}
+		}
 		htmlArr.push(htmlTmp);
 	}
 

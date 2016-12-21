@@ -4253,7 +4253,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.u = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -4266,87 +4268,77 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _neouiCombo = __webpack_require__(15);
 
-	var _neouiCombobox = __webpack_require__(17);
+	var _neouiCollapse = __webpack_require__(17);
 
-	var _neouiDataTable = __webpack_require__(18);
+	var _neouiCombobox = __webpack_require__(18);
 
-	var _neouiDialog = __webpack_require__(19);
+	var _neouiDataTable = __webpack_require__(19);
 
-	var _neouiLayout = __webpack_require__(20);
+	var _neouiDialog = __webpack_require__(20);
 
-	var _neouiLayout2 = __webpack_require__(21);
+	var _neouiLayout = __webpack_require__(23);
 
-	var _neouiLoader = __webpack_require__(22);
+	var _neouiLayout2 = __webpack_require__(24);
 
-	var _neouiLoading = __webpack_require__(23);
+	var _neouiLoader = __webpack_require__(25);
 
-	var _neouiMenu = __webpack_require__(24);
+	var _neouiLoading = __webpack_require__(26);
 
-	var _neouiMessage = __webpack_require__(25);
+	var _neouiMenu = __webpack_require__(27);
 
-	var _neouiMultilang = __webpack_require__(26);
+	var _neouiMessage = __webpack_require__(28);
 
-	var _neouiNavmenu = __webpack_require__(27);
+	var _neouiMultilang = __webpack_require__(29);
 
-	var _neouiPagination = __webpack_require__(28);
+	var _neouiNavmenu = __webpack_require__(30);
 
-	var _neouiProgress = __webpack_require__(29);
+	var _neouiPagination = __webpack_require__(31);
 
-	var _neouiRadio = __webpack_require__(30);
+	var _neouiProgress = __webpack_require__(32);
 
-	var _neouiRefer = __webpack_require__(31);
+	var _neouiRadio = __webpack_require__(33);
 
-	var _neouiSlidePanel = __webpack_require__(43);
+	var _neouiRefer = __webpack_require__(34);
 
-	var _neouiSwitch = __webpack_require__(44);
+	var _neouiSlidePanel = __webpack_require__(44);
 
-	var _neouiTabs = __webpack_require__(45);
+	var _neouiSwitch = __webpack_require__(45);
+
+	var _neouiTabs = __webpack_require__(46);
 
 	var _neouiTextfield = __webpack_require__(16);
 
-	var _neouiTooltip = __webpack_require__(39);
+	var _neouiTooltip = __webpack_require__(41);
 
-	var _neouiValidate = __webpack_require__(38);
+	var _neouiValidate = __webpack_require__(40);
 
-	var _neouiDatetimepicker = __webpack_require__(37);
+	var _neouiDatetimepicker = __webpack_require__(39);
 
-	var _neouiTime = __webpack_require__(46);
+	var _neouiTime = __webpack_require__(47);
 
-	var _neouiClockpicker = __webpack_require__(33);
+	var _neouiClockpicker = __webpack_require__(36);
 
-	var _neouiMonth = __webpack_require__(41);
+	var _neouiMonth = __webpack_require__(42);
 
-	var _neouiYear = __webpack_require__(47);
+	var _neouiYear = __webpack_require__(48);
 
-	var _neouiYearmonth = __webpack_require__(48);
+	var _neouiYearmonth = __webpack_require__(49);
 
-	var _neouiMonthdate = __webpack_require__(42);
+	var _neouiMonthdate = __webpack_require__(43);
 
-	//import {setCookie,getCookie} from 'tinper-sparrow/lib/cookies';
-	//import {createShellObject,execIgnoreError,getFunction,getJSObject,isDate,isNumber,isArray,isEmptyObject,inArray,isDomElement,each} from 'tinper-sparrow/lib/util';
-	//import {env} from 'tinper-sparrow/lib/env';
-	//import {on,off,trigger,stopEvent,event} from 'tinper-sparrow/lib/event';
-	//import {addClass,removeClass,hasClass,toggleClass,closest,css,wrap,getStyle,getZIndex,makeDOM,makeModal,getOffset,getScroll,showPanelByEle} from 'tinper-sparrow/lib/dom';
-	//import {Class} from 'tinper-sparrow/lib/class';
-	//import {core} from 'tinper-sparrow/lib/core';
-	//import {compMgr} from 'tinper-sparrow/lib/compMgr';
-	//import {BaseComponent} from 'tinper-sparrow/lib/BaseComponent';
-	//import {ajax} from 'tinper-sparrow/lib/ajax';
-	//import {floatRender,integerRender,dateRender,dateTimeRender,timeRender,percentRender,dateToUTCString} from 'tinper-sparrow/lib/util/dataRender';
-	//import {NumberFormater,DateFormater} from 'tinper-sparrow/lib/util/formater';
-	//import {date} from 'tinper-sparrow/lib/util/dateUtils';
-	//import {AddressMasker,NumberMasker,CurrencyMasker,PercentMasker} from 'tinper-sparrow/lib/util/masker'
-	//import {hotkeys} from 'tinper-sparrow/lib/util/hotKeys';
-	//import {Ripple} from 'tinper-sparrow/lib/util/ripple';
-	//import {RSAUtils,BigInt,BarrettMu,twoDigit} from 'tinper-sparrow/lib/util/rsautils';
-	//import {trans} from 'tinper-sparrow/lib/util/i18n';
+	/**
+	 * Module : Neoui webpack entry index
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-10 16:19:39
+	 */
 
-	//Neoui import
+	//Sparrow import
 	var ex = {
 		Autocomplete: _neouiAutocomplete.Autocomplete,
 		Button: _neouiButton.Button,
 		Checkbox: _neouiCheckbox.Checkbox,
 		Combo: _neouiCombo.Combo,
+		showCollapse: _neouiCollapse.showCollapse,
 		Combobox: _neouiCombobox.Combobox,
 		Table: _neouiDataTable.Table,
 		messageDialog: _neouiDialog.messageDialog,
@@ -4453,13 +4445,26 @@ $.fn.bootstrapWizard.defaults = {
 	};
 	//extend(ex,env);
 
-	/**
-	 * Module : Neoui webpack entry index
-	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-08-10 16:19:39
-	 */
+	//import {setCookie,getCookie} from 'tinper-sparrow/lib/cookies';
+	//import {createShellObject,execIgnoreError,getFunction,getJSObject,isDate,isNumber,isArray,isEmptyObject,inArray,isDomElement,each} from 'tinper-sparrow/lib/util';
+	//import {env} from 'tinper-sparrow/lib/env';
+	//import {on,off,trigger,stopEvent,event} from 'tinper-sparrow/lib/event';
+	//import {addClass,removeClass,hasClass,toggleClass,closest,css,wrap,getStyle,getZIndex,makeDOM,makeModal,getOffset,getScroll,showPanelByEle} from 'tinper-sparrow/lib/dom';
+	//import {Class} from 'tinper-sparrow/lib/class';
+	//import {core} from 'tinper-sparrow/lib/core';
+	//import {compMgr} from 'tinper-sparrow/lib/compMgr';
+	//import {BaseComponent} from 'tinper-sparrow/lib/BaseComponent';
+	//import {ajax} from 'tinper-sparrow/lib/ajax';
+	//import {floatRender,integerRender,dateRender,dateTimeRender,timeRender,percentRender,dateToUTCString} from 'tinper-sparrow/lib/util/dataRender';
+	//import {NumberFormater,DateFormater} from 'tinper-sparrow/lib/util/formater';
+	//import {date} from 'tinper-sparrow/lib/util/dateUtils';
+	//import {AddressMasker,NumberMasker,CurrencyMasker,PercentMasker} from 'tinper-sparrow/lib/util/masker'
+	//import {hotkeys} from 'tinper-sparrow/lib/util/hotKeys';
+	//import {Ripple} from 'tinper-sparrow/lib/util/ripple';
+	//import {RSAUtils,BigInt,BarrettMu,twoDigit} from 'tinper-sparrow/lib/util/rsautils';
+	//import {trans} from 'tinper-sparrow/lib/util/i18n';
 
-	//Sparrow import
+	//Neoui import
 	(0, _extend.extend)(ex, window.u || {});
 	window.u = ex;
 	exports.u = ex;
@@ -4470,7 +4475,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.extend = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -4520,7 +4527,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	/**
 	 * Module : Sparrow extend enum
 	 * Author : Kvkens(yueming@yonyou.com)
@@ -4556,7 +4565,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Autocomplete = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -5156,7 +5167,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.BaseComponent = undefined;
 
 	var _class = __webpack_require__(5);
@@ -5295,7 +5308,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	/**
 	 * Module : Sparrow class
 	 * Author : Kvkens(yueming@yonyou.com)
@@ -5482,7 +5497,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -5641,7 +5658,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.event = exports.stopEvent = exports.trigger = exports.off = exports.on = undefined;
 
 	var _env = __webpack_require__(8);
@@ -6031,7 +6050,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.env = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -6234,7 +6255,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.compMgr = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -6502,7 +6525,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.getElementTop = exports.getElementLeft = exports.showPanelByEle = exports.getScroll = exports.getOffset = exports.makeModal = exports.makeDOM = exports.getZIndex = exports.getStyle = exports.wrap = exports.css = exports.closest = exports.toggleClass = exports.hasClass = exports.removeClass = exports.addClass = undefined;
 
 	var _event = __webpack_require__(7);
@@ -6819,7 +6844,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.ajax = undefined;
 
 	var _env = __webpack_require__(8);
@@ -6943,7 +6970,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Button = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -6966,18 +6995,20 @@ $.fn.bootstrapWizard.defaults = {
 
 	var Button = _BaseComponent.BaseComponent.extend({
 		init: function init() {
-			var rippleContainer = document.createElement('span');
-			(0, _dom.addClass)(rippleContainer, 'u-button-container');
-			this._rippleElement = document.createElement('span');
-			(0, _dom.addClass)(this._rippleElement, 'u-ripple');
-			if (_env.env.isIE8) (0, _dom.addClass)(this._rippleElement, 'oldIE');
-			rippleContainer.appendChild(this._rippleElement);
-			(0, _event.on)(this._rippleElement, 'mouseup', this.element.blur);
-			this.element.appendChild(rippleContainer);
+			try {
+				var rippleContainer = document.createElement('span');
+				(0, _dom.addClass)(rippleContainer, 'u-button-container');
+				this._rippleElement = document.createElement('span');
+				(0, _dom.addClass)(this._rippleElement, 'u-ripple');
+				if (_env.env.isIE8) (0, _dom.addClass)(this._rippleElement, 'oldIE');
+				rippleContainer.appendChild(this._rippleElement);
+				(0, _event.on)(this._rippleElement, 'mouseup', this.element.blur);
+				this.element.appendChild(rippleContainer);
+			} catch (e) {}
 
 			// 增加disabled效果
 			var disableAttr = this.element.getAttribute('disabled');
-			if (disableAttr != null) {
+			if (disableAttr != null && disableAttr != '') {
 				this.element.className += " disable";
 			}
 
@@ -7009,7 +7040,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	exports.URipple = exports.Ripple = undefined;
 
 	var _env = __webpack_require__(8);
@@ -7238,7 +7271,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.Checkbox = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -7474,7 +7509,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.Combo = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -7661,12 +7698,14 @@ $.fn.bootstrapWizard.defaults = {
 	            // document.removeEventListener('click', callback);
 	            this.hide();
 	        }.bind(this);
+	        this.callback = callback;
 	        (0, _event.on)(document, 'click', callback);
 	        (0, _event.on)(document.body, 'touchend', callback);
 	        // document.addEventListener('click', callback);
 	    },
 
 	    hide: function hide() {
+	        (0, _event.off)(document, 'click', this.callback);
 	        (0, _dom.removeClass)(this._ul, 'is-visible');
 	        this._ul.style.zIndex = -1;
 	        this.trigger('select', { value: this.value, name: this._input.value });
@@ -7916,7 +7955,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.Text = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -8155,7 +8196,146 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.showCollapse = undefined;
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                                               * Module : neoui-collapse
+	                                                                                                                                                                                                                                                                               * Author :  yaoxinc(yaoxinc@yonyou.com)
+	                                                                                                                                                                                                                                                                               * Date   : 2016/11/30
+	                                                                                                                                                                                                                                                                               *
+	                                                                                                                                                                                                                                                                               */
+
+	var _BaseComponent = __webpack_require__(4);
+
+	var _dom = __webpack_require__(10);
+
+	var _extend = __webpack_require__(1);
+
+	var _event = __webpack_require__(7);
+
+	var _compMgr = __webpack_require__(9);
+
+	/* COLLAPSIBLE PLUGIN DEFINITION
+	 *
+	 */
+
+	function Collapse(element, options) {
+
+	    this.$element = $(element); //数值是下面的class等，且只执行一次
+	    this.options = $.extend({}, { toggle: true }, options); //数值是Oject{toggle:collapse}
+	    this.options.toggle && this.toggle(); //undefined
+	}
+
+	Collapse.prototype = {
+	    constructor: Collapse,
+	    dimension: function dimension() {
+	        /*  console.log(this.$element)*/
+	        var hasWidth = this.$element.hasClass('width'); //false
+	        return hasWidth ? 'width' : 'height'; //返回height
+	    },
+	    show: function show() {
+	        var dimension = this.dimension(),
+	            //数值是height
+	        scroll = $.camelCase(['scroll', dimension].join('-')),
+	            //数值scrollHeight
+	        actives = this.$parent && this.$parent.find('.in'),
+	            //数值undefined
+	        hasData;
+
+	        if (actives && actives.length) {
+	            hasData = actives.data('collapse');
+	            actives.collapse('hide');
+	            hasData || actives.data('collapse', null);
+	        }
+	        this.$element[dimension](0); //数值是下面的class等
+	        this.transition('addClass', 'show', 'shown');
+	        this.$element[dimension](this.$element[0][scroll]);
+	    },
+	    transition: function transition(method, startEvent, completeEvent) {
+	        //'addClass', 'show', 'shown'
+	        var that = this,
+	            complete = function complete() {
+	            if (startEvent == 'show') that.reset();
+	            that.$element.trigger(completeEvent);
+	        };
+	        this.$element.trigger(startEvent)[method]('in');
+
+	        $.support.transition && this.$element.hasClass('collapse') ? this.$element.one($.support.transition.end, complete) : complete();
+	    },
+	    reset: function reset(size) {
+	        var dimension = this.dimension(); //数值一直是height
+	        this.$element.removeClass('collapse')[dimension](size || 'auto')[0].offsetWidth; //1200
+	        this.$element.addClass('collapse');
+	    },
+	    hide: function hide() {
+	        var dimension = this.dimension();
+	        this.reset(this.$element[dimension]());
+	        this.transition('removeClass', 'hide', 'hidden');
+	        this.$element[dimension](0);
+	    },
+
+	    toggle: function toggle() {
+	        this[this.$element.hasClass('in') ? 'hide' : 'show']();
+	    }
+
+	};
+
+	var showCollapse = _BaseComponent.BaseComponent.extend({
+
+	    /* COLLAPSIBLE DATA-API
+	     * ==================== */
+	    init: function init() {
+	        (0, _event.off)(this.element, 'click');
+	        (0, _event.on)(this.element, 'click', function (e) {
+	            var $this = $(this);
+
+	            var href;
+	            var target = (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') || $this.attr('u-data-toggle') || e.preventDefault(); //strip for ie7
+
+	            var option = $(target).data('collapse') ? 'toggle' : $this.data();
+	            var $this_down = $(target);
+
+	            var data = $this_down.data('collapse'),
+	                options = (typeof option === 'undefined' ? 'undefined' : _typeof(option)) == 'object' && option;
+
+	            if (!data) {
+	                $this_down.data('collapse', data = new Collapse(target, options));
+	            }
+	            if (typeof option == 'string') {
+	                data[option]();
+	            }
+	        });
+	    }
+
+	});
+
+	_compMgr.compMgr.regComp({
+	    comp: showCollapse,
+	    compAsString: 'u.collapse.updown',
+	    css: 'u-collapse-updown'
+	});
+	if (document.readyState && document.readyState === 'complete') {
+	    _compMgr.compMgr.updateComp();
+	} else {
+	    (0, _event.on)(window, 'load', function () {
+	        //扫描并生成控件
+	        _compMgr.compMgr.updateComp();
+	    });
+	}
+	exports.showCollapse = showCollapse;
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Combobox = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -8675,12 +8855,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Combobox = Combobox;
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.Table = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -8787,12 +8969,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Table = Table;
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.iframeDialog = exports.dialogWizard = exports.dialog = exports.dialogMode = exports.confirmDialog = exports.messageDialog = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -8807,13 +8991,8 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _compMgr = __webpack_require__(9);
 
-	/**
-	 * Module : neoui-dialog
-	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-08-02 15:29:55
-	 */
+	var _i18n = __webpack_require__(21);
 
-	window.dialogAry = [];
 	/**
 	 * messageDialog.js
 	 */
@@ -8823,6 +9002,12 @@ $.fn.bootstrapWizard.defaults = {
 	/**
 	 * 消息提示框
 	 * @param options
+	 */
+
+	/**
+	 * Module : neoui-dialog
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-02 15:29:55
 	 */
 
 	var messageDialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' + '<div class="u-msg-dialog" style="{width}{height}{top}">' + '<div class="u-msg-dialog-content">' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content"></div>' + '{footer}' + '</div></div>';
@@ -8842,8 +9027,10 @@ $.fn.bootstrapWizard.defaults = {
 			height: '',
 			top: '',
 			hasFooter: true,
-			title: '提示',
-			btnText: '确定',
+			// title: '提示',
+			// btnText: '确定',
+			title: (0, _i18n.trans)('dialog.title', '提示'),
+			btnText: (0, _i18n.trans)('dialog.okText', '确定'),
 			closeFun: function closeFun() {}
 
 		};
@@ -8943,7 +9130,9 @@ $.fn.bootstrapWizard.defaults = {
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-07-29 10:21:33
 	 */
-	var confirmDialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' + '<div class="u-msg-dialog" style="{width}{height}{top}">' + '<div class="u-msg-dialog-content">' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content">' + '</div>' + '{footer}' + '</div></div>';
+	var confirmDialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' + '<div class="u-msg-dialog" style="{width}{height}{top}">' + '<div class="u-msg-dialog-content">' + '<div class="u-msg-title">' +
+	/*'<h4>{title}</h4>' +*/
+	'</div>' + '<div class="u-msg-content">' + '</div>' + '{footer}' + '</div></div>';
 
 	var confirmDialogF = function confirmDialogF(options) {
 		if (typeof options === 'string') {
@@ -8961,8 +9150,8 @@ $.fn.bootstrapWizard.defaults = {
 			hasFooter: true,
 			onOk: function onOk() {},
 			onCancel: function onCancel() {},
-			okText: '确定',
-			cancelText: '取消'
+			okText: (0, _i18n.trans)('dialog.okText', '确定'),
+			cancelText: (0, _i18n.trans)('dialog.cancelText', '取消')
 		};
 
 		options = (0, _extend.extend)(defaultOptions, options);
@@ -8973,7 +9162,8 @@ $.fn.bootstrapWizard.defaults = {
 		this.width = options['width'];
 		this.height = options['height'];
 		this.height = options['top'];
-		this.title = options['title'];
+		/*this.title = options['title'];*/
+		this.titleIcon = options['titleIcon'];
 		this.lazyShow = options['lazyShow'];
 		this.onOk = options['onOk'];
 		this.onCancel = options['onCancel'];
@@ -9006,7 +9196,7 @@ $.fn.bootstrapWizard.defaults = {
 			var footerStr = '<div class="u-msg-footer"><button class="u-msg-ok u-button u-button-primary raised">{okText}</button><button class="u-msg-cancel u-button">{cancelText}</button></div>' + '</div>';
 		}
 		var templateStr = this.template.replace('{id}', this.id).replace('{id}', this.id);
-		templateStr = templateStr.replace('{title}', this.title);
+		//templateStr = templateStr.replace('{title}',this.title);
 		templateStr = templateStr.replace('{width}', this.width ? 'width:' + this.width + ';' : '');
 		templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
 		templateStr = templateStr.replace('{top}', this.top ? 'top:' + this.top + ';' : '');
@@ -9026,8 +9216,11 @@ $.fn.bootstrapWizard.defaults = {
 		} else {
 			this.contentDom = (0, _dom.makeDOM)('<p>' + this.content + '</p>');
 		}
+		/*头部只用图标 <a><i class="uf uf-"></i></a>*/
+		this.titleIconDom = (0, _dom.makeDOM)('<a><i class="' + this.titleIcon + '"></i></a>');
 		this.templateDom = (0, _dom.makeDOM)(templateStr);
 
+		this.templateDom.querySelector('.u-msg-title').appendChild(this.titleIconDom);
 		this.templateDom.querySelector('.u-msg-content').appendChild(this.contentDom);
 		this.overlayDiv = (0, _dom.makeModal)(this.templateDom);
 
@@ -9066,7 +9259,6 @@ $.fn.bootstrapWizard.defaults = {
 		document.body.removeChild(this.templateDom);
 		document.body.removeChild(this.overlayDiv);
 		this.isClosed = true;
-		enable_mouseWheel();
 	};
 
 	var confirmDialog = function confirmDialog(options) {
@@ -9206,28 +9398,8 @@ $.fn.bootstrapWizard.defaults = {
 			this.overlayDiv.style.display = 'none';
 		}
 		document.body.appendChild(this.templateDom);
-		adapterDialog(this, 'show');
 		disable_mouseWheel();
 		this.isClosed = false;
-	};
-
-	var adapterDialog = function adapterDialog(dialogObj, type) {
-		var dialogArray = window.dialogAry;
-		if (dialogArray) {
-			var len = dialogArray.length;
-			var index = dialogArray.indexOf(dialogObj);
-			if (type == "show") {
-				if (index <= -1) {
-					dialogArray.push(dialogObj);
-					dialogArray.length !== 1 && dialogArray[dialogArray.length - 2].hide && dialogArray[dialogArray.length - 2].hide();
-				}
-			} else if (type == 'hide') {
-				if (index == len - 1) {
-					dialogArray.pop();
-					dialogArray.length !== 0 && dialogArray[dialogArray.length - 1].show && dialogArray[dialogArray.length - 1].show();
-				}
-			}
-		}
 	};
 
 	dialogMode.prototype.show = function () {
@@ -9236,14 +9408,12 @@ $.fn.bootstrapWizard.defaults = {
 		}
 		this.templateDom.style.display = 'block';
 		this.overlayDiv.style.display = 'block';
-		adapterDialog(this, 'show');
 		disable_mouseWheel();
 	};
 
 	dialogMode.prototype.hide = function () {
 		this.templateDom.style.display = 'none';
 		this.overlayDiv.style.display = 'none';
-		adapterDialog(this, 'hide');
 		enable_mouseWheel();
 	};
 
@@ -9259,7 +9429,6 @@ $.fn.bootstrapWizard.defaults = {
 		} catch (e) {}
 
 		this.isClosed = true;
-		adapterDialog(this, 'hide');
 		enable_mouseWheel();
 	};
 
@@ -9454,12 +9623,125 @@ $.fn.bootstrapWizard.defaults = {
 	exports.iframeDialog = iframeDialog;
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.trans = undefined;
+
+	var _cookies = __webpack_require__(22);
+
+	// 从datatable/src/compatiable/u/JsExtension.js抽取
+	window.getCurrentJsPath = function () {
+		var doc = document,
+		    a = {},
+		    expose = +new Date(),
+		    rExtractUri = /((?:http|https|file):\/\/.*?\/[^:]+)(?::\d+)?:\d+/,
+		    isLtIE8 = ('' + doc.querySelector).indexOf('[native code]') === -1;
+		// FF,Chrome
+		if (doc.currentScript) {
+			return doc.currentScript.src;
+		}
+
+		var stack;
+		try {
+			a.b();
+		} catch (e) {
+			stack = e.fileName || e.sourceURL || e.stack || e.stacktrace;
+		}
+		// IE10
+		if (stack) {
+			var absPath = rExtractUri.exec(stack)[1];
+			if (absPath) {
+				return absPath;
+			}
+		}
+
+		// IE5-9
+		for (var scripts = doc.scripts, i = scripts.length - 1, script; script = scripts[i--];) {
+			if (script.className !== expose && script.readyState === 'interactive') {
+				script.className = expose;
+				// if less than ie 8, must get abs path by getAttribute(src, 4)
+				return isLtIE8 ? script.getAttribute('src', 4) : script.src;
+			}
+		}
+	}; /**
+	    * Module : Sparrow i18n
+	    * Author : Kvkens(yueming@yonyou.com)
+	    * Date	  : 2016-07-29 10:16:54
+	    */
+	//import {uuii18n} from '?';//缺失故修改为default值
+
+
+	if (window.i18n) {
+		var scriptPath = getCurrentJsPath(),
+		    _temp = scriptPath.substr(0, scriptPath.lastIndexOf('/')),
+		    __FOLDER__ = _temp.substr(0, _temp.lastIndexOf('/'));
+		i18n.init({
+			postAsync: false,
+			getAsync: false,
+			fallbackLng: false,
+			ns: { namespaces: ['uui-trans'] },
+			lng: (0, _cookies.getCookie)('i_languages'),
+			resGetPath: __FOLDER__ + '/locales/__lng__/__ns__.json'
+		});
+	}
+
+	var trans = function trans(key, dftValue) {
+		return window.i18n ? i18n.t('uui-trans:' + key) : dftValue;
+	};
+
+	exports.trans = trans;
+
+/***/ },
+/* 22 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	/**
+	 * Module : Sparrow cookies
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-07-27 21:46:50
+	 */
+
+	var setCookie = function setCookie(sName, sValue, oExpires, sPath, sDomain, bSecure) {
+		var sCookie = sName + "=" + encodeURIComponent(sValue);
+		if (oExpires) sCookie += "; expires=" + oExpires.toGMTString();
+		if (sPath) sCookie += "; path=" + sPath;
+		if (sDomain) sCookie += "; domain=" + sDomain;
+		if (bSecure) sCookie += "; secure=" + bSecure;
+		document.cookie = sCookie;
+	};
+
+	var getCookie = function getCookie(sName) {
+		var sRE = "(?:; )?" + sName + "=([^;]*);?";
+		var oRE = new RegExp(sRE);
+
+		if (oRE.test(document.cookie)) {
+			return decodeURIComponent(RegExp["$1"]);
+		} else return null;
+	};
+
+	exports.setCookie = setCookie;
+	exports.getCookie = getCookie;
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.MDLayout = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -9692,12 +9974,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.MDLayout = MDLayout;
 
 /***/ },
-/* 21 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.NavLayoutTab = exports.NavLayout = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -10196,12 +10480,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.NavLayoutTab = NavLayoutTab;
 
 /***/ },
-/* 22 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.hideLoader = exports.showLoader = undefined;
 
 	var _dom = __webpack_require__(10);
@@ -10270,12 +10556,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.hideLoader = hideLoader;
 
 /***/ },
-/* 23 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.removeWaiting = exports.showWaiting = exports.hideLoading = exports.showLoading = exports.Loading = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -10399,12 +10687,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.removeWaiting = removeWaiting;
 
 /***/ },
-/* 24 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Menu = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -10909,12 +11199,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Menu = Menu;
 
 /***/ },
-/* 25 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.showMessage = exports.showMessageDialog = undefined;
 
 	var _dom = __webpack_require__(10);
@@ -10924,65 +11216,87 @@ $.fn.bootstrapWizard.defaults = {
 	/**
 	 * Module : neoui-message
 	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-08-02 19:40:59
+	 * Date      : 2016-08-02 19:40:59
 	 */
 
 	var messageTemplate = '<div class="u-message"><span class="u-msg-close uf uf-removesymbol"></span>{msg}</div>';
 
 	var showMessage = function showMessage(options) {
-		var msg, position, width, height, showSeconds, msgType, template;
-		if (typeof options === 'string') {
-			options = {
-				msg: options
-			};
-		}
-		msg = options['msg'] || "";
-		position = options['position'] || "bottom-right"; //center. top-left, top-center, top-right, bottom-left, bottom-center, bottom-right,
-		//TODO 后面改规则：没设宽高时，自适应
-		width = options['width'] || "";
-		// height = options['height'] || "100px";
-		msgType = options['msgType'] || 'info';
-		//默认为当用户输入的时间，当用户输入的时间为false并且msgType=='info'时，默认显示时间为2s
-		showSeconds = parseInt(options['showSeconds']) || (msgType == 'info' ? 2 : 0);
+	    var msg, position, width, height, showSeconds, msgType, template;
+	    //新增深色
+	    var darkType;
+	    if (typeof options === 'string') {
+	        options = {
+	            msg: options
+	        };
+	    }
+	    msg = options['msg'] || "";
+	    position = options['position'] || "bottom"; //center. top-left, top-center, top-right, bottom-left, bottom-center, bottom-right,
+	    //TODO 后面改规则：没设宽高时，自适应
+	    width = options['width'] || "";
+	    // height = options['height'] || "100px";
+	    msgType = options['msgType'] || 'info';
+	    //默认为当用户输入的时间，当用户输入的时间为false并且msgType=='info'时，默认显示时间为2s
+	    showSeconds = parseInt(options['showSeconds']) || (msgType == 'info' ? 2 : 0);
 
-		template = options['template'] || messageTemplate;
+	    darkType = options['darkType'] || "";
 
-		template = template.replace('{msg}', msg);
-		var msgDom = (0, _dom.makeDOM)(template);
-		(0, _dom.addClass)(msgDom, 'u-mes' + msgType);
-		msgDom.style.width = width;
-		// msgDom.style.height = height;
-		// msgDom.style.lineHeight = height;
-		if (position == 'bottom-right') {
-			msgDom.style.bottom = '10px';
-		}
+	    template = options['template'] || messageTemplate;
 
-		if (position == 'center') {
-			msgDom.style.bottom = '50%';
-			msgDom.style.transform = 'translateY(50%)';
-		}
-		var closeBtn = msgDom.querySelector('.u-msg-close');
-		//new Button({el:closeBtn});
-		var closeFun = function closeFun() {
-			(0, _dom.removeClass)(msgDom, "active");
-			setTimeout(function () {
-				try {
-					document.body.removeChild(msgDom);
-				} catch (e) {}
-			}, 500);
-		};
-		(0, _event.on)(closeBtn, 'click', closeFun);
-		document.body.appendChild(msgDom);
+	    template = template.replace('{msg}', msg);
+	    var msgDom = (0, _dom.makeDOM)(template);
+	    (0, _dom.addClass)(msgDom, 'u-mes' + msgType);
 
-		if (showSeconds > 0) {
-			setTimeout(function () {
-				closeFun();
-			}, showSeconds * 1000);
-		}
+	    if (!darkType == "") {
+	        (0, _dom.addClass)(msgDom, darkType);
+	    }
 
-		setTimeout(function () {
-			(0, _dom.addClass)(msgDom, "active");
-		}, showSeconds * 1);
+	    msgDom.style.width = width;
+	    // msgDom.style.height = height;
+	    // msgDom.style.lineHeight = height;
+	    if (position == 'bottom' || position == 'top' || position == 'center') {
+	        //msgDom.style.bottom = '10px';
+	        (0, _dom.addClass)(msgDom, 'u-mes-' + position);
+	    }
+
+	    if (position == 'topleft' || position == 'bottomleft') {
+	        if (width == "") {
+	            msgDom.style.right = '2.4rem';
+	            (0, _dom.addClass)(msgDom, 'u-mes-' + position);
+	        } else {
+	            (0, _dom.addClass)(msgDom, 'u-mes-' + position);
+	        }
+	    }
+	    if (position == 'topright' || position == 'bottomright') {
+	        if (width == "") {
+	            msgDom.style.left = '2.4rem';
+	            (0, _dom.addClass)(msgDom, 'u-mes-' + position);
+	        } else {
+	            (0, _dom.addClass)(msgDom, 'u-mes-' + position);
+	        }
+	    }
+	    var closeBtn = msgDom.querySelector('.u-msg-close');
+	    //new Button({el:closeBtn});
+	    var closeFun = function closeFun() {
+	        (0, _dom.removeClass)(msgDom, "active");
+	        setTimeout(function () {
+	            try {
+	                document.body.removeChild(msgDom);
+	            } catch (e) {}
+	        }, 500);
+	    };
+	    (0, _event.on)(closeBtn, 'click', closeFun);
+	    document.body.appendChild(msgDom);
+
+	    if (showSeconds > 0) {
+	        setTimeout(function () {
+	            closeFun();
+	        }, showSeconds * 1000);
+	    }
+
+	    setTimeout(function () {
+	        (0, _dom.addClass)(msgDom, "active");
+	    }, showSeconds * 1);
 	};
 
 	var showMessageDialog = showMessage;
@@ -10991,12 +11305,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.showMessage = showMessage;
 
 /***/ },
-/* 26 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Multilang = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -11159,12 +11475,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Multilang = Multilang;
 
 /***/ },
-/* 27 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.NavMenu = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -11265,12 +11583,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.NavMenu = NavMenu;
 
 /***/ },
-/* 28 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.pagination = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -11493,12 +11813,23 @@ $.fn.bootstrapWizard.defaults = {
 				htmlTmp += '<div class="pagination-state">' + options.totalText + '&nbsp;' + options.totalCount + '&nbsp;条</div>';
 			}
 			if (options.showColumn) {
-				htmlTmp += '<div class="pagination-state">显示<select  class="page_z">' + pageOption + '</select>条</div>';
+				if ((0, _dom.hasClass)(this.$ul, 'pagination-sm')) {
+					htmlTmp += '<div class="pagination-state">显示<select  class="page_z page_z_sm">' + pageOption + '</select>条</div>';
+				} else if ((0, _dom.hasClass)(this.$ul, 'pagination-lg')) {
+					htmlTmp += '<div class="pagination-state">显示<select  class="page_z page_z_lg">' + pageOption + '</select>条</div>';
+				} else {
+					htmlTmp += '<div class="pagination-state">显示<select  class="page_z">' + pageOption + '</select>条</div>';
+				}
 			}
 			if (options.showJump) {
-				htmlTmp += '<div class="pagination-state">到<input class="page_j" value=' + options.currentPage + '>页<input class="pagination-jump" type="button" value="确定"/></div>';
+				if ((0, _dom.hasClass)(this.$ul, 'pagination-sm')) {
+					htmlTmp += '<div class="pagination-state">到<input class="page_j page_j_sm" value=' + options.currentPage + '>页<input class="pagination-jump pagination-jump-sm" type="button" value="确定"/></div>';
+				} else if ((0, _dom.hasClass)(this.$ul, 'pagination-lg')) {
+					htmlTmp += '<div class="pagination-state">到<input class="page_j page_j_lg" value=' + options.currentPage + '>页<input class="pagination-jump pagination-jump-lg" type="button" value="确定"/></div>';
+				} else {
+					htmlTmp += '<div class="pagination-state">到<input class="page_j" value=' + options.currentPage + '>页<input class="pagination-jump" type="button" value="确定"/></div>';
+				}
 			}
-
 			htmlArr.push(htmlTmp);
 		}
 
@@ -11669,12 +12000,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.pagination = pagination;
 
 /***/ },
-/* 29 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Progress = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -11794,12 +12127,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Progress = Progress;
 
 /***/ },
-/* 30 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.Radio = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -12032,12 +12367,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Radio = Radio;
 
 /***/ },
-/* 31 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.refer = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -12050,7 +12387,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _util = __webpack_require__(6);
 
-	var _neouiDialog = __webpack_require__(19);
+	var _neouiDialog = __webpack_require__(20);
 
 	/**
 	 * Module : neoui-refer
@@ -12152,13 +12489,13 @@ $.fn.bootstrapWizard.defaults = {
 	    if (this.options['module']) {
 	        self.contentDiv.innerHTML = this.options['module'].template;
 	        this.options['module'].init(self);
-	    } else if (__webpack_require__(32)) {
-	        __webpack_require__.e/* require */(1, function(__webpack_require__) { /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(32)(this.options.pageUrl)]; (function (module) {
+	    } else if (__webpack_require__(35)) {
+	        __webpack_require__.e/* require */(1, function(__webpack_require__) { /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(35)(this.options.pageUrl)]; (function (module) {
 	            self.contentDiv.innerHTML = module.template;
 	            module.init(self);
 	            self.loaded = true;
 	        }.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));
-	/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(50)(module)))});
+	/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(51)(module)))});
 	    }
 	};
 
@@ -12222,7 +12559,7 @@ $.fn.bootstrapWizard.defaults = {
 	exports.refer = refer;
 
 /***/ },
-/* 32 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
@@ -12232,64 +12569,66 @@ $.fn.bootstrapWizard.defaults = {
 		"./neoui-button.js": 12,
 		"./neoui-checkbox": 14,
 		"./neoui-checkbox.js": 14,
-		"./neoui-clockpicker": 33,
-		"./neoui-clockpicker.js": 33,
+		"./neoui-clockpicker": 36,
+		"./neoui-clockpicker.js": 36,
+		"./neoui-collapse": 17,
+		"./neoui-collapse.js": 17,
 		"./neoui-combo": 15,
 		"./neoui-combo.js": 15,
-		"./neoui-combobox": 17,
-		"./neoui-combobox.js": 17,
-		"./neoui-data-table": 18,
-		"./neoui-data-table.js": 18,
-		"./neoui-datetimepicker": 37,
-		"./neoui-datetimepicker.js": 37,
-		"./neoui-dialog": 19,
-		"./neoui-dialog.js": 19,
-		"./neoui-layout.md": 20,
-		"./neoui-layout.md.js": 20,
-		"./neoui-layout.nav": 21,
-		"./neoui-layout.nav.js": 21,
-		"./neoui-loader": 22,
-		"./neoui-loader.js": 22,
-		"./neoui-loading": 23,
-		"./neoui-loading.js": 23,
-		"./neoui-menu": 24,
-		"./neoui-menu.js": 24,
-		"./neoui-message": 25,
-		"./neoui-message.js": 25,
-		"./neoui-month": 41,
-		"./neoui-month.js": 41,
-		"./neoui-monthdate": 42,
-		"./neoui-monthdate.js": 42,
-		"./neoui-multilang": 26,
-		"./neoui-multilang.js": 26,
-		"./neoui-navmenu": 27,
-		"./neoui-navmenu.js": 27,
-		"./neoui-pagination": 28,
-		"./neoui-pagination.js": 28,
-		"./neoui-progress": 29,
-		"./neoui-progress.js": 29,
-		"./neoui-radio": 30,
-		"./neoui-radio.js": 30,
-		"./neoui-refer": 31,
-		"./neoui-refer.js": 31,
-		"./neoui-slidePanel": 43,
-		"./neoui-slidePanel.js": 43,
-		"./neoui-switch": 44,
-		"./neoui-switch.js": 44,
-		"./neoui-tabs": 45,
-		"./neoui-tabs.js": 45,
+		"./neoui-combobox": 18,
+		"./neoui-combobox.js": 18,
+		"./neoui-data-table": 19,
+		"./neoui-data-table.js": 19,
+		"./neoui-datetimepicker": 39,
+		"./neoui-datetimepicker.js": 39,
+		"./neoui-dialog": 20,
+		"./neoui-dialog.js": 20,
+		"./neoui-layout.md": 23,
+		"./neoui-layout.md.js": 23,
+		"./neoui-layout.nav": 24,
+		"./neoui-layout.nav.js": 24,
+		"./neoui-loader": 25,
+		"./neoui-loader.js": 25,
+		"./neoui-loading": 26,
+		"./neoui-loading.js": 26,
+		"./neoui-menu": 27,
+		"./neoui-menu.js": 27,
+		"./neoui-message": 28,
+		"./neoui-message.js": 28,
+		"./neoui-month": 42,
+		"./neoui-month.js": 42,
+		"./neoui-monthdate": 43,
+		"./neoui-monthdate.js": 43,
+		"./neoui-multilang": 29,
+		"./neoui-multilang.js": 29,
+		"./neoui-navmenu": 30,
+		"./neoui-navmenu.js": 30,
+		"./neoui-pagination": 31,
+		"./neoui-pagination.js": 31,
+		"./neoui-progress": 32,
+		"./neoui-progress.js": 32,
+		"./neoui-radio": 33,
+		"./neoui-radio.js": 33,
+		"./neoui-refer": 34,
+		"./neoui-refer.js": 34,
+		"./neoui-slidePanel": 44,
+		"./neoui-slidePanel.js": 44,
+		"./neoui-switch": 45,
+		"./neoui-switch.js": 45,
+		"./neoui-tabs": 46,
+		"./neoui-tabs.js": 46,
 		"./neoui-textfield": 16,
 		"./neoui-textfield.js": 16,
-		"./neoui-time": 46,
-		"./neoui-time.js": 46,
-		"./neoui-tooltip": 39,
-		"./neoui-tooltip.js": 39,
-		"./neoui-validate": 38,
-		"./neoui-validate.js": 38,
-		"./neoui-year": 47,
-		"./neoui-year.js": 47,
-		"./neoui-yearmonth": 48,
-		"./neoui-yearmonth.js": 48
+		"./neoui-time": 47,
+		"./neoui-time.js": 47,
+		"./neoui-tooltip": 41,
+		"./neoui-tooltip.js": 41,
+		"./neoui-validate": 40,
+		"./neoui-validate.js": 40,
+		"./neoui-year": 48,
+		"./neoui-year.js": 48,
+		"./neoui-yearmonth": 49,
+		"./neoui-yearmonth.js": 49
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -12302,16 +12641,18 @@ $.fn.bootstrapWizard.defaults = {
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 32;
+	webpackContext.id = 35;
 
 
 /***/ },
-/* 33 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.ClockPicker = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -12326,9 +12667,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _extend = __webpack_require__(1);
 
-	var _core = __webpack_require__(34);
+	var _core = __webpack_require__(37);
 
-	var _dateUtils = __webpack_require__(36);
+	var _dateUtils = __webpack_require__(38);
 
 	/**
 	 * Module : neoui-clockpicker
@@ -12587,11 +12928,12 @@ $.fn.bootstrapWizard.defaults = {
 
 		setValue: function setValue(value) {
 			value = value ? value : '';
-
+			var oldShowValue;
 			if (value == '') {
-				this.input.value = '';
-
-				this.trigger('valueChange', { value: '' });
+				if (this.input.value != '') {
+					this.input.value = '';
+					this.trigger('valueChange', { value: '' });
+				}
 				return;
 			}
 
@@ -12618,9 +12960,11 @@ $.fn.bootstrapWizard.defaults = {
 			_date.setMinutes(this.min);
 			_date.setSeconds(this.sec);
 			var showValue = _dateUtils.date.format(_date, this.format);
+			oldShowValue = this.input.value;
 			this.input.value = showValue;
-
-			this.trigger('valueChange', { value: value });
+			if (oldShowValue != showValue) {
+				this.trigger('valueChange', { value: value });
+			}
 		},
 
 		focusEvent: function focusEvent() {
@@ -12753,12 +13097,14 @@ $.fn.bootstrapWizard.defaults = {
 			}
 		}
 	});
+	if (!_env.env.isIE8) {
+		_compMgr.compMgr.regComp({
+			comp: ClockPicker,
+			compAsString: 'u.ClockPicker',
+			css: 'u-clockpicker'
+		});
+	}
 
-	_compMgr.compMgr.regComp({
-		comp: ClockPicker,
-		compAsString: 'u.ClockPicker',
-		css: 'u-clockpicker'
-	});
 	if (document.readyState && document.readyState === 'complete') {
 		_compMgr.compMgr.updateComp();
 	} else {
@@ -12770,12 +13116,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.ClockPicker = ClockPicker;
 
 /***/ },
-/* 34 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.core = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -12789,7 +13137,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _util = __webpack_require__(6);
 
-	var _cookies = __webpack_require__(35);
+	var _cookies = __webpack_require__(22);
 
 	var _enumerables = __webpack_require__(2);
 
@@ -12956,49 +13304,17 @@ $.fn.bootstrapWizard.defaults = {
 	exports.core = core;
 
 /***/ },
-/* 35 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	exports.__esModule = true;
-	/**
-	 * Module : Sparrow cookies
-	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-07-27 21:46:50
-	 */
-
-	var setCookie = function setCookie(sName, sValue, oExpires, sPath, sDomain, bSecure) {
-		var sCookie = sName + "=" + encodeURIComponent(sValue);
-		if (oExpires) sCookie += "; expires=" + oExpires.toGMTString();
-		if (sPath) sCookie += "; path=" + sPath;
-		if (sDomain) sCookie += "; domain=" + sDomain;
-		if (bSecure) sCookie += "; secure=" + bSecure;
-		document.cookie = sCookie;
-	};
-
-	var getCookie = function getCookie(sName) {
-		var sRE = "(?:; )?" + sName + "=([^;]*);?";
-		var oRE = new RegExp(sRE);
-
-		if (oRE.test(document.cookie)) {
-			return decodeURIComponent(RegExp["$1"]);
-		} else return null;
-	};
-
-	exports.setCookie = setCookie;
-	exports.getCookie = getCookie;
-
-/***/ },
-/* 36 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.date = undefined;
 
-	var _core = __webpack_require__(34);
+	var _core = __webpack_require__(37);
 
 	var _util = __webpack_require__(6);
 
@@ -13251,12 +13567,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.date = date;
 
 /***/ },
-/* 37 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.DateTimePicker = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -13269,11 +13587,11 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _dom = __webpack_require__(10);
 
-	var _core = __webpack_require__(34);
+	var _core = __webpack_require__(37);
 
-	var _dateUtils = __webpack_require__(36);
+	var _dateUtils = __webpack_require__(38);
 
-	var _neouiValidate = __webpack_require__(38);
+	var _neouiValidate = __webpack_require__(40);
 
 	var _compMgr = __webpack_require__(9);
 
@@ -13693,6 +14011,7 @@ $.fn.bootstrapWizard.defaults = {
 	        i,
 	        cell,
 	        self = this;
+	    self.timeOpen = false;
 	    type = type || 'current';
 	    if ('current' === type) {
 	        tempDate = this.pickerDate;
@@ -13786,11 +14105,8 @@ $.fn.bootstrapWizard.defaults = {
 	        this.pickerDate.setFullYear(e.target._year);
 	        this.pickerDate.setMonth(e.target._month);
 	        this.pickerDate.setDate(_d);
-	        if (this.pickerDate && this.options.format == 'YYYY-MM-DD') {
-	            this.pickerDate.setHours(0);
-	            this.pickerDate.setMinutes(0);
-	            this.pickerDate.setSeconds(0);
-	            this.pickerDate.setMilliseconds(0);
+	        if (this.pickerDate) {
+	            this.resetDataObj(this.pickerDate);
 	        }
 
 	        var _cell = e.target.parentNode.querySelector('.u-date-cell.current');
@@ -13824,9 +14140,8 @@ $.fn.bootstrapWizard.defaults = {
 	    //     this._timeMobileScroll()
 	    //     return;
 	    // }
-	    //去除判断防止再次点击时间时，面板弹不出来
-	    // if(this.timeOpen)return;
-	    // this.timeOpen = true;
+	    if (this.timeOpen) return;
+	    this.timeOpen = true;
 	    var year, month, day, date, time, template, timePage, titleDiv, dateDiv, weekSpans, language, tempDate, i, cell, timetemplate;
 	    var self = this;
 	    type = type || 'current';
@@ -13887,7 +14202,7 @@ $.fn.bootstrapWizard.defaults = {
 	            var value = this.value,
 	                length = value.length,
 	                valueArray = [];
-	            if (length == 8) {
+	            if (length == 8 && value[0] <= 2 && value[0] >= 0 && value[1] <= 3 && value[1] >= 0 && value[3] <= 5 && value[3] >= 0 && value[6] <= 5 && value[6] >= 0) {
 	                valueArray = value.split(':');
 	                obj.pickerDate.setHours(valueArray[0]);
 	                obj.pickerDate.setMinutes(valueArray[1]);
@@ -14603,27 +14918,18 @@ $.fn.bootstrapWizard.defaults = {
 
 	    var _date = _dateUtils.date.getDateObj(value);
 	    if (_date) {
-	        if (_date && this.options.format == 'YYYY-MM-DD') {
-	            _date.setHours(0);
-	            _date.setMinutes(0);
-	            _date.setSeconds(0);
-	            _date.setMilliseconds(0);
+	        if (_date) {
+	            this.resetDataObj(_date);
 	        }
 	        if (this.beginDateObj) {
-	            if (this.beginDateObj && this.options.format == 'YYYY-MM-DD') {
-	                this.beginDateObj.setHours(0);
-	                this.beginDateObj.setMinutes(0);
-	                this.beginDateObj.setSeconds(0);
-	                this.beginDateObj.setMilliseconds(0);
+	            if (this.beginDateObj) {
+	                this.resetDataObj(this.beginDateObj);
 	            }
 	            if (_date.getTime() < this.beginDateObj.getTime()) return;
 	        }
 	        if (this.overDateObj) {
-	            if (this.overDateObj && this.options.format == 'YYYY-MM-DD') {
-	                this.overDateObj.setHours(0);
-	                this.overDateObj.setMinutes(0);
-	                this.overDateObj.setSeconds(0);
-	                this.overDateObj.setMilliseconds(0);
+	            if (this.overDateObj) {
+	                this.resetDataObj(this.overDateObj);
 	            }
 	            if (_date.getTime() > this.overDateObj.getTime()) return;
 	        }
@@ -14643,11 +14949,8 @@ $.fn.bootstrapWizard.defaults = {
 	DateTimePicker.fn.setStartDate = function (startDate, type) {
 	    if (startDate) {
 	        this.beginDateObj = _dateUtils.date.getDateObj(startDate);
-	        if (this.beginDateObj && this.options.format == 'YYYY-MM-DD') {
-	            this.beginDateObj.setHours(0);
-	            this.beginDateObj.setMinutes(0);
-	            this.beginDateObj.setSeconds(0);
-	            this.beginDateObj.setMilliseconds(0);
+	        if (this.beginDateObj) {
+	            this.resetDataObj(this.beginDateObj);
 	        }
 	        /*if(type){
 	            switch (type) {
@@ -14674,11 +14977,8 @@ $.fn.bootstrapWizard.defaults = {
 	DateTimePicker.fn.setEndDate = function (endDate) {
 	    if (endDate) {
 	        this.overDateObj = _dateUtils.date.getDateObj(endDate);
-	        if (this.overDateObj && this.options.format == 'YYYY-MM-DD') {
-	            this.overDateObj.setHours(0);
-	            this.overDateObj.setMinutes(0);
-	            this.overDateObj.setSeconds(0);
-	            this.overDateObj.setMilliseconds(0);
+	        if (this.overDateObj) {
+	            this.resetDataObj(this.overDateObj);
 	        }
 	        this.overYear = this.overDateObj.getFullYear();
 	        this.overMonth = this.overDateObj.getMonth();
@@ -14696,6 +14996,19 @@ $.fn.bootstrapWizard.defaults = {
 	        this.enable = true;
 	    } else {
 	        this.enable = false;
+	    }
+	};
+
+	DateTimePicker.fn.resetDataObj = function (dataObj) {
+	    if (this.options.format.indexOf('h') < 0 && this.options.format.indexOf('H') < 0) {
+	        dataObj.setHours(0);
+	    }
+	    if (this.options.format.indexOf('m') < 0) {
+	        dataObj.setMinutes(0);
+	    }
+	    if (this.options.format.indexOf('s') < 0) {
+	        dataObj.setSeconds(0);
+	        dataObj.setMilliseconds(0);
 	    }
 	};
 
@@ -14717,12 +15030,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.DateTimePicker = DateTimePicker;
 
 /***/ },
-/* 38 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.doValidate = exports.validate = exports.Validate = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -14742,9 +15057,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _util = __webpack_require__(6);
 
-	var _neouiTooltip = __webpack_require__(39);
+	var _neouiTooltip = __webpack_require__(41);
 
-	var _i18n = __webpack_require__(40);
+	var _i18n = __webpack_require__(21);
 
 	var _compMgr = __webpack_require__(9);
 
@@ -14773,6 +15088,8 @@ $.fn.bootstrapWizard.defaults = {
 	        this.validMode = this.options['validMode'] ? this.options['validMode'] : Validate.DEFAULTS.validMode;
 	        //空提示
 	        this.nullMsg = this.options['nullMsg'] ? this.options['nullMsg'] : Validate.NULLMSG[this.validType];
+	        // input输入提示
+	        this.inputMsg = Validate.INPUTMSG;
 	        //是否必填
 	        if (this.required && !this.nullMsg) this.nullMsg = Validate.NULLMSG['required'];
 	        //错误必填
@@ -14863,6 +15180,17 @@ $.fn.bootstrapWizard.defaults = {
 	    "url": (0, _i18n.trans)('validate.error_url', "网址格式不对！"),
 	    "datetime": (0, _i18n.trans)('validate.error_datetime', "日期格式不对！"),
 	    "phoneNumber": (0, _i18n.trans)('validate.error_phoneNumber', "号码格式不对！")
+	};
+
+	Validate.INPUTMSG = {
+	    "minLength": (0, _i18n.trans)('validate.input_minlength', "输入长度不能小于"),
+	    "maxLength": (0, _i18n.trans)('validate.input_maxlength', "输入长度不能大于"),
+	    "unit": (0, _i18n.trans)('validate.input_unit', "位"),
+	    "maxValue": (0, _i18n.trans)('validate.input_maxvalue', "输入值不能大于"),
+	    "minValue": (0, _i18n.trans)('validate.input_minvalue', "输入值不能小于"),
+	    "equalMax": (0, _i18n.trans)('validate.input_equalMax', "输入值不能大于或等于"),
+	    "equalMin": (0, _i18n.trans)('validate.input_equalMin', "输入值不能小于或等于")
+
 	};
 
 	Validate.REG = {
@@ -14993,7 +15321,7 @@ $.fn.bootstrapWizard.defaults = {
 	    }
 	    if (this.minLength) {
 	        if (value.lengthb() < this.minLength) {
-	            var Msg = "输入长度不能小于" + this.minLength + "位";
+	            var Msg = this.inputMsg.minLength + this.minLength + this.inputMsg.unit;
 	            this.showMsg(Msg);
 	            return {
 	                passed: false,
@@ -15003,7 +15331,7 @@ $.fn.bootstrapWizard.defaults = {
 	    }
 	    if (this.maxLength) {
 	        if (value.lengthb() > this.maxLength) {
-	            var Msg = "输入长度不能大于" + this.maxLength + "位";
+	            var Msg = this.inputMsg.maxLength + this.maxLength + this.inputMsg.unit;
 	            this.showMsg(Msg);
 	            return {
 	                passed: false,
@@ -15013,7 +15341,7 @@ $.fn.bootstrapWizard.defaults = {
 	    }
 	    if (this.max != undefined && this.max != null) {
 	        if (parseFloat(value) > this.max) {
-	            var Msg = "输入值不能大于" + this.max;
+	            var Msg = this.inputMsg.maxValue + this.max;
 	            this.showMsg(Msg);
 	            return {
 	                passed: false,
@@ -15023,7 +15351,7 @@ $.fn.bootstrapWizard.defaults = {
 	    }
 	    if (this.min != undefined && this.min != null) {
 	        if (parseFloat(value) < this.min) {
-	            var Msg = "输入值不能小于" + this.min;
+	            var Msg = this.inputMsg.minValue + this.min;
 	            this.showMsg(Msg);
 	            return {
 	                passed: false,
@@ -15033,7 +15361,7 @@ $.fn.bootstrapWizard.defaults = {
 	    }
 	    if (this.maxNotEq != undefined && this.maxNotEq != null) {
 	        if (parseFloat(value) >= this.maxNotEq) {
-	            var Msg = "输入值不能大于或等于" + this.maxNotEq;
+	            var Msg = this.inputMsg.equalMax + this.maxNotEq;
 	            this.showMsg(Msg);
 	            return {
 	                passed: false,
@@ -15043,7 +15371,7 @@ $.fn.bootstrapWizard.defaults = {
 	    }
 	    if (this.minNotEq != undefined && this.minNotEq != null) {
 	        if (parseFloat(value) <= this.minNotEq) {
-	            var Msg = "输入值不能小于或等于" + this.minNotEq;
+	            var Msg = this.inputMsg.equalMin + this.minNotEq;
 	            this.showMsg(Msg);
 	            return {
 	                passed: false,
@@ -15296,12 +15624,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.doValidate = doValidate;
 
 /***/ },
-/* 39 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Tooltip = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -15619,32 +15949,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Tooltip = Tooltip;
 
 /***/ },
-/* 40 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	exports.__esModule = true;
-	/**
-	 * Module : Sparrow i18n
-	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-07-29 10:16:54
-	 */
-	//import {uuii18n} from '?';//缺失故修改为default值
-	var trans = function trans(key, dftValue) {
-	  //return  uuii18n ?  uuii18n.t('uui-trans:' + key) : dftValue;
-	  return dftValue;
-	};
-
-	exports.trans = trans;
-
-/***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Month = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -15885,12 +16197,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Month = Month;
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.MonthDate = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -15901,9 +16215,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _dom = __webpack_require__(10);
 
-	var _core = __webpack_require__(34);
+	var _core = __webpack_require__(37);
 
-	var _dateUtils = __webpack_require__(36);
+	var _dateUtils = __webpack_require__(38);
 
 	var _extend = __webpack_require__(1);
 
@@ -16248,12 +16562,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.MonthDate = MonthDate;
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.slidePanel = undefined;
 
 	var _dom = __webpack_require__(10);
@@ -16323,12 +16639,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.slidePanel = slidePanel;
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Switch = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -16511,12 +16829,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Switch = Switch;
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Tabs = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -16657,12 +16977,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Tabs = Tabs;
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Time = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -16897,12 +17219,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Time = Time;
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Year = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -17142,12 +17466,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Year = Year;
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.YearMonth = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -17164,7 +17490,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _ripple = __webpack_require__(13);
 
-	var _ployfill = __webpack_require__(49);
+	var _ployfill = __webpack_require__(50);
 
 	/**
 	 * Module : neoui-year
@@ -17473,12 +17799,14 @@ $.fn.bootstrapWizard.defaults = {
 	exports.YearMonth = YearMonth;
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports) {
 
 	"use strict";
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	var requestAnimationFrame = function requestAnimationFrame(callback) {
 	    if (!window.requestAnimationFrame) {
 	        window.requestAnimationFrame = window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {

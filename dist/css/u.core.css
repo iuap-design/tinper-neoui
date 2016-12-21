@@ -3882,6 +3882,7 @@ main {
 
 .u-ripple-container {
   display: block;
+  display: none \9;
   height: 100%;
   left: 0rem;
   position: absolute;
