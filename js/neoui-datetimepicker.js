@@ -9,6 +9,7 @@ import {Validate} from './neoui-validate';
 import {compMgr} from 'tinper-sparrow/js/compMgr';
 import {URipple} from 'tinper-sparrow/js/util/ripple';
 import {dateFormat} from 'tinper-sparrow/js/util'
+import {trans} from 'tinper-sparrow/js/util/i18n'
 
 var DateTimePicker = BaseComponent.extend({
 });
@@ -477,7 +478,7 @@ DateTimePicker.fn._fillDate = function(type){
     weekSpans = datePage.querySelectorAll('.u-date-week span');
 
     for(var i=0; i< 7; i++){
-        weekSpans[i].innerHTML = udate._dateLocale[language].weekdaysMin[i];
+        weekSpans[i].innerHTML = udate._jsonLocale.weekdaysMin[i];
     }
     dateDiv = datePage.querySelector('.u-date-content-panel');
     tempDate = this.startDate;
@@ -1120,24 +1121,18 @@ DateTimePicker.fn._response = function() {
 
 var dateTimePickerTemplateArr = ['<div class="u-date-panel">',
                             '<div class="u-date-body">',
-                                /*'<div class="u-date-header">',
-                                    '<span class="u-date-header-year"></span>',
-                                     '<div class="u-date-header-h3">',
-                                        '<span class="u-date-header-week"></span>',
-                                        '<span>,</span>',
-                                        '<span class="u-date-header-month"></span>',
-                                        '<span> </span>',
-                                        '<span class="u-date-header-date"></span>',
-                                        '<span> </span>',
-                                        '<span class="u-date-header-time"></span>',
-                                     '</div>',
-                                '</div>',*/
                                 '<div class="u-date-content"></div>',
                             '</div>',
                             '<div class="u-date-nav">',
-                                '<button type="button" class="u-button u-date-ok right primary">确定</button>',
-                                '<button type="button" class="u-button u-date-cancel right">取消</button>',
-                                '<button type="button" class="u-button u-date-clean">清空</button>',
+                                '<button type="button" class="u-button u-date-ok right primary">',
+                                trans('public.confirm','确定'),
+                                '</button>',
+                                '<button type="button" class="u-button u-date-cancel right">',
+                                trans('public.cancel','取消'),
+                                '</button>',
+                                '<button type="button" class="u-button u-date-clean">',
+                                trans('public.clear','清空'),
+                                '</button>',
                             '</div>',
                            '</div>'];
 
@@ -1483,13 +1478,13 @@ DateTimePicker.fn.setEnable = function(enable){
 };
 
 DateTimePicker.fn.resetDataObj = function(dataObj){
-    if(this.options.format.indexOf('h') < 0 && this.options.format.indexOf('H') < 0){
+    if(this.format.indexOf('h') < 0 && this.format.indexOf('H') < 0){
         dataObj.setHours(0);
     }
-    if(this.options.format.indexOf('m') < 0){
+    if(this.format.indexOf('m') < 0){
         dataObj.setMinutes(0);
     }
-    if(this.options.format.indexOf('s') < 0){
+    if(this.format.indexOf('s') < 0){
         dataObj.setSeconds(0);
         dataObj.setMilliseconds(0);
     }

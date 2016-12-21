@@ -6,29 +6,31 @@
 import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
 import {on, off, stopEvent} from 'tinper-sparrow/js/event';
 import {addClass, makeDOM, showPanelByEle, getZIndex, removeClass} from 'tinper-sparrow/js/dom';
-import {extend} from 'tinper-sparrow/js/extend'; 
+import {extend} from 'tinper-sparrow/js/extend';
 import {compMgr} from 'tinper-sparrow/js/compMgr';
 import {URipple} from 'tinper-sparrow/js/util/ripple';
+import {trans} from 'tinper-sparrow/js/util/i18n';
+import {date as udate} from 'tinper-sparrow/js/util/dateUtils';
 
 const Month = BaseComponent.extend({
 	DEFAULTS : {
 	},
 	init:function(){
-		var self = this;			 
+		var self = this;
 		var element = this.element;
 		this.options = extend({}, this.DEFAULTS, this.options);
 		this.panelDiv = null;
 		this.input = this.element.querySelector("input");
-		
+
 		var d = new Date();
 		this.month = d.getMonth() + 1;
 		this.defaultMonth = this.month;
-		
+
 		on(this.input, 'blur',function(e){
 			self._inputFocus = false;
         	this.setValue(this.input.value);
         }.bind(this));
-        
+
 		// 添加focus事件
 		this.focusEvent();
 		// 添加右侧图标click事件
@@ -46,10 +48,10 @@ const Month = BaseComponent.extend({
 		this.panelDiv = makeDOM('<div class="u-date-panel" style="margin:0px;"></div>');
 		this.panelContentDiv = makeDOM('<div class="u-date-content"></div>');
 		this.panelDiv.appendChild(this.panelContentDiv);
-		
+
 		this.preBtn = makeDOM('<button class="u-date-pre-button u-button flat floating mini" style="display:none;">&lt;</button>');
 	    this.nextBtn = makeDOM('<button class="u-date-next-button u-button flat floating mini" style="display:none;">&gt;</button>');
-		
+
 		on(this.preBtn, 'click', function(e){
 	        oThis.startYear -= 10;
 	        oThis._fillYear();
@@ -61,7 +63,7 @@ const Month = BaseComponent.extend({
 	    this.panelContentDiv.appendChild(this.preBtn);
 	    this.panelContentDiv.appendChild(this.nextBtn);
 	    this._fillMonth();
-		
+
 	},
 
 
@@ -75,22 +77,25 @@ const Month = BaseComponent.extend({
 	    if(oldPanel)
 	    	this.panelContentDiv.removeChild(oldPanel);
 	    _month = this.month;
+		var _defaultMonth = _month + '月';
+		var monthIndex = udate._jsonLocale.defaultMonth.indexOf(_defaultMonth);
 	    template = ['<div class="u-date-content-page">',
-	        '<div class="u-date-content-title">'+_month+'月</div>',
-	        '<div class="u-date-content-panel">',
-	            '<div class="u-date-content-year-cell">1月</div>',
-	            '<div class="u-date-content-year-cell">2月</div>',
-	            '<div class="u-date-content-year-cell">3月</div>',
-	            '<div class="u-date-content-year-cell">4月</div>',
-	            '<div class="u-date-content-year-cell">5月</div>',
-	            '<div class="u-date-content-year-cell">6月</div>',
-	            '<div class="u-date-content-year-cell">7月</div>',
-	            '<div class="u-date-content-year-cell">8月</div>',
-	            '<div class="u-date-content-year-cell">9月</div>',
-	            '<div class="u-date-content-year-cell">10月</div>',
-	            '<div class="u-date-content-year-cell">11月</div>',
-	            '<div class="u-date-content-year-cell">12月</div>',
-	        '</div>',
+			'<div class="u-date-content-title">'+ udate._jsonLocale.monthsShort[monthIndex] + '</div>',
+
+			'<div class="u-date-content-panel">',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[0] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[1] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[2] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[3] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[4] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[5] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[6] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[7] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[8] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[9] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[10] +'</div>',
+				'<div class="u-date-content-year-cell">'+ udate._jsonLocale.monthsShort[11] +'</div>',
+			'</div>',
 	        '</div>'].join("");
 
 	    monthPage = makeDOM(template);
@@ -109,7 +114,7 @@ const Month = BaseComponent.extend({
 	        this.setValue(_m);
 	        this.hide();
 	    }.bind(this));
-	    
+
 	    this.preBtn.style.display = 'none';
 		this.nextBtn.style.display = 'none';
 	    this.panelContentDiv.appendChild(monthPage);
@@ -163,7 +168,7 @@ const Month = BaseComponent.extend({
 
 	//下拉图标的点击事件
 	clickEvent: function() {
-		var self = this;		
+		var self = this;
 		var caret = this.element.nextSibling
 		on(caret,'click',function(e) {
 			self.input.focus();
@@ -175,7 +180,7 @@ const Month = BaseComponent.extend({
 	show: function(evt) {
 		var oThis = this;
 		this.createPanel();
-		
+
 		this.width = this.element.offsetWidth;
 		if(this.width < 300)
 			this.width = 300;
@@ -192,7 +197,7 @@ const Month = BaseComponent.extend({
 	        panelWidth = this.panelDiv.offsetWidth,panelHeight = this.panelDiv.offsetHeight;
 
 	        this.element.appendChild(this.panelDiv);
-	        this.element.style.position = 'relative'; 
+	        this.element.style.position = 'relative';
 	   		this.left = this.input.offsetLeft;
 	    	var inputHeight = this.input.offsetHeight;
 	    	this.top = this.input.offsetTop + inputHeight;
@@ -204,18 +209,18 @@ const Month = BaseComponent.extend({
 	        if((this.top + panelHeight) > bodyHeight){
 	            this.top = bodyHeight - panelHeight;
 	        }
-	    
+
 
 	        this.panelDiv.style.left = this.left + 'px';
 	        this.panelDiv.style.top = this.top + 'px';
-		    
+
 	    }
 
-	    
+
 		this.panelDiv.style.width = 152 + 'px';
 		this.panelDiv.style.zIndex = getZIndex();
 	    addClass(this.panelDiv, 'is-visible');
-	        
+
 	    var callback = function (e) {
 	        if (e !== evt && e.target !== this.input && !oThis.clickPanel(e.target) && oThis._inputFocus != true) {
 	        	off(document,'click',callback);
