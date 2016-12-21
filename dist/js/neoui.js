@@ -4300,11 +4300,11 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _neouiRefer = __webpack_require__(34);
 
-	var _neouiSlidePanel = __webpack_require__(44);
+	var _neouiSlidePanel = __webpack_require__(45);
 
-	var _neouiSwitch = __webpack_require__(45);
+	var _neouiSwitch = __webpack_require__(46);
 
-	var _neouiTabs = __webpack_require__(46);
+	var _neouiTabs = __webpack_require__(47);
 
 	var _neouiTextfield = __webpack_require__(16);
 
@@ -4314,25 +4314,40 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _neouiDatetimepicker = __webpack_require__(39);
 
-	var _neouiTime = __webpack_require__(47);
+	var _neouiMobdatetimepicker = __webpack_require__(42);
+
+	var _neouiTime = __webpack_require__(48);
 
 	var _neouiClockpicker = __webpack_require__(36);
 
-	var _neouiMonth = __webpack_require__(42);
+	var _neouiMonth = __webpack_require__(43);
 
-	var _neouiYear = __webpack_require__(48);
+	var _neouiYear = __webpack_require__(49);
 
-	var _neouiYearmonth = __webpack_require__(49);
+	var _neouiYearmonth = __webpack_require__(50);
 
-	var _neouiMonthdate = __webpack_require__(43);
+	var _neouiMonthdate = __webpack_require__(44);
 
-	/**
-	 * Module : Neoui webpack entry index
-	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-08-10 16:19:39
-	 */
+	//import {setCookie,getCookie} from 'tinper-sparrow/lib/cookies';
+	//import {createShellObject,execIgnoreError,getFunction,getJSObject,isDate,isNumber,isArray,isEmptyObject,inArray,isDomElement,each} from 'tinper-sparrow/lib/util';
+	//import {env} from 'tinper-sparrow/lib/env';
+	//import {on,off,trigger,stopEvent,event} from 'tinper-sparrow/lib/event';
+	//import {addClass,removeClass,hasClass,toggleClass,closest,css,wrap,getStyle,getZIndex,makeDOM,makeModal,getOffset,getScroll,showPanelByEle} from 'tinper-sparrow/lib/dom';
+	//import {Class} from 'tinper-sparrow/lib/class';
+	//import {core} from 'tinper-sparrow/lib/core';
+	//import {compMgr} from 'tinper-sparrow/lib/compMgr';
+	//import {BaseComponent} from 'tinper-sparrow/lib/BaseComponent';
+	//import {ajax} from 'tinper-sparrow/lib/ajax';
+	//import {floatRender,integerRender,dateRender,dateTimeRender,timeRender,percentRender,dateToUTCString} from 'tinper-sparrow/lib/util/dataRender';
+	//import {NumberFormater,DateFormater} from 'tinper-sparrow/lib/util/formater';
+	//import {date} from 'tinper-sparrow/lib/util/dateUtils';
+	//import {AddressMasker,NumberMasker,CurrencyMasker,PercentMasker} from 'tinper-sparrow/lib/util/masker'
+	//import {hotkeys} from 'tinper-sparrow/lib/util/hotKeys';
+	//import {Ripple} from 'tinper-sparrow/lib/util/ripple';
+	//import {RSAUtils,BigInt,BarrettMu,twoDigit} from 'tinper-sparrow/lib/util/rsautils';
+	//import {trans} from 'tinper-sparrow/lib/util/i18n';
 
-	//Sparrow import
+	//Neoui import
 	var ex = {
 		Autocomplete: _neouiAutocomplete.Autocomplete,
 		Button: _neouiButton.Button,
@@ -4375,6 +4390,7 @@ $.fn.bootstrapWizard.defaults = {
 		validate: _neouiValidate.validate,
 		doValidate: _neouiValidate.doValidate,
 		DateTimePicker: _neouiDatetimepicker.DateTimePicker,
+		MobDateTimePicker: _neouiMobdatetimepicker.MobDateTimePicker,
 		Time: _neouiTime.Time,
 		ClockPicker: _neouiClockpicker.ClockPicker,
 		Month: _neouiMonth.Month,
@@ -4445,26 +4461,13 @@ $.fn.bootstrapWizard.defaults = {
 	};
 	//extend(ex,env);
 
-	//import {setCookie,getCookie} from 'tinper-sparrow/lib/cookies';
-	//import {createShellObject,execIgnoreError,getFunction,getJSObject,isDate,isNumber,isArray,isEmptyObject,inArray,isDomElement,each} from 'tinper-sparrow/lib/util';
-	//import {env} from 'tinper-sparrow/lib/env';
-	//import {on,off,trigger,stopEvent,event} from 'tinper-sparrow/lib/event';
-	//import {addClass,removeClass,hasClass,toggleClass,closest,css,wrap,getStyle,getZIndex,makeDOM,makeModal,getOffset,getScroll,showPanelByEle} from 'tinper-sparrow/lib/dom';
-	//import {Class} from 'tinper-sparrow/lib/class';
-	//import {core} from 'tinper-sparrow/lib/core';
-	//import {compMgr} from 'tinper-sparrow/lib/compMgr';
-	//import {BaseComponent} from 'tinper-sparrow/lib/BaseComponent';
-	//import {ajax} from 'tinper-sparrow/lib/ajax';
-	//import {floatRender,integerRender,dateRender,dateTimeRender,timeRender,percentRender,dateToUTCString} from 'tinper-sparrow/lib/util/dataRender';
-	//import {NumberFormater,DateFormater} from 'tinper-sparrow/lib/util/formater';
-	//import {date} from 'tinper-sparrow/lib/util/dateUtils';
-	//import {AddressMasker,NumberMasker,CurrencyMasker,PercentMasker} from 'tinper-sparrow/lib/util/masker'
-	//import {hotkeys} from 'tinper-sparrow/lib/util/hotKeys';
-	//import {Ripple} from 'tinper-sparrow/lib/util/ripple';
-	//import {RSAUtils,BigInt,BarrettMu,twoDigit} from 'tinper-sparrow/lib/util/rsautils';
-	//import {trans} from 'tinper-sparrow/lib/util/i18n';
+	/**
+	 * Module : Neoui webpack entry index
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-08-10 16:19:39
+	 */
 
-	//Neoui import
+	//Sparrow import
 	(0, _extend.extend)(ex, window.u || {});
 	window.u = ex;
 	exports.u = ex;
@@ -5959,7 +5962,7 @@ $.fn.bootstrapWizard.defaults = {
 				element["uEvent"][eventName].forEach(function (fn) {
 					try {
 						e.target = e.target || e.srcElement; //兼容IE8
-					} catch (e) {}
+					} catch (ee) {}
 					if (fn) fn.call(element, e);
 				});
 			};
@@ -6000,7 +6003,8 @@ $.fn.bootstrapWizard.defaults = {
 			}
 			return;
 		}
-		var eventfn = element["uEvent"][eventName + 'fn'];
+		var eventfn;
+		if (element && element["uEvent"] && element["uEvent"][eventName + 'fn']) eventfn = element["uEvent"][eventName + 'fn'];
 		if (element.removeEventListener) {
 			// 用于支持DOM的浏览器
 			element.removeEventListener(eventName, eventfn);
@@ -6014,8 +6018,9 @@ $.fn.bootstrapWizard.defaults = {
 		if (u.event && u.event[eventName] && u.event[eventName].teardown) {
 			u.event[eventName].teardown.call(element);
 		}
-		element["uEvent"][eventName] = undefined;
-		element["uEvent"][eventName + 'fn'] = undefined;
+
+		if (element && element["uEvent"] && element["uEvent"][eventName]) element["uEvent"][eventName] = undefined;
+		if (element && element["uEvent"] && element["uEvent"][eventName + 'fn']) element["uEvent"][eventName + 'fn'] = undefined;
 	};
 	var trigger = function trigger(element, eventName) {
 		if (element["uEvent"] && element["uEvent"][eventName]) {
@@ -9686,7 +9691,7 @@ $.fn.bootstrapWizard.defaults = {
 			getAsync: false,
 			fallbackLng: false,
 			ns: { namespaces: ['uui-trans'] },
-			lng: (0, _cookies.getCookie)('i_languages'),
+			lng: (0, _cookies.getCookie)('i_languages') || 'zh',
 			resGetPath: __FOLDER__ + '/locales/__lng__/__ns__.json'
 		});
 	}
@@ -11611,6 +11616,8 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _compMgr = __webpack_require__(9);
 
+	var _i18n = __webpack_require__(21);
+
 	var pagination = _BaseComponent.BaseComponent.extend({});
 
 	var PageProxy = function PageProxy(options, page) {
@@ -11697,7 +11704,12 @@ $.fn.bootstrapWizard.defaults = {
 		last: '&raquo;',
 		gap: '···',
 		//totalText: '合计:',
-		totalText: '共',
+		totalText: (0, _i18n.trans)('pagination.totalText', '共'),
+		listText: (0, _i18n.trans)('pagination.listText', '条'),
+		showText: (0, _i18n.trans)('pagination.showText', '显示'),
+		pageText: (0, _i18n.trans)('pagination.pageText', '页'),
+		toText: (0, _i18n.trans)('pagination.toText', '到'),
+		okText: (0, _i18n.trans)('public.ok', '确定'),
 		truncate: false,
 		showState: true,
 		showTotal: true, //初始默认显示总条数 “共xxx条”
@@ -11810,24 +11822,25 @@ $.fn.bootstrapWizard.defaults = {
 			var htmlTmp = '';
 			//分别得到分页条后“共xxx条”、“显示xx条”、“到xx页 确定”三个html片段
 			if (options.showTotal) {
-				htmlTmp += '<div class="pagination-state">' + options.totalText + '&nbsp;' + options.totalCount + '&nbsp;条</div>';
+				htmlTmp += '<div class="pagination-state">' + options.totalText + '&nbsp;' + options.totalCount + '&nbsp;' + options.listText + '</div>';
 			}
 			if (options.showColumn) {
+
 				if ((0, _dom.hasClass)(this.$ul, 'pagination-sm')) {
-					htmlTmp += '<div class="pagination-state">显示<select  class="page_z page_z_sm">' + pageOption + '</select>条</div>';
+					htmlTmp += '<div class="pagination-state">' + options.showText + '<select  class="page_z page_z_sm">' + pageOption + '</select>' + options.listText + '</div>';
 				} else if ((0, _dom.hasClass)(this.$ul, 'pagination-lg')) {
-					htmlTmp += '<div class="pagination-state">显示<select  class="page_z page_z_lg">' + pageOption + '</select>条</div>';
+					htmlTmp += '<div class="pagination-state">' + options.showText + '<select  class="page_z page_z_lg">' + pageOption + '</select>' + options.listText + '</div>';
 				} else {
-					htmlTmp += '<div class="pagination-state">显示<select  class="page_z">' + pageOption + '</select>条</div>';
+					htmlTmp += '<div class="pagination-state">' + options.showText + '<select  class="page_z">' + pageOption + '</select>' + options.listText + '</div>';
 				}
 			}
 			if (options.showJump) {
 				if ((0, _dom.hasClass)(this.$ul, 'pagination-sm')) {
-					htmlTmp += '<div class="pagination-state">到<input class="page_j page_j_sm" value=' + options.currentPage + '>页<input class="pagination-jump pagination-jump-sm" type="button" value="确定"/></div>';
+					htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j page_j_sm" value=' + options.currentPage + '>' + options.pageText + '<input class="pagination-jump pagination-jump-sm" type="button" value="' + options.okText + '"/></div>';
 				} else if ((0, _dom.hasClass)(this.$ul, 'pagination-lg')) {
-					htmlTmp += '<div class="pagination-state">到<input class="page_j page_j_lg" value=' + options.currentPage + '>页<input class="pagination-jump pagination-jump-lg" type="button" value="确定"/></div>';
+					htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j page_j_lg" value=' + options.currentPage + '>' + options.pageText + '<input class="pagination-jump pagination-jump-lg" type="button" value="' + options.okText + '"/></div>';
 				} else {
-					htmlTmp += '<div class="pagination-state">到<input class="page_j" value=' + options.currentPage + '>页<input class="pagination-jump" type="button" value="确定"/></div>';
+					htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j" value=' + options.currentPage + '>' + options.pageText + '<input class="pagination-jump" type="button" value="' + options.okText + '"/></div>';
 				}
 			}
 			htmlArr.push(htmlTmp);
@@ -12495,7 +12508,7 @@ $.fn.bootstrapWizard.defaults = {
 	            module.init(self);
 	            self.loaded = true;
 	        }.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));
-	/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(51)(module)))});
+	/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(52)(module)))});
 	    }
 	};
 
@@ -12595,10 +12608,12 @@ $.fn.bootstrapWizard.defaults = {
 		"./neoui-menu.js": 27,
 		"./neoui-message": 28,
 		"./neoui-message.js": 28,
-		"./neoui-month": 42,
-		"./neoui-month.js": 42,
-		"./neoui-monthdate": 43,
-		"./neoui-monthdate.js": 43,
+		"./neoui-mobdatetimepicker": 42,
+		"./neoui-mobdatetimepicker.js": 42,
+		"./neoui-month": 43,
+		"./neoui-month.js": 43,
+		"./neoui-monthdate": 44,
+		"./neoui-monthdate.js": 44,
 		"./neoui-multilang": 29,
 		"./neoui-multilang.js": 29,
 		"./neoui-navmenu": 30,
@@ -12611,24 +12626,24 @@ $.fn.bootstrapWizard.defaults = {
 		"./neoui-radio.js": 33,
 		"./neoui-refer": 34,
 		"./neoui-refer.js": 34,
-		"./neoui-slidePanel": 44,
-		"./neoui-slidePanel.js": 44,
-		"./neoui-switch": 45,
-		"./neoui-switch.js": 45,
-		"./neoui-tabs": 46,
-		"./neoui-tabs.js": 46,
+		"./neoui-slidePanel": 45,
+		"./neoui-slidePanel.js": 45,
+		"./neoui-switch": 46,
+		"./neoui-switch.js": 46,
+		"./neoui-tabs": 47,
+		"./neoui-tabs.js": 47,
 		"./neoui-textfield": 16,
 		"./neoui-textfield.js": 16,
-		"./neoui-time": 47,
-		"./neoui-time.js": 47,
+		"./neoui-time": 48,
+		"./neoui-time.js": 48,
 		"./neoui-tooltip": 41,
 		"./neoui-tooltip.js": 41,
 		"./neoui-validate": 40,
 		"./neoui-validate.js": 40,
-		"./neoui-year": 48,
-		"./neoui-year.js": 48,
-		"./neoui-yearmonth": 49,
-		"./neoui-yearmonth.js": 49
+		"./neoui-year": 49,
+		"./neoui-year.js": 49,
+		"./neoui-yearmonth": 50,
+		"./neoui-yearmonth.js": 50
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -12671,11 +12686,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _dateUtils = __webpack_require__(38);
 
-	/**
-	 * Module : neoui-clockpicker
-	 * Author : liuyk(liuyk@yonyou.com)
-	 * Date	  : 2016-08-11 15:17:07
-	 */
+	var _i18n = __webpack_require__(21);
 
 	var ClockPicker = _BaseComponent.BaseComponent.extend({
 		DEFAULTS: {},
@@ -12692,7 +12703,9 @@ $.fn.bootstrapWizard.defaults = {
 			(0, _dom.addClass)(this.element, 'u-text');
 
 			this.template = '<div class="u-clock-ul popover clockpicker-popover" style="padding:0px;">';
-			this.template += '<div class="popover-title"><button class="u-button u-date-clean u-clock-clean" >清空</button><span class="clockpicker-span-hours">02</span> : <span class="clockpicker-span-minutes text-primary">01</span><span class="clockpicker-span-am-pm"></span></div>';
+			this.template += '<div class="popover-title"><button class="u-button u-date-clean u-clock-clean" >';
+			this.template += (0, _i18n.trans)('public.clear', "清空");
+			this.template += '</button><span class="clockpicker-span-hours">02</span> : <span class="clockpicker-span-minutes text-primary">01</span><span class="clockpicker-span-am-pm"></span></div>';
 			this.template += '<div class="popover-content">';
 			this.template += '	<div class="clockpicker-plate">';
 			this.template += '		<div class="clockpicker-canvas">';
@@ -13096,7 +13109,12 @@ $.fn.bootstrapWizard.defaults = {
 				} catch (e) {}
 			}
 		}
-	});
+	}); /**
+	     * Module : neoui-clockpicker
+	     * Author : liuyk(liuyk@yonyou.com)
+	     * Date	  : 2016-08-11 15:17:07
+	     */
+
 	if (!_env.env.isIE8) {
 		_compMgr.compMgr.regComp({
 			comp: ClockPicker,
@@ -13516,7 +13534,7 @@ $.fn.bootstrapWizard.defaults = {
 			var _date = new Date((0, _util.dateFormat)(value));
 			if (isNaN(_date)) {
 				// IE的话对"2016-2-13 12:13:22"进行处理
-				var index1, index2, index3, s1, s2, s3;
+				var index1, index2, index3, s1, s2, s3, s4;
 				if (value.indexOf) {
 					index1 = value.indexOf('-');
 					index2 = value.indexOf(':');
@@ -13527,6 +13545,7 @@ $.fn.bootstrapWizard.defaults = {
 							s3 = value.split(' ');
 							s1 = s3[0].split('-');
 							s2 = s3[1].split(':');
+							s4 = s3[2];
 						} else if (index1 > 0) {
 							s1 = value.split('-');
 						} else if (index2 > 0) {
@@ -13539,6 +13558,10 @@ $.fn.bootstrapWizard.defaults = {
 							dateFlag = true;
 						}
 						if (s2 && s2.length > 0) {
+							//解决ie和firefox等时间pm直接变am问题
+							if (s4 == "pm") {
+								s2[0] = s2[0] - -12;
+							}
 							_date.setHours(s2[0] ? s2[0] : 0);
 							_date.setMinutes(s2[1] ? s2[1] : 0);
 							_date.setSeconds(s2[2] ? s2[2] : 0);
@@ -13547,9 +13570,7 @@ $.fn.bootstrapWizard.defaults = {
 					} else {
 						_date = new Date(parseInt(value));
 						if (isNaN(_date)) {
-							// 输入值不正确时，默认为空，如果抛出异常会后面内容的解析
-							// throw new TypeError('invalid Date parameter');
-							_date = "";
+							throw new TypeError('invalid Date parameter');
 						} else {
 							dateFlag = true;
 						}
@@ -13598,6 +13619,8 @@ $.fn.bootstrapWizard.defaults = {
 	var _ripple = __webpack_require__(13);
 
 	var _util = __webpack_require__(6);
+
+	var _i18n = __webpack_require__(21);
 
 	var DateTimePicker = _BaseComponent.BaseComponent.extend({});
 
@@ -14064,7 +14087,7 @@ $.fn.bootstrapWizard.defaults = {
 	    weekSpans = datePage.querySelectorAll('.u-date-week span');
 
 	    for (var i = 0; i < 7; i++) {
-	        weekSpans[i].innerHTML = _dateUtils.date._dateLocale[language].weekdaysMin[i];
+	        weekSpans[i].innerHTML = _dateUtils.date._jsonLocale.weekdaysMin[i];
 	    }
 	    dateDiv = datePage.querySelector('.u-date-content-panel');
 	    tempDate = this.startDate;
@@ -14665,20 +14688,7 @@ $.fn.bootstrapWizard.defaults = {
 	    //this._dateContent.style.height =panelHeight - 158 + 'px';   // 106 52
 	};
 
-	var dateTimePickerTemplateArr = ['<div class="u-date-panel">', '<div class="u-date-body">',
-	/*'<div class="u-date-header">',
-	    '<span class="u-date-header-year"></span>',
-	     '<div class="u-date-header-h3">',
-	        '<span class="u-date-header-week"></span>',
-	        '<span>,</span>',
-	        '<span class="u-date-header-month"></span>',
-	        '<span> </span>',
-	        '<span class="u-date-header-date"></span>',
-	        '<span> </span>',
-	        '<span class="u-date-header-time"></span>',
-	     '</div>',
-	'</div>',*/
-	'<div class="u-date-content"></div>', '</div>', '<div class="u-date-nav">', '<button type="button" class="u-button u-date-ok right primary">确定</button>', '<button type="button" class="u-button u-date-cancel right">取消</button>', '<button type="button" class="u-button u-date-clean">清空</button>', '</div>', '</div>'];
+	var dateTimePickerTemplateArr = ['<div class="u-date-panel">', '<div class="u-date-body">', '<div class="u-date-content"></div>', '</div>', '<div class="u-date-nav">', '<button type="button" class="u-button u-date-ok right primary">', (0, _i18n.trans)('public.confirm', '确定'), '</button>', '<button type="button" class="u-button u-date-cancel right">', (0, _i18n.trans)('public.cancel', '取消'), '</button>', '<button type="button" class="u-button u-date-clean">', (0, _i18n.trans)('public.clear', '清空'), '</button>', '</div>', '</div>'];
 
 	/******************************
 	 *  Public method
@@ -15000,23 +15010,25 @@ $.fn.bootstrapWizard.defaults = {
 	};
 
 	DateTimePicker.fn.resetDataObj = function (dataObj) {
-	    if (this.options.format.indexOf('h') < 0 && this.options.format.indexOf('H') < 0) {
+	    if (this.format.indexOf('h') < 0 && this.format.indexOf('H') < 0) {
 	        dataObj.setHours(0);
 	    }
-	    if (this.options.format.indexOf('m') < 0) {
+	    if (this.format.indexOf('m') < 0) {
 	        dataObj.setMinutes(0);
 	    }
-	    if (this.options.format.indexOf('s') < 0) {
+	    if (this.format.indexOf('s') < 0) {
 	        dataObj.setSeconds(0);
 	        dataObj.setMilliseconds(0);
 	    }
 	};
 
-	_compMgr.compMgr.regComp({
-	    comp: DateTimePicker,
-	    compAsString: 'u.DateTimePicker',
-	    css: 'u-datepicker'
-	});
+	if (!_env.env.isMobile) {
+	    _compMgr.compMgr.regComp({
+	        comp: DateTimePicker,
+	        compAsString: 'u.DateTimePicker',
+	        css: 'u-datepicker'
+	    });
+	}
 
 	if (document.readyState && document.readyState === 'complete') {
 	    _compMgr.compMgr.updateComp();
@@ -15955,6 +15967,205 @@ $.fn.bootstrapWizard.defaults = {
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.MobDateTimePicker = undefined;
+
+	var _extend = __webpack_require__(1);
+
+	var _BaseComponent = __webpack_require__(4);
+
+	var _env = __webpack_require__(8);
+
+	var _event = __webpack_require__(7);
+
+	var _dom = __webpack_require__(10);
+
+	var _core = __webpack_require__(37);
+
+	var _dateUtils = __webpack_require__(38);
+
+	var _neouiValidate = __webpack_require__(40);
+
+	var _compMgr = __webpack_require__(9);
+
+	var _ripple = __webpack_require__(13);
+
+	var _util = __webpack_require__(6);
+
+	var MobDateTimePicker = _BaseComponent.BaseComponent.extend({});
+
+	MobDateTimePicker.fn = MobDateTimePicker.prototype;
+
+	MobDateTimePicker.fn.init = function () {
+	    var self = this,
+	        _fmt,
+	        _defaultFmt;
+
+	    var self = this,
+	        adapterType,
+	        format;
+	    this._element = this.element;
+	    this._input = this._element.querySelector("input");
+	    if ((0, _dom.hasClass)(this._element, 'time')) {
+	        this.type = 'datetime';
+	        _defaultFmt = 'YYYY-MM-DD hh:mm:ss';
+	    } else {
+	        this.type = 'date';
+	        _defaultFmt = 'YYYY-MM-DD';
+	    }
+	    _fmt = this._element.getAttribute("format");
+	    this.format = _fmt || this.options['format'] || _defaultFmt;
+	    this.isShow = false;
+	    this.op = {};
+	    var mobileDateFormat = "",
+	        mobileTimeFormat = "",
+	        dateOrder = "",
+	        timeOrder = "";
+	    if (_env.env.isMobile) {
+	        switch (format) {
+	            case "YYYY-MM-DD":
+	                mobileDateFormat = "yy-mm-dd";
+	                dateOrder = mobileDateFormat.replace(/-/g, '');
+	                break;
+	            case "YYYY-MM-DD HH:mm":
+	                mobileDateFormat = "yy-mm-dd";
+	                mobileTimeFormat = "HH:ii";
+	                dateOrder = mobileDateFormat.replace(/-/g, '');
+	                timeOrder = mobileTimeFormat.replace(/\:/g, '');
+	                break;
+	            case "YYYY-MM":
+	                mobileDateFormat = "yy-mm";
+	                dateOrder = mobileDateFormat.replace(/-/g, '');
+	                break;
+	            default:
+	                mobileDateFormat = "yy-mm-dd";
+	                mobileTimeFormat = "HH:ii:ss";
+	                dateOrder = mobileDateFormat.replace(/-/g, '');
+	                timeOrder = mobileTimeFormat.replace(/\:/g, '');
+	        }
+
+	        this.op = {
+	            theme: "ios",
+	            mode: "scroller",
+	            lang: "zh",
+	            cancelText: null,
+	            dateFormat: mobileDateFormat,
+	            timeWheels: timeOrder,
+	            dateWheels: dateOrder,
+	            timeFormat: mobileTimeFormat,
+	            onSelect: function onSelect(val) {
+	                if (typeof self.options.beforeValueChangeFun == 'function') {
+	                    if (!self.options.beforeValueChangeFun.call(this, this.pickerDate)) {
+	                        return;
+	                    }
+	                }
+	                self.setValue(val);
+	            }
+	        };
+	        this._span = this.element.querySelector("span");
+	        this.element = this.element.querySelector("input");
+	        this.element.setAttribute('readonly', 'readonly');
+	        if (this._span) {
+	            (0, _event.on)(this._span, 'click', function (e) {
+	                self.element.focus();
+	                (0, _event.stopEvent)(e);
+	            });
+	        }
+	        if (this.adapterType == 'date') {
+	            $(this.element).mobiscroll().date(this.op);
+	        } else {
+	            $(this.element).mobiscroll().datetime(this.op);
+	        }
+	    } else {
+	        this.comp = new DateTimePicker({ el: this.element, format: this.maskerMeta.format, showFix: this.options.showFix, beforeValueChangeFun: this.beforeValueChangeFun });
+	    }
+
+	    this.element['u.DateTimePicker'] = this.comp;
+
+	    if (!_env.env.isMobile) {
+	        this.comp.on('select', function (event) {
+	            self.setValue(event.value);
+	        });
+	    }
+
+	    if (!_env.env.isMobile) {
+	        // 校验
+	        this.comp.on('validate', function (event) {
+	            self.doValidate();
+	        });
+	    }
+	};
+
+	MobDateTimePicker.fn.setValue = function (value) {
+	    if (!value) {
+	        this.date = null;
+	        this._input.value = '';
+	        return;
+	    }
+
+	    var _date = _dateUtils.date.getDateObj(value);
+	    if (_date) {
+	        if (_date) {
+	            this.resetDataObj(_date);
+	        }
+	        if (this.beginDateObj) {
+	            if (this.beginDateObj) {
+	                this.resetDataObj(this.beginDateObj);
+	            }
+	            if (_date.getTime() < this.beginDateObj.getTime()) return;
+	        }
+	        if (this.overDateObj) {
+	            if (this.overDateObj) {
+	                this.resetDataObj(this.overDateObj);
+	            }
+	            if (_date.getTime() > this.overDateObj.getTime()) return;
+	        }
+	        this.date = _date;
+	        this._input.value = _dateUtils.date.format(this.date, this.format);
+	    }
+	    this.trigger('valueChange', { value: value });
+	};
+
+	MobDateTimePicker.fn.resetDataObj = function (dataObj) {
+	    if (this.format.indexOf('h') < 0 && this.format.indexOf('H') < 0) {
+	        dataObj.setHours(0);
+	    }
+	    if (this.format.indexOf('m') < 0) {
+	        dataObj.setMinutes(0);
+	    }
+	    if (this.format.indexOf('s') < 0) {
+	        dataObj.setSeconds(0);
+	        dataObj.setMilliseconds(0);
+	    }
+	};
+
+	if (_env.env.isMobile) {
+	    _compMgr.compMgr.regComp({
+	        comp: MobDateTimePicker,
+	        compAsString: 'u.DateTimePicker',
+	        css: 'u-datepicker'
+	    });
+	}
+
+	if (document.readyState && document.readyState === 'complete') {
+	    _compMgr.compMgr.updateComp();
+	} else {
+	    (0, _event.on)(window, 'load', function () {
+	        //扫描并生成控件
+	        _compMgr.compMgr.updateComp();
+	    });
+	}
+
+	exports.MobDateTimePicker = MobDateTimePicker;
+
+/***/ },
+/* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	exports.Month = undefined;
@@ -15970,6 +16181,10 @@ $.fn.bootstrapWizard.defaults = {
 	var _compMgr = __webpack_require__(9);
 
 	var _ripple = __webpack_require__(13);
+
+	var _i18n = __webpack_require__(21);
+
+	var _dateUtils = __webpack_require__(38);
 
 	/**
 	 * Module : neoui-month
@@ -16037,7 +16252,9 @@ $.fn.bootstrapWizard.defaults = {
 			oldPanel = this.panelContentDiv.querySelector('.u-date-content-page');
 			if (oldPanel) this.panelContentDiv.removeChild(oldPanel);
 			_month = this.month;
-			template = ['<div class="u-date-content-page">', '<div class="u-date-content-title">' + _month + '月</div>', '<div class="u-date-content-panel">', '<div class="u-date-content-year-cell">1月</div>', '<div class="u-date-content-year-cell">2月</div>', '<div class="u-date-content-year-cell">3月</div>', '<div class="u-date-content-year-cell">4月</div>', '<div class="u-date-content-year-cell">5月</div>', '<div class="u-date-content-year-cell">6月</div>', '<div class="u-date-content-year-cell">7月</div>', '<div class="u-date-content-year-cell">8月</div>', '<div class="u-date-content-year-cell">9月</div>', '<div class="u-date-content-year-cell">10月</div>', '<div class="u-date-content-year-cell">11月</div>', '<div class="u-date-content-year-cell">12月</div>', '</div>', '</div>'].join("");
+			var _defaultMonth = _month + '月';
+			var monthIndex = _dateUtils.date._jsonLocale.defaultMonth.indexOf(_defaultMonth);
+			template = ['<div class="u-date-content-page">', '<div class="u-date-content-title">' + _dateUtils.date._jsonLocale.monthsShort[monthIndex] + '</div>', '<div class="u-date-content-panel">', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[0] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[1] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[2] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[3] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[4] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[5] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[6] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[7] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[8] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[9] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[10] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[11] + '</div>', '</div>', '</div>'].join("");
 
 			monthPage = (0, _dom.makeDOM)(template);
 			cells = monthPage.querySelectorAll('.u-date-content-year-cell');
@@ -16197,7 +16414,7 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Month = Month;
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16225,11 +16442,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _ripple = __webpack_require__(13);
 
-	/**
-	 * Module : neoui-year
-	 * Author : wanghao(wanghaoo@yonyou.com)
-	 * Date   : 2016-11-09
-	 */
+	var _i18n = __webpack_require__(21);
 
 	var MonthDate = _BaseComponent.BaseComponent.extend({
 	    DEFAULTS: {},
@@ -16295,7 +16508,9 @@ $.fn.bootstrapWizard.defaults = {
 	    _fillMonth: function _fillMonth() {
 	        var oldPanel, template, monthPage, _month, cells, i;
 	        _month = this.month;
-	        template = ['<div class="u-date-content-page">', '<div class="u-date-content-title">' + _month + '月</div>', '<div class="u-date-content-panel">', '<div class="u-date-content-year-cell">1月</div>', '<div class="u-date-content-year-cell">2月</div>', '<div class="u-date-content-year-cell">3月</div>', '<div class="u-date-content-year-cell">4月</div>', '<div class="u-date-content-year-cell">5月</div>', '<div class="u-date-content-year-cell">6月</div>', '<div class="u-date-content-year-cell">7月</div>', '<div class="u-date-content-year-cell">8月</div>', '<div class="u-date-content-year-cell">9月</div>', '<div class="u-date-content-year-cell">10月</div>', '<div class="u-date-content-year-cell">11月</div>', '<div class="u-date-content-year-cell">12月</div>', '</div>', '</div>'].join("");
+	        var _defaultMonth = _month + '月';
+	        var monthIndex = _dateUtils.date._jsonLocale.defaultMonth.indexOf(_defaultMonth);
+	        template = ['<div class="u-date-content-page">', '<div class="u-date-content-title">' + _dateUtils.date._jsonLocale.monthsShort[monthIndex] + '</div>', '<div class="u-date-content-panel">', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[0] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[1] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[2] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[3] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[4] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[5] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[6] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[7] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[8] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[9] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[10] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[11] + '</div>', '</div>', '</div>'].join("");
 
 	        monthPage = (0, _dom.makeDOM)(template);
 	        cells = monthPage.querySelectorAll('.u-date-content-year-cell');
@@ -16351,12 +16566,12 @@ $.fn.bootstrapWizard.defaults = {
 	        oldPanel = this.panelContentDiv.querySelector('.u-date-content-page');
 	        if (oldPanel) this.panelContentDiv.removeChild(oldPanel);
 	        language = _core.core.getLanguages();
-	        template = ['<div class="u-date-content-page">', '<div class="u-date-content-title">', this.date + '日', '</div>', '<div class="u-date-week"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>', '<div class="u-date-content-panel"></div>', '</div>'].join("");
+	        template = ['<div class="u-date-content-page">', '<div class="u-date-content-title">', this.date + (0, _i18n.trans)('public.day', '日'), '</div>', '<div class="u-date-week"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>', '<div class="u-date-content-panel"></div>', '</div>'].join("");
 	        datePage = (0, _dom.makeDOM)(template);
 	        weekSpans = datePage.querySelectorAll('.u-date-week span');
 
 	        for (var i = 0; i < 7; i++) {
-	            weekSpans[i].innerHTML = _dateUtils.date._dateLocale[language].weekdaysMin[i];
+	            weekSpans[i].innerHTML = _dateUtils.date._jsonLocale.weekdaysMin[i];
 	        }
 	        dateDiv = datePage.querySelector('.u-date-content-panel');
 	        // tempDate = this.startDate;
@@ -16544,7 +16759,11 @@ $.fn.bootstrapWizard.defaults = {
 	        (0, _dom.removeClass)(this.panelDiv, 'is-visible');
 	        this.panelDiv.style.zIndex = -1;
 	    }
-	});
+	}); /**
+	     * Module : neoui-year
+	     * Author : wanghao(wanghaoo@yonyou.com)
+	     * Date   : 2016-11-09
+	     */
 
 	_compMgr.compMgr.regComp({
 	    comp: MonthDate,
@@ -16562,7 +16781,7 @@ $.fn.bootstrapWizard.defaults = {
 	exports.MonthDate = MonthDate;
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16639,7 +16858,7 @@ $.fn.bootstrapWizard.defaults = {
 	exports.slidePanel = slidePanel;
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16829,7 +17048,7 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Switch = Switch;
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16977,7 +17196,7 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Tabs = Tabs;
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17219,7 +17438,7 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Time = Time;
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17466,7 +17685,7 @@ $.fn.bootstrapWizard.defaults = {
 	exports.Year = Year;
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17490,7 +17709,11 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _ripple = __webpack_require__(13);
 
-	var _ployfill = __webpack_require__(50);
+	var _ployfill = __webpack_require__(51);
+
+	var _i18n = __webpack_require__(21);
+
+	var _dateUtils = __webpack_require__(38);
 
 	/**
 	 * Module : neoui-year
@@ -17598,7 +17821,9 @@ $.fn.bootstrapWizard.defaults = {
 	        oldPanel = this.panelContentDiv.querySelector('.u-date-content-page');
 	        if (oldPanel) this.panelContentDiv.removeChild(oldPanel);
 	        _month = this.month;
-	        template = ['<div class="u-date-content-page">', '<div class="u-date-content-title">' + _month + '月</div>', '<div class="u-date-content-panel">', '<div class="u-date-content-year-cell">1月</div>', '<div class="u-date-content-year-cell">2月</div>', '<div class="u-date-content-year-cell">3月</div>', '<div class="u-date-content-year-cell">4月</div>', '<div class="u-date-content-year-cell">5月</div>', '<div class="u-date-content-year-cell">6月</div>', '<div class="u-date-content-year-cell">7月</div>', '<div class="u-date-content-year-cell">8月</div>', '<div class="u-date-content-year-cell">9月</div>', '<div class="u-date-content-year-cell">10月</div>', '<div class="u-date-content-year-cell">11月</div>', '<div class="u-date-content-year-cell">12月</div>', '</div>', '</div>'].join("");
+	        var _defaultMonth = _month + '月';
+	        var monthIndex = _dateUtils.date._jsonLocale.defaultMonth.indexOf(_defaultMonth);
+	        template = ['<div class="u-date-content-page">', '<div class="u-date-content-title">' + _dateUtils.date._jsonLocale.monthsShort[monthIndex] + '</div>', '<div class="u-date-content-panel">', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[0] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[1] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[2] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[3] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[4] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[5] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[6] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[7] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[8] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[9] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[10] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[11] + '</div>', '</div>', '</div>'].join("");
 
 	        monthPage = (0, _dom.makeDOM)(template);
 	        cells = monthPage.querySelectorAll('.u-date-content-year-cell');
@@ -17799,7 +18024,7 @@ $.fn.bootstrapWizard.defaults = {
 	exports.YearMonth = YearMonth;
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports) {
 
 	"use strict";
