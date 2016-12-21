@@ -73,11 +73,13 @@
   height: 100%;
   width:100%;
   transition:all 300ms;
+  display:none;
   &.let-ie9{
     display: none;
   }
 
   &.current{
+    display: block;
     z-index: 0;
   }
   &.current.let-ie9{
