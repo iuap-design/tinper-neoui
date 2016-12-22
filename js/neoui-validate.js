@@ -478,14 +478,18 @@ Validate.fn.showMsg = function(msg) {
             //月凯修改
         // if (!this.tooltip)
         this.referDom = this.$element;
-                if (this.referDom.tagName !== 'INPUT' && this.referDom.tagName !== "TEXTAREA") {
-                    this.referDom = this.$element.querySelector('input');
-                    // 如果referDom的父元素不是this.$element说明时单选框、复选框。则referDom还为$element
-                    if (!this.referDom || this.referDom.parentNode !== this.$element) {
-                        this.referDom = this.$element;
-                    }
-                }
-            this.tooltip = new Tooltip(this.referDom, tipOptions)
+        if (this.referDom.tagName !== 'INPUT' && this.referDom.tagName !== "TEXTAREA") {
+            this.referDom = this.$element.querySelector('input');
+            // 如果referDom的父元素不是this.$element说明时单选框、复选框。则referDom还为$element
+            if (!this.referDom || this.referDom.parentNode !== this.$element) {
+                this.referDom = this.$element;
+            }
+        }
+        if(this.tooltip){
+            this.tooltip.hide();
+        }
+
+        this.tooltip = new Tooltip(this.referDom, tipOptions)
         this.tooltip.setTitle(msg);
         this.tooltip.show();
 
