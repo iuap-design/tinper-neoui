@@ -1,3 +1,13 @@
+<a name="3.1.18"></a>
+## [3.1.18](https://github.com/iuap-design/tinper-neoui/compare/v3.1.17...v3.1.18) (2016-12-22)
+
+
+### Bug Fixes
+* 表盘setValue ([2a4ac82](https://github.com/iuap-design/tinper-neoui/commit/2a4ac82))
+
+
+
+
 <a name="3.1.17"></a>
 ## [3.1.17](https://github.com/iuap-design/tinper-neoui/compare/v3.1.16...v3.1.17) (2016-12-14)
 

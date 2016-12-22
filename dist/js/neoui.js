@@ -4253,9 +4253,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.u = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -4478,9 +4476,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.extend = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -4530,9 +4526,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	/**
 	 * Module : Sparrow extend enum
 	 * Author : Kvkens(yueming@yonyou.com)
@@ -4568,9 +4562,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.Autocomplete = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -5170,9 +5162,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	exports.__esModule = true;
 	exports.BaseComponent = undefined;
 
 	var _class = __webpack_require__(5);
@@ -5311,9 +5301,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	/**
 	 * Module : Sparrow class
 	 * Author : Kvkens(yueming@yonyou.com)
@@ -5500,9 +5488,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -5661,9 +5647,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.event = exports.stopEvent = exports.trigger = exports.off = exports.on = undefined;
 
 	var _env = __webpack_require__(8);
@@ -6055,9 +6039,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.env = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -6260,9 +6242,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	exports.__esModule = true;
 	exports.compMgr = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -6530,9 +6510,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.getElementTop = exports.getElementLeft = exports.showPanelByEle = exports.getScroll = exports.getOffset = exports.makeModal = exports.makeDOM = exports.getZIndex = exports.getStyle = exports.wrap = exports.css = exports.closest = exports.toggleClass = exports.hasClass = exports.removeClass = exports.addClass = undefined;
 
 	var _event = __webpack_require__(7);
@@ -6849,9 +6827,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.ajax = undefined;
 
 	var _env = __webpack_require__(8);
@@ -6975,9 +6951,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.Button = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -7045,9 +7019,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	exports.__esModule = true;
 	exports.URipple = exports.Ripple = undefined;
 
 	var _env = __webpack_require__(8);
@@ -7276,9 +7248,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	exports.__esModule = true;
 	exports.Checkbox = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -7514,9 +7484,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	exports.__esModule = true;
 	exports.Combo = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -7960,9 +7928,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	exports.__esModule = true;
 	exports.Text = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -8201,9 +8167,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	exports.__esModule = true;
 	exports.showCollapse = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -8338,9 +8302,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.Combobox = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -8865,9 +8827,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	exports.__esModule = true;
 	exports.Table = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -8979,9 +8939,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.iframeDialog = exports.dialogWizard = exports.dialog = exports.dialogMode = exports.confirmDialog = exports.messageDialog = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -9633,14 +9591,20 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.trans = undefined;
 
 	var _cookies = __webpack_require__(22);
 
+	var _enumerables = __webpack_require__(2);
+
 	// 从datatable/src/compatiable/u/JsExtension.js抽取
+	/**
+	 * Module : Sparrow i18n
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-07-29 10:16:54
+	 */
+	//import {uuii18n} from '?';//缺失故修改为default值
 	window.getCurrentJsPath = function () {
 		var doc = document,
 		    a = {},
@@ -9674,13 +9638,7 @@ $.fn.bootstrapWizard.defaults = {
 				return isLtIE8 ? script.getAttribute('src', 4) : script.src;
 			}
 		}
-	}; /**
-	    * Module : Sparrow i18n
-	    * Author : Kvkens(yueming@yonyou.com)
-	    * Date	  : 2016-07-29 10:16:54
-	    */
-	//import {uuii18n} from '?';//缺失故修改为default值
-
+	};
 
 	if (window.i18n) {
 		var scriptPath = getCurrentJsPath(),
@@ -9691,7 +9649,7 @@ $.fn.bootstrapWizard.defaults = {
 			getAsync: false,
 			fallbackLng: false,
 			ns: { namespaces: ['uui-trans'] },
-			lng: (0, _cookies.getCookie)('i_languages') || 'zh',
+			lng: (0, _cookies.getCookie)(_enumerables.U_LOCALE) || 'zh',
 			resGetPath: __FOLDER__ + '/locales/__lng__/__ns__.json'
 		});
 	}
@@ -9708,9 +9666,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	/**
 	 * Module : Sparrow cookies
 	 * Author : Kvkens(yueming@yonyou.com)
@@ -9744,9 +9700,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.MDLayout = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -9984,9 +9938,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	exports.__esModule = true;
 	exports.NavLayoutTab = exports.NavLayout = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -10490,9 +10442,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.hideLoader = exports.showLoader = undefined;
 
 	var _dom = __webpack_require__(10);
@@ -10566,9 +10516,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.removeWaiting = exports.showWaiting = exports.hideLoading = exports.showLoading = exports.Loading = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -10697,9 +10645,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.Menu = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -11209,9 +11155,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	exports.__esModule = true;
 	exports.showMessage = exports.showMessageDialog = undefined;
 
 	var _dom = __webpack_require__(10);
@@ -11315,9 +11259,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.Multilang = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -11393,6 +11335,7 @@ $.fn.bootstrapWizard.defaults = {
 			target_div.insertAdjacentHTML("beforeEnd", "<div class='multilang_menu '>" + tmplabel + "</div>");
 			var tmpIconv = target_div.querySelector(".lang_icon"),
 			    target_menu = target_div.querySelector(".multilang_menu"),
+			    target_labels = target_menu.querySelectorAll('label'),
 			    tmpvaluebox = target_div.querySelector(".lang_value");
 			(0, _event.on)(tmpIconv, "click", function () {
 				var target_icon = this;
@@ -11424,19 +11367,22 @@ $.fn.bootstrapWizard.defaults = {
 					(0, _dom.css)(target_menu, "display", "none");
 				}
 			});
-			(0, _event.on)(target_menu, "click", "label", function () {
-				var target_label = this,
-				    tmpfield = target_label.getAttribute("attr"),
-				    tmptext = target_label.querySelector(".m_context").innerHTML,
-				    tmpicon = target_label.querySelector(".m_icon").cloneNode(true);
 
-				tmpvaluebox.setAttribute("class", "ready_change lang_value " + tmpfield);
-				tmpvaluebox.value = tmptext;
-				tmpvaluebox.focus();
-				var tmpicom = target_div.querySelector(".lang_icon"),
-				    oldicon = target_div.querySelector(".m_icon");
-				(0, _dom.removeClass)(tmpicom, "uf-caretdown");
-				tmpicom.replaceChild(tmpicon, oldicon);
+			target_labels.forEach(function (ele) {
+				(0, _event.on)(ele, "click", function () {
+					var target_label = this,
+					    tmpfield = target_label.getAttribute("attr"),
+					    tmptext = target_label.querySelector(".m_context").innerHTML,
+					    tmpicon = target_label.querySelector(".m_icon").cloneNode(true);
+
+					tmpvaluebox.setAttribute("class", "ready_change lang_value " + tmpfield);
+					tmpvaluebox.value = tmptext;
+					tmpvaluebox.focus();
+					var tmpicom = target_div.querySelector(".lang_icon"),
+					    oldicon = target_div.querySelector(".m_icon");
+					(0, _dom.removeClass)(tmpicom, "uf-caretdown");
+					tmpicom.replaceChild(tmpicon, oldicon);
+				});
 			});
 		} else {
 			console.error('Not object');
@@ -11485,9 +11431,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.NavMenu = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -11593,9 +11537,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.pagination = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -12018,9 +11960,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.Progress = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -12145,9 +12085,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	exports.__esModule = true;
 	exports.Radio = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -12385,9 +12323,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	exports.__esModule = true;
 	exports.refer = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -12665,9 +12601,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.ClockPicker = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -13139,9 +13073,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.core = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -13327,22 +13259,21 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.date = undefined;
 
 	var _core = __webpack_require__(37);
 
 	var _util = __webpack_require__(6);
 
-	/**
-	 * Module : Sparrow date util
-	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-08-06 13:37:20
-	 */
+	var _i18n = __webpack_require__(21);
 
-	var u = {};
+	var u = {}; /**
+	             * Module : Sparrow date util
+	             * Author : Kvkens(yueming@yonyou.com)
+	             * Date	  : 2016-08-06 13:37:20
+	             */
+
 	u.date = {
 
 		/**
@@ -13364,6 +13295,14 @@ $.fn.bootstrapWizard.defaults = {
 				weekdaysShort: 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
 				weekdaysMin: 'S_M_T_W_T_F_S'.split('_')
 			}
+		},
+		_jsonLocale: {
+			months: (0, _i18n.trans)('date.months', "一月\n二月\n三月\n四月\n五月\n六月\n七月\n八月\n九月\n十月\n十一月\n十二月").split('\n'),
+			monthsShort: (0, _i18n.trans)('date.monthsShort', "1月\n2月\n3月\n4月\n5月\n6月\n7月\n8月\n9月\n10月\n11月\n12月").split('\n'),
+			weekdays: (0, _i18n.trans)('date.weekdays', "星期日\n星期一\n星期二\n星期三\n星期四\n星期五\n星期六").split('\n'),
+			weekdaysShort: (0, _i18n.trans)('date.weekdaysShort', "周日\n周一\n周二\n周三\n周四\n周五\n周六").split('\n'),
+			weekdaysMin: (0, _i18n.trans)('date.weekdaysMin', "日\n一\n二\n三\n四\n五\n六").split('\n'),
+			defaultMonth: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
 		},
 
 		_formattingTokens: /(\[[^\[]*\])|(\\)?(Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Q|YYYY|YY|e|E|a|A|hh?|HH?|mm?|ss?|S{1,4}|x|X|zz?|ZZ?|.)/g,
@@ -13395,11 +13334,13 @@ $.fn.bootstrapWizard.defaults = {
 			},
 			MMM: function MMM(date, language) {
 				var m = date.getMonth();
-				return u.date._dateLocale[language].monthsShort[m];
+				// return u.date._dateLocale[language].monthsShort[m];
+				return u.date._jsonLocale.monthsShort[m];
 			},
 			MMMM: function MMMM(date, language) {
 				var m = date.getMonth();
-				return u.date._dateLocale[language].months[m];
+				// return u.date._dateLocale[language].months[m];
+				return u.date._jsonLocale.months[m];
 			},
 			//date
 			D: function D(date) {
@@ -13415,15 +13356,18 @@ $.fn.bootstrapWizard.defaults = {
 			},
 			dd: function dd(date, language) {
 				var d = u.date._formats.d(date);
-				return u.date._dateLocale[language].weekdaysMin[d];
+				// return u.date._dateLocale[language].weekdaysMin[d];
+				return u.date._jsonLocale.weekdaysMin[d];
 			},
 			ddd: function ddd(date, language) {
 				var d = u.date._formats.d(date);
-				return u.date._dateLocale[language].weekdaysShort[d];
+				// return u.date._dateLocale[language].weekdaysShort[d];
+				return u.date._jsonLocale.weekdaysShort[d];
 			},
 			dddd: function dddd(date, language) {
 				var d = u.date._formats.d(date);
-				return u.date._dateLocale[language].weekdays[d];
+				// return u.date._dateLocale[language].weekdays[d];
+				return u.date._jsonLocale.weekdays[d];
 			},
 			// am pm
 			a: function a(date) {
@@ -13593,9 +13537,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	exports.__esModule = true;
 	exports.DateTimePicker = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -13848,11 +13790,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -13945,11 +13887,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	      on(this._headerMonth, 'click', function(e){
+	     on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	      on(this._headerTime, 'click', function(e){
+	     on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -15047,9 +14989,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	exports.__esModule = true;
 	exports.doValidate = exports.validate = exports.Validate = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -15525,6 +15465,10 @@ $.fn.bootstrapWizard.defaults = {
 	                this.referDom = this.$element;
 	            }
 	        }
+	        if (this.tooltip) {
+	            this.tooltip.hide();
+	        }
+
 	        this.tooltip = new _neouiTooltip.Tooltip(this.referDom, tipOptions);
 	        this.tooltip.setTitle(msg);
 	        this.tooltip.show();
@@ -15641,9 +15585,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.Tooltip = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -15966,9 +15908,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	exports.__esModule = true;
 	exports.MobDateTimePicker = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -16165,9 +16105,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.Month = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -16419,9 +16357,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	exports.__esModule = true;
 	exports.MonthDate = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -16786,9 +16722,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.slidePanel = undefined;
 
 	var _dom = __webpack_require__(10);
@@ -16863,9 +16797,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.Switch = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -16904,7 +16836,7 @@ $.fn.bootstrapWizard.defaults = {
 			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
 			/*var focusHelper = document.createElement('span');
 	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
-	  		thumb.appendChild(focusHelper);*/
+	  	thumb.appendChild(focusHelper);*/
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);
@@ -17053,9 +16985,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.Tabs = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -17201,9 +17131,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.Time = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -17443,9 +17371,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+	exports.__esModule = true;
 	exports.Year = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -17690,9 +17616,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	exports.__esModule = true;
 	exports.YearMonth = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -18029,9 +17953,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	exports.__esModule = true;
 	var requestAnimationFrame = function requestAnimationFrame(callback) {
 	    if (!window.requestAnimationFrame) {
 	        window.requestAnimationFrame = window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
