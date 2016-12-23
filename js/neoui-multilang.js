@@ -30,7 +30,9 @@ Multilang.fn = Multilang.prototype;
 Multilang.fn.addData = function(val) {
 	var target = this.element,
 		tmparray, target_div = target.parentNode;
-	if(typeof(val) == "object") {
+	if(val === null || typeof(val) === 'undefined' ){
+		tmparray = [];
+	} else if (typeof(val) == "object") {
 		tmparray = val
 	} else {
 		tmparray = val.split(",")
@@ -48,9 +50,9 @@ Multilang.fn.multinfo = function(sort) {
 		tmplabel = "",
 		close_menu = true,
 		tmpfield = "name";
-	if(sort.lang_name) {
-		tmpfield = sort.lang_name
-	}
+	// if(sort.lang_name) {
+	// 	tmpfield = sort.lang_name
+	// }
 	if(isArray(sort)) {
 
 		wrap(target, "<div class='multilang_body'><input class='lang_value' contenteditable='true'><span class='uf uf-caretdown lang_icon'><span class='m_icon'></span></span>")
@@ -146,6 +148,7 @@ Multilang.fn.getData = function() {
 		multilang_data = target.value;
 	return multilang_data;
 }
+
 compMgr.regComp({
 	comp: Multilang,
 	compAsString: 'u.Multilang',
