@@ -227,7 +227,7 @@ $button-icon-focus-color: $button-focus-color !default;
 
 $button-min-width: 72/16 * $unit !default;
 $button-height: 36/16 * $unit !default;
-$button-padding: 5/16* $unit  13/16 * $unit !default;
+$button-padding: 5.008/16* $unit  13/16 * $unit !default;
 $button-padding-IE8: 5px 13px !default;
 $button-top-padding: 13/16 * $unit !default;
 $button-left-padding: 6/16* $unit !default;
@@ -247,19 +247,19 @@ $button-raised-font-size: 14/16 * $unit !default;
 $button-border-color:unquote("rgb(#{$palette-grey-300})") !default;
 
 // 大按钮
-$button-padding-y-lg:6px;
+$button-padding-y-lg:9px;
 $button-padding-x-lg:15px;
 $font-size-lg:14px;
 $button-border-radius-lg:3px;
 
 //特大型按钮
-$button-padding-y-xg:10px;
+$button-padding-y-xg:11px;
 $button-padding-x-xg:18px;
 $font-size-xg:18px;
 $button-border-radius-xg:4px;
 
 //小型按钮
-$button-padding-y-sm:1px;
+$button-padding-y-sm:4px;
 $button-padding-x-sm:5px;
 $font-size-sm:12px;
 $button-border-radius-sm:2px;

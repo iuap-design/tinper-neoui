@@ -349,10 +349,11 @@ pagination.prototype.page = function(pageIndex, totalPages, pageSize) {
 		this.render();
 
 	}
+	var temppageIndex = (pageIndex - 1)<0?0:(pageIndex - 1);
 	if(pageSize != oldPageSize) {
-		this.trigger('sizeChange', [pageSize, pageIndex - 1])
+		this.trigger('sizeChange', [pageSize, temppageIndex])
 	} else {
-		this.trigger('pageChange', pageIndex - 1)
+		this.trigger('pageChange', temppageIndex)
 	}
 
 	//this.$element.trigger('pageChange', pageIndex)

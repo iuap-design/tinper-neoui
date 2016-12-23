@@ -7464,15 +7464,25 @@ $.fn.bootstrapWizard.defaults = {
 	        this._updateClasses();
 	    },
 
+	    // 点击时查看是否有beforeEdit（从checkboxAdapter那里传来）方法，根据beforeEdit方法判断是否触发check或者uncheck
+	    beforeToggle: function beforeToggle() {
+	        if (typeof this.beforeEdit === 'function') {
+	            return this.beforeEdit();
+	        } else {
+	            return true;
+	        }
+	    },
 	    /**
 	     * Check checkbox.
 	     *
 	     * @public
 	     */
 	    check: function check() {
-	        this._inputElement.checked = true;
-	        this._updateClasses();
-	        this.boundInputOnChange();
+	        if (this.beforeToggle()) {
+	            this._inputElement.checked = true;
+	            this._updateClasses();
+	            this.boundInputOnChange();
+	        }
 	    },
 
 	    /**
@@ -7481,9 +7491,11 @@ $.fn.bootstrapWizard.defaults = {
 	     * @public
 	     */
 	    uncheck: function uncheck() {
-	        this._inputElement.checked = false;
-	        this._updateClasses();
-	        this.boundInputOnChange();
+	        if (this.beforeToggle()) {
+	            this._inputElement.checked = false;
+	            this._updateClasses();
+	            this.boundInputOnChange();
+	        }
 	    }
 
 	}); /**
@@ -9640,7 +9652,15 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _cookies = __webpack_require__(22);
 
+	var _enumerables = __webpack_require__(2);
+
 	// 从datatable/src/compatiable/u/JsExtension.js抽取
+	/**
+	 * Module : Sparrow i18n
+	 * Author : Kvkens(yueming@yonyou.com)
+	 * Date	  : 2016-07-29 10:16:54
+	 */
+	//import {uuii18n} from '?';//缺失故修改为default值
 	window.getCurrentJsPath = function () {
 		var doc = document,
 		    a = {},
@@ -9674,13 +9694,7 @@ $.fn.bootstrapWizard.defaults = {
 				return isLtIE8 ? script.getAttribute('src', 4) : script.src;
 			}
 		}
-	}; /**
-	    * Module : Sparrow i18n
-	    * Author : Kvkens(yueming@yonyou.com)
-	    * Date	  : 2016-07-29 10:16:54
-	    */
-	//import {uuii18n} from '?';//缺失故修改为default值
-
+	};
 
 	if (window.i18n) {
 		var scriptPath = getCurrentJsPath(),
@@ -9691,7 +9705,7 @@ $.fn.bootstrapWizard.defaults = {
 			getAsync: false,
 			fallbackLng: false,
 			ns: { namespaces: ['uui-trans'] },
-			lng: (0, _cookies.getCookie)('i_languages') || 'zh',
+			lng: (0, _cookies.getCookie)(_enumerables.U_LOCALE) || 'zh',
 			resGetPath: __FOLDER__ + '/locales/__lng__/__ns__.json'
 		});
 	}
@@ -11393,6 +11407,7 @@ $.fn.bootstrapWizard.defaults = {
 			target_div.insertAdjacentHTML("beforeEnd", "<div class='multilang_menu '>" + tmplabel + "</div>");
 			var tmpIconv = target_div.querySelector(".lang_icon"),
 			    target_menu = target_div.querySelector(".multilang_menu"),
+			    target_labels = target_menu.querySelectorAll('label'),
 			    tmpvaluebox = target_div.querySelector(".lang_value");
 			(0, _event.on)(tmpIconv, "click", function () {
 				var target_icon = this;
@@ -11424,19 +11439,22 @@ $.fn.bootstrapWizard.defaults = {
 					(0, _dom.css)(target_menu, "display", "none");
 				}
 			});
-			(0, _event.on)(target_menu, "click", "label", function () {
-				var target_label = this,
-				    tmpfield = target_label.getAttribute("attr"),
-				    tmptext = target_label.querySelector(".m_context").innerHTML,
-				    tmpicon = target_label.querySelector(".m_icon").cloneNode(true);
 
-				tmpvaluebox.setAttribute("class", "ready_change lang_value " + tmpfield);
-				tmpvaluebox.value = tmptext;
-				tmpvaluebox.focus();
-				var tmpicom = target_div.querySelector(".lang_icon"),
-				    oldicon = target_div.querySelector(".m_icon");
-				(0, _dom.removeClass)(tmpicom, "uf-caretdown");
-				tmpicom.replaceChild(tmpicon, oldicon);
+			target_labels.forEach(function (ele) {
+				(0, _event.on)(ele, "click", function () {
+					var target_label = this,
+					    tmpfield = target_label.getAttribute("attr"),
+					    tmptext = target_label.querySelector(".m_context").innerHTML,
+					    tmpicon = target_label.querySelector(".m_icon").cloneNode(true);
+
+					tmpvaluebox.setAttribute("class", "ready_change lang_value " + tmpfield);
+					tmpvaluebox.value = tmptext;
+					tmpvaluebox.focus();
+					var tmpicom = target_div.querySelector(".lang_icon"),
+					    oldicon = target_div.querySelector(".m_icon");
+					(0, _dom.removeClass)(tmpicom, "uf-caretdown");
+					tmpicom.replaceChild(tmpicon, oldicon);
+				});
 			});
 		} else {
 			console.error('Not object');
@@ -11945,10 +11963,11 @@ $.fn.bootstrapWizard.defaults = {
 			options.totalPages = totalPages;
 			this.render();
 		}
+		var temppageIndex = pageIndex - 1 < 0 ? 0 : pageIndex - 1;
 		if (pageSize != oldPageSize) {
-			this.trigger('sizeChange', [pageSize, pageIndex - 1]);
+			this.trigger('sizeChange', [pageSize, temppageIndex]);
 		} else {
-			this.trigger('pageChange', pageIndex - 1);
+			this.trigger('pageChange', temppageIndex);
 		}
 
 		//this.$element.trigger('pageChange', pageIndex)
@@ -13336,13 +13355,14 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _util = __webpack_require__(6);
 
-	/**
-	 * Module : Sparrow date util
-	 * Author : Kvkens(yueming@yonyou.com)
-	 * Date	  : 2016-08-06 13:37:20
-	 */
+	var _i18n = __webpack_require__(21);
 
-	var u = {};
+	var u = {}; /**
+	             * Module : Sparrow date util
+	             * Author : Kvkens(yueming@yonyou.com)
+	             * Date	  : 2016-08-06 13:37:20
+	             */
+
 	u.date = {
 
 		/**
@@ -13364,6 +13384,14 @@ $.fn.bootstrapWizard.defaults = {
 				weekdaysShort: 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
 				weekdaysMin: 'S_M_T_W_T_F_S'.split('_')
 			}
+		},
+		_jsonLocale: {
+			months: (0, _i18n.trans)('date.months', "一月\n二月\n三月\n四月\n五月\n六月\n七月\n八月\n九月\n十月\n十一月\n十二月").split('\n'),
+			monthsShort: (0, _i18n.trans)('date.monthsShort', "1月\n2月\n3月\n4月\n5月\n6月\n7月\n8月\n9月\n10月\n11月\n12月").split('\n'),
+			weekdays: (0, _i18n.trans)('date.weekdays', "星期日\n星期一\n星期二\n星期三\n星期四\n星期五\n星期六").split('\n'),
+			weekdaysShort: (0, _i18n.trans)('date.weekdaysShort', "周日\n周一\n周二\n周三\n周四\n周五\n周六").split('\n'),
+			weekdaysMin: (0, _i18n.trans)('date.weekdaysMin', "日\n一\n二\n三\n四\n五\n六").split('\n'),
+			defaultMonth: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
 		},
 
 		_formattingTokens: /(\[[^\[]*\])|(\\)?(Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Q|YYYY|YY|e|E|a|A|hh?|HH?|mm?|ss?|S{1,4}|x|X|zz?|ZZ?|.)/g,
@@ -13395,11 +13423,13 @@ $.fn.bootstrapWizard.defaults = {
 			},
 			MMM: function MMM(date, language) {
 				var m = date.getMonth();
-				return u.date._dateLocale[language].monthsShort[m];
+				// return u.date._dateLocale[language].monthsShort[m];
+				return u.date._jsonLocale.monthsShort[m];
 			},
 			MMMM: function MMMM(date, language) {
 				var m = date.getMonth();
-				return u.date._dateLocale[language].months[m];
+				// return u.date._dateLocale[language].months[m];
+				return u.date._jsonLocale.months[m];
 			},
 			//date
 			D: function D(date) {
@@ -13415,15 +13445,18 @@ $.fn.bootstrapWizard.defaults = {
 			},
 			dd: function dd(date, language) {
 				var d = u.date._formats.d(date);
-				return u.date._dateLocale[language].weekdaysMin[d];
+				// return u.date._dateLocale[language].weekdaysMin[d];
+				return u.date._jsonLocale.weekdaysMin[d];
 			},
 			ddd: function ddd(date, language) {
 				var d = u.date._formats.d(date);
-				return u.date._dateLocale[language].weekdaysShort[d];
+				// return u.date._dateLocale[language].weekdaysShort[d];
+				return u.date._jsonLocale.weekdaysShort[d];
 			},
 			dddd: function dddd(date, language) {
 				var d = u.date._formats.d(date);
-				return u.date._dateLocale[language].weekdays[d];
+				// return u.date._dateLocale[language].weekdays[d];
+				return u.date._jsonLocale.weekdays[d];
 			},
 			// am pm
 			a: function a(date) {
@@ -15525,6 +15558,10 @@ $.fn.bootstrapWizard.defaults = {
 	                this.referDom = this.$element;
 	            }
 	        }
+	        if (this.tooltip) {
+	            this.tooltip.hide();
+	        }
+
 	        this.tooltip = new _neouiTooltip.Tooltip(this.referDom, tipOptions);
 	        this.tooltip.setTitle(msg);
 	        this.tooltip.show();

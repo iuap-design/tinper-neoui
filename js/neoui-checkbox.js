@@ -189,16 +189,25 @@ var Checkbox = BaseComponent.extend({
         this._updateClasses();
     },
 
-
+    // 点击时查看是否有beforeEdit（从checkboxAdapter那里传来）方法，根据beforeEdit方法判断是否触发check或者uncheck
+    beforeToggle: function() {
+        if (typeof this.beforeEdit === 'function') {
+            return this.beforeEdit();
+        }else {
+            return true;
+        }
+    },
     /**
      * Check checkbox.
      *
      * @public
      */
     check: function () {
-        this._inputElement.checked = true;
-        this._updateClasses();
-        this.boundInputOnChange();
+        if (this.beforeToggle()) {
+            this._inputElement.checked = true;
+            this._updateClasses();
+            this.boundInputOnChange();
+        }
     },
 
 
@@ -208,9 +217,11 @@ var Checkbox = BaseComponent.extend({
      * @public
      */
     uncheck: function () {
-        this._inputElement.checked = false;
-        this._updateClasses();
-        this.boundInputOnChange();
+        if (this.beforeToggle()) {
+            this._inputElement.checked = false;
+            this._updateClasses();
+            this.boundInputOnChange();
+        }
     }
 
 
