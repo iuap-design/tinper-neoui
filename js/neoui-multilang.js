@@ -149,6 +149,11 @@ Multilang.fn.getData = function() {
 	return multilang_data;
 }
 
+Multilang.fn.setDataValue = function(value){
+	var target = this.element.parentNode.querySelector('.lang_value');
+	target.value = value;
+}
+
 compMgr.regComp({
 	comp: Multilang,
 	compAsString: 'u.Multilang',
