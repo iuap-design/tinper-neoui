@@ -51,7 +51,6 @@ var Menu = BaseComponent.extend({
 			if(forEl) {
 				this.for_element = forEl;
 				var El = this.element;
-				console.log(this.for_element.getAttribute('data-event'))
 				if (this.for_element.getAttribute('data-event') == 'hover') {
 					on(forEl, 'mouseover', this._handleForHover.bind(this));
 					on(El, 'mouseover', this._handleForElHover.bind(this));
