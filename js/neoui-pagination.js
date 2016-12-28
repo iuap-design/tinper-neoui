@@ -335,8 +335,8 @@ pagination.prototype.page = function(pageIndex, totalPages, pageSize) {
 	// }
 
 	if(options.page(pageIndex)) {
-		if(pageIndex < 0) {
-			pageIndex = 0;
+		if(pageIndex <= 0) {
+			pageIndex = 1;
 		}
 
 		if(pageIndex > totalPages) {

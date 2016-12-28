@@ -10773,7 +10773,6 @@ $.fn.bootstrapWizard.defaults = {
 				if (forEl) {
 					this.for_element = forEl;
 					var El = this.element;
-					console.log(this.for_element.getAttribute('data-event'));
 					if (this.for_element.getAttribute('data-event') == 'hover') {
 						(0, _event.on)(forEl, 'mouseover', this._handleForHover.bind(this));
 						(0, _event.on)(El, 'mouseover', this._handleForElHover.bind(this));
@@ -11960,8 +11959,8 @@ $.fn.bootstrapWizard.defaults = {
 		// }
 
 		if (options.page(pageIndex)) {
-			if (pageIndex < 0) {
-				pageIndex = 0;
+			if (pageIndex <= 0) {
+				pageIndex = 1;
 			}
 
 			if (pageIndex > totalPages) {
