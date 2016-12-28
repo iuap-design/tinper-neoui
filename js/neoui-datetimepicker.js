@@ -1355,6 +1355,9 @@ DateTimePicker.fn.onOk = function(){
     if(flag){
         this.trigger('select', {value:this.pickerDate});
         this.trigger('validate');
+        if(u.isIE){
+            this.element.querySelector('input').blur();
+        }
     }
 
 }
@@ -1495,7 +1498,7 @@ if(!env.isMobile){
         comp: DateTimePicker,
         compAsString: 'u.DateTimePicker',
         css: 'u-datepicker'
-    }); 
+    });
 }
 
 if(document.readyState && document.readyState === 'complete') {
