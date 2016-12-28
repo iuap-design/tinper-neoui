@@ -158,7 +158,7 @@ var messageDialog = function (options) {
 var confirmDialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' +
 '<div class="u-msg-dialog" style="{width}{height}{top}">' + '<div class="u-msg-dialog-content">' +
 '<div class="u-msg-title">' +
-/*'<h4>{title}</h4>' +*/
+'<h4>{title}</h4>' +
 '</div>' +
 '<div class="u-msg-content">' +
 '</div>' +
@@ -195,7 +195,7 @@ var confirmDialogF = function(options) {
 	this.width = options['width'];
 	this.height = options['height'];
 	this.height = options['top'];
-	/*this.title = options['title'];*/
+	this.title = options['title'];
 	this.titleIcon = options['titleIcon'];
 	this.lazyShow = options['lazyShow'];
 	this.onOk = options['onOk'];
@@ -231,7 +231,7 @@ confirmDialogF.prototype.create = function () {
 					'</div>';
 				}
 		var templateStr = this.template.replace('{id}', this.id).replace('{id}', this.id);
-		//templateStr = templateStr.replace('{title}',this.title);
+		templateStr = templateStr.replace('{title}',this.title);
 		templateStr = templateStr.replace('{width}', this.width ? 'width:' + this.width + ';' : '');
 		templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
 		templateStr = templateStr.replace('{top}', this.top ? 'top:' + this.top + ';' : '');
@@ -252,10 +252,10 @@ confirmDialogF.prototype.create = function () {
 			this.contentDom = makeDOM('<p>' + this.content + '</p>');
 		}
 	    /*头部只用图标 <a><i class="uf uf-"></i></a>*/
-	    this.titleIconDom = makeDOM('<a><i class="' + this.titleIcon + '"></i></a>');
+	    // this.titleIconDom = makeDOM('<a><i class="' + this.titleIcon + '"></i></a>');
 		this.templateDom = makeDOM(templateStr);
 
-        this.templateDom.querySelector('.u-msg-title').appendChild(this.titleIconDom);
+        // this.templateDom.querySelector('.u-msg-title').appendChild(this.titleIconDom);
 		this.templateDom.querySelector('.u-msg-content').appendChild(this.contentDom);
 		this.overlayDiv = makeModal(this.templateDom);
 

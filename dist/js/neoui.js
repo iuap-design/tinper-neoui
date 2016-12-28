@@ -9147,9 +9147,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-07-29 10:21:33
 	 */
-	var confirmDialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' + '<div class="u-msg-dialog" style="{width}{height}{top}">' + '<div class="u-msg-dialog-content">' + '<div class="u-msg-title">' +
-	/*'<h4>{title}</h4>' +*/
-	'</div>' + '<div class="u-msg-content">' + '</div>' + '{footer}' + '</div></div>';
+	var confirmDialogTemplate = '<div class="u-msg-dialog-top" id="{id}_top">' + '<div class="u-msg-dialog" style="{width}{height}{top}">' + '<div class="u-msg-dialog-content">' + '<div class="u-msg-title">' + '<h4>{title}</h4>' + '</div>' + '<div class="u-msg-content">' + '</div>' + '{footer}' + '</div></div>';
 
 	var confirmDialogF = function confirmDialogF(options) {
 		if (typeof options === 'string') {
@@ -9179,7 +9177,7 @@ $.fn.bootstrapWizard.defaults = {
 		this.width = options['width'];
 		this.height = options['height'];
 		this.height = options['top'];
-		/*this.title = options['title'];*/
+		this.title = options['title'];
 		this.titleIcon = options['titleIcon'];
 		this.lazyShow = options['lazyShow'];
 		this.onOk = options['onOk'];
@@ -9213,7 +9211,7 @@ $.fn.bootstrapWizard.defaults = {
 			var footerStr = '<div class="u-msg-footer"><button class="u-msg-ok u-button u-button-primary raised">{okText}</button><button class="u-msg-cancel u-button">{cancelText}</button></div>' + '</div>';
 		}
 		var templateStr = this.template.replace('{id}', this.id).replace('{id}', this.id);
-		//templateStr = templateStr.replace('{title}',this.title);
+		templateStr = templateStr.replace('{title}', this.title);
 		templateStr = templateStr.replace('{width}', this.width ? 'width:' + this.width + ';' : '');
 		templateStr = templateStr.replace('{height}', this.height ? 'height:' + this.height + ';' : '');
 		templateStr = templateStr.replace('{top}', this.top ? 'top:' + this.top + ';' : '');
@@ -9234,10 +9232,10 @@ $.fn.bootstrapWizard.defaults = {
 			this.contentDom = (0, _dom.makeDOM)('<p>' + this.content + '</p>');
 		}
 		/*头部只用图标 <a><i class="uf uf-"></i></a>*/
-		this.titleIconDom = (0, _dom.makeDOM)('<a><i class="' + this.titleIcon + '"></i></a>');
+		// this.titleIconDom = makeDOM('<a><i class="' + this.titleIcon + '"></i></a>');
 		this.templateDom = (0, _dom.makeDOM)(templateStr);
 
-		this.templateDom.querySelector('.u-msg-title').appendChild(this.titleIconDom);
+		// this.templateDom.querySelector('.u-msg-title').appendChild(this.titleIconDom);
 		this.templateDom.querySelector('.u-msg-content').appendChild(this.contentDom);
 		this.overlayDiv = (0, _dom.makeModal)(this.templateDom);
 
@@ -9276,6 +9274,7 @@ $.fn.bootstrapWizard.defaults = {
 		document.body.removeChild(this.templateDom);
 		document.body.removeChild(this.overlayDiv);
 		this.isClosed = true;
+		enable_mouseWheel();
 	};
 
 	var confirmDialog = function confirmDialog(options) {
@@ -11353,14 +11352,11 @@ $.fn.bootstrapWizard.defaults = {
 	var _compMgr = __webpack_require__(9);
 
 	var Multilang = _BaseComponent.BaseComponent.extend({
-		DEFAULTS: {
-			dataSource: {},
-			onSelect: function onSelect() {}
-		},
 		init: function init() {
 			var self = this;
 			var element = this.element;
 			this.options = (0, _extend.extend)({}, this.DEFAULTS, this.options);
+			this.field = this.options.field || 'name';
 			this.multinfo(this.options.multinfo);
 			this.addData(this.options.multidata);
 		}
@@ -11370,7 +11366,9 @@ $.fn.bootstrapWizard.defaults = {
 		var target = this.element,
 		    tmparray,
 		    target_div = target.parentNode;
-		if ((typeof val === 'undefined' ? 'undefined' : _typeof(val)) == "object") {
+		if (val === null || typeof val === 'undefined') {
+			tmparray = [];
+		} else if ((typeof val === 'undefined' ? 'undefined' : _typeof(val)) == "object") {
 			tmparray = val;
 		} else {
 			tmparray = val.split(",");
@@ -11383,13 +11381,9 @@ $.fn.bootstrapWizard.defaults = {
 	Multilang.fn.multinfo = function (sort) {
 
 		var target = this.element,
-		    me = this,
+		    self = this,
 		    tmplabel = "",
-		    close_menu = true,
-		    tmpfield = "name";
-		if (sort.lang_name) {
-			tmpfield = sort.lang_name;
-		}
+		    close_menu = false;
 		if ((0, _util.isArray)(sort)) {
 
 			(0, _dom.wrap)(target, "<div class='multilang_body'><input class='lang_value' contenteditable='true'><span class='uf uf-caretdown lang_icon'><span class='m_icon'></span></span>");
@@ -11397,9 +11391,9 @@ $.fn.bootstrapWizard.defaults = {
 
 			(0, _util.each)(sort, function (i, node) {
 				if (i) {
-					tmplabel += "<label attr='" + tmpfield + (i + 1) + "'><span class='m_context'></span><span class='m_icon'>" + node + "</span></label>";
+					tmplabel += "<label attr='" + self.field + (i + 1) + "'><span class='m_context'></span><span class='m_icon'>" + node + "</span></label>";
 				} else {
-					tmplabel += "<label attr='" + tmpfield + "'><span class='m_context'></span><span class='m_icon'>" + node + "</span></label>";
+					tmplabel += "<label attr='" + self.field + "'><span class='m_context'></span><span class='m_icon'>" + node + "</span></label>";
 				}
 			});
 			var target_div = target.parentNode;
@@ -11425,29 +11419,29 @@ $.fn.bootstrapWizard.defaults = {
 				close_menu = true;
 			});
 
-			(0, _event.on)(tmpvaluebox, "blur", function () {
-				//this//
-				//target_box = me.fixtarget(target_input),
-				//target_div = target_input.parents(".multilang_body"),
-				target = this;
-				tmpkey = target.className.split(" ")[2], tmptext = target.value;
+			(0, _event.on)(tmpvaluebox, "blur", function (e) {
+				var target_input = $(this),
+				    target_div = target_input.parents(".multilang_body"),
+				    target = e.target,
+				    tmpkey = target.className.split(" ")[2],
+				    tmptext = target.value;
 
 				if ((0, _dom.hasClass)(target, "ready_change")) {
-					me.changeData(target_div, tmpkey, tmptext);
+					self.changeData(target_div[0], tmpkey, tmptext);
 				}
-				if (close_menu) {
-					(0, _dom.css)(target_menu, "display", "none");
-				}
+				// if(close_menu) {
+				// 	css(target_menu, "display", "none")
+				// }
 			});
 
 			target_labels.forEach(function (ele) {
 				(0, _event.on)(ele, "click", function () {
 					var target_label = this,
-					    tmpfield = target_label.getAttribute("attr"),
+					    tempField = target_label.getAttribute("attr"),
 					    tmptext = target_label.querySelector(".m_context").innerHTML,
 					    tmpicon = target_label.querySelector(".m_icon").cloneNode(true);
 
-					tmpvaluebox.setAttribute("class", "ready_change lang_value " + tmpfield);
+					tmpvaluebox.setAttribute("class", "ready_change lang_value " + tempField);
 					tmpvaluebox.value = tmptext;
 					tmpvaluebox.focus();
 					var tmpicom = target_div.querySelector(".lang_icon"),
@@ -11461,16 +11455,16 @@ $.fn.bootstrapWizard.defaults = {
 		}
 	};
 	Multilang.fn.changeData = function (target_div, field, text) {
-		var tmpdata = target_div.value;
-		tmplabel = target_div.querySelector("label[attr='" + field + "']");
-		tmpcontext = tmplabel.querySelector(".m_context");
+		var tmpdata = target_div.value,
+		    tmplabel = target_div.querySelector("label[attr='" + field + "']"),
+		    tmpcontext = tmplabel.querySelector(".m_context");
 		tmpcontext.innerHTML = text;
 		tmpcontext.value = text;
 		(0, _util.each)(target_div.querySelectorAll(".m_context"), function (i, node) {
 			tmpdata[i] = node.innerHTML;
 		});
 
-		(0, _event.trigger)(this.element, 'change.u.multilang', {
+		this.trigger('change.u.multilang', {
 			newValue: text,
 			field: field
 		});
@@ -11478,8 +11472,24 @@ $.fn.bootstrapWizard.defaults = {
 	Multilang.fn.getData = function () {
 		var target = $(multilang.target).next(".multilang_body")[0],
 		    multilang_data = target.value;
+
 		return multilang_data;
 	};
+
+	Multilang.fn.setDataValue = function (field, value) {
+		var target_div = this.element.closest('.multilang_body'),
+		    tmplabel = target_div.querySelector("label[attr='" + field + "']"),
+		    tmpcontext = tmplabel.querySelector(".m_context");
+		tmpcontext.innerHTML = value;
+		tmpcontext.value = value;
+
+		var tmpdata = [];
+		(0, _util.each)(this.element.closest('.multilang_body').querySelectorAll(".m_context"), function (i, node) {
+			tmpdata[i] = node.innerHTML;
+		});
+		this.element.closest('.multilang_body').value = tmpdata;
+	};
+
 	_compMgr.compMgr.regComp({
 		comp: Multilang,
 		compAsString: 'u.Multilang',
@@ -13504,7 +13514,7 @@ $.fn.bootstrapWizard.defaults = {
 	  * @param formatString
 	  */
 		format: function format(date, formatString, language) {
-			if (!date) return date;
+			if (!date) return ''; // renturn date 改为 return '',因：setFormat初始会赋值为undefined,造成二次选择报错
 			var array = formatString.match(u.date._formattingTokens),
 			    i,
 			    length,
