@@ -21,7 +21,7 @@ var showLoader = function(options) {
 	centerContent = options["centerContent"] || '';
 	// hasDesc=options["hasDesc"];
 	template = loadTemplate.replace('{centerContent}', centerContent);
-	loadDesc = options["hasDesc"] ? "<div class='u-loader-desc'>页面加载中，请稍后。。。</div>" : " ";
+	loadDesc = options["hasDesc"] ? "<div class='u-loader-desc'>页面加载中，请稍候。。。</div>" : " ";
 
 	template = template.replace("{loadDesc}", loadDesc);
 
