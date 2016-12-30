@@ -8,7 +8,7 @@ import {addClass,removeClass,makeDOM} from 'tinper-sparrow/js/dom';
 import {on} from 'tinper-sparrow/js/event';
 
 
-var messageTemplate = '<div class="u-message"><span class="u-msg-close uf uf-removesymbol"></span>{msg}</div>';
+var messageTemplate = '<div class="u-message"><span class="u-msg-close uf uf-close"></span>{msg}</div>';
 
 var showMessage = function (options) {
     var msg, position, width, height, showSeconds, msgType, template;
