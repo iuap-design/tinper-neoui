@@ -108,6 +108,10 @@ npm install tinper-neoui
 
 [Bug 反馈及需求提交](CONTRIBUTING.md)
 
+### 官方QQ群
+
+527124070
+
 ### 开发及构建
 
 开发者可以一起参与为 neoui 贡献代码，同时也可以基于 neoui 进行二次开发或封装插件。
@@ -132,10 +136,6 @@ $ npm install
 ```
 $ npm run product
 ```
-
-### 官方QQ群
-
-527124070
 
 ## Licence 版权
 
