@@ -295,7 +295,7 @@ pagination.prototype.render = function() {
 	})
 	each(this.$ul.querySelectorAll('[role="page"] a'), function(i, node) {
 		on(node, 'click', function() {
-			var pz = (me.$element.querySelector(".page_z") && me.$element.querySelector(".page_z").value) || options.pageSize;
+			var pz = (me.$element.querySelector(".page_z") && $(this).val()) || options.pageSize;
 			me.page(parseInt(this.innerHTML), options.totalPages, pz);
 			//me.$element.trigger('pageChange', parseInt($(this).html()) - 1)
 
@@ -303,7 +303,7 @@ pagination.prototype.render = function() {
 		})
 	})
 	on(this.$ul.querySelector('.page_z'), 'change', function() {
-		var pz = (me.$element.querySelector(".page_z") && me.$element.querySelector(".page_z").value) || options.pageSize;
+		var pz = (me.$element.querySelector(".page_z") && $(this).val()) || options.pageSize;
 		me.trigger('sizeChange', pz)
 	})
 
