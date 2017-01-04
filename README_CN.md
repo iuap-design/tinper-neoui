@@ -117,7 +117,7 @@ npm install tinper-neoui
 开发者可以一起参与为 neoui 贡献代码，同时也可以基于 neoui 进行二次开发或封装插件。
 
 
-neoui 使用 [gulp.js](http://gulpjs.com/) 构建项目。
+neoui 使用 [gulp.js](http://gulpjs.com/) 和 [webpack](https://webpack.github.io/)构建项目。
 
 克隆项目文件:
 
@@ -131,7 +131,7 @@ $ git clone git@github.com:iuap-design/tinper-neoui.git
 $ npm install
 ```
 
-接下来，执行 `gulp`：
+接下来，编译：
 
 ```
 $ npm run product
