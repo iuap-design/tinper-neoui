@@ -39,12 +39,6 @@ neoui 包含丰富的 CSS 组件、JS 插件
 git clone git@github.com:iuap-design/tinper-neoui.git
 ```
 
-- 使用CDN
-```
-http://design.yyuap.com/static/uui/latest/js/u.js
-
-http://design.yyuap.com/static/uui/latest/css/u.css
-```
 - 使用npm安装
 
 ```
@@ -52,48 +46,15 @@ npm install tinper-neoui
 ```
 
 
-### 快速创建一个页面
 
-```
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1">
-  <title>tinper neoui Demo</title>
+### 具体使用
 
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="Cache-Control" content="no-siteapp"/>
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="iUAP Design"/>
-  <link rel="stylesheet" href="//design.yyuap.com/static/uui/latest/css/u.css">
-</head>
-<body>
-  <h1> Hi, tinper neoui </h1>
+具体使用请参考[开发文档](http://tinper.org/dist/neoui/global/README.html)
 
-  <!-- 你的代码 -->
 
-  <script src="//design.yyuap.com/static/jquery/jquery-1.11.2.js"></script>
-	
-  <!--[if lte IE 8 ]>
-  <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-
-  <script src="//design.yyuap.com/static/uui/latest/js/u-polyfill.js"></script>
-  <![endif]-->
-	
-  <script src="//design.yyuap.com/static/uui/latest/js/u.js"></script>
-</body>
-</html>
-```
 ## 文档
 
-开发文档详见[这里](http://tinper.org/dist/neoui/global/README.html)。
+开发文档详见[这里](http://tinper.org/dist/neoui/global/README.html)
 
 更多内容请移步我们的[官网](http://tinper.org)
 

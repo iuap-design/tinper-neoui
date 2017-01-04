@@ -33,12 +33,6 @@
 git clone git@github.com:iuap-design/tinper-neoui.git
 ```
 
-- CDN
-```
-http://design.yyuap.com/static/uui/latest/js/u.js
-
-http://design.yyuap.com/static/uui/latest/css/u.css
-```
 - npm
 
 ```
@@ -48,46 +42,11 @@ npm install tinper-neoui
 
 ### Use
 
-```
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1">
-  <title>tinper neoui Demo</title>
+Read the [Develop documentation](http://tinper.org/dist/neoui/global/README.html) for information on the framework contents, templates and examples, and more.
 
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="Cache-Control" content="no-siteapp"/>
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="iUAP Design"/>
-  <link rel="stylesheet" href="//design.yyuap.com/static/uui/latest/css/u.css">
-</head>
-<body>
-  <h1> Hi, tinper neoui </h1>
-
-  <!-- your code -->
-
-  <script src="//design.yyuap.com/static/jquery/jquery-1.11.2.js"></script>
-	
-  <!--[if lte IE 8 ]>
-  <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-
-  <script src="//design.yyuap.com/static/uui/latest/js/u-polyfill.js"></script>
-  <![endif]-->
-	
-  <script src="//design.yyuap.com/static/uui/latest/js/u.js"></script>
-</body>
-</html>
-```
 ## Document
 
-[Develop documentation](http://tinper.org/dist/neoui/global/README.html)。
+[Develop documentation](http://tinper.org/dist/neoui/global/README.html)
 
 [Website](http://tinper.org)
 
