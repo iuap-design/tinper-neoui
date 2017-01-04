@@ -441,6 +441,10 @@ Validate.fn.showMsg = function(msg) {
     if (this.showMsgFlag == false || this.showMsgFlag == 'false') {
         return;
     }
+    //因为grid中自定义的editType使用的是document.body,只处理校验不现实提示信息
+    if(this.element == document.body){
+        return;
+    }
     var self = this
     if (this.tipId) {
         this.referDom.style.borderColor = 'rgb(241,90,74)';
