@@ -9,7 +9,7 @@
 
 [中文文档](./README_CN.md)
 ##  Introduction
-[tinper neoui](http://tinper.org/dist/neoui/index.html)  is based on the UI design language IUAP design to achieve the enterprise-class front-end framework. It can help users to quickly build a standard consistent front page and improve the development efficiency
+[tinper-neoui](http://tinper.org/dist/neoui/index.html)  is based on the UI design language IUAP design to achieve the enterprise-class front-end framework. It can help users to quickly build a standard consistent front page and improve the development efficiency
 
 
 ## Features
@@ -96,7 +96,7 @@ npm install tinper-neoui
 
 ### Feedback
 
-If you encounter any problems ，submit [issues](https://github.com/iuap-design/tinper-neoui/issues),or pull request。
+If you encounter any problems , submit [issues](https://github.com/iuap-design/tinper-neoui/issues),or pull request。
 
 [PR code](CONTRIBUTING.md)
 
