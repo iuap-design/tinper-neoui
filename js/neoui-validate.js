@@ -65,7 +65,7 @@ var Validate = BaseComponent.extend({
 
         // 要求显示成功提示，并没有成功提示dom的id时，则创建成功提示dom
         if (this.hasSuccess && !this.successId) {
-            this.successId = makeDOM('<span class="u-form-control-success uf uf-checkedsymbol" ></span>');
+            this.successId = makeDOM('<span class="u-form-control-success uf uf-correct" ></span>');
 
             if (this.referDom.nextSibling) {
                 this.referDom.parentNode.insertBefore(this.successId, this.referDom.nextSibling);
@@ -76,7 +76,7 @@ var Validate = BaseComponent.extend({
         }
         //不是默认的tip提示方式并且tipId没有定义时创建默认tipid
         if (this.notipFlag && !this.tipId) {
-            this.tipId = makeDOM('<span class="u-form-control-info uf uf-exclamationsign "></span>');
+            this.tipId = makeDOM('<span class="u-form-control-info uf uf-exc-c-o "></span>');
             this.referDom.parentNode.appendChild(this.tipId);
 
             if (this.referDom.nextSibling) {
@@ -439,6 +439,10 @@ Validate.fn.isEmpty = function(val) {
 Validate.fn.showMsg = function(msg) {
 
     if (this.showMsgFlag == false || this.showMsgFlag == 'false') {
+        return;
+    }
+    //因为grid中自定义的editType使用的是document.body,只处理校验不现实提示信息
+    if(this.element == document.body){
         return;
     }
     var self = this

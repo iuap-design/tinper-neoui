@@ -1355,7 +1355,7 @@ DateTimePicker.fn.onOk = function(){
     if(flag){
         this.trigger('select', {value:this.pickerDate});
         this.trigger('validate');
-        if(u.isIE){
+        if(u.isIE||u.isEdge){
             this.element.querySelector('input').blur();
         }
     }
