@@ -14,21 +14,21 @@ import {dialog} from './neoui-dialog';
 
 
 var Refer = function (options) {
-    var contentId = options['contentId'];
-    if (isEmptyObject(contentId))
-        throw new Error('contentId is null');
     this.options = extend({}, Refer.DEFAULTS, options);
+    var contentId = this.options['contentId'];
+    // if (isEmptyObject(contentId))
+    //     throw new Error('contentId is null');
     this.params = this.options['params'];
     this.create();
     this.loaded = false;
 }
 
 Refer.DEFAULTS = {
-    isPOPMode: false,
+    isPOPMode: true,
     searchInput: null,
-    contentId: null,
-    okId: 'okBtn',
-    cancelId: 'cancelBtn',
+    contentId: 'referWrap',
+    okId: 'okBtn',//暂时没用
+    cancelId: 'cancelBtn',//暂时没用
     width: null,
     height: null,
     title: '参照',
@@ -124,12 +124,12 @@ Refer.fn.open = function () {
     }
     if (this.options['module']){
         self.contentDiv.innerHTML = this.options['module'].template;
-        this.options['module'].init(self);
+        this.options['module'].init ? this.options['module'].init(self) : '';
     }
     else if(require){
        require([this.options.pageUrl], function(module) {
            self.contentDiv.innerHTML =  module.template;
-           module.init(self);
+           module.init ? module.init(self) : '';
            self.loaded = true;
        })
     }
