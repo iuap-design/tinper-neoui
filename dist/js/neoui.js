@@ -4253,7 +4253,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.u = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -4476,7 +4478,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.extend = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -4526,7 +4530,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	/**
 	 * Module : Sparrow extend enum
 	 * Author : Kvkens(yueming@yonyou.com)
@@ -4562,7 +4568,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Autocomplete = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -5162,7 +5170,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.BaseComponent = undefined;
 
 	var _class = __webpack_require__(5);
@@ -5301,7 +5311,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	/**
 	 * Module : Sparrow class
 	 * Author : Kvkens(yueming@yonyou.com)
@@ -5488,7 +5500,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -5541,6 +5555,7 @@ $.fn.bootstrapWizard.defaults = {
 	};
 	var isNumber = function isNumber(obj) {
 		//return obj === +obj
+		//加了个typeof 判断，因为'431027199110.078573'会解析成number
 		return obj - parseFloat(obj) + 1 >= 0;
 	};
 	var isArray = Array.isArray || function (val) {
@@ -5647,7 +5662,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.event = exports.stopEvent = exports.trigger = exports.off = exports.on = undefined;
 
 	var _env = __webpack_require__(8);
@@ -6039,7 +6056,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.env = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -6065,6 +6084,7 @@ $.fn.bootstrapWizard.defaults = {
 		isIE10: false,
 		isIE10_ABOVE: false,
 		isIE11: false,
+		isEdge: false,
 		isIOS: false,
 		isIphone: false,
 		isIPAD: false,
@@ -6132,6 +6152,9 @@ $.fn.bootstrapWizard.defaults = {
 			};
 		}
 
+		if (userAgent.indexOf("Edge") > -1) {
+			u.isEdge = true;
+		}
 		if (s = ua.match(/opera.([\d.]+)/)) {
 			u.isOpera = true;
 		} else if (browserMatch.browser == "IE" && browserMatch.version == 11) {
@@ -6242,7 +6265,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.compMgr = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -6510,7 +6535,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.getElementTop = exports.getElementLeft = exports.showPanelByEle = exports.getScroll = exports.getOffset = exports.makeModal = exports.makeDOM = exports.getZIndex = exports.getStyle = exports.wrap = exports.css = exports.closest = exports.toggleClass = exports.hasClass = exports.removeClass = exports.addClass = undefined;
 
 	var _event = __webpack_require__(7);
@@ -6827,7 +6854,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.ajax = undefined;
 
 	var _env = __webpack_require__(8);
@@ -6951,7 +6980,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Button = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -7019,7 +7050,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	exports.URipple = exports.Ripple = undefined;
 
 	var _env = __webpack_require__(8);
@@ -7029,7 +7062,7 @@ $.fn.bootstrapWizard.defaults = {
 	var _event = __webpack_require__(7);
 
 	var URipple = function URipple(element) {
-	  if (_env.env.isIE8) return;
+	  if (_env.env.isIE8 || _env.env.isMobile || _env.env.isAndroidPAD || _env.env.isIPAD) return;
 	  this._element = element;
 
 	  // Initialize instance.
@@ -7044,7 +7077,7 @@ $.fn.bootstrapWizard.defaults = {
 	 */
 
 	URipple.prototype._down = function (event) {
-	  if (_env.env.isIE8) return;
+	  if (_env.env.isIE8 || _env.env.isMobile || _env.env.isAndroidPAD || _env.env.isIPAD) return;
 	  if (!this._rippleElement.style.width && !this._rippleElement.style.height) {
 	    var rect = this._element.getBoundingClientRect();
 	    this.rippleSize_ = Math.sqrt(rect.width * rect.width + rect.height * rect.height) * 2 + 2;
@@ -7094,7 +7127,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * @private
 	 */
 	URipple.prototype._up = function (event) {
-	  if (_env.env.isIE8) return;
+	  if (_env.env.isIE8 || _env.env.isMobile || _env.env.isAndroidPAD || _env.env.isIPAD) return;
 	  var self = this;
 	  // Don't fire for the artificial "mouseup" generated by a double-click.
 	  if (event && event.detail !== 2) {
@@ -7113,7 +7146,7 @@ $.fn.bootstrapWizard.defaults = {
 	     * @return {number} the frame count.
 	     */
 	URipple.prototype.getFrameCount = function () {
-	  if (_env.env.isIE8) return;
+	  if (_env.env.isIE8 || _env.env.isMobile || _env.env.isAndroidPAD || _env.env.isIPAD) return;
 	  return this.frameCount_;
 	};
 	/**
@@ -7121,7 +7154,7 @@ $.fn.bootstrapWizard.defaults = {
 	     * @param {number} fC the frame count.
 	     */
 	URipple.prototype.setFrameCount = function (fC) {
-	  if (_env.env.isIE8) return;
+	  if (_env.env.isIE8 || _env.env.isMobile || _env.env.isAndroidPAD || _env.env.isIPAD) return;
 	  this.frameCount_ = fC;
 	};
 
@@ -7130,7 +7163,7 @@ $.fn.bootstrapWizard.defaults = {
 	     * @return {Element} the ripple element.
 	     */
 	URipple.prototype.getRippleElement = function () {
-	  if (_env.env.isIE8) return;
+	  if (_env.env.isIE8 || _env.env.isMobile || _env.env.isAndroidPAD || _env.env.isIPAD) return;
 	  return this._rippleElement;
 	};
 
@@ -7140,7 +7173,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * @param  {number} newY the new Y coordinate
 	 */
 	URipple.prototype.setRippleXY = function (newX, newY) {
-	  if (_env.env.isIE8) return;
+	  if (_env.env.isIE8 || _env.env.isMobile || _env.env.isAndroidPAD || _env.env.isIPAD) return;
 	  this.x_ = newX;
 	  this.y_ = newY;
 	};
@@ -7150,7 +7183,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * @param  {boolean} start whether or not this is the start frame.
 	 */
 	URipple.prototype.setRippleStyles = function (start) {
-	  if (_env.env.isIE8) return;
+	  if (_env.env.isIE8 || _env.env.isMobile || _env.env.isAndroidPAD || _env.env.isIPAD) return;
 	  if (this._rippleElement !== null) {
 	    var transformString;
 	    var scale;
@@ -7183,7 +7216,7 @@ $.fn.bootstrapWizard.defaults = {
 	   * Handles an animation frame.
 	   */
 	URipple.prototype.animFrameHandler = function () {
-	  if (_env.env.isIE8) return;
+	  if (_env.env.isIE8 || _env.env.isMobile || _env.env.isAndroidPAD || _env.env.isIPAD) return;
 	  if (this.frameCount_-- > 0) {
 	    window.requestAnimationFrame(this.animFrameHandler.bind(this));
 	  } else {
@@ -7195,7 +7228,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * Initialize element.
 	 */
 	URipple.prototype.init = function () {
-	  if (_env.env.isIE8) return;
+	  if (_env.env.isIE8 || _env.env.isMobile || _env.env.isAndroidPAD || _env.env.isIPAD) return;
 	  var self = this;
 	  if (this._element) {
 	    this._rippleElement = this._element.querySelector('.u-ripple');
@@ -7248,7 +7281,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.Checkbox = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -7496,7 +7531,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.Combo = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -7609,11 +7646,27 @@ $.fn.bootstrapWizard.defaults = {
 	                if (keyCode == 13) this.blur();
 	            }
 	        });
+	        /*  this.iconBtn = this.element.querySelector("[data-role='combo-button']");
+	          if (this.iconBtn){
+	              on(this.iconBtn, 'click', function(e){
+	                  self._input.focus();
+	                  stopEvent(e);
+	              })
+	          }
+	         */
+	        //下拉框图表点击收起打开
 	        this.iconBtn = this.element.querySelector("[data-role='combo-button']");
+	        var comonTarge = true;
 	        if (this.iconBtn) {
 	            (0, _event.on)(this.iconBtn, 'click', function (e) {
 	                self._input.focus();
-	                (0, _event.stopEvent)(e);
+	                if (comonTarge) {
+	                    $(self._input).parent().parent().find(".u-combo-ul").addClass("is-visible");
+	                    comonTarge = false;
+	                } else {
+	                    $(self._input).parent().parent().find(".u-combo-ul").removeClass("is-visible");
+	                    comonTarge = true;
+	                }
 	            });
 	        }
 	    },
@@ -7940,7 +7993,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.Text = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -8179,7 +8234,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.showCollapse = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -8314,7 +8371,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Combobox = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -8839,7 +8898,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.Table = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -8951,7 +9012,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.iframeDialog = exports.dialogWizard = exports.dialog = exports.dialogMode = exports.confirmDialog = exports.messageDialog = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -9602,7 +9665,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.trans = undefined;
 
 	var _cookies = __webpack_require__(22);
@@ -9677,7 +9742,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	/**
 	 * Module : Sparrow cookies
 	 * Author : Kvkens(yueming@yonyou.com)
@@ -9711,7 +9778,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.MDLayout = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -9949,7 +10018,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.NavLayoutTab = exports.NavLayout = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -10453,7 +10524,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.hideLoader = exports.showLoader = undefined;
 
 	var _dom = __webpack_require__(10);
@@ -10527,7 +10600,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.removeWaiting = exports.showWaiting = exports.hideLoading = exports.showLoading = exports.Loading = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -10656,7 +10731,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Menu = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -11165,7 +11242,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.showMessage = exports.showMessageDialog = undefined;
 
 	var _dom = __webpack_require__(10);
@@ -11178,7 +11257,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * Date      : 2016-08-02 19:40:59
 	 */
 
-	var messageTemplate = '<div class="u-message"><span class="u-msg-close uf uf-removesymbol"></span>{msg}</div>';
+	var messageTemplate = '<div class="u-message"><span class="u-msg-close uf uf-close"></span>{msg}</div>';
 
 	var showMessage = function showMessage(options) {
 	    var msg, position, width, height, showSeconds, msgType, template;
@@ -11269,7 +11348,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Multilang = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -11452,7 +11533,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.NavMenu = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -11558,7 +11641,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.pagination = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -11856,7 +11941,7 @@ $.fn.bootstrapWizard.defaults = {
 		});
 		(0, _util.each)(this.$ul.querySelectorAll('[role="page"] a'), function (i, node) {
 			(0, _event.on)(node, 'click', function () {
-				var pz = me.$element.querySelector(".page_z") && me.$element.querySelector(".page_z").value || options.pageSize;
+				var pz = me.$element.querySelector(".page_z") && $(this).val() || options.pageSize;
 				me.page(parseInt(this.innerHTML), options.totalPages, pz);
 				//me.$element.trigger('pageChange', parseInt($(this).html()) - 1)
 
@@ -11864,7 +11949,7 @@ $.fn.bootstrapWizard.defaults = {
 			});
 		});
 		(0, _event.on)(this.$ul.querySelector('.page_z'), 'change', function () {
-			var pz = me.$element.querySelector(".page_z") && me.$element.querySelector(".page_z").value || options.pageSize;
+			var pz = me.$element.querySelector(".page_z") && $(this).val() || options.pageSize;
 			me.trigger('sizeChange', pz);
 		});
 	};
@@ -11982,7 +12067,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Progress = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -12107,7 +12194,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.Radio = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -12345,7 +12434,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.refer = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -12366,20 +12457,21 @@ $.fn.bootstrapWizard.defaults = {
 	 * Date	  : 2016-08-03 11:29:40
 	 */
 	var Refer = function Refer(options) {
-	    var contentId = options['contentId'];
-	    if ((0, _util.isEmptyObject)(contentId)) throw new Error('contentId is null');
 	    this.options = (0, _extend.extend)({}, Refer.DEFAULTS, options);
+	    var contentId = this.options['contentId'];
+	    // if (isEmptyObject(contentId))
+	    //     throw new Error('contentId is null');
 	    this.params = this.options['params'];
 	    this.create();
 	    this.loaded = false;
 	};
 
 	Refer.DEFAULTS = {
-	    isPOPMode: false,
+	    isPOPMode: true,
 	    searchInput: null,
-	    contentId: null,
-	    okId: 'okBtn',
-	    cancelId: 'cancelBtn',
+	    contentId: 'referWrap',
+	    okId: 'okBtn', //暂时没用
+	    cancelId: 'cancelBtn', //暂时没用
 	    width: null,
 	    height: null,
 	    title: '参照',
@@ -12459,11 +12551,11 @@ $.fn.bootstrapWizard.defaults = {
 	    }
 	    if (this.options['module']) {
 	        self.contentDiv.innerHTML = this.options['module'].template;
-	        this.options['module'].init(self);
+	        this.options['module'].init ? this.options['module'].init(self) : '';
 	    } else if (__webpack_require__(35)) {
 	        __webpack_require__.e/* require */(1, function(__webpack_require__) { /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(35)(this.options.pageUrl)]; (function (module) {
 	            self.contentDiv.innerHTML = module.template;
-	            module.init(self);
+	            module.init ? module.init(self) : '';
 	            self.loaded = true;
 	        }.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));
 	/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(52)(module)))});
@@ -12623,7 +12715,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.ClockPicker = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -13095,7 +13189,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.core = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -13281,7 +13377,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.date = undefined;
 
 	var _core = __webpack_require__(37);
@@ -13559,7 +13657,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.DateTimePicker = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -13812,11 +13912,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	     on(this._headerMonth, 'click', function(e){
+	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	     on(this._headerTime, 'click', function(e){
+	      on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -13882,7 +13982,7 @@ $.fn.bootstrapWizard.defaults = {
 	    '<div class="u-date-content-title-month"></div>-',
 	    '<div class="u-date-content-title-date"></div>',
 	    '<div class="u-date-content-title-time"></div>',*/
-	    '</div>', '<div class="u-date-content-panel">', '<div class="u-date-content-year-cell">1月</div>', '<div class="u-date-content-year-cell">2月</div>', '<div class="u-date-content-year-cell">3月</div>', '<div class="u-date-content-year-cell">4月</div>', '<div class="u-date-content-year-cell">5月</div>', '<div class="u-date-content-year-cell">6月</div>', '<div class="u-date-content-year-cell">7月</div>', '<div class="u-date-content-year-cell">8月</div>', '<div class="u-date-content-year-cell">9月</div>', '<div class="u-date-content-year-cell">10月</div>', '<div class="u-date-content-year-cell">11月</div>', '<div class="u-date-content-year-cell">12月</div>', '</div>', '</div>'].join("");
+	    '</div>', '<div class="u-date-content-panel">', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[0] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[1] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[2] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[3] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[4] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[5] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[6] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[7] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[8] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[9] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[10] + '</div>', '<div class="u-date-content-year-cell">' + _dateUtils.date._jsonLocale.monthsShort[11] + '</div>', '</div>', '</div>'].join("");
 
 	    monthPage = (0, _dom.makeDOM)(template);
 	    language = _core.core.getLanguages();
@@ -13909,11 +14009,11 @@ $.fn.bootstrapWizard.defaults = {
 	        self._fillYear();
 	        stopEvent(e)
 	    });
-	     on(this._headerMonth, 'click', function(e){
+	      on(this._headerMonth, 'click', function(e){
 	        self._fillMonth();
 	        stopEvent(e)
 	    });
-	     on(this._headerTime, 'click', function(e){
+	      on(this._headerTime, 'click', function(e){
 	        self._fillTime();
 	        stopEvent(e)
 	    });*/
@@ -14861,7 +14961,7 @@ $.fn.bootstrapWizard.defaults = {
 	    if (flag) {
 	        this.trigger('select', { value: this.pickerDate });
 	        this.trigger('validate');
-	        if (u.isIE) {
+	        if (u.isIE || u.isEdge) {
 	            this.element.querySelector('input').blur();
 	        }
 	    }
@@ -15014,7 +15114,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.doValidate = exports.validate = exports.Validate = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
@@ -15089,7 +15191,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	        // 要求显示成功提示，并没有成功提示dom的id时，则创建成功提示dom
 	        if (this.hasSuccess && !this.successId) {
-	            this.successId = (0, _dom.makeDOM)('<span class="u-form-control-success uf uf-checkedsymbol" ></span>');
+	            this.successId = (0, _dom.makeDOM)('<span class="u-form-control-success uf uf-correct" ></span>');
 
 	            if (this.referDom.nextSibling) {
 	                this.referDom.parentNode.insertBefore(this.successId, this.referDom.nextSibling);
@@ -15099,7 +15201,7 @@ $.fn.bootstrapWizard.defaults = {
 	        }
 	        //不是默认的tip提示方式并且tipId没有定义时创建默认tipid
 	        if (this.notipFlag && !this.tipId) {
-	            this.tipId = (0, _dom.makeDOM)('<span class="u-form-control-info uf uf-exclamationsign "></span>');
+	            this.tipId = (0, _dom.makeDOM)('<span class="u-form-control-info uf uf-exc-c-o "></span>');
 	            this.referDom.parentNode.appendChild(this.tipId);
 
 	            if (this.referDom.nextSibling) {
@@ -15450,6 +15552,10 @@ $.fn.bootstrapWizard.defaults = {
 	    if (this.showMsgFlag == false || this.showMsgFlag == 'false') {
 	        return;
 	    }
+	    //因为grid中自定义的editType使用的是document.body,只处理校验不现实提示信息
+	    if (this.element == document.body) {
+	        return;
+	    }
 	    var self = this;
 	    if (this.tipId) {
 	        this.referDom.style.borderColor = 'rgb(241,90,74)';
@@ -15610,7 +15716,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Tooltip = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -15933,7 +16041,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.MobDateTimePicker = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -16130,7 +16240,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Month = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -16382,7 +16494,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.MonthDate = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -16747,7 +16861,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.slidePanel = undefined;
 
 	var _dom = __webpack_require__(10);
@@ -16822,7 +16938,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Switch = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -16861,7 +16979,7 @@ $.fn.bootstrapWizard.defaults = {
 			/*swith按钮点击时，会闪一下，注释以下代码，取消此效果*/
 			/*var focusHelper = document.createElement('span');
 	  addClass(focusHelper, this._CssClasses.FOCUS_HELPER);
-	  	thumb.appendChild(focusHelper);*/
+	  		thumb.appendChild(focusHelper);*/
 
 			this.element.appendChild(track);
 			this.element.appendChild(thumb);
@@ -17010,7 +17128,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Tabs = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -17156,7 +17276,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Time = undefined;
 
 	var _extend = __webpack_require__(1);
@@ -17396,7 +17518,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 	exports.Year = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -17641,7 +17765,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.YearMonth = undefined;
 
 	var _BaseComponent = __webpack_require__(4);
@@ -17978,7 +18104,9 @@ $.fn.bootstrapWizard.defaults = {
 
 	"use strict";
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	var requestAnimationFrame = function requestAnimationFrame(callback) {
 	    if (!window.requestAnimationFrame) {
 	        window.requestAnimationFrame = window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
