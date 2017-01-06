@@ -121,20 +121,19 @@ var Combo = BaseComponent.extend({
        */
 	   //下拉框图表点击收起打开
         this.iconBtn = this.element.querySelector("[data-role='combo-button']");
-			var comonTarge=true;
-	        if (this.iconBtn) {
-	            (0, _event.on)(this.iconBtn, 'click', function (e) {
-	                self._input.focus();
-					if(comonTarge){
-						$(self._input).parent().parent().find(".u-combo-ul").addClass("is-visible");
-						comonTarge=false;
-					}else{
-						$(self._input).parent().parent().find(".u-combo-ul").removeClass("is-visible");
-						comonTarge=true;
-					}
-	                (0, _event.stopEvent)(e);
-	            });
-	        }
+		var comonTarge=true;
+        if (this.iconBtn) {
+            on(this.iconBtn,'click',function(e){
+                self._input.focus();
+                if(comonTarge){
+                    $(self._input).parent().parent().find(".u-combo-ul").addClass("is-visible");
+                    comonTarge=false;
+                }else{
+                    $(self._input).parent().parent().find(".u-combo-ul").removeClass("is-visible");
+                    comonTarge=true;
+                }
+            });
+        }
 
     },
 

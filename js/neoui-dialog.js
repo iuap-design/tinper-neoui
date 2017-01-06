@@ -227,7 +227,7 @@ var confirmDialogF = function(options) {
 confirmDialogF.prototype.create = function () {
 	var footerStr = '',oThis = this;
 	if (this.hasFooter) {
-	var footerStr = '<div class="u-msg-footer"><button class="u-msg-ok u-button u-button-primary raised">{okText}</button><button class="u-msg-cancel u-button">{cancelText}</button></div>' +
+	var footerStr = '<div class="u-msg-footer"><button class="u-msg-ok u-button u-button-primary raised">{okText}</button><button class="u-msg-cancel u-button u-grey">{cancelText}</button></div>' +
 					'</div>';
 				}
 		var templateStr = this.template.replace('{id}', this.id).replace('{id}', this.id);
