@@ -9,6 +9,7 @@ import {makeDOM} from 'tinper-sparrow/js/dom';
 import {on} from 'tinper-sparrow/js/event';
 import {isEmptyObject} from 'tinper-sparrow/js/util';
 import {dialog} from './neoui-dialog';
+import {trans} from 'tinper-sparrow/js/util/i18n';
 
 
 
@@ -69,8 +70,8 @@ Refer.fn.create = function () {
                         '<div class="content"></div>' +
                     '</div>' +
                     '<div class="u-msg-footer">' +
-                        '<button class="u-msg-ok u-button">确定<span class="u-button-container"><span class="u-ripple"></span></span></button>' +
-                        '<button class="u-msg-cancel u-button">取消<span class="u-button-container"><span class="u-ripple"></span></span></button>' +
+                        '<button class="u-msg-ok u-button">'+ trans('public.confirm','确定') +'<span class="u-button-container"><span class="u-ripple"></span></span></button>' +
+                        '<button class="u-msg-cancel u-button">' + trans('public.cancel','取消') + '<span class="u-button-container"><span class="u-ripple"></span></span></button>' +
                     '</div>' +
                 '</div>');
             document.body.appendChild(dialog)
