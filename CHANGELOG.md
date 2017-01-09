@@ -1,3 +1,34 @@
+<a name="3.1.20"></a>
+## [3.1.20](https://github.com/iuap-design/tinper-neoui/compare/v3.1.19...v3.1.20) (2017-01-05)
+
+
+### Bug Fixes
+* dialog无标题 ([133a213](https://github.com/iuap-design/tinper-neoui/commit/133a213))
+
+* i18n ([5122c5e](https://github.com/iuap-design/tinper-neoui/commit/5122c5e))
+
+* readme ([4060755](https://github.com/iuap-design/tinper-neoui/commit/4060755))
+
+* readme ([59b202e](https://github.com/iuap-design/tinper-neoui/commit/59b202e))
+
+* readme ([e09b28a](https://github.com/iuap-design/tinper-neoui/commit/e09b28a))
+
+* readme修改 ([fe38bfd](https://github.com/iuap-design/tinper-neoui/commit/fe38bfd))
+
+* 优化neoui-refer参数默认值 ([1765180](https://github.com/iuap-design/tinper-neoui/commit/1765180))
+
+* 英文readme 细节 ([5585981](https://github.com/iuap-design/tinper-neoui/commit/5585981))
+
+* 解决IE8下翻页标签无法修改每页数量 ([e1ff565](https://github.com/iuap-design/tinper-neoui/commit/e1ff565))
+
+
+
+### Features
+
+* readme 文档 ([30de579](https://github.com/iuap-design/tinper-neoui/commit/30de579))
+
+
+
 <a name="3.1.18"></a>
 ## [3.1.18](https://github.com/iuap-design/tinper-neoui/compare/v3.1.17...v3.1.18) (2016-12-22)
 

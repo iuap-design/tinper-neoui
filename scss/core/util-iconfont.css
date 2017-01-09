@@ -21,6 +21,8 @@
 
 .uf-search:before { content: "\e603"; }
 
+.uf-magnifyingglass:before { content: "\e603"; }
+
 .uf-histogram-arrow-up:before { content: "\e633"; }
 
 .uf-close-bold:before { content: "\e602"; }
@@ -54,6 +56,8 @@
 .uf-lexi:before { content: "\e643"; }
 
 .uf-pencil-s:before { content: "\e77d"; }
+
+.uf-fontselectioneditor:before { content: "\e77d"; }
 
 .uf-del:before { content: "\e654"; }
 
@@ -120,6 +124,8 @@
 .uf-personin-o:before { content: "\e8d3"; }
 
 .uf-calendar:before { content: "\e646"; }
+
+.uf-calendarpageempty:before { content: "\e646"; }
 
 .uf-add-s-o:before { content: "\e604"; }
 
@@ -258,6 +264,8 @@
 .uf-pass-o:before { content: "\e6a7"; }
 
 .uf-arrow-down:before { content: "\e609"; }
+
+.uf-anglearrowdown:before { content: "\e609"; }
 
 .uf-arrow-right:before { content: "\e611"; }
 

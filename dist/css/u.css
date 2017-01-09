@@ -1,5 +1,5 @@
 /** 
- * tinper-neoui v3.1.19
+ * tinper-neoui v3.1.21
  * UI Framework Used For Enterprise.
  * author : yonyou FED
  * homepage : https://github.com/iuap-design/tinper-neoui#readme
@@ -320,8 +320,8 @@
   color: rgb(51,51,51);
   position: relative;
   min-width: 4.5rem;
-  padding: 0.313rem 0.8125rem;
-  padding: 5px 13px \9;
+  padding: 0.25rem 0.8125rem;
+  padding: 4px 13px \9;
   display: inline-block;
   font-family: "Microsoft YaHei", "Helvetica", "Arial", sans-serif;
   font-size: 0.8125rem;
