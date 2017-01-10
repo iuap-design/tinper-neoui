@@ -29,15 +29,15 @@ Tooltip.prototype = {
 		},
 		showFix: false
 	},
-	init: function init(element, options) {
+	init: function(element, options) {
 		var oThis = this;
-		this.options = (0, _extend.extend)({}, this.defaults, options);
+		this.options = extend({}, this.defaults, options);
 		this._viewport = this.options.viewport && document.querySelector(this.options.viewport.selector || this.options.viewport);
 		//tip模板对应的dom
-		this.tipDom = (0, _dom.makeDOM)(this.options.template);
-		(0, _dom.addClass)(this.tipDom, this.options.placement);
+		this.tipDom = makeDOM(this.options.template);
+		addClass(this.tipDom, this.options.placement);
 		if (this.options.colorLevel) {
-			(0, _dom.addClass)(this.tipDom, this.options.colorLevel);
+			addClass(this.tipDom, this.options.colorLevel);
 		}
 		this.arrrow = this.tipDom.querySelector('.tooltip-arrow');
 
@@ -45,16 +45,15 @@ Tooltip.prototype = {
 			element.each(function(){
 				this.element = $(this)[0];
 				var triggers = oThis.options.trigger.split(' ');
-
 				for (var i = triggers.length; i--;) {
 					var trigger = triggers[i];
 					if (trigger == 'click') {
-						(0, _event.on)(this.element, 'click', oThis.toggle.bind(oThis,this.element));
+						on(this.element, 'click', this.toggle.bind(oThis,this.element));
 					} else if (trigger != 'manual') {
 						var eventIn = trigger == 'hover' ? 'mouseenter' : 'focusin';
 						var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout';
-						(0, _event.on)(this.element, eventIn, oThis.enter.bind(oThis,this.element));
-						(0, _event.on)(this.element, eventOut, oThis.leave.bind(oThis,this.element));
+						on(this.element, eventIn, oThis.enter.bind(oThis,this.element));		
+ 						on(this.element, eventOut, oThis.leave.bind(oThis,this.element));
 					}
 				}
 				oThis.options.title = oThis.options.title || this.element.getAttribute('title');
@@ -66,24 +65,50 @@ Tooltip.prototype = {
 					};
 				};
 			});
-		}
+		}else{
+			this.element = element;
+			var triggers = this.options.trigger.split(' ');
 
+			for (var i = triggers.length; i--;) {
+				var trigger = triggers[i];
+				if (trigger == 'click') {
+					on(this.element, 'click', this.toggle.bind(this));
+				} else if (trigger != 'manual') {
+					var eventIn = trigger == 'hover' ? 'mouseenter' : 'focusin';
+					var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout';
+					on(this.element, eventIn, oThis.enter.bind(this));		
+ 					on(this.element, eventOut, oThis.leave.bind(this));
+				}
+			}
+			this.options.title = this.options.title || this.element.getAttribute('title');
+			this.element.removeAttribute('title');
+			if (this.options.delay && typeof this.options.delay == 'number') {
+				this.options.delay = {
+					show: this.options.delay,
+					hide: this.options.delay
+				};
+			};
+			// tip容器,默认为当前元素的parent
+			this.container = this.options.container ? document.querySelector(this.options.container) : this.element.parentNode;
+		}
 	},
-	enter: function enter(element) {
+	enter: function (element) {
+		if(arguments.length>1){
+			//将tooltip中的element指定为其进入的当前element
+			this.element = element;
+			// tip容器,默认为当前元素的parent
+			this.container = this.options.container ? document.querySelector(this.options.container) : element.parentNode;
+		}
 		var self = this;
-		//将tooltip中的element指定为其进入的当前element
-		this.element = element;
 		clearTimeout(this.timeout);
 		this.hoverState = 'in';
-		// tip容器,默认为当前元素的parent
-				this.container = this.options.container ? document.querySelector(this.options.container) : element.parentNode;
 		if (!this.options.delay || !this.options.delay.show) return this.show();
 
 		this.timeout = setTimeout(function () {
 			if (self.hoverState == 'in') self.show();
 		}, this.options.delay.show);
 	},
-	leave: function leave() {
+	leave: function () {
 		var self = this;
 		clearTimeout(this.timeout);
 		self.hoverState = 'out';
@@ -92,21 +117,21 @@ Tooltip.prototype = {
 			if (self.hoverState == 'out') self.hide();
 		}, self.options.delay.hide);
 	},
-	show: function show() {
+	show: function () {
 		var self = this;
 		this.tipDom.querySelector('.tooltip-inner').innerHTML = this.options.title;
-		this.tipDom.style.zIndex = (0, _dom.getZIndex)();
+		this.tipDom.style.zIndex = getZIndex();
 
 		if (this.options.showFix) {
 			document.body.appendChild(this.tipDom);
 			this.tipDom.style.position = 'fixed';
-			(0, _dom.showPanelByEle)({
+			showPanelByEle({
 				ele: this.element,
 				panel: this.tipDom,
 				position: "top"
 			});
 			// fix情况下滚动时隐藏
-			(0, _event.on)(document, 'scroll', function () {
+			on(document, 'scroll', function () {
 				self.hide();
 			});
 		} else {
@@ -154,7 +179,7 @@ Tooltip.prototype = {
 			this.tipDom.style.top = tipDomTop;
 		}
 
-		(0, _dom.addClass)(this.tipDom, 'active');
+		addClass(this.tipDom, 'active');
 
 		// var placement = this.options.placement;
 		// var pos = this.getPosition()
@@ -164,20 +189,20 @@ Tooltip.prototype = {
 
 		// this.applyPlacement(calculatedOffset, placement)
 	},
-	hide: function hide() {
+	hide: function () {
 		if (this.options.showFix) {
 			if (document.body.contains(this.tipDom)) {
-				(0, _dom.removeClass)(this.tipDom, 'active');
+				removeClass(this.tipDom, 'active');
 				document.body.removeChild(this.tipDom);
 			}
 		} else {
 			if (this.container.contains(this.tipDom)) {
-				(0, _dom.removeClass)(this.tipDom, 'active');
+				removeClass(this.tipDom, 'active');
 				this.container.removeChild(this.tipDom);
 			}
 		}
 	},
-	applyPlacement: function applyPlacement(offset, placement) {
+	applyPlacement: function (offset, placement) {
 		var width = this.tipDom.offsetWidth;
 		var height = this.tipDom.offsetHeight;
 
@@ -197,7 +222,7 @@ Tooltip.prototype = {
 		this.tipDom.style.left = offset.left + 'px';
 		this.tipDom.style.top = offset.top + 'px';
 
-		(0, _dom.addClass)(this.tipDom, 'active');
+		addClass(this.tipDom, 'active');
 
 		// check to see if placing tip in new offset caused the tip to resize itself
 		var actualWidth = this.tipDom.offsetWidth;
