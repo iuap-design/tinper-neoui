@@ -1,10 +1,10 @@
 
 @font-face {font-family: "uf";
-  src: url('../fonts/iconfont.eot?t=1483433221786'); /* IE9*/
-  src: url('../fonts/iconfont.eot?t=1483433221786#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('../fonts/iconfont.woff?t=1483433221786') format('woff'), /* chrome, firefox */
-  url('../fonts/iconfont.ttf?t=1483433221786') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('../fonts/iconfont.svg?t=1483433221786#uf') format('svg'); /* iOS 4.1- */
+  src: url('../fonts/iconfont.eot?t=1483671049826'); /* IE9*/
+  src: url('../fonts/iconfont.eot?t=1483671049826#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/iconfont.woff?t=1483671049826') format('woff'), /* chrome, firefox */
+  url('../fonts/iconfont.ttf?t=1483671049826') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../fonts/iconfont.svg?t=1483671049826#uf') format('svg'); /* iOS 4.1- */
 }
 
 .uf {
@@ -20,8 +20,6 @@
 .uf-add-c-o:before { content: "\e601"; }
 
 .uf-search:before { content: "\e603"; }
-
-.uf-magnifyingglass:before { content: "\e603"; }
 
 .uf-histogram-arrow-up:before { content: "\e633"; }
 
@@ -56,8 +54,6 @@
 .uf-lexi:before { content: "\e643"; }
 
 .uf-pencil-s:before { content: "\e77d"; }
-
-.uf-fontselectioneditor:before { content: "\e77d"; }
 
 .uf-del:before { content: "\e654"; }
 
@@ -124,8 +120,6 @@
 .uf-personin-o:before { content: "\e8d3"; }
 
 .uf-calendar:before { content: "\e646"; }
-
-.uf-calendarpageempty:before { content: "\e646"; }
 
 .uf-add-s-o:before { content: "\e604"; }
 
@@ -264,8 +258,6 @@
 .uf-pass-o:before { content: "\e6a7"; }
 
 .uf-arrow-down:before { content: "\e609"; }
-
-.uf-anglearrowdown:before { content: "\e609"; }
 
 .uf-arrow-right:before { content: "\e611"; }
 
@@ -634,4 +626,14 @@
 .uf-treeline-copy:before { content: "\e994"; }
 
 .uf-listwithdots:before { content: "\e9cd"; }
+
+.uf-gridlogo:before { content: "\e900"; }
+
+.uf-fontselectioneditor:before { content: "\e77d"; }
+
+.uf-anglearrowdown:before { content: "\e609"; }
+
+.uf-calendarpageempty:before { content: "\e646"; }
+
+.uf-magnifyingglass:before { content: "\e603"; }
 
