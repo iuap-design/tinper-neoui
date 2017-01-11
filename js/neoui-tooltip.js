@@ -41,8 +41,9 @@ Tooltip.prototype = {
 		}
 		this.arrrow = this.tipDom.querySelector('.tooltip-arrow');
 
+		//判断如果是批量插入tooltip的
 		if(element&&element.length){
-			element.each(function(){
+			$(element).each(function(){
 				this.element = $(this)[0];
 				var triggers = oThis.options.trigger.split(' ');
 				for (var i = triggers.length; i--;) {
