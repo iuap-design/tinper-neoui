@@ -241,19 +241,27 @@ const MonthDate = BaseComponent.extend({
 
 
     setValue: function(value) {
-    	value = value? value: '';
-    	if(value && value.indexOf('-') > -1){
-    		var vA = value.split("-");
-    		var month = vA[0];
-    		this.month = month % 12;
-    		if(this.month == 0)
-    			this.month = 12;
-    	    this.date = vA[1];
-    		value = this.month + '-' + this.date;
-    	}
-    	this.value = value;
-    	this.input.value = value;
-    	this.trigger('valueChange', {value:value})
+    	var inputValue ='';
+        value = value? value: '';
+        
+
+
+        //如果原有值和新值不同则重新赋值
+        if(this.value !== value) {
+        	if(value && value.indexOf('-') > -1){
+        		var vA = value.split("-");
+        		var month = vA[0];
+        		this.month = month % 12;
+        		if(this.month == 0)
+        			this.month = 12;
+        	    this.date = vA[1];
+        		inputValue = this.month + '-' + this.date;
+
+        	}
+            this.value = value;
+        	this.input.value = inputValue;
+        	this.trigger('valueChange', {value:value})
+        }
     },
 
     focusEvent: function() {

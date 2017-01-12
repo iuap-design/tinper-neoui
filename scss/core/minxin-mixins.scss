@@ -425,7 +425,7 @@
         border: 1px solid $color;
     }
     .u-checkbox-tick-outline{
-        background: $color;
+        background: $color url("#{$checkbox-image-path}/tick.svg?embed");
     }
   }
 
