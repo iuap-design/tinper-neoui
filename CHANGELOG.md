@@ -1,3 +1,15 @@
+<a name="3.1.22"></a>
+## [3.1.22](https://github.com/iuap-design/tinper-neoui/compare/v3.1.21...v3.1.22) (2017-01-11)
+
+
+### Bug Fixes
+* 多语datetimepicker-月份中英文切换 ([e7935b0](https://github.com/iuap-design/tinper-neoui/commit/e7935b0))
+
+* 字体图标兼容 ([46b6105](https://github.com/iuap-design/tinper-neoui/commit/46b6105))
+
+
+
+
 <a name="3.1.20"></a>
 ## [3.1.20](https://github.com/iuap-design/tinper-neoui/compare/v3.1.19...v3.1.20) (2017-01-05)
 

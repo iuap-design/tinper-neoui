@@ -2672,9 +2672,9 @@ main {
 
 @font-face {
   font-family: "uf";
-  src: url("../fonts/iconfont.eot?t=1483433221786");
+  src: url("../fonts/iconfont.eot?t=1484113499288");
   
-  src: url("../fonts/iconfont.eot?t=1483433221786#iefix") format("embedded-opentype"), url("../fonts/iconfont.woff?t=1483433221786") format("woff"), url("../fonts/iconfont.ttf?t=1483433221786") format("truetype"), url("../fonts/iconfont.svg?t=1483433221786#uf") format("svg");
+  src: url("../fonts/iconfont.eot?t=1484113499288#iefix") format("embedded-opentype"), url("../fonts/iconfont.woff?t=1484113499288") format("woff"), url("../fonts/iconfont.ttf?t=1484113499288") format("truetype"), url("../fonts/iconfont.svg?t=1484113499288#uf") format("svg");
    }
 
 .uf {
@@ -3077,6 +3077,9 @@ main {
 .uf-bullseye:before {
   content: "\e632"; }
 
+.uf-calendarpageempty:before {
+  content: "\e647"; }
+
 .uf-gridcaretdown:before {
   content: "\e637"; }
 
@@ -3139,6 +3142,9 @@ main {
 
 .uf-folder-o:before {
   content: "\e68a"; }
+
+.uf-fontselectioneditor:before {
+  content: "\e68d"; }
 
 .uf-4square:before {
   content: "\e68e"; }
@@ -3601,6 +3607,15 @@ main {
 
 .uf-listwithdots:before {
   content: "\e9cd"; }
+
+.uf-gridlogo:before {
+  content: "\e900"; }
+
+.uf-magnifyingglass:before {
+  content: "\e9ce"; }
+
+.uf-anglearrowdown:before {
+  content: "\e9cf"; }
 
 
 
