@@ -1,8 +1,7 @@
 @import "../core/minxin-variables";
 @import "../core/minxin-mixins";
 .u-navmenu {
-  display: flex;
-  display: block \9;
+  display: inline-flex;
   flex-wrap: nowrap;
   box-sizing: border-box;
   flex-direction: column;
@@ -214,7 +213,7 @@
     font-size: 12px;
 }
 .u-badge[data-badge]:after{
-    min-width: 8px;
+    min-width: 19px;
 }
 .margin-top-5{
     margin-top: 5px;
