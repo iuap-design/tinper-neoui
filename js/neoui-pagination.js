@@ -9,7 +9,7 @@ import {extend} from 'tinper-sparrow/js/extend';
 import {addClass,wrap,css,hasClass,removeClass,closest} from 'tinper-sparrow/js/dom';
 import {each} from 'tinper-sparrow/js/util';
 import {on} from 'tinper-sparrow/js/event';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 import {trans} from 'tinper-sparrow/js/util/i18n'
 
 var pagination = BaseComponent.extend({

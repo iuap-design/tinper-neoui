@@ -6,7 +6,7 @@ import {addClass,removeClass,hasClass,closest,makeDOM,makeModal,showPanelByEle,g
 import {core} from 'tinper-sparrow/js/core';
 import {date as udate} from 'tinper-sparrow/js/util/dateUtils';
 import {Validate} from './neoui-validate';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 import {URipple} from 'tinper-sparrow/js/util/ripple';
 import {dateFormat} from 'tinper-sparrow/js/util'
 

@@ -9,7 +9,7 @@ import {addClass,removeClass,hasClass,getStyle,makeDOM,makeModal} from 'tinper-s
 import {on,stopEvent,trigger} from 'tinper-sparrow/js/event';
 import {extend} from 'tinper-sparrow/js/extend';
 import {Button} from './neoui-button';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 import {trans} from 'tinper-sparrow/js/util/i18n';
 
 /**

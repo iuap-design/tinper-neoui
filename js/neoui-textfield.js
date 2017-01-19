@@ -8,7 +8,7 @@ import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
 import {addClass,removeClass,hasClass} from 'tinper-sparrow/js/dom';
 import {env} from 'tinper-sparrow/js/env';
 import {on,stopEvent} from 'tinper-sparrow/js/event';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 
 
 var Text = BaseComponent.extend({

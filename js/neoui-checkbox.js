@@ -7,7 +7,7 @@ import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
 import {addClass,removeClass,hasClass} from 'tinper-sparrow/js/dom';
 import {on,stopEvent} from 'tinper-sparrow/js/event';
 import {URipple} from 'tinper-sparrow/js/util/ripple';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 
 var Checkbox = BaseComponent.extend({
     _Constant: {

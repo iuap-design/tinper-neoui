@@ -8,7 +8,7 @@ import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
 import {addClass,removeClass} from 'tinper-sparrow/js/dom';
 import {on} from 'tinper-sparrow/js/event';
 import {URipple} from 'tinper-sparrow/js/util/ripple';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 
 var Switch = BaseComponent.extend({
 	_Constant: {

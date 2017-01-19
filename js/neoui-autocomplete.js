@@ -11,7 +11,7 @@ import {extend} from 'tinper-sparrow/js/extend';
 import {env} from 'tinper-sparrow/js/env';
 import {isArray} from 'tinper-sparrow/js/util';
 import {ajax} from 'tinper-sparrow/js/ajax';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 
 
 var Autocomplete = BaseComponent.extend({

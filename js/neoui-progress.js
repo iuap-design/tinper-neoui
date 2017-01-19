@@ -8,7 +8,7 @@ import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
 import {addClass,hasClass} from 'tinper-sparrow/js/dom';
 import {env} from 'tinper-sparrow/js/env';
 import {on} from 'tinper-sparrow/js/event';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 
 var Progress = BaseComponent.extend({
 	_Constant: {},

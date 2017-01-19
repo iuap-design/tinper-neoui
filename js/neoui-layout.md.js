@@ -10,7 +10,7 @@ import {on,stopEvent,trigger} from 'tinper-sparrow/js/event';
 import {extend} from 'tinper-sparrow/js/extend';
 import {env} from 'tinper-sparrow/js/env';
 import {Button} from './neoui-button';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 
 
 var MDLayout = BaseComponent.extend({

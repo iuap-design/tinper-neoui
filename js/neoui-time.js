@@ -3,7 +3,7 @@ import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
 import {env} from 'tinper-sparrow/js/env';
 import {on,off,trigger,stopEvent} from 'tinper-sparrow/js/event';
 import {addClass,removeClass,makeDOM,showPanelByEle,getZIndex} from 'tinper-sparrow/js/dom';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 
 
 var Time = BaseComponent.extend({

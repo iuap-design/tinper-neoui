@@ -7,7 +7,7 @@ import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
 import {on, off, stopEvent} from 'tinper-sparrow/js/event';
 import {addClass, makeDOM, showPanelByEle, getZIndex, removeClass} from 'tinper-sparrow/js/dom';
 import {extend} from 'tinper-sparrow/js/extend';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 import {URipple} from 'tinper-sparrow/js/util/ripple';
 import {trans} from 'tinper-sparrow/js/util/i18n';
 import {date as udate} from 'tinper-sparrow/js/util/dateUtils';

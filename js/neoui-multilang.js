@@ -9,7 +9,7 @@ import {extend} from 'tinper-sparrow/js/extend';
 import {each,isArray} from 'tinper-sparrow/js/util';
 import {wrap,css,hasClass,removeClass} from 'tinper-sparrow/js/dom';
 import {on,trigger} from 'tinper-sparrow/js/event';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 
 
 var Multilang = BaseComponent.extend({

@@ -10,7 +10,7 @@ import { on } from 'tinper-sparrow/js/event';
 import { isNumber, inArray, each } from 'tinper-sparrow/js/util';
 import { Tooltip } from './neoui-tooltip';
 import { trans } from 'tinper-sparrow/js/util/i18n';
-import { compMgr } from 'tinper-sparrow/js/compMgr';
+import { compMgr } from 'compox/js/compMgr';
 
 var Validate = BaseComponent.extend({
 

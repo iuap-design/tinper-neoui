@@ -12,7 +12,7 @@ import {core} from 'tinper-sparrow/js/core';
 import {date as udate} from 'tinper-sparrow/js/util/dateUtils';
 import {extend} from 'tinper-sparrow/js/extend';
 import {isIE8} from 'tinper-sparrow/js/env';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 import {URipple} from 'tinper-sparrow/js/util/ripple';
 import {trans} from 'tinper-sparrow/js/util/i18n';
 

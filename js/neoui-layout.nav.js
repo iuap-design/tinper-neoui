@@ -9,7 +9,7 @@ import {addClass,hasClass,removeClass,toggleClass,closest} from 'tinper-sparrow/
 import {on} from 'tinper-sparrow/js/event';
 import {Ripple,URipple} from 'tinper-sparrow/js/util/ripple';
 import {env} from 'tinper-sparrow/js/env';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 
 var NavLayout = BaseComponent.extend({
     _Constant: {

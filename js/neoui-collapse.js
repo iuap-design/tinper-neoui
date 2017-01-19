@@ -9,7 +9,7 @@ import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
 import {addClass,removeClass,makeDOM} from 'tinper-sparrow/js/dom';
 import {extend} from 'tinper-sparrow/js/extend';
 import {on, off} from 'tinper-sparrow/js/event';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 
         /* COLLAPSIBLE PLUGIN DEFINITION
          *

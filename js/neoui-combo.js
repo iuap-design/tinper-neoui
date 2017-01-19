@@ -10,7 +10,7 @@ import {env} from 'tinper-sparrow/js/env';
 import {on,off,stopEvent,trigger} from 'tinper-sparrow/js/event';
 import {Text} from './neoui-textfield';
 import {URipple} from 'tinper-sparrow/js/util/ripple';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 
 var Combo = BaseComponent.extend({
     init: function () {

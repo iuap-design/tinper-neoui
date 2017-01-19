@@ -9,7 +9,7 @@ import {extend} from 'tinper-sparrow/js/extend';
 import {addClass,wrap,css,hasClass,removeClass,closest} from 'tinper-sparrow/js/dom';
 import {on,trigger} from 'tinper-sparrow/js/event';
 import {Ripple} from 'tinper-sparrow/js/util/ripple';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 
 
 var NavMenu = BaseComponent.extend({

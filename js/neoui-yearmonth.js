@@ -9,9 +9,8 @@ import {on, off, stopEvent} from 'tinper-sparrow/js/event';
 import {addClass, makeDOM, showPanelByEle, getZIndex, removeClass} from 'tinper-sparrow/js/dom';
 import {extend} from 'tinper-sparrow/js/extend';
 import {isIE8} from 'tinper-sparrow/js/env';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 import {URipple} from 'tinper-sparrow/js/util/ripple';
-import {requestAnimationFrame} from 'tinper-sparrow/js/ployfill';
 import {trans} from 'tinper-sparrow/js/util/i18n';
 import {date as udate} from 'tinper-sparrow/js/util/dateUtils';
 

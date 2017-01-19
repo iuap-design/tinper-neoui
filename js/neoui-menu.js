@@ -8,7 +8,7 @@ import {addClass,removeClass,makeDOM,hasClass} from 'tinper-sparrow/js/dom';
 import {on,off,stopEvent} from 'tinper-sparrow/js/event';
 import {URipple} from 'tinper-sparrow/js/util/ripple';
 import {env} from 'tinper-sparrow/js/env';
-import {compMgr} from 'tinper-sparrow/js/compMgr';
+import {compMgr} from 'compox/js/compMgr';
 
 var Menu = BaseComponent.extend({
 	_Keycodes: {
