@@ -70,7 +70,7 @@
     "example": "examples"
   },
   "dependencies": {
-    "compox": "./node_modules/compox",
+    "compox": "^1.0.0",
     "tinper-sparrow": "^3.1.22"
   },
   "config": {
