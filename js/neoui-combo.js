@@ -43,6 +43,8 @@ var Combo = BaseComponent.extend({
 
         if(this.mutilSelect){
             this.nowWidth = 0;
+            this.showNowWidth = 0;
+            this.multiNoneArr = [];
             this.fullWidth = this._input.offsetWidth;
         }
 
@@ -317,20 +319,61 @@ var Combo = BaseComponent.extend({
                 this._combo_name_par.title = this.name;
                 var nWidth = nameDiv.offsetWidth + 20;
                 this.nowWidth += nWidth;
+                this.showNowWidth += nWidth;
                 if(this.nowWidth > this.fullWidth && this.fullWidth > 0){
-                    this.nowWidth -= nWidth;
-                    this._combo_name_par.removeChild(nameDiv);
                     addClass(this._combo_name_par,'u-combo-overwidth');
+                }
+                if(this.showNowWidth > this.fullWidth && this.fullWidth > 0){
+                    this.showNowWidth -= nWidth;
+                    nameDiv.style.display = 'none';
+                    this.multiNoneArr.push(nameDiv);
                 }
             }else{
                 this.name = this.name.replace(name + ',' ,'');
                 if(this._combo_name_par){
                     var comboDiv = this._combo_name_par.querySelector('[key="'+val+'"]');
                     if(comboDiv){
+                        var fflag = true;
+                        if (comboDiv.style.display == 'none') {
+                            fflag = false;
+                            comboDiv.style.display = '';
+                        }
                         var nWidth = comboDiv.offsetWidth + 20;
                         this._combo_name_par.removeChild(comboDiv);
                         this.nowWidth -= nWidth;
-                        removeClass(this._combo_name_par,'u-combo-overwidth');
+                        if (fflag) {
+                            this.showNowWidth -= nWidth;
+                        }else{
+                            // 从数组中删除
+                            for(var k =0; k < this.multiNoneArr.length; k++){
+                                if(this.multiNoneArr[k] == comboDiv){
+                                    this.multiNoneArr.splice(k,1);
+                                    break;
+                                }
+                            }
+                        }
+                        if(!(this.nowWidth > this.fullWidth && this.fullWidth > 0)){
+                            removeClass(this._combo_name_par,'u-combo-overwidth');
+                        }
+                        if(this.showNowWidth < this.fullWidth && this.fullWidth > 0){
+                            var nowShowNowWidth = this.showNowWidth;
+                            var j = -1;
+                            for(var i = 0; i < this.multiNoneArr.length; i++){
+                                var nowDiv = this.multiNoneArr[i];
+                                nowDiv.style.display = '';
+                                var nowForWidth = nowDiv.offsetWidth + 20;
+                                nowShowNowWidth += nowForWidth;
+                                if(nowShowNowWidth > this.fullWidth){
+                                    nowDiv.style.display = 'none';
+                                    break;
+                                }else{
+                                    j++;
+                                    this.showNowWidth += nowForWidth;
+                                }
+                            }
+
+                            this.multiNoneArr.splice(0,j+1);
+                        }
                     }
                 }
             }
@@ -401,6 +444,8 @@ var Combo = BaseComponent.extend({
         }
         var matched = false;
         this.nowWidth = 0;
+        this.showNowWidth = 0;
+        this.multiNoneArr = [];
         this.comboDatas.forEach(function(item, index){
             if (this.mutilSelect === true){
                 if (values.indexOf(item.value) != -1){
