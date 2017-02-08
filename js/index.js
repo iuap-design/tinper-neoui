@@ -6,6 +6,7 @@
 
 //Sparrow import
 import {extend} from 'tinper-sparrow/js/extend';
+import {BaseComponent} from './neoui-BaseComponent';
 //import {setCookie,getCookie} from 'tinper-sparrow/lib/cookies';
 //import {createShellObject,execIgnoreError,getFunction,getJSObject,isDate,isNumber,isArray,isEmptyObject,inArray,isDomElement,each} from 'tinper-sparrow/lib/util';
 //import {env} from 'tinper-sparrow/lib/env';
@@ -63,6 +64,7 @@ import {MonthDate} from './neoui-monthdate';
 
 
 var ex = {
+	BaseComponent: BaseComponent,
 	Autocomplete : Autocomplete,
 	Button : Button,
 	Checkbox : Checkbox,
@@ -112,7 +114,7 @@ var ex = {
 	YearMonth : YearMonth,
 	MonthDate : MonthDate
 
-	
+
 //	ajax: ajax,
 //	extend : extend,
 //	setCookie: setCookie,
