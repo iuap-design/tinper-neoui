@@ -3,7 +3,7 @@
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-08-02 13:55:07
  */
-import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {BaseComponent} from './neoui-BaseComponent';
 import {addClass,removeClass,hasClass} from 'tinper-sparrow/js/dom';
 import {on,stopEvent} from 'tinper-sparrow/js/event';
 import {URipple} from 'tinper-sparrow/js/util/ripple';

@@ -4,7 +4,7 @@
  * Date	  : 2016-08-11 15:17:07
  */
 
-import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {BaseComponent} from './neoui-BaseComponent';
 import {addClass, removeClass, hasClass, showPanelByEle, makeDOM, makeModal, getZIndex} from 'tinper-sparrow/js/dom';
 import {on, off} from 'tinper-sparrow/js/event';
 import {compMgr} from 'compox/js/compMgr';

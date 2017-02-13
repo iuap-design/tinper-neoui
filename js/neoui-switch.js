@@ -4,7 +4,7 @@
  * Date	  : 2016-08-03 13:39:55
  */
 
-import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {BaseComponent} from './neoui-BaseComponent';
 import {addClass,removeClass} from 'tinper-sparrow/js/dom';
 import {on} from 'tinper-sparrow/js/event';
 import {URipple} from 'tinper-sparrow/js/util/ripple';

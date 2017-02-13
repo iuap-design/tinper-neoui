@@ -1,5 +1,5 @@
 import {extend} from 'tinper-sparrow/js/extend';
-import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {BaseComponent} from './neoui-BaseComponent';
 import {env} from 'tinper-sparrow/js/env';
 import {on,off,trigger,stopEvent} from 'tinper-sparrow/js/event';
 import {addClass,removeClass,hasClass,closest,makeDOM,makeModal,showPanelByEle,getElementLeft,getElementTop} from 'tinper-sparrow/js/dom';

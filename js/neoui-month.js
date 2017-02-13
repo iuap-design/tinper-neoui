@@ -3,7 +3,7 @@
  * Author : liuyk(liuyk@yonyou.com)
  * Date	  : 2016-08-11 15:17:07
  */
-import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {BaseComponent} from './neoui-BaseComponent';
 import {on, off, stopEvent} from 'tinper-sparrow/js/event';
 import {addClass, makeDOM, showPanelByEle, getZIndex, removeClass} from 'tinper-sparrow/js/dom';
 import {extend} from 'tinper-sparrow/js/extend';

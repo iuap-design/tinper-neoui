@@ -4,7 +4,7 @@
  * Date	  : 2016-08-02 20:19:37
  */
 
-import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {BaseComponent} from './neoui-BaseComponent';
 import {extend} from 'tinper-sparrow/js/extend';
 import {each,isArray} from 'tinper-sparrow/js/util';
 import {wrap,css,hasClass,removeClass} from 'tinper-sparrow/js/dom';

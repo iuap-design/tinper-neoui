@@ -4,7 +4,7 @@
  * Date   : 2016-11-09
  */
 
-import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {BaseComponent} from './neoui-BaseComponent';
 import {env} from 'tinper-sparrow/js/env';
 import {on, off, stopEvent} from 'tinper-sparrow/js/event';
 import {addClass,hasClass, makeDOM, showPanelByEle, getZIndex, removeClass} from 'tinper-sparrow/js/dom';

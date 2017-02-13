@@ -5,7 +5,7 @@
  *
  */
 
-import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {BaseComponent} from './neoui-BaseComponent';
 import {addClass,removeClass,makeDOM} from 'tinper-sparrow/js/dom';
 import {extend} from 'tinper-sparrow/js/extend';
 import {on, off} from 'tinper-sparrow/js/event';

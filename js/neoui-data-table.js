@@ -4,7 +4,7 @@
  * Date	  : 2016-08-02 15:23:19
  */
 
-import {BaseComponent} from 'tinper-sparrow/js/BaseComponent';
+import {BaseComponent} from './neoui-BaseComponent';
 import {on} from 'tinper-sparrow/js/event';
 import {Checkbox} from './neoui-checkbox';
 import {compMgr} from 'compox/js/compMgr';
