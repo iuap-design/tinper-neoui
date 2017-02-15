@@ -9,8 +9,6 @@ npm-debug.log*
 dist/
 # dist/
 
-/docs/
-/examples/
 
 snippets/temp/
 

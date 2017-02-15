@@ -1,0 +1,15 @@
+.example {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.example .example-col {
+    margin-bottom: 20px;
+    min-height: 0;
+    padding: 10px 15px 12px;
+    background-color: rgb(189, 189, 189);
+    border-radius: 0;
+}
+
+.example .example-col-sub {
+    background-color: rgb(0, 189, 189);
+}

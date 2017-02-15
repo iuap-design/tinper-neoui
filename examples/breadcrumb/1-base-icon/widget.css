@@ -1,0 +1,4 @@
+.md-home:before {
+    content: "\e6a2";
+    font-family: 'uf';
+}
