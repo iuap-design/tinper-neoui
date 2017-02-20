@@ -1,6 +1,6 @@
 {
   "name": "tinper-neoui",
-  "version": "3.1.25",
+  "version": "3.1.26",
   "description": "UI Framework Used For Enterprise.",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "es": "babel js -d lib",
     "product": "npm run neoui-dev && gulp dist",
     "utipbuild": "webpack --progress --colors --mode=build_normal && gulp dist",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && node changeSort.js"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 "
   },
   "repository": {
     "type": "git",
@@ -70,8 +70,8 @@
     "example": "examples"
   },
   "dependencies": {
-    "compox": "^3.1.25",
-    "tinper-sparrow": "^3.1.25"
+    "compox": "^3.1.26",
+    "tinper-sparrow": "^3.1.26"
   },
   "config": {
     "commitizen": {
