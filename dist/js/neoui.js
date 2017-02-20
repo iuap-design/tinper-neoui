@@ -6251,7 +6251,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.Autocomplete = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _dom = __webpack_require__(9);
 
@@ -6273,7 +6273,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * Date	  : 2016-08-02 15:14:43
 	 */
 
-	var Autocomplete = _BaseComponent.BaseComponent.extend({
+	var Autocomplete = _neouiBaseComponent.BaseComponent.extend({
 		defaults: {
 			inputClass: "ac_input",
 			resultsClass: "ac_results",
@@ -6979,7 +6979,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.Button = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _dom = __webpack_require__(9);
 
@@ -6997,7 +6997,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * Date	  : 2016-08-02 13:01:05
 	 */
 
-	var Button = _BaseComponent.BaseComponent.extend({
+	var Button = _neouiBaseComponent.BaseComponent.extend({
 		init: function init() {
 			try {
 				var rippleContainer = document.createElement('span');
@@ -7280,7 +7280,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.Checkbox = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _dom = __webpack_require__(9);
 
@@ -7290,7 +7290,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _compMgr = __webpack_require__(8);
 
-	var Checkbox = _BaseComponent.BaseComponent.extend({
+	var Checkbox = _neouiBaseComponent.BaseComponent.extend({
 	    _Constant: {
 	        TINY_TIMEOUT: 0.001
 	    },
@@ -7530,7 +7530,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.Combo = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _dom = __webpack_require__(9);
 
@@ -7544,7 +7544,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _compMgr = __webpack_require__(8);
 
-	var Combo = _BaseComponent.BaseComponent.extend({
+	var Combo = _neouiBaseComponent.BaseComponent.extend({
 	    init: function init() {
 	        this.name = '';
 	        this.mutilSelect = this.options['mutilSelect'] || false;
@@ -8037,7 +8037,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.Text = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _dom = __webpack_require__(9);
 
@@ -8047,7 +8047,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _compMgr = __webpack_require__(8);
 
-	var Text = _BaseComponent.BaseComponent.extend({
+	var Text = _neouiBaseComponent.BaseComponent.extend({
 	    _Constant: {
 	        NO_MAX_ROWS: -1,
 	        MAX_ROWS_ATTRIBUTE: 'maxrows'
@@ -8285,7 +8285,7 @@ $.fn.bootstrapWizard.defaults = {
 	                                                                                                                                                                                                                                                                               *
 	                                                                                                                                                                                                                                                                               */
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _dom = __webpack_require__(9);
 
@@ -8360,7 +8360,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	};
 
-	var showCollapse = _BaseComponent.BaseComponent.extend({
+	var showCollapse = _neouiBaseComponent.BaseComponent.extend({
 
 	    /* COLLAPSIBLE DATA-API
 	     * ==================== */
@@ -8415,7 +8415,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.Combobox = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _dom = __webpack_require__(9);
 
@@ -8433,7 +8433,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * Date	  : 2016-08-02 18:42:07
 	 */
 
-	var Combobox = _BaseComponent.BaseComponent.extend({
+	var Combobox = _neouiBaseComponent.BaseComponent.extend({
 		DEFAULTS: {
 			dataSource: {},
 			mutil: false,
@@ -8942,7 +8942,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.Table = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _event = __webpack_require__(6);
 
@@ -8956,7 +8956,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * Date	  : 2016-08-02 15:23:19
 	 */
 
-	var Table = _BaseComponent.BaseComponent.extend({
+	var Table = _neouiBaseComponent.BaseComponent.extend({
 	    _CssClasses: {
 
 	        SELECTABLE: 'selectable',
@@ -9056,7 +9056,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.iframeDialog = exports.dialogWizard = exports.dialog = exports.dialogMode = exports.confirmDialog = exports.messageDialog = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _dom = __webpack_require__(9);
 
@@ -9824,7 +9824,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.MDLayout = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _dom = __webpack_require__(9);
 
@@ -9838,7 +9838,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _compMgr = __webpack_require__(8);
 
-	var MDLayout = _BaseComponent.BaseComponent.extend({
+	var MDLayout = _neouiBaseComponent.BaseComponent.extend({
 		_CssClasses: {
 			MASTER: 'u-mdlayout-master',
 			DETAIL: 'u-mdlayout-detail',
@@ -10064,7 +10064,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.NavLayoutTab = exports.NavLayout = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _dom = __webpack_require__(9);
 
@@ -10082,7 +10082,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * Date	  : 2016-08-02 15:56:32
 	 */
 
-	var NavLayout = _BaseComponent.BaseComponent.extend({
+	var NavLayout = _neouiBaseComponent.BaseComponent.extend({
 	    _Constant: {
 	        MAX_WIDTH: '(max-width: 1024px)',
 	        TAB_SCROLL_PIXELS: 100,
@@ -10646,7 +10646,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.removeWaiting = exports.showWaiting = exports.hideLoading = exports.showLoading = exports.Loading = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _dom = __webpack_require__(9);
 
@@ -10656,7 +10656,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _compMgr = __webpack_require__(8);
 
-	var Loading = _BaseComponent.BaseComponent.extend({
+	var Loading = _neouiBaseComponent.BaseComponent.extend({
 		_Constant: {
 			U_LOADING_LAYER_COUNT: 4
 		},
@@ -10777,7 +10777,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.Menu = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _dom = __webpack_require__(9);
 
@@ -10794,7 +10794,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * Author : Kvkens(yueming@yonyou.com)
 	 * Date	  : 2016-08-02 19:22:32
 	 */
-	var Menu = _BaseComponent.BaseComponent.extend({
+	var Menu = _neouiBaseComponent.BaseComponent.extend({
 		_Keycodes: {
 			ENTER: 13,
 			ESCAPE: 27,
@@ -11400,7 +11400,7 @@ $.fn.bootstrapWizard.defaults = {
 	                                                                                                                                                                                                                                                                               * Date	  : 2016-08-02 20:19:37
 	                                                                                                                                                                                                                                                                               */
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _extend = __webpack_require__(1);
 
@@ -11412,7 +11412,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _compMgr = __webpack_require__(8);
 
-	var Multilang = _BaseComponent.BaseComponent.extend({
+	var Multilang = _neouiBaseComponent.BaseComponent.extend({
 		init: function init() {
 			var self = this;
 			var element = this.element;
@@ -11579,7 +11579,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.NavMenu = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _extend = __webpack_require__(1);
 
@@ -11597,7 +11597,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * Date	  : 2016-08-03 08:45:49
 	 */
 
-	var NavMenu = _BaseComponent.BaseComponent.extend({
+	var NavMenu = _neouiBaseComponent.BaseComponent.extend({
 		_Constant: {},
 		_CssClasses: {
 			NAV: 'u-navmenu',
@@ -11693,7 +11693,7 @@ $.fn.bootstrapWizard.defaults = {
 	                                                                                                                                                                                                                                                                               * Date	  : 2016-08-03 08:45:49
 	                                                                                                                                                                                                                                                                               */
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _extend = __webpack_require__(1);
 
@@ -11707,7 +11707,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _i18n = __webpack_require__(21);
 
-	var pagination = _BaseComponent.BaseComponent.extend({});
+	var pagination = _neouiBaseComponent.BaseComponent.extend({});
 
 	var PageProxy = function PageProxy(options, page) {
 		this.isCurrent = function () {
@@ -12113,7 +12113,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.Progress = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _dom = __webpack_require__(9);
 
@@ -12123,7 +12123,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _compMgr = __webpack_require__(8);
 
-	var Progress = _BaseComponent.BaseComponent.extend({
+	var Progress = _neouiBaseComponent.BaseComponent.extend({
 		_Constant: {},
 		_CssClasses: {
 			INDETERMINATE_CLASS: 'u-progress__indeterminate'
@@ -12240,7 +12240,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.Radio = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _dom = __webpack_require__(9);
 
@@ -12258,7 +12258,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * Date	  : 2016-08-03 11:16:00
 	 */
 
-	var Radio = _BaseComponent.BaseComponent.extend({
+	var Radio = _neouiBaseComponent.BaseComponent.extend({
 	    Constant_: {
 	        TINY_TIMEOUT: 0.001
 	    },
@@ -12480,7 +12480,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.refer = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _extend = __webpack_require__(1);
 
@@ -12765,7 +12765,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.ClockPicker = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _dom = __webpack_require__(9);
 
@@ -12783,7 +12783,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _i18n = __webpack_require__(21);
 
-	var ClockPicker = _BaseComponent.BaseComponent.extend({
+	var ClockPicker = _neouiBaseComponent.BaseComponent.extend({
 		DEFAULTS: {},
 		init: function init() {
 			var self = this;
@@ -13709,7 +13709,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _extend = __webpack_require__(1);
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _env = __webpack_require__(7);
 
@@ -13731,7 +13731,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _i18n = __webpack_require__(21);
 
-	var DateTimePicker = _BaseComponent.BaseComponent.extend({});
+	var DateTimePicker = _neouiBaseComponent.BaseComponent.extend({});
 
 	DateTimePicker.fn = DateTimePicker.prototype;
 
@@ -15171,7 +15171,7 @@ $.fn.bootstrapWizard.defaults = {
 	                                                                                                                                                                                                                                                                               */
 
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _extend = __webpack_require__(1);
 
@@ -15187,7 +15187,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _compMgr = __webpack_require__(8);
 
-	var Validate = _BaseComponent.BaseComponent.extend({
+	var Validate = _neouiBaseComponent.BaseComponent.extend({
 
 	    init: function init() {
 	        var self = this;
@@ -16126,7 +16126,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _extend = __webpack_require__(1);
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _env = __webpack_require__(7);
 
@@ -16146,7 +16146,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _util = __webpack_require__(5);
 
-	var MobDateTimePicker = _BaseComponent.BaseComponent.extend({});
+	var MobDateTimePicker = _neouiBaseComponent.BaseComponent.extend({});
 
 	MobDateTimePicker.fn = MobDateTimePicker.prototype;
 
@@ -16324,7 +16324,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.Month = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _event = __webpack_require__(6);
 
@@ -16345,7 +16345,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * Author : liuyk(liuyk@yonyou.com)
 	 * Date	  : 2016-08-11 15:17:07
 	 */
-	var Month = _BaseComponent.BaseComponent.extend({
+	var Month = _neouiBaseComponent.BaseComponent.extend({
 		DEFAULTS: {},
 		init: function init() {
 			var self = this;
@@ -16578,7 +16578,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.MonthDate = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _env = __webpack_require__(7);
 
@@ -16598,7 +16598,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _i18n = __webpack_require__(21);
 
-	var MonthDate = _BaseComponent.BaseComponent.extend({
+	var MonthDate = _neouiBaseComponent.BaseComponent.extend({
 	    DEFAULTS: {},
 	    init: function init() {
 	        var self = this;
@@ -17027,7 +17027,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.Switch = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _dom = __webpack_require__(9);
 
@@ -17037,7 +17037,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _compMgr = __webpack_require__(8);
 
-	var Switch = _BaseComponent.BaseComponent.extend({
+	var Switch = _neouiBaseComponent.BaseComponent.extend({
 		_Constant: {
 			TINY_TIMEOUT: 0.001
 		},
@@ -17217,7 +17217,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.Tabs = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _dom = __webpack_require__(9);
 
@@ -17227,7 +17227,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _compMgr = __webpack_require__(8);
 
-	var Tabs = _BaseComponent.BaseComponent.extend({
+	var Tabs = _neouiBaseComponent.BaseComponent.extend({
 		_Constant: {},
 		_CssClasses: {
 			TAB_CLASS: 'u-tabs__tab',
@@ -17367,7 +17367,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _extend = __webpack_require__(1);
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _env = __webpack_require__(7);
 
@@ -17377,7 +17377,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _compMgr = __webpack_require__(8);
 
-	var Time = _BaseComponent.BaseComponent.extend({
+	var Time = _neouiBaseComponent.BaseComponent.extend({
 		DEFAULTS: {},
 		init: function init() {
 			var self = this;
@@ -17607,7 +17607,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.Year = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _event = __webpack_require__(6);
 
@@ -17625,7 +17625,7 @@ $.fn.bootstrapWizard.defaults = {
 	 * Date	  : 2016-08-11 15:17:07
 	 */
 
-	var Year = _BaseComponent.BaseComponent.extend({
+	var Year = _neouiBaseComponent.BaseComponent.extend({
 		DEFAULTS: {},
 		init: function init() {
 			var self = this;
@@ -17854,7 +17854,7 @@ $.fn.bootstrapWizard.defaults = {
 	});
 	exports.YearMonth = undefined;
 
-	var _BaseComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"tinper-sparrow/js/BaseComponent\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _neouiBaseComponent = __webpack_require__(3);
 
 	var _event = __webpack_require__(6);
 
@@ -17872,7 +17872,7 @@ $.fn.bootstrapWizard.defaults = {
 
 	var _dateUtils = __webpack_require__(38);
 
-	var YearMonth = _BaseComponent.BaseComponent.extend({
+	var YearMonth = _neouiBaseComponent.BaseComponent.extend({
 	    DEFAULTS: {},
 	    init: function init() {
 	        var self = this;
