@@ -12,8 +12,8 @@ var plugins = [],
 	devToolSelect;
 
 // entry js文件目录
-var exportJs = './js/';
-var indexJs = '/js/index.js';
+var exportJs = './src/';
+var indexJs = '/src/index.js';
 
 // out js文件目录
 // var outJs = '/dist/js';
@@ -73,7 +73,7 @@ if(env === 'build_normal') {
 	}));
 	outputFile = libraryName + '.min.js';
 	entryFile = __dirname + indexJs;
-	outJs = '/dist/js';	
+	outJs = '/dist/js';
 }
 
 
