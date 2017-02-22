@@ -1,0 +1,7 @@
+.u-navbar {
+    position: relative;
+}
+
+#content-wrap .article-container .u-navbar li {
+	list-style: none;
+}

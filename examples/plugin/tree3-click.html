@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Title</title>
+<link rel="stylesheet" href="//design.yyuap.com/static/uploader/css/webuploader.css">
+<link rel="stylesheet" href="//design.yyuap.com/static/uui/latest/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="//design.yyuap.com/static/uui/latest/css/u.css">
+<link rel="stylesheet" type="text/css" href="//design.yyuap.com/static/uui/latest/css/tree.css">
+<link rel="stylesheet" type="text/css" href="//design.yyuap.com/static/uui/latest/css/grid.css">
+<style id="demo-style" media="screen">
+</style>
+</head>
+<body style="background-color: #eceff1;margin-left: 20px;width: calc(100% - 20px );">
+<ul id="clickTree" class="ztree"></ul>
+<script src="//design.yyuap.com/static/jquery/jquery-1.11.2.js"></script>
+<script src="//design.yyuap.com/static/uploader/js/webuploader.js"></script>
+<script src="//design.yyuap.com/static/knockout/knockout-3.2.0.debug.js"></script>
+<script src="//design.yyuap.com/static/uui/latest/js/u-polyfill.js"></script>
+<script src="//design.yyuap.com/static/uui/latest/js/u.js"></script>
+<script src="//design.yyuap.com/static/uui/latest/js/u-tree.js"></script>
+<script src="//design.yyuap.com/static/uui/latest/js/u-grid.js"></script>
+<script src="//design.yyuap.com/static/requirejs/require.debug.js"></script>
+<script>
+var clickSet = {
+    data: {
+        key: {
+            title:"t"
+        },
+        simpleData: {
+            enable: true
+        }
+    },
+    callback: {
+        beforeClick: beforeClick,
+        onClick: onClick
+    }
+};
+
+var clickNodes =[
+    { id:1, pId:0, name:"普通的父节点", t:"我很普通，随便点我吧", open:true},
+    { id:11, pId:1, name:"叶子节点 - 1", t:"我很普通，随便点我吧"},
+    { id:12, pId:1, name:"叶子节点 - 2", t:"我很普通，随便点我吧"},
+    { id:13, pId:1, name:"叶子节点 - 3", t:"我很普通，随便点我吧"}
+];
+
+var log, className = "dark";
+function beforeClick(treeId, treeNode, clickFlag) {
+    className = (className === "dark" ? "":"dark");
+    alert("[ "+getTime()+" beforeClick ] " + treeNode.name );
+    return (treeNode.click != false);
+}
+function onClick(event, treeId, treeNode, clickFlag) {
+    alert("[ "+getTime()+" onClick ] clickFlag = " + clickFlag + " (" + (clickFlag===1 ? "普通选中": (clickFlag===0 ? "<b>取消选中</b>" : "<b>追加选中</b>")) + ")");
+}
+function getTime() {
+    var now= new Date(),
+    h=now.getHours(),
+    m=now.getMinutes(),
+    s=now.getSeconds();
+    return (h+":"+m+":"+s);
+}
+
+$(document).ready(function(){
+    $.fn.zTree.init($("#clickTree"), clickSet, clickNodes);
+});
+</script>
+</body>
+</html>
