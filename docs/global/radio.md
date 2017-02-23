@@ -82,30 +82,7 @@ radioObject.enable();
 * `checked`单选框选中
 * `disabled`单选框不可用
 
-<div class="example-content"><span>可用未选radio</span>
-<label class="u-radio" for="option-1">
-    <input type="radio" id="option-1" class="u-radio-button" name="options" value="1">
-    <span class="u-radio-label">First</span>
-</label>
-<span>可用已选radio</span>
-<label class="u-radio" for="option-6">
-    <input type="radio" id="option-6" class="u-radio-button" name="options" value="1" checked>
-    <span class="u-radio-label">First</span>
-</label>
-<span>不可用未选radio</span>
-<label class="u-radio" for="option-2">
-    <input type="radio" disabled id="option-2" class="u-radio-button" name="options" value="2">
-    <span class="u-radio-label">Second</span>
-</label>
-<span>不可用已选radio</span>
-<label class="u-radio" for="option-3">
-    <input type="radio" disabled checked id="option-3" class="u-radio-button" name="options1" value="3">
-    <span class="u-radio-label">Second</span>
-</label></div>
-
-
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;span>可用未选radio&lt;/span>
 &lt;label class="u-radio" for="option-1">
     &lt;input type="radio" id="option-1" class="u-radio-button" name="options" value="1">
@@ -130,7 +107,7 @@ radioObject.enable();
 
 
 
-</div>
+
 
 ## 不同色彩radio
 
@@ -140,30 +117,7 @@ radioObject.enable();
 * `u-radio-danger` - 红色按钮
 * `u-radio-dark` - 灰色按钮
 
-<div class="example-content"><label class="u-radio u-radio-success" >
-    <input type="radio" class="u-radio-button"  checked>
-    <span class="u-radio-label">green</span>
-</label>
-<label class="u-radio u-radio-info">
-    <input type="radio" class="u-radio-button"   checked>
-    <span class="u-radio-label">blue</span>
-</label>
-<label class="u-radio u-radio-warning">
-    <input type="radio" class="u-radio-button"  checked>
-    <span class="u-radio-label">yellow</span>
-</label>
-<label class="u-radio u-radio-danger">
-    <input type="radio" class="u-radio-button"   checked>
-    <span class="u-radio-label">red</span>
-</label>
-<label class="u-radio u-radio-dark">
-    <input type="radio" class="u-radio-button"  checked>
-    <span class="u-radio-label">grey</span>
-</label></div>
-
-
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;label class="u-radio u-radio-success" >
     &lt;input type="radio" class="u-radio-button"  checked>
     &lt;span class="u-radio-label">green&lt;/span>
@@ -188,4 +142,3 @@ radioObject.enable();
 
 
 
-</div>

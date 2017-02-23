@@ -100,28 +100,7 @@ checkboxObject.toggle();
 - `checked` 选中
 - `disabled` 不可用
 
-<div class="example-content">
-<label  class="u-checkbox">
-    <input type="checkbox" class="u-checkbox-input" checked>
-    <span class="u-checkbox-label">Checkbox</span>
-</label>
-<label  class="u-checkbox">
-    <input type="checkbox" class="u-checkbox-input" >
-    <span class="u-checkbox-label">Checkbox</span>
-</label>
-<label  class="u-checkbox"  >
-    <input type="checkbox" class="u-checkbox-input" disabled>
-    <span class="u-checkbox-label">Checkbox</span>
-</label>
-<label  class="u-checkbox">
-    <input type="checkbox" class="u-checkbox-input" disabled checked>
-    <span class="u-checkbox-label">Checkbox</span>
-</label>
-</div>
-
-
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 
 &lt;label  class="u-checkbox">
     &lt;input type="checkbox" class="u-checkbox-input" checked>
@@ -144,7 +123,7 @@ checkboxObject.toggle();
 
 
 
-</div>
+
 
 ## 不同颜色的checkbox
 在复选框中label里面添加如下样式来实现不同色彩的复选框
@@ -155,31 +134,7 @@ checkboxObject.toggle();
 - `u-checkbox-danger` 红色
 - `u-checkbox-dark` 灰色
 
-<div class="example-content"><label  class="u-checkbox u-checkbox-success w-xs">
-    <input type="checkbox" class="u-checkbox-input"  checked>
-    <span class="u-checkbox-label">green</span>
-</label>
-
-<label  class="u-checkbox u-checkbox-info w-xs">
-    <input type="checkbox" class="u-checkbox-input"  checked>
-    <span class="u-checkbox-label">blue</span>
-</label>
-<label  class="u-checkbox u-checkbox-warning w-xs">
-    <input type="checkbox" class="u-checkbox-input"  checked>
-    <span class="u-checkbox-label">yellow</span>
-</label>
-<label  class="u-checkbox u-checkbox-danger w-xs">
-    <input type="checkbox" class="u-checkbox-input"  checked>
-    <span class="u-checkbox-label">red</span>
-</label>
-<label  class="u-checkbox u-checkbox-dark w-xs">
-    <input type="checkbox" class="u-checkbox-input"  checked>
-    <span class="u-checkbox-label">grey</span>
-</label></div>
-
-
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;label  class="u-checkbox u-checkbox-success w-xs">
     &lt;input type="checkbox" class="u-checkbox-input"  checked>
     &lt;span class="u-checkbox-label">green&lt;/span>
@@ -205,4 +160,3 @@ checkboxObject.toggle();
 
 
 
-</div>

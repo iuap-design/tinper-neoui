@@ -32,14 +32,9 @@ js会根据`u-loading`来定位dom，然后绑定事件。
 
 
 
-<div class="example-content"><div class="u-loading is-active u-loading-single-color"></div></div>
-
-
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;div class="u-loading is-active u-loading-single-color">&lt;/div></code></pre>
 </div>
 
 
 
-</div>

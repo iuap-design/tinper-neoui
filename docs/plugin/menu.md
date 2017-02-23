@@ -19,27 +19,7 @@
 
 
 ## 左边menu
-<div class="example-content"><!-- Left aligned menu below button -->
-<div class="example">
-	<button id="demo-menu-lower-left" class="u-button floating u-button-icon">
-	    <i class="uf uf-3dot-v"></i>
-	</button>
-	左对齐
-	<ul class="u-menu u-menu-bottom-left" for="demo-menu-lower-left">
-	    <li class="u-menu-item">新增</li>
-	    <li class="u-menu-item">修改</li>
-	    <li disabled class="u-menu-item">删除</li>
-	    <li class="u-menu-item">审核</li>
-	</ul>
-</div></div>
-
-<div class="example-content ex-hide"><style>
-.example{
-	padding-left: 30px;
-}
-</style></div>
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;!-- Left aligned menu below button -->
 &lt;div class="example">
 	&lt;button id="demo-menu-lower-left" class="u-button floating u-button-icon">
@@ -62,29 +42,10 @@
 </div>
 
 
-</div>
+
 
 ## 右边menu
-<div class="example-content"><!-- right aligned menu below button -->
-<div class="example">
-	<button id="demo-menu-lower-right" class="u-button floating u-button-icon">
-	    <i class="uf uf-3dot-v"></i>
-	</button>右对齐
-	<ul class="u-menu u-menu-bottom-right" for="demo-menu-lower-right">
-	    <li class="u-menu-item">新增</li>
-	    <li class="u-menu-item">修改</li>
-	    <li disabled class="u-menu-item">删除</li>
-	    <li class="u-menu-item">审核</li>
-	</ul>
-</div></div>
-
-<div class="example-content ex-hide"><style>
-.example{
-	padding-left: 30px;
-}
-</style></div>
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;!-- right aligned menu below button -->
 &lt;div class="example">
 	&lt;button id="demo-menu-lower-right" class="u-button floating u-button-icon">
@@ -106,4 +67,3 @@
 </div>
 
 
-</div>

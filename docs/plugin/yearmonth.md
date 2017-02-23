@@ -49,19 +49,7 @@ yearMonthObject.setValue('2016-02');
 
 
 定义样式为`u-yearmonth`的div父元素，包裹样式为`u-input`的input元素。
-<div class="example-content">
-<div class='u-yearmonth'>
-    <input class="u-input" type="text">
-</div></div>
-
-<div class="example-content ex-hide"><style>
-.example .u-input{
-	border: 1px solid rgba(0,0,0, 0.12);
-	width: 250px;
-}
-</style></div>
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 
 &lt;div class='u-yearmonth'>
     &lt;input class="u-input" type="text">
@@ -76,4 +64,3 @@ yearMonthObject.setValue('2016-02');
 </div>
 
 
-</div>

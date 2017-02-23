@@ -49,42 +49,7 @@ u.refer({
 
 点击id为`referdom`元素的按钮，弹出参照层
 
-<div class="example-content">
-<button class="u-button u-button-primary langbtn" id="referdom">弹出参照</button>
-</div>
-
-
-
-<script>
-var referDOM = document.getElementById('referdom');
-u.on(referDOM, 'click', function(){
-    u.refer({
-      // 模式 弹出层
-      isPOPMode: true,
-      // 弹出层id
-      contentId: 'testitemid_ref',
-      // 设定参照层标题
-      title:'测试项目',
-      // 设置而参照层高度
-      height:'300px',
-      // 设置参照层内容
-      module:{
-          template: 'Module: Refer Template Content'
-      },
-      // 点击确认后回调事件
-      onOk: function(){
-          alert('ok');
-      },
-      // 点击取消后回调事件
-      onCancel: function(){
-          alert('cancel');
-      }
-    })
-})
-
-</script>
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 
 &lt;button class="u-button u-button-primary langbtn" id="referdom">弹出参照&lt;/button>
 </code></pre>
@@ -119,4 +84,3 @@ u.on(referDOM, 'click', function(){
 })
 </code></pre>
 
-</div>

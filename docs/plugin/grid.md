@@ -2252,68 +2252,7 @@ focus行对应的index
 
 
 
-<div class="example-content"><div class="grid-body">
-	<div class="grid" id="grid-comp1"></div>
-</div></div>
-
-
-
-<script>
-$(document).ready(function () {
-	var data1 = {
-        values: [{
-            column1: "11",
-            column2: "12",
-            column3: "13",
-            id: '0',
-            pid: ''
-        }, {
-            column1: "21",
-            column2: "22",
-            column3: "23",
-            id: '1',
-            pid: '0'
-        }, {
-            column1: "31",
-            column2: "32",
-            column3: "33",
-            id: '3',
-            pid: '1'
-        }
-        ]
-    };
-
-    var colu = [{
-        field: "id",
-        title: "id"
-    }, {
-        field: "pid",
-        title: "pid"
-    }, {
-        field: "column1",
-        title: "column1"
-    }, {
-        field: "column2",
-        title: "column2"
-    }, {
-        field: "column3",
-        title: "column3"
-    }
-    ];
-
-    $("#grid-comp1").grid({
-        dataSource: data1,
-        id: 'case-g1',
-        editable: true,
-        keyField: 'id',
-        parentKeyField: 'pid',
-        columns: colu
-
-    });
-});
-</script>
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;div class="grid-body">
 	&lt;div class="grid" id="grid-comp1">&lt;/div>
 &lt;/div></code></pre>
@@ -2374,4 +2313,3 @@ $(document).ready(function () {
     });
 });</code></pre>
 
-</div>

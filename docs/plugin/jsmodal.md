@@ -74,43 +74,7 @@ dialogObject.show();//这里的dialog是通过u.dialog创建的对象
 用户自定在html文件自定义所要展现的内容
 点击保存，做进一步的确认校验
 
-<div class="example-content"><button id="msgDialogBtn3" class="u-button raised accent">模态框</button>
-<div id="dialog_content" style="display:none;">
-	<div class="u-msg-title">
-		<h4>单据名称</h4>
-	</div>
-	<div class="u-msg-content">
-		<p>单据内容区</p>
-	</div>
-	<div class="u-msg-footer">
-		<button class="u-msg-ok u-button">保存<span class="u-button-container"><span class="u-ripple"></span></span></button>
-		<button class="u-msg-cancel u-button">取消<span class="u-button-container"><span class="u-ripple"></span></span></button>
-	</div>
-</div></div>
-
-
-
-<script>
-u.compMgr.apply({
-    el:'body'
-})
-var msgBtn3 = document.body.querySelector("#msgDialogBtn3");
-u.on(msgBtn3,'click', function(){
-	window.md = u.dialog({id:'testDialg',content:"#dialog_content",hasCloseMenu:true});
-});
-
-var okButton = document.body.querySelector(".u-msg-ok");
-u.on(okButton,'click', function(){
-	alert('ok');
-});
-
-var cancelButton = document.body.querySelector(".u-msg-cancel");
-u.on(cancelButton,'click', function(){
-	md.close();
-});
-</script>
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;button id="msgDialogBtn3" class="u-button raised accent">模态框&lt;/button>
 &lt;div id="dialog_content" style="display:none;">
 	&lt;div class="u-msg-title">
@@ -146,4 +110,3 @@ u.on(cancelButton,'click', function(){
 	md.close();
 });</code></pre>
 
-</div>

@@ -46,62 +46,7 @@ title:'默认向上显示'
 
 ## 普通tooltip
 
-<div class="example-content"><div id='example'>
-	<label id="top" class="ws">上提示</label>
-	<label id="down" class="ws">下提示</label>
-	<label id="left" class="ws">左提示</label>
-	<label id="right" class="ws">右提示</label>
-</div></div>
-
-<div class="example-content ex-hide"><style>
-.ws{
-	width: 60px;
-	display: inline-block;
-	border: 1px solid #ddd;
-	height:30px;
-	line-height: 30px;
-	text-align: center;
-	margin-left: 60px;
-	margin-top: 10px;
-}
-#example{
-	margin-left: 60px;
-}
-#example label:first-child,#example1 label:first-child{
-	margin-left: 0px;
-}
- 
-</style></div>
-
-<script>
-var toptoolEle=document.getElementById('top');
-var bottomtoolEle=document.getElementById('down');
-var lefttoolEle=document.getElementById('left');
-var righttoolEle=document.getElementById('right');
-
-var toptip=new u.Tooltip(toptoolEle,{
-title:'默认向上显示'
-});
-
-
-var bottomtip=new u.Tooltip(bottomtoolEle,{
-title:'向下显示',
-placement:'bottom'
-
-});
-
-var leftTip=new u.Tooltip(lefttoolEle,{
-title:'向左显示',
-placement:'left'
-});
-
-var rightTip=new u.Tooltip(righttoolEle,{
-title:'向右显示',
-placement:'right'
-});
-</script>
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;div id='example'>
 	&lt;label id="top" class="ws">上提示&lt;/label>
 	&lt;label id="down" class="ws">下提示&lt;/label>
@@ -157,49 +102,11 @@ title:'向右显示',
 placement:'right'
 });</code></pre>
 
-</div>
+
 
 ## 批量生成tooltip
 
-<div class="example-content"><div id='example'>
-	<label class="ws tl-ws">批量提示</label>
-	<label class="ws tl-ws">批量提示</label>
-	<label class="ws tl-ws">批量提示</label>
-	<label class="ws tl-ws">批量提示</label>
-</div>
-</div>
-
-<div class="example-content ex-hide"><style>
-.ws{
-	width: 60px;
-	display: inline-block;
-	border: 1px solid #ddd;
-	height:30px;
-	line-height: 30px;
-	text-align: center;
-	margin-left: 60px;
-	margin-top: 10px;
-}
-#example{
-	margin-left: 60px;
-}
-#example label:first-child,#example1 label:first-child{
-	margin-left: 0px;
-}
- 
-</style></div>
-
-<script>
-var toptoolEle=$('.tl-ws');
-// var toptoolEle=document.getElementsByClassName('ws');也可以这样
-
-var toptip=new u.Tooltip(toptoolEle,{
-title:'批量向上显示'
-});
-
-</script>
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;div id='example'>
 	&lt;label class="ws tl-ws">批量提示&lt;/label>
 	&lt;label class="ws tl-ws">批量提示&lt;/label>
@@ -238,4 +145,3 @@ title:'批量向上显示'
 });
 </code></pre>
 
-</div>

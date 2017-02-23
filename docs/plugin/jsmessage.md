@@ -73,20 +73,7 @@ u.on(msgBtn,'click', function(){
 
 
 点击 Success 弹出提示消息
-<div class="example-content"><button id="msgBtn" class="u-button" >Success</button>
-</div>
-
-
-
-<script>
-var msgBtn = document.body.querySelector("#msgBtn");
-var rightInfo='<i class="uf uf-correct margin-r-5"></i>成功信息!!!';
-u.on(msgBtn,'click', function(){ 
-    u.showMessage({msg:rightInfo,position:"center"})
-})
-</script>
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;button id="msgBtn" class="u-button" >Success&lt;/button>
 </code></pre>
 </div>
@@ -99,4 +86,3 @@ u.on(msgBtn,'click', function(){
     u.showMessage({msg:rightInfo,position:"center"})
 })</code></pre>
 
-</div>

@@ -16,21 +16,7 @@
 
 "/"为分隔符
 
-<div class="example-content">
-<ol class="u-breadcrumb">
-    <li><a class="u-link" href="javascript:void(0)">Home</a></li>
-    <li class="active">Library</li>
-</ol>
-<ol class="u-breadcrumb">
-    <li><a class="u-link" href="javascript:void(0)">Home</a></li>
-    <li><a class="u-link" href="javascript:void(0)">Library</a></li>
-    <li class="active">Data</li>
-</ol>
-</div>
-
-
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 
 &lt;ol class="u-breadcrumb">
     &lt;li>&lt;a class="u-link" href="javascript:void(0)">Home&lt;/a>&lt;/li>
@@ -46,31 +32,13 @@
 
 
 
-</div>
+
 
 ## 图标面包屑
 
 "/"为分隔符,并添加Home icon
 
-<div class="example-content">
-<ol class="u-breadcrumb">
-    <li><a class="icon md-home u-link" href="javascript:void(0)">Home</a></li>
-    <li class="active">Data</li>
-</ol>
-<ol class="u-breadcrumb breadcrumb-arrow">
-    <li><a class="icon md-home u-link" href="javascript:void(0)">Home</a></li>
-    <li><a class="u-link" href="javascript:void(0)">Library</a></li>
-    <li class="active">Data</li>
-</ol></div>
-
-<div class="example-content ex-hide"><style>
-.md-home:before {
-    content: "\e6a2";
-    font-family: 'uf';
-}
-</style></div>
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 
 &lt;ol class="u-breadcrumb">
     &lt;li>&lt;a class="icon md-home u-link" href="javascript:void(0)">Home&lt;/a>&lt;/li>
@@ -91,28 +59,10 @@
 </div>
 
 
-</div>
+
 
 ## ">>"为分隔符的面包屑
-<div class="example-content">
-<ol class="u-breadcrumb u-breadcrumb-arrow">
-    <li><a class="u-link" href="javascript:void(0)">Home</a></li>
-    <li class="active">Library</li>
-</ol>
-<ol class="u-breadcrumb u-breadcrumb-arrow">
-    <li><a class="u-link" href="javascript:void(0)">Home</a></li>
-    <li><a class="u-link" href="javascript:void(0)">Library</a></li>
-    <li class="active">Data</li>
-</ol></div>
-
-<div class="example-content ex-hide"><style>
-.md-home:before {
-    content: "\e6a2";
-    font-family: 'uf';
-}
-</style></div>
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 
 &lt;ol class="u-breadcrumb u-breadcrumb-arrow">
     &lt;li>&lt;a class="u-link" href="javascript:void(0)">Home&lt;/a>&lt;/li>
@@ -133,4 +83,3 @@
 </div>
 
 
-</div>

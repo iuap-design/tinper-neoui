@@ -102,21 +102,7 @@ document.getElementById('domId')['u.Combo'].emptyValue();
 
 
 ## 默认单选下拉框
-<div class="example-content"><div class="u-combo" id="combo1">
-    <div class="u-input-group u-has-feedback">
-        <input class="u-form-control" />
-        <span class="u-form-control-feedback uf uf-arrow-down" data-role="combo-button"></span>
-    </div>
-</div></div>
-
-
-
-<script>
-u.compMgr.updateComp();
-document.getElementById('combo1')['u.Combo'].setComboData([{value:'01',name:'男'},{value:'02',name:'女'}]);
-</script>
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;div class="u-combo" id="combo1">
     &lt;div class="u-input-group u-has-feedback">
         &lt;input class="u-form-control" />
@@ -130,25 +116,11 @@ document.getElementById('combo1')['u.Combo'].setComboData([{value:'01',name:'男
 u.compMgr.updateComp();
 document.getElementById('combo1')['u.Combo'].setComboData([{value:'01',name:'男'},{value:'02',name:'女'}]);</code></pre>
 
-</div>
+
 
 ## 多选下拉框
 添加 `mutil-select`样式 支持多选
-<div class="example-content"><div class="u-combo mutil-select" id="combo3">
-    <div class="u-input-group u-has-feedback">
-        <input class="u-form-control" />
-        <span class="u-form-control-feedback uf uf-arrow-down" data-role="combo-button"></span>
-    </div>
-</div></div>
-
-
-
-<script>
-u.compMgr.updateComp();
-document.getElementById('combo3')['u.Combo'].setComboData([{value:'01',name:'java'},{value:'02',name:'javascript'},{value:'03',name:'C'},{value:'04',name:'C++'}]);
-</script>
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;div class="u-combo mutil-select" id="combo3">
     &lt;div class="u-input-group u-has-feedback">
         &lt;input class="u-form-control" />
@@ -162,4 +134,3 @@ document.getElementById('combo3')['u.Combo'].setComboData([{value:'01',name:'jav
 u.compMgr.updateComp();
 document.getElementById('combo3')['u.Combo'].setComboData([{value:'01',name:'java'},{value:'02',name:'javascript'},{value:'03',name:'C'},{value:'04',name:'C++'}]);</code></pre>
 
-</div>

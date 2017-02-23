@@ -112,28 +112,7 @@ switchObject.isChecked();
 
 - `checked` 选中
 - `disabled` 不可用
-<div class="example-content">
-<label class="u-switch u-switch-info" for="switch-info-unchecked">
-    <input type="checkbox" id="switch-info-unchecked" class="u-switch-input">
-    <span class="u-switch-label"></span>
-</label>
-<label class="u-switch u-switch-info" for="switch-info-checked">
-    <input type="checkbox" id="switch-info-checked" class="u-switch-input" checked>
-    <span class="u-switch-label"></span>
-</label>
-<label class="u-switch u-switch-info" for="switch-info-disable">
-    <input type="checkbox" id="switch-info-disable" class="u-switch-input" disabled>
-    <span class="u-switch-label"></span>
-</label>
-<label class="u-switch u-switch-info" for="switch-info-checkdisalbed">
-    <input type="checkbox" id="switch-info-checkdisalbed" class="u-switch-input" checked disabled>
-    <span class="u-switch-label"></span>
-</label>
-</div>
-
-
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 
 &lt;label class="u-switch u-switch-info" for="switch-info-unchecked">
     &lt;input type="checkbox" id="switch-info-unchecked" class="u-switch-input">
@@ -156,7 +135,7 @@ switchObject.isChecked();
 
 
 
-</div>
+
 
 ## 多彩开关
 
@@ -166,36 +145,7 @@ switchObject.isChecked();
 * `.u-switch-warning` - 橙色开关
 * `.u-switch-danger` - 红色开关
 * `.u-switch-dark` - 灰色开关
-<div class="example-content">
-<label class="u-switch u-switch-primary" for="switch-primary">
-    <input type="checkbox" id="switch-primary" class="u-switch-input" checked="true">
-    <span class="u-switch-label"></span>
-</label>
-<label class="u-switch u-switch-success" for="switch-success">
-    <input type="checkbox" id="switch-success" class="u-switch-input" checked>
-    <span class="u-switch-label"></span>
-</label>
-<label class="u-switch u-switch-info" for="switch-info">
-    <input type="checkbox" id="switch-info" class="u-switch-input" checked>
-    <span class="u-switch-label"></span>
-</label>
-<label class="u-switch u-switch-warning" for="switch-warning">
-    <input type="checkbox" id="switch-warning" class="u-switch-input" checked>
-    <span class="u-switch-label"></span>
-</label>
-<label class="u-switch u-switch-danger" for="switch-danger">
-    <input type="checkbox" id="switch-danger" class="u-switch-input" checked>
-    <span class="u-switch-label"></span>
-</label>
-<label class="u-switch u-switch-dark" for="switch-dark">
-    <input type="checkbox" id="switch-dark" class="u-switch-input" checked>
-    <span class="u-switch-label"></span>
-</label>
-</div>
-
-
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 
 &lt;label class="u-switch u-switch-primary" for="switch-primary">
     &lt;input type="checkbox" id="switch-primary" class="u-switch-input" checked="true">
@@ -226,31 +176,14 @@ switchObject.isChecked();
 
 
 
-</div>
+
 
 ## 多种尺寸开关
 
 * `.u-switch-lg` - 大尺寸开关
 * `.u-switch-default` - 默认尺寸开关
 * `.u-switch-sm` - 小尺寸开关
-<div class="example-content">
-<label class="u-switch u-switch-primary u-switch-lg margin-bottom-20" for="switch-primary-lg">
-    <input type="checkbox" id="switch-primary-lg" class="u-switch-input" checked="true">
-    <span class="u-switch-label"></span>
-</label>
-<label class="u-switch u-switch-primary u-switch-default margin-bottom-10" for="switch-primary-default">
-    <input type="checkbox" id="switch-primary-default" class="u-switch-input" checked="true">
-    <span class="u-switch-label"></span>
-</label>
-<label class="u-switch u-switch-primary u-switch-sm" for="switch-primary-sm">
-    <input type="checkbox" id="switch-primary-sm" class="u-switch-input" checked="true">
-    <span class="u-switch-label"></span>
-</label>
-</div>
-
-
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 
 &lt;label class="u-switch u-switch-primary u-switch-lg margin-bottom-20" for="switch-primary-lg">
     &lt;input type="checkbox" id="switch-primary-lg" class="u-switch-input" checked="true">
@@ -269,4 +202,3 @@ switchObject.isChecked();
 
 
 
-</div>

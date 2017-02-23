@@ -16,15 +16,7 @@
 
 # 块级元素水平居中
 添加`.center-block`实现水平居中
-<div class="example-content"> <div class="example example-box">
-	<div class="h-64 w-64 bg-blue center-block ">
-		我是内容
-	</div>
-</div></div>
-
-
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
  &lt;div class="example example-box">
 	&lt;div class="h-64 w-64 bg-blue center-block ">
 		我是内容
@@ -34,7 +26,7 @@
 
 
 
-</div>
+
 
 ## 浮动
 浮动是创建各种布局的基础。但是浮动需要被清理。下面的类将帮助你设置基本的布局
@@ -43,14 +35,7 @@
 * `.pull-right`: 向右浮动
 * `.clearfix`: 清除浮动
 
-<div class="example-content"><div class="example example-box">
-  <button type="button" class="u-button  u-button-success ">Left</button>
-  <button type="button" class="u-button  u-button-success  pull-right" >Pull right</button>
-</div></div>
-
-
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;div class="example example-box">
   &lt;button type="button" class="u-button  u-button-success ">Left&lt;/button>
   &lt;button type="button" class="u-button  u-button-success  pull-right" >Pull right&lt;/button>
@@ -59,7 +44,7 @@
 
 
 
-</div>
+
 
 ## 行内块级元素垂直对齐
 添加如下样式即可实现垂直居中、垂直向下。
@@ -68,29 +53,7 @@
 * `.vertical-align-middle`:添加这个样式到到子元素上，实现垂直居中
 * `.vertical-align-bottom`:添加这个样式到子元素上，实现垂直向下
 
-<div class="example-content"><div class="example example-box u-container-fluid">
-	<div class="u-row">
-
-		<div class="u-col-6">
-			<div class="vertical-align h" >
-      		    <button type="button" class="vertical-align-middle u-button  u-button-success ">垂直居中</button>
-	        </div>
-		</div>
-		<div class="u-col-6">
-			<div class="vertical-align h" >
-	 			<button type="button" class="vertical-align-bottom u-button  u-button-success ">垂直向下</button>
-	 		</div>
-		</div>
-	</div>
-</div></div>
-
-<div class="example-content ex-hide"><style>
-.vertical-align-bottom.u-button{
-	vertical-align: bottom;
-}
-</style></div>
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;div class="example example-box u-container-fluid">
 	&lt;div class="u-row">
 
@@ -115,7 +78,7 @@
 </div>
 
 
-</div>
+
 
 ## 文字对齐
 添加如下样式来实现文字的对齐
@@ -128,32 +91,7 @@
 * `text-right`: 文字水平向右对齐
 * `text-justify`: 文字两端对齐
 
-<div class="example-content"><div class="example example-box u-container-fluid">
-    <div class="row">
-        <div class="col-md-4 m-b-sm bg-grey h-64">
-    		<img src="/assets/static/img/img2.png" height="64" width="64" style="vertical-align:top">
-           <span class="text-top">文字顶部对齐</span>
-        </div>
-        <div class="col-md-4  m-b-sm bg-grey h-64" >
-        <img src="/assets/static/img/img2.png" height="64" width="64" style="vertical-align:middle">
-           <span class="text-middle">文字居中对齐</span>
-        </div>
-        <div class="col-md-4  m-b-sm bg-grey h-64" >
-          <img src="/assets/static/img/img2.png" height="64" width="64" style="vertical-align:bottom">
-            <span class="text-bottom">文字底部对齐</span>
-        </div>
-    </div>
-    <div class="margin-top-20">
-        <p class="text-left">文字向左对齐</p>
-        <p class="text-center">文字居中对齐</p>
-        <p class="text-right">文件向右对齐</p>
-        <p class="text-justify">文件两端对齐</p>
-    </div>
-</div></div>
-
-
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;div class="example example-box u-container-fluid">
     &lt;div class="row">
         &lt;div class="col-md-4 m-b-sm bg-grey h-64">
@@ -180,7 +118,7 @@
 
 
 
-</div>
+
 
 ## 字体大小
 字体尺寸提供了如下大小的字体：0，10，12，14，16，18，20，24，26，30，40，50，60，70，80。
@@ -206,10 +144,7 @@
 
 
 
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button>
 
-
-</div>
 
 ## 字体粗细
 字体粗细提供了如下粗细数值：unset、100、200、300、400、500、600、700、800、900。
@@ -230,10 +165,7 @@
 
 
 
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button>
 
-
-</div>
 
 ## 字体大小写转换
 添加如下样式即可实现文字大小写转换
@@ -242,15 +174,7 @@
 * `text-uppercase`: 将字母全部变成大写
 * `text-capitalize`: 将单词首字母大写
 
-<div class="example-content"><div class="example example-box">
-	<p class="text-lowercase">Lowercased text.</p>
-	<p class="text-uppercase">Uppercased text.</p>
-	<p class="text-capitalize">Capitalized text.</p>
-</div></div>
-
-
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;div class="example example-box">
 	&lt;p class="text-lowercase">Lowercased text.&lt;/p>
 	&lt;p class="text-uppercase">Uppercased text.&lt;/p>
@@ -260,7 +184,7 @@
 
 
 
-</div>
+
 
 ## 文字包裹
 添加如下类实现文字包裹的各种样式
@@ -270,39 +194,7 @@
 * `text-break`: 当内容超出容器宽度时，将自动折行
 * `text-nowrap`: 当内容超出容器宽度时，在一行显示，不折行。
 
-<div class="example-content"><p>文字是否包裹换行</p>
-<div class="example example-box u-container-fluid " style="width:500px">
-    <div class="u-row">
-        <div class="u-col-md-3">
-            <div class="text-hide h" style="border:1px solid #e6e8ea;">
-                我被隐藏了
-            </div>
-        </div>
-        <div class="u-col-md-3">
-            <div class="text-truncate h" style="border:1px solid #e6e8ea;">
-                内容显示一行，超出的内容使用“...”代替 This is text truncate.This is text truncate.
-            </div>
-        </div>
-        <div class="u-col-md-3">
-            <div class="text-break h " style="border:1px solid #e6e8ea;">
-                This-is-text-break.This-is-text-break.This-is-text-break.This-is-text-break.
-            </div>
-        </div>
-        <div class="u-col-md-3">
-            <div class="text-nowrap h" style="border:1px solid #e6e8ea;overflow: hidden;">
-                内容显示一行，不换行 This is text nowrap.This is text nowrap.
-            </div>
-        </div>
-    </div>
-</div></div>
-
-<div class="example-content ex-hide"><style>
-.vertical-align-bottom.u-button {
-    vertical-align: bottom;
-}
-</style></div>
-
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button><div class="examples-code"><pre><code>
+<div class="examples-code"><pre><code>
 &lt;p>文字是否包裹换行&lt;/p>
 &lt;div class="example example-box u-container-fluid " style="width:500px">
     &lt;div class="u-row">
@@ -337,7 +229,7 @@
 </div>
 
 
-</div>
+
 
 ## 高度
 高度提供了如下数值： 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, auto, 100%
@@ -360,10 +252,7 @@
 
 
 
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button>
 
-
-</div>
 
 ## 外间距
 margin提供了如下数值：0，3，5，10, 15, 20, 25, 30, 35, 40, 45, 50.
@@ -384,10 +273,7 @@ margin提供了如下数值：0，3，5，10, 15, 20, 25, 30, 35, 40, 45, 50.
 
 
 
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button>
 
-
-</div>
 
 ## 内间距
 padding提供了如下数值：0，3，5，10, 15, 20, 25, 30, 35, 40, 45, 50.
@@ -408,10 +294,7 @@ padding提供了如下数值：0，3，5，10, 15, 20, 25, 30, 35, 40, 45, 50.
 
 
 
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button>
 
-
-</div>
 
 ## 宽度
 宽度提供了如下数值：50, 100, 150, 200, 250, 300, 350, 400, 450, 500, auto, 100%
@@ -434,10 +317,7 @@ padding提供了如下数值：0，3，5，10, 15, 20, 25, 30, 35, 40, 45, 50.
 
 
 
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button>
 
-
-</div>
 
 ## display
 添加如下属性可以修改元素的display属性值。
@@ -449,10 +329,7 @@ padding提供了如下数值：0，3，5，10, 15, 20, 25, 30, 35, 40, 45, 50.
 
 
 
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button>
 
-
-</div>
 
 ## 响应式显示
 通过单独或联合使用以下列出的类，可以针对不同屏幕尺寸隐藏或显示页面内容
@@ -482,7 +359,3 @@ padding提供了如下数值：0，3，5，10, 15, 20, 25, 30, 35, 40, 45, 50.
 
 
 
-<div class="ex-code-par"><button  class="u-button u-button-block u-button-accent margin-top-15 codeOptBtn" ><i class="uf uf-arrow-down"></i>查看代码</button>
-
-
-</div>
