@@ -433,8 +433,10 @@ var Combo = BaseComponent.extend({
 
         var values = value.split(',');
         if (this.mutilSelect === true) {
-            if(self._combo_name_par)
+            if(self._combo_name_par) {
                 self._combo_name_par.innerHTML = '';
+                $(self._combo_name_par).removeClass('u-combo-overwidth');
+            }
             this.value = '';
         }
         if(!value) {
