@@ -1,10 +1,10 @@
+<a name="3.1.27"></a>
+## [3.1.27](https://github.com/iuap-design/tinper-neoui/compare/v3.1.26...v3.1.27) (2017-02-23)
+
+
+
 <a name="3.1.25"></a>
-## [3.1.25](https://github.com/iuap-design/tinper-neoui/compare/v3.1.23...v3.1.25) (2017-02-10)
-
-
-
-<a name="3.1.23"></a>
-## [3.1.23](https://github.com/iuap-design/tinper-neoui/compare/v3.1.22...v3.1.23) (2017-01-13)
+## [3.1.25](https://github.com/iuap-design/tinper-neoui/compare/v3.1.22...v3.1.25) (2017-02-10)
 
 
 ### Bug Fixes
