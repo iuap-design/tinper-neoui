@@ -26,29 +26,44 @@
 
 ## Quickstart
 
-### Install
-
-- From github
-```
-git clone git@github.com:iuap-design/tinper-neoui.git
-```
+### Get neoui
 
 - npm
 
 ```
 npm install tinper-neoui
 ```
+* cdn 
+```
+css Path: //design.yyuap.com/static/neoui/latest/css/neoui.css
+JS Path: //design.yyuap.com/static/neoui/latest/js/neoui.js
+```
+### Introducing neoui
 
+- ES6
+```
+import { neoui } from "tinper-neoui/src/index"
+```
+* HTML
+
+```
+css：
+	 <link href="//design.yyuap.com/static/neoui/latest/css/neoui.css" rel="stylesheet">
+
+JS ：
+	<script src="//design.yyuap.com/static/jquery/jquery-1.11.2.js"></script>
+    <script src="//design.yyuap.com/static/neoui/latest/js/neoui.js"></script>
+```
+**Note**： neoui is dependent on jQuery
 
 ### Use
 
+
+```
+<button class="u-button u-button-primary">Hello World!</button>
+```
 Read the [Develop documentation](http://tinper.org/dist/neoui/global/README.html) for information on the framework contents, templates and examples, and more.
 
-## Document
-
-[Develop documentation](http://tinper.org/dist/neoui/global/README.html)
-
-[Website](http://tinper.org)
 
 ## Contributing
 
@@ -84,10 +99,6 @@ build：
 ```
 $ npm run product
 ```
-
-### Website Chat Group
-
-527124070
 
 ## Licence 版权
 

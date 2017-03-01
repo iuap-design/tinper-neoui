@@ -13,65 +13,50 @@
 
 ## 功能
 
+- **丰富的组件**: neoui 包含丰富的 CSS 组件、JS 插件
 
-### 丰富的组件
+- **按需定制**: 可以轻松定制所需模块 减小文件尺寸 提升效率，节约资源
 
-neoui 包含丰富的 CSS 组件、JS 插件
-
-### 按需定制
-
-可以轻松定制所需模块 减小文件尺寸 提升效率，节约资源
-
-### 响应式布局
-
-基于12栅格系统 全面兼容不同浏览器及设备 一次开发，多端兼容
-
-### 浏览器兼容性
-
-支持IE8+ 、firefox、Chrome、Safari等主流浏览器，轻松帮您解决浏览器兼容问题 
+- **响应式布局**: 基于12栅格系统 全面兼容不同浏览器及设备 一次开发，多端兼容
+- **浏览器兼容性**: 支持IE8+ 、firefox、Chrome、Safari等主流浏览器，轻松帮您解决浏览器兼容问题 
 
 ## 快速上手
-
 ### 获取neoui
-
-- 直接从github获取我们的源码
+* npm 资源
 ```
-git clone git@github.com:iuap-design/tinper-neoui.git
-```
-
-- 使用npm安装
-
-```
-npm install tinper-neoui
+	npm install tinper-neoui
 ```
 
+* cdn 资源
+```
+css路径: //design.yyuap.com/static/neoui/latest/css/neoui.css
+JS路径: //design.yyuap.com/static/neoui/latest/js/neoui.js
+```
+### 引入neoui
+- ES6语法
+```
+import { neoui } from "tinper-neoui/src/index"
 
+```
+* HTML直接引入
+
+```
+css资源：
+	 <link href="//design.yyuap.com/static/neoui/latest/css/neoui.css" rel="stylesheet">
+
+JS 资源：
+	<script src="//design.yyuap.com/static/jquery/jquery-1.11.2.js"></script>
+    <script src="//design.yyuap.com/static/neoui/latest/js/neoui.js"></script>
+```
+**注**： neoui依赖于jquery，引入资源时需先引入jquery
 
 ### 具体使用
-
-具体使用请参考[开发文档](http://tinper.org/dist/neoui/global/README.html)
-
-
-## 文档
-
+```
+<button class="u-button u-button-primary">Hello World!</button>
+```
 开发文档详见[这里](http://tinper.org/dist/neoui/global/README.html)
 
-更多内容请移步我们的[官网](http://tinper.org)
-
 ## 如何参与贡献
-
-
-### 反馈
-如在使用过程中遇到任何问题，可以在[这里](https://github.com/iuap-design/tinper-neoui/issues)提交issue反馈；
-
-或者直接fork代码到你的github仓库，提交pull request给我们。
-
-
-[Bug 反馈及需求提交](CONTRIBUTING.md)
-
-### 官方QQ群
-
-527124070
 
 ### 开发及构建
 
@@ -97,6 +82,15 @@ $ npm install
 ```
 $ npm run product
 ```
+
+### 反馈
+如在使用过程中遇到任何问题，可以在[这里](https://github.com/iuap-design/tinper-neoui/issues)提交issue反馈；
+
+或者直接fork代码到你的github仓库，提交pull request给我们。
+
+
+[Bug 反馈及需求提交](CONTRIBUTING.md)
+
 
 ## Licence 版权
 
