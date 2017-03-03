@@ -35,7 +35,7 @@ JS路径: //design.yyuap.com/static/neoui/latest/js/neoui.js
 ### 引入neoui
 - ES6语法
 ```
-import { neoui } from "tinper-neoui/src/index"
+import { neoui } from "tinper-neoui"
 
 ```
 * HTML直接引入

@@ -42,7 +42,7 @@ JS Path: //design.yyuap.com/static/neoui/latest/js/neoui.js
 
 - ES6
 ```
-import { neoui } from "tinper-neoui/src/index"
+import { neoui } from "tinper-neoui"
 ```
 * HTML
 
