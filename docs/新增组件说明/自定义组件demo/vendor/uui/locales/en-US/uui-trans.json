@@ -1,0 +1,65 @@
+{
+    "public":{
+        "clear": "Clear",
+        "confirm": "Ok",
+        "cancel": "Cancel",
+        "day": "",
+        "ok": "Ok"
+    },
+    "gridComp": {
+      "show_column": "show hide column",
+      "clear_set": "clear set",
+      "no_rows": "no data",
+      "sum": "sum:",
+	  "close": "close"
+    },
+	"dialog": {
+		"info_dialog": "Info Dialog",
+		"title":"Tips",
+		"okText":"Confirm",
+		"cancelText":"Cancel"
+	},
+	"validate": {
+		"required": "cannot be null!",
+		"integer": "please input an integer!",
+		"float": "please input a number!",
+		"zipCode": "please input zipcode!",
+		"phone": "please input phone number!",
+		"email": "please input email!",
+		"url": "please input url!",
+		"error_zipCode": "error zipcode!",
+		"error_phone": "error phone number!",
+		"error_email": "error email!",
+		"error_url": "error url!",
+		"input_minlength": "Input length can not be less than ",
+		"input_maxlength": "Input length can not be greater than ",
+		"input_unit": " characters",
+		"input_maxvalue": "The input value can not be greater than ",
+		"input_minvalue": "The input value can not be less than ",
+		"input_equalMax": "The input value can not be greater than or equal to ",
+		"input_equalMin": "The input value can not be less than or equal to ",
+        "landline": "please input landline number!",
+        "datetime":"please input datetime",
+        "phoneNumber":"please input correct number",
+        "error_integer":"error integer",
+        "error_float":"error float",
+        "error_landline":"error landline",
+        "error_datetime":"error datetime",
+        "error_phoneNumber":"error phoneNumber"
+
+    },
+    "date":{
+        "months": ["January","February","March","April","May","June","July","August","September","October","November","December"],
+        "monthsShort": ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+        "weekdays": ["Sunday","Monday","Tuesday","Wednesday","Thurday","Friday","Saturday"],
+        "weekdaysShort": ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+        "weekdaysMin": ["S","M","T","W","T","F","S"]
+    },
+    "pagination":{
+        "totalText":"Total ",
+        "listText": "lists",
+        "pageText":"Page",
+        "showText":"Show ",
+        "toText":"To "
+    }
+}
