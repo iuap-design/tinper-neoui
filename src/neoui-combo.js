@@ -268,7 +268,7 @@ var Combo = BaseComponent.extend({
 
     selectItem: function (index) {
         var self = this;
-
+        self._inputFocus = false;
         if (this.mutilSelect){
             var val = this.comboDatas[index].value;
             var name = this.comboDatas[index].name;
@@ -298,7 +298,7 @@ var Combo = BaseComponent.extend({
                 this.name += name + ',';
                 var nameDiv= makeDOM('<div class="u-combo-name" key="' + val + '">'+ name + /*<a href="javascript:void(0)" class="remove">x</a>*/'</div>');
                 var parNameDiv=makeDOM('<div class="u-combo-name-par" style="position:absolute;max-width:' + this.fullWidth + 'px;"></div>');
-                
+
                 /*var _a = nameDiv.querySelector('a');
                 on(_a, 'click', function(){
                     var values = self.value.split(',');
