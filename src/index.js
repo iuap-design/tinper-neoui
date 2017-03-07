@@ -7,7 +7,11 @@
 //Sparrow import
 import {extend} from 'tinper-sparrow/src/extend';
 import {BaseComponent} from './neoui-BaseComponent';
+import {on} from 'tinper-sparrow/src/event';
 
+
+
+import {compMgr} from 'compox/src/compMgr';
 //Neoui import
 import {Autocomplete} from './neoui-autocomplete';
 import {Button} from './neoui-button';
@@ -94,7 +98,8 @@ var ex = {
 	Month : Month,
 	Year : Year,
 	YearMonth : YearMonth,
-	MonthDate : MonthDate
+	MonthDate : MonthDate,
+	compMgr :compMgr
 
 
 //	ajax: ajax,
@@ -162,4 +167,14 @@ var ex = {
 
 extend(ex,window.u || {});
 window.u = ex;
+
+if(document.readyState && document.readyState === 'complete') {
+	compMgr.updateComp();
+} else {
+	on(window, 'load', function() {
+		//扫描并生成控件
+		compMgr.updateComp();
+	});
+}
+
 export {ex as u};

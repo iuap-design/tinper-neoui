@@ -97,14 +97,14 @@ var hideLoading = function() {
 		document.body.removeChild(divs[i]);
 	}
 }
-if(document.readyState && document.readyState === 'complete') {
-	compMgr.updateComp();
-} else {
-	on(window, 'load', function() {
-		//扫描并生成控件
-		compMgr.updateComp();
-	});
-}
+// if(document.readyState && document.readyState === 'complete') {
+// 	compMgr.updateComp();
+// } else {
+// 	on(window, 'load', function() {
+// 		//扫描并生成控件
+// 		compMgr.updateComp();
+// 	});
+// }
 //兼容性保留
 var showWaiting = showLoading
 var removeWaiting = hideLoading

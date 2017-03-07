@@ -598,14 +598,7 @@ compMgr.regComp({
     compAsString: 'u.Validate',
     css: 'u-validate'
 });
-if (document.readyState && document.readyState === 'complete') {
-    compMgr.updateComp();
-} else {
-    on(window, 'load', function() {
-        //扫描并生成控件
-        compMgr.updateComp();
-    });
-}
+
 export {
     Validate,
     validate,
