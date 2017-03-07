@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="vendor/uui/css/u.css">
+</head>
+<body>
+
+
+<div style="width: 200px;height: 100px;" class="u-custom">
+</div>
+
+
+<script src="project/libs/jquery/jquery-1.11.2.js"></script>
+<script src="vendor/knockout/knockout-3.2.0.debug.js"></script>
+<script src="vendor/uui/js/u-polyfill.js"></script>
+<script src="vendor/uui/js/u.js"></script>
+
+<script src="custom.js"></script>
+
+<script>
+    var app, viewModel;
+    viewModel = {
+        dt1: new u.DataTable({
+            meta: {
+                f1: {}
+            }
+        }),
+    }
+
+    app = u.createApp({
+        el: 'body',
+        model: viewModel
+    });
+
+    var r = viewModel.dt1.createEmptyRow();
+    r.setValue('f1', "true");
+    viewModel.dt1.setRowSelect(0);
+</script>
+</body>
+</html>

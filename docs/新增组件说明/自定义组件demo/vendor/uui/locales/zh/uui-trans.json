@@ -1,0 +1,65 @@
+{
+    "public":{
+        "clear":"清空",
+        "confirm": "确定",
+        "cancel": "取消",
+        "day": "日",
+        "ok": "确定"
+    },
+    "gridComp": {
+      "show_column": "显示 隐藏列",
+      "clear_set": "清除设置",
+      "no_rows": "无数据",
+      "sum": "合计:",
+	  "close":"关闭"
+    },
+	"dialog": {
+		"info_dialog": "提示窗口",
+		"title":"提示",
+		"okText":"确定",
+		"cancelText":"取消"
+	},
+	"validate": {
+		"required": "不能为空！",
+		"integer": "请填写整数！",
+		"float": "请填写数字！",
+		"zipCode": "请填写邮政编码！",
+		"phone": "请填写手机号码！",
+		"email": "请填写邮箱地址！",
+		"url": "请填写网址！",
+		"error_zipCode": "邮政编码格式不对！",
+		"error_phone": "手机号码格式不对！",
+		"error_email": "邮箱地址格式不对！",
+		"error_url": "网址格式不对！",
+		"input_minlength": "输入长度不能小于 ",
+		"input_maxlength": "输入长度不能大于 ",
+		"input_unit": " 位",
+		"input_maxvalue": "输入值不能大于",
+		"input_minvalue": "输入值不能小于",
+		"input_equalMax": "输入值不能大于或等于",
+		"input_equalMin": "输入值不能小于或等于",
+        "landline": "请填写座机号码！",
+        "datetime":"请填写日期！",
+        "phoneNumber":"请填写正确号码！",
+        "error_integer":"整数格式不对！",
+        "error_float":"数字格式不对！",
+        "error_landline":"座机号码格式不对！",
+        "error_datetime":"日期格式不对！",
+        "error_phoneNumber":"号码格式不对！"
+	},
+    "date":{
+        "months": ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],
+        "monthsShort": ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
+        "weekdays": ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
+        "weekdaysShort": ["周日","周一","周二","周三","周四","周五","周六"],
+        "weekdaysMin": ["日","一","二","三","四","五","六"]
+    },
+    "pagination":{
+        "totalText":"共",
+        "listText": "条",
+        "pageText":"页",
+        "showText":"显示",
+        "toText":"到"
+    }
+
+}
