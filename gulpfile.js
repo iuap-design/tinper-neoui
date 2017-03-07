@@ -148,7 +148,7 @@ gulp.task('buildcorecss',function(){
         .pipe(base64())
         .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
         .pipe(stripCssComments())
-        .pipe(rename('u.core.css'))
+        .pipe(rename('tinper-neoui.core.css'))
         .pipe(gulp.dest('./dist/css'))
         .pipe(minifycss())
         .pipe(rename({
@@ -163,7 +163,7 @@ gulp.task('buildcss', ['buildcorecss'], function(){
         .pipe(base64())
         .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
         .pipe(stripCssComments())
-        .pipe(rename('u.css'))
+        .pipe(rename('tinper-neoui.css'))
         .pipe(gulp.dest('./dist/css'))
         .pipe(minifycss())
         .pipe(rename({
@@ -194,30 +194,30 @@ gulp.task('distbuild', ['buildcss','buildcssplugin']);
  * 添加头部信息
  */
 gulp.task('buildjs', function(){
-    gulp.src(['vendor/ui/*.js','dist/js/neoui.js'])
-        .pipe(concat('neoui.js'))
+    gulp.src(['vendor/ui/*.js','dist/js/tinper-neoui.js'])
+        .pipe(concat('tinper-neoui.js'))
         .pipe(gulp.dest('./dist/js'))
         .pipe(uglify())
-        .pipe(rename('neoui.min.js'))
+        .pipe(rename('tinper-neoui.min.js'))
         .pipe(gulp.dest('./dist/js'));
 
 });
 gulp.task('neo',['buildcss', 'buildjs'],function(){
     version.init([
-        './dist/js/neoui.js',
-        './dist/js/neoui.min.js'
+        './dist/js/tinper-neoui.js',
+        './dist/js/tinper-neoui.min.js'
     ]);
 });
 gulp.task('neoui', ['neo'], function(){
     version.init([
-        './dist/css/u.css',
-        './dist/css/u.min.css'
+        './dist/css/tinper-neoui.css',
+        './dist/css/tinper-neoui.min.css'
     ]);
 });
 
 gulp.task('dist', ['buildcss','buildjs', 'image','fontcss','fontfile'], function(){
     version.init([
-        './dist/css/u.css',
-        './dist/css/u.min.css'
+        './dist/css/tinper-neoui.css',
+        './dist/css/tinper-neoui.min.css'
     ]);
 });

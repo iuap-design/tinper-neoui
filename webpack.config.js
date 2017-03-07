@@ -38,6 +38,7 @@ entries.forEach(objpush);
 // var PROD = JSON.parse(process.env.PROD_ENV || '0');
 // console.log(PROD);
 
+console.log("env----"+env);
 /**
  * product_normal 用于输出合并后未压缩版
  * product_min 用于输出合并后压缩版
@@ -60,13 +61,13 @@ if(env === 'build_normal') {
 	entryFile = entryobj;
 	outJs = '/dist/js/plugin';
 } else if(env === 'product_normal'){
-	libraryName = 'neoui';
+	libraryName = 'tinper-neoui';
 	devToolSelect = '';
 	outputFile = libraryName + '.js';
 	entryFile = __dirname + indexJs;
 	outJs = '/dist/js';
 } else if(env === 'product_min'){
-	libraryName = 'neoui';
+	libraryName = 'tinper-neoui';
 	devToolSelect = '';
 	plugins.push(new UglifyJsPlugin({
 		minimize: true
@@ -76,7 +77,7 @@ if(env === 'build_normal') {
 	outJs = '/dist/js';
 }
 
-
+console.log('outputFIle---'+outputFile);
 var config = {
 	// entry: __dirname + '/v1/src/index.js',
 	// entry : fs.readdirSync('./v1/src/').filter(function(file) {

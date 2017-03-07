@@ -18,11 +18,16 @@ const YearMonth = BaseComponent.extend({
 	DEFAULTS : {
 	},
 	init: function(){
+        var _fmt,_defaultFmt;
 		var self = this;
 		var element = this.element;
 		this.options = extend({}, this.DEFAULTS, this.options);
 		this.panelDiv = null;
 		this.input = this.element.querySelector("input");
+
+        _defaultFmt = "YYYY-M";
+         _fmt = this.element.getAttribute("format");
+        this.format = _fmt || this.options['format']  ||  _defaultFmt;
 
 		var d = new Date();
 		this.year = d.getFullYear();
@@ -219,7 +224,8 @@ const YearMonth = BaseComponent.extend({
     		value = this.year + '-' + this.month;
     	}
     	this.value = value;
-    	this.input.value = value;
+    	// this.input.value = value;
+        this.input.value = udate.format(this.value,this.format);
     	this.trigger('valueChange', {value:value})
     },
 

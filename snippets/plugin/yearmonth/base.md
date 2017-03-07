@@ -7,6 +7,8 @@
 
 [试一试](http://tinper.org/webide/#/demos/ui/yearmonth)
 
+用户可以在`u-yearmonth`的dom元素添加format属性，来自定义年月的显示格式。具体定义方式参考[这里](http://tinper.org/dist/neoui/plugin/date.html)
+
 # API
 
 ## \# YearMonth 对象
