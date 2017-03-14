@@ -30,6 +30,8 @@ DateTimePicker.fn.init = function(){
     //this._element.style.display = "inline-table"; // 存在右侧图标，因此修改display
     //new UText(this._element);
     this._input = this._element.querySelector("input");
+    if(this.options.placeholder)
+        this._input.placeholder = this.options.placeholder;
 
     // if(env.isMobile){
     //     // setTimeout(function(){
