@@ -4,14 +4,25 @@
  * Date	  : 2016-08-02 15:56:32
  */
 
-import {BaseComponent} from './neoui-BaseComponent';
-import {addClass,hasClass,removeClass,toggleClass,closest} from 'tinper-sparrow/src/dom';
-import {on} from 'tinper-sparrow/src/event';
-import {Ripple,URipple} from 'tinper-sparrow/src/util/ripple';
-import {env} from 'tinper-sparrow/src/env';
-import {compMgr} from 'compox/src/compMgr';
+import {
+    addClass,
+    hasClass,
+    removeClass,
+    toggleClass,
+    closest
+} from 'tinper-sparrow/src/dom';
+import {
+    on
+} from 'tinper-sparrow/src/event';
+import {
+    Ripple,
+    URipple
+} from 'tinper-sparrow/src/util/ripple';
+import {
+    env
+} from 'tinper-sparrow/src/env';
 
-var NavLayout = BaseComponent.extend({
+var NavLayout = u.BaseComponent.extend({
     _Constant: {
         MAX_WIDTH: '(max-width: 1024px)',
         TAB_SCROLL_PIXELS: 100,
@@ -89,7 +100,7 @@ var NavLayout = BaseComponent.extend({
         NAV_LINK_OPEN: 'u-nav-link-open',
         NAV_SUB: 'u-nav-sub'
     },
-    init: function(){
+    init: function() {
         var container = document.createElement('div');
         addClass(container, this._CssClasses.CONTAINER);
         this.element.parentElement.insertBefore(container, this.element);
@@ -114,7 +125,7 @@ var NavLayout = BaseComponent.extend({
                 var headerHeight = typeof this._header === 'undefined' ? 0 : this._header.offsetHeight;
                 this._content.style.height = layoutHeight - headerHeight + 'px'
                 var self = this;
-                on(window,'resize', function () {
+                on(window, 'resize', function() {
                     var layoutHeight = self.element.offsetHeight;
                     var headerHeight = typeof self._header === 'undefined' ? 0 : self._header.offsetHeight;
                     self._content.style.height = layoutHeight - headerHeight + 'px'
@@ -132,12 +143,12 @@ var NavLayout = BaseComponent.extend({
         if (this._header) {
             if (hasClass(this._header, this._CssClasses.HEADER_SEAMED)) {
                 mode = this._Mode.SEAMED;
-            //} else if (hasClass(this._header,this._CssClasses.HEADER_SEAMED)) {
-            //    mode = this._Mode.WATERFALL;
-            //    on(this._header,'transitionend', this._headerTransitionEndHandler.bind(this));
-            //    // this._header.addEventListener('transitionend', this._headerTransitionEndHandler.bind(this));
-            //    on(this._header,'click', this._headerClickHandler.bind(this));
-            //    // this._header.addEventListener('click', this._headerClickHandler.bind(this));
+                //} else if (hasClass(this._header,this._CssClasses.HEADER_SEAMED)) {
+                //    mode = this._Mode.WATERFALL;
+                //    on(this._header,'transitionend', this._headerTransitionEndHandler.bind(this));
+                //    // this._header.addEventListener('transitionend', this._headerTransitionEndHandler.bind(this));
+                //    on(this._header,'click', this._headerClickHandler.bind(this));
+                //    // this._header.addEventListener('click', this._headerClickHandler.bind(this));
             } else if (hasClass(this._header, this._CssClasses.HEADER_SCROLL)) {
                 mode = this._Mode.SCROLL;
                 addClass(container, this._CssClasses.HAS_SCROLLING_HEADER);
@@ -157,7 +168,7 @@ var NavLayout = BaseComponent.extend({
                 // Add and remove shadows depending on scroll position.
                 // Also add/remove auxiliary class for styling of the compact version of
                 // the header.
-                on(this._content,'scroll',this._contentScrollHandler.bind(this));
+                on(this._content, 'scroll', this._contentScrollHandler.bind(this));
                 this._contentScrollHandler();
             }
         }
@@ -182,7 +193,7 @@ var NavLayout = BaseComponent.extend({
                 //If drawer has ON_SMALL_SCREEN class then add it to the drawer toggle button as well.
                 addClass(drawerButton, this._CssClasses.ON_SMALL_SCREEN);
             }
-            on(drawerButton,'click', this._drawerToggleHandler.bind(this));
+            on(drawerButton, 'click', this._drawerToggleHandler.bind(this));
 
             // Add a class if the layout has a drawer, for altering the left padding.
             // Adds the HAS_DRAWER to the elements since this._header may or may
@@ -201,33 +212,34 @@ var NavLayout = BaseComponent.extend({
             var obfuscator = document.createElement('div');
             addClass(obfuscator, this._CssClasses.OBFUSCATOR);
             this.element.appendChild(obfuscator);
-            on(obfuscator,'click', this._drawerToggleHandler.bind(this));
+            on(obfuscator, 'click', this._drawerToggleHandler.bind(this));
             this._obfuscator = obfuscator;
 
             var leftnavs = this.element.querySelectorAll('.' + this._CssClasses.NAV);
-            for(var i = 0; i < leftnavs.length; i++){
-                on(leftnavs[i],'click', this._navlinkClickHander.bind(this));
-                
+            for (var i = 0; i < leftnavs.length; i++) {
+                on(leftnavs[i], 'click', this._navlinkClickHander.bind(this));
+
                 var items = leftnavs[i].querySelectorAll('.' + this._CssClasses.NAV_LINK);
-                for(var i=0;i<items.length;i++) {
+                for (var i = 0; i < items.length; i++) {
                     new Ripple(items[i])
                 }
-            }   
-            
+            }
 
-            
-            
+
+
+
         }
 
         // Keep an eye on screen size, and add/remove auxiliary class for styling
         // of small screens.
-        
 
-        if(env.isIE8 || env.isIE9){
-            on(window,'resize',this._screenSizeHandler.bind(this));
-        }else{
+
+        if (env.isIE8 || env.isIE9) {
+            on(window, 'resize', this._screenSizeHandler.bind(this));
+        } else {
             this._screenSizeMediaQuery = window.matchMedia(
-            /** @type {string} */ (this._Constant.MAX_WIDTH));
+                /** @type {string} */
+                (this._Constant.MAX_WIDTH));
             this._screenSizeMediaQuery.addListener(this._screenSizeHandler.bind(this));
         }
 
@@ -249,7 +261,7 @@ var NavLayout = BaseComponent.extend({
             addClass(leftButtonIcon, this._CssClasses.ICON);
             leftButtonIcon.textContent = this._Constant.CHEVRON_LEFT;
             leftButton.appendChild(leftButtonIcon);
-            on(leftButton,'click', function () {
+            on(leftButton, 'click', function() {
                 this._tabBar.scrollLeft -= this._Constant.TAB_SCROLL_PIXELS;
             }.bind(this));
 
@@ -260,7 +272,7 @@ var NavLayout = BaseComponent.extend({
             addClass(rightButtonIcon, this._CssClasses.ICON);
             rightButtonIcon.textContent = this._Constant.CHEVRON_RIGHT;
             rightButton.appendChild(rightButtonIcon);
-            on(rightButton,'click', function () {
+            on(rightButton, 'click', function() {
                 this._tabBar.scrollLeft += this._Constant.TAB_SCROLL_PIXELS;
             }.bind(this));
 
@@ -269,7 +281,7 @@ var NavLayout = BaseComponent.extend({
             tabContainer.appendChild(rightButton);
 
             // Add and remove buttons depending on scroll position.
-            var tabScrollHandler = function () {
+            var tabScrollHandler = function() {
                 if (this._tabBar.scrollLeft > 0) {
                     addClass(leftButton, this._CssClasses.IS_ACTIVE);
                 } else {
@@ -284,7 +296,7 @@ var NavLayout = BaseComponent.extend({
                 }
             }.bind(this);
 
-            on(this._tabBar,'scroll', tabScrollHandler);
+            on(this._tabBar, 'scroll', tabScrollHandler);
             tabScrollHandler();
 
             if (hasClass(this._tabBar, this._CssClasses.JS_RIPPLE_EFFECT)) {
@@ -310,7 +322,7 @@ var NavLayout = BaseComponent.extend({
      *
      * @private
      */
-    _contentScrollHandler: function () {
+    _contentScrollHandler: function() {
         if (hasClass(this._header, this._CssClasses.IS_ANIMATING)) {
             return;
         }
@@ -332,11 +344,11 @@ var NavLayout = BaseComponent.extend({
      *
      * @private
      */
-    _screenSizeHandler: function () {
-        if(env.isIE8 || env.isIE9){
+    _screenSizeHandler: function() {
+        if (env.isIE8 || env.isIE9) {
             this._screenSizeMediaQuery = {};
-            var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth; 
-            if(w > 1024)
+            var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            if (w > 1024)
                 this._screenSizeMediaQuery.matches = false;
             else
                 this._screenSizeMediaQuery.matches = true;
@@ -357,7 +369,7 @@ var NavLayout = BaseComponent.extend({
      *
      * @private
      */
-    _drawerToggleHandler: function () {
+    _drawerToggleHandler: function() {
         toggleClass(this._drawer, this._CssClasses.IS_DRAWER_OPEN);
         toggleClass(this._obfuscator, this._CssClasses.IS_DRAWER_OPEN);
     },
@@ -366,7 +378,7 @@ var NavLayout = BaseComponent.extend({
      *
      * @private
      */
-    _headerTransitionEndHandler: function () {
+    _headerTransitionEndHandler: function() {
         removeClass(this._header, this._CssClasses.IS_ANIMATING);
     },
     /**
@@ -374,7 +386,7 @@ var NavLayout = BaseComponent.extend({
      *
      * @private
      */
-    _headerClickHandler: function () {
+    _headerClickHandler: function() {
         if (hasClass(this._header, this._CssClasses.IS_COMPACT)) {
             removeClass(this._header, this._CssClasses.IS_COMPACT);
             addClass(this._header, this._CssClasses.IS_ANIMATING);
@@ -385,7 +397,7 @@ var NavLayout = BaseComponent.extend({
      *
      * @private
      */
-    _resetTabState: function (tabBar) {
+    _resetTabState: function(tabBar) {
         for (var k = 0; k < tabBar.length; k++) {
             removeClass(tabBar[k], this._CssClasses.IS_ACTIVE);
         }
@@ -395,14 +407,14 @@ var NavLayout = BaseComponent.extend({
      *
      * @private
      */
-    _resetPanelState: function (panels) {
+    _resetPanelState: function(panels) {
         for (var j = 0; j < panels.length; j++) {
             removeClass(panels[j], this._CssClasses.IS_ACTIVE);
         }
     },
-    _navlinkClickHander: function (e) {
+    _navlinkClickHander: function(e) {
         //var _target = e.currentTarget || e.target || e.srcElement;
-        var curlink = this.element.querySelector('.'+this._CssClasses.NAV_LINK_CURRENT);
+        var curlink = this.element.querySelector('.' + this._CssClasses.NAV_LINK_CURRENT);
         curlink && removeClass(curlink, this._CssClasses.NAV_LINK_CURRENT);
         // if (curlink && isIE8){
         // 	var sub = curlink.parentNode.querySelector('.'+this._CssClasses.NAV_SUB);
@@ -413,16 +425,16 @@ var NavLayout = BaseComponent.extend({
 
         var item = closest(e.target, this._CssClasses.NAV_LINK);
 
-        if(item){
+        if (item) {
             addClass(item, this._CssClasses.NAV_LINK_CURRENT);
-            var sub = item.parentNode.querySelector('.'+this._CssClasses.NAV_SUB),
+            var sub = item.parentNode.querySelector('.' + this._CssClasses.NAV_SUB),
                 open = hasClass(item, this._CssClasses.NAV_LINK_OPEN);
-            if (sub && open){
+            if (sub && open) {
                 removeClass(item, this._CssClasses.NAV_LINK_OPEN);
                 if (env.isIE8)
                     sub.style.maxHeight = 0;
             }
-            if (sub && !open){
+            if (sub && !open) {
                 addClass(item, this._CssClasses.NAV_LINK_OPEN);
                 if (env.isIE8)
                     sub.style.maxHeight = '999px';
@@ -430,7 +442,7 @@ var NavLayout = BaseComponent.extend({
             // sub && open && removeClass(item, this._CssClasses.NAV_LINK_OPEN);
             // sub && !open && addClass(item, this._CssClasses.NAV_LINK_OPEN);
         }
-        
+
     }
 });
 
@@ -469,7 +481,7 @@ function UNavLayoutTab(tab, tabs, panels, layout) {
     tab.appendChild(rippleContainer);
     new URipple(tab)
     //}
-    on(tab,'click', function (e) {
+    on(tab, 'click', function(e) {
         if (tab.getAttribute('href').charAt(0) === '#') {
             e.preventDefault();
             selectTab();
@@ -478,7 +490,7 @@ function UNavLayoutTab(tab, tabs, panels, layout) {
 
     tab.show = selectTab;
 
-    on(tab,'click', function (e) {
+    on(tab, 'click', function(e) {
         e.preventDefault();
         var href = tab.href.split('#')[1];
         var panel = layout._content.querySelector('#' + href);
@@ -489,13 +501,16 @@ function UNavLayoutTab(tab, tabs, panels, layout) {
     });
 }
 var NavLayoutTab = UNavLayoutTab;
+if (u.compMgr)
+    u.compMgr.regComp({
+        comp: NavLayout,
+        compAsString: 'u.NavLayout',
+        css: 'u-navlayout'
+    });
 
-compMgr.regComp({
-    comp: NavLayout,
-    compAsString: 'u.NavLayout',
-    css: 'u-navlayout'
-});
 
 
-
-export {NavLayout,NavLayoutTab};
+export {
+    NavLayout,
+    NavLayoutTab
+};

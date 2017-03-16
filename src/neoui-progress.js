@@ -4,19 +4,17 @@
  * Date	  : 2016-08-03 10:46:37
  */
 
-import {BaseComponent} from './neoui-BaseComponent';
 import {addClass,hasClass} from 'tinper-sparrow/src/dom';
 import {env} from 'tinper-sparrow/src/env';
 import {on} from 'tinper-sparrow/src/event';
-import {compMgr} from 'compox/src/compMgr';
 
-var Progress = BaseComponent.extend({
+var Progress = u.BaseComponent.extend({
 	_Constant: {},
 	_CssClasses: {
 		INDETERMINATE_CLASS: 'u-progress__indeterminate'
 	},
 	setProgress: function(p) {
-		
+
 		if (hasClass(this.element,this._CssClasses.INDETERMINATE_CLASS)) {
 			return;
 		}
@@ -93,13 +91,13 @@ var Progress = BaseComponent.extend({
 				},100)
 			}
 		}
-			
+
 	}
 
 });
 
-
-compMgr.regComp({
+if(u.compMgr)
+u.compMgr.regComp({
 	comp: Progress,
 	compAsString: 'u.Progress',
 	css: 'u-progress'

@@ -4,13 +4,15 @@
  * Date	  : 2016-08-02 15:23:19
  */
 
-import {BaseComponent} from './neoui-BaseComponent';
-import {on} from 'tinper-sparrow/src/event';
-import {Checkbox} from './neoui-checkbox';
-import {compMgr} from 'compox/src/compMgr';
+import {
+    on
+} from 'tinper-sparrow/src/event';
+import {
+    Checkbox
+} from './neoui-checkbox';
 
 
-var Table = BaseComponent.extend({
+var Table = u.BaseComponent.extend({
     _CssClasses: {
 
         SELECTABLE: 'selectable',
@@ -19,7 +21,7 @@ var Table = BaseComponent.extend({
         IS_UPGRADED: 'is-upgraded'
     },
 
-    init: function(){
+    init: function() {
         var self = this;
         this.element_ = this.element;
         if (this.element_) {
@@ -30,9 +32,9 @@ var Table = BaseComponent.extend({
 
         }
     },
-    _selectRow: function(checkbox, row, opt_rows){
+    _selectRow: function(checkbox, row, opt_rows) {
         if (row) {
-            return function () {
+            return function() {
                 if (checkbox.checked) {
                     row.classList.add(this._CssClasses.IS_SELECTED);
                 } else {
@@ -42,7 +44,7 @@ var Table = BaseComponent.extend({
         }
 
         if (opt_rows) {
-            return function () {
+            return function() {
                 var i;
                 var el;
                 if (checkbox.checked) {
@@ -61,7 +63,7 @@ var Table = BaseComponent.extend({
             }.bind(this);
         }
     },
-    _createCheckbox: function(row, opt_rows){
+    _createCheckbox: function(row, opt_rows) {
         var label = document.createElement('label');
         var labelClasses = [
             'u-checkbox',
@@ -89,12 +91,14 @@ var Table = BaseComponent.extend({
 
 
 
+if (u.compMgr)
+    u.compMgr.regComp({
+        comp: Table,
+        compAsString: 'u.Table',
+        css: 'u-table'
+    });
 
-compMgr.regComp({
-    comp: Table,
-    compAsString: 'u.Table',
-    css: 'u-table'
-});
 
-
-export {Table};
+export {
+    Table
+};

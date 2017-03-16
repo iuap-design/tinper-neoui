@@ -5,9 +5,6 @@
  */
 
 import {
-    BaseComponent
-} from './neoui-BaseComponent';
-import {
     addClass,
     removeClass,
     hasClass,
@@ -26,9 +23,6 @@ import {
 import {
     Button
 } from './neoui-button';
-import {
-    compMgr
-} from 'compox/src/compMgr';
 import {
     trans
 } from 'tinper-sparrow/src/util/i18n';
@@ -395,7 +389,7 @@ var dialogMode = function(options) {
         template: dialogTemplate,
         width: '',
         height: '',
-		is_drag: false
+        is_drag: false
     }
 
     options = extend(defaultOptions, options);
@@ -407,11 +401,11 @@ var dialogMode = function(options) {
     this.height = options['height'];
     this.lazyShow = options['lazyShow'];
     this.closeFun = options['closeFun'];
-	this.is_drag = options['is_drag'];
+    this.is_drag = options['is_drag'];
     this.create();
-	if(this.is_drag){
-		this.drag();
-	}
+    if (this.is_drag) {
+        this.drag();
+    }
 
     var msgDom = this.templateDom.querySelector('.u-msg-dialog');
 
@@ -477,10 +471,10 @@ dialogMode.prototype.create = function() {
 };
 dialogMode.prototype.drag = function() {
     var oThis = this,
-    	$this = $(oThis.content).closest('.u-msg-dialog'),
-    	_move = false, //移动标记
-   		_x, _y; //鼠标离控件左上角的相对位置
-    $this.mousedown(function (e) {
+        $this = $(oThis.content).closest('.u-msg-dialog'),
+        _move = false, //移动标记
+        _x, _y; //鼠标离控件左上角的相对位置
+    $this.mousedown(function(e) {
         var offset = $this.offset(),
             m_left = e.pageX,
             m_top = e.pageY,
@@ -490,7 +484,7 @@ dialogMode.prototype.drag = function() {
         _x = e.pageX - parseInt($this.css("left"));
         _y = e.pageY - parseInt($this.css("top"));
     });
-    $this.mousemove(function (e) {
+    $this.mousemove(function(e) {
         if (_move) {
             var x = e.pageX - _x; //移动时根据鼠标位置计算控件左上角的绝对位置
             var y = e.pageY - _y;
@@ -499,7 +493,7 @@ dialogMode.prototype.drag = function() {
                 left: x
             }); //控件新位置
         }
-    }).mouseup(function () {
+    }).mouseup(function() {
         _move = false;
     });
 }

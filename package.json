@@ -5,11 +5,11 @@
   "main": "src/index",
   "scripts": {
     "clean": "gulp clean",
-    "neoui-build": "webpack --colors --progress --mode=build_normal && webpack --colors --progress --mode=build_min",
+    "build": "webpack --colors --progress --env.mode=build",
+    "dev": "webpack --progress --colors --env.mode=dev",
     "plugin": "npm run neoui-build && gulp buildcssplugin && node concat",
-    "neoui-dev": "webpack --progress --colors  --mode=product_normal && webpack --progress --colors  --mode=product_min",
-    "es": "babel js -d lib",
-    "product": "npm run neoui-dev && gulp dist",
+    "es": "babel src -d lib",
+    "product": "npm run dev && npm run build && npm run es && gulp dist",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 ",
     "docs": "node bin/mdconcat.js"
   },
@@ -33,11 +33,12 @@
   "devDependencies": {
     "babel-core": "^6.11.4",
     "babel-eslint": "^6.1.2",
-    "babel-loader": "^6.2.4",
+    "babel-polyfill": "^6.3.14",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-es3-member-expression-literals": "^6.8.0",
     "babel-plugin-transform-es3-property-literals": "^6.8.0",
-    "babel-preset-es2015": "^6.9.0",
     "babel-preset-es2015-loose": "^8.0.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.9.0",
@@ -62,7 +63,7 @@
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
     "mocha": "^3.0.0",
-    "webpack": "^1.13.1",
+    "webpack": "^2.2.1",
     "yargs": "^4.8.1"
   },
   "directories": {

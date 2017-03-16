@@ -4,14 +4,21 @@
  * Date	  : 2016-08-02 14:22:46
  */
 
-import {BaseComponent} from './neoui-BaseComponent';
-import {addClass,removeClass,hasClass} from 'tinper-sparrow/src/dom';
-import {env} from 'tinper-sparrow/src/env';
-import {on,stopEvent} from 'tinper-sparrow/src/event';
-import {compMgr} from 'compox/src/compMgr';
+import {
+    addClass,
+    removeClass,
+    hasClass
+} from 'tinper-sparrow/src/dom';
+import {
+    env
+} from 'tinper-sparrow/src/env';
+import {
+    on,
+    stopEvent
+} from 'tinper-sparrow/src/event';
 
 
-var Text = BaseComponent.extend({
+var Text = u.BaseComponent.extend({
     _Constant: {
         NO_MAX_ROWS: -1,
         MAX_ROWS_ATTRIBUTE: 'maxrows'
@@ -27,7 +34,7 @@ var Text = BaseComponent.extend({
         IS_UPGRADED: 'is-upgraded'
     },
 
-    init: function () {
+    init: function() {
         var oThis = this;
         this.maxRows = this._Constant.NO_MAX_ROWS;
         this.label_ = this.element.querySelector('.' + this._CssClasses.LABEL);
@@ -35,9 +42,11 @@ var Text = BaseComponent.extend({
 
         if (this._input) {
             if (this._input.hasAttribute(
-                    /** @type {string} */ (this._Constant.MAX_ROWS_ATTRIBUTE))) {
+                    /** @type {string} */
+                    (this._Constant.MAX_ROWS_ATTRIBUTE))) {
                 this.maxRows = parseInt(this._input.getAttribute(
-                    /** @type {string} */ (this._Constant.MAX_ROWS_ATTRIBUTE)), 10);
+                    /** @type {string} */
+                    (this._Constant.MAX_ROWS_ATTRIBUTE)), 10);
                 if (isNaN(this.maxRows)) {
                     this.maxRows = this._Constant.NO_MAX_ROWS;
                 }
@@ -48,20 +57,20 @@ var Text = BaseComponent.extend({
             this.boundBlurHandler = this._blur.bind(this);
             this.boundResetHandler = this._reset.bind(this);
             this._input.addEventListener('input', this.boundUpdateClassesHandler);
-            if(env.isIE8){
-                this._input.addEventListener('propertychange', function(){
+            if (env.isIE8) {
+                this._input.addEventListener('propertychange', function() {
                     oThis._updateClasses();
                 });
             }
             this._input.addEventListener('focus', this.boundFocusHandler);
-            if(env.isIE8 || env.isIE9){
-                if(this.label_){
-                    this.label_.addEventListener('click', function(){
+            if (env.isIE8 || env.isIE9) {
+                if (this.label_) {
+                    this.label_.addEventListener('click', function() {
                         this._input.focus();
                     }.bind(this));
                 }
             }
-            
+
             this._input.addEventListener('blur', this.boundBlurHandler);
             this._input.addEventListener('reset', this.boundResetHandler);
 
@@ -86,7 +95,7 @@ var Text = BaseComponent.extend({
      * @param {Event} event The event that fired.
      * @private
      */
-    _down: function (event) {
+    _down: function(event) {
         var currentRowCount = event.target.value.split('\n').length;
         if (event.keyCode === 13) {
             if (currentRowCount >= this.maxRows) {
@@ -100,7 +109,7 @@ var Text = BaseComponent.extend({
      * @param {Event} event The event that fired.
      * @private
      */
-    _focus : function (event) {
+    _focus: function(event) {
         addClass(this.element, this._CssClasses.IS_FOCUSED);
     },
     /**
@@ -109,7 +118,7 @@ var Text = BaseComponent.extend({
      * @param {Event} event The event that fired.
      * @private
      */
-    _blur : function (event) {
+    _blur: function(event) {
         removeClass(this.element, this._CssClasses.IS_FOCUSED);
         this.trigger('u.text.blur');
     },
@@ -119,7 +128,7 @@ var Text = BaseComponent.extend({
      * @param {Event} event The event that fired.
      * @private
      */
-    _reset : function (event) {
+    _reset: function(event) {
         this._updateClasses();
     },
     /**
@@ -127,20 +136,20 @@ var Text = BaseComponent.extend({
      *
      * @private
      */
-    _updateClasses : function () {
+    _updateClasses: function() {
         this.checkDisabled();
         this.checkValidity();
         this.checkDirty();
     },
 
-// Public methods.
+    // Public methods.
 
     /**
      * Check the disabled state and update field accordingly.
      *
      * @public
      */
-    checkDisabled : function () {
+    checkDisabled: function() {
         if (this._input.disabled) {
             addClass(this.element, this._CssClasses.IS_DISABLED);
         } else {
@@ -152,7 +161,7 @@ var Text = BaseComponent.extend({
      *
      * @public
      */
-    checkValidity : function () {
+    checkValidity: function() {
         if (this._input.validity) {
             if (this._input.validity.valid) {
                 removeClass(this.element, this._CssClasses.IS_INVALID);
@@ -166,7 +175,7 @@ var Text = BaseComponent.extend({
      *
      * @public
      */
-    checkDirty: function () {
+    checkDirty: function() {
         if (this._input.value && this._input.value.length > 0) {
             addClass(this.element, this._CssClasses.IS_DIRTY);
         } else {
@@ -178,7 +187,7 @@ var Text = BaseComponent.extend({
      *
      * @public
      */
-    disable: function () {
+    disable: function() {
         this._input.disabled = true;
         this._updateClasses();
     },
@@ -187,7 +196,7 @@ var Text = BaseComponent.extend({
      *
      * @public
      */
-    enable: function () {
+    enable: function() {
         this._input.disabled = false;
         this._updateClasses();
     },
@@ -197,8 +206,8 @@ var Text = BaseComponent.extend({
      * @param {string} value The value to which to set the control (optional).
      * @public
      */
-    change: function (value) {
-        this._input.value = value===0?value: (value|| '');
+    change: function(value) {
+        this._input.value = value === 0 ? value : (value || '');
         this._updateClasses();
     }
 
@@ -213,10 +222,13 @@ var Text = BaseComponent.extend({
 //        plug: Text
 //    })
 
-compMgr.regComp({
-    comp: Text,
-    compAsString: 'u.Text',
-    css: 'u-text'
-});
+if (u.compMgr)
+    u.compMgr.regComp({
+        comp: Text,
+        compAsString: 'u.Text',
+        css: 'u-text'
+    });
 
-export {Text};
+export {
+    Text
+};
