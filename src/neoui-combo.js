@@ -5,9 +5,6 @@
  */
 
 import {
-    BaseComponent
-} from './neoui-BaseComponent';
-import {
     addClass,
     removeClass,
     hasClass,
@@ -31,11 +28,8 @@ import {
 import {
     URipple
 } from 'tinper-sparrow/src/util/ripple';
-import {
-    compMgr
-} from 'compox/src/compMgr';
 
-var Combo = BaseComponent.extend({
+var Combo = u.BaseComponent.extend({
     init: function() {
         this.name = '';
         this.mutilSelect = this.options['mutilSelect'] || false;
@@ -529,11 +523,12 @@ var Combo = BaseComponent.extend({
     }
 });
 
-compMgr.regComp({
-    comp: Combo,
-    compAsString: 'u.Combo',
-    css: 'u-combo'
-});
+if (u.compMgr)
+    u.compMgr.regComp({
+        comp: Combo,
+        compAsString: 'u.Combo',
+        css: 'u-combo'
+    });
 
 export {
     Combo

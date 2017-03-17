@@ -13,6 +13,12 @@ var base64 = require('gulp-base64');
 var util = require('gulp-util');
 var stripCssComments = require('gulp-strip-css-comments');
 
+var path = require('path');
+var webpack = require('webpack');
+var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+var fs = require('fs');
+var glob = require('glob');
+
 var version = require('./version.js');
 var AUTOPREFIXER_BROWSERS = [
     'ie >= 11',
@@ -29,7 +35,7 @@ var AUTOPREFIXER_BROWSERS = [
  * @param  {[type]} err [description]
  * @return {[type]}     [description]
  */
-var errHandle = function ( err ) {
+var errHandle = function(err) {
     // 报错文件名
     var fileName = err.fileName;
     // 报错类型
@@ -39,7 +45,7 @@ var errHandle = function ( err ) {
 
     var logInfo = '报错文件：' + fileName + '报错类型：' + name + '出错代码位置：' + err.lineNumber + ',' + err.column;
 
-    util.log( err );
+    util.log(err);
 
     this.end();
 };
@@ -63,7 +69,7 @@ gulp.task('fontcss', function() {
         .pipe(gulp.dest('./dist/css'))
 });
 gulp.task('fontfile', function() {
-    gulp.src(['./fonts/*.*','./vendor/font-awesome/fonts/*.*'])
+    gulp.src(['./fonts/*.*', './vendor/font-awesome/fonts/*.*'])
         .pipe(gulp.dest('./dist/fonts'));
 
 })
@@ -72,7 +78,7 @@ gulp.task('fontfile', function() {
  * 复制图片文件
  * @return {[type]}   [description]
  */
-gulp.task('image', function () {
+gulp.task('image', function() {
     return gulp.src('./vendor/images/**')
         .pipe(gulp.dest('./dist/images'));
 });
@@ -83,7 +89,7 @@ gulp.task('image', function () {
  * @param  {[type]} (       [description]
  * @return {[type]}         [description]
  */
-gulp.task('serve', function () {
+gulp.task('serve', function() {
     browserSync({
         files: ['js/**/*.js', 'dist'],
         server: {
@@ -102,34 +108,38 @@ gulp.task('serve', function () {
  * @param  {[type]} (       [description]
  * @return {[type]}         [description]
  */
-gulp.task('clean', function () {
-  gulp.src('dist/*', { read: false })
-    .pipe(clean({ force: true }))
-    .on('error', errHandle);
+gulp.task('clean', function() {
+    gulp.src('dist/*', {
+            read: false
+        })
+        .pipe(clean({
+            force: true
+        }))
+        .on('error', errHandle);
 });
 
 /**
  * 插件CSS 构建
  * 暂时不输出
  */
-gulp.task('vsass', function(){
+gulp.task('vsass', function() {
     gulp.src('./scss/**/*')
         .pipe(gulp.dest('./v1/scss/bundle'));
 });
-gulp.task('vcss', ['vsass'], function(){
+gulp.task('vcss', ['vsass'], function() {
     gulp.src('./v1/scss/*.scss')
         .pipe(sass())
         .pipe(gulp.dest('./v1/lib/css'))
         .pipe(sourcemaps.init())
         .pipe(minifycss())
         .pipe(rename({
-            suffix:'.min'
+            suffix: '.min'
         }))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./v1/lib/css'));
 });
 
-gulp.task('custom',function(){
+gulp.task('custom', function() {
     return gulp.src('./scss/ui/*.scss')
         .pipe(sass())
         .pipe(gulp.dest('./custom/'))
@@ -142,7 +152,7 @@ gulp.task('custom',function(){
  * 不产出map文件
  */
 
-gulp.task('buildcorecss',function(){
+gulp.task('buildcorecss', function() {
     gulp.src('./scss/core.scss')
         .pipe(sass())
         .pipe(base64())
@@ -152,12 +162,12 @@ gulp.task('buildcorecss',function(){
         .pipe(gulp.dest('./dist/css'))
         .pipe(minifycss())
         .pipe(rename({
-            suffix:'.min'
+            suffix: '.min'
         }))
         .pipe(gulp.dest('./dist/css'));
 });
 // 输出整体css文件dist/css/neoui.css
-gulp.task('buildcss', ['buildcorecss'], function(){
+gulp.task('buildcss', ['buildcorecss'], function() {
     gulp.src('./scss/neoui.scss')
         .pipe(sass())
         .pipe(base64())
@@ -167,22 +177,22 @@ gulp.task('buildcss', ['buildcorecss'], function(){
         .pipe(gulp.dest('./dist/css'))
         .pipe(minifycss())
         .pipe(rename({
-            suffix:'.min'
+            suffix: '.min'
         }))
         .pipe(gulp.dest('./dist/css'));
 });
 // 逐一输出单个插件dist/css/plugins/
-gulp.task('buildcssplugin',function(){
+gulp.task('buildcssplugin', function() {
     gulp.src('./scss/ui/*.*')
         .pipe(sass())
         .pipe(gulp.dest('./dist/css/plugin'))
         .pipe(minifycss())
         .pipe(rename({
-            suffix:'.min'
+            suffix: '.min'
         }))
         .pipe(gulp.dest('./dist/css/plugin'));
 });
-gulp.task('distbuild', ['buildcss','buildcssplugin']);
+gulp.task('distbuild', ['buildcss', 'buildcssplugin']);
 
 /**
  * 输出合并后的:
@@ -193,8 +203,83 @@ gulp.task('distbuild', ['buildcss','buildcssplugin']);
  * neoui.js合并包含第三方插件
  * 添加头部信息
  */
-gulp.task('buildjs', function(){
-    gulp.src(['vendor/ui/*.js','dist/js/tinper-neoui.js'])
+
+gulp.task('webpack', function() {
+    runWebpack('build');
+    runWebpack('dev');
+});
+
+function runWebpack(mode) {
+    var dir_js = path.resolve(__dirname, 'src');
+    var dir_build = path.resolve(__dirname, 'dist/js');
+
+
+    var data = fs.readFileSync('./package.json', 'utf8');
+    var packageObj = JSON.parse(data);
+    var headerStr = '';
+    headerStr += packageObj.name + ' v' + packageObj.version + '\r\n';
+    headerStr += packageObj.description + '\r\n';
+    headerStr += 'author : ' + packageObj.author + '\r\n';
+    headerStr += 'homepage : ' + packageObj.homepage + '\r\n';
+    headerStr += 'bugs : ' + packageObj.bugs.url;
+    var plugins = [new webpack.BannerPlugin(headerStr),
+        new webpack.LoaderOptionsPlugin({
+            minimize: true
+        }),
+        new webpack.NoErrorsPlugin()
+    ]
+    if (mode == 'build') {
+        plugins.push(new webpack.optimize.UglifyJsPlugin({
+            mangle: true,
+            beautify: true
+        }))
+        plugins.push(new UglifyJsPlugin({
+            minimize: true
+        }));
+    } else {
+        plugins.push(new webpack.optimize.UglifyJsPlugin({
+            mangle: false,
+            beautify: true
+        }))
+    }
+    var objArr = [];
+    glob.sync(__dirname + '/src/*.js').forEach(function(name) {
+        var n = name.slice(name.lastIndexOf('src/') + 4, name.length - 3);
+        if (n == 'index')
+            n = 'tinper-neoui'
+        var outputFile = ''
+        if (mode == 'build') {
+            outputFile = n + '.min.js';
+        } else {
+            outputFile = n + '.js';
+        }
+        var obj = {
+            entry: name,
+            output: {
+                path: dir_build,
+                filename: outputFile
+            },
+            devServer: {
+                contentBase: dir_build,
+            },
+            module: {
+                loaders: [{
+                    loader: 'babel-loader',
+                }]
+            },
+            plugins: plugins,
+            stats: {
+                colors: true
+            },
+            devtool: 'source-map',
+        }
+        webpack(obj, function(err, stats) {})
+    });
+
+}
+
+gulp.task('buildjs', function() {
+    gulp.src(['vendor/ui/*.js', 'dist/js/tinper-neoui.js'])
         .pipe(concat('tinper-neoui.js'))
         .pipe(gulp.dest('./dist/js'))
         .pipe(uglify())
@@ -202,20 +287,20 @@ gulp.task('buildjs', function(){
         .pipe(gulp.dest('./dist/js'));
 
 });
-gulp.task('neo',['buildcss', 'buildjs'],function(){
+gulp.task('neo', ['buildcss', 'buildjs'], function() {
     version.init([
         './dist/js/tinper-neoui.js',
         './dist/js/tinper-neoui.min.js'
     ]);
 });
-gulp.task('neoui', ['neo'], function(){
+gulp.task('neoui', ['neo'], function() {
     version.init([
         './dist/css/tinper-neoui.css',
         './dist/css/tinper-neoui.min.css'
     ]);
 });
 
-gulp.task('dist', ['buildcss','buildjs', 'image','fontcss','fontfile'], function(){
+gulp.task('dist', ['buildcss', 'buildjs', 'image', 'fontcss', 'fontfile'], function() {
     version.init([
         './dist/css/tinper-neoui.css',
         './dist/css/tinper-neoui.min.css'

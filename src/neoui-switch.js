@@ -4,13 +4,11 @@
  * Date	  : 2016-08-03 13:39:55
  */
 
-import {BaseComponent} from './neoui-BaseComponent';
 import {addClass,removeClass} from 'tinper-sparrow/src/dom';
 import {on} from 'tinper-sparrow/src/event';
 import {URipple} from 'tinper-sparrow/src/util/ripple';
-import {compMgr} from 'compox/src/compMgr';
 
-var Switch = BaseComponent.extend({
+var Switch = u.BaseComponent.extend({
 	_Constant: {
 		TINY_TIMEOUT: 0.001
 	},
@@ -159,8 +157,8 @@ var Switch = BaseComponent.extend({
 	}
 
 });
-
-compMgr.regComp({
+if(u.compMgr)
+u.compMgr.regComp({
 	comp: Switch,
 	compAsString: 'u.Switch',
 	css: 'u-switch'
