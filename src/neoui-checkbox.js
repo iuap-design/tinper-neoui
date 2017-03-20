@@ -3,13 +3,20 @@
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-08-02 13:55:07
  */
-import {BaseComponent} from './neoui-BaseComponent';
-import {addClass,removeClass,hasClass} from 'tinper-sparrow/src/dom';
-import {on,stopEvent} from 'tinper-sparrow/src/event';
-import {URipple} from 'tinper-sparrow/src/util/ripple';
-import {compMgr} from 'compox/src/compMgr';
+import {
+    addClass,
+    removeClass,
+    hasClass
+} from 'tinper-sparrow/src/dom';
+import {
+    on,
+    stopEvent
+} from 'tinper-sparrow/src/event';
+import {
+    URipple
+} from 'tinper-sparrow/src/util/ripple';
 
-var Checkbox = BaseComponent.extend({
+var Checkbox = u.BaseComponent.extend({
     _Constant: {
         TINY_TIMEOUT: 0.001
     },
@@ -24,22 +31,22 @@ var Checkbox = BaseComponent.extend({
         IS_CHECKED: 'is-checked',
         IS_UPGRADED: 'is-upgraded'
     },
-    init: function () {
+    init: function() {
         this._inputElement = this.element.querySelector('input');
 
 
         var boxOutline = document.createElement('span');
         addClass(boxOutline, this._CssClasses.BOX_OUTLINE);
 
-         var tickContainer = document.createElement('span');
+        var tickContainer = document.createElement('span');
         addClass(tickContainer, this._CssClasses.FOCUS_HELPER);
 
-         var tickOutline = document.createElement('span');
+        var tickOutline = document.createElement('span');
         addClass(tickOutline, this._CssClasses.TICK_OUTLINE);
 
-         boxOutline.appendChild(tickOutline);
-         this.element.appendChild(tickContainer);
-         this.element.appendChild(boxOutline);
+        boxOutline.appendChild(tickOutline);
+        this.element.appendChild(tickContainer);
+        this.element.appendChild(boxOutline);
 
 
         //if (this.element.classList.contains(this._CssClasses.RIPPLE_EFFECT)) {
@@ -67,10 +74,10 @@ var Checkbox = BaseComponent.extend({
         //this._inputElement.addEventListener('focus', this.boundInputOnFocus);
         //this._inputElement.addEventListener('blur', this.boundInputOnBlur);
         //this.element.addEventListener('mouseup', this.boundElementMouseUp);
-        if (!hasClass(this.element, 'only-style')){
-            on(this.element, 'click', function(e){
-                if(e.target.nodeName != 'INPUT'){
-                    if(!this._inputElement.disabled){
+        if (!hasClass(this.element, 'only-style')) {
+            on(this.element, 'click', function(e) {
+                if (e.target.nodeName != 'INPUT') {
+                    if (!this._inputElement.disabled) {
                         this.toggle();
                         stopEvent(e);
                     }
@@ -84,20 +91,22 @@ var Checkbox = BaseComponent.extend({
 
     },
 
-    _onChange: function (event) {
+    _onChange: function(event) {
         this._updateClasses();
-        this.trigger('change', {isChecked:this._inputElement.checked});
+        this.trigger('change', {
+            isChecked: this._inputElement.checked
+        });
     },
 
-    _onFocus: function () {
+    _onFocus: function() {
         addClass(this.element, this._CssClasses.IS_FOCUSED)
     },
 
-    _onBlur: function () {
+    _onBlur: function() {
         removeClass(this.element, this._CssClasses.IS_FOCUSED)
     },
 
-    _onMouseUp: function (event) {
+    _onMouseUp: function(event) {
         this._blur();
     },
 
@@ -106,7 +115,7 @@ var Checkbox = BaseComponent.extend({
      *
      * @private
      */
-    _updateClasses: function () {
+    _updateClasses: function() {
         this.checkDisabled();
         this.checkToggleState();
     },
@@ -116,22 +125,22 @@ var Checkbox = BaseComponent.extend({
      *
      * @private
      */
-    _blur: function () {
+    _blur: function() {
         // TODO: figure out why there's a focus event being fired after our blur,
         // so that we can avoid this hack.
-        window.setTimeout(function () {
+        window.setTimeout(function() {
             this._inputElement.blur();
         }.bind(this), /** @type {number} */ (this._Constant.TINY_TIMEOUT));
     },
 
-// Public methods.
+    // Public methods.
 
     /**
      * Check the inputs toggle state and update display.
      *
      * @public
      */
-    checkToggleState: function () {
+    checkToggleState: function() {
         if (this._inputElement.checked) {
             addClass(this.element, this._CssClasses.IS_CHECKED)
         } else {
@@ -145,7 +154,7 @@ var Checkbox = BaseComponent.extend({
      *
      * @public
      */
-    checkDisabled: function () {
+    checkDisabled: function() {
         if (this._inputElement.disabled) {
             addClass(this.element, this._CssClasses.IS_DISABLED)
         } else {
@@ -154,16 +163,16 @@ var Checkbox = BaseComponent.extend({
     },
 
 
-    isChecked: function(){
+    isChecked: function() {
         //return hasClass(this.element,this._CssClasses.IS_CHECKED);
         return this._inputElement.checked
     },
 
-    toggle: function(){
+    toggle: function() {
         //return;
-        if (this.isChecked()){
+        if (this.isChecked()) {
             this.uncheck()
-        }else{
+        } else {
             this.check();
         }
     },
@@ -173,7 +182,7 @@ var Checkbox = BaseComponent.extend({
      *
      * @public
      */
-    disable: function () {
+    disable: function() {
         this._inputElement.disabled = true;
         this._updateClasses();
     },
@@ -184,7 +193,7 @@ var Checkbox = BaseComponent.extend({
      *
      * @public
      */
-    enable: function () {
+    enable: function() {
         this._inputElement.disabled = false;
         this._updateClasses();
     },
@@ -193,7 +202,7 @@ var Checkbox = BaseComponent.extend({
     beforeToggle: function() {
         if (typeof this.beforeEdit === 'function') {
             return this.beforeEdit();
-        }else {
+        } else {
             return true;
         }
     },
@@ -202,7 +211,7 @@ var Checkbox = BaseComponent.extend({
      *
      * @public
      */
-    check: function () {
+    check: function() {
         if (this.beforeToggle()) {
             this._inputElement.checked = true;
             this._updateClasses();
@@ -216,7 +225,7 @@ var Checkbox = BaseComponent.extend({
      *
      * @public
      */
-    uncheck: function () {
+    uncheck: function() {
         if (this.beforeToggle()) {
             this._inputElement.checked = false;
             this._updateClasses();
@@ -227,11 +236,13 @@ var Checkbox = BaseComponent.extend({
 
 });
 
+if (u.compMgr)
+    u.compMgr.regComp({
+        comp: Checkbox,
+        compAsString: 'u.Checkbox',
+        css: 'u-checkbox'
+    });
 
-compMgr.regComp({
-    comp: Checkbox,
-    compAsString: 'u.Checkbox',
-    css: 'u-checkbox'
-});
-
-export {Checkbox};
+export {
+    Checkbox
+};

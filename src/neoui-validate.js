@@ -3,16 +3,28 @@
  * Author : Kvkens(yueming@yonyou.com)
  * Date	  : 2016-08-06 14:03:15
  */
-import { BaseComponent } from './neoui-BaseComponent';
-import { extend } from 'tinper-sparrow/src/extend.js';
-import { makeDOM } from 'tinper-sparrow/src/dom';
-import { on } from 'tinper-sparrow/src/event';
-import { isNumber, inArray, each } from 'tinper-sparrow/src/util';
-import { Tooltip } from './neoui-tooltip';
-import { trans } from 'tinper-sparrow/src/util/i18n';
-import { compMgr } from 'compox/src/compMgr';
+import {
+    extend
+} from 'tinper-sparrow/src/extend.js';
+import {
+    makeDOM
+} from 'tinper-sparrow/src/dom';
+import {
+    on
+} from 'tinper-sparrow/src/event';
+import {
+    isNumber,
+    inArray,
+    each
+} from 'tinper-sparrow/src/util';
+import {
+    Tooltip
+} from './neoui-tooltip';
+import {
+    trans
+} from 'tinper-sparrow/src/util/i18n';
 
-var Validate = BaseComponent.extend({
+var Validate = u.BaseComponent.extend({
 
     init: function() {
         var self = this
@@ -33,18 +45,18 @@ var Validate = BaseComponent.extend({
         //所有属性优先级 ：  options参数  > attr属性  > 默认值
         this.required = this.options['required'] ? this.options['required'] : false
         this.validType = this.options['validType'] ? this.options['validType'] : null
-            //校验模式  blur  submit
+        //校验模式  blur  submit
         this.validMode = this.options['validMode'] ? this.options['validMode'] : Validate.DEFAULTS.validMode
-            //空提示
+        //空提示
         this.nullMsg = this.options['nullMsg'] ? this.options['nullMsg'] : Validate.NULLMSG[this.validType]
         // input输入提示
         this.inputMsg = Validate.INPUTMSG;
-            //是否必填
+        //是否必填
         if (this.required && !this.nullMsg)
             this.nullMsg = Validate.NULLMSG['required']
-            //错误必填
+        //错误必填
         this.errorMsg = this.options['errorMsg'] ? this.options['errorMsg'] : Validate.ERRORMSG[this.validType]
-            //正则校验
+        //正则校验
         this.regExp = this.options['reg'] ? this.options['reg'] : Validate.REG[this.validType]
         try {
             if (typeof this.regExp == 'string')
@@ -60,7 +72,7 @@ var Validate = BaseComponent.extend({
 
         //提示div的id 为空时使用tooltop来提示
         this.tipId = this.options['tipId'] ? this.options['tipId'] : null
-            //校验成功提示信息的div
+        //校验成功提示信息的div
         this.successId = this.options['successId'] ? this.options['successId'] : null;
 
         // 要求显示成功提示，并没有成功提示dom的id时，则创建成功提示dom
@@ -87,7 +99,7 @@ var Validate = BaseComponent.extend({
         }
         //提示框位置
         this.placement = this.options['placement'] ? this.options['placement'] : Validate.DEFAULTS.placement
-            //
+        //
         this.minLength = this.options['minLength'] > 0 ? this.options['minLength'] : null
         this.maxLength = this.options['maxLength'] > 0 ? this.options['maxLength'] : null
         this.min = this.options['min'] !== undefined ? this.options['min'] : null
@@ -103,7 +115,7 @@ var Validate = BaseComponent.extend({
 });
 
 Validate.fn = Validate.prototype
-    //Validate.tipTemplate = '<div class="tooltip" role="tooltip"><div class="tooltip-arrow tooltip-arrow-c"></div><div class="tooltip-arrow"></div><div class="tooltip-inner" style="color:#ed7103;border:1px solid #ed7103;background-color:#fff7f0;"></div></div>'
+//Validate.tipTemplate = '<div class="tooltip" role="tooltip"><div class="tooltip-arrow tooltip-arrow-c"></div><div class="tooltip-arrow"></div><div class="tooltip-inner" style="color:#ed7103;border:1px solid #ed7103;background-color:#fff7f0;"></div></div>'
 
 Validate.DEFAULTS = {
     validMode: 'blur',
@@ -137,13 +149,13 @@ Validate.ERRORMSG = {
 }
 
 Validate.INPUTMSG = {
-    "minLength": trans('validate.input_minlength',"输入长度不能小于"),
-    "maxLength": trans('validate.input_maxlength',"输入长度不能大于"),
-    "unit": trans('validate.input_unit',"位"),
-    "maxValue": trans('validate.input_maxvalue',"输入值不能大于"),
-    "minValue": trans('validate.input_minvalue',"输入值不能小于"),
-    "equalMax": trans('validate.input_equalMax',"输入值不能大于或等于"),
-    "equalMin": trans('validate.input_equalMin',"输入值不能小于或等于")
+    "minLength": trans('validate.input_minlength', "输入长度不能小于"),
+    "maxLength": trans('validate.input_maxlength', "输入长度不能大于"),
+    "unit": trans('validate.input_unit', "位"),
+    "maxValue": trans('validate.input_maxvalue', "输入值不能大于"),
+    "minValue": trans('validate.input_minvalue', "输入值不能小于"),
+    "equalMax": trans('validate.input_equalMax', "输入值不能大于或等于"),
+    "equalMin": trans('validate.input_equalMin', "输入值不能小于或等于")
 
 }
 
@@ -161,7 +173,7 @@ Validate.REG = {
 }
 
 Validate.fn.create = function() {
-    if($(this.element).attr('hasValidate')){
+    if ($(this.element).attr('hasValidate')) {
         return;
     }
     var self = this
@@ -231,7 +243,7 @@ Validate.fn.create = function() {
 
     })
 
-    $(this.element).attr('hasValidate',true);
+    $(this.element).attr('hasValidate', true);
 }
 
 Validate.fn.updateOptions = function(options) {
@@ -247,14 +259,14 @@ Validate.fn.doValid = function(options) {
         this.showMsgFlag = options.showMsg;
     }
     this.needClean = false
-        //只读的也需要校验，所以注释
-        // if (this.element && this.element.getAttribute("readonly")) return {passed:true}
+    //只读的也需要校验，所以注释
+    // if (this.element && this.element.getAttribute("readonly")) return {passed:true}
     var value = null
     if (typeof pValue != 'undefined')
         value = pValue
     else if (this.element)
         // value = this.element.value
-         value = this.element.value?this.element.value:this.referDom.value
+        value = this.element.value ? this.element.value : this.referDom.value
 
     if (this.isEmpty(value) && this.required) {
         this.showMsg(this.nullMsg)
@@ -273,7 +285,7 @@ Validate.fn.doValid = function(options) {
             value = value + ""
         else if (typeof value == 'boolean')
             return {
-                passed:true
+                passed: true
             }
         var r = value.match(reg);
         if (r === null || r === false) {
@@ -442,7 +454,7 @@ Validate.fn.showMsg = function(msg) {
         return;
     }
     //因为grid中自定义的editType使用的是document.body,只处理校验不现实提示信息
-    if(this.element == document.body){
+    if (this.element == document.body) {
         return;
     }
     var self = this
@@ -479,7 +491,7 @@ Validate.fn.showMsg = function(msg) {
         if (this.options.tipTemplate)
             tipOptions.template = this.options.tipTemplate
 
-            //月凯修改
+        //月凯修改
         // if (!this.tooltip)
         this.referDom = this.$element;
         if (this.referDom.tagName !== 'INPUT' && this.referDom.tagName !== "TEXTAREA") {
@@ -489,7 +501,7 @@ Validate.fn.showMsg = function(msg) {
                 this.referDom = this.$element;
             }
         }
-        if(this.tooltip){
+        if (this.tooltip) {
             this.tooltip.hide();
         }
 
@@ -592,12 +604,12 @@ var doValidate = function(element) {
 }
 
 
-
-compMgr.regComp({
-    comp: Validate,
-    compAsString: 'u.Validate',
-    css: 'u-validate'
-});
+if (u.compMgr)
+    u.compMgr.regComp({
+        comp: Validate,
+        compAsString: 'u.Validate',
+        css: 'u-validate'
+    });
 
 export {
     Validate,

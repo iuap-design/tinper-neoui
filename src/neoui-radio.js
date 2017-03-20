@@ -4,15 +4,23 @@
  * Date	  : 2016-08-03 11:16:00
  */
 
-import {BaseComponent} from './neoui-BaseComponent';
-import {addClass,hasClass,removeClass} from 'tinper-sparrow/src/dom';
-import {env} from 'tinper-sparrow/src/env';
-import {on} from 'tinper-sparrow/src/event';
-import {URipple} from 'tinper-sparrow/src/util/ripple';
-import {compMgr} from 'compox/src/compMgr';
+import {
+    addClass,
+    hasClass,
+    removeClass
+} from 'tinper-sparrow/src/dom';
+import {
+    env
+} from 'tinper-sparrow/src/env';
+import {
+    on
+} from 'tinper-sparrow/src/event';
+import {
+    URipple
+} from 'tinper-sparrow/src/util/ripple';
 
 
-var Radio = BaseComponent.extend({
+var Radio = u.BaseComponent.extend({
     Constant_: {
         TINY_TIMEOUT: 0.001
     },
@@ -28,7 +36,7 @@ var Radio = BaseComponent.extend({
         RADIO_INNER_CIRCLE: 'u-radio-inner-circle'
     },
 
-    init: function () {
+    init: function() {
         this._btnElement = this.element.querySelector('input');
 
         this._boundChangeHandler = this._onChange.bind(this);
@@ -72,7 +80,7 @@ var Radio = BaseComponent.extend({
 
     },
 
-    _onChange: function (event) {
+    _onChange: function(event) {
         // Since other radio buttons don't get change events, we need to look for
         // them to update their classes.
         var radios = document.querySelectorAll('.' + this._CssClasses.JS_RADIO);
@@ -80,12 +88,14 @@ var Radio = BaseComponent.extend({
             var button = radios[i].querySelector('.' + this._CssClasses.RADIO_BTN);
             // Different name == different group, so no point updating those.
             if (button.getAttribute('name') === this._btnElement.getAttribute('name')) {
-                if(radios[i]['u.Radio']){
+                if (radios[i]['u.Radio']) {
                     radios[i]['u.Radio']._updateClasses();
                 }
             }
         }
-        this.trigger('change', {isChecked:this._btnElement.checked});
+        this.trigger('change', {
+            isChecked: this._btnElement.checked
+        });
     },
 
     /**
@@ -94,7 +104,7 @@ var Radio = BaseComponent.extend({
      * @param {Event} event The event that fired.
      * @private
      */
-    _onFocus: function (event) {
+    _onFocus: function(event) {
         addClass(this.element, this._CssClasses.IS_FOCUSED);
     },
 
@@ -104,7 +114,7 @@ var Radio = BaseComponent.extend({
      * @param {Event} event The event that fired.
      * @private
      */
-    _onBlur: function (event) {
+    _onBlur: function(event) {
         removeClass(this.element, this._CssClasses.IS_FOCUSED);
     },
 
@@ -114,7 +124,7 @@ var Radio = BaseComponent.extend({
      * @param {Event} event The event that fired.
      * @private
      */
-    _onMouseup: function (event) {
+    _onMouseup: function(event) {
         this._blur();
     },
 
@@ -123,7 +133,7 @@ var Radio = BaseComponent.extend({
      *
      * @private
      */
-    _updateClasses: function () {
+    _updateClasses: function() {
         this.checkDisabled();
         this.checkToggleState();
     },
@@ -133,23 +143,23 @@ var Radio = BaseComponent.extend({
      *
      * @private
      */
-    _blur: function () {
+    _blur: function() {
 
         // TODO: figure out why there's a focus event being fired after our blur,
         // so that we can avoid this hack.
-        window.setTimeout(function () {
+        window.setTimeout(function() {
             this._btnElement.blur();
         }.bind(this), /** @type {number} */ (this.Constant_.TINY_TIMEOUT));
     },
 
-// Public methods.
+    // Public methods.
 
     /**
      * Check the components disabled state.
      *
      * @public
      */
-    checkDisabled: function () {
+    checkDisabled: function() {
         if (this._btnElement.disabled) {
             addClass(this.element, this._CssClasses.IS_DISABLED);
         } else {
@@ -163,7 +173,7 @@ var Radio = BaseComponent.extend({
      *
      * @public
      */
-    checkToggleState: function () {
+    checkToggleState: function() {
         if (this._btnElement.checked) {
             addClass(this.element, this._CssClasses.IS_CHECKED);
         } else {
@@ -177,7 +187,7 @@ var Radio = BaseComponent.extend({
      *
      * @public
      */
-    disable: function () {
+    disable: function() {
         this._btnElement.disabled = true;
         this._updateClasses();
     },
@@ -187,7 +197,7 @@ var Radio = BaseComponent.extend({
      *
      * @public
      */
-    enable: function () {
+    enable: function() {
         this._btnElement.disabled = false;
         this._updateClasses();
     },
@@ -198,13 +208,13 @@ var Radio = BaseComponent.extend({
      *
      * @public
      */
-    check: function () {
+    check: function() {
         this._btnElement.checked = true;
         this._updateClasses();
     },
 
 
-    uncheck: function () {
+    uncheck: function() {
         this._btnElement.checked = false;
         this._updateClasses();
     }
@@ -212,14 +222,16 @@ var Radio = BaseComponent.extend({
 
 });
 
-
-compMgr.regComp({
-    comp: Radio,
-    compAsString: 'u.Radio',
-    css: 'u-radio'
-});
-
-
+if (u.compMgr)
+    u.compMgr.regComp({
+        comp: Radio,
+        compAsString: 'u.Radio',
+        css: 'u-radio'
+    });
 
 
-export {Radio};
+
+
+export {
+    Radio
+};

@@ -1,113 +1,83 @@
+/* global __dirname */
+
+var path = require('path');
 var webpack = require('webpack');
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-var path = require('path');
-var env = require('yargs').argv.mode;
 var fs = require('fs');
+var glob = require('glob');
 
-var plugins = [],
-	entryobj = {},
-	libraryName,
-	outputFile,
-	entryFile,
-	devToolSelect;
+var dir_js = path.resolve(__dirname, 'src');
+var dir_build = path.resolve(__dirname, 'dist/js');
 
-// entry js文件目录
-var exportJs = './src/';
-var indexJs = '/src/index.js';
 
-// out js文件目录
-// var outJs = '/dist/js';
-var outJs;
+var data = fs.readFileSync('./package.json', 'utf8');
+var packageObj = JSON.parse(data);
+var headerStr = '';
+headerStr += packageObj.name + ' v' + packageObj.version + '\r\n';
+headerStr += packageObj.description + '\r\n';
+headerStr += 'author : ' + packageObj.author + '\r\n';
+headerStr += 'homepage : ' + packageObj.homepage + '\r\n';
+headerStr += 'bugs : ' + packageObj.bugs.url;
+var plugins = [new webpack.BannerPlugin(headerStr),
+    new webpack.LoaderOptionsPlugin({
+        minimize: true
+    })
+    // new webpack.NoErrorsPlugin()
+]
 
-// 多路径配置
-var entries =  fs.readdirSync(exportJs).filter(function(file) {
-	return file.match(/\.js$/);
-});
+var returnFUn = function(env) {
+    var mode = env.mode,
+        outputFile;
 
-function objpush(element, index, array) {
-	var name = element.split('.js')[0];
-	if(name === 'index'){
+    if (mode == 'build') {
+        outputFile = '[name].min.js';
+        plugins.push(new webpack.optimize.UglifyJsPlugin({
+            mangle: true,
+            beautify: true
+        }))
+        plugins.push(new UglifyJsPlugin({
+            minimize: true
+        }));
+    } else {
+        outputFile = '[name].js';
+        plugins.push(new webpack.optimize.UglifyJsPlugin({
+            mangle: false,
+            beautify: true
+        }))
+    }
 
-	} else {
-		entryobj[name] = [ exportJs + element ];
-	}
+    var getEntry = function() {
+        var entry = {};
+        glob.sync(__dirname + '/src/*.js').forEach(function(name) {
+            var n = name.slice(name.lastIndexOf('src/') + 4, name.length - 3);
+            if (n == 'index')
+                n = 'tinper-neoui'
+            entry[n] = name;
+        });
+        return entry;
+    }
+    var obj = {
+        entry: getEntry(),
+        output: {
+            path: dir_build,
+            filename: outputFile
+        },
+        devServer: {
+            contentBase: dir_build,
+        },
+        module: {
+            loaders: [{
+                loader: 'babel-loader',
+            }]
+        },
+        plugins: plugins,
+        stats: {
+            // Nice colored output
+            colors: true
+        },
+        // Create source maps for the bundle
+        devtool: 'source-map',
+    }
+    return obj;
 }
-entries.forEach(objpush);
-
-
-// var PROD = JSON.parse(process.env.PROD_ENV || '0');
-// console.log(PROD);
-
-console.log("env----"+env);
-/**
- * product_normal 用于输出合并后未压缩版
- * product_min 用于输出合并后压缩版
- * build_normal 用于输出未压缩的插件
- * build_min 用于输出压缩的插件
- */
-if(env === 'build_normal') {
-	devToolSelect = '';
-	libraryName = '[name]';
-	outputFile = libraryName + '.js';
-	entryFile = entryobj;
-	outJs = '/dist/js/plugin';
-} else if(env === 'build_min'){
-	plugins.push(new UglifyJsPlugin({
-		minimize: true
-	}));
-	devToolSelect = 'source-map';
-	libraryName = '[name]';
-	outputFile = libraryName + '.min.js';
-	entryFile = entryobj;
-	outJs = '/dist/js/plugin';
-} else if(env === 'product_normal'){
-	libraryName = 'tinper-neoui';
-	devToolSelect = '';
-	outputFile = libraryName + '.js';
-	entryFile = __dirname + indexJs;
-	outJs = '/dist/js';
-} else if(env === 'product_min'){
-	libraryName = 'tinper-neoui';
-	devToolSelect = '';
-	plugins.push(new UglifyJsPlugin({
-		minimize: true
-	}));
-	outputFile = libraryName + '.min.js';
-	entryFile = __dirname + indexJs;
-	outJs = '/dist/js';
-}
-
-console.log('outputFIle---'+outputFile);
-var config = {
-	// entry: __dirname + '/v1/src/index.js',
-	// entry : fs.readdirSync('./v1/src/').filter(function(file) {
-	// 	return file.match(/\.js$/);
-	// }),
-	entry: entryFile,
-	devtool: devToolSelect,
-	output: {
-		path: __dirname + outJs,
-		filename: outputFile,
-		//library: 'u',
-		libraryTarget: 'var',
-		umdNamedDefine: true
-	},
-	module: {
-		loaders: [{
-			test: /(\.jsx|\.js)$/,
-			loader: 'babel',
-			exclude: /(bower_components)/
-		}, {
-			test: /(\.jsx|\.js)$/,
-			loader: "eslint-loader",
-			exclude: /node_modules/
-		}]
-	},
-	resolve: {
-		root: path.resolve('./js'),
-		extensions: ['', '.js']
-	},
-	plugins: plugins
-};
-
-module.exports = config;
+module.exports = returnFUn;
