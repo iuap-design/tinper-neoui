@@ -18,6 +18,7 @@ var webpack = require('webpack');
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var fs = require('fs');
 var glob = require('glob');
+var del = require('del')
 
 var version = require('./version.js');
 var AUTOPREFIXER_BROWSERS = [
@@ -127,7 +128,7 @@ gulp.task('vsass', function() {
         .pipe(gulp.dest('./v1/scss/bundle'));
 });
 gulp.task('vcss', ['vsass'], function() {
-    gulp.src('./v1/scss/*.scss')
+    gulp.src('./v1/scss/bundle/ui/*.scss')
         .pipe(sass())
         .pipe(gulp.dest('./v1/lib/css'))
         .pipe(sourcemaps.init())
@@ -147,13 +148,25 @@ gulp.task('custom', function() {
 
 // gulp.task('dev', ['image', 'font', 'sass-ui', 'es-ui', 'polyfill', 'serve'])
 
+gulp.task('buildComponentCss', function(){
+  return gulp.src('./scss/ui/*.scss')
+            .pipe(sass())
+            .pipe(gulp.dest('./dist/css/component'))
+            .pipe(sourcemaps.init())
+            .pipe(minifycss())
+            .pipe(rename({
+                suffix: '.min'
+            }))
+            .pipe(sourcemaps.write('./'))
+            .pipe(gulp.dest('./dist/css/component'));
+})
 /**
  * [执行重构后dist/css目录输出]
  * 不产出map文件
  */
 
 gulp.task('buildcorecss', function() {
-    gulp.src('./scss/core.scss')
+  return  gulp.src('./scss/core.scss')
         .pipe(sass())
         .pipe(base64())
         .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
@@ -167,8 +180,8 @@ gulp.task('buildcorecss', function() {
         .pipe(gulp.dest('./dist/css'));
 });
 // 输出整体css文件dist/css/neoui.css
-gulp.task('buildcss', ['buildcorecss'], function() {
-    gulp.src('./scss/neoui.scss')
+gulp.task('buildcss', ['buildcorecss','buildComponentCss'], function() {
+    return gulp.src('./scss/neoui.scss')
         .pipe(sass())
         .pipe(base64())
         .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
@@ -211,7 +224,7 @@ gulp.task('webpack', function() {
 
 function runWebpack(mode) {
     var dir_js = path.resolve(__dirname, 'src');
-    var dir_build = path.resolve(__dirname, 'dist/js');
+    var dir_build = path.resolve(__dirname, 'dist/js/component');
 
 
     var data = fs.readFileSync('./package.json', 'utf8');
@@ -246,7 +259,7 @@ function runWebpack(mode) {
     glob.sync(__dirname + '/src/*.js').forEach(function(name) {
         var n = name.slice(name.lastIndexOf('src/') + 4, name.length - 3);
         if (n == 'index')
-            n = 'tinper-neoui'
+            return; // n = '../tinper-neoui'
         var outputFile = ''
         if (mode == 'build') {
             outputFile = n + '.min.js';
@@ -300,9 +313,14 @@ gulp.task('neoui', ['neo'], function() {
     ]);
 });
 
-gulp.task('dist', ['buildcss', 'buildjs', 'image', 'fontcss', 'fontfile'], function() {
+gulp.task('del',function(){
+  del(['dist/js/component/0.*.js',
+        'dist/css/component/*.map'])
+})
+gulp.task('dist', ['buildcss', 'buildjs', 'image', 'fontcss', 'fontfile','del'], function() {
     version.init([
         './dist/css/tinper-neoui.css',
         './dist/css/tinper-neoui.min.css'
     ]);
+
 });
