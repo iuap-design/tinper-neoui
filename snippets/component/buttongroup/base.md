@@ -1,4 +1,4 @@
-# 按钮组
+## 按钮组
 
 样式为`u-button-group`的父元素，包裹多个样式为`u-button`的button元素
 

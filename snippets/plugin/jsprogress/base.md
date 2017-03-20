@@ -1,18 +1,18 @@
-# progress控件
+## progress控件
 
 常用于跟踪进度
 
-# 插件依赖
+### 插件依赖
 
 依赖于 http://design.yyuap.com/static/uui/latest/js/u.js
 
-# 用法
+### 用法
 
 1.详情见示例
 
-# API
+### API
 
-## JS 方法参数
+#### JS 方法参数
 
 <table>
   <tbody>
@@ -37,7 +37,7 @@
 	</tbody>
 </table>
 
-## css 参数
+#### css 参数
 
 <table>
   <tbody>
@@ -61,7 +61,3 @@
 	  </tr>
 	</tbody>
 </table>
-
-# 示例
-
-

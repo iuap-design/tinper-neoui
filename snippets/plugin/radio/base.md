@@ -1,4 +1,4 @@
-# 单选框
+## 单选框
 
 radio提供了基本的单选框和不同色彩的单选框
 
@@ -6,9 +6,9 @@ radio提供了基本的单选框和不同色彩的单选框
 
 [试一试](http://tinper.org/webide/#/demos/ui/radio)
 
-# API
+#### API
 
-## \# radio对象
+#### radio对象
 
 * 类型：`Object`
 * 说明： 获取radio对象
@@ -22,7 +22,7 @@ var radioObject = document.getElementById('domId')['u.Radio'];
 
 ```
 
-## \# check
+#### check
 
 * 类型：`Function`
 * 说明： 调用radio对象的check方法，选中单选框
@@ -34,7 +34,7 @@ radioObject.check();
 
 ```
 
-## \# uncheck
+#### uncheck
 
 * 类型：`Function`
 * 说明： 调用radio对象的uncheck方法，取消选中单选框
@@ -46,7 +46,7 @@ radioObject.uncheck();
 
 ```
 
-## \# disable
+#### disable
 
 * 类型：`Function`
 * 说明： 调用radio对象的disable方法，使单选框不可用
@@ -57,7 +57,7 @@ radioObject.uncheck();
 radioObject.disable();
 
 ```
-## \# enable
+#### enable
 
 * 类型：`Function`
 * 说明： 调用radio对象的enable方法，使单选框可用

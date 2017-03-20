@@ -1,4 +1,4 @@
-# 开关
+## 开关
 
 开关控件实现了两种状态的切换，提供了多种色彩、多种尺寸样式。
 
@@ -8,9 +8,9 @@
 [试一试](http://tinper.org/webide/#/demos/ui/switch)
 
 
-# API
+### API
 
-## \# switch对象
+#### switch对象
 
 * 类型：`Object`
 * 说明： 获取switch对象
@@ -25,7 +25,7 @@ var switchObject = document.getElementById('domId')['u.Switch'];
 
 ```
 
-## \# check
+#### check
 
 * 类型：`Function`
 * 说明： 调用switch对象的check方法，打开开关
@@ -37,7 +37,7 @@ switchObject.check();
 
 ```
 
-## \# uncheck
+#### uncheck
 
 * 类型：`Function`
 * 说明： 调用switch对象的uncheck方法，关闭开关
@@ -49,7 +49,7 @@ switchObject.uncheck();
 
 ```
 
-## \# disable
+#### disable
 
 * 类型：`Function`
 * 说明： 调用switch对象的disable方法，使开关不可用
@@ -60,7 +60,7 @@ switchObject.uncheck();
 switchObject.disable();
 
 ```
-## \# enable
+#### enable
 
 * 类型：`Function`
 * 说明： 调用switch对象的enable方法，使开关可用
@@ -72,7 +72,7 @@ switchObject.enable();
 
 ```
 
-## \# toggle
+#### toggle
 
 * 类型：`Function`
 * 说明： 调用switch对象的toggle方法，反选开关的另一个状态
@@ -84,7 +84,7 @@ switchObject.toggle();
 
 ```
 
-## \# isChecked
+#### isChecked
 
 * 类型：`Function`
 * 说明： 调用switch对象的isChecked方法，获取当前开关的状态，true为打开，false为关闭

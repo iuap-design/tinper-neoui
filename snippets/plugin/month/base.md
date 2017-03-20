@@ -1,16 +1,14 @@
-# 月份
+## 月份
 
 用户可以通过此插件进行月份的选择。
-
-
 
 
 [试一试](http://tinper.org/webide/#/demos/ui/month)
 
 
-# API
+### API
 
-## \# Month 对象
+#### Month 对象
 
 * 类型：`Object`
 * 说明： Month表示一个月对象
@@ -25,7 +23,7 @@ var monthObject = document.getElementById('domId')['u.Month'];
 ```
 
 
-## \# setValue 
+#### setValue
 * 类型： `Function`
 * 说明：设置具体的月份
 * 参数：
@@ -43,10 +41,3 @@ monthObject.setValue(2);
 [月份在kero中使用](http://tinper.org/dist/kero/docs/ex_month.html)    
 
 [月份在grid中使用](http://tinper.org/webide/#/demos/grids/edit)
-
-
-
-
-
-
-

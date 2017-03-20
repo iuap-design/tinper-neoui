@@ -1,17 +1,17 @@
-# rating控件
+## rating控件
 
 评级评分
 
-# 插件依赖
+### 插件依赖
 
 首先依赖于 http://design.yyuap.com/static/uui/latest/js/u.js
 
 再引入js: http://design.yyuap.com/static/raty/raty.js
 
 
-# 用法
+### 用法
 
-1.定义类``u-rating`的父元素,并配置属性`data-plugin=rating`
+1.定义类`u-rating`的父元素,并配置属性`data-plugin=rating`
 
 ```
 <div class="u-rating" data-score="3" data-plugin="rating"></div>
@@ -44,8 +44,6 @@
 
 ```
 
-# API
+### API
 
 详情参见与 http://testweb3.iecworld.com/jsdemo/js/lq_js_point/
-
-# 示例

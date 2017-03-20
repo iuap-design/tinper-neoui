@@ -1,18 +1,14 @@
-# 复选框
+## 复选框
 
 checkbox提供了基础复选框、不同色彩复选框、图片复选框、个性复选框
-
-
-
 
 
 [试一试](http://tinper.org/webide/#/demos/ui/checkbox)
 
 
+### API
 
-# API
-
-## \# checkbox对象
+#### checkbox对象
 
 * 类型：`Object`
 * 说明： 获取checkbox对象
@@ -27,7 +23,7 @@ var checkboxObject = document.getElementById('domId')['u.Checkbox'];
 
 ```
 
-## \# check
+#### check
 
 * 类型：`Function`
 * 说明： 调用checkbox对象的check方法，选中复选框
@@ -39,7 +35,7 @@ checkboxObject.check();
 
 ```
 
-## \# uncheck
+#### uncheck
 
 * 类型：`Function`
 * 说明： 调用checkbox对象的uncheck方法，取消选中复选框
@@ -51,7 +47,7 @@ checkboxObject.uncheck();
 
 ```
 
-## \# disable
+#### disable
 
 * 类型：`Function`
 * 说明： 调用checkbox对象的disable方法，使复选框不可用
@@ -62,7 +58,7 @@ checkboxObject.uncheck();
 checkboxObject.disable();
 
 ```
-## \# enable
+#### enable
 
 * 类型：`Function`
 * 说明： 调用checkbox对象的enable方法，使复选框可用
@@ -74,7 +70,7 @@ checkboxObject.enable();
 
 ```
 
-## \# toggle
+#### toggle
 
 * 类型：`Function`
 * 说明： 调用checkbox对象的toggle方法，反选复选框
