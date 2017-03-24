@@ -38,6 +38,6 @@ monthObject.setValue(2);
 
 相关内容：
 
-[月份在kero中使用](http://tinper.org/dist/kero/docs/ex_month.html)    
+[月份在kero中使用](http://docs.tinper.org/moy/kero/ex_month.html)    
 
 [月份在grid中使用](http://tinper.org/webide/#/demos/grids/edit)

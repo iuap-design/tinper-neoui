@@ -85,6 +85,6 @@ checkboxObject.toggle();
 
 相关内容：
 
-[复选框在kero中使用](http://tinper.org/dist/kero/docs/ex_checkbox.html)    
+[复选框在kero中使用](http://docs.tinper.org/moy/kero/ex_checkboxdata.html)    
 
 [复选框在grid中使用](http://tinper.org/webide/#/demos/grids/edit)

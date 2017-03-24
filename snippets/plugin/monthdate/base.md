@@ -41,4 +41,4 @@ monthDateObject.setValue('02-15');
 
 相关内容：
 
-[月日在kero中使用](http://tinper.org/dist/kero/docs/ex_yearmonth.html)    
+[月日在kero中使用](http://docs.tinper.org/neoui/plugin.html#月日)    

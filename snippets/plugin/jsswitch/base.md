@@ -99,6 +99,6 @@ switchObject.isChecked();
 
 相关内容：
 
-[开关在kero中使用](http://tinper.org/dist/kero/docs/ex_switch.html)    
+[开关在kero中使用](http://docs.tinper.org/moy/kero/ex_switch.html)    
 
 [开关在grid中使用](http://tinper.org/webide/#/demos/grids/edit)

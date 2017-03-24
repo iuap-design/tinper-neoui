@@ -5,9 +5,8 @@ loading 组件以一个圆环顺时针方向运动，用来传达某一事件已
 ### 插件依赖
 
 
-首先依赖于 http://design.yyuap.com/static/uui/latest/js/u.js
+依赖于 http://design.yyuap.com/static/uui/latest/js/u.js
 
-再引入js: http://design.yyuap.com/static/uui/latest/js/u-date.js
 
 ### 用法
 

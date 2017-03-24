@@ -71,6 +71,6 @@ radioObject.enable();
 
 相关内容：
 
-[单选框在kero中使用](http://tinper.org/dist/kero/docs/ex_radio.html)    
+[单选框在kero中使用](http://docs.tinper.org/moy/kero/ex_radio.html)    
 
 [单选框在grid中使用](http://tinper.org/webide/#/demos/grids/edit)

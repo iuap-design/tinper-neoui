@@ -95,6 +95,6 @@ document.getElementById('domId')['u.Combo'].emptyValue();
 
 相关内容：
 
-[下拉框在kero中使用](http://tinper.org/dist/kero/docs/combobox_ex.html)    
+[下拉框在kero中使用](http://docs.tinper.org/moy/kero/combobox_ex.html)    
 
 [下拉框在grid中使用](http://tinper.org/webide/#/demos/grids/edit)

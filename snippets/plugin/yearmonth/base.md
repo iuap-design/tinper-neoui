@@ -43,6 +43,6 @@ yearMonthObject.setValue('2016-02');
 
 相关内容：
 
-[年月在kero中使用](http://tinper.org/dist/kero/docs/ex_yearmonth.html)    
+[年月在kero中使用](http://docs.tinper.org/neoui/plugin.html#月日)    
 
 [年月在grid中使用](http://tinper.org/webide/#/demos/grids/edit)

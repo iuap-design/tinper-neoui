@@ -133,6 +133,6 @@ dateObject.setFormat('YYYY');
 
 相关内容：
 
-[日期在kero中使用](http://tinper.org/dist/kero/docs/ex_datetime.html)    
+[日期在kero中使用](http://docs.tinper.org/moy/kero/ex_datetime.html)    
 
 [日期在grid中使用](http://tinper.org/webide/#/demos/grids/edit)
