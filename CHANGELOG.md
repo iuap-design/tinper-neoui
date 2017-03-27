@@ -1,3 +1,19 @@
+<a name="3.2.0"></a>
+# [3.2.0](https://github.com/iuap-design/tinper-neoui/compare/v3.1.27...v3.2.0) (2017-03-24)
+
+
+### Bug Fixes
+
+* 下拉组件由隐藏切换为显示时显示存在问题 ([51f6340](https://github.com/iuap-design/tinper-neoui/commit/51f6340))
+* 代码compMgr处理提到外部 ([edd214e](https://github.com/iuap-design/tinper-neoui/commit/edd214e))
+
+
+### Features
+
+* dialog组件新增拖拽功能 ([08b18a1](https://github.com/iuap-design/tinper-neoui/commit/08b18a1))
+
+
+
 <a name="3.1.27"></a>
 ## [3.1.27](https://github.com/iuap-design/tinper-neoui/compare/v3.1.26...v3.1.27) (2017-02-23)
 
