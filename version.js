@@ -26,14 +26,14 @@ module.exports = {
 			var filePath = filesArr[i]
 			var data = fs.readFileSync(filePath, 'utf8');
 			var cssheaderStr = '';
-			if(filePath == './dist/css/u.css'){
-				cssheaderStr = '@import \'u.core.css\';\r\n';
-			}else if(filePath == './dist/css/u.min.css'){
-				cssheaderStr = '@import \'u.core.min.css\';';
+			if(filePath == './dist/css/u.css' || filePath == './dist/css/tinper-neoui.css'){
+				cssheaderStr = '@import \'u.core.css\';\r\n@import \'tinper-neoui.core.css\';\r\n';
+			}else if(filePath == './dist/css/u.min.css' || filePath == './dist/css/tinper-neoui.min.css'){
+				cssheaderStr = '@import \'u.core.min.css\';@import \'tinper-neoui.core.min.css\';\r\n';
 			}
 			data = headerStr + cssheaderStr + data;
 			fs.writeFileSync(filePath, data);
 		}
 	},
-	
+
 };
