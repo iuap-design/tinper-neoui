@@ -1528,7 +1528,8 @@ DateTimePicker.fn.setStartDate = function(startDate, type) {
         this.beginDateObj = udate.getDateObj(startDate, obj);
         if (this.beginDateObj) {
             this.resetDataObj(this.beginDateObj)
-            this.beginDateObj.setMilliseconds(0);
+            if (this.beginDateObj.setMilliseconds)
+                this.beginDateObj.setMilliseconds(0);
         }
         /*if(type){
             switch (type) {
@@ -1562,7 +1563,8 @@ DateTimePicker.fn.setEndDate = function(endDate) {
         this.overDateObj = udate.getDateObj(endDate, obj);
         if (this.overDateObj) {
             this.resetDataObj(this.overDateObj)
-            this.overDateObj.setMilliseconds(0);
+            if (this.overDateObj.setMilliseconds)
+                this.overDateObj.setMilliseconds(0);
         }
         this.overYear = this.overDateObj.getFullYear();
         this.overMonth = this.overDateObj.getMonth();
