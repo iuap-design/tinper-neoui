@@ -40,6 +40,13 @@ import {
     trans
 } from 'tinper-sparrow/src/util/i18n'
 
+import {
+    getCookie
+} from 'tinper-sparrow/src/cookies';
+import {
+    U_TIMEZONE
+} from 'tinper-sparrow/src/enumerables';
+
 var DateTimePicker = u.BaseComponent.extend({});
 
 DateTimePicker.fn = DateTimePicker.prototype;
@@ -48,7 +55,7 @@ DateTimePicker.fn = DateTimePicker.prototype;
 DateTimePicker.fn.init = function() {
 
     var self = this,
-        _fmt, _defaultFmt;
+        _fmt, _defaultFmt, cusFormat;
     this.enable = true;
     this._element = this.element;
     //this.type = 'datetime';
@@ -109,7 +116,12 @@ DateTimePicker.fn.init = function() {
         _defaultFmt = 'YYYY-MM-DD';
     }
     _fmt = this._element.getAttribute("format");
-    this.format = _fmt || this.options['format'] || _defaultFmt;
+
+    if (typeof getFormatFun == 'function') {
+        cusFormat = getFormatFun();
+    }
+    this.format = _fmt || this.options['format'] || cusFormat || _defaultFmt;
+    this.timezone = this.options['timezone'] || getCookie(U_TIMEZONE);
     this.isShow = false;
 };
 
@@ -1202,7 +1214,18 @@ DateTimePicker.fn.show = function(evt) {
         return;
     }
     var inputValue = this._input.value;
-    this.setDate(inputValue);
+    if (typeof this.timezone != 'undefined' && this.timezone != null && this.timezone != '') {
+        // inputValue = udate.strToDateByTimezone(inputValue, this.timezone);
+        if (inputValue) {
+            this.date = new Date(inputValue);
+        } else {
+            this.date = udate.getDateByTimeZonec2z(new Date(), this.timezone, this.type);
+        }
+    } else {
+        this.setDate(inputValue);
+    }
+
+
 
     var self = this;
     if (!this._panel) {
@@ -1390,6 +1413,8 @@ DateTimePicker.fn.onOk = function() {
             return;
         }
     }
+    if (this.pickerDate && this.pickerDate.setMilliseconds)
+        this.pickerDate.setMilliseconds(0);
     var flag = true;
     if (this.beginDateObj) {
         if (this.pickerDate && this.pickerDate.getTime() < this.beginDateObj.getTime())
@@ -1400,7 +1425,12 @@ DateTimePicker.fn.onOk = function() {
             flag = false;
     }
     if (flag) {
-        this.setDate(this.pickerDate);
+        if (typeof this.timezone != 'undefined' && this.timezone != null && this.timezone != '') {
+            this.setDate(udate.getDateByTimeZonez2c(this.pickerDate, this.timezone));
+        } else {
+            this.setDate(this.pickerDate);
+        }
+
     }
     this.isShow = false;
     this.timeOpen = false;
@@ -1411,8 +1441,12 @@ DateTimePicker.fn.onOk = function() {
 
     }
     if (flag) {
+        var v = this.pickerDate;
+        if (typeof this.timezone != 'undefined' && this.timezone != null && this.timezone != '') {
+            v = udate.getDateByTimeZonez2c(this.pickerDate, this.timezone);
+        }
         this.trigger('select', {
-            value: this.pickerDate
+            value: v
         });
         this.trigger('validate');
         if (u.isIE || u.isEdge) {
@@ -1450,9 +1484,12 @@ DateTimePicker.fn.setDate = function(value) {
         this._input.value = '';
         return;
     }
-
-    var _date = udate.getDateObj(value);
+    var obj = {};
+    obj.timezone = this.timezone;
+    var _date = udate.getDateObj(value, obj);
     if (_date) {
+        if (_date.setMilliseconds)
+            _date.setMilliseconds(0);
         if (_date) {
             this.resetDataObj(_date);
         }
@@ -1486,9 +1523,12 @@ DateTimePicker.fn.setFormat = function(format) {
 
 DateTimePicker.fn.setStartDate = function(startDate, type) {
     if (startDate) {
-        this.beginDateObj = udate.getDateObj(startDate);
+        var obj = {};
+        obj.timezone = this.timezone;
+        this.beginDateObj = udate.getDateObj(startDate, obj);
         if (this.beginDateObj) {
             this.resetDataObj(this.beginDateObj)
+            this.beginDateObj.setMilliseconds(0);
         }
         /*if(type){
             switch (type) {
@@ -1517,9 +1557,12 @@ DateTimePicker.fn.setStartDate = function(startDate, type) {
 
 DateTimePicker.fn.setEndDate = function(endDate) {
     if (endDate) {
-        this.overDateObj = udate.getDateObj(endDate);
+        var obj = {};
+        obj.timezone = this.timezone;
+        this.overDateObj = udate.getDateObj(endDate, obj);
         if (this.overDateObj) {
             this.resetDataObj(this.overDateObj)
+            this.overDateObj.setMilliseconds(0);
         }
         this.overYear = this.overDateObj.getFullYear();
         this.overMonth = this.overDateObj.getMonth();
