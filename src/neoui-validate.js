@@ -143,6 +143,7 @@ Validate.ERRORMSG = {
     "phone": trans('validate.error_phone', "手机号码格式不对！"),
     "landline": trans('validate.error_landline', "座机号码格式不对！"),
     "email": trans('validate.error_email', "邮箱地址格式不对！"),
+    "idcard":(0, _i18n.trans)('validate.error_email', "身份证格式不对！"),
     "url": trans('validate.error_url', "网址格式不对！"),
     "datetime": trans('validate.error_datetime', "日期格式不对！"),
     "phoneNumber": trans('validate.error_phoneNumber', "号码格式不对！")
@@ -165,6 +166,7 @@ Validate.REG = {
     "zipCode": /^[0-9]{6}$/,
     // "phone": /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/,
     "phone": /^1[3|4|5|7|8]\d{9}$/,
+    "idcard":/^(^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[Xx])$)$/,
     "landline": /^(0[0-9]{2,3}\-)?([2-9][0-9]{6,7})+(\-[0-9]{1,4})?$/,
     "email": /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
     "url": /^(\w+:\/\/)?\w+(\.\w+)+.*$/,
