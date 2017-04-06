@@ -137,7 +137,7 @@ DateTimePicker.fn._carousel = function(newPage, direction) {
         addClass(newPage, 'left-page');
     }
     this._dateContent.appendChild(newPage);
-    if (env.isIE8 || env.isIE9 || env.isFF) {
+    if (env.isIE8 || env.isIE9 || env.isFF || true) { // 动画存在问题，禁用动画
         // this._dateContent.removeChild(this.contentPage);
         var pages = this._dateContent.querySelectorAll('.u-date-content-page');
         for (var i = 0; i < pages.length; i++) {
@@ -443,8 +443,8 @@ DateTimePicker.fn._getPickerStartDate = function(date) {
 DateTimePicker.fn._getPickerEndDate = function(date) {
     var d = new Date(dateFormat(date));
     d.setDate(1);
-    d.setMonth(d.getMonth() + 1);
     d.setDate(0);
+    d.setMonth(d.getMonth() + 1);
     var day = d.getDay();
     d = udate.add(d, 'd', 6 - day);
     return d;
@@ -571,6 +571,8 @@ DateTimePicker.fn._fillDate = function(type) {
         var _d = e.target._value;
         if (!_d) return;
         this.pickerDate.setFullYear(e.target._year);
+        this.pickerDate.setMonth(e.target._month);
+        this.pickerDate.setDate(_d);
         this.pickerDate.setMonth(e.target._month);
         this.pickerDate.setDate(_d);
         if (this.pickerDate) {
