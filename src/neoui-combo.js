@@ -237,9 +237,12 @@ var Combo = u.BaseComponent.extend({
         off(document, 'click', this.callback);
         removeClass(this._ul, 'is-visible');
         this._ul.style.zIndex = -1;
+        var name = this._input.value;
+        if(this.mutilSelect)
+          name = this.name;
         this.trigger('select', {
             value: this.value,
-            name: this._input.value
+            name: name
         });
     },
 
@@ -415,12 +418,10 @@ var Combo = u.BaseComponent.extend({
 
             this._updateItemSelect();
 
-            // this.trigger('select', {value: this.value, name: name});
         } else {
             this.value = this.comboDatas[index].value;
             this._input.value = this.comboDatas[index].name;
             this._updateItemSelect();
-            // this.trigger('select', {value: this.value, name: this._input.value});
         }
 
 
@@ -462,6 +463,7 @@ var Combo = u.BaseComponent.extend({
      */
     setValue: function(value) {
         var self = this;
+        this.name = '';
         value = value + '';
         value = value || '';
 
@@ -498,9 +500,12 @@ var Combo = u.BaseComponent.extend({
         if (!this.onlySelect && !matched) {
             this.value = value;
             this._input.value = value;
+            var name = this._input.value;
+            if(this.mutilSelect)
+              name = this.name;
             this.trigger('select', {
                 value: this.value,
-                name: this._input.value
+                name: name
             });
         }
     },
