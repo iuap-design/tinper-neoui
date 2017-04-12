@@ -81,6 +81,14 @@ var Tabs = u.BaseComponent.extend({
         addClass(panel, this._CssClasses.ACTIVE_CLASS);
 
     },
+    getIndex: function(tab) {
+        var tabs = this.tabs_;
+        for (var i = 0; i < tabs.length; i++) {
+            if (tabs[i] == tab)
+                return i;
+        }
+        return -1;
+    },
 
     /**
      * Initialize element.
@@ -120,7 +128,14 @@ function Tab(tab, ctx) {
             ctx.resetPanelState_();
             addClass(tab, ctx._CssClasses.ACTIVE_CLASS);
             addClass(panel, ctx._CssClasses.ACTIVE_CLASS);
+            var index = ctx.getIndex(tab);
+            ctx.trigger('tabchange', {
+                tabDom: tab,
+                index:index
+            })
         });
+
+
 
     }
 }
