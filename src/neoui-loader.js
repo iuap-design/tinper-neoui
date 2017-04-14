@@ -49,10 +49,15 @@ var hideLoader = function(options) {
 	// if(hasback){
 		// 默认删除最高层的
 	// 清除遮罩层时，不需判断是否有hasback属性，为了兼容之前的用法
-	var overlayDivs = document.querySelectorAll('.u-overlay.u-loader-back');
-	var l = overlayDivs.length;
-	var div = overlayDivs[l-1];
-	div.parentNode.removeChild(div);
+	try{
+		var overlayDivs = document.querySelectorAll('.u-overlay.u-loader-back');
+		var l = overlayDivs.length;
+		var div = overlayDivs[l-1];
+		div.parentNode.removeChild(div);
+	}catch(e){
+
+	}
+
 	// }
 	var divs = document.querySelectorAll(cssStr);
 	for(var i = 0; i < divs.length; i++) {
