@@ -78,24 +78,24 @@ var Validate = u.BaseComponent.extend({
         // 要求显示成功提示，并没有成功提示dom的id时，则创建成功提示dom
         if (this.hasSuccess && !this.successId) {
             this.successId = makeDOM('<span class="u-form-control-success uf uf-correct" ></span>');
-
-            if (this.referDom.nextSibling) {
-                this.referDom.parentNode.insertBefore(this.successId, this.referDom.nextSibling);
-            } else {
+            // 因为参照获取的是第一个span，因此添加到最后
+            // if (this.referDom.nextSibling) {
+            //     this.referDom.parentNode.insertBefore(this.successId, this.referDom.nextSibling);
+            // } else {
                 this.referDom.parentNode.appendChild(this.successId);
-            }
+            // }
 
         }
         //不是默认的tip提示方式并且tipId没有定义时创建默认tipid
         if (this.notipFlag && !this.tipId) {
             this.tipId = makeDOM('<span class="u-form-control-info uf uf-exc-c-o "></span>');
             this.referDom.parentNode.appendChild(this.tipId);
-
-            if (this.referDom.nextSibling) {
-                this.referDom.parentNode.insertBefore(this.tipId, this.referDom.nextSibling);
-            } else {
+            // 因为参照获取的是第一个span，因此添加到最后
+            // if (this.referDom.nextSibling) {
+            //     this.referDom.parentNode.insertBefore(this.tipId, this.referDom.nextSibling);
+            // } else {
                 this.referDom.parentNode.appendChild(this.tipId);
-            }
+            // }
         }
         //提示框位置
         this.placement = this.options['placement'] ? this.options['placement'] : Validate.DEFAULTS.placement
