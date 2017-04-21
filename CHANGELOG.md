@@ -1,3 +1,22 @@
+<a name="3.2.2"></a>
+## [3.2.2](https://github.com/iuap-design/tinper-neoui/compare/v3.2.0...v3.2.2) (2017-04-14)
+
+
+### Bug Fixes
+
+* 校验sucess添加的span导致参照无法打开，修改为添加到最后 ([8047172](https://github.com/iuap-design/tinper-neoui/commit/8047172))
+* 解决hideLoader调用时报错的问题 ([46066f0](https://github.com/iuap-design/tinper-neoui/commit/46066f0))
+
+
+### Features
+
+* tabs组件增加切换页签时的监听 ([10ee208](https://github.com/iuap-design/tinper-neoui/commit/10ee208))
+* 增加身份证校验规则 ([b3936ed](https://github.com/iuap-design/tinper-neoui/commit/b3936ed))
+* 日期组件国际化支持设置不同时区 ([b2029a9](https://github.com/iuap-design/tinper-neoui/commit/b2029a9))
+* 日期组件支持设定特定时区，满足国际化方案中对日期组件的要求 ([a7928a3](https://github.com/iuap-design/tinper-neoui/commit/a7928a3))
+
+
+
 <a name="3.2.0"></a>
 # [3.2.0](https://github.com/iuap-design/tinper-neoui/compare/v3.1.27...v3.2.0) (2017-03-24)
 
