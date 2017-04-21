@@ -1,6 +1,6 @@
 {
   "name": "tinper-neoui",
-  "version": "3.2.2",
+  "version": "3.2.1",
   "description": "UI Framework Used For Enterprise.",
   "main": "src/index",
   "scripts": {

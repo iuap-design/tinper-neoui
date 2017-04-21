@@ -1,3 +1,8 @@
+<a name="3.2.1"></a>
+## [3.2.1](https://github.com/iuap-design/tinper-neoui/compare/v3.2.2...v3.2.1) (2017-04-21)
+
+
+
 <a name="3.2.2"></a>
 ## [3.2.2](https://github.com/iuap-design/tinper-neoui/compare/v3.2.0...v3.2.2) (2017-04-14)
 
