@@ -20,10 +20,10 @@ export default {
         nodeResolve(),
         multidest([
             // targets "main" in package.json
-            // {
-            //     dest: "dist/js/tinper-neoui.cjs.js",
-            //     format: "cjs"
-            // },
+            {
+                dest: "dist/js/tinper-neoui.cjs.js",
+                format: "cjs"
+            },
             // targets browsers
             {
                 dest: "dist/js/tinper-neoui.min.js",
