@@ -18,7 +18,9 @@ var webpack = require('webpack');
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var fs = require('fs');
 var glob = require('glob');
-var del = require('del')
+var del = require('del');
+var rollupEach = require('gulp-rollup-each');
+var resolve = require("rollup-plugin-node-resolve");
 
 var version = require('./version.js');
 var AUTOPREFIXER_BROWSERS = [
@@ -323,10 +325,33 @@ gulp.task('del', function() {
         'dist/css/component/*.map'
     ])
 })
-gulp.task('dist', ['buildcss', 'buildjs', 'image', 'fontcss', 'fontfile', 'del'], function() {
+gulp.task('dist', ['rollup', 'buildcss', 'buildjs', 'image', 'fontcss', 'fontfile', 'del'], function() {
     version.init([
         './dist/css/tinper-neoui.css',
         './dist/css/tinper-neoui.min.css'
     ]);
 
 });
+
+
+/**
+ * 使用gulp的rollup插件来对单个组件进行编译
+ * @type {String}
+ */
+gulp.task('rollup', () => {
+    return gulp.src([
+            'src/*.js',
+            '!src/index.js' // exclude modules
+        ])
+        .pipe(rollupEach({
+            // rollup.rollup( options )
+            plugins: [
+                resolve(),
+            ]
+        }, {
+            // bundle.generate( options )
+            format: 'iife',
+            moduleName: "bar"
+        }))
+        .pipe(gulp.dest('dist/js/component'))
+})

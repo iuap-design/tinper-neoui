@@ -30,9 +30,6 @@ import {
     extend
 } from 'tinper-sparrow/src/extend';
 import {
-    isIE8
-} from 'tinper-sparrow/src/env';
-import {
     URipple
 } from 'tinper-sparrow/src/util/ripple';
 import {
@@ -242,7 +239,7 @@ const MonthDate = u.BaseComponent.extend({
         }
         addClass(newPage, 'zoom-in');
         this.panelContentDiv.appendChild(newPage);
-        if (isIE8) {
+        if (env.isIE8) {
             this.contentPage = newPage;
         } else {
             var cleanup = function() {

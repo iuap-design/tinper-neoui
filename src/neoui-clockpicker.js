@@ -18,7 +18,6 @@ import {
     off
 } from 'tinper-sparrow/src/event';
 import {
-    isMobile,
     env
 } from 'tinper-sparrow/src/env';
 import {
@@ -43,7 +42,7 @@ const ClockPicker = u.BaseComponent.extend({
         this.format = this.options['format'] || core.getMaskerMeta('time').format;
         this.panelDiv = null;
         this.input = this.element.querySelector("input");
-        if (isMobile) {
+        if (env.isMobile) {
             this.input.setAttribute('readonly', 'readonly')
         }
         addClass(this.element, 'u-text');
@@ -159,7 +158,7 @@ const ClockPicker = u.BaseComponent.extend({
         this.hourDiv = this.panelDiv.querySelector('.clockpicker-hours');
         this.minDiv = this.panelDiv.querySelector('.clockpicker-minutes');
         this.btnClean = this.panelDiv.querySelector('.u-date-clean');
-        if (!isMobile)
+        if (!env.isMobile)
             this.btnClean.style.display = 'none';
         this.currentView = 'hours';
         on(this.hourDiv, 'click', function(e) {
@@ -379,7 +378,7 @@ const ClockPicker = u.BaseComponent.extend({
         this.titleMinSpan.innerHTML = this.min;
 
         /*因为元素可能变化位置，所以显示的时候需要重新计算*/
-        if (isMobile) {
+        if (env.isMobile) {
             this.panelDiv.style.position = 'fixed';
             this.panelDiv.style.top = '20%';
             var screenW = document.body.clientWidth;
