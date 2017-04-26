@@ -1,8 +1,13 @@
 {
   "presets": [
-  	"stage-0"
+      ["latest", {
+        "es2015": {
+          "modules": false
+        }
+      }]
   ],
   "plugins": [
+      "external-helpers",
   	"transform-es3-property-literals",
     "transform-es3-member-expression-literals",
     "transform-es2015-template-literals",
