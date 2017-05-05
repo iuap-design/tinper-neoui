@@ -4,15 +4,15 @@
 
 ### 插件依赖
 
-<http://design.yyuap.com/static/uui/latest/css/font-awesome.css>
+<http://design.yonyoucloud.com/static/uui/latest/css/font-awesome.css>
 
-<http://design.yyuap.com/static/uui/latest/css/u.css>
+<http://design.yonyoucloud.com/static/uui/latest/css/u.css>
 
-<http://design.yyuap.com/static/jquery/jquery-1.9.1.min.js>
+<http://design.yonyoucloud.com/static/jquery/jquery-1.9.1.min.js>
 
-<http://design.yyuap.com/static/uui/latest/js/u-polyfill.js>
+<http://design.yonyoucloud.com/static/uui/latest/js/u-polyfill.js>
 
-<http://design.yyuap.com/static/uui/latest/js/u.js>
+<http://design.yonyoucloud.com/static/uui/latest/js/u.js>
 
 ### 如何使用
 

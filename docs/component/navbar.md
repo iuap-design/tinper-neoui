@@ -41,7 +41,7 @@
             &lt;ul class="nav-list u-navbar-toolbar u-navbar-right u-navbar-toolbar-right">
                 &lt;li class="dropdown">
                     &lt;a class="u-avatar w-32 u-avatar-online">
-                        &lt;img src="http://design.yyuap.com/static/img/navimg1.jpg" alt="..." class="img-circle">
+                        &lt;img src="http://design.yonyoucloud.com/static/img/navimg1.jpg" alt="..." class="img-circle">
                         &lt;i>&lt;/i>
                     &lt;/a>
                 &lt;/li>

@@ -29,9 +29,9 @@ Javascript插件包括了时间、模态框、页签、grid、进度条等多种
 
 也可以通过cdn进行加载
 
-	<link rel="stylesheet" type="text/css" href="//design.yyuap.com/static/uui/latest/css/u.css">
-	<link rel="stylesheet" type="text/css" href="//design.yyuap.com/static/uui/latest/css/grid.css">
-	<link rel="stylesheet" type="text/css" href="//design.yyuap.com/static/uui/latest/css/tree.css">
+	<link rel="stylesheet" type="text/css" href="//design.yonyoucloud.com/static/uui/latest/css/u.css">
+	<link rel="stylesheet" type="text/css" href="//design.yonyoucloud.com/static/uui/latest/css/grid.css">
+	<link rel="stylesheet" type="text/css" href="//design.yonyoucloud.com/static/uui/latest/css/tree.css">
 
 2、引入u.js文件
 
@@ -50,9 +50,9 @@ Javascript插件包括了时间、模态框、页签、grid、进度条等多种
 
 也可以通过cdn进行加载
 
-	<script src="//design.yyuap.com/static/uui/latest/js/u.js"></script>
-	<script src="//design.yyuap.com/static/uui/latest/js/u-grid.js"></script>
-	<script src="//design.yyuap.com/static/uui/latest/js/u-tree.js"></script>
+	<script src="//design.yonyoucloud.com/static/uui/latest/js/u.js"></script>
+	<script src="//design.yonyoucloud.com/static/uui/latest/js/u-grid.js"></script>
+	<script src="//design.yonyoucloud.com/static/uui/latest/js/u-tree.js"></script>
 
 ### 编写代码
 

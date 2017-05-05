@@ -29,8 +29,8 @@
 
 * cdn 资源
 ```
-css路径: //design.yyuap.com/static/neoui/latest/css/neoui.css
-JS路径: //design.yyuap.com/static/neoui/latest/js/neoui.js
+css路径: //design.yonyoucloud.com/static/neoui/latest/css/neoui.css
+JS路径: //design.yonyoucloud.com/static/neoui/latest/js/neoui.js
 ```
 ### 引入neoui
 - ES6语法
@@ -42,11 +42,11 @@ import { neoui } from "tinper-neoui"
 
 ```
 css资源：
-	 <link href="//design.yyuap.com/static/neoui/latest/css/neoui.css" rel="stylesheet">
+	 <link href="//design.yonyoucloud.com/static/neoui/latest/css/neoui.css" rel="stylesheet">
 
 JS 资源：
-	<script src="//design.yyuap.com/static/jquery/jquery-1.11.2.js"></script>
-    <script src="//design.yyuap.com/static/neoui/latest/js/neoui.js"></script>
+	<script src="//design.yonyoucloud.com/static/jquery/jquery-1.11.2.js"></script>
+    <script src="//design.yonyoucloud.com/static/neoui/latest/js/neoui.js"></script>
 ```
 **注**： neoui依赖于jquery，引入资源时需先引入jquery
 

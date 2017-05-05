@@ -35,8 +35,8 @@ npm install tinper-neoui
 ```
 * cdn 
 ```
-css Path: //design.yyuap.com/static/neoui/latest/css/neoui.css
-JS Path: //design.yyuap.com/static/neoui/latest/js/neoui.js
+css Path: //design.yonyoucloud.com/static/neoui/latest/css/neoui.css
+JS Path: //design.yonyoucloud.com/static/neoui/latest/js/neoui.js
 ```
 ### Introducing neoui
 
@@ -48,11 +48,11 @@ import { neoui } from "tinper-neoui"
 
 ```
 css：
-	 <link href="//design.yyuap.com/static/neoui/latest/css/neoui.css" rel="stylesheet">
+	 <link href="//design.yonyoucloud.com/static/neoui/latest/css/neoui.css" rel="stylesheet">
 
 JS ：
-	<script src="//design.yyuap.com/static/jquery/jquery-1.11.2.js"></script>
-    <script src="//design.yyuap.com/static/neoui/latest/js/neoui.js"></script>
+	<script src="//design.yonyoucloud.com/static/jquery/jquery-1.11.2.js"></script>
+    <script src="//design.yonyoucloud.com/static/neoui/latest/js/neoui.js"></script>
 ```
 **Note**： neoui is dependent on jQuery
 

@@ -4,9 +4,9 @@
 
 ### 插件依赖
 
-首先依赖于 http://design.yyuap.com/static/uui/latest/js/u.js
+首先依赖于 http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
-再引入js: http://design.yyuap.com/static/raty/raty.js
+再引入js: http://design.yonyoucloud.com/static/raty/raty.js
 
 
 ### 用法

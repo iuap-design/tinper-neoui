@@ -14,22 +14,22 @@
 &lt;div class="row">
   &lt;div class="u-col-md-3">
     &lt;a href="#" class="thumbnail">
-      &lt;img src="http://design.yyuap.com/static/img/thumimg.png">
+      &lt;img src="http://design.yonyoucloud.com/static/img/thumimg.png">
     &lt;/a>
   &lt;/div>
   &lt;div class="u-col-md-3">
     &lt;a href="#" class="thumbnail">
-      &lt;img src="http://design.yyuap.com/static/img/thumimg.png">
+      &lt;img src="http://design.yonyoucloud.com/static/img/thumimg.png">
     &lt;/a>
   &lt;/div>
   &lt;div class="u-col-md-3">
     &lt;a href="#" class="thumbnail">
-      &lt;img src="http://design.yyuap.com/static/img/thumimg.png">
+      &lt;img src="http://design.yonyoucloud.com/static/img/thumimg.png">
     &lt;/a>
   &lt;/div>
   &lt;div class="u-col-md-3">
     &lt;a href="#" class="thumbnail">
-      &lt;img src="http://design.yyuap.com/static/img/thumimg.png">
+      &lt;img src="http://design.yonyoucloud.com/static/img/thumimg.png">
     &lt;/a>
   &lt;/div>
 &lt;/div>
@@ -48,7 +48,7 @@
 &lt;div class="row">
   &lt;div class="col-md-4">
         &lt;div class="thumbnail">
-                &lt;img src="http://design.yyuap.com/static/img/thumimg1.png" alt="...">
+                &lt;img src="http://design.yonyoucloud.com/static/img/thumimg1.png" alt="...">
                 &lt;div class="caption">
                     &lt;h3>Thumbnail label&lt;/h3>
                     &lt;p>
@@ -63,7 +63,7 @@
   &lt;/div>
   &lt;div class="col-md-4">
         &lt;div class="thumbnail">
-                &lt;img src="http://design.yyuap.com/static/img/thumimg1.png" alt="...">
+                &lt;img src="http://design.yonyoucloud.com/static/img/thumimg1.png" alt="...">
                 &lt;div class="caption">
                     &lt;h3>Thumbnail label&lt;/h3>
                     &lt;p>
@@ -78,7 +78,7 @@
   &lt;/div>
   &lt;div class="col-md-4">
         &lt;div class="thumbnail">
-                &lt;img src="http://design.yyuap.com/static/img/thumimg1.png" alt="...">
+                &lt;img src="http://design.yonyoucloud.com/static/img/thumimg1.png" alt="...">
                 &lt;div class="caption">
                     &lt;h3>Thumbnail label&lt;/h3>
                     &lt;p>

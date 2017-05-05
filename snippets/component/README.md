@@ -18,14 +18,14 @@ NeoUI把一些常见的网页组件拆分成不同的部分，进行类似 Web C
 	<link rel="stylesheet" type="text/css" href="yourPath/css/u.css">
 也可以通过cdn进行加载
 
-	<link rel="stylesheet" type="text/css" href="//design.yyuap.com/static/uui/latest/css/u.css">
+	<link rel="stylesheet" type="text/css" href="//design.yonyoucloud.com/static/uui/latest/css/u.css">
 
 2、引入u.js文件
 
 	<script src="yourPath/js/u.js"></script>
 也可以通过cdn进行加载
 
-	<script src="//design.yyuap.com/static/uui/latest/js/u.js"></script>
+	<script src="//design.yonyoucloud.com/static/uui/latest/js/u.js"></script>
 
 ### 编写代码
 
