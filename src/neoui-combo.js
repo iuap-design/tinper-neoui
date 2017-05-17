@@ -238,8 +238,8 @@ var Combo = u.BaseComponent.extend({
         removeClass(this._ul, 'is-visible');
         this._ul.style.zIndex = -1;
         var name = this._input.value;
-        if(this.mutilSelect)
-          name = this.name;
+        if (this.mutilSelect)
+            name = this.name;
         this.trigger('select', {
             value: this.value,
             name: name
@@ -428,7 +428,8 @@ var Combo = u.BaseComponent.extend({
     },
 
     _updateItemSelect: function() {
-        var lis = this._ul.querySelectorAll('.u-combo-li')
+        var lis = this._ul.querySelectorAll('.u-combo-li'),
+            val = this.value;
         if (this.mutilSelect) {
             var values = this.value.split(',');
             for (var i = 0; i < lis.length; i++) {
@@ -447,7 +448,7 @@ var Combo = u.BaseComponent.extend({
             }*/
         } else {
             for (var i = 0; i < lis.length; i++) {
-                if (this.value == this.comboDatas[i].value) {
+                if (val != '' && val != null && typeof val != 'undefined' && val == this.comboDatas[i].value) {
                     addClass(lis[i], 'is-selected');
                 } else {
                     removeClass(lis[i], 'is-selected');
@@ -501,8 +502,8 @@ var Combo = u.BaseComponent.extend({
             this.value = value;
             this._input.value = value;
             var name = this._input.value;
-            if(this.mutilSelect)
-              name = this.name;
+            if (this.mutilSelect)
+                name = this.name;
             this.trigger('select', {
                 value: this.value,
                 name: name
