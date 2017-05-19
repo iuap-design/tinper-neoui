@@ -15,6 +15,7 @@ import {compMgr} from 'compox/src/compMgr';
 //Neoui import
 import {Autocomplete} from './neoui-autocomplete';
 import {Button} from './neoui-button';
+import {Cascader} from './neoui-cascader';
 import {Checkbox} from './neoui-checkbox';
 import {Combo} from './neoui-combo';
 import {showCollapse} from './neoui-collapse';
@@ -53,6 +54,7 @@ var ex = {
 	BaseComponent: BaseComponent,
 	Autocomplete : Autocomplete,
 	Button : Button,
+	Cascader : Cascader,
 	Checkbox : Checkbox,
 	Combo : Combo,
 	showCollapse : showCollapse,
