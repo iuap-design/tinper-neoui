@@ -1,0 +1,53 @@
+@import "../core/minxin-variables";
+@import "../core/minxin-mixins";
+
+
+
+
+.u-cascader {
+    position: relative;
+    display: inline-block;
+    .cascader-input{
+        i {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        cursor: pointer;
+    }
+}
+    .cascader-show {
+        width: 1000px;
+        position: absolute;
+        ul {
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-left: 0;
+            min-height: 120px;
+            min-width: 100px;
+            vertical-align: middle;
+            border-radius: 4px;
+            padding: 0px;
+            margin-top: 0;
+            li {
+               position: relative;
+               padding: 6px 6px 0px;
+               list-style: none;
+               cursor: pointer;
+               margin-bottom: 5px;
+               &:hover {
+                   background-color: #e7f4fd;
+                   font-weight: 700;
+               }
+               &.active{
+                   background-color: #e7f4fd;
+                   font-weight: 700;
+               }
+               i {
+                   position: absolute;
+                   right: 5px;
+               }
+           }
+        }
+    }
+
+}
