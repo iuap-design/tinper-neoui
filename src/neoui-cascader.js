@@ -20,7 +20,6 @@ var Cascader = u.BaseComponent.extend({
             id = '';
         this._data = data;
         this.order = [];
-        this.current = [];
         if (!this.options['id']) {
             this.options['id'] = new Date().getTime() + '' + parseInt(Math.random() * 10 + 1, 10);
         }
@@ -148,9 +147,6 @@ var Cascader = u.BaseComponent.extend({
             } else {
                 $('#' + self.options['id']).append(html);
             }
-
-            current = data;
-
             index++;
 
         } else {
@@ -163,7 +159,6 @@ var Cascader = u.BaseComponent.extend({
             } else {
                 $('#' + self.options['id']).append(html);
             }
-            current = data;
             index++;
 
         }
