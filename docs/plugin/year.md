@@ -1,28 +1,28 @@
-# year插件
+## year插件
 
 只选择年
 
-# 插件依赖
+### 插件依赖
 
 依赖于 http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 除了js文件还需引入u.css。
 
-# 用法
+### 用法
 
-## 引入文件
+#### 引入文件
 在header中引入u.css
 ```
 <link rel="stylesheet" type="text/css" href='http://design.yonyoucloud.com/static/uui/latest/css/u.css'>
 ```
 在文件尾部加入u.js
- 
+
 ```
 <script type="text/javascript" src='http://design.yonyoucloud.com/static/uui/latest/js/u.js'></script>
 
 ```
 
-## 代码
+#### 代码
 
 定义样式为`u-year`的div父元素，包裹类`u-input`的input
 
@@ -34,16 +34,6 @@
 ```
 
 js会根据`u-year`来定位dom，然后绑定事件。
-
-
-# 示例
-
-
-
-
-
-
-
 
 
 

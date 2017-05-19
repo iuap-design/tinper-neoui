@@ -1,9 +1,6 @@
-# 日期
+## 日期
 
 用户可以自定义日期的显示格式，默认返回的日期是年-月-日，也可以返回年-月-日 时:分:秒。
-
-
-
 
 
 [试一试](http://tinper.org/webide/#/demos/ui/datetime)
@@ -35,9 +32,10 @@
 
 
 
-# API
+### API
 
-## \# DateTimePicker 对象
+
+#### DateTimePicker 对象
 
 * 类型：`Object`
 * 说明： DateTimePicker表示一个时间对象
@@ -54,9 +52,9 @@ var dateObject = document.getElementById('domId')['u.DateTimePicker'];
 **注：** 如果获取的日期对象为空，原因为日期没有初始化成功，可以先调用`u.compMgr.updateComp();`来初始化页面中的控件。然后再获取日期对象。
 
 
-##Methods
+#### Methods
 
-### \# setDate 
+#### setDate
 | 类型        | 说明          | 参数  |
 | ------------- |:-------------:| -----:|
 | Function     | 设置具体的日期 | * `{String} dateStr` 具体格式："YYYY-MM-DD hh:mm:ss" |
@@ -67,7 +65,7 @@ var dateObject = document.getElementById('domId')['u.DateTimePicker'];
 dateObject.setDate('2016-02-03'),可以设置空值，清掉之前设置的值，dateObject.setDate('')。
 
 ```
-### \# setEnable 
+#### setEnable
 
 | 类型        | 说明          | 参数  |
 | ------------- |:-------------:| -----:|
@@ -81,7 +79,7 @@ dateObject.setEnable(false);
 
 ```
 
-### \# setStartDate 
+#### setStartDate
 | 类型        | 说明          | 参数  |
 | ------------- |:-------------:| -----:|
 | Function     | 设置可选时间范围的起始日期 | * `{String} startDate` 具体格式："YYYY-MM-DD" |
@@ -94,7 +92,7 @@ dateObject.setEnable(false);
 
 ```
 
-### \# setEndDate 
+#### setEndDate
 
 | 类型        | 说明          | 参数  |
 | ------------- |:-------------:| -----:|
@@ -108,9 +106,9 @@ dateObject.setEndDate('2016-01-01');
 
 ```
 
-### \# setFormat
+#### setFormat
 
-| 类型        | 说明          | 参数  | 
+| 类型        | 说明          | 参数  |
 | ------------- |:-------------:| -----:|
 | Function     | 规定日期的显示格式 |  `{String} format` 具体格式：参考format内容 |
 
@@ -123,11 +121,11 @@ dateObject.setFormat('YYYY');
 
 ```
 
-##Event
+#### Event
 
-### \# select
+#### select
 
-| 类型        | 说明          | 参数  | 
+| 类型        | 说明          | 参数  |
 | ------------- |:-------------:| -----:|
 | Function     | 规定日期的显示格式 |  `{String} format` 具体格式：参考format内容 |
 
@@ -135,12 +133,14 @@ dateObject.setFormat('YYYY');
 
 相关内容：
 
-[日期在kero中使用](http://tinper.org/dist/kero/docs/ex_datetime.html)    
+[日期在kero中使用](http://docs.tinper.org/moy/kero/ex_datetime.html)    
 
 [日期在grid中使用](http://tinper.org/webide/#/demos/grids/edit)
 
 
+### 如何使用
 定义样式为`u-datepicker`的div父元素，包裹样式为`u-input`的input元素。
+
 <div class="examples-code"><pre><code>
 &lt;div class='u-datepicker'>
     &lt;input class="u-input" type="text">

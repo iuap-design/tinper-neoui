@@ -1,12 +1,12 @@
-# message控件
+## message控件
 
 用于即时信息的提示，消息背景色取决于消息类型，易可添加相对应的`icon`
 
-# 插件依赖
+### 插件依赖
 
 依赖于 http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
-# 用法
+### 用法
 
 1.定义触发弹出事件的DOM
 
@@ -31,15 +31,15 @@ var msgBtn = document.body.querySelector("#msgBtn");
 4.绑定弹框事件
 
 ```
-u.on(msgBtn,'click', function(){ 
+u.on(msgBtn,'click', function(){
     u.showMessage({msg:rightInfo,position:"center"})
 })
 
 ```
 
-# API
+### API
 
-## js参数
+#### js参数
 <table>
   <tbody>
   	  <tr>
@@ -66,13 +66,9 @@ u.on(msgBtn,'click', function(){
 	</tbody>
 </table>
 
-# 示例
-
-
-
-
 
 点击 Success 弹出提示消息
+
 <div class="examples-code"><pre><code>
 &lt;button id="msgBtn" class="u-button" >Success&lt;/button>
 </code></pre>

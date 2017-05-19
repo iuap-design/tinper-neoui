@@ -1,24 +1,14 @@
-# menu控件
+## menu控件
 
 动态弹出菜单
 
-# 插件依赖
+### 插件依赖
 
 依赖于 http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
-# 用法
 
-1.详情见于示例
+### 左边menu
 
-# 示例
-
-
-
-
-
-
-
-## 左边menu
 <div class="examples-code"><pre><code>
 &lt;!-- Left aligned menu below button -->
 &lt;div class="example">
@@ -44,7 +34,8 @@
 
 
 
-## 右边menu
+### 右边menu
+
 <div class="examples-code"><pre><code>
 &lt;!-- right aligned menu below button -->
 &lt;div class="example">

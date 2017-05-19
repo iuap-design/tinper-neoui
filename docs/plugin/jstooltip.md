@@ -1,25 +1,25 @@
-# tooltip控件
+## tooltip控件
 
 当您想要描述一个链接的时候，提示工具（Tooltip）就显得非常有用。
 
-# 插件依赖
+### 插件依赖
 
 依赖于 http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
-# 用法
+### 用法
 
-## 创建tooltip对象
+#### 创建tooltip对象
 ```
 var toptip=new u.Tooltip(toptoolEle,{
 title:'默认向上显示'
 });
 
 ```
-## 参数设置
+#### 参数设置
 创建对象时，添加显示内容title、显示位置placement、显示颜色级别colorLevel
 
-# API
-### JS 方法参数
+### API
+#### JS 方法参数
 <table>
   <tbody>
   	  <tr>
@@ -39,12 +39,8 @@ title:'默认向上显示'
 	</tbody>
 </table>
 
-# 示例
 
-
-
-
-## 普通tooltip
+### 普通tooltip
 
 <div class="examples-code"><pre><code>
 &lt;div id='example'>
@@ -104,7 +100,7 @@ placement:'right'
 
 
 
-## 批量生成tooltip
+### 批量生成tooltip
 
 <div class="examples-code"><pre><code>
 &lt;div id='example'>

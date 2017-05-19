@@ -1,4 +1,4 @@
-# 按钮组
+## 按钮组
 
 样式为`u-button-group`的父元素，包裹多个样式为`u-button`的button元素
 
@@ -6,7 +6,9 @@
 
 [试一试](http://tinper.org/webide/#/demos/ui/buttongroup)
 
-## 基础按钮组
+
+### 基础
+
 <div class="examples-code"><pre><code>
 &lt;div class="u-button-group ">
     &lt;button class="u-button">BUTTON&lt;/button>
@@ -20,9 +22,10 @@
 
 
 
-## 嵌套
+### 嵌套
 
 按钮组里嵌套下拉菜单
+
 <div class="examples-code"><pre><code>
  &lt;div class="u-button-group">
     &lt;button class="u-button ">BUTTON&lt;/button>
@@ -45,12 +48,13 @@
 
 
 
-## 多尺寸
+### 多尺寸
 
 * `.u-button-group-xg` - 特大尺寸
 * `.u-button-group-lg` - 大尺寸
 * `.u-button-group-xs` - 小尺寸
 * 不添加样式代表默认尺寸
+
 <div class="examples-code"><pre><code>
 &lt;div class="u-button-group u-button-group-xg">	
 	&lt;button class="u-button raised u-button-border default">BUTTON&lt;/button>

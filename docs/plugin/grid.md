@@ -1,1148 +1,516 @@
-# 表格控件
+## 表格控件
 
 表格控件将数据以表格的方式进行展示，同时提供了排序、交换列、数字列、复选、合计、自定义渲染、修改等复杂功能，满足了复杂场景下数据展示的需求。
 
-# 插件依赖
+### 插件依赖
 
-http://design.yonyoucloud.com/static/uui/latest/css/font-awesome.css
+<http://design.yonyoucloud.com/static/uui/latest/css/font-awesome.css>
 
-http://design.yonyoucloud.com/static/uui/latest/css/u.css
+<http://design.yonyoucloud.com/static/uui/latest/css/u.css>
 
-http://design.yonyoucloud.com/static/jquery/jquery-1.9.1.min.js
+<http://design.yonyoucloud.com/static/jquery/jquery-1.9.1.min.js>
 
-http://design.yonyoucloud.com/static/uui/latest/js/u-polyfill.js
+<http://design.yonyoucloud.com/static/uui/latest/js/u-polyfill.js>
 
-http://design.yonyoucloud.com/static/uui/latest/js/u.js
+<http://design.yonyoucloud.com/static/uui/latest/js/u.js>
 
-# 如何使用
+### 如何使用
 
 1、创建div
 
-    <div class="grid-body">
-        <div class="grid" id="grid-comp1"></div>
-    </div>
+```
+<div class="grid-body">
+    <div class="grid" id="grid-comp1"></div>
+</div>
+```
+
 2、创建column对象
 
-    var colu = [{
-         field: "id",
-        title: "id"
-    }, {
-        field: "pid",
-        title: "pid"
-    }, {
-        field: "column1",
-        title: "column1"
-    }, {
-        field: "column2",
-        title: "column2"
-    }, {
-        field: "column3",
-        title: "column3"
-    }
-    ];
+```
+var colu = [{
+     field: "id",
+    title: "id"
+}, {
+    field: "pid",
+    title: "pid"
+}, {
+    field: "column1",
+    title: "column1"
+}, {
+    field: "column2",
+    title: "column2"
+}, {
+    field: "column3",
+    title: "column3"
+}
+];
+```
 
 3、创建数据信息
 
-    var data1 = {
-        values: [{
-            column1: "11",
-            column2: "12",
-            column3: "13",
-            id: '0',
-            pid: ''
-        }, {
-            column1: "21",
-            column2: "22",
-            column3: "23",
-            id: '1',
-            pid: '0'
-        }, {
-            column1: "31",
-            column2: "32",
-            column3: "33",
-            id: '3',
-            pid: '1'
-        }
-        ]
-    };
+```
+var data1 = {
+    values: [{
+        column1: "11",
+        column2: "12",
+        column3: "13",
+        id: '0',
+        pid: ''
+    }, {
+        column1: "21",
+        column2: "22",
+        column3: "23",
+        id: '1',
+        pid: '0'
+    }, {
+        column1: "31",
+        column2: "32",
+        column3: "33",
+        id: '3',
+        pid: '1'
+    }
+    ]
+};
+```
 
 4、创建表格控件
-    
-    $("#grid-comp1").grid({
-        dataSource: data1,
-        id: 'case-g1',
-        editable: true,
-        keyField: 'id',
-        columnmenu: false,
-        parentKeyField: 'pid',
-        columns: colu
-    });
-    
 
+```
+$("#grid-comp1").grid({
+    dataSource: data1,
+    id: 'case-g1',
+    editable: true,
+    keyField: 'id',
+    columnmenu: false,
+    parentKeyField: 'pid',
+    columns: colu
+});
+```
 
+### API
 
+#### 属性
 
-# API
+#### id
 
-## 属性
+类型     | 默认值  | 说明
+------ | ---- | -------
+string | grid | 表格控件的标识
 
-### ﻿id
+#### cancelFocus
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>string</td>
-		  <td>grid</td>
-		  <td>表格控件的标识</td>
-    </tr>
-</table>
+类型      | 默认值   | 说明
+------- | ----- | ---------------------------------------------------
+boolean | false | 第二次点击行是否取消focus效果。true表示取消focus效果，false表示不取消focus效果
 
-### cancelFocus
+#### showHeader
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>false</td>
-		  <td>第二次点击行是否取消focus效果。true表示取消focus效果，false表示不取消focus效果</td>
-    </tr>
-</table>
+类型      | 默认值  | 说明
+------- | ---- | ------------------------------
+boolean | true | 是否显示表头。true表示显示表头，false表示不显示表头
 
-### showHeader
+##### showNumCol
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>是否显示表头。true表示显示表头，false表示不显示表头</td>
-    </tr>
-</table>
+类型      | 默认值   | 说明
+------- | ----- | ---------------------------------
+boolean | false | 是否显示数字列。true表示显示数字列，false表示不显示数字列
 
-### showNumCol
+#### multiSelect
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>false</td>
-		  <td>是否显示数字列。true表示显示数字列，false表示不显示数字列</td>
-    </tr>
-</table>
+类型      | 默认值   | 说明
+------- | ----- | ----------------------------------------
+boolean | false | 是否显示复选框以支持复选功能。true表示显示复选框，false表示不显示复选框
 
-### multiSelect
+##### columnMenu
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>false</td>
-		  <td>是否显示复选框以支持复选功能。true表示显示复选框，false表示不显示复选框</td>
-    </tr>
-</table>
+类型      | 默认值  | 说明
+------- | ---- | -------------------------------------------------------------
+boolean | true | 是否显示表头操作按钮，通过表头操作按钮可以动态设置数据列是否显示。是表示显示表头操作按钮，false表示不显示表头操作按钮
 
-### columnMenu
+#### canDrag
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>是否显示表头操作按钮，通过表头操作按钮可以动态设置数据列是否显示。是表示显示表头操作按钮，false表示不显示表头操作按钮</td>
-    </tr>
-</table>
+类型      | 默认值  | 说明
+------- | ---- | --------------------------------------------
+boolean | true | 是否支持拖动表头以修改数据列宽度。true表示支持拖动功能，false表示不支持拖动功能
 
-### canDrag
+#### maxHeaderLevel
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>是否支持拖动表头以修改数据列宽度。true表示支持拖动功能，false表示不支持拖动功能</td>
-    </tr>
-</table>
+类型      | 默认值 | 说明
+------- | --- | ----------------------------
+integer | 1   | 表头的最高层级，用于计算表头区的高度。目前只支持最大为2
 
-### maxHeaderLevel
+#### overWidthHiddenColumn
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>integer</td>
-		  <td>1</td>
-		  <td>表头的最高层级，用于计算表头区的高度。目前只支持最大为2</td>
-    </tr>
-</table>
+类型      | 默认值   | 说明
+------- | ----- | --------------------------------------------------------------
+boolean | false | 表格的整体宽度不足以显示所有数据列时是否自动隐藏超出部分的数据列。true表示超出时自动隐藏，false表示超出时不自动隐藏
 
-### overWidthHiddenColumn
+#### sortable
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>false</td>
-		  <td>表格的整体宽度不足以显示所有数据列时是否自动隐藏超出部分的数据列。true表示超出时自动隐藏，false表示超出时不自动隐藏</td>
-    </tr>
-</table>
+类型      | 默认值  | 说明
+------- | ---- | ------------------------------------------
+boolean | true | 是否支持点击表头进行排序功能。true表示支持排序功能，false表示不支持排序功能
 
-### sortable
+#### showSumRow
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>是否支持点击表头进行排序功能。true表示支持排序功能，false表示不支持排序功能</td>
-    </tr>
-</table>
+类型      | 默认值   | 说明
+------- | ----- | ------------------------------------------
+boolean | false | 是否支持合计功能以显示合计行。true表示支持合计功能，false表示不支持合计功能
 
-### showSumRow
+#### canSwap
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>false</td>
-		  <td>是否支持合计功能以显示合计行。true表示支持合计功能，false表示不支持合计功能</td>
-    </tr>
-</table>
+类型      | 默认值  | 说明
+------- | ---- | ---------------------------------------------
+boolean | true | 是否支持拖动表头以交换数据列的位置。true表示支持交换功能，false表示不支持交换功能
 
-### canSwap
+#### showTree
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>是否支持拖动表头以交换数据列的位置。true表示支持交换功能，false表示不支持交换功能</td>
-    </tr>
-</table>
+类型      | 默认值   | 说明
+------- | ----- | -----------------------------------------
+boolean | false | 是否支持以树表形式进行展示。true表示支持树表功能，false表示不支持树表功能
 
-### showTree
+#### autoExpand
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>false</td>
-		  <td>是否支持以树表形式进行展示。true表示支持树表功能，false表示不支持树表功能</td>
-    </tr>
-</table>
+类型      | 默认值  | 说明
+------- | ---- | -----------------------------------------------
+boolean | true | 树表形式展示时是否默认展开所有节点。true表示默认展开所有节点，false表示默认不展开节点
 
-### autoExpand
+#### needTreeSort
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>树表形式展示时是否默认展开所有节点。true表示默认展开所有节点，false表示默认不展开节点</td>
-    </tr>
-</table>
+类型      | 默认值   | 说明
+------- | ----- | -----------------------------------------------------------------------------------------------
+boolean | false | 树表形式下是否需要对传入数据进行排序，次设置是为了优化性能。如果传入数据是无序的则设置为true，如果可以保证先传入父节点后传入子节点则设置为false提高性能。目前只支持为false的情况
 
-### needTreeSort
+#### editable
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>false</td>
-		  <td>树表形式下是否需要对传入数据进行排序，次设置是为了优化性能。如果传入数据是无序的则设置为true，如果可以保证先传入父节点后传入子节点则设置为false提高性能。目前只支持为false的情况</td>
-    </tr>
-</table>
+类型      | 默认值   | 说明
+------- | ----- | ------------------------------------
+boolean | false | 是否支持编辑功能，true表示支持编辑功能，false表示不支持编辑功能
 
-### editable
+#### editType
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>false</td>
-		  <td>是否支持编辑功能，true表示支持编辑功能，false表示不支持编辑功能</td>
-    </tr>
-</table>
+类型     | 默认值     | 说明
+------ | ------- | ----------------------------------------------
+string | default | 设置编辑方式，default表示在数据行上进行编辑，form表示在单独的form区域进行编辑
 
-### editType
+#### onBeforeRowSelected
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>string</td>
-		  <td>default</td>
-		  <td>设置编辑方式，default表示在数据行上进行编辑，form表示在单独的form区域进行编辑</td>
-    </tr>
-</table>
-
-### onBeforeRowSelected
-
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>在数据行被选中之前触发，调用时传入参数为object，object属性说明如下</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | ---------------------------------------
+function | null | 在数据行被选中之前触发，调用时传入参数为object，object属性说明如下
 
 **object属性说明**
 
-<table>
-    <tr>
-        <td>属性</td>
-		  <td >说明</td>
-    </tr>
-    <tr>
-		  <td>gridObj</td>
-		  <td>表格控件对象</td>
-    </tr>
-    <tr>
-		  <td>rowObj</td>
-		  <td>数据行对象</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>数据行对应的index</td>
-    </tr>
-</table>
+属性       | 说明
+-------- | -----------
+gridObj  | 表格控件对象
+rowObj   | 数据行对象
+rowIndex | 数据行对应的index
 
-### onRowSelected
+#### onRowSelected
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>在数据行被选中时触发，调用时传入参数为object，object属性说明如下</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | --------------------------------------
+function | null | 在数据行被选中时触发，调用时传入参数为object，object属性说明如下
 
 **object属性说明**
 
-<table>
-    <tr>
-        <td>属性</td>
-		  <td >说明</td>
-    </tr>
-    <tr>
-		  <td>gridObj</td>
-		  <td>表格控件对象</td>
-    </tr>
-    <tr>
-		  <td>rowObj</td>
-		  <td>数据行对象</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>数据行对应的index</td>
-    </tr>
-</table>
+属性       | 说明
+-------- | -----------
+gridObj  | 表格控件对象
+rowObj   | 数据行对象
+rowIndex | 数据行对应的index
 
-### onBeforeRowUnSelected
+#### onBeforeRowUnSelected
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>在数据行取消选中之前触发，调用时传入参数为object，object属性说明如下</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | ----------------------------------------
+function | null | 在数据行取消选中之前触发，调用时传入参数为object，object属性说明如下
 
 **object属性说明**
 
-<table>
-    <tr>
-        <td>属性</td>
-		  <td >说明</td>
-    </tr>
-    <tr>
-		  <td>gridObj</td>
-		  <td>表格控件对象</td>
-    </tr>
-    <tr>
-		  <td>rowObj</td>
-		  <td>数据行对象</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>数据行对应的index</td>
-    </tr>
-</table>
+属性       | 说明
+-------- | -----------
+gridObj  | 表格控件对象
+rowObj   | 数据行对象
+rowIndex | 数据行对应的index
 
-### onRowUnSelected
+#### onRowUnSelected
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>在数据行取消选中时触发，调用时传入参数为object，object属性说明如下</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | ---------------------------------------
+function | null | 在数据行取消选中时触发，调用时传入参数为object，object属性说明如下
 
 **object属性说明**
 
-<table>
-    <tr>
-        <td>属性</td>
-		  <td >说明</td>
-    </tr>
-    <tr>
-		  <td>gridObj</td>
-		  <td>表格控件对象</td>
-    </tr>
-    <tr>
-		  <td>rowObj</td>
-		  <td>数据行对象</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>数据行对应的index</td>
-    </tr>
-</table>
+属性       | 说明
+-------- | -----------
+gridObj  | 表格控件对象
+rowObj   | 数据行对象
+rowIndex | 数据行对应的index
 
-### onBeforeAllRowSelected
+#### onBeforeAllRowSelected
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>在所有数据行被选中之前触发，调用时传入参数为object，object属性说明如下</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | -----------------------------------------
+function | null | 在所有数据行被选中之前触发，调用时传入参数为object，object属性说明如下
 
 **object属性说明**
 
-<table>
-    <tr>
-        <td>属性</td>
-		  <td >说明</td>
-    </tr>
-    <tr>
-		  <td>gridObj</td>
-		  <td>表格控件对象</td>
-    </tr>
-    <tr>
-		  <td>rowObjs</td>
-		  <td>所有数据行对象</td>
-    </tr>
-</table>
+属性      | 说明
+------- | -------
+gridObj | 表格控件对象
+rowObjs | 所有数据行对象
 
-### onAllRowSelected
+#### onAllRowSelected
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>在所有数据行被选中时触发，调用时传入参数为object，object属性说明如下</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | ----------------------------------------
+function | null | 在所有数据行被选中时触发，调用时传入参数为object，object属性说明如下
 
 **object属性说明**
 
-<table>
-    <tr>
-        <td>属性</td>
-		  <td >说明</td>
-    </tr>
-    <tr>
-		  <td>gridObj</td>
-		  <td>表格控件对象</td>
-    </tr>
-    <tr>
-		  <td>rowObjs</td>
-		  <td>所有数据行对象</td>
-    </tr>
-</table>
+属性      | 说明
+------- | -------
+gridObj | 表格控件对象
+rowObjs | 所有数据行对象
 
-### onBeforeAllRowUnSelected
+#### onBeforeAllRowUnSelected
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>在所有数据行被取消选中之前触发，调用时传入参数为object，object属性说明如下</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | -------------------------------------------
+function | null | 在所有数据行被取消选中之前触发，调用时传入参数为object，object属性说明如下
 
 **object属性说明**
 
-<table>
-    <tr>
-        <td>属性</td>
-		  <td >说明</td>
-    </tr>
-    <tr>
-		  <td>gridObj</td>
-		  <td>表格控件对象</td>
-    </tr>
-    <tr>
-		  <td>rowObjs</td>
-		  <td>所有数据行对象</td>
-    </tr>
-</table>
+属性      | 说明
+------- | -------
+gridObj | 表格控件对象
+rowObjs | 所有数据行对象
 
-### onAllRowUnSelected
+#### onAllRowUnSelected
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>在所有数据行被取消选中时触发，调用时传入参数为object，object属性说明如下</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | ------------------------------------------
+function | null | 在所有数据行被取消选中时触发，调用时传入参数为object，object属性说明如下
 
 **object属性说明**
 
-<table>
-    <tr>
-        <td>属性</td>
-		  <td >说明</td>
-    </tr>
-    <tr>
-		  <td>gridObj</td>
-		  <td>表格控件对象</td>
-    </tr>
-    <tr>
-		  <td>rowObjs</td>
-		  <td>所有数据行对象</td>
-    </tr>
-</table>
+属性      | 说明
+------- | -------
+gridObj | 表格控件对象
+rowObjs | 所有数据行对象
 
-### onBeforeRowFocus
+#### onBeforeRowFocus
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>在数据行触发focus之前触发，调用时传入参数为object，object属性说明如下</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | -------------------------------------------
+function | null | 在数据行触发focus之前触发，调用时传入参数为object，object属性说明如下
 
 **object属性说明**
 
-<table>
-    <tr>
-        <td>属性</td>
-		  <td >说明</td>
-    </tr>
-    <tr>
-		  <td>gridObj</td>
-		  <td>表格控件对象</td>
-    </tr>
-    <tr>
-		  <td>rowObj</td>
-		  <td>数据行对象</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>数据行对应的index</td>
-    </tr>
-</table>
+属性       | 说明
+-------- | -----------
+gridObj  | 表格控件对象
+rowObj   | 数据行对象
+rowIndex | 数据行对应的index
 
-### onBeforeRowUnFocus
+#### onBeforeRowUnFocus
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>在数据行取消focus之前触发，调用时传入参数为object，object属性说明如下</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | -------------------------------------------
+function | null | 在数据行取消focus之前触发，调用时传入参数为object，object属性说明如下
 
 **object属性说明**
 
-<table>
-    <tr>
-        <td>属性</td>
-		  <td >说明</td>
-    </tr>
-    <tr>
-		  <td>gridObj</td>
-		  <td>表格控件对象</td>
-    </tr>
-    <tr>
-		  <td>rowObj</td>
-		  <td>数据行对象</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>数据行对应的index</td>
-    </tr>
-</table>
+属性       | 说明
+-------- | -----------
+gridObj  | 表格控件对象
+rowObj   | 数据行对象
+rowIndex | 数据行对应的index
 
-### onRowUnFocus
+#### onRowUnFocus
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>在数据行取消focus时触发，调用时传入参数为object，object属性说明如下</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | ------------------------------------------
+function | null | 在数据行取消focus时触发，调用时传入参数为object，object属性说明如下
 
 **object属性说明**
 
-<table>
-    <tr>
-        <td>属性</td>
-		  <td >说明</td>
-    </tr>
-    <tr>
-		  <td>gridObj</td>
-		  <td>表格控件对象</td>
-    </tr>
-    <tr>
-		  <td>rowObj</td>
-		  <td>数据行对象</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>数据行对应的index</td>
-    </tr>
-</table>
+属性       | 说明
+-------- | -----------
+gridObj  | 表格控件对象
+rowObj   | 数据行对象
+rowIndex | 数据行对应的index
 
-### onDblClickFun
+#### onDblClickFun
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>在数据行被双击时触发，调用时传入参数为object，object属性说明如下</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | --------------------------------------
+function | null | 在数据行被双击时触发，调用时传入参数为object，object属性说明如下
 
 **object属性说明**
 
-<table>
-    <tr>
-        <td>属性</td>
-		  <td >说明</td>
-    </tr>
-    <tr>
-		  <td>gridObj</td>
-		  <td>表格控件对象</td>
-    </tr>
-    <tr>
-		  <td>rowObj</td>
-		  <td>数据行对象</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>数据行对应的index</td>
-    </tr>
-</table>
+属性       | 说明
+-------- | -----------
+gridObj  | 表格控件对象
+rowObj   | 数据行对象
+rowIndex | 数据行对应的index
 
-### onValueChange
+#### onValueChange
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>在数据发生改变时触发，调用时传入参数为object，object属性说明如下</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | --------------------------------------
+function | null | 在数据发生改变时触发，调用时传入参数为object，object属性说明如下
 
 **object属性说明**
 
-<table>
-    <tr>
-        <td>属性</td>
-		  <td >说明</td>
-    </tr>
-    <tr>
-		  <td>gridObj</td>
-		  <td>表格控件对象</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>数据行对应的index</td>
-    </tr>
-    <tr>
-		  <td>field</td>
-		  <td>数据改变对应的field</td>
-    </tr>
-    <tr>
-		  <td>oldValue</td>
-		  <td>数据改变之前的值</td>
-    </tr>
-    <tr>
-		  <td>newValue</td>
-		  <td>数据改变之后的值</td>
-    </tr>
-</table>
+属性       | 说明
+-------- | ------------
+gridObj  | 表格控件对象
+rowIndex | 数据行对应的index
+field    | 数据改变对应的field
+oldValue | 数据改变之前的值
+newValue | 数据改变之后的值
 
-### onBeforeClickFun
+#### onBeforeClickFun
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>在数据行触发click之前触发，调用时传入参数为object，object属性说明如下</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | -------------------------------------------
+function | null | 在数据行触发click之前触发，调用时传入参数为object，object属性说明如下
 
 **object属性说明**
 
-<table>
-    <tr>
-        <td>属性</td>
-		  <td >说明</td>
-    </tr>
-    <tr>
-		  <td>gridObj</td>
-		  <td>表格控件对象</td>
-    </tr>
-    <tr>
-		  <td>rowObj</td>
-		  <td>数据行对象</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>数据行对应的index</td>
-    </tr>
-</table>
+属性       | 说明
+-------- | -----------
+gridObj  | 表格控件对象
+rowObj   | 数据行对象
+rowIndex | 数据行对应的index
 
-### onBeforeEditFun
+#### onBeforeEditFun
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>在数据行编辑操作之前触发，调用时传入参数为object，object属性说明如下</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | ----------------------------------------
+function | null | 在数据行编辑操作之前触发，调用时传入参数为object，object属性说明如下
 
 **object属性说明**
 
-<table>
-    <tr>
-        <td>属性</td>
-		  <td >说明</td>
-    </tr>
-    <tr>
-		  <td>gridObj</td>
-		  <td>表格控件对象</td>
-    </tr>
-    <tr>
-		  <td>rowObj</td>
-		  <td>数据行对象</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>数据行对应的index</td>
-    </tr>
-    <tr>
-		  <td>colIndex</td>
-		  <td>数据列对应的index</td>
-    </tr>
-</table>
+属性       | 说明
+-------- | -----------
+gridObj  | 表格控件对象
+rowObj   | 数据行对象
+rowIndex | 数据行对应的index
+colIndex | 数据列对应的index
 
-### onRowHover
+#### onRowHover
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>在数据行hover时触发，调用时传入参数为object，object属性说明如下</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | ----------------------------------------
+function | null | 在数据行hover时触发，调用时传入参数为object，object属性说明如下
 
 **object属性说明**
 
-<table>
-    <tr>
-        <td>属性</td>
-		  <td >说明</td>
-    </tr>
-    <tr>
-		  <td>gridObj</td>
-		  <td>表格控件对象</td>
-    </tr>
-    <tr>
-		  <td>rowObj</td>
-		  <td>数据行对象</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>数据行对应的index</td>
-    </tr>
-</table>
+属性       | 说明
+-------- | -----------
+gridObj  | 表格控件对象
+rowObj   | 数据行对象
+rowIndex | 数据行对应的index
 
-### afterCreate
+#### afterCreate
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>表格创建完成之后触发，调用时无传入参数</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | -------------------
+function | null | 表格创建完成之后触发，调用时无传入参数
 
-## column属性
+### column属性
 
-### ﻿field
+#### field
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>string</td>
-		  <td>null</td>
-		  <td>数据列对应的field</td>
-    </tr>
-</table>
+类型     | 默认值  | 说明
+------ | ---- | -----------
+string | null | 数据列对应的field
 
-### width
+#### width
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>integer</td>
-		  <td>200</td>
-		  <td>数据列显示的宽度</td>
-    </tr>
-</table>
+类型      | 默认值 | 说明
+------- | --- | --------
+integer | 200 | 数据列显示的宽度
 
-### sortable
+#### sortable
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>数据列是否支持排序。true表示支持排序，false表示不支持排序</td>
-    </tr>
-</table>
+类型      | 默认值  | 说明
+------- | ---- | ---------------------------------
+boolean | true | 数据列是否支持排序。true表示支持排序，false表示不支持排序
 
-### canDrag
+#### canDrag
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>数据列是否支持拖动修改宽度。true表示支持拖动，false表示不支持拖动</td>
-    </tr>
-</table>
+类型      | 默认值  | 说明
+------- | ---- | -------------------------------------
+boolean | true | 数据列是否支持拖动修改宽度。true表示支持拖动，false表示不支持拖动
 
-### fixed
+#### fixed
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>false</td>
-		  <td>是否为固定列。true表示此列为固定列，在表头前面固定显示，false，表示此列不为固定列</td>
-    </tr>
-</table>
+类型      | 默认值   | 说明
+------- | ----- | ---------------------------------------------
+boolean | false | 是否为固定列。true表示此列为固定列，在表头前面固定显示，false，表示此列不为固定列
 
-### visible
+#### visible
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>是否显示。true表示此列进行显示，false表示此列不进行显示</td>
-    </tr>
-</table>
+类型      | 默认值  | 说明
+------- | ---- | --------------------------------
+boolean | true | 是否显示。true表示此列进行显示，false表示此列不进行显示
 
-### canVisible
+#### canVisible
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>是否可以通过表头功能设置数据列是否显示。true表示可以通过表头设置是否显示，false表示不可以通过表头设置是否显示</td>
-    </tr>
-</table>
+类型      | 默认值  | 说明
+------- | ---- | -----------------------------------------------------------
+boolean | true | 是否可以通过表头功能设置数据列是否显示。true表示可以通过表头设置是否显示，false表示不可以通过表头设置是否显示
 
-### sumCol
+#### sumCol
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>false</td>
-		  <td>表格支持合计功能时，是否计算合计。true表示需要计算合计，false表示不需要计算合计</td>
-    </tr>
-</table>
+类型      | 默认值   | 说明
+------- | ----- | --------------------------------------------
+boolean | false | 表格支持合计功能时，是否计算合计。true表示需要计算合计，false表示不需要计算合计
 
-### editable
+#### editable
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>表格支持修改过程时，数据列是否可以修改。true表示可以进行修改，false表示不可以进行修改</td>
-    </tr>
-</table>
+类型      | 默认值  | 说明
+------- | ---- | -----------------------------------------------
+boolean | true | 表格支持修改过程时，数据列是否可以修改。true表示可以进行修改，false表示不可以进行修改
 
-### editFormShow
+#### editFormShow
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>在表格以form形式编辑时，数据列是否显示。true表示显示，false表示不显示</td>
-    </tr>
-</table>
+类型      | 默认值  | 说明
+------- | ---- | -----------------------------------------
+boolean | true | 在表格以form形式编辑时，数据列是否显示。true表示显示，false表示不显示
 
-### autoExpand
+#### autoExpand
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>boolean</td>
-		  <td>false</td>
-		  <td>数据列宽度是否需要自动扩展，只有最后一列需要设置为true。true表示自动扩展，false表示不自动扩展</td>
-    </tr>
-</table>
+类型      | 默认值   | 说明
+------- | ----- | -----------------------------------------------------
+boolean | false | 数据列宽度是否需要自动扩展，只有最后一列需要设置为true。true表示自动扩展，false表示不自动扩展
 
-### editType
+#### editType
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>function</td>
-		  <td>null</td>
-		  <td>数据列的编辑方式，通过function创建数据列对应的编辑控件</td>
-    </tr>
-</table>
+类型       | 默认值  | 说明
+-------- | ---- | -------------------------------
+function | null | 数据列的编辑方式，通过function创建数据列对应的编辑控件
 
-### headerLevel
+#### headerLevel
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>integer</td>
-		  <td>1</td>
-		  <td>header的层级，目前只支持最大2级</td>
-    </tr>
-</table>
+类型      | 默认值 | 说明
+------- | --- | -------------------
+integer | 1   | header的层级，目前只支持最大2级
 
-### hiddenLevel
+#### hiddenLevel
 
-<table>
-    <tr>
-        <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>integer</td>
-		  <td>1</td>
-		  <td>当表格属性overWidthHiddenColumn为true时，自动隐藏的优先级，数值越大，宽度不足时优先显示</td>
-    </tr>
-</table>
+类型      | 默认值 | 说明
+------- | --- | --------------------------------------------------------
+integer | 1   | 当表格属性overWidthHiddenColumn为true时，自动隐藏的优先级，数值越大，宽度不足时优先显示
 
-## 方法
+### 方法
 
-### ﻿setRequired
+#### setRequired
 
 **说明**
 
@@ -1154,28 +522,12 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>field</td>
-		  <td>string</td>
-		  <td>true</td>
-		  <td>需要设置的数据列对应的field</td>
-    </tr>
-    <tr>
-		  <td>value</td>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>true表示设置为必输，false表示设置为非必输</td>
-    </tr>
-</table>
+参数    | 类型      | 默认值  | 说明
+----- | ------- | ---- | -------------------------
+field | string  | true | 需要设置的数据列对应的field
+value | boolean | true | true表示设置为必输，false表示设置为非必输
 
-### repairContent
+#### repairContent
 
 **说明**
 
@@ -1185,7 +537,7 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 无
 
-### getColumnAttr
+#### getColumnAttr
 
 **说明**
 
@@ -1197,28 +549,12 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>attr</td>
-		  <td>string</td>
-		  <td>true</td>
-		  <td>属性名称</td>
-    </tr>
-    <tr>
-		  <td>field</td>
-		  <td>string</td>
-		  <td>true</td>
-		  <td>column对应的field</td>
-    </tr>
-</table>
+参数    | 类型     | 默认值  | 说明
+----- | ------ | ---- | --------------
+attr  | string | true | 属性名称
+field | string | true | column对应的field
 
-### getColumnByField
+#### getColumnByField
 
 **说明**
 
@@ -1230,22 +566,11 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>field</td>
-		  <td>stirng</td>
-		  <td>true</td>
-		  <td>需要获取的column对象对应的field</td>
-    </tr>
-</table>
+参数    | 类型     | 默认值  | 说明
+----- | ------ | ---- | ---------------------
+field | stirng | true | 需要获取的column对象对应的field
 
-### getIndexOfColumn
+#### getIndexOfColumn
 
 **说明**
 
@@ -1257,22 +582,11 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>column</td>
-		  <td>object</td>
-		  <td>true</td>
-		  <td>column对象</td>
-    </tr>
-</table>
+参数     | 类型     | 默认值  | 说明
+------ | ------ | ---- | --------
+column | object | true | column对象
 
-### getVisibleIndexOfColumn
+#### getVisibleIndexOfColumn
 
 **说明**
 
@@ -1284,22 +598,11 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>column</td>
-		  <td>object</td>
-		  <td>true</td>
-		  <td>column对象</td>
-    </tr>
-</table>
+参数     | 类型     | 默认值  | 说明
+------ | ------ | ---- | --------
+column | object | true | column对象
 
-### setColumnVisibleByColumn
+#### setColumnVisibleByColumn
 
 **说明**
 
@@ -1311,28 +614,12 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>column</td>
-		  <td>object</td>
-		  <td>true</td>
-		  <td>column对象</td>
-    </tr>
-    <tr>
-		  <td>visible</td>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>true表示设置为显示，false表示设置为不显示</td>
-    </tr>
-</table>
+参数      | 类型      | 默认值  | 说明
+------- | ------- | ---- | -------------------------
+column  | object  | true | column对象
+visible | boolean | true | true表示设置为显示，false表示设置为不显示
 
-### setColumnVisibleByIndex
+#### setColumnVisibleByIndex
 
 **说明**
 
@@ -1344,28 +631,12 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>index</td>
-		  <td>integer</td>
-		  <td>true</td>
-		  <td>数据列对应的index</td>
-    </tr>
-    <tr>
-		  <td>visible</td>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>true表示设置为显示，false表示设置为不显示</td>
-    </tr>
-</table>
+参数      | 类型      | 默认值  | 说明
+------- | ------- | ---- | -------------------------
+index   | integer | true | 数据列对应的index
+visible | boolean | true | true表示设置为显示，false表示设置为不显示
 
-### setDataSource
+#### setDataSource
 
 **说明**
 
@@ -1377,47 +648,37 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>dataSource</td>
-		  <td>object</td>
-		  <td>true</td>
-		  <td>数据信息。</td>
-    </tr>
-</table>
+参数         | 类型     | 默认值  | 说明
+---------- | ------ | ---- | -----
+dataSource | object | true | 数据信息。
 
 **示例**
 
+```
+gridObj.setDataSource({
+    values: [{
+        column1: "11",
+        column2: "12",
+        column3: "13",
+        id: '0',
+        pid: ''
+    }, {
+        column1: "21",
+        column2: "22",
+        column3: "23",
+        id: '1',
+        pid: '0'
+    }, {
+        column1: "31",
+        column2: "32",
+        column3: "33",
+        id: '3',
+        pid: '1'
+    }]
+});
+```
 
-
-    gridObj.setDataSource({
-        values: [{
-            column1: "11",
-            column2: "12",
-            column3: "13",
-            id: '0',
-            pid: ''
-        }, {
-            column1: "21",
-            column2: "22",
-            column3: "23",
-            id: '1',
-            pid: '0'
-        }, {
-            column1: "31",
-            column2: "32",
-            column3: "33",
-            id: '3',
-            pid: '1'
-        }]
-    });
-### setDataSourceFun1
+#### setDataSourceFun1
 
 **说明**
 
@@ -1429,37 +690,27 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>dataSource</td>
-		  <td>object</td>
-		  <td>true</td>
-		  <td>数据信息。</td>
-    </tr>
-</table>
+参数         | 类型     | 默认值  | 说明
+---------- | ------ | ---- | -----
+dataSource | object | true | 数据信息。
 
 **示例**
 
+```
+gridObj.setDataSourceFun1({
+    fields:['column1','column2','column3','column4','column5','column6'],
+        values:[
+        ["cl1","1","cl3","cl4","cl5","cl6"],
+        ["cl12","2","cl32","cl42","cl52","cl62"],
+        ["cl13","3","cl33","cl43","cl53","cl63"],
+        ["cl14","4","cl34","cl44","cl54","cl64"],
+        ["cl15","5","cl35","cl45","cl55","cl65"],
+        ["cl16","6","cl36","cl46","cl56","cl66"]
+        ]
+});
+```
 
-
-	gridObj.setDataSourceFun1({
-		fields:['column1','column2','column3','column4','column5','column6'],
-    		values:[
-			["cl1","1","cl3","cl4","cl5","cl6"],
-			["cl12","2","cl32","cl42","cl52","cl62"],
-			["cl13","3","cl33","cl43","cl53","cl63"],
-			["cl14","4","cl34","cl44","cl54","cl64"],
-			["cl15","5","cl35","cl45","cl55","cl65"],
-			["cl16","6","cl36","cl46","cl56","cl66"]
-			]
-	});
-### addOneRow
+#### addOneRow
 
 **说明**
 
@@ -1471,37 +722,22 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>row</td>
-		  <td>object</td>
-		  <td>true</td>
-		  <td>数据信息</td>
-    </tr>
-    <tr>
-		  <td>index</td>
-		  <td>integer</td>
-		  <td>false</td>
-		  <td>需要插入数据的位置</td>
-    </tr>
-</table>
+参数    | 类型      | 默认值   | 说明
+----- | ------- | ----- | ---------
+row   | object  | true  | 数据信息
+index | integer | false | 需要插入数据的位置
 
 **示例**
 
+```
+gridObj.addonerow({
+        "column1": "value1",
+        "column2": "value2",
+        "column3": "value3"
+    },1);
+```
 
-
-	gridObj.addonerow({
-            "column1": "value1",
-            "column2": "value2",
-            "column3": "value3"
-        },1);
-### addRows
+#### addRows
 
 **说明**
 
@@ -1513,41 +749,26 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>rows</td>
-		  <td>array</td>
-		  <td>true</td>
-		  <td>数据信息</td>
-    </tr>
-    <tr>
-		  <td>index</td>
-		  <td>integer</td>
-		  <td>false</td>
-		  <td>需要插入数据的位置</td>
-    </tr>
-</table>
+参数    | 类型      | 默认值   | 说明
+----- | ------- | ----- | ---------
+rows  | array   | true  | 数据信息
+index | integer | false | 需要插入数据的位置
 
 **示例**
 
+```
+gridObj.addRows([{
+        "column1": "value1",
+        "column2": "value2",
+        "column3": "value3"
+    },{
+        "column1": "value11",
+        "column2": "value22",
+        "column3": "value33"
+    }],1);
+```
 
-
-	gridObj.addRows([{
-            "column1": "value1",
-            "column2": "value2",
-            "column3": "value3"
-        },{
-            "column1": "value11",
-            "column2": "value22",
-            "column3": "value33"
-        }],1);
-### deleteOneRow
+#### deleteOneRow
 
 **说明**
 
@@ -1559,22 +780,11 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>index</td>
-		  <td>integer</td>
-		  <td>true</td>
-		  <td>需要删除数据对应的index</td>
-    </tr>
-</table>
+参数    | 类型      | 默认值  | 说明
+----- | ------- | ---- | --------------
+index | integer | true | 需要删除数据对应的index
 
-### deleteRows
+#### deleteRows
 
 **说明**
 
@@ -1586,22 +796,11 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>indexs</td>
-		  <td>array</td>
-		  <td>true</td>
-		  <td>需要删除数据的index组成的数组</td>
-    </tr>
-</table>
+参数     | 类型    | 默认值  | 说明
+------ | ----- | ---- | -----------------
+indexs | array | true | 需要删除数据的index组成的数组
 
-### updateRow
+#### updateRow
 
 **说明**
 
@@ -1613,37 +812,22 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>index</td>
-		  <td>integer</td>
-		  <td>true</td>
-		  <td>被修改行的index</td>
-    </tr>
-    <tr>
-		  <td>row</td>
-		  <td>object</td>
-		  <td>true</td>
-		  <td>修改之后的数据信息</td>
-    </tr>
-</table>
+参数    | 类型      | 默认值  | 说明
+----- | ------- | ---- | ----------
+index | integer | true | 被修改行的index
+row   | object  | true | 修改之后的数据信息
 
 **示例**
 
+```
+gridObj.updateRow(1,{
+        "column1": "value1",
+        "column2": "value2",
+        "column3": "value3"
+    });
+```
 
-
-	gridObj.updateRow(1,{
-            "column1": "value1",
-            "column2": "value2",
-            "column3": "value3"
-        });
-### updateValueAt
+#### updateValueAt
 
 **说明**
 
@@ -1655,40 +839,14 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>integer</td>
-		  <td>true</td>
-		  <td>所需修改数据对应的行号</td>
-    </tr>
-    <tr>
-		  <td>field</td>
-		  <td>string</td>
-		  <td>true</td>
-		  <td>所需修改数据对应的field</td>
-    </tr>
-    <tr>
-		  <td>value</td>
-		  <td>string</td>
-		  <td>true</td>
-		  <td>修改之后的数据</td>
-    </tr>
-    <tr>
-		  <td>force</td>
-		  <td>boolean</td>
-		  <td>false</td>
-		  <td>true表示不管数据是否发生改变，都执行update操作，false表示只有数据改变时才执行update操作</td>
-    </tr>
-</table>
+参数       | 类型      | 默认值   | 说明
+-------- | ------- | ----- | ------------------------------------------------------
+rowIndex | integer | true  | 所需修改数据对应的行号
+field    | string  | true  | 所需修改数据对应的field
+value    | string  | true  | 修改之后的数据
+force    | boolean | false | true表示不管数据是否发生改变，都执行update操作，false表示只有数据改变时才执行update操作
 
-### setRowSelect
+#### setRowSelect
 
 **说明**
 
@@ -1700,22 +858,11 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>integer</td>
-		  <td>true</td>
-		  <td>选中行对应的index</td>
-    </tr>
-</table>
+参数       | 类型      | 默认值  | 说明
+-------- | ------- | ---- | -----------
+rowIndex | integer | true | 选中行对应的index
 
-### setRowUnselect
+#### setRowUnselect
 
 **说明**
 
@@ -1727,22 +874,11 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>integer</td>
-		  <td>true</td>
-		  <td>取消选中行对应的index</td>
-    </tr>
-</table>
+参数       | 类型      | 默认值  | 说明
+-------- | ------- | ---- | -------------
+rowIndex | integer | true | 取消选中行对应的index
 
-### setAllRowSelect
+#### setAllRowSelect
 
 **说明**
 
@@ -1750,9 +886,9 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **返回值**
 
-无 
+无
 
-### setAllRowUnSelect
+#### setAllRowUnSelect
 
 **说明**
 
@@ -1760,9 +896,9 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **返回值**
 
-无 
+无
 
-### getSelectRows
+#### getSelectRows
 
 **说明**
 
@@ -1772,7 +908,7 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 所有选中行对象
 
-### getSelectRowsIndex
+#### getSelectRowsIndex
 
 **说明**
 
@@ -1782,7 +918,7 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 所有选中行index
 
-### setRowFocus
+#### setRowFocus
 
 **说明**
 
@@ -1794,22 +930,11 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>integer</td>
-		  <td>true</td>
-		  <td>focus行对应的index</td>
-    </tr>
-</table>
+参数       | 类型      | 默认值  | 说明
+-------- | ------- | ---- | --------------
+rowIndex | integer | true | focus行对应的index
 
-### setRowUnFocus
+#### setRowUnFocus
 
 **说明**
 
@@ -1821,22 +946,11 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>integer</td>
-		  <td>true</td>
-		  <td>取消focus行对应的index</td>
-    </tr>
-</table>
+参数       | 类型      | 默认值  | 说明
+-------- | ------- | ---- | ----------------
+rowIndex | integer | true | 取消focus行对应的index
 
-### getFocusRow
+#### getFocusRow
 
 **说明**
 
@@ -1846,7 +960,7 @@ http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
 focus行对象
 
-### getFocusRowIndex
+#### getFocusRowIndex
 
 **说明**
 
@@ -1856,7 +970,7 @@ focus行对象
 
 focus行对应的index
 
-### getAllRows
+#### getAllRows
 
 **说明**
 
@@ -1866,7 +980,7 @@ focus行对应的index
 
 所有行对象
 
-### getRowByIndex
+#### getRowByIndex
 
 **说明**
 
@@ -1878,22 +992,11 @@ focus行对应的index
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>index</td>
-		  <td>integer</td>
-		  <td>true</td>
-		  <td>需要获取的行对象对应的index</td>
-    </tr>
-</table>
+参数    | 类型      | 默认值  | 说明
+----- | ------- | ---- | ----------------
+index | integer | true | 需要获取的行对象对应的index
 
-### getRowIndexByValue
+#### getRowIndexByValue
 
 **说明**
 
@@ -1905,28 +1008,12 @@ focus行对应的index
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>field</td>
-		  <td>stirng</td>
-		  <td>true</td>
-		  <td>value值对应的field</td>
-    </tr>
-    <tr>
-		  <td>value</td>
-		  <td>string</td>
-		  <td>true</td>
-		  <td>value值</td>
-    </tr>
-</table>
+参数    | 类型     | 默认值  | 说明
+----- | ------ | ---- | --------------
+field | stirng | true | value值对应的field
+value | string | true | value值
 
-### setRenderType
+#### setRenderType
 
 **说明**
 
@@ -1938,28 +1025,12 @@ focus行对应的index
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>field</td>
-		  <td>string</td>
-		  <td>true</td>
-		  <td>设置renderType属性数据列对应的field</td>
-    </tr>
-    <tr>
-		  <td>renderType</td>
-		  <td>function</td>
-		  <td>true</td>
-		  <td>新的renderType</td>
-    </tr>
-</table>
+参数         | 类型       | 默认值  | 说明
+---------- | -------- | ---- | -------------------------
+field      | string   | true | 设置renderType属性数据列对应的field
+renderType | function | true | 新的renderType
 
-### setShowHeader
+#### setShowHeader
 
 **说明**
 
@@ -1971,22 +1042,11 @@ focus行对应的index
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>showHeader</td>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>true表示设置为显示表头，false表示设置为不显示表头</td>
-    </tr>
-</table>
+参数         | 类型      | 默认值  | 说明
+---------- | ------- | ---- | -----------------------------
+showHeader | boolean | true | true表示设置为显示表头，false表示设置为不显示表头
 
-### setColumnPrecision
+#### setColumnPrecision
 
 **说明**
 
@@ -1998,22 +1058,11 @@ focus行对应的index
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>field</td>
-		  <td>string</td>
-		  <td>true</td>
-		  <td>需要设置的数据列对应的fieldprecision</td>
-    </tr>
-</table>
+参数    | 类型     | 默认值  | 说明
+----- | ------ | ---- | -------------------------
+field | string | true | 需要设置的数据列对应的fieldprecision
 
-### setMultiSelect
+#### setMultiSelect
 
 **说明**
 
@@ -2025,22 +1074,11 @@ focus行对应的index
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>multiSelect</td>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>true表示显示复选框，false表示不显示复选框</td>
-    </tr>
-</table>
+参数          | 类型      | 默认值  | 说明
+----------- | ------- | ---- | -------------------------
+multiSelect | boolean | true | true表示显示复选框，false表示不显示复选框
 
-### setShowNumCol
+#### setShowNumCol
 
 **说明**
 
@@ -2052,22 +1090,11 @@ focus行对应的index
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>showNumCol</td>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>true表示显示数字列，false表示不显示数字列</td>
-    </tr>
-</table>
+参数         | 类型      | 默认值  | 说明
+---------- | ------- | ---- | -------------------------
+showNumCol | boolean | true | true表示显示数字列，false表示不显示数字列
 
-### setEditType
+#### setEditType
 
 **说明**
 
@@ -2079,28 +1106,12 @@ focus行对应的index
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>field</td>
-		  <td>string</td>
-		  <td>true</td>
-		  <td>设置renderType属性数据列对应的field</td>
-    </tr>
-    <tr>
-		  <td>editType</td>
-		  <td>function</td>
-		  <td>true</td>
-		  <td>新的editType</td>
-    </tr>
-</table>
+参数       | 类型       | 默认值  | 说明
+-------- | -------- | ---- | -------------------------
+field    | string   | true | 设置renderType属性数据列对应的field
+editType | function | true | 新的editType
 
-### setEditable
+#### setEditable
 
 **说明**
 
@@ -2112,22 +1123,11 @@ focus行对应的index
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>editable</td>
-		  <td>boolean</td>
-		  <td>true</td>
-		  <td>true表示支持编辑功能，false表示不支持编辑功能</td>
-    </tr>
-</table>
+参数       | 类型      | 默认值  | 说明
+-------- | ------- | ---- | ---------------------------
+editable | boolean | true | true表示支持编辑功能，false表示不支持编辑功能
 
-### setGridEditType
+#### setGridEditType
 
 **说明**
 
@@ -2139,22 +1139,11 @@ focus行对应的index
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>newEditType</td>
-		  <td>string</td>
-		  <td>true</td>
-		  <td>default表示在数据行上进行编辑，form表示在单独的form区域进行编辑</td>
-    </tr>
-</table>
+参数          | 类型     | 默认值  | 说明
+----------- | ------ | ---- | ---------------------------------------
+newEditType | string | true | default表示在数据行上进行编辑，form表示在单独的form区域进行编辑
 
-### setGridEditTypeAndEditRow
+#### setGridEditTypeAndEditRow
 
 **说明**
 
@@ -2166,34 +1155,13 @@ focus行对应的index
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>newEditType</td>
-		  <td>string</td>
-		  <td>true</td>
-		  <td>default表示在数据行上进行编辑，form表示在单独的form区域进行编辑</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>integer</td>
-		  <td>true</td>
-		  <td>单元格对应的行号</td>
-    </tr>
-    <tr>
-		  <td>colIndex</td>
-		  <td>integer</td>
-		  <td>true</td>
-		  <td>单元格对应的列号</td>
-    </tr>
-</table>
+参数          | 类型      | 默认值  | 说明
+----------- | ------- | ---- | ---------------------------------------
+newEditType | string  | true | default表示在数据行上进行编辑，form表示在单独的form区域进行编辑
+rowIndex    | integer | true | 单元格对应的行号
+colIndex    | integer | true | 单元格对应的列号
 
-### expandNode
+#### expandNode
 
 **说明**
 
@@ -2205,22 +1173,11 @@ focus行对应的index
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>keyValue</td>
-		  <td>string</td>
-		  <td>true</td>
-		  <td>需要展开节点的keyField对应的数值</td>
-    </tr>
-</table>
+参数       | 类型     | 默认值  | 说明
+-------- | ------ | ---- | --------------------
+keyValue | string | true | 需要展开节点的keyField对应的数值
 
-### expandNodeByIndex
+#### expandNodeByIndex
 
 **说明**
 
@@ -2232,23 +1189,9 @@ focus行对应的index
 
 **参数说明**
 
-<table>
-    <tr>
-        <td>参数</td>
-		  <td>类型</td>
-		  <td>默认值</td>
-		  <td>说明</td>
-    </tr>
-    <tr>
-		  <td>rowIndex</td>
-		  <td>integer</td>
-		  <td>true</td>
-		  <td>需要展开节点的index</td>
-    </tr>
-</table>
-
-# 示例
-
+参数       | 类型      | 默认值  | 说明
+-------- | ------- | ---- | ------------
+rowIndex | integer | true | 需要展开节点的index
 
 
 

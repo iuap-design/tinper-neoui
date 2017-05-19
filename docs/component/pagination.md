@@ -1,20 +1,14 @@
-# 分页控件
+## 分页控件
 
 分页控件提供了无border分页、有间距的分页、多尺寸分页。
 
-# 如何使用
+#### 如何使用
 
 分页通过添加`u-pagination`的样式来实现基本的分页效果
 
-# 示例
 
+### 基础
 
-
-	
-
-
-
-## 基础分页
 <div class="examples-code"><pre><code>
 &lt;div id='pagination' class='u-pagination'>
 &lt;/div></code></pre>
@@ -34,8 +28,9 @@
 
 
 
-## 无边框的分页
+### 无边框
 在含有`u-pagination`的div元素中添加`u-pagination-no-border`样式即可
+
 <div class="examples-code"><pre><code>
 &lt;div id='paginationNoBorder' class='u-pagination u-pagination-no-border'>
 &lt;/div></code></pre>
@@ -51,8 +46,9 @@
 
 
 
-## 有间距的分页
+### 有间距
 添加样式`pagination-gap`可以增加页码之间的间距
+
 <div class="examples-code"><pre><code>
 &lt;div id='paginationGap' class='u-pagination pagination-gap'>
 &lt;/div></code></pre>
@@ -69,8 +65,9 @@
 
 
 
-## 不同尺寸的按钮
+### 多尺寸
 添加`pagination-lg`、`pagination-sm`样式可以使分页变大、变小
+
 <div class="examples-code"><pre><code>
 &lt;p>大尺寸&lt;/p>
 &lt;div id='paginationLg' class='u-pagination pagination-lg'>

@@ -10,45 +10,52 @@
 <link rel="stylesheet" type="text/css" href="//design.yonyoucloud.com/static/uui/latest/css/tree.css">
 <link rel="stylesheet" type="text/css" href="//design.yonyoucloud.com/static/uui/latest/css/grid.css">
 <style id="demo-style" media="screen">
+.example-tooltips{
+    overflow: hidden;
+}
  #example3,#example2{
     margin: 10px;
     float: left;
 }
 #example2 .tooltip,#example3 .tooltip{
 	position: relative;
-}</style>
+}
+</style>
 </head>
 <body style="background-color: #eceff1;margin-left: 20px;width: calc(100% - 20px );">
-<div id='example3'>
-    <div class="tooltip tooltip-primary top active" role="tooltip">
-        <div class="tooltip-arrow"></div>
-        <div class="tooltip-inner">primary tooltip</div>
+<div class="example-tooltips">
+    <div id='example3'>
+        <div class="tooltip tooltip-primary top active" role="tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-inner">primary tooltip</div>
+        </div>
+    </div>
+    <div id='example3'>
+        <div class="tooltip tooltip-info top active" role="tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-inner">info tooltip</div>
+        </div>
+    </div>
+    <div id='example3'>
+        <div class="tooltip tooltip-warning top active" role="tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-inner">warning tooltip</div>
+        </div>
+    </div>
+    <div id='example3'>
+        <div class="tooltip tooltip-success top active" role="tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-inner">success tooltip</div>
+        </div>
+    </div>
+    <div id='example3'>
+        <div class="tooltip tooltip-danger top active" role="tooltip" >
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-inner">danger tooltip</div>
+        </div>
     </div>
 </div>
-<div id='example3'>
-    <div class="tooltip tooltip-info top active" role="tooltip">
-        <div class="tooltip-arrow"></div>
-        <div class="tooltip-inner">info tooltip</div>
-    </div>
-</div>
-<div id='example3'>
-    <div class="tooltip tooltip-warning top active" role="tooltip">
-        <div class="tooltip-arrow"></div>
-        <div class="tooltip-inner">warning tooltip</div>
-    </div>
-</div>
-<div id='example3'>
-    <div class="tooltip tooltip-success top active" role="tooltip">
-        <div class="tooltip-arrow"></div>
-        <div class="tooltip-inner">success tooltip</div>
-    </div>
-</div>
-<div id='example3'>
-    <div class="tooltip tooltip-danger top active" role="tooltip" >
-        <div class="tooltip-arrow"></div>
-        <div class="tooltip-inner">danger tooltip</div>
-    </div>
-</div><script src="//design.yonyoucloud.com/static/jquery/jquery-1.11.2.js"></script>
+<script src="//design.yonyoucloud.com/static/jquery/jquery-1.11.2.js"></script>
 <script src="//design.yonyoucloud.com/static/uploader/js/webuploader.js"></script>
 <script src="//design.yonyoucloud.com/static/knockout/knockout-3.2.0.debug.js"></script>
 <script src="//design.yonyoucloud.com/static/uui/latest/js/u-polyfill.js"></script>

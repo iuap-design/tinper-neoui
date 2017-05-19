@@ -1,4 +1,4 @@
-# 开关
+## 开关
 
 开关控件实现了两种状态的切换，提供了多种色彩、多种尺寸样式。
 
@@ -8,9 +8,9 @@
 [试一试](http://tinper.org/webide/#/demos/ui/switch)
 
 
-# API
+### API
 
-## \# switch对象
+#### switch对象
 
 * 类型：`Object`
 * 说明： 获取switch对象
@@ -25,7 +25,7 @@ var switchObject = document.getElementById('domId')['u.Switch'];
 
 ```
 
-## \# check
+#### check
 
 * 类型：`Function`
 * 说明： 调用switch对象的check方法，打开开关
@@ -37,7 +37,7 @@ switchObject.check();
 
 ```
 
-## \# uncheck
+#### uncheck
 
 * 类型：`Function`
 * 说明： 调用switch对象的uncheck方法，关闭开关
@@ -49,7 +49,7 @@ switchObject.uncheck();
 
 ```
 
-## \# disable
+#### disable
 
 * 类型：`Function`
 * 说明： 调用switch对象的disable方法，使开关不可用
@@ -60,7 +60,7 @@ switchObject.uncheck();
 switchObject.disable();
 
 ```
-## \# enable
+#### enable
 
 * 类型：`Function`
 * 说明： 调用switch对象的enable方法，使开关可用
@@ -72,7 +72,7 @@ switchObject.enable();
 
 ```
 
-## \# toggle
+#### toggle
 
 * 类型：`Function`
 * 说明： 调用switch对象的toggle方法，反选开关的另一个状态
@@ -84,7 +84,7 @@ switchObject.toggle();
 
 ```
 
-## \# isChecked
+#### isChecked
 
 * 类型：`Function`
 * 说明： 调用switch对象的isChecked方法，获取当前开关的状态，true为打开，false为关闭
@@ -99,12 +99,12 @@ switchObject.isChecked();
 
 相关内容：
 
-[开关在kero中使用](http://tinper.org/dist/kero/docs/ex_switch.html)    
+[开关在kero中使用](http://docs.tinper.org/moy/kero/ex_switch.html)    
 
 [开关在grid中使用](http://tinper.org/webide/#/demos/grids/edit)
 
 
-## 基础开关
+### 基础开关
 
 `<input>`元素的属性`id`值与`<label>`元素的属性`for`值需保持一致
 
@@ -112,6 +112,7 @@ switchObject.isChecked();
 
 - `checked` 选中
 - `disabled` 不可用
+
 <div class="examples-code"><pre><code>
 
 &lt;label class="u-switch u-switch-info" for="switch-info-unchecked">
@@ -137,7 +138,7 @@ switchObject.isChecked();
 
 
 
-## 多彩开关
+### 多彩开关
 
 * `.u-switch-primary` - 主色开关
 * `.u-switch-success` - 绿色开关
@@ -145,6 +146,7 @@ switchObject.isChecked();
 * `.u-switch-warning` - 橙色开关
 * `.u-switch-danger` - 红色开关
 * `.u-switch-dark` - 灰色开关
+
 <div class="examples-code"><pre><code>
 
 &lt;label class="u-switch u-switch-primary" for="switch-primary">
@@ -178,11 +180,12 @@ switchObject.isChecked();
 
 
 
-## 多种尺寸开关
+### 多种尺寸开关
 
 * `.u-switch-lg` - 大尺寸开关
 * `.u-switch-default` - 默认尺寸开关
 * `.u-switch-sm` - 小尺寸开关
+
 <div class="examples-code"><pre><code>
 
 &lt;label class="u-switch u-switch-primary u-switch-lg margin-bottom-20" for="switch-primary-lg">

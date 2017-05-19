@@ -1,45 +1,18 @@
-# input控件
+## 输入框
 
 
-# 示例
-
-
-
-<!--### 示例1
-
-示例1说明
-
-### 示例2
-
-示例2说-->
-
-
-
-
-## 普通输入框
+### 基础
 在普通的input元素上添加`u-form-control`样式
+
 <div class="examples-code"><pre><code>
 &lt;input type="text" class="u-form-control" id="exampleInput3"  placeholder="jane.doe@example.com"></code></pre>
 </div>
 
-<div class="examples-code"><pre><code>
-.margin-r-10{
-    margin-right: 10px; 
-}
-.example .u-message{
-    position: inherit;
-}
-.example{
-	width: 300px;
-}
-
-</code></pre>
-</div>
 
 
 
 
-## 不可输入框
+### 禁止输入
 在普通输入框中添加`disabled` 属性
 
 <div class="examples-code"><pre><code>
@@ -51,7 +24,7 @@
 
 
 
-## 带有后缀的输入框
+### 带后缀
 
 <div class="examples-code"><pre><code>
 &lt;div class="u-input-group u-has-feedback">
@@ -64,8 +37,9 @@
 
 
 
-## 必输项input框
+### 必输项
 当input框失去焦点时，校验输入的内容，如果内容长度大于0则隐藏必输字符`*`,否则显示
+
 <div class="examples-code"><pre><code>
 &lt;div class="u-form-group">
     &lt;label for="exampleInput3">必输:&lt;/label>

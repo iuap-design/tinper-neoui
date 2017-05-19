@@ -1,30 +1,20 @@
-# tabs控件
+## tabs控件
 
 多内容分类切换显示
 
-# 插件依赖
+### 插件依赖
 
 依赖于 http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
-# 用法
+### 用法
 
 定义锚链接，与内容id匹配，详情见示例
 
 
-
-# 示例
-
-
-
-
-
-
-
-
-
-## 背景tabs
+### 背景tabs
 
 切换 背景色跟随作为`active`状态
+
 <div class="examples-code"><pre><code>
 &lt;div class="u-widget-body">
     &lt;div class="u-tabs u-tabs-pill">
@@ -81,9 +71,10 @@
 
 
 
-## 线性tabs
+### 线性tabs
 
 切换 线性跟随作为`active`状态
+
 <div class="examples-code"><pre><code>
 &lt;div class="u-tabs">
     &lt;div class="u-tabs__tab-bar">

@@ -1,18 +1,18 @@
-# progress控件
+## progress控件
 
 常用于跟踪进度
 
-# 插件依赖
+### 插件依赖
 
 依赖于 http://design.yonyoucloud.com/static/uui/latest/js/u.js
 
-# 用法
+### 用法
 
 1.详情见示例
 
-# API
+### API
 
-## JS 方法参数
+#### JS 方法参数
 
 <table>
   <tbody>
@@ -37,7 +37,7 @@
 	</tbody>
 </table>
 
-## css 参数
+#### css 参数
 
 <table>
   <tbody>
@@ -62,12 +62,9 @@
 	</tbody>
 </table>
 
-# 示例
 
+### 基本Progress
 
-
-
-## 基本Progress
 <div class="examples-code"><pre><code>
 &lt;div id="p1" class="u-progress">&lt;/div></code></pre>
 </div>
@@ -82,7 +79,8 @@ u.on(window, 'load', function() {
 
 
 
-## 不确定Progress
+### 不确定Progress
+
 <div class="examples-code"><pre><code>
 &lt;div id="p2" class="u-progress u-progress__indeterminate">&lt;/div></code></pre>
 </div>
@@ -91,9 +89,10 @@ u.on(window, 'load', function() {
 
 
 
-## 缓冲Progress
+### 缓冲Progress
 
 有缓冲标识的进度条
+
 <div class="examples-code"><pre><code>
 &lt;div id="p3" class="u-progress">&lt;/div></code></pre>
 </div>

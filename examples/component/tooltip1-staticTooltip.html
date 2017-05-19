@@ -10,39 +10,46 @@
 <link rel="stylesheet" type="text/css" href="//design.yonyoucloud.com/static/uui/latest/css/tree.css">
 <link rel="stylesheet" type="text/css" href="//design.yonyoucloud.com/static/uui/latest/css/grid.css">
 <style id="demo-style" media="screen">
+.example-tooltips{
+    overflow: hidden;
+}
  #example3,#example2{
     margin: 10px;
     float: left;
 }
 #example2 .tooltip,#example3 .tooltip{
 	position: relative;
-}</style>
+}
+</style>
 </head>
 <body style="background-color: #eceff1;margin-left: 20px;width: calc(100% - 20px );">
-<div id='example2'>
-    <div class="tooltip top active" role="tooltip" >
-      <div class="tooltip-arrow"></div>
-      <div class="tooltip-inner">默认向上显示</div>
-  </div>
+<div class="example-tooltips">
+    <div id='example2'>
+        <div class="tooltip top active" role="tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-inner">默认向上显示</div>
+        </div>
+    </div>
+    <div id='example2'>
+        <div class="tooltip bottom active" role="tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-inner">向下显示</div>
+        </div>
+    </div>
+    <div id='example2'>
+        <div class="tooltip left active" role="tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-inner">向左显示</div>
+        </div>
+    </div>
+    <div id='example2'>
+        <div class="tooltip right active" role="tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-inner">向右显示</div>
+        </div>
+    </div>
 </div>
-<div id='example2'>
-  <div class="tooltip bottom active" role="tooltip">
-      <div class="tooltip-arrow"></div>
-      <div class="tooltip-inner">向下显示</div>
-  </div>
-</div>
-<div id='example2'>
-  <div class="tooltip left active" role="tooltip">
-      <div class="tooltip-arrow"></div>
-      <div class="tooltip-inner">向左显示</div>
-  </div>
-</div>
-<div id='example2'>
-  <div class="tooltip right active" role="tooltip">
-      <div class="tooltip-arrow"></div>
-      <div class="tooltip-inner">向右显示</div>
-  </div>
-</div><script src="//design.yonyoucloud.com/static/jquery/jquery-1.11.2.js"></script>
+<script src="//design.yonyoucloud.com/static/jquery/jquery-1.11.2.js"></script>
 <script src="//design.yonyoucloud.com/static/uploader/js/webuploader.js"></script>
 <script src="//design.yonyoucloud.com/static/knockout/knockout-3.2.0.debug.js"></script>
 <script src="//design.yonyoucloud.com/static/uui/latest/js/u-polyfill.js"></script>

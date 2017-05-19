@@ -1,18 +1,15 @@
-# message控件
+## message控件
 
 用于即时信息的提示，添加.u-message即可实现一个基本的消息提示。其他效果的消息实现只需添加相应的样式即可。
 
 
-# 示例
-
-## 基础message
+### 基础message
 
 * `.u-mesnews` - 新闻类提示
 * `.u-mesinfo` - 普通信息提示
 * `.u-messuccess` - 成功信息提示
 * `.u-mesdanger` - 错误信息提示
 * `.u-meswarning` - 警告信息提示
-
 
 <div class="examples-code"><pre><code>
 &lt;div class="example">
@@ -52,7 +49,7 @@
 
 
 
-## 带`icon`的加深颜色版message
+### 带`icon`的加深颜色版message
 
 背景色加深 `.dark`类提供了选择
 

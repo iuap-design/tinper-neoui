@@ -1,4 +1,4 @@
-# 年月
+## 年月
 
 用户可以通过此插件进行年月的选择。
 
@@ -7,9 +7,11 @@
 
 [试一试](http://tinper.org/webide/#/demos/ui/yearmonth)
 
-# API
+用户可以在`u-yearmonth`的dom元素添加format属性，来自定义年月的显示格式。具体定义方式参考[这里](http://tinper.org/dist/neoui/plugin/date.html)
 
-## \# YearMonth 对象
+### API
+
+#### YearMonth 对象
 
 * 类型：`Object`
 * 说明： YearMonth表示一个年月对象
@@ -26,7 +28,7 @@ var yearMonthObject = document.getElementById('domId')['u.YearMonth'];
 **注：** 如果获取的年月对象为空，原因为年月没有初始化成功，可以先调用`u.compMgr.updateComp();`来初始化页面中的控件。然后再获取年月对象。
 
 
-## \# setValue 
+#### setValue
 * 类型： `Function`
 * 说明：设置具体的年月
 * 参数：
@@ -41,11 +43,9 @@ yearMonthObject.setValue('2016-02');
 
 相关内容：
 
-[年月在kero中使用](http://tinper.org/dist/kero/docs/ex_yearmonth.html)    
+[年月在kero中使用](http://docs.tinper.org/neoui/plugin.html#月日)    
 
 [年月在grid中使用](http://tinper.org/webide/#/demos/grids/edit)
-
-
 
 
 定义样式为`u-yearmonth`的div父元素，包裹样式为`u-input`的input元素。

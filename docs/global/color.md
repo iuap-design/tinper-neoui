@@ -1,7 +1,8 @@
-# 色彩
+## 色彩
+{% raw %}
 <link rel="stylesheet" type="text/css" href="/assets/static/css/color.css">
 <div class="color">
-<h2>基础调色板</h2>
+<h3>基础调色板</h3>
 <div class="primaries">
 <div class="bg-red">red</div>
 <div class="bg-pink">pink</div>
@@ -26,9 +27,9 @@
 <p>以上基础调色板均以背景色为示例，对应的字体颜色去掉bg即可。例如：背景色为.bg-grey，字体色为.grey</p>
 </div>
 <div class="example-wrap">
-<h2 class="example-title">调色板</h2>
+<h3 class="example-title">调色板</h3>
 <p >调色板包含了主色和不同色阶的颜色</p>
-<h3>具体使用</h3>
+<h4>具体使用</h4>
 <p>1、引入u.css文件</p>
 <p>2、背景色使用样式类名为'.bg-颜色的名字'，字体使用样式类名为'.颜色的名字'。例如红色A700对应的背景色为<code>.bg-red-A700</code>,字体色为<code>.red-A700</code></p>
 <div class="u-row  color-palette">
@@ -1123,7 +1124,7 @@
 <span>500</span> /
 <span>#607d8b</span>
 </li>
-<li class="bg-blue-grey-400 grey-800 list-group-item"> 
+<li class="bg-blue-grey-400 grey-800 list-group-item">
 <span>400</span> /
 <span>#78909c</span>
 </li>
@@ -1148,3 +1149,4 @@
 </div>
 </div>
 </div>
+{% endraw %}

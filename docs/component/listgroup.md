@@ -1,13 +1,10 @@
-# 列表组
+## 列表组
 
 多个列表条目的无序列表，我们提供了一些预定义的样式
 
 
-# 示例
+### 基础
 
-
-
-## 基础
 <div class="examples-code"><pre><code>
 &lt;ul class="u-list-group">
   &lt;li class="u-list-group-item">Cras justo odio&lt;/li>
@@ -22,7 +19,8 @@
 
 
 
-## 带图标
+### 带图标
+
 <div class="examples-code"><pre><code>
 &lt;ul class="u-list-group">
   &lt;li class="u-list-group-item">
@@ -44,7 +42,8 @@
 
 
 
-## 列表是链接
+### 列表是链接
+
 <div class="examples-code"><pre><code>
 &lt;div class="u-list-group">
   &lt;a href="#" class="u-list-group-item active">

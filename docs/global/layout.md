@@ -1,4 +1,4 @@
-# 布局
+## 布局
  布局的栅格化系统使用了12列响应式网格布局。其工作原理如下：
 
 * “行（row）”必须包含在 .container （固定宽度）或 .container-fluid （100% 宽度）中，以便为其赋予合适的排列（aligment）和内补（padding）。
@@ -16,15 +16,10 @@
 |u-col-lg-*|大桌面显示器、大于等于992px|
 
 
-# 示例
-
-
-
-
-
-## 基本布局
+### 基础
 
 使用单一的一组`Row`和`col`栅格组件，就可以创建一个基本的栅格系统。所有的列`col`必须放在`Row`中。
+
 <div class="examples-code"><pre><code>
 &lt;div class="u-container-fluid example">
 	&lt;div class="u-row">
@@ -57,9 +52,10 @@
 
 
 
-## 移动和桌面屏幕
+### 移动和桌面屏幕
 
 是否不希望在小屏幕设备上所有的列都堆叠在一起？那就使用针对超小屏幕和中等屏幕设备所定义的类吧，即 `.u-col-xs-*` 和 `.u-col-md-*`
+
 <div class="examples-code"><pre><code>
 &lt;div class="u-container-fluid example">
     &lt;div class="u-row">
@@ -99,7 +95,7 @@
 
 
 
-## 响应式列重置
+### 响应式列重置
 
 即便有上面给出的栅格class，你也不免会碰到一些问题，例如，在某些阈值时，某些列可能会出现比别的列高的情况。为了克服这一问题，建议联合使用 `.clearfix` 和 响应式工具类（参考辅助类的响应式布局）。
 
@@ -142,9 +138,10 @@
 
 
 
-## 列嵌套
+### 列嵌套
 
 为了在内容中嵌套默认的网格，请添加一个新的 `.u-row`，并在一个已有的 `.u-col-md-*` 列内添加一组 `.u-col-md-*` 列。被嵌套的行应包含一组列，这组列个数不能超过12（其实，没有要求你必须占满12列）。
+
 <div class="examples-code"><pre><code>
 &lt;div class="u-container-fluid example">
     &lt;div class="u-row">
@@ -185,8 +182,9 @@
 
 
 
-## 列偏移
+### 列偏移
 为了在大屏幕显示器上使用偏移，请使用 `.col-md-offset-* `类。这些类会把一个列的左外边距（margin）增加 * 列，其中 * 范围是从 1 到 11。例如，`.u-col-md-offset-4`类将 `.u-col-md-4`元素向右侧偏移了4个列（column）的宽度。
+
 <div class="examples-code"><pre><code>
 &lt;div class="u-container-fluid example">
     &lt;div class="u-row">
@@ -217,9 +215,10 @@
 
 
 
-## 列排序
+### 列排序
 
 使用`.col-md-push-*` and `.col-md-pull-* `能改变我们的内置网格列的顺序。*越大值越大，push值到左边距，pull值到右边距。
+
 <div class="examples-code"><pre><code>
 &lt;div class="u-container-fluid example">
     &lt;div class="u-row">

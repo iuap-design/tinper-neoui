@@ -1,4 +1,4 @@
-# 下拉框
+## 下拉框
 
 combobox组合框是由一个文本输入控件和一个下拉菜单组成的，类似于select元素。用户可以从一个预先定义的列表里选择一个或者多个选项。
 
@@ -9,9 +9,9 @@ combobox组合框是由一个文本输入控件和一个下拉菜单组成的，
 
 [试一试](http://tinper.org/webide/#/demos/ui/combobox)
 
-# API
+#### API
 
-## \# Combo下拉框对象
+#### Combo下拉框对象
 
 * 类型：`Object`
 * 说明： Combo表示一个下拉对象
@@ -26,7 +26,7 @@ var comboObject = document.getElementById('domId')['u.Combo'];
 ```
 
 **注：** 如果获取的下拉对象为空，原因为下拉框没有初始化成功，可以先调用`u.compMgr.updateComp();`来初始化页面中的控件。然后再获取下拉对象。
-## \# setComboData 设置数据源
+#### setComboData 设置数据源
 
 * 类型： `Function`
 * 说明：给下拉框对象添加数据源
@@ -42,7 +42,7 @@ document.getElementById('domId')['u.Combo'].setComboData(dataArray);
 
 ```
 
-## \# selectItem 选中某行
+#### selectItem 选中某行
 * 类型： `Function`
 * 说明：设置选中下拉框的某条数据
 * 参数：
@@ -55,7 +55,7 @@ document.getElementById('domId')['u.Combo'].selectItem(index);
 
 ```
 
-## \# setValue 根据真实值选中某行
+#### setValue 根据真实值选中某行
 * 类型： `Function`
 * 说明： 查找下拉框数据中与传入的参数相同的真实值，并选中对应的某条数据
 * 参数：
@@ -68,7 +68,7 @@ document.getElementById('domId')['u.Combo'].setValue(value);
 
 ```
 
-## \# setName 根据显示值选中某行
+#### setName 根据显示值选中某行
 * 类型： `Function`
 * 说明： 查找下拉框数据中与传入的参数相同的显示值，并选中对应的某条数据
 * 参数：
@@ -82,7 +82,7 @@ document.getElementById('domId')['u.Combo'].setName(name);
 ```
 
 
-## \# emptyValue 清空所选内容
+#### emptyValue 清空所选内容
 * 类型： `Function`
 * 说明： 清空下拉列表所选内容
 * 用法：
@@ -95,13 +95,13 @@ document.getElementById('domId')['u.Combo'].emptyValue();
 
 相关内容：
 
-[下拉框在kero中使用](http://tinper.org/dist/kero/docs/combobox_ex.html)    
+[下拉框在kero中使用](http://docs.tinper.org/moy/kero/combobox_ex.html)    
 
 [下拉框在grid中使用](http://tinper.org/webide/#/demos/grids/edit)
 
 
+### 基础
 
-## 默认单选下拉框
 <div class="examples-code"><pre><code>
 &lt;div class="u-combo" id="combo1">
     &lt;div class="u-input-group u-has-feedback">
@@ -118,8 +118,9 @@ document.getElementById('combo1')['u.Combo'].setComboData([{value:'01',name:'男
 
 
 
-## 多选下拉框
+### 多选下拉框
 添加 `mutil-select`样式 支持多选
+
 <div class="examples-code"><pre><code>
 &lt;div class="u-combo mutil-select" id="combo3">
     &lt;div class="u-input-group u-has-feedback">

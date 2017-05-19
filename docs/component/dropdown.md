@@ -1,19 +1,8 @@
-# dropdown
+## dropdown
 
 
+### 左边menu
 
-# 示例
-
-
-
-
-
-
-
-
-
-
-## 左边menu
 <div class="examples-code"><pre><code>
 &lt;!-- Left aligned menu below button -->
 &lt;div class="example">
@@ -51,8 +40,9 @@
 
 
 
-## 不同颜色的下拉
+### 不同颜色的下拉
 按钮配色，不同的色彩代表不同的情感和状态。添加颜色样式类分别为`.u-button-success`、`u-button-info`、`u-button-danger`、`u-button-warning`。
+
 <div class="examples-code"><pre><code>
 &lt;div class="u-row">
     &lt;div class="u-col-3">
@@ -110,7 +100,7 @@
 
 
 
-## 分割下拉
+### 分割下拉
 分割下拉由一个文字和一个图标组成。
 
 * 创建一个含有`u-button-group`、`u-split`的div容器
@@ -138,7 +128,7 @@
 
 
 
-## 基本菜单按钮
+### 基本菜单按钮
 菜单按钮包括一个普通的button按钮和一个下拉内容ul元素。显示效果有4种，
 分别为：显示在按钮下方，左对齐、显示在按钮下方，右对齐、显示在按钮上方，左对齐、显示在按钮上方，右对齐。
 
@@ -149,7 +139,6 @@
 * 创建样式为“u-menu”的ul下拉列表，用于包括菜单内容。ul上定义for属性，属性值与第一步创建button中的id对应。菜单的样式还可以选择`u-menu-bottom-left`、`u-menu-bottom-right`、`u-menu-top-left`、`u-menu-top-right`中的一个来表示菜单相对于按钮的显示位置。
 
 * 在ul标签内，使用样式为`u-menu-item`的li标签定义菜单的具体内容，当li标签不可用时，可以添加`disabled`属性。
-
 
 <div class="examples-code"><pre><code>
 &lt;button class="u-button  raised u-menu-button" id="demo-menu-lower-right1">

@@ -1,15 +1,10 @@
-# 媒体对象
+## 媒体对象
 
 允许在一个内容块的左边或右边展示一个多媒体内容（图像、视频、音频）
 
 
-# 示例
+### 默认样式
 
-
-
-
-
-## 默认样式
 <div class="examples-code"><pre><code>
 &lt;div class="u-media">
   &lt;div class="u-media-left">
@@ -28,9 +23,10 @@
 
 
 
-## 嵌套
+### 嵌套
 
 媒体对象里嵌套媒体对象，只要整要嵌套的媒体对象放在父的`media-body`标签里
+
 <div class="examples-code"><pre><code>
 &lt;div class="u-media">
   &lt;div class="u-media-left">
@@ -60,10 +56,11 @@
 
 
 
-## 对齐
+### 对齐
 默认上对齐
 `media-middle`: 中对齐
 `media-bottom`: 底对齐
+
 <div class="examples-code"><pre><code>
 &lt;div class="u-media">
   &lt;div class="u-media-left">
