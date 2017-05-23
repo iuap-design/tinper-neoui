@@ -1,3 +1,19 @@
+<a name="3.2.3"></a>
+## [3.2.3](https://github.com/iuap-design/tinper-neoui/compare/v3.2.1...v3.2.3) (2017-05-23)
+
+
+### Bug Fixes
+
+* 修改了嵌套按钮组中按钮高度不一致问题 ([0aa2428](https://github.com/iuap-design/tinper-neoui/commit/0aa2428))
+* 修改了嵌套按钮组中按钮高度不一致问题 ([ae8e7b4](https://github.com/iuap-design/tinper-neoui/commit/ae8e7b4))
+
+
+### Features
+
+* 新建Cascader组件 ([b40e512](https://github.com/iuap-design/tinper-neoui/commit/b40e512))
+
+
+
 <a name="3.2.1"></a>
 ## [3.2.1](https://github.com/iuap-design/tinper-neoui/compare/v3.2.2...v3.2.1) (2017-04-21)
 
