@@ -9,6 +9,8 @@ Cascader级联组件
 - 比起 Select 组件，可以在同一个浮层中完成选择，有较好的体验。
 
 
+#### type类型
+
 * `.u-cascader` - 默认级联组件
 * `.u-cascader .trigger-hover` - 地址级联-移入展开
 
