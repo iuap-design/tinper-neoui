@@ -6,11 +6,19 @@
     display: inline-block;
 
     .cascader-input {
+        input {
+            cursor: pointer;
+        }
         i {
             position: absolute;
-            top: 2px;
+            top: 6px;
             right: 2px;
             cursor: pointer;
+            font-size: 12px;
+            opacity: 0.5;
+            &:hover{
+                opacity: 1;
+            }
         }
     }
 

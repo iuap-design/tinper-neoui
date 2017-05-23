@@ -4,6 +4,7 @@
  * Date	  : 2017-05-19 13:19:10
  */
  import {
+     hasClass,
      closest
  } from 'tinper-sparrow/src/dom';
 import {
@@ -20,6 +21,9 @@ var Cascader = u.BaseComponent.extend({
             id = '';
         this._data = data;
         this.order = [];
+        if (hasClass(this.element, 'trigger-hover')) {
+            this.options['trigger_type'] = 'mouseenter'
+        }
         if (!this.options['id']) {
             this.options['id'] = new Date().getTime() + '' + parseInt(Math.random() * 10 + 1, 10);
         }
@@ -27,7 +31,8 @@ var Cascader = u.BaseComponent.extend({
 
         $(this.element).append('<div id="' + id + '-input" class="cascader-input" style="width:100%;height:100%;"><input/></div><div id="' + id + '" class="cascader-show"></div>');
         this.focusFunc();
-        $(this.element).children('.cascader-input').off().on('mouseenter', function() {
+        $(this.element).children('.cascader-input').children('input').attr('readonly', 'readonly')
+                        .end().off('mouseenter').on('mouseenter', function() {
             var $this = $(this);
             if ($this.children('input').val()) {
                 $this.append('<i class="icon uf uf-close-bold"></i>')
@@ -59,7 +64,7 @@ var Cascader = u.BaseComponent.extend({
             arr = value.split(',');
         }
 
-        if (arr && arr.length > 1) {
+        if (arr && arr.length > 0) {
             names = self.transName(arr, self._data);
             if (names.length > 1) {
                 names = names.substring(0, names.length - 1);
@@ -79,7 +84,7 @@ var Cascader = u.BaseComponent.extend({
         for (var j = 0; j < data.length; j++) {
             if (data[j].value == arr[0]) {
                 flag = j;
-                names += data[j].name + ',';
+                names += data[j].name + '/';
             }
         }
         if (arr.length > 1) {
@@ -182,7 +187,7 @@ var Cascader = u.BaseComponent.extend({
                 $.each($content.find('li.active'), function(key, val) {
                     var $val = $(val);
                     if (key < (col - (-1))) {
-                        text += val.innerText + ',';
+                        text += val.innerText + '/';
                         value += $val.attr('value') + ',';
                     }
 
@@ -225,7 +230,7 @@ var Cascader = u.BaseComponent.extend({
                         $.each($content.find('li.active'), function(key, val) {
                             var $val = $(val);
                             if (key < (col - (-1))) {
-                                text += val.innerText + ',';
+                                text += val.innerText + '/';
                                 value += $val.attr('value') + ',';
                             }
                         });
@@ -278,7 +283,7 @@ var Cascader = u.BaseComponent.extend({
 if (u.compMgr)
     u.compMgr.regComp({
         comp: Cascader,
-        compAsString: 'u.cascader',
+        compAsString: 'u.Cascader',
         css: 'u-cascader'
     });
 
