@@ -124,7 +124,8 @@ pagination.prototype.DEFAULTS = {
     showState: true,
     showTotal: true, //初始默认显示总条数 “共xxx条”
     showColumn: true, //初始默认显示每页条数 “显示xx条”
-    showJump: true, //初始默认显示跳转信息 “到xx页 确定”
+    showJump: true, //初始默认显示跳转信息 “到xx页 确定”,
+    showBtnOk: true, //初始默认显示确定按钮
     page: function(page) {
         return true;
     }
@@ -247,16 +248,30 @@ pagination.prototype.render = function() {
             }
         }
         if (options.showJump) {
-            if (hasClass(this.$ul, 'pagination-sm')) {
-                htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j text-center page_j_sm padding-left-0" value=' + options.currentPage + '>' + options.pageText + '<input class="pagination-jump pagination-jump-sm" type="button" value="' + options.okText + '"/></div>';
+            if (options.showBtnOk) {
+                if (hasClass(this.$ul, 'pagination-sm')) {
+                    htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j text-center page_j_sm padding-left-0" value=' + options.currentPage + '>' + options.pageText + '<input class="pagination-jump pagination-jump-sm" type="button" value="' + options.okText + '"/></div>';
 
-            } else if (hasClass(this.$ul, 'pagination-lg')) {
-                htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j text-center page_j_lg padding-left-0" value=' + options.currentPage + '>' + options.pageText + '<input class="pagination-jump pagination-jump-lg" type="button" value="' + options.okText + '"/></div>';
+                } else if (hasClass(this.$ul, 'pagination-lg')) {
+                    htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j text-center page_j_lg padding-left-0" value=' + options.currentPage + '>' + options.pageText + '<input class="pagination-jump pagination-jump-lg" type="button" value="' + options.okText + '"/></div>';
 
+                } else {
+                    htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j text-center padding-left-0" value=' + options.currentPage + '>' + options.pageText + '<input class="pagination-jump" type="button" value="' + options.okText + '"/></div>';
+
+                }
             } else {
-                htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j text-center padding-left-0" value=' + options.currentPage + '>' + options.pageText + '<input class="pagination-jump" type="button" value="' + options.okText + '"/></div>';
+                if (hasClass(this.$ul, 'pagination-sm')) {
+                    htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j text-center padding-left-0" value=' + options.currentPage + '>' + options.pageText + '</div>';
 
+                } else if (hasClass(this.$ul, 'pagination-lg')) {
+                    htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j text-center padding-left-0" value=' + options.currentPage + '>' + options.pageText + '</div>';
+
+                } else {
+                    htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j text-center padding-left-0" value=' + options.currentPage + '>' + options.pageText + '</div>';
+
+                }
             }
+
         }
         htmlArr.push(htmlTmp);
     }
@@ -265,21 +280,34 @@ pagination.prototype.render = function() {
     this.$ul.innerHTML = "";
     this.$ul.insertAdjacentHTML('beforeEnd', htmlArr.join(''));
 
+
     var me = this;
-    on(this.$ul.querySelector(".pagination-jump"), "click", function() {
+    //对分页控件中的确定按钮和输入页码按回车键添加的统一调用方法
+    function paginationAddEventListen() {
         var jp, pz;
         jp = me.$ul.querySelector(".page_j").value || options.currentPage;
         pz = me.$ul.querySelector(".page_z").value || options.pageSize;
         if (isNaN(jp)) return;
         //if (pz != options.pageSize){
-        //	me.$element.trigger('sizeChange', [pz, jp - 1])
+        //  me.$element.trigger('sizeChange', [pz, jp - 1])
         //}else{
-        //	me.$element.trigger('pageChange', jp - 1)
+        //  me.$element.trigger('pageChange', jp - 1)
         //}
         me.page(jp, options.totalPages, pz);
         //me.$element.trigger('pageChange', jp - 1)
         //me.$element.trigger('sizeChange', pz)
         return false;
+    }
+
+    on(this.$ul.querySelector(".pagination-jump"), "click", function() {
+        paginationAddEventListen();
+    })
+
+    on(this.$ul.querySelector(".page_j"), "keydown", function(event) {
+        if (event.keyCode == '13') {
+            paginationAddEventListen();
+        }
+
     })
 
     on(this.$ul.querySelector('[role="first"] a'), 'click', function() {
