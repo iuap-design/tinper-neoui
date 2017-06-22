@@ -250,24 +250,24 @@ pagination.prototype.render = function() {
         if (options.showJump) {
             if (options.showBtnOk) {
                 if (hasClass(this.$ul, 'pagination-sm')) {
-                    htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j text-center page_j_sm padding-left-0" value=' + options.currentPage + '>' + options.pageText + '<input class="pagination-jump pagination-jump-sm" type="button" value="' + options.okText + '"/></div>';
+                    htmlTmp += '<div class="pagination-state"><span>' + options.toText + '</span><input class="page_j text-center page_j_sm padding-left-0" value=' + options.currentPage + '><span>' + options.pageText + '</span><input class="pagination-jump pagination-jump-sm" type="button" value="' + options.okText + '"/></div>';
 
                 } else if (hasClass(this.$ul, 'pagination-lg')) {
-                    htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j text-center page_j_lg padding-left-0" value=' + options.currentPage + '>' + options.pageText + '<input class="pagination-jump pagination-jump-lg" type="button" value="' + options.okText + '"/></div>';
+                    htmlTmp += '<div class="pagination-state"><span>' + options.toText + '</span><input class="page_j text-center page_j_lg padding-left-0" value=' + options.currentPage + '><span>' + options.pageText + '</span><input class="pagination-jump pagination-jump-lg" type="button" value="' + options.okText + '"/></div>';
 
                 } else {
-                    htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j text-center padding-left-0" value=' + options.currentPage + '>' + options.pageText + '<input class="pagination-jump" type="button" value="' + options.okText + '"/></div>';
+                    htmlTmp += '<div class="pagination-state"><span>' + options.toText + '</span><input class="page_j text-center padding-left-0" value=' + options.currentPage + '><span>' + options.pageText + '</span><input class="pagination-jump" type="button" value="' + options.okText + '"/></div>';
 
                 }
             } else {
                 if (hasClass(this.$ul, 'pagination-sm')) {
-                    htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j text-center padding-left-0" value=' + options.currentPage + '>' + options.pageText + '</div>';
+                    htmlTmp += '<div class="pagination-state"><span>' + options.toText + '</span><input class="page_j text-center padding-left-0" value=' + options.currentPage + '><span>' + options.pageText + '</span></div>';
 
                 } else if (hasClass(this.$ul, 'pagination-lg')) {
-                    htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j text-center padding-left-0" value=' + options.currentPage + '>' + options.pageText + '</div>';
+                    htmlTmp += '<div class="pagination-state"><span>' + options.toText + '</span><input class="page_j text-center padding-left-0" value=' + options.currentPage + '><span>' + options.pageText + '</span></div>';
 
                 } else {
-                    htmlTmp += '<div class="pagination-state">' + options.toText + '<input class="page_j text-center padding-left-0" value=' + options.currentPage + '>' + options.pageText + '</div>';
+                    htmlTmp += '<div class="pagination-state"><span>' + options.toText + '</span><input class="page_j text-center padding-left-0" value=' + options.currentPage + '><span>' + options.pageText + '</span></div>';
 
                 }
             }

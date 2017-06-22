@@ -35,6 +35,8 @@ var showLoader = function(options) {
 		templateDom.style.position = 'fixed';
 	}
 	parEle.appendChild(templateDom);
+	$('.u-loader-container').css('display',"none");
+	$('.u-loader-container:eq(0)').css('display',"block");
 };
 var hideLoader = function(options) {
 	var cssStr,hasback;
@@ -59,10 +61,18 @@ var hideLoader = function(options) {
 	}
 
 	// }
-	var divs = document.querySelectorAll(cssStr);
-	for(var i = 0; i < divs.length; i++) {
-		divs[i].parentNode.removeChild(divs[i]);
+
+	try{
+		var divs = document.querySelectorAll(cssStr);
+		var l = divs.length;
+		var div = divs[l-1];
+		div.parentNode.removeChild(div);
+	}catch(e){
+
 	}
+	// for(var i = 0; i < divs.length; i++) {
+	// 	divs[i].parentNode.removeChild(divs[i]);
+	// }
 };
 
 
