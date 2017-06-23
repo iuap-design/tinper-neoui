@@ -1,3 +1,13 @@
+<a name="3.2.4"></a>
+## [3.2.4](https://github.com/iuap-design/tinper-neoui/compare/v3.2.3...v3.2.4) (2017-06-22)
+
+
+### Features
+
+* 分页控件跳转页码处支持回车操作，同时确定按钮支持参数设置showBtnOk是否显示 ([8fa9c39](https://github.com/iuap-design/tinper-neoui/commit/8fa9c39))
+
+
+
 <a name="3.2.3"></a>
 ## [3.2.3](https://github.com/iuap-design/tinper-neoui/compare/v3.2.1...v3.2.3) (2017-05-23)
 
