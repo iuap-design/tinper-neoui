@@ -36,9 +36,7 @@ var Combo = u.BaseComponent.extend({
         if (hasClass(this.element, 'mutil-select')) {
             this.mutilSelect = true
         }
-
-
-
+        //onlySelect=true，可以设置单选下拉框为readonly
         this.onlySelect = this.options['onlySelect'] || false;
         if (this.mutilSelect)
             this.onlySelect = true;
