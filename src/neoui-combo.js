@@ -305,7 +305,7 @@ var Combo = u.BaseComponent.extend({
         if (this.mutilSelect) {
             var val = this.comboDatas[index].value;
             var name = this.comboDatas[index].name;
-            var index = (this.value + ',').indexOf(val + ',');
+            var index = (',' + this.value + ',').indexOf(',' + val + ',');
             var l = val.length + 1;
             var flag;
             if (this.fullWidth == 0) {
