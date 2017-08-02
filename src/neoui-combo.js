@@ -377,6 +377,8 @@ var Combo = u.BaseComponent.extend({
                         }
                         var nWidth = comboDiv.offsetWidth + 20;
                         this._combo_name_par.removeChild(comboDiv);
+                        //当多选下拉框在取消选中的时候也更新title
+                        this._combo_name_par.title = this.name;
                         this.nowWidth -= nWidth;
                         if (fflag) {
                             this.showNowWidth -= nWidth;
