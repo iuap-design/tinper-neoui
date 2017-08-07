@@ -1,3 +1,22 @@
+<a name="3.2.5"></a>
+## [3.2.5](https://github.com/iuap-design/tinper-neoui/compare/v3.2.4...v3.2.5) (2017-08-02)
+
+
+### Bug Fixes
+
+* 修改上下箭头不一致bug ([4f0bd06](https://github.com/iuap-design/tinper-neoui/commit/4f0bd06))
+* 修改下拉框在取消选中的时候不更新title ([835b236](https://github.com/iuap-design/tinper-neoui/commit/835b236))
+* 修改日期控件容器高度，修复日期控件不能下跳月份 ([381fbe0](https://github.com/iuap-design/tinper-neoui/commit/381fbe0))
+
+
+### Features
+
+* 当在多选的时候，设置selectChangeDatatable为true时，选中一个数据就会动态的去改变datatable ([5e8464a](https://github.com/iuap-design/tinper-neoui/commit/5e8464a))
+* 添加reade ([8caaa85](https://github.com/iuap-design/tinper-neoui/commit/8caaa85))
+* 添加单选下拉框在设置readonly的注释 ([b7a7156](https://github.com/iuap-design/tinper-neoui/commit/b7a7156))
+
+
+
 <a name="3.2.4"></a>
 ## [3.2.4](https://github.com/iuap-design/tinper-neoui/compare/v3.2.3...v3.2.4) (2017-06-22)
 
