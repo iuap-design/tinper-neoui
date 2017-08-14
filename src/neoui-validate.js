@@ -255,6 +255,7 @@ Validate.fn.updateOptions = function(options) {
 Validate.fn.doValid = function(options) {
     var self = this;
     var pValue;
+    var value_length = 0;
     this.showMsgFlag = true;
     if (options) {
         pValue = options.pValue;
@@ -299,8 +300,14 @@ Validate.fn.doValid = function(options) {
             }
         }
     }
+    if(this.validType && this.validType === "string"){
+        //当validType为string的时候，就直接用length，否则转成字节会有问题--huyue
+        value_length = value.length;
+    }else{
+        value_length = value.lengthb();
+    }
     if (this.minLength) {
-        if (value.lengthb() < this.minLength) {
+        if (value_length < this.minLength) {
             var Msg = this.inputMsg.minLength + this.minLength + this.inputMsg.unit;
             this.showMsg(Msg)
             return {
@@ -310,7 +317,7 @@ Validate.fn.doValid = function(options) {
         }
     }
     if (this.maxLength) {
-        if (value.lengthb() > this.maxLength) {
+        if (value_length > this.maxLength) {
             var Msg = this.inputMsg.maxLength + this.maxLength + this.inputMsg.unit;
             this.showMsg(Msg)
             return {
