@@ -300,30 +300,36 @@ Validate.fn.doValid = function(options) {
             }
         }
     }
-    if(this.validType && this.validType === "string"){
-        //当validType为string的时候，就直接用length，否则转成字节会有问题--huyue
-        value_length = value.length;
-    }else{
-        value_length = value.lengthb();
-    }
     if (this.minLength) {
+        if (this.validType && this.validType === "string") {
+            //当validType为string的时候，就直接用length，否则转成字节会有问题--huyue
+            value_length = value.length;
+        } else {
+            value_length = value.lengthb();
+        }
         if (value_length < this.minLength) {
             var Msg = this.inputMsg.minLength + this.minLength + this.inputMsg.unit;
-            this.showMsg(Msg)
+            this.showMsg(Msg);
             return {
                 passed: false,
                 Msg: Msg
-            }
+            };
         }
     }
     if (this.maxLength) {
+        if (this.validType && this.validType === "string") {
+            //当validType为string的时候，就直接用length，否则转成字节会有问题--huyue
+            value_length = value.length;
+        } else {
+            value_length = value.lengthb();
+        }
         if (value_length > this.maxLength) {
             var Msg = this.inputMsg.maxLength + this.maxLength + this.inputMsg.unit;
-            this.showMsg(Msg)
+            this.showMsg(Msg);
             return {
                 passed: false,
                 Msg: Msg
-            }
+            };
         }
     }
     if (this.max != undefined && this.max != null) {
